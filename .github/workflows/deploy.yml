@@ -48,6 +48,9 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            # Export variables for docker-compose
+            export DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}
+            
             # Pull the latest images
             docker pull ${{ secrets.DOCKER_USERNAME }}/upgrade-backend:latest
             docker pull ${{ secrets.DOCKER_USERNAME }}/upgrade-frontend:latest
@@ -55,12 +58,15 @@ jobs:
             # Navigate to project directory (Adjust path as needed)
             cd /root/upgrade-crm || cd ~/upgrade-crm
             
-            # Ensure docker-compose.prod.yml exists and uses these images
-            # If using docker-compose.prod.yml, update it to point to the new images
-            # or use `docker-compose up` with overrides.
-            # Example assuming docker-compose.prod.yml is present and updated:
+            # Restart services
             docker-compose -f docker-compose.prod.yml down
             docker-compose -f docker-compose.prod.yml up -d
             
             # Prune unused images to save space
             docker image prune -f
+
+            # DEBUG: Show running containers and logs
+            echo "=== RUNNING CONTAINERS ==="
+            docker ps -a
+            echo "=== FRONTEND LOGS ==="
+            docker logs -n 20 upgrade-crm-frontend-1 || docker logs -n 20 upgrade-crm_frontend_1 || echo "Container name prediction failed, check ps output"
