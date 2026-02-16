@@ -55,12 +55,29 @@ jobs:
             docker pull ${{ secrets.DOCKER_USERNAME }}/upgrade-backend:latest
             docker pull ${{ secrets.DOCKER_USERNAME }}/upgrade-frontend:latest
             
-            # Navigate to project directory (Adjust path as needed)
-            cd /root/upgrade-crm || cd ~/upgrade-crm
+            # Create project directory if it doesn't exist
+            mkdir -p ~/upgrade-crm
+            cd ~/upgrade-crm
+
+            # Copy docker-compose.prod.yml if it's not there (this is a patch, ideally it should be copied from the repo)
+            # Since we can't easily copy from the runner to the server without SCP, we'll rely on the repo being there or creating the file.
+            # BETTER APPROACH: Clone/Pull the repo to get the latest docker-compose.prod.yml
             
-            # Restart services
-            docker-compose -f docker-compose.prod.yml down
-            docker-compose -f docker-compose.prod.yml up -d
+            if [ ! -d ".git" ]; then
+              git clone https://github.com/stanisloveme-cloud/UPGRADE.git .
+            else
+              git pull origin main
+            fi
+
+            # Restart services using new images
+            # Tries 'docker compose' (v2) first, then 'docker-compose' (v1)
+            if command -v docker-compose &> /dev/null; then
+                docker-compose -f docker-compose.prod.yml down
+                docker-compose -f docker-compose.prod.yml up -d
+            else
+                docker compose -f docker-compose.prod.yml down
+                docker compose -f docker-compose.prod.yml up -d
+            fi
             
             # Prune unused images to save space
             docker image prune -f
