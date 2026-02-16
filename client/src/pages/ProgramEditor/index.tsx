@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
-import { Button, message, Spin } from 'antd';
+import { Button, message } from 'antd';
 import { SettingOutlined, PlusOutlined } from '@ant-design/icons';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -60,7 +60,7 @@ const ProgramEditor: React.FC = () => {
         setSessionModalVisible(true);
     };
 
-    const handleEmptySlotClick = (hallId: number, startTime: string) => {
+    const handleEmptySlotClick = (_hallId: number, startTime: string) => {
         // Find if there is a track in this hall at this time?
         // Or just open modal with startTime and let user pick track.
         // We could filter tracksOptions to only show tracks in this hall?

@@ -1,8 +1,8 @@
 import React from 'react';
 import { generateTimeSlots } from './utils';
-import { Typography } from 'antd';
 
-const { Text } = Typography;
+
+
 
 const TimeScale: React.FC = () => {
     const slots = generateTimeSlots();

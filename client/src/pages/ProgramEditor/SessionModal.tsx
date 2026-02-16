@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ModalForm, ProFormText, ProFormTextArea, ProFormTimePicker, ProFormSelect } from '@ant-design/pro-components';
-import { message, Button } from 'antd';
+import { Button } from 'antd';
 import dayjs from 'dayjs';
 
 interface SessionModalProps {
@@ -56,7 +56,7 @@ const SessionModal: React.FC<SessionModalProps> = ({ visible, onClose, onFinish,
                     // Ensure speakerIds are numbers (if array exists)
                     speakerIds: values.speakerIds?.map((id: any) => Number(id))
                 };
-                delete formattedValues.timeRange;
+                delete (formattedValues as any).timeRange;
 
                 console.log('SessionModal onFinish fixed values:', formattedValues);
                 return onFinish(formattedValues);
@@ -68,7 +68,7 @@ const SessionModal: React.FC<SessionModalProps> = ({ visible, onClose, onFinish,
                     submitText: 'Сохранить',
                     resetText: 'Отмена',
                 },
-                render: (props, dom) => {
+                render: (_props, dom) => {
                     return [
                         initialValues?.id && onDelete && (
                             <Button
@@ -105,7 +105,7 @@ const SessionModal: React.FC<SessionModalProps> = ({ visible, onClose, onFinish,
             <ProFormTimePicker.RangePicker
                 name="timeRange"
                 label="Время"
-                format="HH:mm"
+                fieldProps={{ format: 'HH:mm' }}
                 rules={[{ required: true, message: 'Выберите время' }]}
             />
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { ModalForm, ProFormText, ProFormSelect, ProFormTimePicker } from '@ant-design/pro-components';
-import { Form, message } from 'antd';
-import axios from 'axios';
+import { ModalForm, ProFormText, ProFormTimePicker } from '@ant-design/pro-components';
+import { Form } from 'antd';
+
 
 interface TrackModalProps {
     visible: boolean;
@@ -12,7 +12,7 @@ interface TrackModalProps {
     eventId: number;
 }
 
-const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, initialValues, hallId, eventId }) => {
+const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, initialValues, hallId }) => {
     const [form] = Form.useForm();
 
     useEffect(() => {

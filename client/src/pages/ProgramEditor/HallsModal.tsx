@@ -25,7 +25,7 @@ const HallsModal: React.FC<HallsModalProps> = ({ visible, onClose, eventId }) =>
                     setInitialValues(data);
                     form.setFieldsValue(data);
                 })
-                .catch(err => message.error('Failed to load halls'));
+                .catch(_err => message.error('Failed to load halls'));
         }
     }, [visible, form, eventId]);
 
@@ -84,7 +84,7 @@ const HallsModal: React.FC<HallsModalProps> = ({ visible, onClose, eventId }) =>
                     position: 'bottom',
                     creatorButtonText: '+ Добавить зал',
                 }}
-                itemRender={({ listDom, action }, { record }) => {
+                itemRender={({ listDom, action }) => {
                     return (
                         <div style={{ display: 'flex', gap: 16, alignItems: 'center', marginBottom: 16 }}>
                             {listDom}

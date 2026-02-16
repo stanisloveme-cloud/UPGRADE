@@ -34,7 +34,7 @@ export const BasicLayout: React.FC = () => {
             avatarProps={{
                 src: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
                 title: 'User',
-                render: (_, dom) => {
+                render: (_, _dom) => {
                     return (
                         <Space>
                             <Avatar shape="square" size="small" icon={<UserOutlined />} />

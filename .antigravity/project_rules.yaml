@@ -83,7 +83,11 @@ rules:
 
   - id: "shell-powershell-compat"
     severity: "error"
-    description: "When using PowerShell, avoid complex chaining (&&). Execute commands sequentially. Always assume non-interactive mode (no user prompts)."
+    description: >
+      Windows Environment Detected.
+      1. DO NOT use `grep`, `touch`, `rm -rf`, `export`. Use PowerShell equivalents (`Select-String`, `New-Item`, `Remove-Item`, `$env:VAR=VAL`).
+      2. Avoid complex chaining (&&). Execute commands sequentially.
+      3. Always assume non-interactive mode.
 
 # -----------------------------------------------------------------------------
 # 3. WORKFLOWS (STANDARD OPERATING PROCEDURES)
