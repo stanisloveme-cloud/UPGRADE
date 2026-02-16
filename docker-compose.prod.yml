@@ -1,6 +1,7 @@
 services:
   app:
-    build: .
+    # Use image from Docker Hub (built by CI/CD)
+    image: ${DOCKER_USERNAME}/upgrade-backend:latest
     ports:
       - '3000:3000'
     environment:
@@ -8,9 +9,20 @@ services:
       POSTGRES_USER: upgrade
       POSTGRES_PASSWORD: upgrade_pass
       POSTGRES_DB: upgrade_crm
+      # Allow frontend CORS if needed
+      FRONTEND_URL: http://devupgrade.space4you.ru
     depends_on:
       db:
         condition: service_healthy
+    restart: always
+
+  frontend:
+    # Use image from Docker Hub (built by CI/CD)
+    image: ${DOCKER_USERNAME}/upgrade-frontend:latest
+    ports:
+      - '80:80'
+    depends_on:
+      - app
     restart: always
 
   db:
