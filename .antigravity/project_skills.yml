@@ -1,0 +1,109 @@
+# GOOGLE ANTI-GRAVITY SKILLS
+# Project: Upgrade (Business Program Editor)
+# Version: 1.2 (Browser Subagent Optimized)
+
+# -----------------------------------------------------------------------------
+# SKILL 1: LEGACY SYSTEM EXPLORER (BROWSER SUBAGENT)
+# -----------------------------------------------------------------------------
+- name: "legacy_ui_explorer"
+  type: "browser_automation"
+  description: "Access the legacy system to inspect UI behavior. Handles Authentication automatically."
+  config:
+    # Точка входа
+    base_url: "https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92"
+    
+    # Креденшелы (В продакшне используй ENV переменные!)
+    credentials:
+      username: "vladislav.shirobokov@gmail.com"
+      password: "vladislav456"
+    
+    # ИНСТРУКЦИИ ДЛЯ СУБАГЕНТА (СЦЕНАРИЙ)
+    instructions: |
+      GOAL: Inspect the UI layout and styles of the Program Editor.
+
+      STEP 1: AUTHENTICATION (If redirected to Login Page)
+      - Check if the current URL contains '/login' or if a login form is visible.
+      - Action: Locate the input field for 'Email' or 'Username'. Type: "{{config.credentials.username}}".
+      - Action: Locate the input field for 'Password'. Type: "{{config.credentials.password}}".
+      - Action: Click the 'Login' / 'Sign In' button.
+      - Wait: Ensure the page redirects to '/dashboard' or the target URL.
+
+      STEP 2: NAVIGATION & INSPECTION
+      - Navigate to: {{config.base_url}}
+      - Wait for the grid element (or loading spinner) to resolve.
+      
+      STEP 3: ANALYSIS (READ-ONLY)
+      - Inspect the 'Schedule Grid' container. Identify:
+        * Is it CSS Grid or Flexbox?
+        * What are the exact pixel widths of columns?
+      - Open the 'Settings' modal (Gear icon) if possible to inspect form layouts.
+      - Extract color codes (hex) for the Session status badges.
+
+      CONSTRAINT: Do NOT delete or modify any business data. This is a production inspection only.
+
+# -----------------------------------------------------------------------------
+# SKILL 2: DOMAIN KNOWLEDGE (RAG)
+# -----------------------------------------------------------------------------
+- name: "upgrade_domain_expert"
+  type: "retrieval"
+  description: "Consults the project documentation to answer business logic questions."
+  config:
+    sources:
+      - "./docs/prd/*.md"
+      - "./docs/analysis/00_Legacy_System_Analysis.md"
+      - "./docs/references/UI_MAP.md"
+
+# -----------------------------------------------------------------------------
+# SKILL 3: ANT DESIGN PRO ARCHITECT
+# -----------------------------------------------------------------------------
+- name: "antd_pro_expert"
+  type: "code_generation"
+  description: "Generates complex Ant Design Pro V5 components."
+  config:
+    constraints:
+      - "Use <ProLayout> for the main shell."
+      - "Use <ProTable> for all data lists."
+      - "Use <DrawerForm> for side-editing."
+    templates:
+      - "scaffold_pro_table"
+      - "scaffold_drawer_form"
+
+# -----------------------------------------------------------------------------
+# SKILL 4: NESTJS ARCHITECT
+# -----------------------------------------------------------------------------
+- name: "nestjs_expert"
+  type: "code_generation"
+  description: "Generates strict NestJS modules."
+  config:
+    structure: "Module -> Controller -> Service -> PrismaRepository"
+    validation: "Use class-validator DTOs for all Inputs."
+
+# -----------------------------------------------------------------------------
+# SKILL 5: DEVOPS ENGINEER
+# -----------------------------------------------------------------------------
+- name: "infra_automator"
+  type: "code_generation"
+  description: "Generates Infrastructure as Code artifacts."
+  config:
+    tools: ["Docker", "Nginx", "GitHub Actions"]
+    files:
+      - "Dockerfile"
+      - "docker-compose.yml"
+      - "nginx.conf"
+
+# -----------------------------------------------------------------------------
+# ACTIVATION POLICIES (TRIGGERS)
+# -----------------------------------------------------------------------------
+activation_policy:
+  - trigger: "ambiguous_ui_requirement"
+    action: "legacy_ui_explorer"
+    reason: "When PRD text is unclear about visual behavior, check the live site."
+
+  - trigger: "database_schema_question"
+    action: "upgrade_domain_expert"
+  
+  - trigger: "scaffold_ui"
+    action: "antd_pro_expert"
+
+  - trigger: "deploy_request"
+    action: "infra_automator"

@@ -1,0 +1,1676 @@
+Первая версия ТЗ (работал человек - он описывал что видит на странице и ассистент perplexyti в браузере комет дополнил его):
+
+Ниже соберу то, что «видишь глазами», плюс то, что реально есть в DOM‑структуре страницы, и оформлю это как единое ТЗ: модель данных, элементы интерфейса и CJM по ключевым сценариям. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+***
+
+## 1. Общая концепция страницы
+
+Страница: «Редактор деловой программы мероприятия» для события **New Retail Forum 2025** (event_id = 16). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+Назначение: планирование, ведение и эксплуатация деловой программы по дням, залам, конференциям (трекам), сессиям, вопросам, спикерам и связанным сущностям (брифинги, презентации, рассылки). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+Основные сущности уровня модели данных:
+
+- Event (мероприятие: New Retail Forum 2025). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Hall (зал: «Трансформер», «Олимпийский», «Останкино», «Крылатское», «Битца» и т.д.). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Track/Conference (конференция/тематический блок внутри зала; например «Ритейл стратегии…», «E-Com и D2C…»). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Session (конкретная сессия во временном слоте; например «Покупатели и ритейлеры…» 11:00–12:30). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Question (вопросы/подтемы сессии, пронумерованные). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Speaker (спикеры, модераторы). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Briefing (брифинг по сессии). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Client (клиенты, привязанные к сессии, как отдельный блок «Клиенты»). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Presentation (файл презентации спикера). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- SpeakerNote / LK (карточка/памятка спикера во внешнем ЛК, ссылки вида `lk.upgradecrm.ru/speaker_note/...`). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+***
+
+## 2. Структура интерфейса и уровни вложенности
+
+### 2.1. Верхнее меню и навигация
+
+- Логотип **UPGRADE** (переход на `/dashboard`). [perplexity](https://www.perplexity.ai/search/1e46c09d-3529-4dc3-888d-055be8e3d37e)
+- Горизонтальное меню: «Продажи», «Сводная таблица», «Деловая программа», «Проверка брендов». [perplexity](https://www.perplexity.ai/search/1e46c09d-3529-4dc3-888d-055be8e3d37e)
+- Ссылка «← Сводная таблица тут» (быстрый возврат к sales summary). [perplexity](https://www.perplexity.ai/search/1e46c09d-3529-4dc3-888d-055be8e3d37e)
+- Кнопка «Выход» (деавторизация). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+### 2.2. Заголовок мероприятия и управляющие элементы
+
+Под заголовком **New Retail Forum 2025** располагаются: [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+- Иконка‑шестерёнка () — переход к управлению залами мероприятия (`/event/16/event_halls`): добавление/редактирование залов. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Кнопка с прямоугольником и плюсиком — включение **режима редактирования сетки**, активация «плюсиков» на временной шкале для добавления конференций/сессий в конкретные залы и слоты. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Выпадающее меню «Другие действия» с пунктами: [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+  - «Сортировка спикеров»  
+  - «Анонс деловой программы»  
+  - «Оповещение спикеров»  
+  - «Загрузка презентаций на локальный диск»
+
+Под заголовком также отображается аннотация конференции «Ритейл стратегии. Понимаем реальную ситуацию на рынке…» — это текстовое описание track’а верхнего уровня. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+### 2.3. Чекбоксы‑фильтры отображения
+
+Непосредственно под заголовком и «Другими действиями» располагаются чекбоксы: [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+- «Скрыть сессии в сетке»  
+- «Скрыть вопросы»  
+- «Скрыть спикеров»  
+- «Скрыть метаданные»  
+- «Скрыть отказавшихся спикеров»  
+- «Показать статус присутствия»
+
+Назначение: управляют видимостью соответствующих блоков в сетке (сессии, вопросы, список спикеров и их статусы, технические поля, отказавшиеся спикеры, индикаторы присутствия).
+
+**Статус присутствия** реализован как зелёные квадратики с цифрами у сессий и/или у спикеров, управляется переключателем в карточке спикера. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 2.4. Сетка по дням, залам и сессиям
+
+Сетка строится по дням мероприятия (например, **21 октября**, **22 октября**). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+Для каждого дня:
+
+- Отображается горизонтальная шкала времени: 9:00, 9:30, 10:00 … 18:30. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Для каждого **зала** (например «Трансформер», «Олимпийский», «Останкино», «Крылатское», «Битца») отображается: [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+  - Название зала и вместимость (например «Зал "Трансформер" 400»). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+  - Иконка () — вероятно, настройка/редактирование зала или конференции в зале. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+  - Один или несколько **конференционных треков** (Conference / Track) с названием, например:  
+    - «Ритейл стратегии. Понимаем реальную ситуацию на рынке…»  
+    - «E-Com и D2C, развитие собственных интернет-магазинов»  
+    - «Прикладной маркетинг. Performance, Social, E-mail, CRM» и т.д. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+Под каждым треком:
+
+- **Сессии** (Session) с указанием интервала времени (например 11:00–12:30). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Три числовых индикатора в квадратиках:  
+  - Первый — количество модераторов (лиловый фон). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+  - Второй — количество спикеров/участников. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+  - Третий (голубой) — количество неподтверждённых/особых статусов. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+Каждая сессия имеет кликабельное название (например «Покупатели и ритейлеры: аналитика…»). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+***
+
+## 3. Режимы редактирования и функциональные кнопки
+
+Под сеткой (и частично внутри карточки сессии) реализованы кнопки трёх уровней редактирования: [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+1. **Редактирование сессий и конференций** (иконка карандаша в квадратике).  
+2. **Редактирование спикеров/участников** (иконка человечка с плюсиком).  
+3. **Режим брифингов** (иконка, включающая блок «Брифинги» для сессии).
+
+Все три режима можно включить одновременно, после чего открываются соответствующие блоки и элементы управления. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 3.1. Функционал внутри карточки сессии
+
+Когда открыт блок сессии (пример: «Покупатели и ритейлеры…»): [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+1) **Основные поля сессии**
+
+- Время начала и окончания (например 11:00 – 12:30). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Кнопки под временем:  
+  - «Добавить тему» — добавление темы/сабтопика. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+  - «Копировать текст» (возможно, копирование описания сессии/вопросов). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+  - «ctrl+click – формат» — подсказка по управлению автоформатированием (вероятно, форматирование текста внутри полей). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+  - «Печать модератору» — генерация версии для печати для модератора сессии. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+  - «Печать табличек» — генерация табличек на стол для спикеров (имя, фамилия, должность). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+2) **Название и описание сессии**
+
+- Название сессии (H5/H6). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Дополнительное текстовое описание (например «Сессия коммерческих директоров…»). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Поля «Комментарий», «Клиенты» — текстовые/справочные поля, редактируются в режиме редактирования сессий. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+3) **Блок «Вопросы»**
+
+- Секция «Вопросы: » с пронумерованным списком вопросов (Question), каждый с отдельным заголовком и подсписком пунктов. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Каждый вопрос редактируется в виде текстового поля (title + body), открываемого по клику (при включённом режиме редактирования). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+4) **Блок «Брифинги»**
+
+В режиме брифингов у сессии появляется секция «Брифинги: » со следующими полями: [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+- Дата и время брифинга (день, месяц, год, часы, минуты) — набор числовых полей + пикер даты/времени. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Чекбокс «Состоялся» — отражает факт проведения брифинга. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Поле «Ссылка на брифинг» — текстовое поле, куда вставляется URL (Zoom, Teams и т.п.). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Поле «Комментарии» — текстовое поле для заметок. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Выбор модератора, ответственного за брифинг (селектор спикера, например «Влад Широбоков»). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Возможность добавить несколько брифингов для одной сессии подряд (множественные блоки брифинга). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+***
+
+## 4. Работа со спикерами внутри сессии
+
+### 4.1. Список спикеров/модераторов в сессии
+
+Внизу карточки сессии отображается таблица/список спикеров: [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+- Порядковый номер (позиция сортировки в рамках сессии). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Иконка карандаша рядом с номером — редактирование порядка (сортировка). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Отдельная иконка карандаша для открытия расширенной карточки спикера. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- ФИО спикера.  
+- Должность.  
+- Компания (в некоторых строках вынесена отдельной строкой). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Имя/контакт менеджера (в некоторых строках, как «Марина Трошина», «Мария Новикова» — контактное лицо). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Иконки каналов связи: телефон, email, Telegram, возможно и другие (по DOM: , , ,  как пиктограммы). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Роль: «Модератор» или «Спикер». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Статус участия: «Подтвержден», «Контакт», «Выйти на связь», «Отказ» и др. (dropdown). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Дата изменения статуса (ставится вручную). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Флаг «Презентация» и/или текстовое поле с описанием презентации (если загружена). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Дополнительные комментарии (часто длинные текстовые поля в таблице). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+### 4.2. Карточка спикера (редактирование)
+
+При клике на карандашик в списке спикеров открывается подробная карточка. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+Поля карточки:
+
+- Имя.  
+- Фамилия.  
+- Должность.  
+- Компания. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Контактный телефон.  
+- Email.  
+- Telegram (логин без @). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Фотография:  
+  - При клике можно загрузить фото.  
+  - Есть функционал «маски» — обрезка/выделение области, возможно удаление фона. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Комментарий (свободный текст). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Биография (био спикера). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Признак «Спонсор» (переключатель). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Контактное лицо (вероятно, связанный объект типа ContactPerson). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Роль в сессии: модератор или спикер (селектор). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Статус участия (dropdown):  
+  - Подтверждён  
+  - Предварительно подтверждён  
+  - Выйти на связь  
+  - Отказ  
+  - На рассмотрении, и др. (на уровне интерфейса). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Дата статуса (ввод вручную). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Переключатели «Zoom»/«не Zoom» — требуется ли онлайн‑подключение. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Переключатель/признак «Презентация» + контрол загрузки файла, привязка презентации к карточке спикера. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Поля справа: «Комментарий менеджера», «Тема/тезис для деловой программы», «Цитата для рассылки» — свободный текст. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+Особенность UX: сохранение реализовано **без явной кнопки «Сохранить»**: ввод текста + повторный клик на карандаш закрывают поле и, вероятно, триггерят автосохранение, что воспринимается как неочевидно и рискованно. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+***
+
+## 5. «Другие действия» и отдельные CJM‑сценарии
+
+### 5.1. Сортировка спикеров (глобальная)
+
+Пункт «Сортировка спикеров» открывает отдельный экран/модальное окно со списком **всех спикеров мероприятия** по всем дням/сессиям. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+Текущая логика:
+
+- Отображается единый листинг: ФИО, статус, привязка к сессии/залу, возможно сортировка по столбцам. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Цель — задать порядок сортировки и видеть сводный статус по всем спикерам. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Ожидаемое использование: пользователь может отсортировать, сделать скриншот и отправить внешний список.
+
+Замечание по улучшению:
+
+- CJM пользователя: «хочу выбрать нужных спикеров и выгрузить в файл (Excel/CSV/PDF), а не делать скриншот». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Требование к доработке: добавить функционал фильтрации, мультивыбора и экспорта списка спикеров со статусами.
+
+### 5.2. Анонс деловой программы
+
+Экран «Анонс деловой программы» — агрегированная таблица структуры программы: [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+- Иерархия: зал → конференция → сессия → вопросы. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Отображается:  
+  - Названия конференций и сессий.  
+  - Время проведения.  
+  - Участники, их темы и материалы.  
+  - Дата готовности.  
+  - Статус (например, готов/в работе). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+  - Планируемая ссылка на материал.  
+  - Комментарий к сессии.
+
+CJM: подготовка анонса для сайта/рассылки, проверка, какие сессии полностью укомплектованы (вопросы, спикеры, материалы) и где есть пробелы. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 5.3. Оповещение спикеров
+
+Экран «Оповещение спикеров» реализует CRM‑сценарий для ручной фиксации приглашений и коммуникаций. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+Функционал:
+
+- Поиск по имени и фамилии спикера. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Поиск/фильтрация по сессии. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Переключатель «только на оповещение» — ограничить листинг только теми, кого нужно уведомить. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Список спикеров с данными:  
+  - ФИО, должность, компания.  
+  - Зал/день/время (например «22 октября, Omni Fashion, 15:30–17:00»). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+  - Название сессии. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+  - Поле комментария.  
+  - Телефон. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Ручные чекбоксы/переключатели:  
+  - «Отправлено на email», «Отправлено SMS», «Отправлено в Telegram». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+  - При установке фиксируется дата и время в интерфейсе. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- Ссылка на ЛК спикера (сторонний ресурс), где показывается персональная памятка: приветствие, ссылка на программу, время и адрес, карта, контакты организаторов. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+CJM пользователя:
+
+- Отобрать нужных спикеров (фильтром).  
+- Отправить приглашение/памятку через внешние каналы (почта, SMS, Telegram — вне системы).  
+- Поставить галочки и зафиксировать факт и время отправки, вести журнал коммуникаций. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 5.4. Загрузка презентаций
+
+Экран загрузки/выгрузки презентаций:
+
+- Представляет собой листинг по структуре: зал → конференция → сессия → спикер → презентация. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Для каждого спикера, у кого в основной карточке прикреплена презентация, есть возможность скачать её. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- Кнопка «Выбрать папку» открывает системный диалог выбора локальной папки и далее инициирует **массовое скачивание всех презентаций** в выбранную папку. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- CJM:  
+  - «Я как пользователь хочу видеть всех спикеров с презентациями, сгруппированных по конференциям и сессиям».  
+  - «Я как пользователь хочу одним действием скачать все презентации в локальную папку». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+***
+
+## 6. CJM по ключевым сценариям
+
+### 6.1. Планирование программы (Event Owner / продюсер)
+
+1. Открыть страницу мероприятия New Retail Forum 2025.  
+2. Через шестерёнку настроить залы (создать/отредактировать «Трансформер», «Олимпийский», «Останкино» и др.). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+3. Включить режим редактирования сетки (кнопка с плюсиком).  
+4. Через «плюсики» по временной сетке добавить конференции/треки в нужные залы и временные диапазоны. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+5. Внутри конференции добавить сессии с указанием времени, названий, описаний. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+6. Добавить/отредактировать вопросы сессий. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+### 6.2. Управление спикерами по сессии
+
+1. Открыть нужный день и зал, выбрать сессию.  
+2. Включить режим редактирования спикеров (иконка человечка). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+3. Для каждой позиции: добавить/отредактировать спикера (ФИО, должность, компания, контакты).  
+4. Задать роль (спикер/модератор), статус (подтвержден, контакт и т.п.), дату статуса. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+5. При необходимости включить «Zoom» и/или «Презентация», загрузить файл. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+6. Внести комментарии, тезисы и цитаты для рассылки. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 6.3. Подготовка и проведение брифинга
+
+1. Открыть сессию и включить режим брифинга.  
+2. В блоке «Брифинги» создать запись: задать дату/время, выбрать модератора, вставить ссылку, прописать комментарий. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+3. После проведения отметить «Состоялся» и при необходимости добавить ещё брифинги. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+### 6.4. Анонс программы для внешних каналов
+
+1. Открыть «Анонс деловой программы» в «Других действиях». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+2. Проверить полноту данных по всем сессиям: вопросы, спикеры, материалы, статусы готовности, ссылки на материалы. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+3. Использовать этот экран как источник для формирования внешнего анонса (сайт, рассылка, печатные материалы).  
+
+### 6.5. Оповещение спикеров
+
+1. Перейти в «Оповещение спикеров». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+2. Отфильтровать список по сессии/типу уведомления.  
+3. Отправить приглашения/памятки вручную (email/SMS/Telegram).  
+4. Отметить чекбоксы соответствующих каналов, зафиксировать дату/время. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+5. При необходимости перейти по ссылке в ЛК спикера и проверить, как выглядит памятка. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+### 6.6. Работа с презентациями
+
+1. Перейти в раздел загрузки презентаций. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+2. Просмотреть структуру «зал → конференция → сессия → спикер» с указанием наличия презентаций.  
+3. Скачать отдельные файлы или нажать «Выбрать папку» и скачать все презентации в локальную папку. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+***
+
+## 7. Замечания и «то, что видно из кода, но не проговаривалось»
+
+Отдельным блоком фиксирую нюансы, которые у тебя в тексте либо неявно, либо не были проговорены, но видны по HTML: [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+1. **Дополнительные залы и мастер‑классы.**  
+   В сетке кроме описанных тобой залов есть ещё: «Крылатское», «Битца», мастер‑классы («Замена офисных сотрудников ИИ‑агентами», «Создание видео для маркетинга при помощи ИИ»), семинары и тематические блоки («OMNI Beauty», «E-Grocery», «OMNI Fashion» и др.). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+2. **Глубокая детализация спикерских комментариев.**  
+   В списках спикеров внизу карточек сессий присутствует очень большое количество текстовых комментариев, нот и ссылок на `speaker_note` в ЛК — это отдельный важный канал контента (цитаты, пояснения, extended abstracts), который уже интегрирован по ссылке, а не только как локальный текст в CRM. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+3. **Флаги и признаки для аналитики.**  
+   Помимо статуса («Подтвержден», «Контакт», «Отказ», «Выйти на связь») есть сквозные комменты, которые по смыслу являются триггерами (например «пинговать», «не выступает в принципе», «напомнить после 1 сентября»). Эта часть сейчас живёт как свободный текст, но по сути — модель бизнес‑событий и задач, которую можно формализовать. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+4. **UX‑риски автосохранения.**  
+   Отсутствие явной кнопки «Сохранить» для редактируемых полей, опора на принцип «ввел текст → закрыл карандашом» — по коду не видно кросс‑валидации, отмены и явного подтверждения действий. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+5. **Обновляемость состояний чекбоксов‑фильтров.**  
+   В текущей версии DOM есть отдельные `input` с `aria-label`, но из кода не видно механизма сохранения состояния фильтров между заходами (скорее всего сохраняется в cookies/локальном хранилище или нет — это предмет уточнения/доработки). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+***
+
+Если хочешь, на следующем шаге могу:
+
+- разложить это ТЗ по разделам («Требования к UI», «Модель данных», «API», «Сценарии тестирования») с жёсткой нумерацией;  
+
+Следующий шаг: 
+
+Ниже — формализованное ТЗ по странице «Редактор деловой программы» с жёсткой нумерацией по четырём блокам: **UI**, модель данных, API, сценарии тестирования. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+***
+
+## 1. Требования к UI
+
+### 1.1. Общие параметры страницы
+
+1.1.1. Страница относится к модулю «Деловая программа», URL вида `/dashboard/program/event/{event_id}`. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+1.1.2. Страница загружается в контексте выбранного мероприятия (пример: New Retail Forum 2025, `event_id=16`). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+1.1.3. Интерфейс содержит верхнее горизонтальное меню, заголовок мероприятия, панель фильтров/действий, таймлайн по дням и залам, карточки конференций и сессий и подвал с режимами редактирования. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 1.2. Верхнее меню и заголовок
+
+1.2.1. В левой части header отображается логотип UPGRADE, кликабельный и ведущий на `/dashboard`. [perplexity](https://www.perplexity.ai/search/1e46c09d-3529-4dc3-888d-055be8e3d37e)
+1.2.2. Справа от логотипа располагаются пункты меню: «Продажи», «← Сводная таблица тут», «Деловая программа», «Проверка брендов». [perplexity](https://www.perplexity.ai/search/1e46c09d-3529-4dc3-888d-055be8e3d37e)
+1.2.3. В правой части header отображается кнопка «Выход» для деавторизации. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+1.2.4. Под header выводится заголовок мероприятия уровня H3: «New Retail Forum 2025». [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+1.2.5. Справа от заголовка выводятся:  
+- 1.2.5.1. Иконка‑шестерёнка () — ссылка на управление залами `/dashboard/program/event/{event_id}/event_halls`. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 1.2.5.2. Кнопка «режима редактирования сетки» (прямоугольник с плюсиком), переключающая видимость интерактивных «плюсиков» для добавления конференций/сессий. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.2.5.3. Выпадающее меню «Другие действия» с пунктами: «Сортировка спикеров», «Анонс деловой программы», «Оповещение спикеров», «Загрузка презентаций на локальный диск». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+1.2.6. Под заголовком выводится текст‑описание основного трека мероприятия (например «Ритейл стратегии. Понимаем реальную ситуацию на рынке…»). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+### 1.3. Панель чекбоксов‑фильтров
+
+1.3.1. Под заголовком и блоком «Другие действия» располагаются чекбоксы с подписями: [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.3.1.1. «Скрыть сессии в сетке» (`aria-label="Скрыть сессии в сетке"`).  
+- 1.3.1.2. «Скрыть вопросы» (`aria-label="Скрыть вопросы"`).  
+- 1.3.1.3. «Скрыть спикеров» (`aria-label="Скрыть спикеров"`).  
+- 1.3.1.4. «Скрыть метаданные» (`aria-label="Скрыть метаданные"`).  
+- 1.3.1.5. «Скрыть отказавшихся спикеров» (`aria-label="Скрыть отказавшихся спикеров"`).  
+- 1.3.1.6. «Показать статус присутствия» (`aria-label="Показать статус присутствия"`).
+
+1.3.2. Переключение каждого чекбокса приводит к немедленному обновлению отображения сетки без перезагрузки страницы (через JS). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+1.3.3. При включении «Показать статус присутствия» у сессий и/или спикеров отображаются зелёные индикаторы‑квадратики с числовыми значениями статуса присутствия. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 1.4. Сетка программы (дни, залы, конференции, сессии)
+
+1.4.1. Сетка разделена по датам, каждая дата оформлена заголовком уровня H6 (например «21 октября», «22 октября»). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+1.4.2. Под датой отображается горизонтальная шкала времени с шагом 30 минут (9:00, 9:30, 10:00 … 18:30). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+1.4.3. Для каждого зала выводится блок: [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 1.4.3.1. Название зала, например «Зал "Трансформер"», «Зал "Олимпийский"», «Зал "Останкино"», «Зал "Крылатское"», «Зал "Битца"». [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 1.4.3.2. Вместимость зала (например «400», «200», «250», «10»). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 1.4.3.3. Иконка () для перехода к настройкам/редактированию конкретного зала/конференции. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+1.4.4. Под каждым залом отображаются **конференционные треки** (Conference/Track): текстовые заголовки (например «Ритейл стратегии…», «E‑Com и D2C…», «Прикладной маркетинг…», «OMNI Fashion», «E-Grocery» и т.д.). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+1.4.5. Внутри трека отображаются карточки сессий, каждая строка содержит: [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 1.4.5.1. Интервал времени (например «11:00 — 12:30»).  
+- 1.4.5.2. Три числовых индикатора в небольших квадратиках:  
+  - (a) количество модераторов (лиловый фон),  
+  - (b) количество спикеров/участников,  
+  - (c) количество неподтверждённых или особых статусов (голубой фон). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.4.5.3. Кликабельное название сессии (ведёт к раскрытию детальной карточки сессии ниже). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+### 1.5. Детальная карточка сессии
+
+1.5.1. При выборе сессии отображается блок сессии с заголовком (название) и подзаголовком (описание аудитории и формата). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+1.5.2. В верхней части карточки сессии отображается строка управления: [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 1.5.2.1. Время начала и окончания (дублируется внутри карточки).  
+- 1.5.2.2. Кнопка «Добавить тему» — добавляет новый вопрос/подтему в секцию «Вопросы». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.5.2.3. Кнопка «Копировать текст» — копирует текстовое наполнение сессии (описание, вопросы) в буфер обмена. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 1.5.2.4. Подсказка «ctrl+click – формат» — включает/выключает автоформатирование текста. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 1.5.2.5. Кнопка «Печать модератору» — открывает/генерирует печатную версию сессии для модератора. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.5.2.6. Кнопка «Печать табличек» — генерирует печатные таблички для спикеров (имя, фамилия, должность). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+1.5.3. Блок «Вопросы» отображается в виде нумерованного списка: [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 1.5.3.1. Каждый вопрос содержит заголовок (краткая формулировка).  
+- 1.5.3.2. Подзаголовок/маркированный список подпунктов (подтем).  
+- 1.5.3.3. При включённом режиме редактирования вопрос доступен для изменения в текстовом поле (inline‑редактирование). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+1.5.4. Блок «Комментарии» содержит одно текстовое поле «Комментарий». [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+1.5.5. Блок «Клиенты» содержит текстовое поле «Клиенты». [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+1.5.6. Блок «Брифинги» отображается при включённом режиме брифинга и содержит: [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 1.5.6.1. Один или несколько брифингов с полями: день, месяц, год, часы, минуты (inputs type=number + выбор даты/времени). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.5.6.2. Чекбокс «Состоялся» для каждого брифинга. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.5.6.3. Текстовое поле «Ссылка на брифинг» (URL). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.5.6.4. Выпадающий список с выбором модератора (список спикеров сессии). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.5.6.5. Текстовое поле «Комментарии» для каждого брифинга. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 1.6. Список спикеров в сессии
+
+1.6.1. Внизу карточки сессии отображается таблица/список спикеров с колонками: [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 1.6.1.1. Позиция/номер (порядок сортировки).  
+- 1.6.1.2. Иконка карандаша рядом с номером — вызов редактора порядка. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.6.1.3. Иконка карандаша для открытия подробной карточки спикера. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.6.1.4. Имя и фамилия спикера.  
+- 1.6.1.5. Должность.  
+- 1.6.1.6. Компания.  
+- 1.6.1.7. Контактное лицо (менеджер/представитель, если задано). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 1.6.1.8. Иконки каналов: телефон, email, Telegram. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 1.6.1.9. Роль: модератор/спикер. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 1.6.1.10. Статус (подтверждён, контакт, выйти на связь, отказ, на рассмотрении и др.). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.6.1.11. Дата статуса (YYYY-MM-DD, вводится вручную). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 1.6.1.12. Признак/строка «Презентация» (если файл загружен). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 1.6.1.13. Дополнительные текстовые комментарии/notes. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+1.6.2. При клике на иконку ссылочного блокнота () открывается внешняя страница личного кабинета спикера (speaker_note в `lk.upgradecrm.ru`). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+### 1.7. Карточка спикера (popup/inline‑редактор)
+
+1.7.1. Карточка открывается по клику на иконку карандаша в строке спикера. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+1.7.2. Должны присутствовать следующие поля: [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.7.2.1. Имя.  
+- 1.7.2.2. Фамилия.  
+- 1.7.2.3. Должность.  
+- 1.7.2.4. Компания.  
+- 1.7.2.5. Телефон.  
+- 1.7.2.6. Email.  
+- 1.7.2.7. Telegram (логин без `@`).  
+- 1.7.2.8. Фотография (с возможностью загрузки и обрезки по маске/удаления фона). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.7.2.9. Поле «Комментарий».  
+- 1.7.2.10. Поле «Биография».  
+- 1.7.2.11. Переключатель «Спонсор» (да/нет).  
+- 1.7.2.12. Поле «Контактное лицо» (строка + возможно привязка к отдельной сущности).  
+- 1.7.2.13. Выпадающий список «Роль» (модератор/спикер).  
+- 1.7.2.14. Выпадающий список «Статус участия».  
+- 1.7.2.15. Поле «Дата статуса».  
+- 1.7.2.16. Переключатель «Zoom» (нужно онлайн‑подключение).  
+- 1.7.2.17. Переключатель «Есть презентация» + контрол загрузки файла.  
+- 1.7.2.18. Поле «Комментарий менеджера».  
+- 1.7.2.19. Поле «Тема/тезис для деловой программы».  
+- 1.7.2.20. Поле «Цитата для рассылки».
+
+1.7.3. Сохранение полей происходит без отдельной кнопки «Сохранить» — после ввода и закрытия режима редактирования (UX‑требование к доработке: добавить явное подтверждение). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 1.8. Режимы редактирования
+
+1.8.1. Под сеткой расположены три отдельные кнопки режима редактирования: [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.8.1.1. «Редактирование сессий и конференций» — включает доступ к редактированию названий, описаний, вопросов, комментариев, клиентов.  
+- 1.8.1.2. «Редактирование спикеров» — включает отображение сортировочных номеров и иконок карандашей у спикеров. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.8.1.3. «Режим брифингов» — открывает/показывает блок «Брифинги» у сессий. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+1.8.2. Режимы могут быть включены одновременно. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 1.9. Экран «Сортировка спикеров»
+
+1.9.1. Доступен через «Другие действия» → «Сортировка спикеров». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+1.9.2. Показывает единый список всех спикеров по мероприятию с возможностью задавать порядок сортировки и просматривать статусы. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+1.9.3. Требование на доработку: реализовать функционал фильтрации, мультивыбор спикеров и экспорт (CSV/XLSX/PDF). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 1.10. Экран «Анонс деловой программы»
+
+1.10.1. Доступен через «Другие действия» → «Анонс деловой программы». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+1.10.2. Отображает агрегированную таблицу: зал → конференция → сессия → вопросы. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+1.10.3. Для каждой сессии выводятся: время, список участников, их темы, материалы, дата готовности, статус, планируемая ссылка на материал, комментарий. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 1.11. Экран «Оповещение спикеров»
+
+1.11.1. Доступен через «Другие действия» → «Оповещение спикеров». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+1.11.2. UI должен содержать: [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.11.2.1. Поле поиска по имени/фамилии.  
+- 1.11.2.2. Фильтр по сессии.  
+- 1.11.2.3. Переключатель «Только на оповещение».  
+- 1.11.2.4. Таблицу спикеров с колонками: ФИО, должность, компания, дата/время сессии, название сессии, чекбоксы «Отправлено email/SMS/Telegram» (ручные), время отправки, поле комментария, телефон, ссылка на ЛК. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 1.12. Экран «Загрузка презентаций»
+
+1.12.1. Доступен через «Другие действия» → «Загрузка презентаций на локальный диск». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+1.12.2. Отображает иерархию зал → конференция → сессия → спикер → файл презентации. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+1.12.3. На уровне UI предусмотрена: [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 1.12.3.1. Возможность скачивания отдельной презентации.  
+- 1.12.3.2. Кнопка «Выбрать папку», открывающая системный диалог и запускающая массовое скачивание всех презентаций. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+***
+
+## 2. Модель данных
+
+### 2.1. Сущность Event (мероприятие)
+
+2.1.1. Поля (минимально):  
+- 2.1.1.1. `id` (int).  
+- 2.1.1.2. `name` (string) — «New Retail Forum 2025». [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 2.1.1.3. `description` (string) — общий описательный текст. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 2.1.1.4. `start_date` (date).  
+- 2.1.1.5. `end_date` (date).  
+- 2.1.1.6. `status` (enum: draft/published/archived).  
+- 2.1.1.7. Связь `halls` (list<Hall>).  
+
+### 2.2. Сущность Hall (зал)
+
+2.2.1. Поля:  
+- 2.2.1.1. `id` (int).  
+- 2.2.1.2. `event_id` (int, FK → Event).  
+- 2.2.1.3. `name` (string) — «Трансформер», «Олимпийский» и т.п. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 2.2.1.4. `capacity` (int) — вместимость. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 2.2.1.5. `sort_order` (int).  
+
+### 2.3. Сущность Track / Conference (конференция/тематический блок)
+
+2.3.1. Поля:  
+- 2.3.1.1. `id` (int).  
+- 2.3.1.2. `event_id` (int).  
+- 2.3.1.3. `hall_id` (int, FK → Hall).  
+- 2.3.1.4. `name` (string).  
+- 2.3.1.5. `description` (text).  
+- 2.3.1.6. `day` (date).  
+- 2.3.1.7. `start_time` (time).  
+- 2.3.1.8. `end_time` (time).  
+- 2.3.1.9. `sort_order` (int).  
+
+### 2.4. Сущность Session (сессия)
+
+2.4.1. Поля:  
+- 2.4.1.1. `id` (int).  
+- 2.4.1.2. `track_id` (int, FK → Track).  
+- 2.4.1.3. `name` (string). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 2.4.1.4. `description` (text) — текст типа «Сессия коммерческих директоров…». [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 2.4.1.5. `day` (date).  
+- 2.4.1.6. `start_time` (time).  
+- 2.4.1.7. `end_time` (time).  
+- 2.4.1.8. `comments` (text) — блок «Комментарий». [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 2.4.1.9. `clients` (text) — блок «Клиенты». [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 2.4.1.10. `metadata` (JSON) — различные служебные поля. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 2.4.1.11. `moderators_count` (int).  
+- 2.4.1.12. `speakers_count` (int).  
+- 2.4.1.13. `unconfirmed_count` (int).  
+- 2.4.1.14. `presence_status` (int/enum) — агрегированный статус присутствия по сессии (для зелёного квадратика). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 2.5. Сущность Question (вопрос/подтема)
+
+2.5.1. Поля:  
+- 2.5.1.1. `id` (int).  
+- 2.5.1.2. `session_id` (int, FK → Session).  
+- 2.5.1.3. `order` (int) — номер вопроса. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 2.5.1.4. `title` (string).  
+- 2.5.1.5. `body` (text) — списки подпунктов. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+### 2.6. Сущность Speaker (спикер)
+
+2.6.1. Поля:  
+- 2.6.1.1. `id` (int).  
+- 2.6.1.2. `first_name` (string).  
+- 2.6.1.3. `last_name` (string).  
+- 2.6.1.4. `position` (string).  
+- 2.6.1.5. `company` (string). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 2.6.1.6. `phone` (string).  
+- 2.6.1.7. `email` (string).  
+- 2.6.1.8. `telegram` (string).  
+- 2.6.1.9. `photo_url` (string).  
+- 2.6.1.10. `is_sponsor` (bool). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 2.6.1.11. `bio` (text). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 2.6.1.12. `comment` (text).  
+- 2.6.1.13. `contact_person` (string / FK → Contact). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 2.7. Связь SessionSpeaker (участие спикера в сессии)
+
+2.7.1. Поля:  
+- 2.7.1.1. `id` (int).  
+- 2.7.1.2. `session_id` (int, FK → Session).  
+- 2.7.1.3. `speaker_id` (int, FK → Speaker).  
+- 2.7.1.4. `role` (enum: moderator/speaker). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 2.7.1.5. `status` (enum: confirmed/pre_confirmed/contact/to_contact/declined/other). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 2.7.1.6. `status_date` (date). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+- 2.7.1.7. `sort_order` (int).  
+- 2.7.1.8. `needs_zoom` (bool). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+- 2.7.1.9. `has_presentation` (bool).  
+- 2.7.1.10. `manager_comment` (text).  
+- 2.7.1.11. `program_thesis` (text).  
+- 2.7.1.12. `newsletter_quote` (text).  
+- 2.7.1.13. `presence_status` (enum/int) — статус присутствия конкретного спикера. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 2.8. Сущность Briefing (брифинг)
+
+2.8.1. Поля:  
+- 2.8.1.1. `id` (int).  
+- 2.8.1.2. `session_id` (int, FK → Session).  
+- 2.8.1.3. `moderator_id` (int, FK → Speaker).  
+- 2.8.1.4. `datetime` (datetime).  
+- 2.8.1.5. `is_done` (bool).  
+- 2.8.1.6. `link` (string, URL).  
+- 2.8.1.7. `comment` (text). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 2.9. Сущность Presentation (презентация)
+
+2.9.1. Поля:  
+- 2.9.1.1. `id` (int).  
+- 2.9.1.2. `session_speaker_id` (int, FK → SessionSpeaker).  
+- 2.9.1.3. `file_path` (string).  
+- 2.9.1.4. `uploaded_at` (datetime).  
+- 2.9.1.5. `title` (string). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+### 2.10. Сущность NotificationLog (лог оповещений)
+
+2.10.1. Поля:  
+- 2.10.1.1. `id` (int).  
+- 2.10.1.2. `session_speaker_id` (int).  
+- 2.10.1.3. `channel` (enum: email/sms/telegram).  
+- 2.10.1.4. `sent_at` (datetime).  
+- 2.10.1.5. `comment` (text). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+***
+
+## 3. Требования к API (черновой уровень)
+
+### 3.1. Общие требования
+
+3.1.1. Все API эндпоинты должны быть доступны по HTTPS с авторизацией через сессию/токен. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+3.1.2. Формат данных — JSON.  
+3.1.3. Обновление UI при редактировании должно происходить без перезагрузки страницы (AJAX/Fetch).
+
+### 3.2. Event / Hall / Track / Session
+
+3.2.1. `GET /api/program/events/{id}` — получить информацию о мероприятии, залах, треках и сессиях (структура для построения сетки). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+3.2.2. `POST /api/program/events/{id}/halls` — создание/редактирование залов. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+3.2.3. `POST /api/program/halls/{id}/tracks` — создание/редактирование треков.  
+3.2.4. `POST /api/program/tracks/{id}/sessions` — создание/редактирование сессий (время, название, описания, комментарии, клиенты). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+3.2.5. `PATCH /api/program/sessions/{id}` — частичное обновление полей сессии (используется для inline‑редактирования). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+3.2.6. `DELETE /api/program/sessions/{id}` — удаление сессии.
+
+### 3.3. Questions
+
+3.3.1. `GET /api/program/sessions/{id}/questions` — список вопросов по сессии.  
+3.3.2. `POST /api/program/sessions/{id}/questions` — добавление вопроса.  
+3.3.3. `PATCH /api/program/questions/{id}` — изменение текста/порядка вопроса. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+3.3.4. `DELETE /api/program/questions/{id}` — удаление вопроса.
+
+### 3.4. Speakers и SessionSpeaker
+
+3.4.1. `GET /api/program/sessions/{id}/speakers` — список участников сессии с полями из SessionSpeaker + Speaker. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+3.4.2. `POST /api/program/sessions/{id}/speakers` — привязка существующего или создание нового спикера и привязка к сессии. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+3.4.3. `PATCH /api/program/session_speakers/{id}` — изменение роли, статуса, даты статуса, sort_order, флагов Zoom/презентации, текстовых полей (комментарий, тезис, цитата). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+3.4.4. `PATCH /api/program/speakers/{id}` — изменение общих данных спикера (ФИО, должность, контакты, спонсор, биография). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+3.4.5. `POST /api/program/speakers/{id}/photo` — загрузка/обновление фотографий с обработкой маски.  
+
+### 3.5. Briefings
+
+3.5.1. `GET /api/program/sessions/{id}/briefings` — список брифингов по сессии. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+3.5.2. `POST /api/program/sessions/{id}/briefings` — создание брифинга (дата/время, модератор, ссылка, комментарий). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+3.5.3. `PATCH /api/program/briefings/{id}` — изменение полей (is_done, дата/время, ссылка, комментарий). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+3.5.4. `DELETE /api/program/briefings/{id}` — удаление брифинга.
+
+### 3.6. Program announcement / notifications / presentations
+
+3.6.1. `GET /api/program/events/{id}/announcement` — агрегированная структура для «Анонса деловой программы». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+3.6.2. `GET /api/program/events/{id}/notifications` — данные для «Оповещения спикеров» (список SessionSpeaker + Session + контактные данные). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+3.6.3. `POST /api/program/notifications/log` — запись логов отправки (channel, timestamp). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+3.6.4. `GET /api/program/events/{id}/presentations` — структура для экрана презентаций: список всех презентаций по залам/сессиям/спикерам. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+3.6.5. `GET /api/program/presentations/{id}/download` — скачивание отдельной презентации.  
+3.6.6. `POST /api/program/events/{id}/presentations/download_all` — старт задачи массового скачивания всех презентаций (сервер готовит архив). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 3.7. Filters и настройки отображения
+
+3.7.1. `PATCH /api/program/events/{id}/view_settings` — сохранение состояния чекбоксов «Скрыть …», «Показать статус присутствия» для пользователя. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+3.7.2. `GET /api/program/events/{id}/view_settings` — восстановление настроек при входе.
+
+***
+
+## 4. Сценарии тестирования (high‑level)
+
+### 4.1. Сценарий: отображение сетки программы
+
+4.1.1. Открыть `/dashboard/program/event/16`.  
+4.1.2. Проверить наличие заголовка «New Retail Forum 2025» и текста описания трека. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+4.1.3. Убедиться, что выводятся обе даты (21 и 22 октября) и временная шкала от 9:00 до 18:30. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+4.1.4. Проверить отображение всех залов и их вместимости (Трансформер, Олимпийский, Останкино, Крылатское, Битца). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+4.1.5. Убедиться, что под каждым залом отображаются соответствующие треки и сессии с правильными интервалами времени и числовыми индикаторами. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+### 4.2. Сценарий: работа чекбоксов‑фильтров
+
+4.2.1. Включить «Скрыть сессии в сетке» и убедиться, что карточки сессий не отображаются, остаются только заголовки треков/залов. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+4.2.2. Включить/выключить «Скрыть вопросы» и проверить, что блоки «Вопросы» по всем сессиям скрываются/показываются. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+4.2.3. Включить «Скрыть спикеров» — список спикеров в сессиях должен скрыться. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+4.2.4. Включить «Скрыть отказавшихся спикеров» — в списках спикеров не должны отображаться записи со статусом «Отказ». [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+4.2.5. Включить «Показать статус присутствия» — должны появиться зелёные индикаторы в интерфейсе (по сессиям/спикерам). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+4.2.6. Обновить страницу и проверить, сохраняется ли состояние фильтров (если предусмотрено). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 4.3. Сценарий: редактирование сессии
+
+4.3.1. Включить режим «Редактирование сессий». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+4.3.2. Открыть сессию «Покупатели и ритейлеры…» и изменить текст одного вопроса. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+4.3.3. Закрыть поле (иконка карандаша) и убедиться, что изменения отображаются в UI после перезагрузки страницы (проверка сохранения). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+4.3.4. Добавить новый вопрос через «Добавить тему», заполнить заголовок и подпункты, проверить порядок нумерации. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+4.3.5. Изменить текст в блоках «Комментарий» и «Клиенты», проверить сохранение. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+### 4.4. Сценарий: редактирование спикера
+
+4.4.1. Включить режим «Редактирование спикеров». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+4.4.2. В сессии «Покупатели и ритейлеры…» открыть карточку конкретного спикера (например, «Оксана Карпухина»). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+4.4.3. Изменить поле «Должность» и «Компания», сохранить, обновить страницу и убедиться в корректном отображении. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+4.4.4. Установить статус «Подтверждён» и дату, проверить, что это состояние отображается в списке спикеров и влияет на расчёт индикаторов. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+4.4.5. Включить флаг «Презентация», загрузить файл, убедиться, что появляется отметка о презентации и файл доступен для скачивания в разделе презентаций. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+### 4.5. Сценарий: брифинги
+
+4.5.1. Включить «Режим брифингов». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+4.5.2. Для выбранной сессии добавить новый брифинг: заполнить дату/время, ссылку, модератора, комментарий. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+4.5.3. Установить чекбокс «Состоялся», обновить страницу, убедиться в сохранении состояния. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+4.5.4. Удалить брифинг (если предусмотрена кнопка удаления) и проверить, что он исчез из интерфейса и API.
+
+### 4.6. Сценарий: «Сортировка спикеров»
+
+4.6.1. Открыть «Другие действия» → «Сортировка спикеров». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+4.6.2. Проверить отображение всех спикеров с привязкой к сессиям и статусам. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+4.6.3. Изменить порядок для нескольких спикеров, вернуться в основную сетку и убедиться, что порядок в сессиях изменился. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 4.7. Сценарий: «Анонс деловой программы»
+
+4.7.1. Открыть «Анонс деловой программы». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+4.7.2. Проверить, что структура зал → конференция → сессия → вопросы соответствует основной сетке. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+4.7.3. Для тестовой сессии изменить статус/дату готовности в UI (если редактируемо) и проверить, что изменения отражаются при повторном заходе. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+### 4.8. Сценарий: «Оповещение спикеров»
+
+4.8.1. Открыть «Оповещение спикеров». [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+4.8.2. Найти спикера по имени (например, «Ольга Сафонова») через поиск и убедиться, что фильтр работает. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+4.8.3. Установить чекбокс «Отправлено email» и проверить, что фиксируется дата/время отправки. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+4.8.4. Установить чекбокс «Отправлено SMS» и «Отправлено Telegram», проверить фиксацию времени и отображение в таблице. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+4.8.5. Перейти по ссылке в ЛК спикера и убедиться, что открывается корректная памятка (Smoke‑тест). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+### 4.9. Сценарий: «Загрузка презентаций»
+
+4.9.1. Открыть раздел загрузки презентаций. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+4.9.2. Убедиться, что список сгруппирован по залам, конференциям и сессиям, и отображаются только спикеры с загруженными презентациями. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+4.9.3. Скачать одну презентацию, проверить целостность файла.  
+4.9.4. Нажать «Выбрать папку», выбрать локальную директорию, убедиться, что все презентации загружены в неё (или загружается архив). [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+***
+
+Если захочешь, на следующем шаге могу либо углубить API (описать схемы запрос/ответ с примерами JSON)
+
+Ответ пользователя: да хочу
+
+Ниже — обновлённая версия ТЗ, где блок 3. API углублён: для ключевых эндпоинтов даю схемы запросов/ответов и ключевые правила валидации.
+
+1. Требования к UI
+(Блок UI остаётся таким же, как в предыдущей версии ТЗ: структура страницы, чекбоксы, сетка по дням/залам, карточки сессий, режимы редактирования, «Другие действия», экраны анонса, оповещения и презентаций.)
+
+2. Модель данных
+(Блок модели данных также остаётся без изменений: сущности Event, Hall, Track, Session, Question, Speaker, SessionSpeaker, Briefing, Presentation, NotificationLog и их поля.)
+
+3. Требования к API (расширенная версия)
+3.1. Общие требования
+3.1.1. Все эндпоинты доступны по HTTPS, авторизация — cookie‑сессия или Bearer‑токен (единый для CRM).
+​
+3.1.2. Формат данных — JSON; кодировка UTF‑8.
+​
+3.1.3. Для всех POST/PATCH обязательна валидация и возвращение ошибок в формате:
+
+json
+{
+  "error": true,
+  "message": "Validation error",
+  "fields": {
+    "field_name": "Error description"
+  }
+}
+3.1.4. Все мутации должны возвращать актуальное состояние изменённого объекта (id, все основные поля) для немедленного обновления UI.
+​
+
+3.2. Event / Hall / Track / Session
+3.2.1. GET /api/program/events/{event_id}
+Назначение: загрузка всей структуры мероприятия для построения сетки (дни, залы, треки, сессии, краткое состояние).
+​
+
+Пример ответа (усечённо):
+
+json
+{
+  "id": 16,
+  "name": "New Retail Forum 2025",
+  "description": "Ритейл стратегии. Понимаем реальную ситуацию на рынке...",
+  "start_date": "2025-10-21",
+  "end_date": "2025-10-22",
+  "halls": [
+    {
+      "id": 1,
+      "name": "Трансформер",
+      "capacity": 400,
+      "tracks": [
+        {
+          "id": 10,
+          "name": "Ритейл стратегии...",
+          "day": "2025-10-21",
+          "start_time": "11:00",
+          "end_time": "18:30",
+          "sessions": [
+            {
+              "id": 100,
+              "name": "Покупатели и ритейлеры...",
+              "day": "2025-10-21",
+              "start_time": "11:00",
+              "end_time": "12:30",
+              "moderators_count": 2,
+              "speakers_count": 6,
+              "unconfirmed_count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+Ошибки:
+3.2.1.1. При отсутствии доступа — 403 Forbidden.
+3.2.1.2. При несуществующем event_id — 404 Not Found.
+
+3.2.2. POST /api/program/events/{event_id}/halls
+Назначение: создание/обновление зала в рамках мероприятия (вызывается со страницы управления залами).
+​
+
+Тело запроса:
+
+json
+{
+  "id": null,
+  "name": "Трансформер",
+  "capacity": 400,
+  "sort_order": 1
+}
+Ответ:
+
+json
+{
+  "id": 1,
+  "event_id": 16,
+  "name": "Трансформер",
+  "capacity": 400,
+  "sort_order": 1
+}
+Валидация: name не пустое, capacity >= 0, sort_order >= 0.
+
+3.2.3. POST /api/program/halls/{hall_id}/tracks
+Назначение: создание или изменение трека (конференции) в зале.
+​
+
+Тело запроса:
+
+json
+{
+  "id": null,
+  "name": "Ритейл стратегии...",
+  "description": "Понимаем реальную ситуацию...",
+  "day": "2025-10-21",
+  "start_time": "09:00",
+  "end_time": "18:30",
+  "sort_order": 1
+}
+Ответ: объект Track, аналогичный модели данных.
+
+3.2.4. POST /api/program/tracks/{track_id}/sessions
+Назначение: создать новую сессию в рамках трека (через плюсик в сетке).
+​
+
+Тело запроса:
+
+json
+{
+  "id": null,
+  "name": "Новая тема",
+  "description": "",
+  "day": "2025-10-21",
+  "start_time": "10:00",
+  "end_time": "11:30",
+  "comments": "",
+  "clients": ""
+}
+Валидация:
+3.2.4.1. start_time < end_time.
+3.2.4.2. Пересечения сессий внутри трека допустимы только если бизнес‑логика это разрешает; по умолчанию — ошибка при пересечении.
+
+Ответ: объект Session (включая id, временные поля).
+
+3.2.5. PATCH /api/program/sessions/{session_id}
+Назначение: inline‑редактирование полей сессии (название, описание, комментарии, клиенты, время).
+​
+
+Пример запроса:
+
+json
+{
+  "name": "Покупатели и ритейлеры: аналитика...",
+  "description": "Сессия коммерческих директоров...",
+  "comments": "Добавить кейс X.",
+  "clients": "X5, Лента",
+  "start_time": "11:00",
+  "end_time": "12:30"
+}
+Ответ: обновлённый объект Session.
+
+3.3. Questions (вопросы сессий)
+3.3.1. GET /api/program/sessions/{session_id}/questions
+Ответ:
+
+json
+[
+  {
+    "id": 1,
+    "order": 1,
+    "title": "За что и почему готов платить покупатель...",
+    "body": "- изменения в поведении покупателей...\n- доходы населения и инфляция..."
+  },
+  {
+    "id": 2,
+    "order": 2,
+    "title": "Понимаем реальную расстановку сил...",
+    "body": "..."
+  }
+]
+3.3.2. POST /api/program/sessions/{session_id}/questions
+Тело запроса:
+
+json
+{
+  "title": "Новый вопрос",
+  "body": "- подпункт 1\n- подпункт 2",
+  "order": 5
+}
+Если order не передан, система ставит следующий по порядку.
+​
+
+3.3.3. PATCH /api/program/questions/{id}
+Позволяет менять title, body, order (drag&drop или inline‑редактирование).
+​
+
+3.4. Speakers и SessionSpeaker
+3.4.1. GET /api/program/sessions/{session_id}/speakers
+Ответ:
+
+json
+[
+  {
+    "session_speaker_id": 101,
+    "sort_order": 1,
+    "role": "moderator",
+    "status": "confirmed",
+    "status_date": "2025-09-12",
+    "needs_zoom": false,
+    "has_presentation": false,
+    "manager_comment": "",
+    "program_thesis": "",
+    "newsletter_quote": "",
+    "presence_status": "planned",
+    "speaker": {
+      "id": 501,
+      "first_name": "Влад",
+      "last_name": "Широбоков",
+      "position": "продюсер New Retail Forum",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "telegram": "",
+      "photo_url": "",
+      "is_sponsor": false,
+      "bio": "",
+      "comment": "",
+      "contact_person": null
+    }
+  }
+]
+3.4.2. POST /api/program/sessions/{session_id}/speakers
+Назначение: привязать существующего спикера или создать нового и привязать к сессии.
+​
+
+Тело запроса (вариант 1: уже существующий спикер):
+
+json
+{
+  "speaker_id": 501,
+  "role": "speaker",
+  "status": "contact",
+  "status_date": "2025-08-22",
+  "sort_order": 3
+}
+Тело запроса (вариант 2: создать):
+
+json
+{
+  "speaker": {
+    "first_name": "Оксана",
+    "last_name": "Карпухина",
+    "position": "Executive Director",
+    "company": "Gulliver Group",
+    "phone": "+7...",
+    "email": "example@gulliver.ru"
+  },
+  "role": "speaker",
+  "status": "confirmed",
+  "status_date": "2025-08-22",
+  "sort_order": 3
+}
+Ответ: объект SessionSpeaker с вложенным Speaker.
+
+3.4.3. PATCH /api/program/session_speakers/{id}
+Назначение: обновление участия спикера в конкретной сессии (роли, статуса, флагов, текстов).
+​
+
+Тело запроса (пример):
+
+json
+{
+  "role": "speaker",
+  "status": "confirmed",
+  "status_date": "2025-08-22",
+  "sort_order": 4,
+  "needs_zoom": true,
+  "has_presentation": true,
+  "manager_comment": "Нужен Zoom-слот +10 мин",
+  "program_thesis": "Ритейл 2025: динамика рынка...",
+  "newsletter_quote": "В 2025 году Fashion-рынок продолжает динамично меняться..."
+}
+3.4.4. PATCH /api/program/speakers/{id}
+Назначение: глобальное изменение данных спикера (для всех сессий).
+​
+
+Тело запроса:
+
+json
+{
+  "first_name": "Евгений",
+  "last_name": "Сахаров",
+  "position": "заместитель генерального директора",
+  "company": "Сантехника-Онлайн",
+  "phone": "+7...",
+  "email": "e.saharov@example.com",
+  "telegram": "saharov",
+  "is_sponsor": false,
+  "bio": "Краткая биография...",
+  "comment": "Должен прилететь утром",
+  "contact_person": "Эльвира Чачина"
+}
+Ответ: обновлённый объект Speaker.
+
+3.4.5. POST /api/program/speakers/{id}/photo
+Назначение: загрузка/обновление фото.
+​
+
+Формат: multipart/form-data, поле file.
+Ответ: { "photo_url": "https://.../files/speakers/501.jpg" }.
+
+3.5. Briefings
+3.5.1. GET /api/program/sessions/{session_id}/briefings
+Ответ:
+
+json
+[
+  {
+    "id": 1,
+    "session_id": 100,
+    "moderator_id": 501,
+    "datetime": "2025-10-20T15:00:00+03:00",
+    "is_done": true,
+    "link": "https://zoom.us/j/...",
+    "comment": "Технический прогон"
+  }
+]
+3.5.2. POST /api/program/sessions/{session_id}/briefings
+Тело запроса:
+
+json
+{
+  "moderator_id": 501,
+  "datetime": "2025-10-20T15:00:00+03:00",
+  "link": "https://zoom.us/j/...",
+  "comment": "Брифинг по вопросам",
+  "is_done": false
+}
+Ответ: созданный Briefing.
+
+3.5.3. PATCH /api/program/briefings/{id}
+Позволяет менять любые поля, кроме session_id.
+
+3.6. Program announcement / notifications / presentations
+3.6.1. GET /api/program/events/{event_id}/announcement
+Назначение: данные для экрана «Анонс деловой программы» и внешних выгрузок.
+​
+
+Пример ответа (усечённо):
+
+json
+{
+  "event": {
+    "id": 16,
+    "name": "New Retail Forum 2025"
+  },
+  "days": [
+    {
+      "date": "2025-10-21",
+      "halls": [
+        {
+          "id": 1,
+          "name": "Трансформер",
+          "tracks": [
+            {
+              "id": 10,
+              "name": "Ритейл стратегии...",
+              "sessions": [
+                {
+                  "id": 100,
+                  "name": "Покупатели и ритейлеры...",
+                  "start_time": "11:00",
+                  "end_time": "12:30",
+                  "questions": [
+                    {
+                      "order": 1,
+                      "title": "За что и почему готов платить покупатель..."
+                    }
+                  ],
+                  "participants": [
+                    {
+                      "role": "moderator",
+                      "speaker_name": "Влад Широбоков",
+                      "company": "",
+                      "topic": null,
+                      "materials": null
+                    }
+                  ],
+                  "status": "ready",
+                  "materials_link": null,
+                  "comment": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+3.6.2. GET /api/program/events/{event_id}/notifications
+Назначение: экран «Оповещение спикеров».
+​
+
+Пример ответа:
+
+json
+[
+  {
+    "session_speaker_id": 101,
+    "speaker_name": "Ольга Сафонова",
+    "position": "Директор по маркетингу",
+    "company": "Кант",
+    "phone": "+7...",
+    "email": "o.safonova@example.com",
+    "telegram": "safonova",
+    "session": {
+      "id": 200,
+      "name": "Сессия fashion-маркетинга...",
+      "hall": "Олимпийский",
+      "date": "2025-10-22",
+      "time": "15:30-17:00"
+    },
+    "notification": {
+      "email_sent_at": "2025-09-10T12:30:00+03:00",
+      "sms_sent_at": null,
+      "telegram_sent_at": null,
+      "comment": "Отправлено письмо с ЛК",
+      "lk_url": "https://lk.upgradecrm.ru/speaker_note/..."
+    }
+  }
+]
+3.6.3. POST /api/program/notifications/log
+Назначение: фиксировать ручную отправку уведомления (по клику на чекбокс в UI).
+​
+
+Тело запроса:
+
+json
+{
+  "session_speaker_id": 101,
+  "channel": "email",
+  "sent_at": "2025-09-10T12:30:00+03:00",
+  "comment": "Отправлено через Gmail"
+}
+Ответ:
+
+json
+{
+  "id": 999,
+  "session_speaker_id": 101,
+  "channel": "email",
+  "sent_at": "2025-09-10T12:30:00+03:00",
+  "comment": "Отправлено через Gmail"
+}
+Агрегированные поля email_sent_at/sms_sent_at/telegram_sent_at должны пересчитываться на основе последнего лога соответствующего канала.
+​
+
+3.6.4. GET /api/program/events/{event_id}/presentations
+Назначение: экран презентаций.
+​
+
+Ответ:
+
+json
+{
+  "event_id": 16,
+  "days": [
+    {
+      "date": "2025-10-21",
+      "halls": [
+        {
+          "name": "Трансформер",
+          "tracks": [
+            {
+              "name": "Ритейл стратегии...",
+              "sessions": [
+                {
+                  "id": 100,
+                  "name": "Покупатели и ритейлеры...",
+                  "presentations": [
+                    {
+                      "session_speaker_id": 103,
+                      "speaker_name": "Оксана Карпухина",
+                      "company": "Gulliver Group",
+                      "title": "Fashion-рынок 2025...",
+                      "file_url": "https://.../presentations/103.pptx"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+3.6.5. GET /api/program/presentations/{presentation_id}/download
+Возвращает файл по Content-Disposition: attachment.
+​
+
+3.6.6. POST /api/program/events/{event_id}/presentations/download_all
+Назначение: массовое скачивание всех презентаций.
+​
+
+Тело запроса (опциональные фильтры):
+
+json
+{
+  "date": null,
+  "hall_ids": [],
+  "track_ids": []
+}
+Ответ:
+
+json
+{
+  "job_id": "c9f0-1234",
+  "status": "queued",
+  "download_url": null
+}
+Доп. эндпоинт:
+
+GET /api/program/presentations/download_all/{job_id} — проверка статуса, когда готово — возвращает download_url архива.
+​
+
+3.7. Filters и настройки отображения
+3.7.1. GET /api/program/events/{event_id}/view_settings
+Ответ:
+
+json
+{
+  "hide_sessions": false,
+  "hide_questions": false,
+  "hide_speakers": false,
+  "hide_metadata": false,
+  "hide_declined_speakers": true,
+  "show_presence_status": true
+}
+3.7.2. PATCH /api/program/events/{event_id}/view_settings
+Тело запроса:
+
+json
+{
+  "hide_sessions": false,
+  "hide_questions": true,
+  "hide_speakers": false,
+  "hide_metadata": false,
+  "hide_declined_speakers": true,
+  "show_presence_status": true
+}
+Ответ: обновлённые настройки.
+
+Проработали CJM по ролям: 
+Ниже — отдельный документ с целевыми CJM по основным ролям пользователей для системы редактирования деловой программы. [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+***
+
+# ЦЕЛЕВЫЕ CUSTOMER JOURNEY MAPS ПО РОЛЯМ
+
+***
+
+## 1. CJM: Продюсер/Программный директор мероприятия
+
+### 1.1. Профиль роли
+
+**Ответственность:** планирование структуры мероприятия, управление залами и конференциями, формирование программы, координация между залами и треками, подготовка анонса программы для внешних каналов. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+**Частота использования:** высокая (ежедневно на этапе подготовки мероприятия, 2–4 недели до события).
+
+**Технический уровень:** средний (базовые навыки работы с веб-интерфейсом, умение заполнять формы, понимание иерархии данных).
+
+**Основные задачи:**
+1. Создать и отредактировать структуру залов и конференций.
+2. Добавить/отредактировать временные слоты и сессии.
+3. Добавить и сформулировать вопросы/подтемы для сессий.
+4. Посмотреть полную программу в виде анонса.
+
+### 1.2. Сценарий 1: Первичная планировка программы
+
+**Начальное состояние:** мероприятие создано (New Retail Forum 2025), залы и треки ещё не заданы.
+
+**Этапы:**
+
+| № | Этап | Действие пользователя | Система (функционал UI/API) | Ожидаемый результат |
+|---|------|----------------------|---------------------------|-------------------|
+| 1 | Вход | Открить `/dashboard/program/event/16` | Загрузка заголовка, описания, пустой/предзаполненной сетки | Видит страницу редактора с заголовком New Retail Forum 2025, шкалой времени, сообщение о необходимости добавить залы |
+| 2 | Управление залами | Нажать на шестерёнку → перейти на `/event/16/event_halls` | Открыт экран «Управление залами» | Видит список уже созданных залов (Трансформер, Олимпийский, Останкино, Крылатское, Битца), возможность добавить новый |
+| 3 | Добавление зала | Нажать «Добавить зал», заполнить: название = «Трансформер», вместимость = 400 | POST `/api/program/events/16/halls` с параметрами; система возвращает id зала 1 | Зал «Трансформер» добавлен, видит его в списке |
+| 4 | Возврат в сетку | Вернуться на `/dashboard/program/event/16` | Загрузка структуры через GET `/api/program/events/16`; сетка обновляется, включает зал «Трансформер» | Видит в левой части сетки название зала «Трансформер» с вместимостью 400 |
+| 5 | Добавление трека | Нажать на плюсик в режиме редактирования сетки (кнопка включена) в позицию 9:00–18:30 зала Трансформер | Открывается форма добавления трека; система запрашивает: название, день, время начала, время окончания | Появляется форма с полями для названия трека, дня, времени |
+| 6 | Заполнение трека | Ввести: название = «Ритейл стратегии. Понимаем реальную ситуацию на рынке...», день = 21 октября, время = 9:00–18:30 | POST `/api/program/halls/1/tracks` с данными; система возвращает `track_id = 10` | Трек появляется в сетке под названием зала в виде полоски с текстом «Ритейл стратегии...» |
+| 7 | Добавление сессий в трек | Нажать на плюсик внутри трека на временной позиции (например 11:00–12:30) | Открывается форма добавления сессии | Видит форму с полями: название, описание, время начала, время окончания |
+| 8 | Заполнение сессии | Ввести: название = «Покупатели и ритейлеры: аналитика, формат, результаты», описание = «Сессия коммерческих директоров...», время = 11:00–12:30 | POST `/api/program/tracks/10/sessions` с данными; система возвращает `session_id = 100` | Сессия отображается в сетке в виде карточки с временем 11:00–12:30, названием и индикаторами (2 модератора, 6 спикеров, 1 неподтверждённый) |
+| 9 | Добавление вопросов | Открыть сессию (клик по названию), нажать «Добавить тему» | Раскрывается блок сессии; активируется режим редактирования вопросов (если не активирован) | Видит форму добавления вопроса с полями заголовок и текст |
+| 10 | Заполнение вопросов | Ввести 1-й вопрос: заголовок = «За что и почему готов платить покупатель в 2025 году...», текст = «- изменения в поведении покупателей...\n- доходы населения и инфляция...» | POST `/api/program/sessions/100/questions` с данными; вопрос получает `order = 1` | Вопрос отображается в списке вопросов сессии под номером 1 |
+| 11 | Добавление остальных вопросов | Повторить шаг 10 для 2-го и 3-го вопроса | POST × 2 с `order = 2, 3` соответственно | Видит все три вопроса пронумерованными 1, 2, 3 |
+| 12 | Сохранение и просмотр | Закрыть режим редактирования вопросов (клик на карандаш), обновить страницу | PATCH `/api/program/sessions/100` с изменённым текстом; API возвращает актуальное состояние | Вопросы сохранены, видит их при перезагрузке страницы и в экране «Анонс деловой программы» |
+
+**Критерии успеха:**
+- [x] Зал, трек и сессии отображаются корректно в сетке.
+- [x] Вопросы добавлены и видны.
+- [x] При перезагрузке страницы данные сохранены.
+- [x] Экран «Анонс деловой программы» показывает полную структуру (зал → трек → сессия → вопросы).
+
+**Боли и риски:**
+- ❌ Отсутствие явной кнопки «Сохранить» — продюсер может не понять, сохранились ли данные.
+- ❌ Нет валидации на пересечение сессий во времени — возможны ошибки в расписании.
+- ❌ При длинных названиях сессий они могут обрезаться в сетке — нужна подсказка (tooltip).
+
+**Рекомендации:**
+1. Добавить явное подтверждение сохранения («Данные сохранены» с галочкой).
+2. Добавить валидацию на пересечения сессий.
+3. Улучшить отображение названий сессий в сетке (expand/collapse или hover‑tooltip).
+
+***
+
+### 1.3. Сценарий 2: Проверка и доработка программы через «Анонс»
+
+**Начальное состояние:** программа основной части добавлена, нужно проверить полноту, пробелы, готовые/недоделанные части.
+
+**Этапы:**
+
+| № | Этап | Действие пользователя | Система (функционал) | Ожидаемый результат |
+|---|------|----------------------|----------------------|-------------------|
+| 1 | Открыть анонс | Нажать на кнопку «Другие действия» → «Анонс деловой программы» | GET `/api/program/events/16/announcement` загружает полную программу с информацией о дате готовности, статусах, материалах | Видит таблицу: зал → конференция → сессия → вопросы → участники → статус готовности |
+| 2 | Проверка данных | Просмотреть строки и убедиться, что у каждой сессии заполнены: вопросы, участники (модераторы+спикеры), материалы, дата готовности | UI показывает пустые/заполненные ячейки; красные флаги для недостающих элементов | Видит, какие сессии готовы (зелёный статус), какие требуют доделки (красный статус) |
+| 3 | Редактирование в анонсе | Если есть пробелы (например, не заполнены материалы), вернуться в основной редактор, отредактировать и снова открыть анонс | PATCH `/api/program/sessions/{id}` с новыми данными; при обновлении анонса данные обновляются из API | Видит изменённые значения в таблице анонса |
+| 4 | Экспорт/подготовка к публикации | Завершить проверку, убедиться, что все сессии готовы | Система не требует явного публикования на этом экране (публикация происходит на уровне мероприятия) | Программа готова к выгрузке на сайт/рассылку |
+
+**Критерии успеха:**
+- [x] Экран анонса показывает полную структуру и статусы.
+- [x] Пробелы очевидны и легко устранимы.
+- [x] Изменения синхронизируются между основным редактором и анонсом.
+
+***
+
+## 2. CJM: Координатор спикеров / менеджер по работе с участниками
+
+### 2.1. Профиль роли
+
+**Ответственность:** набор и управление спикерами/модераторами, отслеживание статусов подтверждения, ведение переговоров, рассылка приглашений и памяток, координация брифингов, контроль над готовностью спикеров (презентации, фото, контактные данные). [sales.upgradecrm](https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92)
+
+**Частота использования:** очень высокая (ежедневно в течение 1–2 месяцев до мероприятия).
+
+**Технический уровень:** средний (работа с таблицами, фильтрация, ручное заполнение форм, отправка рассылок).
+
+**Основные задачи:**
+1. Добавить спикеров/модераторов по сессиям.
+2. Отслеживать статусы подтверждения (контакт, подтверждён, отказ).
+3. Собрать и загрузить фото, презентации, контактные данные.
+4. Отправить приглашения и памятки спикерам.
+5. Провести брифинги.
+
+### 2.2. Сценарий 1: Добавление спикеров в сессию и управление их профилем
+
+**Начальное состояние:** сессия создана (например, «Покупатели и ритейлеры…»), спикеры не добавлены.
+
+| № | Этап | Действие пользователя | Система (функционал) | Ожидаемый результат |
+|---|------|----------------------|----------------------|-------------------|
+| 1 | Включение режима редактирования | Нажать на кнопку «Редактирование спикеров» (иконка человечка с плюсиком) | Система активирует режим; в списке спикеров каждой сессии появляются иконки карандашей и номера сортировки | Видит, что режим включён (визуально выделена кнопка) |
+| 2 | Открыт карточка сессии | Раскрыть сессию (клик по названию) или скролировать к блоку спикеров | UI загружает блок сессии с таблицей спикеров | Видит пустую таблицу спикеров с кнопкой «Добавить спикера» |
+| 3 | Добавление спикера | Нажать на кнопку «Добавить спикера» (или плюсик в режиме редактирования) | Открывается форма/модальное окно для добавления спикера | Видит форму с выбором: выбрать существующего спикера или создать нового |
+| 4a | Вариант A: выбрать существующего | Нажать на селектор, найти в списке спикера (например, «Оксана Карпухина»), выбрать | GET `/api/program/speakers` возвращает список; UI фильтруется по вводу | Видит спикера в списке и выбирает его |
+| 4b | Вариант B: создать нового | Нажать «Создать нового спикера», заполнить: имя, фамилия, должность, компания, контакты | Форма открывается с полями для новых данных | Видит форму заполнения |
+| 5 | Заполнение данных спикера | Заполнить поля: имя = «Оксана», фамилия = «Карпухина», должность = «Директор fashion по маркетингу», компания = «Gulliver Group», email, телефон | Система валидирует ввод (обязательные поля) | Видит подсказки по обязательным полям |
+| 6 | Установка роли и статуса | Выбрать из меню: роль = «Спикер», статус = «на рассмотрении», дата статуса = сегодня | Система заполняет значения по умолчанию (дата = текущая дата) | Видит выбранные роль и статус |
+| 7 | Сохранение спикера | Нажать «Сохранить» или закрыть форму (если автосохранение) | POST `/api/program/sessions/100/speakers` с данными спикера и SessionSpeaker; система возвращает `session_speaker_id` | Спикер появляется в таблице сессии под номером 1 |
+| 8 | Добавление остальных спикеров | Повторить шаги 3–7 для остальных спикеров (модератор, ещё спикеры) | POST × N для каждого спикера | Видит список всех спикеров: 1 модератор + 5–6 спикеров, каждый с ролью и статусом |
+| 9 | Загрузка фото спикера | Нажать на иконку карандаша рядом с одним из спикеров → открыть карточку → найти поле фото | Карточка спикера открывается (сложный inline‑редактор или модальное окно) | Видит карточку со всеми полями спикера |
+| 10 | Загрузка фотографии | В поле фото нажать, загрузить JPG (600×600px рекомендуется) | POST `/api/program/speakers/{id}/photo` с файлом; система обрабатывает изображение, даёт опцию обрезки/маски | Видит загруженное фото в превью, опцию обрезки |
+| 11 | Завершение профиля | Добавить биографию, комментарии, сохранить карточку | PATCH `/api/program/speakers/{id}` с полной информацией; PATCH `/api/program/session_speakers/{id}` для уточнения участия в конкретной сессии | Спикер полностью заполнен: фото, биография, контакты видны в таблице |
+
+**Критерии успеха:**
+- [x] Спикеры добавлены в правильных ролях (модератор/спикер).
+- [x] Фото загружены и видны.
+- [x] Контактные данные заполнены и сохранены.
+- [x] Статусы и даты отображаются корректно.
+
+**Боли и риски:**
+- ❌ Отсутствие явной кнопки «Сохранить» в карточке спикера — не ясно, когда данные сохраняются.
+- ❌ Функционал маски при загрузке фото — странный и требует тестирования.
+- ❌ Нет валидации на дублирование спикеров в одной сессии.
+- ❌ Если спикер участвует в нескольких сессиях, нет быстрого способа скопировать его данные.
+
+**Рекомендации:**
+1. Добавить явную кнопку «Сохранить» в карточке спикера с уведомлением об успешном сохранении.
+2. Упростить функционал загрузки фото (убрать маску или сделать её опциональной).
+3. Добавить предупреждение при попытке добавить одного спикера дважды в одну сессию.
+4. Для спикеров, участвующих в нескольких сессиях, предусмотреть копирование профиля.
+
+***
+
+### 2.3. Сценарий 2: Рассылка приглашений через «Оповещение спикеров»
+
+**Начальное состояние:** спикеры добавлены, статусы установлены на «на рассмотрении» или «контакт», нужно отправить приглашения.
+
+| № | Этап | Действие пользователя | Система (функционал) | Ожидаемый результат |
+|---|------|----------------------|----------------------|-------------------|
+| 1 | Открыть экран оповещений | Нажать на кнопку «Другие действия» → «Оповещение спикеров» | GET `/api/program/events/16/notifications` загружает список всех спикеров с информацией о статусах отправки и ЛК | Видит таблицу со спикерами, статусами, чекбоксами отправки |
+| 2 | Фильтрация по сессии | Выбрать фильтр по сессии (например, «Покупатели и ритейлеры…») | UI фильтрует таблицу по выбранной сессии | Видит только спикеров этой сессии |
+| 3 | Проверка статуса | Проверить, какие спикеры требуют оповещения (например, статус = «контакт» или «на рассмотрении») | Система визуально выделяет спикеров, требующих оповещения (красный флаг или выделение строки) | Видит, кого нужно оповестить |
+| 4 | Отправка письма | Отправить письма спикерам вручную (через Gmail, Outlook и т.п.), затем нажать чекбокс «Отправлено на email» | Система фиксирует факт и время отправки через POST `/api/program/notifications/log` с `channel = "email"`, `sent_at = текущее время` | Видит дату/время отправки в колонке «Email sent at» |
+| 5 | Отправка SMS (опционально) | Отправить СМС вручную (через сервис), нажать чекбокс «Отправлено SMS» | POST `/api/program/notifications/log` с `channel = "sms"` | Видит дату/время SMS в соответствующей колонке |
+| 6 | Отправка в Telegram | Отправить в Telegram вручную, нажать чекбокс «Отправлено в Telegram» | POST `/api/program/notifications/log` с `channel = "telegram"` | Видит дату/время Telegram |
+| 7 | Добавление комментария | Для каждого спикера добавить комментарий (например, «Напомнить после 1 сентября») | PATCH `/api/program/notifications/{id}` с комментарием; или PATCH `/api/program/session_speakers/{id}` с manager_comment | Видит комментарий в таблице |
+| 8 | Переход в ЛК спикера | Для проверки, нажать на ссылку ЛК (например, для «Ольги Сафоновой») | Открывается URL `https://lk.upgradecrm.ru/speaker_note/...` в новой вкладке | Видит памятку спикера: приветствие, ссылка на программу, время, адрес, контакты организаторов |
+
+**Критерии успеха:**
+- [x] Чекбоксы отправки фиксируют дату и время.
+- [x] Комментарии сохраняются.
+- [x] ЛК спикера доступен и показывает актуальную информацию.
+- [x] Фильтры работают корректно.
+
+**Боли и риски:**
+- ⚠️ Функционал оповещения сейчас ручной (пользователь сам отправляет письма вне системы, потом отмечает чекбокс). Это требует дополнительного действия и подвержено ошибкам.
+- ⚠️ Нет автоматической интеграции с email-сервисом (например, SendGrid, Mailchimp) для массовой рассылки.
+- ⚠️ Статусы уведомления фиксируются вручную, нет подтверждения доставки.
+
+**Рекомендации (будущие улучшения):**
+1. Реализовать встроенную рассылку писем (кнопка «Отправить письмо» → система отправляет и фиксирует время автоматически).
+2. Добавить интеграцию с SMS/Telegram-ботом для массовых рассылок.
+3. Предусмотреть шаблоны приглашений и памяток.
+4. Добавить отправку уведомлений через Slack/Teams для менеджеров.
+
+***
+
+### 2.4. Сценарий 3: Подготовка и проведение брифингов
+
+**Начальное состояние:** спикеры добавлены, нужно провести брифинги для подготовки к сессиям.
+
+| № | Этап | Действие пользователя | Система (функционал) | Ожидаемый результат |
+|---|------|----------------------|----------------------|-------------------|
+| 1 | Включение режима брифингов | Нажать на кнопку «Режим брифингов» | Система активирует режим; в каждой сессии появляется блок «Брифинги» | Видит блок «Брифинги» под списком спикеров в каждой сессии |
+| 2 | Добавление брифинга | Нажать на кнопку «Добавить брифинг» в блоке сессии | Открывается форма добавления брифинга | Видит форму с полями: дата, время, модератор, ссылка, комментарий |
+| 3 | Заполнение данных брифинга | Заполнить: дата = 20 октября, время = 15:00, модератор = «Влад Широбоков» (спикер/модератор сессии), ссылка = «https://zoom.us/j/...» | Система валидирует дату/время (перед датой сессии), модератор должен быть из списка участников | Видит заполненные значения |
+| 4 | Сохранение брифинга | Нажать «Сохранить» или закрыть форму | POST `/api/program/sessions/100/briefings` с данными; система возвращает `briefing_id` | Брифинг отображается в списке брифингов сессии |
+| 5 | Отправка ссылки спикерам | Скопировать ссылку на брифинг и отправить спикерам (вручную или через систему) | UI предоставляет кнопку копирования ссылки; возможна встроенная рассылка (опционально) | Спикеры получают ссылку на Zoom/Teams и присоединяются к брифингу |
+| 6 | Проведение брифинга | Провести брифинг с модератором и спикерами (офлайн в системе) | Система не требует действий пользователя (внешний процесс) | Брифинг проведён |
+| 7 | Отметить брифинг как проведённый | После брифинга нажать чекбокс «Состоялся» | PATCH `/api/program/briefings/{id}` с `is_done = true`; дата/время обновляется или остаётся прежней | Видит галочку в чекбоксе, брифинг помечен как выполненный |
+| 8 | Добавление комментария к брифингу | В поле комментария добавить заметки (например, «Спикер согласен на live-demo») | PATCH `/api/program/briefings/{id}` с комментарием | Видит комментарий в списке брифингов |
+| 9 | Удаление брифинга (если требуется) | Если брифинг отменён, нажать иконку удаления | DELETE `/api/program/briefings/{id}` | Брифинг исчез из списка |
+
+**Критерии успеха:**
+- [x] Брифинги создаются и отображаются в интерфейсе.
+- [x] Ссылки Zoom сохраняются и доступны для копирования.
+- [x] Статус «Состоялся» фиксируется корректно.
+- [x] Комментарии сохраняются.
+
+**Боли и риски:**
+- ⚠️ Нет встроенной интеграции с Zoom API (автоматического создания комнат).
+- ⚠️ Нет напоминаний модератору/спикерам за N часов до брифинга.
+- ⚠️ Нет лога участников брифинга (кто присутствовал).
+
+**Рекомендации:**
+1. Интегрировать Zoom API для автоматического создания комнат при добавлении брифинга.
+2. Добавить отправку напоминаний по email за 1 час до брифинга.
+3. Логировать присутствие участников на брифинге (вспомогательное поле).
+
+***
+
+## 3. CJM: Техподдержка / координатор презентаций
+
+### 3.1. Профиль роли
+
+**Ответственность:** сбор и управление презентациями спикеров, контроль формата и размера файлов, подготовка материалов для площадки, экспорт презентаций для техников на мероприятии. [perplexity](https://www.perplexity.ai/search/ddf9d3a8-7f85-4b5b-939b-01221d6c94a8)
+
+**Частота использования:** средняя (1–2 раза в неделю в течение подготовки, интенсивно в последнюю неделю перед событием).
+
+**Технический уровень:** средний (работа с файлами, скачивание, проверка форматов).
+
+**Основные задачи:**
+1. Собрать презентации от спикеров.
+2. Проверить формат и размер файлов.
+3. Скачать все презентации для техподготовки.
+4. Убедиться, что каждый спикер с презентацией отмечен флагом.
+
+### 3.2. Сценарий 1: Сбор и контроль презентаций
+
+**Начальное состояние:** спикеры добавлены, нужно собрать их презентации.
+
+| № | Этап | Действие пользователя | Система (функционал) | Ожидаемый результат |
+|---|------|----------------------|----------------------|-------------------|
+| 1 | Открыть сессию со спикером | В режиме редактирования спикеров открыть карточку спикера (например, «Оксана Карпухина») | Карточка спикера открывается с полями: имя, должность, контакты, **фотография, презентация** | Видит карточку со всеми полями, включая поле для презентации |
+| 2 | Включить флаг «Презентация» | Нажать переключатель или чекбокс «Есть презентация» | Система активирует поле загрузки файла | Видит активированное поле для загрузки |
+| 3 | Загрузить презентацию | Нажать на поле, выбрать файл PPTX/PDF (рекомендуемый размер < 50MB) | POST `/api/program/speakers/{id}/presentations` (или PATCH с поле `presentation_file`) с файлом; система проверяет формат и размер | Видит загруженный файл в превью, статус «Загружено» |
+| 4 | Просмотр информации о презентации | Система отображает: название файла, размер, дату загрузки | UI показывает метаданные файла | Видит информацию о файле в карточке спикера |
+| 5 | Связь с карточкой спикера | После загрузки флаг спикера обновляется на уровне SessionSpeaker: `has_presentation = true` | PATCH `/api/program/session_speakers/{id}` с `has_presentation = true` | В списке спикеров сессии рядом с именем спикера появляется иконка/текст «Презентация» |
+| 6 | Проверка в списке спикеров | Открыть сессию и проверить, что у спикера видна отметка о наличии презентации | UI обновляется; в таблице спикеров видна иконка или текст «PPTX» / файл | Техподдержка видит, что у спикера есть презентация |
+| 7 | Отправка запроса спикеру на загрузку | Если презентация не загружена, отправить спикеру заметку/комментарий в поле «Комментарий менеджера» (например, «Пожалуйста, загрузите презентацию до 15 сентября») | PATCH `/api/program/session_speakers/{id}` с `manager_comment`; комментарий видно спикеру в ЛК (опционально) | Видит комментарий в карточке спикера |
+| 8 | Повторная проверка | Через несколько дней проверить, загружена ли презентация (скролировать по списку спикеров с фильтром по наличию/отсутствию презентаций) | UI позволяет фильтровать по `has_presentation = true/false` (если функция предусмотрена) | Видит список спикеров только с презентациями или только без них |
+
+**Критерии успеха:**
+- [x] Презентации загружаются в правильном формате.
+- [x] Флаг спикера обновляется при загрузке.
+- [x] Техподдержка видит статус загрузки для каждого спикера.
+- [x] Возможна отправка запроса на загрузку.
+
+**Боли и риски:**
+- ⚠️ Нет автоматического контроля размера файла при загрузке (может быть слишком большая презентация).
+- ⚠️ Нет валидации формата: система может принять неподдерживаемый формат (например, Keynote).
+- ⚠️ Нет версионирования: если спикер загрузит презентацию дважды, старая версия перезапишется без архива.
+- ⚠️ Нет уведомления спикеру о том, что презентация успешно загружена.
+
+**Рекомендации:**
+1. Добавить валидацию формата файла (только PPTX, PDF, редко ODP).
+2. Ограничить размер файла (максимум 50–100 MB) и показать понятное сообщение об ошибке.
+3. Вести историю версий презентаций (архив старых версий).
+4. Отправлять спикеру email-подтверждение о загрузке.
+5. Добавить функцию фильтрации спикеров по наличию презентации.
+
+***
+
+### 3.3. Сценарий 2: Массовое скачивание презентаций на площадку
+
+**Начальное состояние:** все (или большинство) спикеры загрузили презентации, нужно скачать их на компьютер для техподготовки.
+
+| № | Этап | Действие пользователя | Система (функционал) | Ожидаемый результат |
+|---|------|----------------------|----------------------|-------------------|
+| 1 | Открыть раздел презентаций | Нажать на кнопку «Другие действия» → «Загрузка презентаций на локальный диск» | GET `/api/program/events/16/presentations` загружает структуру: зал → конференция → сессия → спикер → презентация | Видит список всех презентаций, сгруппированных по залам и сессиям |
+| 2 | Просмотр структуры | Развернуть зал (например, «Трансформер») → трек → сессию | UI показывает иерархию в виде expandable tree | Видит структуру с презентациями, сгруппированными по сессиям |
+| 3 | Проверка количества презентаций | Прочитать число загруженных презентаций (например, «Всего 42 презентации из 50 спикеров») | UI отображает статистику: загруженные/всего | Видит, сколько презентаций готово |
+| 4 | Скачивание всех одной кнопкой | Нажать на кнопку «Выбрать папку» | Открывается системный диалог выбора папки на локальном компьютере | Видит диалог выбора папки |
+| 5 | Выбор папки и инициирование скачивания | Выбрать папку (например, `/Users/tech/presentations/new_retail_forum/`) | POST `/api/program/events/16/presentations/download_all` с опциональными фильтрами; сервер готовит архив (ZIP) с презентациями и возвращает `job_id` | Видит сообщение «Начинается подготовка файлов…» или progress bar |
+| 6 | Ожидание подготовки архива | Система создаёт архив и готовит его к скачиванию | Сервер обрабатывает: собирает файлы → создаёт ZIP → размещает на CDN/storage | Видит прогресс загрузки или сообщение «Файлы готовы» |
+| 7 | Скачивание архива | Когда архив готов, система предлагает скачать файл (автоматически или по клику на кнопку) | GET `/api/program/presentations/download_all/{job_id}` возвращает файл по `Content-Disposition: attachment` | Видит загружающийся архив (ZIP) с презентациями на компьютер |
+| 8 | Распаковка на месте | Техник распаковывает архив и получает структуру папок по залам и сессиям | Архив содержит: `/Трансформер/Ритейл_стратегии/Покупатели_и_ритейлеры/001_Широбоков_В.pptx` и т.д. | Видит удобную структуру папок на компьютере |
+| 9 | Проверка на площадке | Техник проверяет презентации на проекторе, звуке, совместимости | Внешний процесс (не в системе) | Презентации готовы к использованию на мероприятии |
+
+**Критерии успеха:**
+- [x] Архив создаётся успешно.
+- [x] Структура папок в архиве удобна и логична.
+- [x] Все презентации загружаются полностью.
+- [x] Процесс скачивания не зависает и не требует ручного вмешательства.
+
+**Боли и риски:**
+- ⚠️ Если презентаций очень много (500+), создание архива может занять долгое время или привести к timeout.
+- ⚠️ Нет фильтрации: скачиваются ВСЕ презентации, даже если нужны только по определённому дню/залу.
+- ⚠️ Нет контроля версий: если спикер обновляет презентацию в последний момент, техник может скачать устаревший файл.
+- ⚠️ Нет лога скачиваний: система не знает, когда техник последний раз скачивал презентации.
+
+**Рекомендации:**
+1. Добавить опциональные фильтры при скачивании: по дате, по залу, по дню, по статусу (только подтверждённые спикеры).
+2. Реализовать асинхронную подготовку архива (task queue, например Celery для Python) с уведомлением по email.
+3. Добавить возможность скачивания отдельной презентации или по сессиям (а не только всех сразу).
+4. Вести логи скачиваний: когда и кто скачал архив.
+5. Добавить функцию обновления архива: техник может скачать новый архив с обновлёнными презентациями (система автоматически обнаруживает изменения).
+
+***
+
+### 3.4. Сценарий 3: Контроль на день мероприятия
+
+**Начальное состояние:** мероприятие начинается, все презентации должны быть загружены и готовы.
+
+| № | Этап | Действие пользователя | Система (функционал) | Ожидаемый результат |
+|---|------|----------------------|----------------------|-------------------|
+| 1 | Финальная проверка | За день до начала техник открывает раздел презентаций и проверяет актуальность | GET `/api/program/events/16/presentations` показывает актуальное состояние с датами последних обновлений | Видит, какие презентации обновлены в последний день/час |
+| 2 | Контроль по сессиям | Для каждой сессии проверить количество спикеров и наличие презентаций | UI показывает: «Сессия "Покупатели и ритейлеры" — 6 спикеров, 4 презентации» | Видит пробелы (2 спикера без презентаций) |
+| 3 | Связь со спикерами | Для спикеров без презентаций отправить срочное напоминание (email/SMS) | Система позволяет быстро отправить сообщение или предоставляет контакты спикеров | Видит телефоны/emails спикеров и может связаться |
+| 4 | Экстренное скачивание перед мероприятием | Если спикер загрузит презентацию в последний момент, техник скачивает обновлённый архив | Система позволяет повторное скачивание (incrementally или полностью) | Видит новый архив с обновлёнными файлами |
+
+***
+
+## 4. CJM: Бренд-менеджер / спонсор (вспомогательная роль)
+
+### 4.1. Профиль роли
+
+**Ответственность:** управление информацией о своей компании (спонсор/партнёр), загрузка логотипа, контроль над использованием названия/контактов в программе.
+
+**Частота использования:** низкая (1–2 раза в подготовке).
+
+**Технический уровень:** низкий (может иметь ограниченный доступ в систему).
+
+**Основные задачи:**
+1. Загрузить логотип компании.
+2. Убедиться, что название/контакты корректны.
+3. Согласовать участие спикеров (если требуется).
+
+### 4.2. Сценарий: Управление информацией спонсора
+
+| № | Этап | Действие пользователя | Система (функционал) | Ожидаемый результат |
+|---|------|----------------------|----------------------|-------------------|
+| 1 | Получить ссылку доступа | Спонсор получает персональную ссылку на свой блок в системе (например, `/dashboard/program/event/16?sponsor=gulliver_group`) | Система генерирует и отправляет link via email | Спонсор видит ссылку в письме |
+| 2 | Открыть персональный раздел | Нажать на ссылку | UI показывает только информацию, относящуюся к спонсору: спикеры его компании, сессии, логотип | Видит блок «Информация спонсора» с полями для логотипа и контактов |
+| 3 | Загрузить логотип | Нажать на поле логотипа, загрузить PNG/SVG | POST `/api/program/sponsors/{sponsor_id}/logo` с файлом | Логотип загружен и отображается в программе |
+| 4 | Проверить информацию спикеров | Просмотреть спикеров компании, убедиться, что названия и должности корректны | UI показывает список спикеров компании (только для чтения или с ограниченным редактированием) | Видит информацию о спикерах, может предложить исправления |
+| 5 | Оставить комментарий/запрос | Если требуется изменение, оставить заметку менеджеру (например, «Исправить должность на "VP Marketing"») | POST `/api/program/sponsors/{sponsor_id}/comments` с текстом | Комментарий попадает в очередь на рассмотрение менеджеру |
+
+***
+
+## 5. Сводная таблица: Потребности и болевые точки по ролям
+
+| Роль | Основная задача | Требуемый функционал | Текущие боли | Приоритет улучшения |
+|------|-----------------|-------------------|------------|-------------------|
+| **Продюсер** | Планировка структуры | Управление залами, треками, сессиями; анонс программы | Нет явного сохранения; нет валидации на пересечения; плохое отображение длинных названий | Высокий |
+| **Координатор спикеров** | Набор и управление участниками | Добавление спикеров; управление статусами; рассылки; брифинги | Отсутствие явной кнопки сохранения; странный функционал маски для фото; нет автоматической рассылки; нет дублирования спикера | Очень высокий |
+| **Техподдержка** | Сбор и контроль презентаций | Загрузка презентаций; скачивание архива; контроль статуса | Нет валидации формата; нет версионирования; отсутствие фильтрации при скачивании; нет контроля размера файла | Средний–высокий |
+| **Спонсор** | Управление своей информацией | Загрузка логотипа; просмотр спикеров; оставление заметок | Ограниченный доступ; непонятный интерфейс | Низкий |
+
+***
+
+## 6. Общие рекомендации по UX
+
+1. **Явное сохранение:** Добавить кнопку «Сохранить» и уведомление об успешном сохранении для всех форм редактирования.
+2. **Валидация данных:** Проверка формата/размера файлов, пересечения сессий, дублирование спикеров.
+3. **Массовые операции:** Фильтрация, мультивыбор, экспорт (CSV/XLSX/PDF) для списков спикеров и других данных.
+4. **Интеграции:** Zoom (для брифингов), email-сервис (для рассылок), SMS/Telegram (для оповещений).
+5. **Мониторинг:** Логи действий пользователей, статус готовности по сессиям, уведомления о пропущенных дедлайнах.
+6. **Мобильная версия:** UI должен быть адаптирован под мобильные устройства для быстрых проверок на площадке.
+
+***
+
+Это финальный документ с целевыми CJM по ролям. Каждый сценарий покрывает основные рабочие процессы и выявляет потребности и риски для каждого типа пользователя.

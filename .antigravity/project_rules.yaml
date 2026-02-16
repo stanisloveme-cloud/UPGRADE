@@ -1,0 +1,82 @@
+# GOOGLE ANTI-GRAVITY CONFIGURATION
+# Project: Upgrade (Business Program Editor)
+# Version: 1.1.0
+
+metadata:
+  project_name: "Upgrade CRM Core"
+  description: "Business Program Editor for Conferences"
+  docs_root: "./docs"
+
+# -----------------------------------------------------------------------------
+# 1. TECHNOLOGY STACK (HARD CONSTRAINTS)
+# -----------------------------------------------------------------------------
+stack:
+  backend:
+    framework: "NestJS"
+    language: "TypeScript (Strict)"
+    orm: "Prisma"
+    database: "PostgreSQL 15+"
+    api_style: "REST + Swagger"
+  
+  frontend:
+    framework: "React 18+"
+    build_tool: "Vite"
+    ui_library: "Ant Design v5"
+    pro_components: "@ant-design/pro-components"
+    state: "Zustand"
+  
+  infrastructure:
+    containerization: "Docker + Docker Compose"
+    ci_cd: "GitHub Actions"
+    reverse_proxy: "Nginx"
+    policy: "Infrastructure as Code (IaC)"
+
+# -----------------------------------------------------------------------------
+# 2. RULES (THE "DO NOT" LIST)
+# -----------------------------------------------------------------------------
+rules:
+  # --- UI & Design System ---
+  - id: "ui-strict-antd"
+    severity: "critical"
+    description: "Do NOT use custom CSS for layout. Use <ProLayout>, <ProCard>, <Space> and Ant Design Tokens only."
+  
+  - id: "ui-form-patterns"
+    severity: "error"
+    description: "For entity editing (Session, Speaker), ALWAYS use <DrawerForm> or <ModalForm>. Do not build raw HTML forms."
+
+  # --- Backend Architecture ---
+  - id: "be-modular-structure"
+    severity: "error"
+    description: "Enforce NestJS Modular Architecture: Module -> Controller -> Service -> Repository. No logic in Controllers."
+
+  # --- Infrastructure & Release (NEW) ---
+  - id: "infra-immutable"
+    severity: "critical"
+    description: "Never suggest editing files directly on the server via SSH. All config changes must go through Git."
+  
+  - id: "infra-secrets-safety"
+    severity: "critical"
+    description: "Never commit .env files. Use .env.example for templates. Secrets are managed via CI/CD variables."
+
+# -----------------------------------------------------------------------------
+# 3. WORKFLOWS (STANDARD OPERATING PROCEDURES)
+# -----------------------------------------------------------------------------
+workflows:
+  - name: "scaffold-new-feature"
+    description: "End-to-end creation of a new business entity"
+    steps:
+      - "Analyze `docs/analysis/00_Legacy_System_Analysis.md` for business logic."
+      - "Check `docs/prd/` for specific field requirements."
+      - "Create DB Migration (Prisma)."
+      - "Generate NestJS Module (Controller/Service/DTO)."
+      - "Generate React Types & API Client."
+      - "Scaffold UI using ProTable/ProForm."
+
+  - name: "deploy-infrastructure"
+    description: "Setup server environment from scratch"
+    steps:
+      - "Read `docs/prd/06_Infrastructure_and_Release.md`."
+      - "Generate Dockerfiles for Front/Back."
+      - "Create `docker-compose.yml` with Postgres/Redis."
+      - "Generate Nginx Config."
+      - "Create GitHub Actions workflow."

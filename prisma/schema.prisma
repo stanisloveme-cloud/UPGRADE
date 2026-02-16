@@ -1,0 +1,174 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ============================================================
+// ENUMS
+// ============================================================
+
+enum EventStatus {
+  draft
+  published
+  archived
+}
+
+enum SpeakerRole {
+  moderator
+  speaker
+}
+
+enum SpeakerStatus {
+  confirmed
+  pre_confirmed
+  contact
+  to_contact
+  declined
+  review
+}
+
+enum PresenceStatus {
+  planned
+  onsite
+  missing
+}
+
+// ============================================================
+// MODELS
+// ============================================================
+
+model Event {
+  id          Int         @id @default(autoincrement())
+  name        String      @db.VarChar(255)
+  description String?     @db.Text
+  startDate   DateTime    @map("start_date") @db.Date
+  endDate     DateTime    @map("end_date") @db.Date
+  status      EventStatus @default(draft)
+  createdAt   DateTime    @default(now()) @map("created_at")
+
+  halls Hall[]
+
+  @@map("events")
+}
+
+model Hall {
+  id        Int    @id @default(autoincrement())
+  eventId   Int    @map("event_id")
+  name      String @db.VarChar(100)
+  capacity  Int    @default(0)
+  sortOrder Int    @default(0) @map("sort_order")
+
+  event  Event   @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  tracks Track[]
+
+  @@map("halls")
+}
+
+model Track {
+  id          Int      @id @default(autoincrement())
+  hallId      Int      @map("hall_id")
+  name        String   @db.VarChar(255)
+  description String?  @db.Text
+  day         DateTime @db.Date
+  startTime   String   @map("start_time") @db.VarChar(5) // "HH:MM"
+  endTime     String   @map("end_time") @db.VarChar(5) // "HH:MM"
+  sortOrder   Int      @default(0) @map("sort_order")
+
+  hall     Hall      @relation(fields: [hallId], references: [id], onDelete: Cascade)
+  sessions Session[]
+
+  @@map("tracks")
+}
+
+model Session {
+  id        Int    @id @default(autoincrement())
+  trackId   Int    @map("track_id")
+  name      String @db.VarChar(255)
+  description String? @db.Text
+  startTime String @map("start_time") @db.VarChar(5) // "HH:MM"
+  endTime   String @map("end_time") @db.VarChar(5) // "HH:MM"
+  comments  String? @db.Text
+  clients   String? @db.Text
+
+  track     Track             @relation(fields: [trackId], references: [id], onDelete: Cascade)
+  speakers  SessionSpeaker[]
+  questions SessionQuestion[]
+  briefings Briefing[]
+
+  @@map("sessions")
+}
+
+model Speaker {
+  id              Int     @id @default(autoincrement())
+  firstName       String  @map("first_name") @db.VarChar(100)
+  lastName        String  @map("last_name") @db.VarChar(100)
+  company         String? @db.VarChar(255)
+  position        String? @db.VarChar(255)
+  email           String? @db.VarChar(255)
+  phone           String? @db.VarChar(50)
+  telegram        String? @db.VarChar(100)
+  photoUrl        String? @map("photo_url") @db.VarChar(512)
+  isSponsor       Boolean @default(false) @map("is_sponsor")
+  bio             String? @db.Text
+  internalComment String? @map("internal_comment") @db.Text
+
+  sessions         SessionSpeaker[]
+  moderatedBriefings Briefing[]
+
+  @@map("speakers")
+}
+
+model SessionSpeaker {
+  id               Int            @id @default(autoincrement())
+  sessionId        Int            @map("session_id")
+  speakerId        Int            @map("speaker_id")
+  role             SpeakerRole    @default(speaker)
+  status           SpeakerStatus  @default(review)
+  statusDate       DateTime?      @map("status_date") @db.Date
+  sortOrder        Int            @default(0) @map("sort_order")
+  needsZoom        Boolean        @default(false) @map("needs_zoom")
+  hasPresentation  Boolean        @default(false) @map("has_presentation")
+  managerComment   String?        @map("manager_comment") @db.Text
+  programThesis    String?        @map("program_thesis") @db.Text
+  newsletterQuote  String?        @map("newsletter_quote") @db.Text
+  presenceStatus   PresenceStatus? @map("presence_status")
+
+  session Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  speaker Speaker @relation(fields: [speakerId], references: [id], onDelete: Cascade)
+
+  @@unique([sessionId, speakerId])
+  @@map("session_speakers")
+}
+
+model SessionQuestion {
+  id        Int    @id @default(autoincrement())
+  sessionId Int    @map("session_id")
+  order     Int
+  title     String @db.VarChar(255)
+  body      String? @db.Text
+
+  session Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@map("session_questions")
+}
+
+model Briefing {
+  id          Int      @id @default(autoincrement())
+  sessionId   Int      @map("session_id")
+  moderatorId Int?     @map("moderator_id")
+  datetime    DateTime @db.Timestamptz
+  isDone      Boolean  @default(false) @map("is_done")
+  link        String?  @db.VarChar(512)
+  comment     String?  @db.Text
+
+  session   Session  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  moderator Speaker? @relation(fields: [moderatorId], references: [id], onDelete: SetNull)
+
+  @@map("briefings")
+}
