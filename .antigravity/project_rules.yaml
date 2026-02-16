@@ -49,7 +49,7 @@ rules:
     severity: "error"
     description: "Enforce NestJS Modular Architecture: Module -> Controller -> Service -> Repository. No logic in Controllers."
 
-  # --- Infrastructure & Release (NEW) ---
+  # --- Infrastructure & Release ---
   - id: "infra-immutable"
     severity: "critical"
     description: "Never suggest editing files directly on the server via SSH. All config changes must go through Git."
@@ -57,6 +57,33 @@ rules:
   - id: "infra-secrets-safety"
     severity: "critical"
     description: "Never commit .env files. Use .env.example for templates. Secrets are managed via CI/CD variables."
+
+  # --- Shell & Execution Stability (CRITICAL) ---
+  - id: "shell-no-blocking"
+    severity: "critical"
+    description: >
+      ABSOLUTE BAN on running blocking commands.
+      NEVER run: 'npm run start', 'nest start --watch', 'docker-compose up' (without -d).
+      ACTION: Ask the User to run servers in a separate terminal.
+
+  - id: "shell-path-awareness"
+    severity: "critical"
+    description: >
+      PROJECT STRUCTURE TRUTH (DO NOT HALLUCINATE):
+      - Frontend is in `./client` (NOT /frontend).
+      - Backend is in `./src` (NOT /backend).
+      - Infrastructure files are in `./` (Root), NOT /infra.
+      ALWAYS adjust paths in commands and imports accordingly.
+
+  - id: "infra-code-only"
+    severity: "critical"
+    description: >
+      Infrastructure (Docker, Nginx, GitHub Actions) must be code.
+      If `.github/workflows/deploy.yml` is missing, IT MUST BE CREATED based on the actual folder structure.
+
+  - id: "shell-powershell-compat"
+    severity: "error"
+    description: "When using PowerShell, avoid complex chaining (&&). Execute commands sequentially. Always assume non-interactive mode (no user prompts)."
 
 # -----------------------------------------------------------------------------
 # 3. WORKFLOWS (STANDARD OPERATING PROCEDURES)

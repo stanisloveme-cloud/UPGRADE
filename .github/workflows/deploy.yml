@@ -1,0 +1,66 @@
+name: Deploy Application
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push Backend
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/upgrade-backend:latest
+          # Optimization: Cache layers
+          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/upgrade-backend:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/upgrade-backend:buildcache,mode=max
+
+      - name: Build and Push Frontend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./client
+          file: client/Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/upgrade-frontend:latest
+          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/upgrade-frontend:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/upgrade-frontend:buildcache,mode=max
+
+      - name: Deploy to Server via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Pull the latest images
+            docker pull ${{ secrets.DOCKER_USERNAME }}/upgrade-backend:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/upgrade-frontend:latest
+            
+            # Navigate to project directory (Adjust path as needed)
+            cd /root/upgrade-crm || cd ~/upgrade-crm
+            
+            # Ensure docker-compose.prod.yml exists and uses these images
+            # If using docker-compose.prod.yml, update it to point to the new images
+            # or use `docker-compose up` with overrides.
+            # Example assuming docker-compose.prod.yml is present and updated:
+            docker-compose -f docker-compose.prod.yml down
+            docker-compose -f docker-compose.prod.yml up -d
+            
+            # Prune unused images to save space
+            docker image prune -f

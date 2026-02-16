@@ -53,13 +53,27 @@ docker compose pull (скачивание новых образов).
 docker compose up -d (перезапуск контейнеров).
 docker system prune (очистка старого).
 5. Инфраструктура проекта (File Structure)
-На сервере (/opt/upgrade-crm/) структура должна быть идентична репозиторию infra:
-/opt/upgrade-crm/
-├── docker-compose.yml      # Описание всех сервисов
-├── .env                    # Секреты (НЕ В GIT!)
-├── nginx/                  # Конфиги прокси
-│   └── default.conf
-└── backups/                # Локальные дампы БД
+**CRITICAL**: Структура проекта зафиксирована (Hard Coded Context). Изменения запрещены.
+
+Корень проекта на сервере (`/opt/upgrade-crm` или `~/upgrade-crm`) и в репозитории:
+```
+/
+├── docker-compose.yml       # Production конфиг (или docker-compose.prod.yml)
+├── Dockerfile               # Backend Dockerfile (Multi-stage: NestJS)
+├── package.json             # Backend dependencies
+├── .env                     # Секреты (НЕ В GIT!)
+├── src/                     # Исходный код Backend (NestJS)
+├── prisma/                  # Схема БД и миграции
+├── client/                  # Frontend Root
+│   ├── Dockerfile           # Frontend Dockerfile (Multi-stage: Node->Nginx)
+│   ├── nginx.conf           # Конфиг Nginx для SPA
+│   ├── src/                 # Исходный код Frontend (React)
+│   └── vite.config.ts
+└── .github/
+    └── workflows/
+        └── deploy.yml       # CI/CD Pipeline
+```
+**Важно**: Папки `infra/`, `backend/` ОТСУТСТВУЮТ. Все конфиги лежат в корне или соответствующих подпапках (`client/`).
 
 
 6. Резервное копирование (Backup Strategy)
