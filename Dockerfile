@@ -19,6 +19,7 @@ RUN cd client && npm run build
 # 5. Build Server
 RUN npx prisma generate
 RUN npm run build
+RUN ls -R dist || echo "dist not found"
 
 EXPOSE 3000
 
