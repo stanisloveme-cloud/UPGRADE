@@ -73,7 +73,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], HallsController.prototype, "remove", null);
 exports.HallsController = HallsController = __decorate([
-    (0, common_1.Controller)('api/halls'),
+    (0, common_1.Controller)('halls'),
     __metadata("design:paramtypes", [halls_service_1.HallsService])
 ], HallsController);
 //# sourceMappingURL=halls.controller.js.map

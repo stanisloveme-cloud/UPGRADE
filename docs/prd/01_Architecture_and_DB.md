@@ -18,6 +18,8 @@
 * **Database:** PostgreSQL 15+.  
 * **Frontend:** React \+ Vite \+ Ant Design Pro v5.  
 * **Infra:** Docker Compose (App \+ DB \+ Redis for caching).
+* **Security:** JWT Authentication (Stateless), NestJS Guards, React Context.
+* **UX:** Explicit error handling (Alerts) for login failures.
 
 ## **2\. Модель Данных (Database Schema)**
 
@@ -35,6 +37,13 @@ erDiagram
     Speaker ||--|{ SessionSpeaker : participates  
     SessionSpeaker ||--o| Presentation : uploads  
     Speaker ||--o| SpeakerPhoto : has
+    User {
+        int id PK
+        string email
+        string password_hash
+        string name
+        enum role "admin, manager"
+    }
 
     Event {  
         int id PK  
@@ -210,6 +219,15 @@ erDiagram
 * is\_done: BOOLEAN DEFAULT FALSE  
 * comment: TEXT
 
+#### **Entity: User (System Access)**
+
+* id: SERIAL PRIMARY KEY
+* email: VARCHAR(255) NOT NULL UNIQUE
+* password_hash: VARCHAR(255) NOT NULL
+* name: VARCHAR(100)
+* role: ENUM('admin', 'manager') DEFAULT 'manager'
+* created_at: TIMESTAMP DEFAULT NOW()
+
 ## **3\. API Контракты (Core Endpoints)**
 
 На данном этапе необходимо реализовать только "скелет" API для проверки схемы БД.
@@ -219,6 +237,8 @@ erDiagram
 * POST /api/tracks — CRUD для треков.  
 * POST /api/sessions — CRUD для сессий.  
 * POST /api/speakers — CRUD для глобальной базы спикеров.
+* POST /auth/login — Получение JWT токена. (Returns 401 Unauthorized for invalid creds).
+* GET /auth/profile — Получение информации о текущем пользователе.
 
 ## **4\. Инструкции для разработчика (Agent Prompt)**
 

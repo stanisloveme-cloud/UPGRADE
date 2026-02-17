@@ -73,7 +73,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], SessionsController.prototype, "remove", null);
 exports.SessionsController = SessionsController = __decorate([
-    (0, common_1.Controller)('api/sessions'),
+    (0, common_1.Controller)('sessions'),
     __metadata("design:paramtypes", [sessions_service_1.SessionsService])
 ], SessionsController);
 //# sourceMappingURL=sessions.controller.js.map

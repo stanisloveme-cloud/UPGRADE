@@ -3,27 +3,36 @@ export declare class EventsService {
     private readonly prisma;
     constructor(prisma: PrismaService);
     findAll(): Promise<{
+        id: number;
         name: string;
         description: string | null;
         startDate: Date;
         endDate: Date;
         status: import("@prisma/client").$Enums.EventStatus;
         createdAt: Date;
-        id: number;
     }[]>;
     findOne(id: number): Promise<{
+        id: number;
         name: string;
         description: string | null;
         startDate: Date;
         endDate: Date;
         status: import("@prisma/client").$Enums.EventStatus;
         createdAt: Date;
-        id: number;
     }>;
     getFullStructure(id: number): Promise<{
         halls: ({
             tracks: ({
                 sessions: ({
+                    briefings: {
+                        link: string | null;
+                        datetime: Date;
+                        id: number;
+                        sessionId: number;
+                        moderatorId: number | null;
+                        isDone: boolean;
+                        comment: string | null;
+                    }[];
                     speakers: ({
                         speaker: {
                             id: number;
@@ -40,8 +49,8 @@ export declare class EventsService {
                             internalComment: string | null;
                         };
                     } & {
-                        status: import("@prisma/client").$Enums.SpeakerStatus;
                         id: number;
+                        status: import("@prisma/client").$Enums.SpeakerStatus;
                         sortOrder: number;
                         sessionId: number;
                         speakerId: number;
@@ -61,49 +70,40 @@ export declare class EventsService {
                         title: string;
                         body: string | null;
                     }[];
-                    briefings: {
-                        datetime: Date;
-                        id: number;
-                        link: string | null;
-                        sessionId: number;
-                        moderatorId: number | null;
-                        isDone: boolean;
-                        comment: string | null;
-                    }[];
                 } & {
                     comments: string | null;
+                    id: number;
                     name: string;
                     description: string | null;
-                    id: number;
                     startTime: string;
                     endTime: string;
-                    clients: string | null;
                     trackId: number;
+                    clients: string | null;
                 })[];
             } & {
+                id: number;
                 name: string;
                 description: string | null;
-                id: number;
                 sortOrder: number;
-                day: Date;
                 startTime: string;
-                endTime: string;
                 hallId: number;
+                day: Date;
+                endTime: string;
             })[];
         } & {
-            name: string;
             id: number;
-            capacity: number;
+            name: string;
             sortOrder: number;
             eventId: number;
+            capacity: number;
         })[];
     } & {
+        id: number;
         name: string;
         description: string | null;
         startDate: Date;
         endDate: Date;
         status: import("@prisma/client").$Enums.EventStatus;
         createdAt: Date;
-        id: number;
     }>;
 }

@@ -73,7 +73,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], SpeakersController.prototype, "remove", null);
 exports.SpeakersController = SpeakersController = __decorate([
-    (0, common_1.Controller)('api/speakers'),
+    (0, common_1.Controller)('speakers'),
     __metadata("design:paramtypes", [speakers_service_1.SpeakersService])
 ], SpeakersController);
 //# sourceMappingURL=speakers.controller.js.map

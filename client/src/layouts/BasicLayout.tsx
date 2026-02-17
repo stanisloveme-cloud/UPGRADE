@@ -1,11 +1,26 @@
 import React from 'react';
 import { ProLayout } from '@ant-design/pro-components';
-import { Link, useLocation, Outlet } from 'react-router-dom';
-import { UserOutlined, SettingOutlined } from '@ant-design/icons';
-import { Avatar, Space } from 'antd';
+import { Link, useLocation, Outlet, useNavigate } from 'react-router-dom';
+import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
+import { Avatar, Space, Dropdown, MenuProps } from 'antd';
+import { useAuth } from '../auth/AuthProvider';
 
 export const BasicLayout: React.FC = () => {
     const location = useLocation();
+    const { user, logout } = useAuth();
+    const navigate = useNavigate();
+
+    const menuItems: MenuProps['items'] = [
+        {
+            key: 'logout',
+            icon: <LogoutOutlined />,
+            label: 'Выйти',
+            onClick: () => {
+                logout();
+                navigate('/login');
+            },
+        },
+    ];
 
     return (
         <ProLayout
@@ -14,36 +29,39 @@ export const BasicLayout: React.FC = () => {
             location={{
                 pathname: location.pathname,
             }}
-            menuDataRender={() => [
-                {
-                    path: '/dashboard',
-                    name: 'Дашборд',
-                },
-                {
-                    path: '/events/2/program',
-                    name: 'Редактор программы',
-                },
-                {
-                    path: '/sales',
-                    name: 'Продажи',
-                },
-            ]}
+            route={{
+                routes: [
+                    {
+                        path: '/dashboard',
+                        name: 'Дашборд',
+                    },
+                    {
+                        path: '/events/2/program', // Updated to match existing event in DB
+                        name: 'Редактор программы',
+                    },
+                    {
+                        path: '/sales',
+                        name: 'Продажи',
+                    },
+                ]
+            }}
             menuItemRender={(item, dom) => (
                 <Link to={item.path || '/'}>{dom}</Link>
             )}
             avatarProps={{
                 src: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
-                title: 'User',
-                render: (_, _dom) => {
+                title: user?.username || 'User',
+                render: (_, dom) => {
                     return (
-                        <Space>
-                            <Avatar shape="square" size="small" icon={<UserOutlined />} />
-                            User
-                        </Space>
+                        <Dropdown menu={{ items: menuItems }}>
+                            <Space>
+                                <Avatar shape="square" size="small" icon={<UserOutlined />} />
+                                {dom}
+                            </Space>
+                        </Dropdown>
                     )
                 }
             }}
-            actionsRender={() => [<SettingOutlined key="settings" />]}
         >
             <Outlet />
         </ProLayout>

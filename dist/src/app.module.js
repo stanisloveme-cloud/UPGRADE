@@ -17,6 +17,9 @@ const halls_module_1 = require("./halls/halls.module");
 const tracks_module_1 = require("./tracks/tracks.module");
 const sessions_module_1 = require("./sessions/sessions.module");
 const speakers_module_1 = require("./speakers/speakers.module");
+const auth_module_1 = require("./auth/auth.module");
+const users_module_1 = require("./users/users.module");
+const jwt_auth_guard_1 = require("./auth/jwt-auth.guard");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -26,7 +29,7 @@ exports.AppModule = AppModule = __decorate([
             config_1.ConfigModule.forRoot({ isGlobal: true }),
             serve_static_1.ServeStaticModule.forRoot({
                 rootPath: (0, path_1.join)(__dirname, '..', 'client', 'dist'),
-                exclude: ['/api/(.*)'],
+                exclude: ['/api/:path*'],
             }),
             prisma_module_1.PrismaModule,
             events_module_1.EventsModule,
@@ -34,6 +37,14 @@ exports.AppModule = AppModule = __decorate([
             tracks_module_1.TracksModule,
             sessions_module_1.SessionsModule,
             speakers_module_1.SpeakersModule,
+            auth_module_1.AuthModule,
+            users_module_1.UsersModule,
+        ],
+        providers: [
+            {
+                provide: 'APP_GUARD',
+                useClass: jwt_auth_guard_1.JwtAuthGuard,
+            },
         ],
     })
 ], AppModule);

@@ -73,7 +73,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], TracksController.prototype, "remove", null);
 exports.TracksController = TracksController = __decorate([
-    (0, common_1.Controller)('api/tracks'),
+    (0, common_1.Controller)('tracks'),
     __metadata("design:paramtypes", [tracks_service_1.TracksService])
 ], TracksController);
 //# sourceMappingURL=tracks.controller.js.map

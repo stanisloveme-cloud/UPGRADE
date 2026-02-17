@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Patch, Delete, Body, Param, ParseIntPipe } from '@nestjs/common';
 import { SpeakersService } from './speakers.service';
 
-@Controller('api/speakers')
+@Controller('speakers')
 export class SpeakersController {
     constructor(private readonly speakersService: SpeakersService) { }
 

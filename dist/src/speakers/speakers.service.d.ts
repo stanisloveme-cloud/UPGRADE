@@ -40,17 +40,17 @@ export declare class SpeakersService {
         sessions: ({
             session: {
                 comments: string | null;
+                id: number;
                 name: string;
                 description: string | null;
-                id: number;
                 startTime: string;
                 endTime: string;
-                clients: string | null;
                 trackId: number;
+                clients: string | null;
             };
         } & {
-            status: import("@prisma/client").$Enums.SpeakerStatus;
             id: number;
+            status: import("@prisma/client").$Enums.SpeakerStatus;
             sortOrder: number;
             sessionId: number;
             speakerId: number;

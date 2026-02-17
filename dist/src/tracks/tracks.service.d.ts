@@ -10,57 +10,57 @@ export declare class TracksService {
         endTime: string;
         sortOrder?: number;
     }): import("@prisma/client").Prisma.Prisma__TrackClient<{
+        id: number;
         name: string;
         description: string | null;
-        id: number;
         sortOrder: number;
-        day: Date;
         startTime: string;
-        endTime: string;
         hallId: number;
+        day: Date;
+        endTime: string;
     }, never, import("@prisma/client/runtime/client").DefaultArgs, import("@prisma/client").Prisma.PrismaClientOptions>;
     findAll(): import("@prisma/client").Prisma.PrismaPromise<{
+        id: number;
         name: string;
         description: string | null;
-        id: number;
         sortOrder: number;
-        day: Date;
         startTime: string;
-        endTime: string;
         hallId: number;
+        day: Date;
+        endTime: string;
     }[]>;
     findOne(id: number): Promise<{
+        id: number;
         name: string;
         description: string | null;
-        id: number;
         sortOrder: number;
-        day: Date;
         startTime: string;
-        endTime: string;
         hallId: number;
+        day: Date;
+        endTime: string;
     }>;
     update(id: number, data: Partial<{
         name: string;
         startTime: string;
         endTime: string;
     }>): import("@prisma/client").Prisma.Prisma__TrackClient<{
+        id: number;
         name: string;
         description: string | null;
-        id: number;
         sortOrder: number;
-        day: Date;
         startTime: string;
-        endTime: string;
         hallId: number;
+        day: Date;
+        endTime: string;
     }, never, import("@prisma/client/runtime/client").DefaultArgs, import("@prisma/client").Prisma.PrismaClientOptions>;
     remove(id: number): import("@prisma/client").Prisma.Prisma__TrackClient<{
+        id: number;
         name: string;
         description: string | null;
-        id: number;
         sortOrder: number;
-        day: Date;
         startTime: string;
-        endTime: string;
         hallId: number;
+        day: Date;
+        endTime: string;
     }, never, import("@prisma/client/runtime/client").DefaultArgs, import("@prisma/client").Prisma.PrismaClientOptions>;
 }

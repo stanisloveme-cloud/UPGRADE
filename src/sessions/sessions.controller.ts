@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Patch, Delete, Body, Param, ParseIntPipe } from '@nestjs/common';
 import { SessionsService } from './sessions.service';
 
-@Controller('api/sessions')
+@Controller('sessions')
 export class SessionsController {
     constructor(private readonly sessionsService: SessionsService) { }
 

@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Patch, Delete, Body, Param, ParseIntPipe } from '@nestjs/common';
 import { TracksService } from './tracks.service';
 
-@Controller('api/tracks')
+@Controller('tracks')
 export class TracksController {
     constructor(private readonly tracksService: TracksService) { }
 
