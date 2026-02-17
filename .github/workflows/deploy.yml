@@ -63,11 +63,17 @@ jobs:
             # Since we can't easily copy from the runner to the server without SCP, we'll rely on the repo being there or creating the file.
             # BETTER APPROACH: Clone/Pull the repo to get the latest docker-compose.prod.yml
             
+            # Force sync with repository
             if [ ! -d ".git" ]; then
               git clone https://github.com/stanisloveme-cloud/UPGRADE.git .
             else
-              git pull origin main
+              git fetch --all
+              git reset --hard origin/main
             fi
+
+            # DEBUG: Verify config file content
+            echo "=== DOCKER COMPOSE CONFIG ==="
+            cat docker-compose.prod.yml
 
             # Restart services using new images
             # Tries 'docker compose' (v2) first, then 'docker-compose' (v1)
