@@ -99,22 +99,14 @@ jobs:
             $DC_CMD -f docker-compose.prod.yml down
             $DC_CMD -f docker-compose.prod.yml up -d
             
-            # Disable immediate exit to capture logs on failure
-            set +e
-
             # Run database migrations
             echo "=== RUNNING MIGRATIONS ==="
-            sleep 15
+            sleep 10
             $DC_CMD -f docker-compose.prod.yml exec -T app npx prisma migrate deploy
-            MIGRATE_EXIT_CODE=$?
             
-            # Run database seeding only if migration succeeded
-            if [ $MIGRATE_EXIT_CODE -eq 0 ]; then
-                echo "=== RUNNING SEEDING ==="
-                $DC_CMD -f docker-compose.prod.yml exec -T app npx prisma db seed
-            else
-                echo "Migration failed with exit code $MIGRATE_EXIT_CODE. Skipping seeding."
-            fi
+            # Run database seeding
+            echo "=== RUNNING SEEDING ==="
+            $DC_CMD -f docker-compose.prod.yml exec -T app npx prisma db seed
 
             # Prune unused images
             docker image prune -f
@@ -127,12 +119,7 @@ jobs:
             $DC_CMD -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
 
             echo "=== FRONTEND LOGS ==="
-            docker logs -n 50 upgrade-crm-frontend-1 || docker logs -n 50 upgrade-crm_frontend_1 || echo "Container name prediction failed"
+            docker logs -n 20 upgrade-crm-frontend-1 || docker logs -n 20 upgrade-crm_frontend_1 || echo "Container name prediction failed"
 
             echo "=== BACKEND LOGS ==="
-            docker logs -n 100 upgrade-crm-app-1 || docker logs -n 100 upgrade-crm_app_1 || echo "Container name prediction failed"
-
-            # Re-enable error check and exit if migration failed
-            if [ $MIGRATE_EXIT_CODE -ne 0 ]; then
-                exit $MIGRATE_EXIT_CODE
-            fi
+            docker logs -n 50 upgrade-crm-app-1 || docker logs -n 50 upgrade-crm_app_1 || echo "Container name prediction failed"
