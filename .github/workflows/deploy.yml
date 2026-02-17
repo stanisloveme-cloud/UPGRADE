@@ -51,7 +51,10 @@ jobs:
           script: |
             # Export variables for docker-compose
             export DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}
-            
+
+            # Login to Docker Hub to avoid rate limits
+            echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
             # Pull the latest images
             docker pull ${{ secrets.DOCKER_USERNAME }}/upgrade-backend:latest
             docker pull ${{ secrets.DOCKER_USERNAME }}/upgrade-frontend:latest
