@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../auth/AuthProvider';
 
-export const RequireAuth: React.FC<{ children: JSX.Element }> = ({ children }) => {
+export const RequireAuth: React.FC<{ children: React.ReactElement }> = ({ children }) => {
     const { isAuthenticated } = useAuth();
     const location = useLocation();
 
