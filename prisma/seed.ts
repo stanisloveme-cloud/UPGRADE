@@ -19,6 +19,27 @@ async function main() {
     await prisma.hall.deleteMany();
     await prisma.speaker.deleteMany();
     await prisma.event.deleteMany();
+    // Keep users to avoid deleting the admin if he exists, or handle via upsert
+    // await prisma.user.deleteMany(); 
+
+    // Create Admin User
+    const adminEmail = 'admin';
+    const adminPassword = 'Nhy67ujm'; // In real app, hash this!
+
+    // Check if user exists to avoid unique constraint errors or use upsert
+    const existingAdmin = await prisma.user.findUnique({ where: { username: adminEmail } });
+    if (!existingAdmin) {
+        await prisma.user.create({
+            data: {
+                username: adminEmail,
+                password: adminPassword,
+                role: 'admin', // Assuming role field exists or defaulting
+            },
+        });
+        console.log(`  ✅ Admin User created: ${adminEmail}`);
+    } else {
+        console.log(`  ℹ️ Admin User already exists: ${adminEmail}`);
+    }
 
     // Create Event
     const event = await prisma.event.create({

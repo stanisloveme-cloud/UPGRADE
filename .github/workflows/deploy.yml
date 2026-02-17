@@ -85,6 +85,25 @@ jobs:
                 docker compose -f docker-compose.prod.yml up -d
             fi
             
+            # Run database migrations
+            echo "=== RUNNING MIGRATIONS ==="
+            # Wait for DB to be potentially ready (though healthcheck handles it)
+            sleep 10
+            # Run migration inside the app container
+            if command -v docker-compose &> /dev/null; then
+                docker-compose -f docker-compose.prod.yml exec -T app npx prisma migrate deploy
+            else
+                docker compose -f docker-compose.prod.yml exec -T app npx prisma migrate deploy
+            fi
+            
+            # Run database seeding (Create Admin, Events)
+            echo "=== RUNNING SEEDING ==="
+            if command -v docker-compose &> /dev/null; then
+                 docker-compose -f docker-compose.prod.yml exec -T app npx prisma db seed
+            else
+                 docker compose -f docker-compose.prod.yml exec -T app npx prisma db seed
+            fi
+
             # Prune unused images to save space
             docker image prune -f
 
