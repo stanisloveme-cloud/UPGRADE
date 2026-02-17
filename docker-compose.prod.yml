@@ -11,9 +11,12 @@ services:
       POSTGRES_DB: upgrade_crm
       # Allow frontend CORS if needed
       FRONTEND_URL: http://devupgrade.space4you.ru
+      REDIS_URL: redis://redis:6379
     depends_on:
       db:
         condition: service_healthy
+      redis:
+        condition: service_started
     restart: always
 
   frontend:
@@ -38,6 +41,10 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    restart: always
+
+  redis:
+    image: redis:7-alpine
     restart: always
 
 volumes:

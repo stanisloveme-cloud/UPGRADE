@@ -38,17 +38,32 @@ jobs:
           file: client/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ secrets.DOCKER_USERNAME }}/upgrade-frontend:latest
-          no-cache: true
+          # no-cache removed for optimization
           cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/upgrade-frontend:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/upgrade-frontend:buildcache,mode=max
 
+      - name: Read Configuration
+        id: read_config
+        run: |
+          {
+            echo 'COMPOSE_CONFIG<<EOF'
+            cat docker-compose.prod.yml
+            echo EOF
+          } >> "$GITHUB_ENV"
+
       - name: Deploy to Server via SSH
         uses: appleboy/ssh-action@v1.0.3
+        env:
+          COMPOSE_CONFIG: ${{ env.COMPOSE_CONFIG }}
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: COMPOSE_CONFIG
           script: |
+            # Stop on first error
+            set -e
+
             # Export variables for docker-compose
             export DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}
 
@@ -59,56 +74,41 @@ jobs:
             docker pull ${{ secrets.DOCKER_USERNAME }}/upgrade-backend:latest
             docker pull ${{ secrets.DOCKER_USERNAME }}/upgrade-frontend:latest
             
-            # Create project directory if it doesn't exist
+            # Create project directory
             mkdir -p ~/upgrade-crm
             cd ~/upgrade-crm
 
-            # Copy docker-compose.prod.yml if it's not there (this is a patch, ideally it should be copied from the repo)
-            # Since we can't easily copy from the runner to the server without SCP, we'll rely on the repo being there or creating the file.
-            # BETTER APPROACH: Clone/Pull the repo to get the latest docker-compose.prod.yml
-            
-            # Force sync with repository
-            if [ ! -d ".git" ]; then
-              git clone https://github.com/stanisloveme-cloud/UPGRADE.git .
-            else
-              git fetch --all
-              git reset --hard origin/main
-            fi
+            # Write config file directly (Single Source of Truth)
+            echo "$COMPOSE_CONFIG" > docker-compose.prod.yml
 
             # DEBUG: Verify config file content
             echo "=== DOCKER COMPOSE CONFIG ==="
             cat docker-compose.prod.yml
 
             # Restart services using new images
-            # Tries 'docker compose' (v2) first, then 'docker-compose' (v1)
-            if command -v docker-compose &> /dev/null; then
-                docker-compose -f docker-compose.prod.yml down
-                docker-compose -f docker-compose.prod.yml up -d
+            # Prioritize 'docker compose' (v2)
+            if docker compose version &> /dev/null; then
+                DC_CMD="docker compose"
+            elif command -v docker-compose &> /dev/null; then
+                DC_CMD="docker-compose"
             else
-                docker compose -f docker-compose.prod.yml down
-                docker compose -f docker-compose.prod.yml up -d
+                echo "Error: Docker Compose not found"
+                exit 1
             fi
+            
+            $DC_CMD -f docker-compose.prod.yml down
+            $DC_CMD -f docker-compose.prod.yml up -d
             
             # Run database migrations
             echo "=== RUNNING MIGRATIONS ==="
-            # Wait for DB to be potentially ready (though healthcheck handles it)
             sleep 10
-            # Run migration inside the app container
-            if command -v docker-compose &> /dev/null; then
-                docker-compose -f docker-compose.prod.yml exec -T app npx prisma migrate deploy
-            else
-                docker compose -f docker-compose.prod.yml exec -T app npx prisma migrate deploy
-            fi
+            $DC_CMD -f docker-compose.prod.yml exec -T app npx prisma migrate deploy
             
-            # Run database seeding (Create Admin, Events)
+            # Run database seeding
             echo "=== RUNNING SEEDING ==="
-            if command -v docker-compose &> /dev/null; then
-                 docker-compose -f docker-compose.prod.yml exec -T app npx prisma db seed
-            else
-                 docker compose -f docker-compose.prod.yml exec -T app npx prisma db seed
-            fi
+            $DC_CMD -f docker-compose.prod.yml exec -T app npx prisma db seed
 
-            # Prune unused images to save space
+            # Prune unused images
             docker image prune -f
 
             # DEBUG: Show running containers and logs
@@ -116,12 +116,7 @@ jobs:
             docker ps -a
             
             echo "=== NGINX CONFIG CHECKSUM ==="
-            # Check what config is actually running
-            if command -v docker-compose &> /dev/null; then
-                 docker-compose -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
-            else
-                 docker compose -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
-            fi
+            $DC_CMD -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
 
             echo "=== FRONTEND LOGS ==="
             docker logs -n 20 upgrade-crm-frontend-1 || docker logs -n 20 upgrade-crm_frontend_1 || echo "Container name prediction failed"

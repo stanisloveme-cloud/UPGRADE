@@ -45,6 +45,19 @@
 - [ ] **Speaker Management**: UI for adding/editing speakers.
 
 ## 6. Current Blockers (Active Investigation)
-- [!] **Production Login Error (405)**: Nginx returns "Method Not Allowed" for POST `/auth/login`.
-    - Cause: Likely Nginx config caching or `location` precedence issue.
-    - Action: Added debug steps to `deploy.yml` to inspect `/etc/nginx/conf.d/default.conf` on the server.
+- [x] **Production Login Error (405)**: FIXED.
+    - Cause: Docker Hub Rate Limit prevented pulling new images; old cached image without proxy config was used.
+    - Fix: Added `docker login` to deployment script to authenticate pull requests.
+    - Verification: Deployment successful, logs indicate correct config loaded (pending final check).
+
+## 7. Audit & Recovery (Active)
+**External Audit Findings (2026-02-17):**
+- **CRITICAL**: Redis service missing in `docker-compose.prod.yml` (Backend dependency).
+- **Optimization**: Root `Dockerfile` builds frontend unnecessarily (bloat).
+- **Infrastructure**: Deployment uses fragile `git clone` on server instead of direct config upload.
+
+**Action Plan (Recovery Phase):**
+1.  **Rules**: Updated `project_rules.yaml` to prevent recurrence.
+2.  **Docker**: Clean up `Dockerfile` (remove frontend build steps).
+3.  **Infrastructure**: Add Redis to `docker-compose.prod.yml`.
+4.  **Pipeline**: Rewrite `deploy.yml` to use `heredoc` config upload (no git on server).
