@@ -124,4 +124,7 @@ jobs:
             fi
 
             echo "=== FRONTEND LOGS ==="
-            docker logs -n 20 upgrade-crm-frontend-1 || docker logs -n 20 upgrade-crm_frontend_1 || echo "Container name prediction failed, check ps output"
+            docker logs -n 20 upgrade-crm-frontend-1 || docker logs -n 20 upgrade-crm_frontend_1 || echo "Container name prediction failed"
+
+            echo "=== BACKEND LOGS ==="
+            docker logs -n 50 upgrade-crm-app-1 || docker logs -n 50 upgrade-crm_app_1 || echo "Container name prediction failed"
