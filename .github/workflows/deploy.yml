@@ -110,5 +110,14 @@ jobs:
             # DEBUG: Show running containers and logs
             echo "=== RUNNING CONTAINERS ==="
             docker ps -a
+            
+            echo "=== NGINX CONFIG CHECKSUM ==="
+            # Check what config is actually running
+            if command -v docker-compose &> /dev/null; then
+                 docker-compose -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
+            else
+                 docker compose -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
+            fi
+
             echo "=== FRONTEND LOGS ==="
             docker logs -n 20 upgrade-crm-frontend-1 || docker logs -n 20 upgrade-crm_frontend_1 || echo "Container name prediction failed, check ps output"

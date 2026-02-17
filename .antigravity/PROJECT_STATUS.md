@@ -37,8 +37,14 @@
 - [x] **Verification**: Login flow & Data loading confirmed via Browser Tool & Manual Testing.
 - [x] **Docs**: Updated PRD with Auth specs; Created `auth_system_documentation.md`.
 - [x] **Polish**: Added explicit error alerts for failed logins.
+- [x] **Seed Data**: Admin user (`admin`) and initial events created via `prisma db seed` in deployment pipeline.
 
 ## 5. Next Steps
 - [ ] **Program Editor**: Implement Drag & Drop for sessions.
 - [ ] **Session Editing**: Create modals for editing session details.
 - [ ] **Speaker Management**: UI for adding/editing speakers.
+
+## 6. Current Blockers (Active Investigation)
+- [!] **Production Login Error (405)**: Nginx returns "Method Not Allowed" for POST `/auth/login`.
+    - Cause: Likely Nginx config caching or `location` precedence issue.
+    - Action: Added debug steps to `deploy.yml` to inspect `/etc/nginx/conf.d/default.conf` on the server.
