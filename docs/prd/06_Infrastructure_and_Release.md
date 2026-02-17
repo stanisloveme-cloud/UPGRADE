@@ -69,11 +69,10 @@ docker system prune (очистка старого).
 │   ├── nginx.conf           # Конфиг Nginx для SPA
 │   ├── src/                 # Исходный код Frontend (React)
 │   └── vite.config.ts
-└── .github/
     └── workflows/
         └── deploy.yml       # CI/CD Pipeline
 ```
-**Важно**: Папки `infra/`, `backend/` ОТСУТСТВУЮТ. Все конфиги лежат в корне или соответствующих подпапках (`client/`).
+**Важно**: Папки `infra/` и `backend/` **ОТСУТСТВУЮТ**. Все инфраструктурные конфиги лежат в корне, исходный код бэкенда — в `src/`.
 
 
 6. Резервное копирование (Backup Strategy)
