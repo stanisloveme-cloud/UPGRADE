@@ -6,6 +6,7 @@ services:
       - '3000:3000'
     environment:
       DATABASE_URL: postgresql://upgrade:upgrade_pass@db:5432/upgrade_crm
+      JWT_SECRET: "complex_secret_value_change_me_in_prod"
       POSTGRES_USER: upgrade
       POSTGRES_PASSWORD: upgrade_pass
       POSTGRES_DB: upgrade_crm
