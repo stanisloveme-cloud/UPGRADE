@@ -32,12 +32,8 @@ export const BasicLayout: React.FC = () => {
             route={{
                 routes: [
                     {
-                        path: '/dashboard',
-                        name: 'Дашборд',
-                    },
-                    {
-                        path: '/events/1/program', // Points to the main seeded event
-                        name: 'Редактор программы',
+                        path: '/events',
+                        name: 'Все мероприятия',
                     },
                     {
                         path: '/sales',

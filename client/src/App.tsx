@@ -9,6 +9,7 @@ import ProgramEditor from './pages/ProgramEditor';
 import { AuthProvider } from './auth/AuthProvider';
 import { RequireAuth } from './components/RequireAuth';
 import { LoginPage } from './pages/LoginPage';
+import EventsList from './pages/EventsList';
 
 dayjs.locale('ru');
 
@@ -21,8 +22,9 @@ const App: React.FC = () => {
             <Route path="/login" element={<LoginPage />} />
 
             <Route path="/" element={<RequireAuth><BasicLayout /></RequireAuth>}>
-              <Route index element={<Navigate to="/dashboard" replace />} />
-              <Route path="dashboard" element={<div>Dashboard Placeholder</div>} />
+              <Route index element={<Navigate to="/events" replace />} />
+              <Route path="events" element={<EventsList />} />
+              <Route path="dashboard" element={<Navigate to="/events" replace />} />
               <Route path="events/:id/program" element={<ProgramEditor />} />
               <Route path="sales" element={<div>Sales Placeholder</div>} />
             </Route>
