@@ -24,6 +24,7 @@ const App: React.FC = () => {
             <Route path="/" element={<RequireAuth><BasicLayout /></RequireAuth>}>
               <Route index element={<Navigate to="/events" replace />} />
               <Route path="events" element={<EventsList />} />
+              <Route path="speakers" element={<SpeakersList />} />
               <Route path="dashboard" element={<Navigate to="/events" replace />} />
               <Route path="events/:id/program" element={<ProgramEditor />} />
               <Route path="sales" element={<div>Sales Placeholder</div>} />

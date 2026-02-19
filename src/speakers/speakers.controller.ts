@@ -6,7 +6,7 @@ export class SpeakersController {
     constructor(private readonly speakersService: SpeakersService) { }
 
     @Post()
-    create(@Body() data: { firstName: string; lastName: string; company?: string; position?: string; email?: string }) {
+    create(@Body() data: any) {
         return this.speakersService.create(data);
     }
 
@@ -21,7 +21,7 @@ export class SpeakersController {
     }
 
     @Patch(':id')
-    update(@Param('id', ParseIntPipe) id: number, @Body() data: Partial<{ firstName: string; lastName: string; company: string; position: string }>) {
+    update(@Param('id', ParseIntPipe) id: number, @Body() data: any) {
         return this.speakersService.update(id, data);
     }
 

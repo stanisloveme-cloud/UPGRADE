@@ -36,6 +36,10 @@ export const BasicLayout: React.FC = () => {
                         name: 'Все мероприятия',
                     },
                     {
+                        path: '/speakers',
+                        name: 'Спикеры',
+                    },
+                    {
                         path: '/sales',
                         name: 'Продажи',
                     },

@@ -5,7 +5,7 @@ import { PrismaService } from '../prisma/prisma.service';
 export class SpeakersService {
     constructor(private readonly prisma: PrismaService) { }
 
-    create(data: { firstName: string; lastName: string; company?: string; position?: string; email?: string }) {
+    create(data: any) {
         return this.prisma.speaker.create({ data });
     }
 
@@ -22,7 +22,7 @@ export class SpeakersService {
         return speaker;
     }
 
-    update(id: number, data: Partial<{ firstName: string; lastName: string; company: string; position: string }>) {
+    update(id: number, data: any) {
         return this.prisma.speaker.update({ where: { id }, data });
     }
 
