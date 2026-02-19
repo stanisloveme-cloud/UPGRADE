@@ -3,7 +3,7 @@ rules:
   - id: "ui-strict-antd"
     severity: "critical"
     description: "Do NOT use custom CSS for layout. Use <ProLayout>, <ProCard>, <Space> and Ant Design Tokens only."
-  
+
   - id: "ui-form-patterns"
     severity: "error"
     description: "For entity editing (Session, Speaker), ALWAYS use <DrawerForm> or <ModalForm>. Do not build raw HTML forms."
@@ -17,7 +17,7 @@ rules:
   - id: "infra-immutable"
     severity: "critical"
     description: "Never suggest editing files directly on the server via SSH. All config changes must go through Git."
-  
+
   - id: "infra-secrets-safety"
     severity: "critical"
     description: "Never commit .env files. Use .env.example for templates. Secrets are managed via CI/CD variables."
@@ -52,3 +52,15 @@ rules:
       1. NO PARALLEL DEPENDENT COMMANDS: Never run `git add`, `git commit` in parallel tool calls. Git locks will fail. Use `waitForPreviousTools: true`.
       2. USE POWERSHELL SYNTAX: No `grep`, `touch`, `rm -rf`, `export`. Use `Select-String`, `New-Item`, `Remove-Item`, `$env:VAR=VAL`.
       3. NON-INTERACTIVE: Always assume no user input is possible.
+
+  # - id: "github-api-only"
+  #   severity: "critical"
+  #   description: >
+  #     GITHUB INTEGRATION PROTOCOL:
+  #     1. NO TERMINAL FOR GITHUB: Never use `gh` CLI commands in the terminal to check workflows or logs. It causes interactive loops.
+  #     2. USE API DIRECTLY: You have access to a `GITHUB_TOKEN` in the project's `.env` file. 
+  #     3. When asked to check deployment status, write a temporary Node.js/Python script in the background to fetch data directly from the GitHub REST API using this token, or use your internal MCP capabilities if they auto-detect the `.env` token.
+
+  # - id: "shell-no-file-reading"
+  #   severity: "critical"
+  #   description: "NEVER use terminal commands (Get-Content, cat, type) to read files. Always use native IDE context, tools, or MCP to read file contents. The terminal is strictly for non-interactive builds and scripts."

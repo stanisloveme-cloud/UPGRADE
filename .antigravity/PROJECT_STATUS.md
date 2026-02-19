@@ -56,13 +56,13 @@
     - Verification: Deployment successful, logs indicate correct config loaded (pending final check).
 
 ## 7. Audit & Recovery (Active)
-- **Blocker:** Manual Git commit failed (`no changes added to commit`).
-- **Status:** Resolving Git state to push the `PrismaService` fix.
+- **Blocker:** Deployment failed with exit code 137 (Likely OOM - Out of Memory).
+- **Status:** **CRITICAL**. Server is killing processes during migration/startup.
 - **Next Steps:**
-  1. Verify file status with `git status`.
-  2. Force stage the file.
-  3. Commit and push the fix manually.
-  4. Move to GitHub API for future operations.
+  1. Analyze `Exit Code 137` causes (OOM Kill).
+  2. Optimize Docker resource usage (limit concurrency).
+  3. Consider adding swap space to the server via SSH script.
+  4. Retry deployment with reduced load.
 **External Audit Findings (2026-02-17):**
 - **CRITICAL**: Redis service missing in `docker-compose.prod.yml` (Backend dependency).
 - **Optimization**: Root `Dockerfile` builds frontend unnecessarily (bloat).
@@ -73,3 +73,21 @@
 2.  **Docker**: Clean up `Dockerfile` (remove frontend build steps).
 3.  **Infrastructure**: Add Redis to `docker-compose.prod.yml`.
 4.  **Pipeline**: Rewrite `deploy.yml` to use `heredoc` config upload (no git on server).
+
+## 8. CRITICAL HANDOFF NOTES (2026-02-19)
+
+### Production Issue (The "500 Error")
+- **Symptom**: Deployment fails or Nginx returns 500/502 Bad Gateway.
+- **Root Cause**: Server runs Out Of Memory (OOM) and kills processes (Exit Code 137). Support confirmed we need to enable **Swap Space** (4GB) to survive the build/run process.
+- **Status**: **UNRESOLVED**. Next agent must implement `scripts/setup_swap.sh` and execute it via GitHub Actions or SSH.
+
+### Local Environment Status
+- **Backend**: **Fixed**. Uses `Prisma 7` which requires `@prisma/adapter-pg` (adapter pattern). Standard `datasourceUrl` is deprecated.
+- **Frontend**: Functional on `localhost:5173`.
+- **Data**: Database reset. **Event ID mismatch** (URL uses ID 2, DB has ID 3) causes "No data found". User is aware but frustrated.
+- **Port Confusion**: User noted confusion between `localhost:3000` (Backend, returns 500 on root) and `5173` (Frontend).
+
+### AGENT CONSTRAINTS (RELAXED BY USER)
+1.  **TERMINAL USAGE**: Strict rules have been **commented out** in `.antigravityrules` by user request to reduce friction.
+2.  **CAUTION**: While permitted, prefer native tools (`view_file`) where possible to avoid shell escaping issues.
+3.  **RESET**: User requested a full context reset. Assume the environment is brittle.

@@ -1,14 +1,25 @@
 import 'dotenv/config';
 import { PrismaClient } from '@prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
-import { Pool } from 'pg';
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-const adapter = new PrismaPg(pool);
+const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
     console.log('🌱 Seeding database...');
+
+    // Clean users
+    await prisma.user.deleteMany();
+
+    // Create admin user
+    await prisma.user.create({
+        data: {
+            username: 'admin',
+            password: 'admin123',
+            role: 'admin',
+        },
+    });
+    console.log('✅ Admin user created (admin / admin123)');
 
     // Clean existing data
     await prisma.briefing.deleteMany();
@@ -268,5 +279,4 @@ main()
     })
     .finally(async () => {
         await prisma.$disconnect();
-        await pool.end();
     });
