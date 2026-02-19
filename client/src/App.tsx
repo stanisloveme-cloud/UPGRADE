@@ -10,6 +10,7 @@ import { AuthProvider } from './auth/AuthProvider';
 import { RequireAuth } from './components/RequireAuth';
 import { LoginPage } from './pages/LoginPage';
 import EventsList from './pages/EventsList';
+import SpeakersList from './pages/SpeakersList';
 
 dayjs.locale('ru');
 
