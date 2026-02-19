@@ -187,7 +187,10 @@ const ProgramEditor: React.FC = () => {
                 onDelete={handleDeleteSession}
                 initialValues={currentSession}
                 tracks={tracksOptions}
-                speakers={speakers.map(s => ({ label: `${s.firstName} ${s.lastName}`, value: s.id }))}
+                speakers={speakers.map(s => ({
+                    label: `${s.lastName} ${s.firstName}${s.company ? ` (${s.company})` : ''}`,
+                    value: s.id
+                }))}
             />
 
             <TrackModal

@@ -125,6 +125,10 @@ const SessionModal: React.FC<SessionModalProps> = ({ visible, onClose, onFinish,
                 mode="multiple"
                 placeholder="Выберите спикеров"
                 options={speakers}
+                fieldProps={{
+                    showSearch: true,
+                    optionFilterProp: 'label',
+                }}
             />
         </ModalForm>
     );
