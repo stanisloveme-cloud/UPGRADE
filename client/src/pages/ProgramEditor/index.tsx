@@ -29,15 +29,16 @@ const ProgramEditor: React.FC = () => {
 
     const fetchData = async () => {
         try {
-            setLoading(true);
+            console.log(`[ProgramEditor] Fetching data for eventId: ${eventId}`);
             const [scheduleRes, speakersRes] = await Promise.all([
                 axios.get(`/api/events/${eventId}/full-structure`),
                 axios.get('/api/speakers')
             ]);
+            console.log('[ProgramEditor] API Response:', scheduleRes.data);
             setData(scheduleRes.data);
             setSpeakers(speakersRes.data);
         } catch (err) {
-            console.error('Failed to fetch data:', err);
+            console.error('[ProgramEditor] Failed to fetch data:', err);
             message.error('Ошибка загрузки данных');
         } finally {
             setLoading(false);
