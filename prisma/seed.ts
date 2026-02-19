@@ -71,9 +71,10 @@ async function main() {
         console.log(`  🔄 User updated: ${vladEmail} (Password reset to 123456)`);
     }
 
-    // Create Event
+    // Create Event (Force ID 1)
     const event = await prisma.event.create({
         data: {
+            id: 1, // Force ID 1 to match frontend hardcoding
             name: 'New Retail Forum 2025',
             description: 'Крупнейший форум по ритейлу и e-commerce в России',
             startDate: new Date('2025-10-21'),
