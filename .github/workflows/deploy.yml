@@ -20,7 +20,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
       - name: Build and Push Backend
         uses: docker/build-push-action@v5
@@ -29,9 +30,9 @@ jobs:
           file: Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ secrets.DOCKER_USERNAME }}/upgrade-backend:latest
-          # Optimization: Cache layers (Disabled to fix driver error)
-          # cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/upgrade-backend:buildcache
-          # cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/upgrade-backend:buildcache,mode=max
+          # Optimization: GitHub Actions Cache
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Build and Push Frontend
         uses: docker/build-push-action@v5
@@ -40,9 +41,9 @@ jobs:
           file: client/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ secrets.DOCKER_USERNAME }}/upgrade-frontend:latest
-          # no-cache removed for optimization
-          # cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/upgrade-frontend:buildcache
-          # cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/upgrade-frontend:buildcache,mode=max
+          # Optimization: GitHub Actions Cache
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Read Configuration
         id: read_config
