@@ -20,9 +20,14 @@ const ScheduleGrid: React.FC<ScheduleGridProps> = ({ data, loading, onSessionCli
     if (!data || !data.halls || data.halls.length === 0) {
         return (
             <Alert
-                message={`No data found. (Data: ${data ? 'Present' : 'Null'}, Halls: ${data?.halls?.length || 0})`}
-                description={JSON.stringify(data, null, 2)}
-                type="warning"
+                message="Мероприятие создано, но пока пусто"
+                description={
+                    <div>
+                        <p>В этом мероприятии еще нет залов и расписания.</p>
+                        <p>Нажмите кнопку <b>"Управление залами"</b> выше, чтобы добавить первый зал.</p>
+                    </div>
+                }
+                type="info"
                 showIcon
             />
         );
