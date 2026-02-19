@@ -1,9 +1,15 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, ParseIntPipe } from '@nestjs/common';
 import { EventsService } from './events.service';
+import { CreateEventDto } from './dto/create-event.dto';
 
 @Controller('events')
 export class EventsController {
     constructor(private readonly eventsService: EventsService) { }
+
+    @Post()
+    create(@Body() createEventDto: CreateEventDto) {
+        return this.eventsService.create(createEventDto);
+    }
 
     @Get(':id/full-structure')
     getFullStructure(@Param('id', ParseIntPipe) id: number) {

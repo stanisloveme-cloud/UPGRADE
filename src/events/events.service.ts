@@ -11,6 +11,18 @@ export class EventsService {
         });
     }
 
+    async create(data: any) {
+        return this.prisma.event.create({
+            data: {
+                name: data.name,
+                description: data.description,
+                startDate: new Date(data.startDate),
+                endDate: new Date(data.endDate),
+                status: 'draft',
+            },
+        });
+    }
+
     async findOne(id: number) {
         const event = await this.prisma.event.findUnique({ where: { id } });
         if (!event) throw new NotFoundException(`Event #${id} not found`);
