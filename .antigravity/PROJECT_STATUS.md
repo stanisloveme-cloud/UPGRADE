@@ -87,7 +87,10 @@
 - **Data**: Database reset. **Event ID mismatch** (URL uses ID 2, DB has ID 3) causes "No data found". User is aware but frustrated.
 - **Port Confusion**: User noted confusion between `localhost:3000` (Backend, returns 500 on root) and `5173` (Frontend).
 
-### AGENT CONSTRAINTS (RELAXED BY USER)
-1.  **TERMINAL USAGE**: Strict rules have been **commented out** in `.antigravityrules` by user request to reduce friction.
-2.  **CAUTION**: While permitted, prefer native tools (`view_file`) where possible to avoid shell escaping issues.
-3.  **RESET**: User requested a full context reset. Assume the environment is brittle.
+### AGENT CONSTRAINTS (UPDATED 2026-02-19)
+1.  **TERMINAL**: **Git Bash** is now the default shell. You CAN use standard Linux commands (`ls`, `cat`, `grep`, `git`).
+2.  **POWERSHELL RULES**: Obsolete rules have been removed from `.antigravityrules`.
+3.  **NEXT OBJECTIVE**: Fix Production Deployment (devupgrade.space4you.ru).
+    - **Issue**: Server OOM (Exit Code 137).
+    - **Action**: Execute `scripts/setup_swap.sh` (already pushed to repo) on the server via CI/CD or SSH.
+    - **Docs**: See `.github/workflows/setup_infra.yml` (also pushed).

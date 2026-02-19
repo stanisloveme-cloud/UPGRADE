@@ -36,7 +36,7 @@ export const BasicLayout: React.FC = () => {
                         name: 'Дашборд',
                     },
                     {
-                        path: '/events/2/program', // Updated to match existing event in DB
+                        path: '/events/1/program', // Points to the main seeded event
                         name: 'Редактор программы',
                     },
                     {

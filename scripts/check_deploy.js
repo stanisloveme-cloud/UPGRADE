@@ -49,17 +49,18 @@ async function checkDeploy() {
             console.log(`Updated At: ${run.updated_at}`);
             console.log(`URL: ${run.html_url}`);
 
-            // Also get jobs for details if failed
-            if (run.conclusion === 'failure') {
-                console.log('\n--- Failed Jobs ---');
+            // Also get jobs for details if failed or in_progress
+            if (run.conclusion === 'failure' || run.status === 'in_progress' || run.status === 'queued') {
+                console.log('\n--- Jobs Status ---');
                 const jobsUrl = run.jobs_url;
                 const jobsRes = await fetch(jobsUrl, { headers });
                 if (jobsRes.ok) {
                     const jobsData = await jobsRes.json();
                     jobsData.jobs.forEach(job => {
-                        if (job.conclusion === 'failure') {
-                            console.log(`Job: ${job.name} (Step: ${job.steps.find(s => s.conclusion === 'failure')?.name || 'Unknown'})`);
-                        }
+                        const failedStep = job.steps.find(s => s.conclusion === 'failure');
+                        const runningStep = job.steps.find(s => s.status === 'in_progress');
+                        const stepName = failedStep ? `FAILED: ${failedStep.name}` : (runningStep ? `RUNNING: ${runningStep.name}` : 'Completed');
+                        console.log(`Job: ${job.name} - Status: ${job.status} - Conclusion: ${job.conclusion}\n   Step: ${stepName}`);
                     });
                 }
             }

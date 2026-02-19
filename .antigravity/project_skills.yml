@@ -107,3 +107,16 @@ activation_policy:
 
   - trigger: "deploy_request"
     action: "infra_automator"
+
+# -----------------------------------------------------------------------------
+# SKILL 6: GITHUB DIRECT API (NATIVE)
+# -----------------------------------------------------------------------------
+- name: "github_direct_api"
+  type: "api_interaction"
+  description: "interacts with GitHub API directly using 'Antigravity IDE MCP' token from .env. Bypasses 'gh' CLI to avoid terminal lockups."
+  config:
+    token_source: "ENV: GITHUB_TOKEN"
+    method: "Node.js fetch()"
+    scripts:
+      - "scripts/trigger_swap.js"
+      - "scripts/check_deploy.js"

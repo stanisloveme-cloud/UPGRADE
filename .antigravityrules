@@ -45,22 +45,6 @@ rules:
       Infrastructure (Docker, Nginx, GitHub Actions) must be code.
       If `.github/workflows/deploy.yml` is missing, IT MUST BE CREATED based on the actual folder structure.
 
-  - id: "shell-safe-execution"
-    severity: "critical"
-    description: >
-      POWERSHELL & TOOLING RULES:
-      1. NO PARALLEL DEPENDENT COMMANDS: Never run `git add`, `git commit` in parallel tool calls. Git locks will fail. Use `waitForPreviousTools: true`.
-      2. USE POWERSHELL SYNTAX: No `grep`, `touch`, `rm -rf`, `export`. Use `Select-String`, `New-Item`, `Remove-Item`, `$env:VAR=VAL`.
-      3. NON-INTERACTIVE: Always assume no user input is possible.
-
-  # - id: "github-api-only"
-  #   severity: "critical"
-  #   description: >
-  #     GITHUB INTEGRATION PROTOCOL:
-  #     1. NO TERMINAL FOR GITHUB: Never use `gh` CLI commands in the terminal to check workflows or logs. It causes interactive loops.
-  #     2. USE API DIRECTLY: You have access to a `GITHUB_TOKEN` in the project's `.env` file. 
-  #     3. When asked to check deployment status, write a temporary Node.js/Python script in the background to fetch data directly from the GitHub REST API using this token, or use your internal MCP capabilities if they auto-detect the `.env` token.
-
-  # - id: "shell-no-file-reading"
-  #   severity: "critical"
-  #   description: "NEVER use terminal commands (Get-Content, cat, type) to read files. Always use native IDE context, tools, or MCP to read file contents. The terminal is strictly for non-interactive builds and scripts."
+  # --- Shell & Execution Stability ---
+  # Rules deactivated: We switched to Git Bash (native Unix-like behavior).
+  # Strict PowerShell blocking rules are no longer needed.

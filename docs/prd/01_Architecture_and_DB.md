@@ -246,3 +246,13 @@ erDiagram
 2. **Database:** Создай миграции на основе схемы из раздела 2.2.  
 3. **Seeding:** Напиши скрипт (seed.ts), который наполняет БД тестовыми данными, идентичными данным из анализа (Event "New Retail Forum 2025", Залы "Трансформер", "Олимпийский" и т.д.).  
 4. **Verification:** Убедись, что API GET /api/events/:id/full-structure возвращает корректный JSON, соответствующий вложенности UI.
+
+## **Login Debug (Current)**
+- **Issue**: User `vladislav` cannot login. Build failed due to missing Docker Buildx.
+- **Action**: 
+    - Reset password to `123456` in `seed.ts`.
+    - Added `docker/setup-buildx-action` to `deploy.yml`.
+- **Verification**: Check deployment logs for "User created" or "User updated". Try login with `123456`.
+
+## **5\. Security & RBAC (Proposed)**
+...

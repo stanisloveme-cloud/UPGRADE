@@ -145,7 +145,7 @@ const ProgramEditor: React.FC = () => {
     }, [data]);
 
     return (
-        <PageContainer title="New Retail Forum 2025">
+        <PageContainer title={data?.name || "Загрузка..."}>
             <div style={{ marginBottom: 16, display: 'flex', gap: 16 }}>
                 <Button
                     icon={<SettingOutlined />}

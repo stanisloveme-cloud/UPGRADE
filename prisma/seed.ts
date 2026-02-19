@@ -52,6 +52,25 @@ async function main() {
         console.log(`  ℹ️ Admin User already exists: ${adminEmail}`);
     }
 
+    // Create Vladislav User
+    const vladEmail = 'vladislav.shirobokov@gmail.com';
+    const vladPassword = '123456';
+
+    const existingVlad = await prisma.user.findUnique({ where: { username: vladEmail } });
+    if (!existingVlad) {
+        await prisma.user.create({
+            data: {
+                username: vladEmail,
+                password: vladPassword,
+                role: 'user',
+            },
+        });
+        console.log(`  ✅ User created: ${vladEmail} (Password: ${vladPassword})`);
+    } else {
+        await prisma.user.update({ where: { username: vladEmail }, data: { password: vladPassword } });
+        console.log(`  🔄 User updated: ${vladEmail} (Password reset to 123456)`);
+    }
+
     // Create Event
     const event = await prisma.event.create({
         data: {
@@ -62,7 +81,20 @@ async function main() {
             status: 'published',
         },
     });
-    console.log(`  ✅ Event: ${event.name}`);
+    console.log(`  ✅ Event 1: ${event.name} (ID: ${event.id})`);
+
+    // Create a second event to ensure ID 2 exists (if sequence wasn't reset)
+    // or just to have more data.
+    const event2 = await prisma.event.create({
+        data: {
+            name: 'Retail Tech 2026',
+            description: 'Технологии в ритейле',
+            startDate: new Date('2026-04-10'),
+            endDate: new Date('2026-04-11'),
+            status: 'draft',
+        },
+    });
+    console.log(`  ✅ Event 2: ${event2.name} (ID: ${event2.id})`);
 
     // Create Halls
     const hallsData = [
@@ -270,6 +302,12 @@ async function main() {
 
     console.log('');
     console.log('🎉 Seed complete!');
+
+    // List all users for debugging
+    const allUsers = await prisma.user.findMany();
+    console.log('--- DEBUG: CURRENT USERS ---');
+    allUsers.forEach(u => console.log(`User: ${u.username}, Role: ${u.role}, Password: ${u.password}`));
+    console.log('----------------------------');
 }
 
 main()
