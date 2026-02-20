@@ -50,14 +50,27 @@ const SessionModal: React.FC<SessionModalProps> = ({ visible, onClose, onFinish,
                     return t;
                 };
 
-                const formattedValues = {
+                const formattedValues: any = {
                     ...values,
                     startTime: formatTime(start),
                     endTime: formatTime(end),
-                    // Ensure speakerIds are numbers (if array exists)
-                    speakerIds: values.speakerIds?.map((id: any) => Number(id))
                 };
-                delete (formattedValues as any).timeRange;
+                delete formattedValues.timeRange;
+                delete formattedValues.speakerIds;
+                delete formattedValues.speakersDetails;
+
+                // Format speakers array for backend
+                if (values.speakerIds) {
+                    formattedValues.speakers = values.speakerIds.map((id: any) => {
+                        const details = values.speakersDetails?.[id] || {};
+                        return {
+                            speakerId: Number(id),
+                            role: details.role || 'speaker', // default to speaker if not set
+                            status: 'confirmed',
+                            ...details
+                        };
+                    });
+                }
 
                 console.log('SessionModal onFinish fixed values:', formattedValues);
                 return onFinish(formattedValues);
@@ -150,6 +163,20 @@ const SessionModal: React.FC<SessionModalProps> = ({ visible, onClose, onFinish,
                                     <div key={id} style={{ marginBottom: 12, paddingBottom: 12, borderBottom: '1px solid #e0e0e0' }}>
                                         <div style={{ fontWeight: 500, marginBottom: 4 }}>{speaker?.label}</div>
                                         <div style={{ display: 'flex', gap: 8 }}>
+                                            <Form.Item
+                                                name={['speakersDetails', id, 'role']}
+                                                noStyle
+                                                initialValue={initialValues?.speakers?.find((s: any) => (s.speakerId || s.id) === id)?.role || 'speaker'}
+                                            >
+                                                <ProFormSelect
+                                                    options={[
+                                                        { value: 'speaker', label: 'Спикер' },
+                                                        { value: 'moderator', label: 'Модератор' }
+                                                    ]}
+                                                    placeholder="Роль"
+                                                    fieldProps={{ style: { width: 120 } }}
+                                                />
+                                            </Form.Item>
                                             <Form.Item
                                                 name={['speakersDetails', id, 'companySnapshot']}
                                                 noStyle
