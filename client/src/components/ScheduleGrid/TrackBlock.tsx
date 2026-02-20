@@ -36,7 +36,16 @@ const TrackBlock: React.FC<TrackBlockProps> = ({ track, rowIndex, onSessionClick
             {/* Track Header */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
                 <Text strong style={{ fontSize: '12px', color: '#595959' }}>{track.name}</Text>
-                <Button type="text" size="small" icon={<EditOutlined />} onClick={() => onTrackClick?.(track)} />
+                <Button
+                    type="text"
+                    size="small"
+                    icon={<EditOutlined />}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        console.log('✏️ Track Edit clicked', track);
+                        onTrackClick?.(track);
+                    }}
+                />
             </div>
 
             {/* Sessions Container - Flex Column for simplicity within a track */}

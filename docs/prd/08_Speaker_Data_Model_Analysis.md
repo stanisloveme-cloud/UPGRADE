@@ -20,6 +20,7 @@ These fields define the unique person in the system. They rarely change, and whe
 | **Last Name** | Surname (e.g., Ivanov) | `Speaker` |
 | **Phone** | Primary mobile (Unique Identifier) | `Speaker` |
 | **Email** | Primary contact email | `Speaker` |
+| **Assistant Contact** | Secretary name and phone (independent from Gold ID) | `Speaker` |
 | **Photo** | Default headshot | `Speaker` |
 | **Bio** | General biography (default) | `Speaker` |
 
