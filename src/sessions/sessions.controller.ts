@@ -6,7 +6,7 @@ export class SessionsController {
     constructor(private readonly sessionsService: SessionsService) { }
 
     @Post()
-    create(@Body() data: { trackId: number; name: string; startTime: string; endTime: string; description?: string; speakerIds?: number[] }) {
+    create(@Body() data: { trackId: number; name: string; startTime: string; endTime: string; description?: string; speakerIds?: number[]; questions?: any[]; briefings?: any[] }) {
         return this.sessionsService.create(data);
     }
 
@@ -21,7 +21,7 @@ export class SessionsController {
     }
 
     @Patch(':id')
-    update(@Param('id', ParseIntPipe) id: number, @Body() data: Partial<{ name: string; startTime: string; endTime: string; description: string; speakerIds: number[] }>) {
+    update(@Param('id', ParseIntPipe) id: number, @Body() data: Partial<{ name: string; startTime: string; endTime: string; description: string; speakers: any[]; questions: any[]; briefings: any[] }>) {
         return this.sessionsService.update(id, data);
     }
 

@@ -5,7 +5,7 @@ import { SettingOutlined, PlusOutlined } from '@ant-design/icons';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import HallsModal from './HallsModal';
-import SessionModal from './SessionModal';
+import SessionDrawer from './SessionDrawer';
 import TrackModal from './TrackModal';
 import ScheduleGrid from '../../components/ScheduleGrid';
 
@@ -18,8 +18,8 @@ const ProgramEditor: React.FC = () => {
     const [hallsModalVisible, setHallsModalVisible] = useState(false);
     const [speakers, setSpeakers] = useState<any[]>([]);
 
-    // Session Modal State
-    const [sessionModalVisible, setSessionModalVisible] = useState(false);
+    // Session Drawer State
+    const [sessionDrawerVisible, setSessionDrawerVisible] = useState(false);
     const [currentSession, setCurrentSession] = useState<any>(null);
 
     // Track Modal State
@@ -53,12 +53,12 @@ const ProgramEditor: React.FC = () => {
 
     const handleSessionClick = (session: any) => {
         setCurrentSession(session);
-        setSessionModalVisible(true);
+        setSessionDrawerVisible(true);
     };
 
     const handleCreateSession = () => {
         setCurrentSession(null);
-        setSessionModalVisible(true);
+        setSessionDrawerVisible(true);
     };
 
     const handleEmptySlotClick = (_hallId: number, startTime: string) => {
@@ -71,7 +71,7 @@ const ProgramEditor: React.FC = () => {
             // default duration 30 min?
             endTime: startTime // User picks end time
         });
-        setSessionModalVisible(true);
+        setSessionDrawerVisible(true);
     };
 
     const handleSaveSession = async (values: any) => {
@@ -96,7 +96,7 @@ const ProgramEditor: React.FC = () => {
         try {
             await axios.delete(`/api/sessions/${sessionId}`);
             message.success('Сессия удалена');
-            setSessionModalVisible(false);
+            setSessionDrawerVisible(false);
             fetchData();
         } catch (error) {
             console.error('Failed to delete session:', error);
@@ -277,9 +277,9 @@ const ProgramEditor: React.FC = () => {
                 eventId={Number(eventId)}
             />
 
-            <SessionModal
-                visible={sessionModalVisible}
-                onClose={() => setSessionModalVisible(false)}
+            <SessionDrawer
+                visible={sessionDrawerVisible}
+                onClose={() => setSessionDrawerVisible(false)}
                 onFinish={handleSaveSession}
                 onDelete={handleDeleteSession}
                 initialValues={currentSession}

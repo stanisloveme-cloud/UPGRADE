@@ -2,7 +2,7 @@
 
 **Version:** 1.0
 
-**Status:** Ready for Dev
+**Status:** Done (Implemented with DrawerForm and ProFormList)
 
 **Dependencies:** PRD-003 (Grid is ready to trigger this form)
 
