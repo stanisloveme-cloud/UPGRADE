@@ -130,6 +130,24 @@ const ProgramEditor: React.FC = () => {
         }
     };
 
+    const handleDeleteTrack = async (trackId: number) => {
+        try {
+            await axios.delete(`/api/tracks/${trackId}`);
+            message.success('Трек удален');
+            setTrackModalVisible(false);
+            fetchData();
+        } catch (error) {
+            console.error('Failed to delete track:', error);
+            message.error('Ошибка удаления трека');
+        }
+    };
+
+    const handleTrackClick = (track: any) => {
+        setCurrentTrackHallId(track.hallId);
+        setCurrentTrack(track);
+        setTrackModalVisible(true);
+    };
+
     // Extract tracks for selection in modal
     const tracksOptions = useMemo(() => {
         if (!data?.halls) return [];
