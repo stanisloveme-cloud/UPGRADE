@@ -1,6 +1,7 @@
 import React from 'react';
 import { ModalForm, ProFormText, ProFormTextArea, ProFormTimePicker, ProFormSelect } from '@ant-design/pro-components';
-import { Button } from 'antd';
+import { Button, Form, Input } from 'antd';
+import { FileTextOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 
 interface SessionModalProps {
@@ -119,9 +120,10 @@ const SessionModal: React.FC<SessionModalProps> = ({ visible, onClose, onFinish,
                 rules={[{ required: true, message: 'Выберите трек' }]}
             />
 
+            {/* Enhanced Speaker Selection */}
             <ProFormSelect
                 name="speakerIds"
-                label="Спикеры"
+                label="Добавить спикеров"
                 mode="multiple"
                 placeholder="Выберите спикеров"
                 options={speakers}
@@ -130,6 +132,55 @@ const SessionModal: React.FC<SessionModalProps> = ({ visible, onClose, onFinish,
                     optionFilterProp: 'label',
                 }}
             />
+
+            {/* List of selected speakers with editable snapshots */}
+            <Form.Item
+                shouldUpdate={(prev, curr) => prev.speakerIds !== curr.speakerIds}
+            >
+                {({ getFieldValue }) => {
+                    const selectedIds = getFieldValue('speakerIds') || [];
+                    if (selectedIds.length === 0) return null;
+
+                    return (
+                        <div style={{ marginTop: 16, background: '#f5f5f5', padding: 12, borderRadius: 8 }}>
+                            <div style={{ fontWeight: 'bold', marginBottom: 8 }}>Детали спикеров (Snapshot):</div>
+                            {selectedIds.map((id: number) => {
+                                const speaker = speakers?.find(s => s.value === id);
+                                return (
+                                    <div key={id} style={{ marginBottom: 12, paddingBottom: 12, borderBottom: '1px solid #e0e0e0' }}>
+                                        <div style={{ fontWeight: 500, marginBottom: 4 }}>{speaker?.label}</div>
+                                        <div style={{ display: 'flex', gap: 8 }}>
+                                            <Form.Item
+                                                name={['speakersDetails', id, 'companySnapshot']}
+                                                noStyle
+                                                initialValue={initialValues?.speakers?.find((s: any) => (s.speakerId || s.id) === id)?.companySnapshot}
+                                            >
+                                                <Input placeholder="Компания (на момент события)" style={{ flex: 1 }} />
+                                            </Form.Item>
+                                            <Form.Item
+                                                name={['speakersDetails', id, 'positionSnapshot']}
+                                                noStyle
+                                                initialValue={initialValues?.speakers?.find((s: any) => (s.speakerId || s.id) === id)?.positionSnapshot}
+                                            >
+                                                <Input placeholder="Должность" style={{ flex: 1 }} />
+                                            </Form.Item>
+                                        </div>
+                                        <div style={{ marginTop: 8 }}>
+                                            <Form.Item
+                                                name={['speakersDetails', id, 'presentationTitle']}
+                                                noStyle
+                                                initialValue={initialValues?.speakers?.find((s: any) => (s.speakerId || s.id) === id)?.presentationTitle}
+                                            >
+                                                <Input placeholder="Тема выступления / Презентация" prefix={<FileTextOutlined style={{ color: '#aaa' }} />} />
+                                            </Form.Item>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    );
+                }}
+            </Form.Item>
         </ModalForm>
     );
 };

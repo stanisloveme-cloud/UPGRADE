@@ -53,6 +53,7 @@ model Event {
   createdAt   DateTime    @default(now()) @map("created_at")
 
   halls Hall[]
+  ratings SpeakerRating[]
 
   @@map("events")
 }
@@ -120,6 +121,7 @@ model Speaker {
 
   sessions         SessionSpeaker[]
   moderatedBriefings Briefing[]
+  ratings          SpeakerRating[]
 
   @@map("speakers")
 }
@@ -142,8 +144,29 @@ model SessionSpeaker {
   session Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
   speaker Speaker @relation(fields: [speakerId], references: [id], onDelete: Cascade)
 
+  // Snapshots for historical accuracy
+  companySnapshot   String? @map("company_snapshot") @db.VarChar(255)
+  positionSnapshot  String? @map("position_snapshot") @db.VarChar(255)
+  presentationTitle String? @map("presentation_title") @db.VarChar(255)
+  presentationUrl   String? @map("presentation_url") @db.VarChar(512)
+
   @@unique([sessionId, speakerId])
   @@map("session_speakers")
+}
+
+model SpeakerRating {
+  id        Int      @id @default(autoincrement())
+  speakerId Int      @map("speaker_id")
+  eventId   Int      @map("event_id")
+  score     Int      @default(0) // 1-5
+  comment   String?  @db.Text
+  ratedBy   Int?     @map("rated_by") // User ID
+  createdAt DateTime @default(now()) @map("created_at")
+
+  speaker Speaker @relation(fields: [speakerId], references: [id], onDelete: Cascade)
+  event   Event   @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@map("speaker_ratings")
 }
 
 model SessionQuestion {

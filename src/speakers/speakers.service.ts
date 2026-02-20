@@ -16,7 +16,11 @@ export class SpeakersService {
     async findOne(id: number) {
         const speaker = await this.prisma.speaker.findUnique({
             where: { id },
-            include: { sessions: { include: { session: true } } },
+            include: {
+                sessions: { include: { session: true } },
+                // @ts-ignore
+                ratings: { include: { event: true }, orderBy: { createdAt: 'desc' } }
+            },
         });
         if (!speaker) throw new NotFoundException(`Speaker #${id} not found`);
         return speaker;

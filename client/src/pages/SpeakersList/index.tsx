@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
 import { Table, Button, Space, message, Input, Popconfirm } from 'antd';
-import { PlusOutlined, EditOutlined, DeleteOutlined, SearchOutlined } from '@ant-design/icons';
+import { PlusOutlined, EditOutlined, DeleteOutlined, SearchOutlined, HistoryOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import SpeakerModal from './SpeakerModal';
+import SpeakerHistory from './SpeakerHistory';
 
 const SpeakersList: React.FC = () => {
     const [speakers, setSpeakers] = useState<any[]>([]);
@@ -11,6 +12,13 @@ const SpeakersList: React.FC = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [currentSpeaker, setCurrentSpeaker] = useState<any>(null);
     const [searchText, setSearchText] = useState('');
+    const [historyVisible, setHistoryVisible] = useState(false);
+    const [currentHistoryId, setCurrentHistoryId] = useState<number | null>(null);
+
+    const handleShowHistory = (id: number) => {
+        setCurrentHistoryId(id);
+        setHistoryVisible(true);
+    };
 
     const fetchSpeakers = async () => {
         try {
@@ -115,6 +123,12 @@ const SpeakersList: React.FC = () => {
                         icon={<EditOutlined />}
                         onClick={() => handleEdit(record)}
                     />
+                    <Button
+                        type="text"
+                        icon={<HistoryOutlined />}
+                        title="История"
+                        onClick={() => handleShowHistory(record.id)}
+                    />
                     <Popconfirm
                         title="Удалить спикера?"
                         onConfirm={() => handleDelete(record.id)}
@@ -160,6 +174,12 @@ const SpeakersList: React.FC = () => {
                 onClose={() => setModalVisible(false)}
                 onFinish={handleSave}
                 initialValues={currentSpeaker}
+            />
+
+            <SpeakerHistory
+                speakerId={currentHistoryId}
+                visible={historyVisible}
+                onClose={() => setHistoryVisible(false)}
             />
         </PageContainer>
     );

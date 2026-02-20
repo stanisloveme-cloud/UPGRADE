@@ -43,29 +43,37 @@ export class SessionsService {
         return session;
     }
 
-    async update(id: number, data: Partial<{ name: string; startTime: string; endTime: string; description: string; speakerIds: number[] }>) {
-        const { speakerIds, ...sessionData } = data;
+    async update(id: number, data: Partial<{ name: string; startTime: string; endTime: string; description: string; speakers: any[] }>) {
+        const { speakers, ...sessionData } = data;
 
-        if (speakerIds) {
+        if (speakers) {
             // Replace speakers: delete existing and create new
             // Use transaction to ensure consistency
             return this.prisma.$transaction(async (prisma) => {
                 // Delete existing links
                 await prisma.sessionSpeaker.deleteMany({ where: { sessionId: id } });
 
-                // Update session and create new links
-                return prisma.session.update({
+                // Update session and create new links with snapshots
+                // We map through the speakers array which now contains { speakerId, companySnapshot, etc. }
+                await prisma.session.update({
                     where: { id },
                     data: {
                         ...sessionData,
                         speakers: {
-                            create: speakerIds.map(val => ({
-                                speaker: { connect: { id: val } },
+                            create: speakers.map(s => ({
+                                speaker: { connect: { id: s.speakerId } },
                                 role: 'speaker',
-                                status: 'confirmed'
+                                status: 'confirmed',
+                                companySnapshot: s.companySnapshot,
+                                positionSnapshot: s.positionSnapshot,
+                                presentationTitle: s.presentationTitle
                             }))
                         }
-                    },
+                    }
+                });
+
+                return prisma.session.findUnique({
+                    where: { id },
                     include: { speakers: { include: { speaker: true } } }
                 });
             });
