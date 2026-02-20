@@ -9,11 +9,12 @@ const { Text } = Typography;
 interface TrackBlockProps {
     track: any;
     rowIndex: number;
+    filters?: any;
     onSessionClick?: (session: any) => void;
     onTrackClick?: (track: any) => void;
 }
 
-const TrackBlock: React.FC<TrackBlockProps> = ({ track, rowIndex, onSessionClick, onTrackClick }) => {
+const TrackBlock: React.FC<TrackBlockProps> = ({ track, rowIndex, filters, onSessionClick, onTrackClick }) => {
     const colStart = timeToGridColumn(track.startTime);
     const colSpan = durationToGridSpan(track.startTime, track.endTime);
 
@@ -49,15 +50,18 @@ const TrackBlock: React.FC<TrackBlockProps> = ({ track, rowIndex, onSessionClick
             </div>
 
             {/* Sessions Container - Flex Column for simplicity within a track */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
-                {track.sessions?.map((session: any) => (
-                    <SessionCard
-                        key={session.id}
-                        session={session}
-                        onClick={() => onSessionClick?.(session)}
-                    />
-                ))}
-            </div>
+            {!filters?.hideSessions && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
+                    {track.sessions?.map((session: any) => (
+                        <SessionCard
+                            key={session.id}
+                            session={session}
+                            filters={filters}
+                            onClick={() => onSessionClick?.(session)}
+                        />
+                    ))}
+                </div>
+            )}
         </div>
     );
 };

@@ -4,24 +4,16 @@ import { UserOutlined } from '@ant-design/icons';
 
 const { Text } = Typography;
 
-interface Session {
-    id: number;
-    name: string;
-    description?: string;
-    start_time: string;
-    end_time: string;
-    speakers?: { id: number; role: string; speaker: { first_name: string; last_name: string } }[];
-}
-
 interface SessionCardProps {
-    session: Session;
+    session: any;
+    filters?: any;
     onClick?: () => void;
 }
 
-const SessionCard: React.FC<SessionCardProps> = ({ session, onClick }) => {
+const SessionCard: React.FC<SessionCardProps> = ({ session, filters, onClick }) => {
     // Mock counts for badges until backend provides aggregated counts
-    const moderatorsCount = session.speakers?.filter(s => s.role === 'moderator').length || 0;
-    const speakersCount = session.speakers?.filter(s => s.role === 'speaker').length || 0;
+    const moderatorsCount = session.speakers?.filter((s: any) => s.role === 'moderator').length || 0;
+    const speakersCount = session.speakers?.filter((s: any) => s.role === 'speaker').length || 0;
 
     return (
         <Card
@@ -51,18 +43,27 @@ const SessionCard: React.FC<SessionCardProps> = ({ session, onClick }) => {
                 </Text>
             </div>
 
-            <Space size={4} style={{ marginTop: 'auto' }}>
-                {moderatorsCount > 0 && (
-                    <Badge count={moderatorsCount} style={{ backgroundColor: '#722ed1' }} showZero={false}>
-                        <UserOutlined style={{ color: '#722ed1', fontSize: '14px', marginRight: 4 }} />
-                    </Badge>
-                )}
-                {speakersCount > 0 && (
-                    <Badge count={speakersCount} style={{ backgroundColor: '#52c41a' }} showZero={false}>
-                        <UserOutlined style={{ color: '#52c41a', fontSize: '14px', marginRight: 4 }} />
-                    </Badge>
-                )}
-            </Space>
+            {!filters?.hideSpeakers && (
+                <Space size={4} style={{ marginTop: 'auto' }}>
+                    {moderatorsCount > 0 && (
+                        <Badge count={moderatorsCount} style={{ backgroundColor: '#722ed1' }} showZero={false}>
+                            <UserOutlined style={{ color: '#722ed1', fontSize: '14px', marginRight: 4 }} />
+                        </Badge>
+                    )}
+                    {speakersCount > 0 && (
+                        <Badge count={speakersCount} style={{ backgroundColor: '#52c41a' }} showZero={false}>
+                            <UserOutlined style={{ color: '#52c41a', fontSize: '14px', marginRight: 4 }} />
+                        </Badge>
+                    )}
+                </Space>
+            )}
+
+            {filters?.showPresenceStatus && (
+                <div style={{ marginTop: '8px', fontSize: '11px', color: '#52c41a', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <div style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: '#52c41a' }} />
+                    Все спикеры на площадке
+                </div>
+            )}
         </Card>
     );
 };

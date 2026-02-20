@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
-import { Button, message } from 'antd';
+import { Button, message, Tabs, Checkbox } from 'antd';
 import { SettingOutlined, PlusOutlined } from '@ant-design/icons';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -148,6 +148,49 @@ const ProgramEditor: React.FC = () => {
         setTrackModalVisible(true);
     };
 
+    const [selectedDay, setSelectedDay] = useState<string | undefined>(undefined);
+    const [gridFilters, setGridFilters] = useState({
+        hideSessions: false, // Not implemented fully yet
+        hideSpeakers: false,
+        showPresenceStatus: false
+    });
+
+    const availableDays = useMemo(() => {
+        if (!data?.halls) return [];
+        const days = new Set<string>();
+        data.halls.forEach((hall: any) => {
+            hall.tracks?.forEach((track: any) => {
+                if (track.day) {
+                    const dateStr = new Date(track.day).toISOString().split('T')[0];
+                    days.add(dateStr);
+                }
+            });
+        });
+        return Array.from(days).sort();
+    }, [data]);
+
+    useEffect(() => {
+        if (availableDays.length > 0 && (!selectedDay || !availableDays.includes(selectedDay))) {
+            setSelectedDay(availableDays[0]);
+        }
+    }, [availableDays, selectedDay]);
+
+    const filteredData = useMemo(() => {
+        if (!data) return null;
+        if (!selectedDay) return data;
+
+        const halls = data.halls.map((hall: any) => ({
+            ...hall,
+            tracks: hall.tracks?.filter((track: any) => {
+                if (!track.day) return true;
+                const dateStr = new Date(track.day).toISOString().split('T')[0];
+                return dateStr === selectedDay;
+            })
+        }));
+
+        return { ...data, halls };
+    }, [data, selectedDay]);
+
     // Extract tracks for selection in modal
     const tracksOptions = useMemo(() => {
         if (!data?.halls) return [];
@@ -165,25 +208,60 @@ const ProgramEditor: React.FC = () => {
 
     return (
         <PageContainer title={data?.name || "Загрузка..."}>
-            <div style={{ marginBottom: 16, display: 'flex', gap: 16 }}>
-                <Button
-                    icon={<SettingOutlined />}
-                    onClick={() => setHallsModalVisible(true)}
-                >
-                    Управление залами
-                </Button>
-                <Button
-                    type="primary"
-                    icon={<PlusOutlined />}
-                    onClick={handleCreateSession}
-                >
-                    Создать сессию
-                </Button>
+            <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ display: 'flex', gap: 16 }}>
+                    <Button
+                        icon={<SettingOutlined />}
+                        onClick={() => setHallsModalVisible(true)}
+                    >
+                        Управление залами
+                    </Button>
+                    <Button
+                        type="primary"
+                        icon={<PlusOutlined />}
+                        onClick={handleCreateSession}
+                    >
+                        Создать сессию
+                    </Button>
+                </div>
+            </div>
+
+            <div style={{ marginBottom: 16, background: '#fff', padding: '12px 24px', borderRadius: 8, display: 'flex', flexDirection: 'column', gap: 16 }}>
+                <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+                    <Checkbox
+                        checked={gridFilters.hideSessions}
+                        onChange={(e: any) => setGridFilters(prev => ({ ...prev, hideSessions: e.target.checked }))}>
+                        Скрыть сессии
+                    </Checkbox>
+                    <Checkbox
+                        checked={gridFilters.hideSpeakers}
+                        onChange={(e: any) => setGridFilters(prev => ({ ...prev, hideSpeakers: e.target.checked }))}>
+                        Скрыть бейджи спикеров
+                    </Checkbox>
+                    <Checkbox
+                        checked={gridFilters.showPresenceStatus}
+                        onChange={(e: any) => setGridFilters(prev => ({ ...prev, showPresenceStatus: e.target.checked }))}>
+                        Показать статусы присутствия
+                    </Checkbox>
+                </div>
+
+                {availableDays.length > 0 && (
+                    <Tabs
+                        activeKey={selectedDay}
+                        onChange={setSelectedDay}
+                        items={availableDays.map(day => ({
+                            key: day,
+                            label: new Date(day).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' })
+                        }))}
+                        style={{ marginBottom: -16 }} // Reduce gap to grid
+                    />
+                )}
             </div>
 
             <ScheduleGrid
-                data={data}
+                data={filteredData}
                 loading={loading}
+                filters={gridFilters}
                 onSessionClick={handleSessionClick}
                 onEmptySlotClick={handleEmptySlotClick}
                 onAddTrack={handleAddTrack}

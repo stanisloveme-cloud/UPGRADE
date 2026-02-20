@@ -7,13 +7,14 @@ import { generateTimeSlots } from './utils';
 interface ScheduleGridProps {
     data: any;
     loading: boolean;
+    filters?: any;
     onSessionClick?: (session: any) => void;
     onTrackClick?: (track: any) => void;
     onEmptySlotClick?: (hallId: number, startTime: string) => void;
     onAddTrack?: (hallId: number) => void;
 }
 
-const ScheduleGrid: React.FC<ScheduleGridProps> = ({ data, loading, onSessionClick, onEmptySlotClick, onAddTrack, onTrackClick }) => {
+const ScheduleGrid: React.FC<ScheduleGridProps> = ({ data, loading, filters, onSessionClick, onEmptySlotClick, onAddTrack, onTrackClick }) => {
     console.log('[ScheduleGrid] Data received:', data);
     if (loading) return <div style={{ padding: 24, textAlign: 'center' }}><Spin size="large" /></div>;
 
@@ -61,6 +62,7 @@ const ScheduleGrid: React.FC<ScheduleGridProps> = ({ data, loading, onSessionCli
                     key={hall.id}
                     hall={hall}
                     rowIndex={index}
+                    filters={filters}
                     onSessionClick={onSessionClick}
                     onTrackClick={onTrackClick}
                     onEmptySlotClick={onEmptySlotClick}
