@@ -169,6 +169,7 @@ const ProgramEditor: React.FC = () => {
                 onSessionClick={handleSessionClick}
                 onEmptySlotClick={handleEmptySlotClick}
                 onAddTrack={handleAddTrack}
+                onTrackClick={handleTrackClick}
             />
 
             <HallsModal
@@ -197,6 +198,7 @@ const ProgramEditor: React.FC = () => {
                 visible={trackModalVisible}
                 onClose={() => setTrackModalVisible(false)}
                 onFinish={handleSaveTrack}
+                onDelete={handleDeleteTrack}
                 initialValues={currentTrack}
                 hallId={currentTrackHallId}
                 eventId={Number(eventId)}

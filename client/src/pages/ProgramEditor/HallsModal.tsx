@@ -44,16 +44,7 @@ const HallsModal: React.FC<HallsModalProps> = ({ visible, onClose, eventId }) =>
                 ...toUpdate.map((h: any) => axios.patch(`/api/halls/${h.id}`, h)),
                 ...toCreate.map(async (h: any) => {
                     const res = await axios.post('/api/halls', { ...h, eventId: eventId });
-                    const newHall = res.data;
-                    // Auto-create default track
-                    await axios.post('/api/tracks', {
-                        hallId: newHall.id,
-                        name: 'Основной поток',
-                        day: '2025-10-21T00:00:00.000Z',
-                        startTime: '09:00',
-                        endTime: '18:00'
-                    });
-                    return newHall;
+                    return res.data;
                 })
             ]);
 

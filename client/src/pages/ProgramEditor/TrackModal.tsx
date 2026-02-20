@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react';
 import { ModalForm, ProFormText, ProFormTimePicker } from '@ant-design/pro-components';
-import { Form } from 'antd';
+import { Form, Button } from 'antd';
 
 
 interface TrackModalProps {
     visible: boolean;
     onClose: () => void;
     onFinish: (values: any) => Promise<boolean>;
+    onDelete?: (id: number) => void;
     initialValues?: any;
     hallId?: number;
     eventId: number;
 }
 
-const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, initialValues, hallId }) => {
+const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onDelete, initialValues, hallId }) => {
     const [form] = Form.useForm();
 
     useEffect(() => {
@@ -49,6 +50,31 @@ const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, ini
             }}
             form={form}
             modalProps={{ destroyOnClose: true }}
+            submitter={{
+                searchConfig: {
+                    submitText: 'Сохранить',
+                    resetText: 'Отмена',
+                },
+                render: (_props, dom) => {
+                    return [
+                        initialValues?.id && onDelete && (
+                            <Button
+                                key="delete"
+                                type="primary"
+                                danger
+                                onClick={() => {
+                                    if (window.confirm('Вы уверены, что хотите удалить этот трек? (Внимание: будут удалены все сессии в этом треке!)')) {
+                                        onDelete(initialValues.id);
+                                    }
+                                }}
+                            >
+                                Удалить
+                            </Button>
+                        ),
+                        ...dom
+                    ];
+                },
+            }}
         >
             <ProFormText
                 name="name"

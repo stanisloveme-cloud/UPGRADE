@@ -7,11 +7,12 @@ interface HallRowProps {
     hall: any;
     rowIndex: number;
     onSessionClick?: (session: any) => void;
+    onTrackClick?: (track: any) => void;
     onEmptySlotClick?: (hallId: number, startTime: string) => void;
     onAddTrack?: (hallId: number) => void;
 }
 
-const HallRow: React.FC<HallRowProps> = ({ hall, rowIndex, onSessionClick, onEmptySlotClick, onAddTrack }) => {
+const HallRow: React.FC<HallRowProps> = ({ hall, rowIndex, onSessionClick, onEmptySlotClick, onAddTrack, onTrackClick }) => {
     // Grid Row Index: +2 because Row 1 is Time header.
     const gridRow = rowIndex + 2;
     const timeSlots = generateTimeSlots();
@@ -63,7 +64,7 @@ const HallRow: React.FC<HallRowProps> = ({ hall, rowIndex, onSessionClick, onEmp
                 <div key={track.id} style={{
                     display: 'contents', // Remove gridRow from here as it's passed to component
                 }}>
-                    <TrackBlock track={track} rowIndex={gridRow} onSessionClick={onSessionClick} />
+                    <TrackBlock track={track} rowIndex={gridRow} onSessionClick={onSessionClick} onTrackClick={onTrackClick} />
                 </div>
             ))}
         </>

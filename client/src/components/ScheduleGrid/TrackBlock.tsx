@@ -10,9 +10,10 @@ interface TrackBlockProps {
     track: any;
     rowIndex: number;
     onSessionClick?: (session: any) => void;
+    onTrackClick?: (track: any) => void;
 }
 
-const TrackBlock: React.FC<TrackBlockProps> = ({ track, rowIndex, onSessionClick }) => {
+const TrackBlock: React.FC<TrackBlockProps> = ({ track, rowIndex, onSessionClick, onTrackClick }) => {
     const colStart = timeToGridColumn(track.startTime);
     const colSpan = durationToGridSpan(track.startTime, track.endTime);
 
@@ -35,7 +36,7 @@ const TrackBlock: React.FC<TrackBlockProps> = ({ track, rowIndex, onSessionClick
             {/* Track Header */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
                 <Text strong style={{ fontSize: '12px', color: '#595959' }}>{track.name}</Text>
-                <Button type="text" size="small" icon={<EditOutlined />} />
+                <Button type="text" size="small" icon={<EditOutlined />} onClick={() => onTrackClick?.(track)} />
             </div>
 
             {/* Sessions Container - Flex Column for simplicity within a track */}
