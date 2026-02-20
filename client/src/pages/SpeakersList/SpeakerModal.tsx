@@ -118,14 +118,73 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                     <Input.TextArea rows={3} placeholder="Краткая биография" />
                 </Form.Item>
 
+                {/* Assistant Block - Visually Separated */}
+                <div style={{ marginTop: 24, padding: 16, background: '#fafafa', borderRadius: 8, border: '1px solid #f0f0f0' }}>
+                    <Form.Item
+                        name="hasAssistant"
+                        valuePropName="checked"
+                        style={{ marginBottom: 0 }}
+                    >
+                        <Form.Item
+                            name="hasAssistant"
+                            valuePropName="checked"
+                            noStyle
+                        >
+                            <label style={{ cursor: 'pointer', fontWeight: 500, display: 'flex', alignItems: 'center' }}>
+                                <input
+                                    type="checkbox"
+                                    style={{ marginRight: 8, cursor: 'pointer' }}
+                                    onChange={(e) => {
+                                        // Trigger re-render by setting the field value explicitly
+                                        form.setFieldsValue({ hasAssistant: e.target.checked });
+                                    }}
+                                    checked={form.getFieldValue('hasAssistant')}
+                                />
+                                Связь через секретаря
+                            </label>
+                        </Form.Item>
+                    </Form.Item>
+
+                    <Form.Item
+                        shouldUpdate={(prevValues, currentValues) => prevValues.hasAssistant !== currentValues.hasAssistant}
+                        noStyle
+                    >
+                        {({ getFieldValue }) =>
+                            getFieldValue('hasAssistant') ? (
+                                <div style={{ display: 'flex', gap: 16, marginTop: 16 }}>
+                                    <Form.Item
+                                        name="assistantName"
+                                        label="Имя секретаря"
+                                        style={{ flex: 1, marginBottom: 0 }}
+                                        rules={[{ required: true, message: 'Обязательное поле' }]}
+                                    >
+                                        <Input placeholder="Имя" />
+                                    </Form.Item>
+                                    <Form.Item
+                                        name="assistantContact"
+                                        label="Телефон/контакт секретаря"
+                                        style={{ flex: 1, marginBottom: 0 }}
+                                        rules={[{ required: true, message: 'Обязательное поле' }]}
+                                    >
+                                        <Input placeholder="Телефон или Telegram" />
+                                    </Form.Item>
+                                </div>
+                            ) : null
+                        }
+                    </Form.Item>
+                </div>
+
                 <Form.Item
                     name="internalComment"
                     label="Внутренний комментарий"
+                    style={{ marginTop: 24 }}
                 >
                     <Input.TextArea rows={2} placeholder="Заметки для команды" />
                 </Form.Item>
-            </Form>
-        </Modal>
+                <Input.TextArea rows={2} placeholder="Заметки для команды" />
+            </Form.Item>
+        </Form>
+        </Modal >
     );
 };
 

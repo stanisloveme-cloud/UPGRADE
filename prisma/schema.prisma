@@ -119,6 +119,11 @@ model Speaker {
   bio             String? @db.Text
   internalComment String? @map("internal_comment") @db.Text
 
+  // Assistant/Secretary Contact (Not part of Gold ID)
+  hasAssistant     Boolean @default(false) @map("has_assistant")
+  assistantName    String? @map("assistant_name") @db.VarChar(100)
+  assistantContact String? @map("assistant_contact") @db.VarChar(255)
+
   sessions         SessionSpeaker[]
   moderatedBriefings Briefing[]
   ratings          SpeakerRating[]
