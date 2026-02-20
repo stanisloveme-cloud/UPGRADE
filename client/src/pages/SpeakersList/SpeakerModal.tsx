@@ -181,9 +181,7 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                 >
                     <Input.TextArea rows={2} placeholder="Заметки для команды" />
                 </Form.Item>
-                <Input.TextArea rows={2} placeholder="Заметки для команды" />
-            </Form.Item>
-        </Form>
+            </Form>
         </Modal >
     );
 };
