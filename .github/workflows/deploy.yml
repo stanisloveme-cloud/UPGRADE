@@ -98,15 +98,9 @@ jobs:
             
             $DC_CMD -f docker-compose.prod.yml down
             $DC_CMD -f docker-compose.prod.yml up -d
-            
-            # Run database migrations
-            echo "=== RUNNING MIGRATIONS ==="
-            sleep 10
-            $DC_CMD -f docker-compose.prod.yml exec -T app npx prisma migrate deploy
-            
-            # Run database seeding
-            echo "=== RUNNING SEEDING ==="
-            $DC_CMD -f docker-compose.prod.yml exec -T app npx prisma db seed
+
+            # NOTE: Migrations run automatically inside NestJS on startup (PrismaService.onModuleInit)
+            # No need to docker compose exec separately — that was causing exit 137 (SIGKILL)
 
             # Prune unused images
             docker image prune -f
