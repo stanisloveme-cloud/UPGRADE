@@ -11,13 +11,13 @@ RUN npm run build
 # Stage 2: Runtime
 FROM node:20-slim
 WORKDIR /app
-# Add non-root user
+COPY package*.json ./
+COPY prisma ./prisma/
+# Install production deps as root, then switch to non-root user
+RUN npm ci --omit=dev && npx prisma generate
+COPY --from=builder /app/dist ./dist
+# Switch to non-root for runtime security
 USER node
-COPY --chown=node:node package*.json ./
-COPY --chown=node:node prisma ./prisma/
-RUN npm ci --omit=dev
-COPY --chown=node:node --from=builder /app/dist ./dist
-RUN npx prisma generate
 
 EXPOSE 3000
 CMD ["node", "dist/src/main"]
