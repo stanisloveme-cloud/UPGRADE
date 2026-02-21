@@ -1,13 +1,15 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { CreateTrackDto } from './dto/create-track.dto';
+import { UpdateTrackDto } from './dto/update-track.dto';
 
 @Injectable()
 export class TracksService {
     constructor(private readonly prisma: PrismaService) { }
 
-    create(data: { hallId: number; name: string; day: string; startTime: string; endTime: string; sortOrder?: number }) {
+    create(createTrackDto: CreateTrackDto) {
         return this.prisma.track.create({
-            data: { ...data, day: new Date(data.day) },
+            data: { ...createTrackDto, day: new Date(createTrackDto.day) },
         });
     }
 
@@ -21,8 +23,8 @@ export class TracksService {
         return track;
     }
 
-    update(id: number, data: Partial<{ name: string; startTime: string; endTime: string }>) {
-        return this.prisma.track.update({ where: { id }, data });
+    update(id: number, updateTrackDto: UpdateTrackDto) {
+        return this.prisma.track.update({ where: { id }, data: updateTrackDto });
     }
 
     remove(id: number) {

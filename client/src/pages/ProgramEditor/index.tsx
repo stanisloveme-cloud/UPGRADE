@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
-import { Button, message, Tabs, Checkbox } from 'antd';
-import { SettingOutlined, PlusOutlined } from '@ant-design/icons';
+import { Button, message, Tabs, Checkbox, Modal } from 'antd';
+import { SettingOutlined, PlusOutlined, DownloadOutlined } from '@ant-design/icons';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import HallsModal from './HallsModal';
@@ -83,9 +83,22 @@ const ProgramEditor: React.FC = () => {
                 await axios.post('/api/sessions', values);
                 message.success('Сессия создана');
             }
+            setSessionDrawerVisible(false); // Manually close in case it's called from Modal
             fetchData(); // Refresh grid
             return true;
-        } catch (error) {
+        } catch (error: any) {
+            if (error.response?.status === 409) {
+                Modal.confirm({
+                    title: 'Конфликт расписания',
+                    content: error.response.data.message || 'Один из спикеров уже занят в это время. Сохранить все равно?',
+                    okText: 'Да, сохранить',
+                    cancelText: 'Отмена',
+                    onOk: () => {
+                        handleSaveSession({ ...values, ignoreConflicts: true });
+                    }
+                });
+                return false; // Leave drawer open until confirmed
+            }
             console.error('Failed to save session:', error);
             message.error('Ошибка сохранения');
             return false;
@@ -215,6 +228,12 @@ const ProgramEditor: React.FC = () => {
                         onClick={() => setHallsModalVisible(true)}
                     >
                         Управление залами
+                    </Button>
+                    <Button
+                        icon={<DownloadOutlined />}
+                        onClick={() => window.open(`/api/exports/schedule/${eventId}`, '_blank')}
+                    >
+                        Экспорт в Excel
                     </Button>
                     <Button
                         type="primary"

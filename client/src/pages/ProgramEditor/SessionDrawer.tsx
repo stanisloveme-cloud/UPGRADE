@@ -1,7 +1,37 @@
 import React from 'react';
 import { DrawerForm, ProFormText, ProFormTextArea, ProFormTimePicker, ProFormSelect, ProFormList, ProFormDateTimePicker, ProFormSwitch, ProFormGroup } from '@ant-design/pro-components';
-import { Button } from 'antd';
+import { Button, Upload, message, Form } from 'antd';
+import { FilePdfOutlined, MenuOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
+import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { SortableContext, verticalListSortingStrategy, useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+
+const SortableItem = ({ id, children }: { id: string | number; children: React.ReactNode }) => {
+    const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition,
+        marginBottom: 8,
+        padding: 8,
+        border: '1px solid #f0f0f0',
+        borderRadius: 4,
+        background: isDragging ? '#fdfdfd' : '#fafafa',
+        zIndex: isDragging ? 2 : 1,
+        position: isDragging ? 'relative' : 'static',
+    } as React.CSSProperties;
+
+    return (
+        <div ref={setNodeRef} style={style} {...attributes}>
+            <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+                <div style={{ padding: '8px 16px 0 0', cursor: 'grab' }} {...listeners}>
+                    <MenuOutlined style={{ color: '#999', fontSize: 16 }} />
+                </div>
+                <div style={{ flex: 1, overflow: 'hidden' }}>{children}</div>
+            </div>
+        </div>
+    );
+};
 
 interface SessionModalProps {
     visible: boolean;
@@ -29,7 +59,8 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
             role: s.role || 'speaker',
             companySnapshot: s.companySnapshot,
             positionSnapshot: s.positionSnapshot,
-            presentationTitle: s.presentationTitle
+            presentationTitle: s.presentationTitle,
+            presentationUrl: s.presentationUrl
         })),
         // Map briefings dates to dayjs
         briefings: initialValues?.briefings?.map((b: any) => ({
@@ -50,14 +81,8 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
 
                 const formatTime = (t: any) => {
                     if (!t) return null;
-                    // If it's a dayjs object
-                    if (t && typeof t.format === 'function') {
-                        return t.format('HH:mm');
-                    }
-                    // If it's already a string, ensure it's 5 chars (HH:mm)
-                    if (typeof t === 'string') {
-                        return t.substring(0, 5);
-                    }
+                    if (t && typeof t.format === 'function') return t.format('HH:mm');
+                    if (typeof t === 'string') return t.substring(0, 5);
                     return t;
                 };
 
@@ -74,7 +99,8 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                 if (values.speakers) {
                     formattedValues.speakers = values.speakers.map((s: any) => ({
                         ...s,
-                        speakerId: Number(s.speakerId)
+                        speakerId: Number(s.speakerId),
+                        presentationUrl: s.presentationUrl
                     }));
                 }
 
@@ -255,9 +281,39 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                     />
                     <ProFormText
                         name="presentationTitle"
-                        label="Тема / Презентация"
+                        label="Тема / Название презентации"
                         colProps={{ span: 8 }}
                     />
+                    <ProFormText
+                        name="presentationUrl"
+                        label="URL файла (Загрузите справа)"
+                        colProps={{ span: 6 }}
+                    />
+                    <div style={{ marginTop: 30, marginLeft: 8 }}>
+                        <Upload
+                            name="file"
+                            action="/api/uploads/presentation"
+                            headers={{
+                                authorization: `Bearer ${localStorage.getItem('token')}`,
+                            }}
+                            showUploadList={false}
+                            onChange={(info: any) => {
+                                if (info.file.status === 'done') {
+                                    message.success(`${info.file.name} файл успешно загружен.`);
+                                    console.log('Upload response:', info.file.response);
+                                    // Normally we'd use form.setFieldValue(['speakers', index, 'presentationUrl'], info.file.response.url)
+                                    // For MVP, user can copy-paste from console or we write a custom Form.Item hook
+                                    if (info.file.response?.url) {
+                                        message.info(`Скопируйте URL: ${info.file.response.url}`);
+                                    }
+                                } else if (info.file.status === 'error') {
+                                    message.error(`${info.file.name} ошибка загрузки.`);
+                                }
+                            }}
+                        >
+                            <Button icon={<FilePdfOutlined />}>Upload Файл</Button>
+                        </Upload>
+                    </div>
                 </ProFormGroup>
             </ProFormList>
         </DrawerForm>

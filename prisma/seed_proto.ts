@@ -66,16 +66,6 @@ async function main() {
         }
     });
 
-    // 3. Rate him for 2024
-    await prisma.speakerRating.create({
-        data: {
-            speakerId: ivan.id,
-            eventId: event2024.id,
-            score: 4,
-            comment: 'Good technical content, slightly nervous.',
-        }
-    });
-
     // 4. Create Event 2025 (Future/Current)
     const event2025 = await prisma.event.create({
         data: {
@@ -113,16 +103,6 @@ async function main() {
                     }
                 }
             }
-        }
-    });
-
-    // 5. Rate him for 2025 (Mocking post-event rating)
-    await prisma.speakerRating.create({
-        data: {
-            speakerId: ivan.id,
-            eventId: event2025.id,
-            score: 5,
-            comment: 'Excellent improvement! Verify engaging.',
         }
     });
 

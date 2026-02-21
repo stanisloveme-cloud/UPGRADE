@@ -1,13 +1,15 @@
 import { Controller, Get, Post, Patch, Delete, Body, Param, ParseIntPipe } from '@nestjs/common';
 import { SpeakersService } from './speakers.service';
+import { CreateSpeakerDto } from './dto/create-speaker.dto';
+import { UpdateSpeakerDto } from './dto/update-speaker.dto';
 
 @Controller('speakers')
 export class SpeakersController {
     constructor(private readonly speakersService: SpeakersService) { }
 
     @Post()
-    create(@Body() data: any) {
-        return this.speakersService.create(data);
+    create(@Body() createSpeakerDto: CreateSpeakerDto) {
+        return this.speakersService.create(createSpeakerDto);
     }
 
     @Get()
@@ -21,8 +23,8 @@ export class SpeakersController {
     }
 
     @Patch(':id')
-    update(@Param('id', ParseIntPipe) id: number, @Body() data: any) {
-        return this.speakersService.update(id, data);
+    update(@Param('id', ParseIntPipe) id: number, @Body() updateSpeakerDto: UpdateSpeakerDto) {
+        return this.speakersService.update(id, updateSpeakerDto);
     }
 
     @Delete(':id')

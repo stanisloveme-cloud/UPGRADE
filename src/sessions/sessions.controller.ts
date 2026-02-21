@@ -1,13 +1,15 @@
 import { Controller, Get, Post, Patch, Delete, Body, Param, ParseIntPipe } from '@nestjs/common';
 import { SessionsService } from './sessions.service';
+import { CreateSessionDto } from './dto/create-session.dto';
+import { UpdateSessionDto } from './dto/update-session.dto';
 
 @Controller('sessions')
 export class SessionsController {
     constructor(private readonly sessionsService: SessionsService) { }
 
     @Post()
-    create(@Body() data: { trackId: number; name: string; startTime: string; endTime: string; description?: string; speakerIds?: number[]; questions?: any[]; briefings?: any[] }) {
-        return this.sessionsService.create(data);
+    create(@Body() createSessionDto: CreateSessionDto) {
+        return this.sessionsService.create(createSessionDto);
     }
 
     @Get()
@@ -21,8 +23,8 @@ export class SessionsController {
     }
 
     @Patch(':id')
-    update(@Param('id', ParseIntPipe) id: number, @Body() data: Partial<{ name: string; startTime: string; endTime: string; description: string; speakers: any[]; questions: any[]; briefings: any[] }>) {
-        return this.sessionsService.update(id, data);
+    update(@Param('id', ParseIntPipe) id: number, @Body() updateSessionDto: UpdateSessionDto) {
+        return this.sessionsService.update(id, updateSessionDto);
     }
 
     @Delete(':id')

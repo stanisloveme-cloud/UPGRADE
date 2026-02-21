@@ -9,14 +9,16 @@ import {
     ParseIntPipe,
 } from '@nestjs/common';
 import { HallsService } from './halls.service';
+import { CreateHallDto } from './dto/create-hall.dto';
+import { UpdateHallDto } from './dto/update-hall.dto';
 
 @Controller('halls')
 export class HallsController {
     constructor(private readonly hallsService: HallsService) { }
 
     @Post()
-    create(@Body() data: { eventId: number; name: string; capacity?: number; sortOrder?: number }) {
-        return this.hallsService.create(data);
+    create(@Body() createHallDto: CreateHallDto) {
+        return this.hallsService.create(createHallDto);
     }
 
     @Get()
@@ -30,8 +32,8 @@ export class HallsController {
     }
 
     @Patch(':id')
-    update(@Param('id', ParseIntPipe) id: number, @Body() data: Partial<{ name: string; capacity: number; sortOrder: number }>) {
-        return this.hallsService.update(id, data);
+    update(@Param('id', ParseIntPipe) id: number, @Body() updateHallDto: UpdateHallDto) {
+        return this.hallsService.update(id, updateHallDto);
     }
 
     @Delete(':id')

@@ -1,12 +1,14 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { CreateHallDto } from './dto/create-hall.dto';
+import { UpdateHallDto } from './dto/update-hall.dto';
 
 @Injectable()
 export class HallsService {
     constructor(private readonly prisma: PrismaService) { }
 
-    create(data: { eventId: number; name: string; capacity?: number; sortOrder?: number }) {
-        return this.prisma.hall.create({ data });
+    create(createHallDto: CreateHallDto) {
+        return this.prisma.hall.create({ data: createHallDto });
     }
 
     findAll() {
@@ -19,8 +21,8 @@ export class HallsService {
         return hall;
     }
 
-    update(id: number, data: Partial<{ name: string; capacity: number; sortOrder: number }>) {
-        return this.prisma.hall.update({ where: { id }, data });
+    update(id: number, updateHallDto: UpdateHallDto) {
+        return this.prisma.hall.update({ where: { id }, data: updateHallDto });
     }
 
     remove(id: number) {

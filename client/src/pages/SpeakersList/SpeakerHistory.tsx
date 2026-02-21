@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Drawer, Timeline, Card, Tag, Rate, Spin, Empty } from 'antd';
-import { ClockCircleOutlined, TrophyOutlined } from '@ant-design/icons';
+import { Drawer, Timeline, Card, Tag, Spin, Empty } from 'antd';
+import { ClockCircleOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import dayjs from 'dayjs';
 
@@ -11,7 +11,7 @@ interface SpeakerHistoryProps {
 }
 
 interface HistoryItem {
-    type: 'session' | 'rating';
+    type: 'session';
     date: string;
     data: any;
 }
@@ -41,19 +41,8 @@ const SpeakerHistory: React.FC<SpeakerHistoryProps> = ({ speakerId, visible, onC
                 data.sessions.forEach((s: any) => {
                     items.push({
                         type: 'session',
-                        date: s.session?.startTime ? `${s.session.track?.day || '2025-01-01'}T${s.session.startTime}` : new Date().toISOString(), // Approximation if full date missing
+                        date: s.session?.startTime ? `${s.session.track?.day || '2025-01-01'}T${s.session.startTime}` : new Date().toISOString(),
                         data: s
-                    });
-                });
-            }
-
-            // Process Ratings
-            if (data.ratings) {
-                data.ratings.forEach((r: any) => {
-                    items.push({
-                        type: 'rating',
-                        date: r.createdAt,
-                        data: r
                     });
                 });
             }
@@ -81,38 +70,18 @@ const SpeakerHistory: React.FC<SpeakerHistoryProps> = ({ speakerId, visible, onC
                     {history.length === 0 ? <Empty description="Нет исторических данных" /> : (
                         <Timeline mode="left">
                             {history.map((item, index) => {
-                                if (item.type === 'session') {
-                                    const session = item.data.session;
-                                    const snapshot = item.data;
-                                    return (
-                                        <Timeline.Item key={index} dot={<ClockCircleOutlined style={{ fontSize: '16px' }} />}>
-                                            <Card size="small" title={session?.name} extra={<Tag color="blue">{dayjs(item.date).format('DD.MM.YYYY')}</Tag>}>
-                                                <p><strong>Компания:</strong> {snapshot.companySnapshot || speaker.company} (Snapshot)</p>
-                                                <p><strong>Должность:</strong> {snapshot.positionSnapshot || speaker.position} (Snapshot)</p>
-                                                {snapshot.presentationTitle && <p><strong>Доклад:</strong> {snapshot.presentationTitle}</p>}
-                                                <p><strong>Роль:</strong> {snapshot.role}</p>
-                                            </Card>
-                                        </Timeline.Item>
-                                    );
-                                } else {
-                                    const rating = item.data;
-                                    return (
-                                        <Timeline.Item key={index} color="green" dot={<TrophyOutlined style={{ fontSize: '16px', color: 'gold' }} />}>
-                                            <Card size="small" style={{ borderColor: 'gold' }}>
-                                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                                    <strong>Рейтинг выступления</strong>
-                                                    <Rate disabled defaultValue={rating.score} style={{ fontSize: 14 }} />
-                                                </div>
-                                                <div style={{ marginTop: 8, fontStyle: 'italic', color: '#666' }}>
-                                                    "{rating.comment}"
-                                                </div>
-                                                <div style={{ marginTop: 4, fontSize: 10, color: '#999' }}>
-                                                    Событие: {rating.event?.name}
-                                                </div>
-                                            </Card>
-                                        </Timeline.Item>
-                                    );
-                                }
+                                const session = item.data.session;
+                                const snapshot = item.data;
+                                return (
+                                    <Timeline.Item key={index} dot={<ClockCircleOutlined style={{ fontSize: '16px' }} />}>
+                                        <Card size="small" title={session?.name} extra={<Tag color="blue">{dayjs(item.date).format('DD.MM.YYYY')}</Tag>}>
+                                            <p><strong>Компания:</strong> {snapshot.companySnapshot || speaker.company} (Snapshot)</p>
+                                            <p><strong>Должность:</strong> {snapshot.positionSnapshot || speaker.position} (Snapshot)</p>
+                                            {snapshot.presentationTitle && <p><strong>Доклад:</strong> {snapshot.presentationTitle}</p>}
+                                            <p><strong>Роль:</strong> {snapshot.role}</p>
+                                        </Card>
+                                    </Timeline.Item>
+                                );
                             })}
                         </Timeline>
                     )}

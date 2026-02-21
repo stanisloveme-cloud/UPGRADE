@@ -30,7 +30,7 @@ const HallRow: React.FC<HallRowProps> = ({ hall, rowIndex, filters, onSessionCli
                 padding: '16px',
                 position: 'sticky',
                 left: 0,
-                zIndex: 10, // Must be higher than content
+                zIndex: 2, // Below time-header (5) and corner (10)
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center'

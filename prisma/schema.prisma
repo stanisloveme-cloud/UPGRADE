@@ -53,7 +53,6 @@ model Event {
   createdAt   DateTime    @default(now()) @map("created_at")
 
   halls Hall[]
-  ratings SpeakerRating[]
 
   @@map("events")
 }
@@ -126,7 +125,6 @@ model Speaker {
 
   sessions         SessionSpeaker[]
   moderatedBriefings Briefing[]
-  ratings          SpeakerRating[]
 
   @@map("speakers")
 }
@@ -159,20 +157,6 @@ model SessionSpeaker {
   @@map("session_speakers")
 }
 
-model SpeakerRating {
-  id        Int      @id @default(autoincrement())
-  speakerId Int      @map("speaker_id")
-  eventId   Int      @map("event_id")
-  score     Int      @default(0) // 1-5
-  comment   String?  @db.Text
-  ratedBy   Int?     @map("rated_by") // User ID
-  createdAt DateTime @default(now()) @map("created_at")
-
-  speaker Speaker @relation(fields: [speakerId], references: [id], onDelete: Cascade)
-  event   Event   @relation(fields: [eventId], references: [id], onDelete: Cascade)
-
-  @@map("speaker_ratings")
-}
 
 model SessionQuestion {
   id        Int    @id @default(autoincrement())
@@ -202,12 +186,13 @@ model Briefing {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  username  String   @unique @db.VarChar(255)
-  password  String   @db.VarChar(255)
-  role      String   @default("user") @db.VarChar(50)
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  id           Int      @id @default(autoincrement())
+  username     String   @unique @db.VarChar(255)
+  password     String   @db.VarChar(255)
+  role         String   @default("user") @db.VarChar(50)
+  isSuperAdmin Boolean  @default(false) @map("is_super_admin")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
 
   @@map("users")
 }

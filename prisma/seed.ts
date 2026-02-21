@@ -45,10 +45,12 @@ async function main() {
                 username: adminEmail,
                 password: adminPassword,
                 role: 'admin', // Assuming role field exists or defaulting
+                isSuperAdmin: true,
             },
         });
         console.log(`  ✅ Admin User created: ${adminEmail}`);
     } else {
+        await prisma.user.update({ where: { username: adminEmail }, data: { isSuperAdmin: true } });
         console.log(`  ℹ️ Admin User already exists: ${adminEmail}`);
     }
 
@@ -63,6 +65,7 @@ async function main() {
                 username: vladEmail,
                 password: vladPassword,
                 role: 'user',
+                isSuperAdmin: true,
             },
         });
         console.log(`  ✅ User created: ${vladEmail} (Password: ${vladPassword})`);
@@ -88,6 +91,7 @@ async function main() {
     // or just to have more data.
     const event2 = await prisma.event.create({
         data: {
+            id: 2,
             name: 'Retail Tech 2026',
             description: 'Технологии в ритейле',
             startDate: new Date('2026-04-10'),
@@ -287,6 +291,91 @@ async function main() {
         console.log(`  ✅ Tracks & Sessions for ${hallData.hall} (Day 1)`);
     }
 
+    // ---- Day 2: 22 October ----
+    const day2 = new Date('2025-10-22');
+
+    const tracksDay2 = [
+        {
+            hall: 'Трансформер',
+            tracks: [
+                {
+                    name: 'Будущее ритейла 2030',
+                    startTime: '10:00',
+                    endTime: '12:00',
+                    sessions: [
+                        { name: 'Keynote: ритейл через 5 лет', startTime: '10:00', endTime: '10:45' },
+                        { name: 'Дискуссия: тренды и прогнозы', startTime: '11:00', endTime: '12:00' },
+                    ],
+                },
+                {
+                    name: 'Закрытие форума',
+                    startTime: '17:00',
+                    endTime: '18:00',
+                    sessions: [
+                        { name: 'Церемония закрытия и награждения', startTime: '17:00', endTime: '18:00' },
+                    ],
+                },
+            ],
+        },
+        {
+            hall: 'Олимпийский',
+            tracks: [
+                {
+                    name: 'AI в ритейле — практика',
+                    startTime: '10:00',
+                    endTime: '13:00',
+                    sessions: [
+                        { name: 'AI-рекомендации: кейсы внедрения', startTime: '10:00', endTime: '11:30' },
+                        { name: 'Персонализация: от данных к прибыли', startTime: '11:30', endTime: '13:00' },
+                    ],
+                },
+            ],
+        },
+        {
+            hall: 'Останкино',
+            tracks: [
+                {
+                    name: 'Устойчивое развитие и ESG',
+                    startTime: '14:00',
+                    endTime: '16:00',
+                    sessions: [
+                        { name: 'ESG-стратегия для ритейлера', startTime: '14:00', endTime: '15:00' },
+                        { name: 'Зелёная логистика', startTime: '15:00', endTime: '16:00' },
+                    ],
+                },
+            ],
+        },
+    ];
+
+    for (const hallData of tracksDay2) {
+        const hall = halls[hallData.hall];
+        let trackOrder = 10; // Higher sort order to not conflict with day 1
+        for (const trackData of hallData.tracks) {
+            const track = await prisma.track.create({
+                data: {
+                    hallId: hall.id,
+                    name: trackData.name,
+                    day: day2,
+                    startTime: trackData.startTime,
+                    endTime: trackData.endTime,
+                    sortOrder: trackOrder++,
+                },
+            });
+
+            for (const sessionData of trackData.sessions) {
+                await prisma.session.create({
+                    data: {
+                        trackId: track.id,
+                        name: sessionData.name,
+                        startTime: sessionData.startTime,
+                        endTime: sessionData.endTime,
+                    },
+                });
+            }
+        }
+        console.log(`  ✅ Tracks & Sessions for ${hallData.hall} (Day 2 — 22 Oct)`);
+    }
+
     // Create sample speakers
     const speakersData = [
         { firstName: 'Алексей', lastName: 'Иванов', company: 'Retail Group', position: 'CEO', email: 'ivanov@example.com' },
@@ -332,6 +421,7 @@ async function main() {
     // 2. Create Event 2024 (Past)
     const event2024 = await prisma.event.create({
         data: {
+            id: 2024,
             name: 'Retail Tech 2024',
             startDate: new Date('2024-05-20'),
             endDate: new Date('2024-05-21'),
@@ -382,6 +472,7 @@ async function main() {
     // 4. Create Event 2025 (Future/Current)
     const event2025 = await prisma.event.create({
         data: {
+            id: 2025,
             name: 'Retail Tech 2025',
             startDate: new Date('2025-09-10'),
             endDate: new Date('2025-09-11'),
@@ -419,15 +510,6 @@ async function main() {
         }
     });
 
-    // 5. Rate him for 2025 (Mocking post-event rating)
-    await (prisma as any).speakerRating.create({
-        data: {
-            speakerId: ivan.id,
-            eventId: event2025.id,
-            score: 5,
-            comment: 'Excellent improvement! Very engaging.',
-        }
-    });
     // --- END PROTOTYPE DATA ---
 }
 

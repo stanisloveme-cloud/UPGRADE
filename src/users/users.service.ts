@@ -11,4 +11,11 @@ export class UsersService {
             where: { username },
         });
     }
+
+    async changePassword(userId: number, newPassword: string): Promise<User> {
+        return this.prisma.user.update({
+            where: { id: userId },
+            data: { password: newPassword },
+        });
+    }
 }

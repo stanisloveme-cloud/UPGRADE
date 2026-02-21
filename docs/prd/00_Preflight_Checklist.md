@@ -93,8 +93,8 @@ CI/CD: Секреты на месте, готовы к первому депло
     
     # Креденшелы (В продакшне используй ENV переменные!)
     credentials:
-      username: "vladislav.shirobokov@gmail.com"
-      password: "vladislav456"
+      username: "user@example.com"
+      password: "CHANGEME"
     
     # ИНСТРУКЦИИ ДЛЯ СУБАГЕНТА (СЦЕНАРИЙ)
     instructions: |

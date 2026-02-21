@@ -1,16 +1,22 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { CreateSpeakerDto } from './dto/create-speaker.dto';
+import { UpdateSpeakerDto } from './dto/update-speaker.dto';
 
 @Injectable()
 export class SpeakersService {
     constructor(private readonly prisma: PrismaService) { }
 
-    create(data: any) {
-        return this.prisma.speaker.create({ data });
+    create(createSpeakerDto: CreateSpeakerDto) {
+        return this.prisma.speaker.create({
+            data: createSpeakerDto,
+        });
     }
 
     findAll() {
-        return this.prisma.speaker.findMany({ orderBy: { lastName: 'asc' } });
+        return this.prisma.speaker.findMany({
+            orderBy: [{ lastName: 'asc' }, { firstName: 'asc' }]
+        });
     }
 
     async findOne(id: number) {
@@ -26,8 +32,8 @@ export class SpeakersService {
         return speaker;
     }
 
-    update(id: number, data: any) {
-        return this.prisma.speaker.update({ where: { id }, data });
+    update(id: number, updateSpeakerDto: UpdateSpeakerDto) {
+        return this.prisma.speaker.update({ where: { id }, data: updateSpeakerDto });
     }
 
     remove(id: number) {

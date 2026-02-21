@@ -12,13 +12,20 @@ import { SpeakersModule } from './speakers/speakers.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
+import { UploadsModule } from './uploads/uploads.module';
+import { ExportsModule } from './exports/exports.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'client', 'dist'),
-      exclude: ['/api/:path*'], // Allow API routes to pass through
+      exclude: ['/api/:path*', '/uploads/:path*'], // Allow API and uploads routes to pass through
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads'),
+      serveRoot: '/uploads',
     }),
     PrismaModule,
     EventsModule,
@@ -28,6 +35,9 @@ import { JwtAuthGuard } from './auth/jwt-auth.guard';
     SpeakersModule,
     AuthModule,
     UsersModule,
+    UploadsModule,
+    ExportsModule,
+    NotificationsModule,
   ],
   providers: [
     {

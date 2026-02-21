@@ -48,10 +48,6 @@ rules:
     description: "Never use interactive CLI commands (like 'gh run watch' without ID or interactive prompts). Always use direct IDs and non-interactive flags to prevent agent hanging."
     severity: "error"
 
-  - id: "cli-non-interactive"
-    description: "Never use interactive CLI commands (like 'gh run watch' without ID or interactive prompts). Always use direct IDs and non-interactive flags to prevent agent hanging."
-    severity: "error"
-
   - id: "ui-form-patterns"
     severity: "error"
     description: "For entity editing (Session, Speaker), ALWAYS use <DrawerForm> or <ModalForm>. Do not build raw HTML forms."
@@ -92,14 +88,6 @@ rules:
     description: >
       Infrastructure (Docker, Nginx, GitHub Actions) must be code.
       If `.github/workflows/deploy.yml` is missing, IT MUST BE CREATED based on the actual folder structure.
-
-  - id: "shell-safe-execution"
-    severity: "critical"
-    description: >
-      POWERSHELL & TOOLING RULES:
-      1. NO PARALLEL DEPENDENT COMMANDS: Never run `git add`, `git commit` in parallel tool calls. Git locks will fail. Use `waitForPreviousTools: true`.
-      2. USE POWERSHELL SYNTAX: No `grep`, `touch`, `rm -rf`, `export`. Use `Select-String`, `New-Item`, `Remove-Item`, `$env:VAR=VAL`.
-      3. NON-INTERACTIVE: Always assume no user input is possible.
 
 # -----------------------------------------------------------------------------
 # 3. WORKFLOWS (STANDARD OPERATING PROCEDURES)

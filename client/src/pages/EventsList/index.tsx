@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { ExperimentOutlined, PlusOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import dayjs from 'dayjs';
+import { useAuth } from '../../auth/AuthProvider';
 
 interface Event {
     id: number;
@@ -20,6 +21,7 @@ const EventsList: React.FC = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [form] = Form.useForm();
     const navigate = useNavigate();
+    const { user } = useAuth();
 
     const fetchEvents = async () => {
         try {
@@ -119,9 +121,11 @@ const EventsList: React.FC = () => {
         <PageContainer
             title="Все мероприятия"
             extra={[
-                <Button key="create" type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)}>
-                    Создать мероприятие
-                </Button>
+                user?.isSuperAdmin ? (
+                    <Button key="create" type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)}>
+                        Создать мероприятие
+                    </Button>
+                ) : null
             ]}
         >
             <Table

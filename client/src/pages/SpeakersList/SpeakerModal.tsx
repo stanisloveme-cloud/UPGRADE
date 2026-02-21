@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react';
-import { Modal, Form, Input } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Modal, Form, Input, Upload, Avatar, message } from 'antd';
+import { UserOutlined, UploadOutlined } from '@ant-design/icons';
+import ImgCrop from 'antd-img-crop';
 
 interface SpeakerModalProps {
     visible: boolean;
@@ -11,13 +13,16 @@ interface SpeakerModalProps {
 
 const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish, initialValues, loading }) => {
     const [form] = Form.useForm();
+    const [photoUrl, setPhotoUrl] = useState<string | undefined>(undefined);
 
     useEffect(() => {
         if (visible) {
             if (initialValues) {
                 form.setFieldsValue(initialValues);
+                setPhotoUrl(initialValues.photoUrl);
             } else {
                 form.resetFields();
+                setPhotoUrl(undefined);
             }
         }
     }, [visible, initialValues, form]);
@@ -25,10 +30,22 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
     const handleSubmit = async () => {
         try {
             const values = await form.validateFields();
-            await onFinish({ ...initialValues, ...values });
+            await onFinish({ ...initialValues, ...values, photoUrl });
             onClose();
         } catch (error) {
             console.error('Validation failed:', error);
+        }
+    };
+
+    const handleUploadChange = (info: any) => {
+        if (info.file.status === 'done') {
+            const url = info.file.response?.url;
+            if (url) {
+                setPhotoUrl(url);
+                message.success('Фото успешно загружено');
+            }
+        } else if (info.file.status === 'error') {
+            message.error('Ошибка загрузки фото');
         }
     };
 
@@ -46,6 +63,76 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                 form={form}
                 layout="vertical"
             >
+                {/* Photo Upload with Crop */}
+                <Form.Item label="Фото">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                        <Avatar
+                            size={80}
+                            src={photoUrl}
+                            icon={<UserOutlined />}
+                            style={{ flexShrink: 0, border: '2px solid #f0f0f0' }}
+                        />
+                        <div>
+                            <ImgCrop
+                                cropShape="round"
+                                showGrid
+                                rotationSlider
+                                showReset
+                                modalTitle="Обрезать фото"
+                                modalOk="Сохранить"
+                                modalCancel="Отмена"
+                            >
+                                <Upload
+                                    name="file"
+                                    action="/api/uploads/speaker-photo"
+                                    headers={{
+                                        authorization: `Bearer ${localStorage.getItem('token')}`,
+                                    }}
+                                    showUploadList={false}
+                                    accept="image/*"
+                                    onChange={handleUploadChange}
+                                >
+                                    <button
+                                        style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: 6,
+                                            padding: '6px 14px',
+                                            borderRadius: 6,
+                                            border: '1px solid #d9d9d9',
+                                            background: 'white',
+                                            cursor: 'pointer',
+                                            fontSize: 14,
+                                        }}
+                                    >
+                                        <UploadOutlined /> Загрузить фото
+                                    </button>
+                                </Upload>
+                            </ImgCrop>
+                            {photoUrl && (
+                                <button
+                                    onClick={() => setPhotoUrl(undefined)}
+                                    style={{
+                                        marginTop: 6,
+                                        display: 'block',
+                                        background: 'none',
+                                        border: 'none',
+                                        color: '#ff4d4f',
+                                        cursor: 'pointer',
+                                        padding: '2px 0',
+                                        fontSize: 13,
+                                    }}
+                                >
+                                    ✕ Удалить фото
+                                </button>
+                            )}
+                            <div style={{ fontSize: 12, color: '#8c8c8c', marginTop: 4 }}>
+                                JPG / PNG, до 5 МБ. Обрезка — по кругу.
+                            </div>
+                        </div>
+                    </div>
+                </Form.Item>
+
                 <div style={{ display: 'flex', gap: 16 }}>
                     <Form.Item
                         name="firstName"
@@ -105,20 +192,13 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                 </Form.Item>
 
                 <Form.Item
-                    name="photoUrl"
-                    label="Ссылка на фото"
-                >
-                    <Input placeholder="https://..." />
-                </Form.Item>
-
-                <Form.Item
                     name="bio"
                     label="Био (Описание)"
                 >
                     <Input.TextArea rows={3} placeholder="Краткая биография" />
                 </Form.Item>
 
-                {/* Assistant Block - Visually Separated */}
+                {/* Assistant Block */}
                 <div style={{ marginTop: 24, padding: 16, background: '#fafafa', borderRadius: 8, border: '1px solid #f0f0f0' }}>
                     <Form.Item
                         name="hasAssistant"
@@ -135,7 +215,6 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                                     type="checkbox"
                                     style={{ marginRight: 8, cursor: 'pointer' }}
                                     onChange={(e) => {
-                                        // Trigger re-render by setting the field value explicitly
                                         form.setFieldsValue({ hasAssistant: e.target.checked });
                                     }}
                                     checked={form.getFieldValue('hasAssistant')}

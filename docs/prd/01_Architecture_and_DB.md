@@ -36,13 +36,24 @@ erDiagram
     Session ||--|{ Briefing : has  
     Speaker ||--|{ SessionSpeaker : participates  
     SessionSpeaker ||--o| Presentation : uploads  
-    Speaker ||--o| SpeakerPhoto : has
+    Speaker ||--|{ SpeakerRating : rated_in
+    Event ||--|{ SpeakerRating : has_ratings
     User {
         int id PK
-        string email
-        string password_hash
-        string name
-        enum role "admin, manager"
+        string username
+        string password
+        string role
+        date created_at
+        date updated_at
+    }
+
+    SpeakerRating {
+        int id PK
+        int speaker_id FK
+        int event_id FK
+        int score
+        text comment
+        int rated_by
     }
 
     Event {  
@@ -82,7 +93,6 @@ erDiagram
         time end\_time  
         text comments "Internal comments"  
         text clients "Clients info"  
-        jsonb metadata "Technical fields"  
     }
 
     Speaker {  
@@ -97,6 +107,9 @@ erDiagram
         boolean is\_sponsor  
         text bio  
         text internal\_comment  
+        boolean has_assistant
+        string assistant_name
+        string assistant_contact
     }
 
     SessionSpeaker {  
@@ -113,6 +126,10 @@ erDiagram
         text program\_thesis  
         text newsletter\_quote  
         enum presence\_status "planned, onsite, missing"  
+        string company_snapshot
+        string position_snapshot
+        string presentation_title
+        string presentation_url
     }
 
     SessionQuestion {  
@@ -188,6 +205,9 @@ erDiagram
 * telegram: VARCHAR(100)  
 * photo\_url: VARCHAR(512)  
 * is\_sponsor: BOOLEAN DEFAULT FALSE
+* has_assistant: BOOLEAN DEFAULT FALSE
+* assistant_name: VARCHAR(100)
+* assistant_contact: VARCHAR(255)
 
 #### **Entity: SessionSpeaker (Pivot Table with Payload)**
 
@@ -200,6 +220,19 @@ erDiagram
 * sort\_order: INTEGER DEFAULT 0  
 * needs\_zoom: BOOLEAN DEFAULT FALSE  
 * has\_presentation: BOOLEAN DEFAULT FALSE
+* company_snapshot: VARCHAR(255)
+* position_snapshot: VARCHAR(255)
+* presentation_title: VARCHAR(255)
+* presentation_url: VARCHAR(512)
+
+#### **Entity: SpeakerRating**
+* id: SERIAL PRIMARY KEY
+* speaker_id: INTEGER NOT NULL (FK)
+* event_id: INTEGER NOT NULL (FK)
+* score: INTEGER DEFAULT 0
+* comment: TEXT
+* rated_by: INTEGER
+* created_at: TIMESTAMP DEFAULT NOW()
 
 #### **Entity: SessionQuestion**
 
@@ -222,11 +255,11 @@ erDiagram
 #### **Entity: User (System Access)**
 
 * id: SERIAL PRIMARY KEY
-* email: VARCHAR(255) NOT NULL UNIQUE
-* password_hash: VARCHAR(255) NOT NULL
-* name: VARCHAR(100)
-* role: ENUM('admin', 'manager') DEFAULT 'manager'
+* username: VARCHAR(255) NOT NULL UNIQUE
+* password: VARCHAR(255) NOT NULL
+* role: VARCHAR(50) DEFAULT 'user'
 * created_at: TIMESTAMP DEFAULT NOW()
+* updated_at: TIMESTAMP
 
 ## **3\. API Контракты (Core Endpoints)**
 
