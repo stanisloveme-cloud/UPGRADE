@@ -1,37 +1,9 @@
 import React from 'react';
 import { DrawerForm, ProFormText, ProFormTextArea, ProFormTimePicker, ProFormSelect, ProFormList, ProFormDateTimePicker, ProFormSwitch, ProFormGroup } from '@ant-design/pro-components';
-import { Button, Upload, message, Form } from 'antd';
-import { FilePdfOutlined, MenuOutlined } from '@ant-design/icons';
+import { Button, Upload, message } from 'antd';
+import { FilePdfOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
-import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
-import { SortableContext, verticalListSortingStrategy, useSortable } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
 
-const SortableItem = ({ id, children }: { id: string | number; children: React.ReactNode }) => {
-    const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
-    const style = {
-        transform: CSS.Transform.toString(transform),
-        transition,
-        marginBottom: 8,
-        padding: 8,
-        border: '1px solid #f0f0f0',
-        borderRadius: 4,
-        background: isDragging ? '#fdfdfd' : '#fafafa',
-        zIndex: isDragging ? 2 : 1,
-        position: isDragging ? 'relative' : 'static',
-    } as React.CSSProperties;
-
-    return (
-        <div ref={setNodeRef} style={style} {...attributes}>
-            <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-                <div style={{ padding: '8px 16px 0 0', cursor: 'grab' }} {...listeners}>
-                    <MenuOutlined style={{ color: '#999', fontSize: 16 }} />
-                </div>
-                <div style={{ flex: 1, overflow: 'hidden' }}>{children}</div>
-            </div>
-        </div>
-    );
-};
 
 interface SessionModalProps {
     visible: boolean;
