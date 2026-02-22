@@ -13,7 +13,6 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            echo "=== DEBUGGING PRISMA ==="
+            echo "=== SEEDING PRODUCTION DB ==="
             cd ~/upgrade-crm
-            docker compose exec app env
-            docker compose exec app cat prisma/schema.prisma
+            docker compose exec -T app npx prisma db seed
