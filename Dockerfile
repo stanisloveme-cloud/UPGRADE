@@ -16,6 +16,8 @@ COPY prisma ./prisma/
 # Install production deps as root, then switch to non-root user
 RUN npm ci --omit=dev && npx prisma generate
 COPY --from=builder /app/dist ./dist
+# Create uploads dir with correct ownership before switching user
+RUN mkdir -p /app/uploads && chown -R node:node /app/uploads
 # Switch to non-root for runtime security
 USER node
 
