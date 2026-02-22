@@ -4,27 +4,28 @@ import { Button, message, Tabs, Checkbox, Modal, Tooltip } from 'antd';
 import { SettingOutlined, PlusOutlined, DownloadOutlined } from '@ant-design/icons';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import ScheduleGrid from '../../components/ScheduleGrid';
-import SessionDrawer from './SessionDrawer';
 import HallsModal from './HallsModal';
+import SessionDrawer from './SessionDrawer';
 import TrackModal from './TrackModal';
+import ScheduleGrid from '../../components/ScheduleGrid';
 
 const ProgramEditor: React.FC = () => {
-    const { eventId } = useParams<{ eventId: string }>();
+    const { id } = useParams<{ id: string }>();
+    const eventId = id || 1;
+
     const [data, setData] = useState<any>(null);
     const [loading, setLoading] = useState(true);
-
+    const [hallsModalVisible, setHallsModalVisible] = useState(false);
     const [speakers, setSpeakers] = useState<any[]>([]);
 
-    // Modals visibility
+    // Session Drawer State
     const [sessionDrawerVisible, setSessionDrawerVisible] = useState(false);
-    const [hallsModalVisible, setHallsModalVisible] = useState(false);
-    const [trackModalVisible, setTrackModalVisible] = useState(false);
-
-    // Current editing items
     const [currentSession, setCurrentSession] = useState<any>(null);
-    const [currentTrackHallId, setCurrentTrackHallId] = useState<number | null>(null);
-    const [currentTrack, setCurrentTrack] = useState<any>(null); // For editing an existing track
+
+    // Track Modal State
+    const [trackModalVisible, setTrackModalVisible] = useState(false);
+    const [currentTrackHallId, setCurrentTrackHallId] = useState<number | undefined>(undefined);
+    const [currentTrack, setCurrentTrack] = useState<any>(null);
 
     const fetchData = async () => {
         try {
@@ -97,34 +98,33 @@ const ProgramEditor: React.FC = () => {
                     cancelText: 'Отмена',
                     onOk: () => {
                         if (isConcurrencyConflict) {
-                            // User clicked 'Force Save' - bypass concurrency check
                             handleSaveSession({ ...values, force: true });
                         } else {
-                            // Speaker conflict - bypass speaker conflict check
-                            handleSaveSession({ ...values, ignoreSpeakerConflicts: true });
+                            handleSaveSession({ ...values, ignoreConflicts: true });
                         }
                     }
                 });
-                return false; // Prevent modal from closing yet
+                return false; // Leave drawer open until confirmed
             }
             console.error('Failed to save session:', error);
-            message.error('Ошибка сохранения сессии');
+            message.error('Ошибка сохранения');
             return false;
         }
     };
 
-    const handleDeleteSession = async (id: number) => {
+    const handleDeleteSession = async (sessionId: number) => {
         try {
-            await axios.delete(`/api/sessions/${id}`);
+            await axios.delete(`/api/sessions/${sessionId}`);
             message.success('Сессия удалена');
             setSessionDrawerVisible(false);
             fetchData();
         } catch (error) {
             console.error('Failed to delete session:', error);
-            message.error('Ошибка удаления сессии');
+            message.error('Ошибка удаления');
         }
     };
 
+    // Track Handlers
     const handleAddTrack = (hallId: number) => {
         setCurrentTrackHallId(hallId);
         setCurrentTrack(null);
@@ -133,20 +133,20 @@ const ProgramEditor: React.FC = () => {
 
     const handleSaveTrack = async (values: any) => {
         try {
-            if (currentTrack) {
-                // Update
-                await axios.put(`/api/tracks/${currentTrack.id}`, values);
+            if (values.id) {
+                await axios.patch(`/api/tracks/${values.id}`, values);
                 message.success('Трек обновлен');
             } else {
-                // Create
                 await axios.post('/api/tracks', values);
-                message.success('Трек добавлен');
+                message.success('Трек создан');
             }
             setTrackModalVisible(false);
             fetchData();
+            return true;
         } catch (error) {
             console.error('Failed to save track:', error);
             message.error('Ошибка сохранения трека');
+            return false;
         }
     };
 
@@ -306,33 +306,35 @@ const ProgramEditor: React.FC = () => {
                 visible={hallsModalVisible}
                 onClose={() => {
                     setHallsModalVisible(false);
-                    fetchData(); // Refresh if halls changed
+                    fetchData(); // Refresh in case halls changed
                 }}
                 eventId={Number(eventId)}
-                halls={data?.halls || []}
             />
 
-            {/* Session Editing Drawer */}
             <SessionDrawer
                 visible={sessionDrawerVisible}
                 onClose={() => setSessionDrawerVisible(false)}
-                session={currentSession}
-                tracksOptions={tracksOptions}
-                speakersList={speakers}
-                onSave={handleSaveSession}
-                onDelete={currentSession?.id ? handleDeleteSession : undefined}
+                onFinish={handleSaveSession}
+                onDelete={handleDeleteSession}
+                initialValues={currentSession}
+                tracks={tracksOptions}
+                speakers={speakers.map(s => ({
+                    label: `${s.lastName} ${s.firstName}${s.company ? ` (${s.company})` : ''}`,
+                    value: s.id,
+                    phone: s.phone,
+                    telegram: s.telegram
+                }))}
             />
 
             <TrackModal
                 visible={trackModalVisible}
                 onClose={() => setTrackModalVisible(false)}
-                track={currentTrack}
-                hallId={currentTrackHallId!}
+                onFinish={handleSaveTrack}
+                onDelete={handleDeleteTrack}
+                initialValues={currentTrack}
+                hallId={currentTrackHallId}
                 eventId={Number(eventId)}
-                onSave={handleSaveTrack}
-                onDelete={currentTrack?.id ? handleDeleteTrack : undefined}
             />
-
         </PageContainer>
     );
 };
