@@ -226,7 +226,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                     return <div style={{ padding: '16px', background: '#fafafa', border: '1px solid #f0f0f0', borderRadius: '8px', marginBottom: '16px' }}>{doms}</div>;
                 }}
             >
-                {(meta, index, action) => (
+                {(_meta, _index, action) => (
                     <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
                         {/* Row 1: Speaker Info */}
                         <div style={{ display: 'flex', gap: '16px', width: '100%' }}>
