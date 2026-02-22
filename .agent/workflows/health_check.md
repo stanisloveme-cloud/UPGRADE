@@ -31,6 +31,15 @@ Ensure the frontend development server is active.
    - Should return HTTP 200.
 
 ## Troubleshooting
-- **DB is down:** Run `docker-compose up -d`
+- **DB is down:** Run `docker compose up -d`
 - **Backend is down:** Run `npm run start:dev` in the server terminal.
 - **Data is missing:** Run `npx prisma db seed`
+
+## 5. Check MCP Server Status
+Verify that native MCP integrations are active in Antigravity IDE.
+5. Test GitHub MCP: use `mcp_github_search_repositories` with query `user:stanisloveme-cloud` — should return repos list.
+   - If it fails with "server not found": restart the IDE (MCP servers initialize only on startup).
+   - Config: `C:\Users\PC\.gemini\antigravity\mcp_config.json`
+6. Test Context7 MCP: use `mcp_context7_resolve-library-id` with any library name — should return library list.
+   - Both servers must be active before starting feature development.
+

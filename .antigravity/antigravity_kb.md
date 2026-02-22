@@ -63,3 +63,27 @@ Description: Curated list of documentation, tutorials, and troubleshooting guide
 * **Agent Loops**
     * *Topic:* Breaking context loops and manual intervention.
     * *Link:* https://stackoverflow.com/questions/tagged/google-antigravity-loop
+
+---
+
+## 6. MCP Integrations (Active — 2026-02-22)
+**Context:** Native MCP servers connected in this workspace. Use these for external context and VCS operations.
+
+**Config file:** `C:\Users\PC\.gemini\antigravity\mcp_config.json`
+
+### Context7 (`context7`)
+* **Purpose:** Retrieve up-to-date library documentation and code examples.
+* **Usage:** Always call before writing code using any framework (NestJS, Prisma, Ant Design, etc.)
+* **Tools:** `mcp_context7_resolve-library-id` → `mcp_context7_query-docs`
+* **Example:** Query NestJS Guards docs → returns 3209 code snippets, Benchmark 93.4
+
+### GitHub (`github`)
+* **Purpose:** Native GitHub API integration — repos, Actions, PRs, Issues, file contents.
+* **Auth:** Personal Access Token "Antigravity IDE MCP" (scopes: repo, workflow, admin — expires Mar 19 2026)
+* **Account:** `stanisloveme-cloud`
+* **Main repo:** `stanisloveme-cloud/UPGRADE`
+* **Tools:** `mcp_github_search_repositories`, `mcp_github_list_commits`, `mcp_github_get_file_contents`, `mcp_github_create_pull_request`, etc.
+* **Prefer over:** `gh` CLI, `node scripts/check_deploy.js`, Browser Subagent for GitHub tasks.
+
+> [!IMPORTANT]
+> Fallback tools (`gh run view`, `node scripts/check_deploy.js`) remain in `./scripts/` for cases where MCP is unavailable (e.g., after IDE restart before MCP initializes).

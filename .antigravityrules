@@ -48,3 +48,23 @@ rules:
   # --- Shell & Execution Stability ---
   # Rules deactivated: We switched to Git Bash (native Unix-like behavior).
   # Strict PowerShell blocking rules are no longer needed.
+
+# -----------------------------------------------------------------------------
+# 4. MCP INTEGRATIONS (Agent tooling — 2026-02-22)
+# -----------------------------------------------------------------------------
+mcp_rules:
+  - id: "mcp-context7-mandatory"
+    severity: "critical"
+    description: >
+      BEFORE writing any code or architecture involving a library/framework,
+      ALWAYS query MCP context7 (mcp_context7_resolve-library-id + mcp_context7_query-docs)
+      to verify the API is current (2025-2026). Never rely on training-data assumptions.
+      Applies to: NestJS, Prisma, React, Ant Design, Vite, Docker, etc.
+
+  - id: "mcp-github-native"
+    severity: "error"
+    description: >
+      For ALL GitHub interactions (checking CI status, reading files, creating issues, PRs)
+      use native MCP github tools (mcp_github_*) from the Antigravity IDE integration.
+      AVOID using 'gh' CLI or 'node scripts/check_deploy.js' unless MCP is unavailable.
+      The GitHub MCP token is configured in C:\Users\PC\.gemini\antigravity\mcp_config.json.
