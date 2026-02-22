@@ -88,13 +88,20 @@ const ProgramEditor: React.FC = () => {
             return true;
         } catch (error: any) {
             if (error.response?.status === 409) {
+                const code = error.response.data?.code;
+                const isConcurrencyConflict = code === 'CONCURRENT_EDIT';
+
                 Modal.confirm({
-                    title: 'Конфликт расписания',
+                    title: isConcurrencyConflict ? 'Параллельное редактирование' : 'Конфликт расписания',
                     content: error.response.data.message || 'Один из спикеров уже занят в это время. Сохранить все равно?',
-                    okText: 'Да, сохранить',
+                    okText: isConcurrencyConflict ? 'Перезаписать' : 'Да, сохранить',
                     cancelText: 'Отмена',
                     onOk: () => {
-                        handleSaveSession({ ...values, ignoreConflicts: true });
+                        if (isConcurrencyConflict) {
+                            handleSaveSession({ ...values, force: true });
+                        } else {
+                            handleSaveSession({ ...values, ignoreConflicts: true });
+                        }
                     }
                 });
                 return false; // Leave drawer open until confirmed
@@ -305,7 +312,9 @@ const ProgramEditor: React.FC = () => {
                 tracks={tracksOptions}
                 speakers={speakers.map(s => ({
                     label: `${s.lastName} ${s.firstName}${s.company ? ` (${s.company})` : ''}`,
-                    value: s.id
+                    value: s.id,
+                    phone: s.phone,
+                    telegram: s.telegram
                 }))}
             />
 

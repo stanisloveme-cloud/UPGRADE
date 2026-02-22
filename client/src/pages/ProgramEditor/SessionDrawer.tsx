@@ -1,5 +1,5 @@
 import React from 'react';
-import { DrawerForm, ProFormText, ProFormTextArea, ProFormTimePicker, ProFormSelect, ProFormList, ProFormDateTimePicker, ProFormSwitch, ProFormGroup } from '@ant-design/pro-components';
+import { DrawerForm, ProFormText, ProFormTextArea, ProFormTimePicker, ProFormSelect, ProFormList, ProFormDateTimePicker, ProFormSwitch, ProFormGroup, ProFormDependency } from '@ant-design/pro-components';
 import { Button, Upload, message } from 'antd';
 import { FilePdfOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
@@ -13,7 +13,7 @@ interface SessionModalProps {
     initialValues?: any;
     trackId?: number; // Pre-selected track for creation
     tracks?: { value: number; label: string }[]; // Available tracks for selection
-    speakers?: { value: number; label: string }[];
+    speakers?: { value: number; label: string; phone?: string; telegram?: string; }[];
 }
 
 const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish, onDelete, initialValues, trackId, tracks, speakers }) => {
@@ -31,6 +31,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
             role: s.role || 'speaker',
             companySnapshot: s.companySnapshot,
             positionSnapshot: s.positionSnapshot,
+            hasPresentation: !!s.presentationTitle || !!s.presentationUrl,
             presentationTitle: s.presentationTitle,
             presentationUrl: s.presentationUrl
         })),
@@ -45,7 +46,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
         <DrawerForm
             title={initialValues?.id ? "Редактирование сессии" : "Создание сессии"}
             open={visible}
-            width={700}
+            width={1000}
             onOpenChange={(v) => !v && onClose()}
             onFinish={async (values) => {
                 // Transform timeRange back to HH:mm strings
@@ -72,7 +73,8 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                     formattedValues.speakers = values.speakers.map((s: any) => ({
                         ...s,
                         speakerId: Number(s.speakerId),
-                        presentationUrl: s.presentationUrl
+                        presentationUrl: s.hasPresentation ? s.presentationUrl : null,
+                        presentationTitle: s.hasPresentation ? s.presentationTitle : null,
                     }));
                 }
 
@@ -220,73 +222,121 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                     position: 'bottom',
                     creatorButtonText: 'Добавить спикера',
                 }}
+                itemContainerRender={(doms) => {
+                    return <div style={{ padding: '16px', background: '#fafafa', border: '1px solid #f0f0f0', borderRadius: '8px', marginBottom: '16px' }}>{doms}</div>;
+                }}
             >
-                <ProFormGroup key="group">
-                    <ProFormSelect
-                        name="speakerId"
-                        label="Спикер"
-                        options={speakers}
-                        rules={[{ required: true, message: 'Обязательно' }]}
-                        fieldProps={{ showSearch: true, optionFilterProp: 'label' }}
-                        colProps={{ span: 16 }}
-                    />
-                    <ProFormSelect
-                        name="role"
-                        label="Роль"
-                        options={[
-                            { value: 'speaker', label: 'Спикер' },
-                            { value: 'moderator', label: 'Модератор' }
-                        ]}
-                        initialValue="speaker"
-                        rules={[{ required: true, message: 'Обязательно' }]}
-                        colProps={{ span: 8 }}
-                    />
-                    <ProFormText
-                        name="companySnapshot"
-                        label="Компания (Snapshot)"
-                        colProps={{ span: 8 }}
-                    />
-                    <ProFormText
-                        name="positionSnapshot"
-                        label="Должность (Snapshot)"
-                        colProps={{ span: 8 }}
-                    />
-                    <ProFormText
-                        name="presentationTitle"
-                        label="Тема / Название презентации"
-                        colProps={{ span: 8 }}
-                    />
-                    <ProFormText
-                        name="presentationUrl"
-                        label="URL файла (Загрузите справа)"
-                        colProps={{ span: 6 }}
-                    />
-                    <div style={{ marginTop: 30, marginLeft: 8 }}>
-                        <Upload
-                            name="file"
-                            action="/api/uploads/presentation"
-                            headers={{
-                                authorization: `Bearer ${localStorage.getItem('token')}`,
-                            }}
-                            showUploadList={false}
-                            onChange={(info: any) => {
-                                if (info.file.status === 'done') {
-                                    message.success(`${info.file.name} файл успешно загружен.`);
-                                    console.log('Upload response:', info.file.response);
-                                    // Normally we'd use form.setFieldValue(['speakers', index, 'presentationUrl'], info.file.response.url)
-                                    // For MVP, user can copy-paste from console or we write a custom Form.Item hook
-                                    if (info.file.response?.url) {
-                                        message.info(`Скопируйте URL: ${info.file.response.url}`);
-                                    }
-                                } else if (info.file.status === 'error') {
-                                    message.error(`${info.file.name} ошибка загрузки.`);
-                                }
-                            }}
-                        >
-                            <Button icon={<FilePdfOutlined />}>Upload Файл</Button>
-                        </Upload>
+                {(meta, index, action) => (
+                    <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                        {/* Row 1: Speaker Info */}
+                        <div style={{ display: 'flex', gap: '16px', width: '100%' }}>
+                            <div style={{ flex: 3 }}>
+                                <ProFormSelect
+                                    name="speakerId"
+                                    label="Спикер"
+                                    options={speakers}
+                                    rules={[{ required: true, message: 'Обязательно' }]}
+                                    fieldProps={{ showSearch: true, optionFilterProp: 'label' }}
+                                />
+                                <ProFormDependency name={['speakerId']}>
+                                    {({ speakerId }) => {
+                                        const foundSpeaker = speakers?.find((s: any) => s.value === speakerId);
+                                        if (!foundSpeaker || (!foundSpeaker.phone && !foundSpeaker.telegram)) return null;
+                                        return (
+                                            <div style={{ fontSize: '12px', color: '#8c8c8c', marginTop: '-20px', marginBottom: '8px' }}>
+                                                {foundSpeaker.phone ? `📞 ${foundSpeaker.phone}   ` : ''}
+                                                {foundSpeaker.telegram ? `✈️ ${foundSpeaker.telegram}` : ''}
+                                            </div>
+                                        );
+                                    }}
+                                </ProFormDependency>
+                            </div>
+                            <div style={{ flex: 1 }}>
+                                <ProFormSelect
+                                    name="role"
+                                    label="Роль"
+                                    options={[
+                                        { value: 'speaker', label: 'Спикер' },
+                                        { value: 'moderator', label: 'Модератор' }
+                                    ]}
+                                    initialValue="speaker"
+                                    rules={[{ required: true, message: 'Обязательно' }]}
+                                />
+                            </div>
+                            <div style={{ flex: 2 }}>
+                                <ProFormText name="companySnapshot" label="Компания" />
+                            </div>
+                            <div style={{ flex: 2 }}>
+                                <ProFormText name="positionSnapshot" label="Должность" />
+                            </div>
+                        </div>
+
+                        {/* Row 2: Presentation Info */}
+                        <div style={{ display: 'flex', gap: '16px', width: '100%', alignItems: 'center' }}>
+                            <div style={{ flex: '0 0 auto', alignSelf: 'flex-start' }}>
+                                <ProFormSwitch name="hasPresentation" label="С презентацией" />
+                            </div>
+
+                            <ProFormDependency name={['hasPresentation', 'presentationUrl']}>
+                                {({ hasPresentation, presentationUrl }) => {
+                                    if (!hasPresentation) return null;
+                                    return (
+                                        <div style={{ display: 'flex', gap: '16px', flex: 1, alignItems: 'flex-start' }}>
+                                            <div style={{ flex: 1 }}>
+                                                <ProFormText name="presentationTitle" label="Тема презентации" />
+                                            </div>
+                                            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px', paddingTop: '30px' }}>
+                                                {presentationUrl ? (
+                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                        <a href={presentationUrl} target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                                                            <FilePdfOutlined /> Скачать презентацию
+                                                        </a>
+                                                        <Button type="link" danger size="small" onClick={() => action.setCurrentRowData({ presentationUrl: null })}>
+                                                            Удалить
+                                                        </Button>
+                                                    </div>
+                                                ) : (
+                                                    <Upload
+                                                        name="file"
+                                                        action="/api/uploads/presentation"
+                                                        headers={{
+                                                            authorization: `Bearer ${localStorage.getItem('token')}`,
+                                                        }}
+                                                        showUploadList={false}
+                                                        accept=".pdf,.ppt,.pptx"
+                                                        beforeUpload={(file) => {
+                                                            const isLt30M = file.size / 1024 / 1024 < 30;
+                                                            if (!isLt30M) {
+                                                                message.error('Файл должен быть меньше 30MB!');
+                                                            }
+                                                            return isLt30M;
+                                                        }}
+                                                        onChange={(info: any) => {
+                                                            if (info.file.status === 'done') {
+                                                                message.success(`${info.file.name} загружен.`);
+                                                                if (info.file.response?.url) {
+                                                                    action.setCurrentRowData({ presentationUrl: info.file.response.url });
+                                                                }
+                                                            } else if (info.file.status === 'error') {
+                                                                message.error(`${info.file.name} ошибка загрузки.`);
+                                                            }
+                                                        }}
+                                                    >
+                                                        <Button icon={<FilePdfOutlined />}>Загрузить файл</Button>
+                                                    </Upload>
+                                                )}
+                                                {/* Hidden input to keep value in form */}
+                                                <div style={{ display: 'none' }}>
+                                                    <ProFormText name="presentationUrl" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                }}
+                            </ProFormDependency>
+                        </div>
                     </div>
-                </ProFormGroup>
+                )}
             </ProFormList>
         </DrawerForm>
     );

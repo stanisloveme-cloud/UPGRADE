@@ -1,0 +1,306 @@
+fetch-logs	Set up job	﻿2026-02-22T21:28:15.7561368Z Current runner version: '2.331.0'
+fetch-logs	Set up job	2026-02-22T21:28:15.7586727Z ##[group]Runner Image Provisioner
+fetch-logs	Set up job	2026-02-22T21:28:15.7587706Z Hosted Compute Agent
+fetch-logs	Set up job	2026-02-22T21:28:15.7588424Z Version: 20260123.484
+fetch-logs	Set up job	2026-02-22T21:28:15.7589110Z Commit: 6bd6555ca37d84114959e1c76d2c01448ff61c5d
+fetch-logs	Set up job	2026-02-22T21:28:15.7590004Z Build Date: 2026-01-23T19:41:17Z
+fetch-logs	Set up job	2026-02-22T21:28:15.7590753Z Worker ID: {cb797aaf-c0e4-4846-8278-fed4b27a234d}
+fetch-logs	Set up job	2026-02-22T21:28:15.7591497Z Azure Region: eastus2
+fetch-logs	Set up job	2026-02-22T21:28:15.7592175Z ##[endgroup]
+fetch-logs	Set up job	2026-02-22T21:28:15.7594012Z ##[group]Operating System
+fetch-logs	Set up job	2026-02-22T21:28:15.7595229Z Ubuntu
+fetch-logs	Set up job	2026-02-22T21:28:15.7595820Z 24.04.3
+fetch-logs	Set up job	2026-02-22T21:28:15.7596428Z LTS
+fetch-logs	Set up job	2026-02-22T21:28:15.7597052Z ##[endgroup]
+fetch-logs	Set up job	2026-02-22T21:28:15.7597627Z ##[group]Runner Image
+fetch-logs	Set up job	2026-02-22T21:28:15.7598281Z Image: ubuntu-24.04
+fetch-logs	Set up job	2026-02-22T21:28:15.7598875Z Version: 20260201.15.1
+fetch-logs	Set up job	2026-02-22T21:28:15.7600077Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260201.15/images/ubuntu/Ubuntu2404-Readme.md
+fetch-logs	Set up job	2026-02-22T21:28:15.7601923Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260201.15
+fetch-logs	Set up job	2026-02-22T21:28:15.7602960Z ##[endgroup]
+fetch-logs	Set up job	2026-02-22T21:28:15.7604294Z ##[group]GITHUB_TOKEN Permissions
+fetch-logs	Set up job	2026-02-22T21:28:15.7606606Z Contents: read
+fetch-logs	Set up job	2026-02-22T21:28:15.7607389Z Metadata: read
+fetch-logs	Set up job	2026-02-22T21:28:15.7607994Z Packages: read
+fetch-logs	Set up job	2026-02-22T21:28:15.7608609Z ##[endgroup]
+fetch-logs	Set up job	2026-02-22T21:28:15.7610642Z Secret source: Actions
+fetch-logs	Set up job	2026-02-22T21:28:15.7611487Z Prepare workflow directory
+fetch-logs	Set up job	2026-02-22T21:28:15.7927514Z Prepare all required actions
+fetch-logs	Set up job	2026-02-22T21:28:15.7964962Z Getting action download info
+fetch-logs	Set up job	2026-02-22T21:28:16.0010090Z Download action repository 'appleboy/ssh-action@v1.0.3' (SHA:029f5b4aeeeb58fdfe1410a5d17f967dacf36262)
+fetch-logs	Set up job	2026-02-22T21:28:16.3669626Z Complete job name: fetch-logs
+fetch-logs	Build appleboy/ssh-action@v1.0.3	﻿2026-02-22T21:28:16.4254358Z ##[group]Build container for action use: '/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile'.
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:16.4305045Z ##[command]/usr/bin/docker build -t 0b56e9:26ab52e56e7d45afae05c2692b952370 -f "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile" "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3"
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:21.8960971Z #0 building with "default" instance using docker driver
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:21.8961556Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:21.8961786Z #1 [internal] load build definition from Dockerfile
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:21.8962208Z #1 transferring dockerfile: 149B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:21.8962541Z #1 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:21.8962695Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:21.8962908Z #2 [internal] load metadata for ghcr.io/appleboy/drone-ssh:1.7.3
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.0530859Z #2 DONE 0.3s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.1660691Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.1661429Z #3 [internal] load .dockerignore
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.1662192Z #3 transferring context: 2B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.1662745Z #3 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.1663141Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.1663372Z #4 [internal] load build context
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.1663968Z #4 transferring context: 108B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.1664776Z #4 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.1665111Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.1666132Z #5 [1/2] FROM ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.1668108Z #5 resolve ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.1669717Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.2784005Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.2788001Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 1.20kB / 1.20kB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.2788831Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 125B / 125B 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.2789759Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 2.44MB / 2.44MB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.2790518Z #5 sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 2.38kB / 2.38kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.2792084Z #5 sha256:1a52f94820e830bc9734623deb03bbafa6a248fba19cdc2e5605c70d90d91441 1.24kB / 1.24kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.2793458Z #5 sha256:c4781b8d012b16b6c7468dc9104fad0a63f2a8815b2af8b7176bb544253ea8c7 3.86kB / 3.86kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.2795024Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 3.38MB / 3.38MB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.2796460Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 284.83kB / 284.83kB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:22.4684137Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:23.6159367Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:23.8484965Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:23.8485873Z #5 extracting sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:23.8486605Z #5 extracting sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:23.8487078Z #5 DONE 1.6s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:23.8487228Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:23.8487362Z #6 [2/2] COPY entrypoint.sh /bin/entrypoint.sh
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:23.8487673Z #6 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:23.8487794Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:23.8487889Z #7 exporting to image
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:23.8488117Z #7 exporting layers
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:24.0048488Z #7 exporting layers 0.3s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:24.0221155Z #7 writing image sha256:bef7f383d7269d752c0fff24b8adc6f326775fe5d18286a4f0199e544b47aa84 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:24.0223594Z #7 naming to docker.io/library/0b56e9:26ab52e56e7d45afae05c2692b952370 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:24.0224343Z #7 DONE 0.3s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:28:24.0556562Z ##[endgroup]
+fetch-logs	Fetch Backend Logs	﻿2026-02-22T21:28:24.0836646Z ##[group]Run appleboy/ssh-action@v1.0.3
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.0837256Z with:
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.0837684Z   host: ***
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.0837903Z   username: ***
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.0839999Z   key: ***
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.0840370Z   script: echo "=== BACKEND APP LOGS ==="
+fetch-logs	Fetch Backend Logs	cd ~/upgrade-crm
+fetch-logs	Fetch Backend Logs	docker compose logs --tail 200 app
+fetch-logs	Fetch Backend Logs	
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.0840817Z   port: 22
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.0841023Z   timeout: 30s
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.0841228Z   command_timeout: 10m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.0841455Z   proxy_port: 22
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.0841675Z   proxy_timeout: 30s
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.0842111Z ##[endgroup]
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.0967048Z ##[command]/usr/bin/docker run --name b56e926ab52e56e7d45afae05c2692b952370_ace360 --label 0b56e9 --workdir /github/workspace --rm -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" 0b56e9:26ab52e56e7d45afae05c2692b952370
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.8764141Z ======CMD======
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.8764519Z echo "=== BACKEND APP LOGS ==="
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.8765140Z cd ~/upgrade-crm
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.8765389Z docker compose logs --tail 200 app
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.8765584Z 
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:24.8765665Z ======END======
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.6002213Z out: === BACKEND APP LOGS ===
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8695719Z out: app-1  |   originalPath: [32m'/api/:path*'[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8696121Z out: app-1  | }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8697184Z out: app-1  | [31m[Nest] 1  - [39m02/22/2026, 7:28:41 PM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPathError [TypeError]: Missing parameter name at index 11: /api/:path*; visit https://git.new/pathToRegexpError for info
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8698360Z out: app-1  |     at name [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:96:19[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8699106Z out: app-1  |     at parse [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:113:68[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8699880Z out: app-1  |     at pathToRegexp [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:267:58[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8701146Z out: app-1  |     at [90m/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/utils/is-route-excluded.util.js:7:62
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8701705Z out: app-1  |     at Array.some (<anonymous>)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8702439Z out: app-1  |     at isRouteExcluded [90m(/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/utils/is-route-excluded.util.js:6:18[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8703330Z out: app-1  |     at [90m/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/loaders/express.loader.js:94:66
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8704090Z out: app-1  |     at Layer.handleError [90m(/app/[39mnode_modules/[4mrouter[24m/lib/layer.js:116:17[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8705027Z out: app-1  |     at trimPrefix [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:340:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8705662Z out: app-1  |     at [90m/app/[39mnode_modules/[4mrouter[24m/index.js:297:9
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8706289Z out: app-1  |     at processParams [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:582:12[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8706958Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:291:5[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8707588Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:132:14[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8708298Z out: app-1  |     at Layer.handleRequest [90m(/app/[39mnode_modules/[4mrouter[24m/lib/layer.js:165:5[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8708988Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:157:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8709676Z out: app-1  |     at Route.dispatch [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:117:3[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8710225Z out: app-1  |   originalPath: [32m'/api/:path*'[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8710524Z out: app-1  | }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8711504Z out: app-1  | [31m[Nest] 1  - [39m02/22/2026, 8:27:05 PM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPathError [TypeError]: Missing parameter name at index 11: /api/:path*; visit https://git.new/pathToRegexpError for info
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8712628Z out: app-1  |     at name [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:96:19[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8713535Z out: app-1  |     at parse [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:113:68[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8714307Z out: app-1  |     at pathToRegexp [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:267:58[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8715346Z out: app-1  |     at [90m/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/utils/is-route-excluded.util.js:7:62
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8715881Z out: app-1  |     at Array.some (<anonymous>)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8716588Z out: app-1  |     at isRouteExcluded [90m(/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/utils/is-route-excluded.util.js:6:18[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8717493Z out: app-1  |     at [90m/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/loaders/express.loader.js:94:66
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8718253Z out: app-1  |     at Layer.handleError [90m(/app/[39mnode_modules/[4mrouter[24m/lib/layer.js:116:17[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8718962Z out: app-1  |     at trimPrefix [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:340:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8719562Z out: app-1  |     at [90m/app/[39mnode_modules/[4mrouter[24m/index.js:297:9
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8720179Z out: app-1  |     at processParams [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:582:12[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8720844Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:291:5[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8721512Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:132:14[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8722221Z out: app-1  |     at Layer.handleRequest [90m(/app/[39mnode_modules/[4mrouter[24m/lib/layer.js:165:5[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8722918Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:157:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8723768Z out: app-1  |     at Route.dispatch [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:117:3[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8724328Z out: app-1  |   originalPath: [32m'/api/:path*'[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8724846Z out: app-1  | }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8725841Z out: app-1  | [31m[Nest] 1  - [39m02/22/2026, 8:27:05 PM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPathError [TypeError]: Missing parameter name at index 11: /api/:path*; visit https://git.new/pathToRegexpError for info
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8726978Z out: app-1  |     at name [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:96:19[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8727701Z out: app-1  |     at parse [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:113:68[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8728456Z out: app-1  |     at pathToRegexp [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:267:58[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8729274Z out: app-1  |     at [90m/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/utils/is-route-excluded.util.js:7:62
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8729803Z out: app-1  |     at Array.some (<anonymous>)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8730503Z out: app-1  |     at isRouteExcluded [90m(/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/utils/is-route-excluded.util.js:6:18[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8731390Z out: app-1  |     at [90m/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/loaders/express.loader.js:94:66
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8732157Z out: app-1  |     at Layer.handleError [90m(/app/[39mnode_modules/[4mrouter[24m/lib/layer.js:116:17[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8732861Z out: app-1  |     at trimPrefix [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:340:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8733453Z out: app-1  |     at [90m/app/[39mnode_modules/[4mrouter[24m/index.js:297:9
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8734057Z out: app-1  |     at processParams [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:582:12[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8734810Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:291:5[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8735585Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:132:14[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8736289Z out: app-1  |     at Layer.handleRequest [90m(/app/[39mnode_modules/[4mrouter[24m/lib/layer.js:165:5[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8736973Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:157:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8737648Z out: app-1  |     at Route.dispatch [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:117:3[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8738203Z out: app-1  |   originalPath: [32m'/api/:path*'[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8738496Z out: app-1  | }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8739416Z out: app-1  | [31m[Nest] 1  - [39m02/22/2026, 8:27:05 PM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPathError [TypeError]: Missing parameter name at index 11: /api/:path*; visit https://git.new/pathToRegexpError for info
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8740516Z out: app-1  |     at name [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:96:19[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8741275Z out: app-1  |     at parse [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:113:68[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8742030Z out: app-1  |     at pathToRegexp [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:267:58[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8742830Z out: app-1  |     at [90m/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/utils/is-route-excluded.util.js:7:62
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8743366Z out: app-1  |     at Array.some (<anonymous>)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8744071Z out: app-1  |     at isRouteExcluded [90m(/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/utils/is-route-excluded.util.js:6:18[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8745070Z out: app-1  |     at [90m/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/loaders/express.loader.js:94:66
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8745964Z out: app-1  |     at Layer.handleError [90m(/app/[39mnode_modules/[4mrouter[24m/lib/layer.js:116:17[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8746672Z out: app-1  |     at trimPrefix [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:340:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8747255Z out: app-1  |     at [90m/app/[39mnode_modules/[4mrouter[24m/index.js:297:9
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8747873Z out: app-1  |     at processParams [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:582:12[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8748518Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:291:5[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8749140Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:132:14[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8749842Z out: app-1  |     at Layer.handleRequest [90m(/app/[39mnode_modules/[4mrouter[24m/lib/layer.js:165:5[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8750531Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:157:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8751217Z out: app-1  |     at Route.dispatch [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:117:3[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8751776Z out: app-1  |   originalPath: [32m'/api/:path*'[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8752081Z out: app-1  | }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8753001Z out: app-1  | [31m[Nest] 1  - [39m02/22/2026, 8:27:06 PM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPathError [TypeError]: Missing parameter name at index 11: /api/:path*; visit https://git.new/pathToRegexpError for info
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8754090Z out: app-1  |     at name [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:96:19[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8754923Z out: app-1  |     at parse [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:113:68[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8755682Z out: app-1  |     at pathToRegexp [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:267:58[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8756483Z out: app-1  |     at [90m/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/utils/is-route-excluded.util.js:7:62
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8757134Z out: app-1  |     at Array.some (<anonymous>)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8757835Z out: app-1  |     at isRouteExcluded [90m(/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/utils/is-route-excluded.util.js:6:18[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8758719Z out: app-1  |     at [90m/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/loaders/express.loader.js:94:66
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8759469Z out: app-1  |     at Layer.handleError [90m(/app/[39mnode_modules/[4mrouter[24m/lib/layer.js:116:17[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8760175Z out: app-1  |     at trimPrefix [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:340:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8760755Z out: app-1  |     at [90m/app/[39mnode_modules/[4mrouter[24m/index.js:297:9
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8761354Z out: app-1  |     at processParams [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:582:12[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8762007Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:291:5[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8762645Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:132:14[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8763356Z out: app-1  |     at Layer.handleRequest [90m(/app/[39mnode_modules/[4mrouter[24m/lib/layer.js:165:5[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8764054Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:157:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8764843Z out: app-1  |     at Route.dispatch [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:117:3[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8765401Z out: app-1  |   originalPath: [32m'/api/:path*'[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8765695Z out: app-1  | }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8766624Z out: app-1  | [31m[Nest] 1  - [39m02/22/2026, 8:27:06 PM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPathError [TypeError]: Missing parameter name at index 11: /api/:path*; visit https://git.new/pathToRegexpError for info
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8767862Z out: app-1  |     at name [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:96:19[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8768602Z out: app-1  |     at parse [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:113:68[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8769355Z out: app-1  |     at pathToRegexp [90m(/app/[39mnode_modules/[4mpath-to-regexp[24m/dist/index.js:267:58[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8770158Z out: app-1  |     at [90m/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/utils/is-route-excluded.util.js:7:62
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8770697Z out: app-1  |     at Array.some (<anonymous>)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8771400Z out: app-1  |     at isRouteExcluded [90m(/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/utils/is-route-excluded.util.js:6:18[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8772283Z out: app-1  |     at [90m/app/[39mnode_modules/[4m@nestjs/serve-static[24m/dist/loaders/express.loader.js:94:66
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8773049Z out: app-1  |     at Layer.handleError [90m(/app/[39mnode_modules/[4mrouter[24m/lib/layer.js:116:17[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8773763Z out: app-1  |     at trimPrefix [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:340:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8774348Z out: app-1  |     at [90m/app/[39mnode_modules/[4mrouter[24m/index.js:297:9
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8775059Z out: app-1  |     at processParams [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:582:12[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8775707Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/index.js:291:5[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8776324Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:132:14[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8777029Z out: app-1  |     at Layer.handleRequest [90m(/app/[39mnode_modules/[4mrouter[24m/lib/layer.js:165:5[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8777724Z out: app-1  |     at next [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:157:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8778421Z out: app-1  |     at Route.dispatch [90m(/app/[39mnode_modules/[4mrouter[24m/lib/route.js:117:3[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8779096Z out: app-1  |   originalPath: [32m'/api/:path*'[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.8779430Z out: app-1  | }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9453102Z out: app-1  | [31m[Nest] 1  - [39m02/22/2026, 9:23:56 PM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPrismaClientKnownRequestError: 
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9457331Z out: app-1  | Invalid `this.prisma.user.findUnique()` invocation in
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9458228Z out: app-1  | /app/dist/src/users/users.service.js:21:33
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9458868Z out: app-1  | 
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9459335Z out: app-1  |   18     this.prisma = prisma;
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9459914Z out: app-1  |   19 }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9460395Z out: app-1  |   20 async findOne(username) {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9461259Z out: app-1  | → 21     return this.prisma.user.findUnique(
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9462236Z out: app-1  | The column `(not available)` does not exist in the current database.
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9463799Z out: app-1  |     at zr.handleRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:8172[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9465970Z out: app-1  |     at zr.handleAndLogRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7467[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9467729Z out: app-1  |     at zr.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7174[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9469156Z out: app-1  | [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9470574Z out: app-1  |     at async a [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:75:5816[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9471544Z out: app-1  |     at async AuthService.validateUser [90m(/app/[39mdist/src/auth/auth.service.js:24:22[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9472574Z out: app-1  |     at async LocalStrategy.validate [90m(/app/[39mdist/src/auth/local.strategy.js:26:22[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9474377Z out: app-1  |     at async LocalStrategy.callback [as _verify] [90m(/app/[39mnode_modules/[4m@nestjs/passport[24m/dist/passport/passport.strategy.js:13:44[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9475953Z out: app-1  |   code: [32m'P2022'[39m,
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9476433Z out: app-1  |   meta: {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9476944Z out: app-1  |     modelName: [32m'User'[39m,
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9477933Z out: app-1  |     driverAdapterError: DriverAdapterError: ColumnNotFound
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9479914Z out: app-1  |         at PrismaPgAdapter.onError [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:687:11[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9481664Z out: app-1  |         at PrismaPgAdapter.performIO [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:682:12[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9483268Z out: app-1  |     [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9485038Z out: app-1  |         at async PrismaPgAdapter.queryRaw [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:602:30[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9486693Z out: app-1  |         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:43522[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9488063Z out: app-1  |         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:43962[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9489142Z out: app-1  |         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:45151[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9490126Z out: app-1  |         at async e.run [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:42242[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9491162Z out: app-1  |         at async e.execute [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:57:815[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9492629Z out: app-1  |         at async qt.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:58:2327[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9494562Z out: app-1  |         at async Object.singleLoader [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:6569[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9495831Z out: app-1  |       cause: {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9496306Z out: app-1  |         originalCode: [32m'42703'[39m,
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9496980Z out: app-1  |         originalMessage: [32m'column users.is_super_admin does not exist'[39m,
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9497606Z out: app-1  |         kind: [32m'ColumnNotFound'[39m,
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9498087Z out: app-1  |         column: [90mundefined[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9498665Z out: app-1  |       }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9498903Z out: app-1  |     }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9499232Z out: app-1  |   },
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9499719Z out: app-1  |   clientVersion: [32m'7.4.0'[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9500021Z out: app-1  | }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9500850Z out: app-1  | [31m[Nest] 1  - [39m02/22/2026, 9:25:25 PM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPrismaClientKnownRequestError: 
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9501771Z out: app-1  | Invalid `this.prisma.user.findUnique()` invocation in
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9502199Z out: app-1  | /app/dist/src/users/users.service.js:21:33
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9502613Z out: app-1  | 
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9502857Z out: app-1  |   18     this.prisma = prisma;
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9503349Z out: app-1  |   19 }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9503804Z out: app-1  |   20 async findOne(username) {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9504417Z out: app-1  | → 21     return this.prisma.user.findUnique(
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9505364Z out: app-1  | The column `(not available)` does not exist in the current database.
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9506615Z out: app-1  |     at zr.handleRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:8172[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9508390Z out: app-1  |     at zr.handleAndLogRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7467[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9509992Z out: app-1  |     at zr.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7174[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9511434Z out: app-1  | [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9512831Z out: app-1  |     at async a [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:75:5816[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9513896Z out: app-1  |     at async AuthService.validateUser [90m(/app/[39mdist/src/auth/auth.service.js:24:22[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9515286Z out: app-1  |     at async LocalStrategy.validate [90m(/app/[39mdist/src/auth/local.strategy.js:26:22[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9516538Z out: app-1  |     at async LocalStrategy.callback [as _verify] [90m(/app/[39mnode_modules/[4m@nestjs/passport[24m/dist/passport/passport.strategy.js:13:44[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9517642Z out: app-1  |   code: [32m'P2022'[39m,
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9518060Z out: app-1  |   meta: {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9518377Z out: app-1  |     modelName: [32m'User'[39m,
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9518759Z out: app-1  |     driverAdapterError: DriverAdapterError: ColumnNotFound
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9519510Z out: app-1  |         at PrismaPgAdapter.onError [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:687:11[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9520507Z out: app-1  |         at PrismaPgAdapter.performIO [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:682:12[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9521357Z out: app-1  |     [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9522246Z out: app-1  |         at async PrismaPgAdapter.queryRaw [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:602:30[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9523200Z out: app-1  |         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:43522[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9524269Z out: app-1  |         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:43962[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9525435Z out: app-1  |         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:45151[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9526291Z out: app-1  |         at async e.run [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:42242[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9527115Z out: app-1  |         at async e.execute [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:57:815[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9527949Z out: app-1  |         at async qt.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:58:2327[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9528841Z out: app-1  |         at async Object.singleLoader [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:6569[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9529422Z out: app-1  |       cause: {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9529765Z out: app-1  |         originalCode: [32m'42703'[39m,
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9530287Z out: app-1  |         originalMessage: [32m'column users.is_super_admin does not exist'[39m,
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9530801Z out: app-1  |         kind: [32m'ColumnNotFound'[39m,
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9531178Z out: app-1  |         column: [90mundefined[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9531467Z out: app-1  |       }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9531683Z out: app-1  |     }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9531893Z out: app-1  |   },
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9532179Z out: app-1  |   clientVersion: [32m'7.4.0'[39m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9532466Z out: app-1  | }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9532684Z ==============================================
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9533044Z ✅ Successfully executed commands to all host.
+fetch-logs	Fetch Backend Logs	2026-02-22T21:28:26.9533554Z ==============================================
+fetch-logs	Complete job	﻿2026-02-22T21:28:27.0374156Z Cleaning up orphan processes

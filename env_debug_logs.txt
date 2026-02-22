@@ -1,0 +1,285 @@
+fetch-logs	Set up job	﻿2026-02-22T21:41:41.8343823Z Current runner version: '2.331.0'
+fetch-logs	Set up job	2026-02-22T21:41:41.8370209Z ##[group]Runner Image Provisioner
+fetch-logs	Set up job	2026-02-22T21:41:41.8371311Z Hosted Compute Agent
+fetch-logs	Set up job	2026-02-22T21:41:41.8372072Z Version: 20260123.484
+fetch-logs	Set up job	2026-02-22T21:41:41.8372776Z Commit: 6bd6555ca37d84114959e1c76d2c01448ff61c5d
+fetch-logs	Set up job	2026-02-22T21:41:41.8373542Z Build Date: 2026-01-23T19:41:17Z
+fetch-logs	Set up job	2026-02-22T21:41:41.8374432Z Worker ID: {e8666c87-945b-4076-afd9-e5b40f9206f1}
+fetch-logs	Set up job	2026-02-22T21:41:41.8375220Z Azure Region: centralus
+fetch-logs	Set up job	2026-02-22T21:41:41.8375906Z ##[endgroup]
+fetch-logs	Set up job	2026-02-22T21:41:41.8377368Z ##[group]Operating System
+fetch-logs	Set up job	2026-02-22T21:41:41.8378177Z Ubuntu
+fetch-logs	Set up job	2026-02-22T21:41:41.8379129Z 24.04.3
+fetch-logs	Set up job	2026-02-22T21:41:41.8379735Z LTS
+fetch-logs	Set up job	2026-02-22T21:41:41.8380367Z ##[endgroup]
+fetch-logs	Set up job	2026-02-22T21:41:41.8381005Z ##[group]Runner Image
+fetch-logs	Set up job	2026-02-22T21:41:41.8381734Z Image: ubuntu-24.04
+fetch-logs	Set up job	2026-02-22T21:41:41.8382361Z Version: 20260201.15.1
+fetch-logs	Set up job	2026-02-22T21:41:41.8383516Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260201.15/images/ubuntu/Ubuntu2404-Readme.md
+fetch-logs	Set up job	2026-02-22T21:41:41.8385321Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260201.15
+fetch-logs	Set up job	2026-02-22T21:41:41.8386434Z ##[endgroup]
+fetch-logs	Set up job	2026-02-22T21:41:41.8387713Z ##[group]GITHUB_TOKEN Permissions
+fetch-logs	Set up job	2026-02-22T21:41:41.8390173Z Contents: read
+fetch-logs	Set up job	2026-02-22T21:41:41.8390897Z Metadata: read
+fetch-logs	Set up job	2026-02-22T21:41:41.8391713Z Packages: read
+fetch-logs	Set up job	2026-02-22T21:41:41.8392370Z ##[endgroup]
+fetch-logs	Set up job	2026-02-22T21:41:41.8394834Z Secret source: Actions
+fetch-logs	Set up job	2026-02-22T21:41:41.8396086Z Prepare workflow directory
+fetch-logs	Set up job	2026-02-22T21:41:41.8738221Z Prepare all required actions
+fetch-logs	Set up job	2026-02-22T21:41:41.8792784Z Getting action download info
+fetch-logs	Set up job	2026-02-22T21:41:42.1792137Z Download action repository 'appleboy/ssh-action@v1.0.3' (SHA:029f5b4aeeeb58fdfe1410a5d17f967dacf36262)
+fetch-logs	Set up job	2026-02-22T21:41:42.7174101Z Complete job name: fetch-logs
+fetch-logs	Build appleboy/ssh-action@v1.0.3	﻿2026-02-22T21:41:42.7752530Z ##[group]Build container for action use: '/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile'.
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:42.7802826Z ##[command]/usr/bin/docker build -t eecdcd:e69c3d04257542c3b82a168edfdaadaa -f "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile" "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3"
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.3504439Z #0 building with "default" instance using docker driver
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.3505358Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.3505763Z #1 [internal] load build definition from Dockerfile
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.3506763Z #1 transferring dockerfile: 149B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.3507542Z #1 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.3507875Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.3508358Z #2 [internal] load metadata for ghcr.io/appleboy/drone-ssh:1.7.3
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.7463040Z #2 DONE 0.5s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8627013Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8627849Z #3 [internal] load .dockerignore
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8628761Z #3 transferring context: 2B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8630144Z #3 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8631144Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8631407Z #4 [internal] load build context
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8632019Z #4 transferring context: 108B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8632613Z #4 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8632928Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8633676Z #5 [1/2] FROM ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8635211Z #5 resolve ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8636712Z #5 sha256:c4781b8d012b16b6c7468dc9104fad0a63f2a8815b2af8b7176bb544253ea8c7 3.86kB / 3.86kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8637787Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0B / 3.38MB 0.1s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8639543Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0B / 284.83kB 0.1s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8640490Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 0B / 1.20kB 0.1s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8641388Z #5 sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 2.38kB / 2.38kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.8642123Z #5 sha256:1a52f94820e830bc9734623deb03bbafa6a248fba19cdc2e5605c70d90d91441 1.24kB / 1.24kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.9970478Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 3.38MB / 3.38MB 0.2s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.9973024Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 284.83kB / 284.83kB 0.2s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.9974787Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 1.20kB / 1.20kB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.9976428Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.9977805Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 0B / 125B 0.2s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:43.9978975Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0B / 2.44MB 0.2s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:44.1342582Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 125B / 125B 0.2s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:44.1344686Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 2.44MB / 2.44MB 0.3s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:44.1346351Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:44.1347916Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:44.3739030Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 2.44MB / 2.44MB 0.3s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:44.3740210Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:44.3741254Z #5 extracting sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:44.3742201Z #5 extracting sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:44.3742936Z #5 DONE 0.5s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:44.3743166Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:44.3743895Z #6 [2/2] COPY entrypoint.sh /bin/entrypoint.sh
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:44.3744350Z #6 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:44.3744537Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:44.3744685Z #7 exporting to image
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:44.3745067Z #7 exporting layers
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:45.0043557Z #7 exporting layers 0.8s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:45.0251825Z #7 writing image sha256:50212f73eb8b17eadfcf43e12c9e74be8b87ff7208ccb6cf7b9a55db64c2c545 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:45.0253187Z #7 naming to docker.io/library/eecdcd:e69c3d04257542c3b82a168edfdaadaa done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:45.0253949Z #7 DONE 0.8s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-02-22T21:41:45.0320039Z ##[endgroup]
+fetch-logs	Fetch Backend Logs	﻿2026-02-22T21:41:45.0607825Z ##[group]Run appleboy/ssh-action@v1.0.3
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.0608482Z with:
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.0609167Z   host: ***
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.0609396Z   username: ***
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.0611247Z   key: ***
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.0611761Z   script: echo "=== DEBUGGING PRISMA ==="
+fetch-logs	Fetch Backend Logs	cd ~/upgrade-crm
+fetch-logs	Fetch Backend Logs	docker compose exec app env
+fetch-logs	Fetch Backend Logs	docker compose exec app cat prisma/schema.prisma
+fetch-logs	Fetch Backend Logs	
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.0612348Z   port: 22
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.0612541Z   timeout: 30s
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.0612748Z   command_timeout: 10m
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.0612970Z   proxy_port: 22
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.0613210Z   proxy_timeout: 30s
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.0613688Z ##[endgroup]
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.0740893Z ##[command]/usr/bin/docker run --name eecdcde69c3d04257542c3b82a168edfdaadaa_6caf32 --label eecdcd --workdir /github/workspace --rm -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" eecdcd:e69c3d04257542c3b82a168edfdaadaa
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.2672531Z ======CMD======
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.2672946Z echo "=== DEBUGGING PRISMA ==="
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.2673308Z cd ~/upgrade-crm
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.2673548Z docker compose exec app env
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.2673869Z docker compose exec app cat prisma/schema.prisma
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.2674114Z 
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:45.2674204Z ======END======
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.1559400Z out: === DEBUGGING PRISMA ===
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.3557756Z out: PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.3558602Z out: HOSTNAME=0a67986875b8
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.3559511Z out: JWT_SECRET=complex_secret_value_change_me_in_prod
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.3560424Z out: POSTGRES_USER=upgrade
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.3561134Z out: POSTGRES_PASSWORD=upgrade_pass
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.3561821Z out: POSTGRES_DB=upgrade_crm
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.3562578Z out: FRONTEND_URL=http://devupgrade.space4you.ru
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.3564201Z out: DATABASE_URL=***db:5432/upgrade_crm
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.3564935Z out: NODE_VERSION=20.20.0
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.3565529Z out: YARN_VERSION=1.22.22
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.3566704Z out: HOME=/home/node
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5753325Z out: // This is your Prisma schema file,
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5754308Z out: // learn more about it in the docs: https://pris.ly/d/prisma-schema
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5756015Z out: generator client {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5756598Z out:   provider = "prisma-client-js"
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5757144Z out: }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5757539Z out: datasource db {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5758065Z out:   provider = "postgresql"
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5758554Z out: }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5759157Z out: // ============================================================
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5759638Z out: // ENUMS
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5759944Z out: // ============================================================
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5760354Z out: enum EventStatus {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5760637Z out:   draft
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5760833Z out:   published
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5761030Z out:   archived
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5761226Z out: }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5761422Z out: enum SpeakerRole {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5761740Z out:   moderator
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5761938Z out:   speaker
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5762122Z out: }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5762310Z out: enum SpeakerStatus {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5762542Z out:   confirmed
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5762756Z out:   pre_confirmed
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5763061Z out:   contact
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5763254Z out:   to_contact
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5763456Z out:   declined
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5763647Z out:   review
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5763826Z out: }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5764013Z out: enum PresenceStatus {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5764520Z out:   planned
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5764711Z out:   onsite
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5764919Z out:   missing
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5765095Z out: }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5765323Z out: // ============================================================
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5765618Z out: // MODELS
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5765847Z out: // ============================================================
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5766146Z out: model Event {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5766436Z out:   id          Int         @id @default(autoincrement())
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5766793Z out:   name        String      @db.VarChar(255)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5767140Z out:   description String?     @db.Text
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5767475Z out:   startDate   DateTime    @map("start_date") @db.Date
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5767850Z out:   endDate     DateTime    @map("end_date") @db.Date
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5768186Z out:   status      EventStatus @default(draft)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5768557Z out:   createdAt   DateTime    @default(now()) @map("created_at")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5769254Z out:   halls Hall[]
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5769470Z out:   @@map("events")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5769674Z out: }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5769857Z out: model Hall {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5770124Z out:   id        Int    @id @default(autoincrement())
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5770441Z out:   eventId   Int    @map("event_id")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5770728Z out:   name      String @db.VarChar(100)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5771006Z out:   capacity  Int    @default(0)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5771323Z out:   sortOrder Int    @default(0) @map("sort_order")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5771779Z out:   event  Event   @relation(fields: [eventId], references: [id], onDelete: Cascade)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5772195Z out:   tracks Track[]
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5772417Z out:   @@map("halls")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5772614Z out: }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5772794Z out: model Track {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5773052Z out:   id          Int      @id @default(autoincrement())
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5773375Z out:   hallId      Int      @map("hall_id")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5773689Z out:   name        String   @db.VarChar(255)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5773979Z out:   description String?  @db.Text
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5774249Z out:   day         DateTime @db.Date
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5774611Z out:   startTime   String   @map("start_time") @db.VarChar(5) // "HH:MM"
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5775074Z out:   endTime     String   @map("end_time") @db.VarChar(5) // "HH:MM"
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5775479Z out:   sortOrder   Int      @default(0) @map("sort_order")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5776121Z out:   hall     Hall      @relation(fields: [hallId], references: [id], onDelete: Cascade)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5776542Z out:   sessions Session[]
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5776774Z out:   @@map("tracks")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5776982Z out: }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5777161Z out: model Session {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5777417Z out:   id        Int    @id @default(autoincrement())
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5777775Z out:   trackId   Int    @map("track_id")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5778055Z out:   name      String @db.VarChar(255)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5778348Z out:   description String? @db.Text
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5778815Z out:   startTime String @map("start_time") @db.VarChar(5) // "HH:MM"
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5779245Z out:   endTime   String @map("end_time") @db.VarChar(5) // "HH:MM"
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5779592Z out:   comments  String? @db.Text
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5779844Z out:   clients   String? @db.Text
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5780265Z out:   track     Track             @relation(fields: [trackId], references: [id], onDelete: Cascade)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5780757Z out:   speakers  SessionSpeaker[]
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5781022Z out:   questions SessionQuestion[]
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5781282Z out:   briefings Briefing[]
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5781526Z out:   @@map("sessions")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5781739Z out: }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5781918Z out: model Speaker {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5782200Z out:   id              Int     @id @default(autoincrement())
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5782587Z out:   firstName       String  @map("first_name") @db.VarChar(100)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5783149Z out:   lastName        String  @map("last_name") @db.VarChar(100)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5783512Z out:   company         String? @db.VarChar(255)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5783832Z out:   position        String? @db.VarChar(255)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5784135Z out:   email           String? @db.VarChar(255)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5784442Z out:   phone           String? @db.VarChar(50)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5784750Z out:   telegram        String? @db.VarChar(100)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5785109Z out:   photoUrl        String? @map("photo_url") @db.VarChar(512)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5785513Z out:   isSponsor       Boolean @default(false) @map("is_sponsor")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5785857Z out:   bio             String? @db.Text
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5786209Z out:   internalComment String? @map("internal_comment") @db.Text
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5786618Z out:   // Assistant/Secretary Contact (Not part of Gold ID)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5787191Z out:   hasAssistant     Boolean @default(false) @map("has_assistant")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5787803Z out:   assistantName    String? @map("assistant_name") @db.VarChar(100)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5788291Z out:   assistantContact String? @map("assistant_contact") @db.VarChar(255)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5788923Z out:   sessions         SessionSpeaker[]
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5789250Z out:   moderatedBriefings Briefing[]
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5789533Z out:   @@map("speakers")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5789756Z out: }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5789977Z out: model SessionSpeaker {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5790322Z out:   id               Int            @id @default(autoincrement())
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5790733Z out:   sessionId        Int            @map("session_id")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5791128Z out:   speakerId        Int            @map("speaker_id")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5791514Z out:   role             SpeakerRole    @default(speaker)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5791897Z out:   status           SpeakerStatus  @default(review)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5792329Z out:   statusDate       DateTime?      @map("status_date") @db.Date
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5792800Z out:   sortOrder        Int            @default(0) @map("sort_order")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5793274Z out:   needsZoom        Boolean        @default(false) @map("needs_zoom")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5793815Z out:   hasPresentation  Boolean        @default(false) @map("has_presentation")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5794386Z out:   managerComment   String?        @map("manager_comment") @db.Text
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5794892Z out:   programThesis    String?        @map("program_thesis") @db.Text
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5795559Z out:   newsletterQuote  String?        @map("newsletter_quote") @db.Text
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5796059Z out:   presenceStatus   PresenceStatus? @map("presence_status")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5796630Z out:   session Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5797277Z out:   speaker Speaker @relation(fields: [speakerId], references: [id], onDelete: Cascade)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5797763Z out:   // Snapshots for historical accuracy
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5798213Z out:   companySnapshot   String? @map("company_snapshot") @db.VarChar(255)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5798868Z out:   positionSnapshot  String? @map("position_snapshot") @db.VarChar(255)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5799427Z out:   presentationTitle String? @map("presentation_title") @db.VarChar(255)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5799973Z out:   presentationUrl   String? @map("presentation_url") @db.VarChar(512)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5800399Z out:   @@unique([sessionId, speakerId])
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5800706Z out:   @@map("session_speakers")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5800945Z out: }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5801159Z out: model SessionQuestion {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5801484Z out:   id        Int    @id @default(autoincrement())
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5801830Z out:   sessionId Int    @map("session_id")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5802109Z out:   order     Int
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5802369Z out:   title     String @db.VarChar(255)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5802664Z out:   body      String? @db.Text
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5803136Z out:   session Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5803778Z out:   @@map("session_questions")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5804020Z out: }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5804221Z out: model Briefing {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5804527Z out:   id          Int      @id @default(autoincrement())
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5804890Z out:   sessionId   Int      @map("session_id")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5805248Z out:   moderatorId Int?     @map("moderator_id")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5805601Z out:   datetime    DateTime @db.Timestamptz
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5805974Z out:   isDone      Boolean  @default(false) @map("is_done")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5806347Z out:   link        String?  @db.VarChar(512)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5806662Z out:   comment     String?  @db.Text
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5807157Z out:   session   Session  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5807832Z out:   moderator Speaker? @relation(fields: [moderatorId], references: [id], onDelete: SetNull)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5808309Z out:   @@map("briefings")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5808528Z out: }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5808922Z out: model User {
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5809230Z out:   id           Int      @id @default(autoincrement())
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5809629Z out:   username     String   @unique @db.VarChar(255)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5809995Z out:   password     String   @db.VarChar(255)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5810377Z out:   role         String   @default("user") @db.VarChar(50)
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5810842Z out:   isSuperAdmin Boolean  @default(false) @map("is_super_admin")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5811353Z out:   createdAt    DateTime @default(now()) @map("created_at")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5811783Z out:   updatedAt    DateTime @updatedAt @map("updated_at")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5812106Z out:   @@map("users")
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5812312Z out: }
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.5911707Z ==============================================
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.6022569Z ✅ Successfully executed commands to all host.
+fetch-logs	Fetch Backend Logs	2026-02-22T21:41:47.6023116Z ==============================================
+fetch-logs	Complete job	﻿2026-02-22T21:41:47.6739014Z Cleaning up orphan processes

@@ -87,19 +87,20 @@ model Track {
 }
 
 model Session {
-  id        Int    @id @default(autoincrement())
-  trackId   Int    @map("track_id")
-  name      String @db.VarChar(255)
+  id          Int     @id @default(autoincrement())
+  trackId     Int     @map("track_id")
+  name        String  @db.VarChar(255)
   description String? @db.Text
-  startTime String @map("start_time") @db.VarChar(5) // "HH:MM"
-  endTime   String @map("end_time") @db.VarChar(5) // "HH:MM"
-  comments  String? @db.Text
-  clients   String? @db.Text
+  startTime   String  @map("start_time") @db.VarChar(5) // "HH:MM"
+  endTime     String  @map("end_time") @db.VarChar(5) // "HH:MM"
+  comments    String? @db.Text
+  clients     String? @db.Text
 
   track     Track             @relation(fields: [trackId], references: [id], onDelete: Cascade)
   speakers  SessionSpeaker[]
   questions SessionQuestion[]
   briefings Briefing[]
+  updatedAt DateTime          @default(now()) @updatedAt @map("updated_at")
 
   @@map("sessions")
 }
@@ -123,26 +124,26 @@ model Speaker {
   assistantName    String? @map("assistant_name") @db.VarChar(100)
   assistantContact String? @map("assistant_contact") @db.VarChar(255)
 
-  sessions         SessionSpeaker[]
+  sessions           SessionSpeaker[]
   moderatedBriefings Briefing[]
 
   @@map("speakers")
 }
 
 model SessionSpeaker {
-  id               Int            @id @default(autoincrement())
-  sessionId        Int            @map("session_id")
-  speakerId        Int            @map("speaker_id")
-  role             SpeakerRole    @default(speaker)
-  status           SpeakerStatus  @default(review)
-  statusDate       DateTime?      @map("status_date") @db.Date
-  sortOrder        Int            @default(0) @map("sort_order")
-  needsZoom        Boolean        @default(false) @map("needs_zoom")
-  hasPresentation  Boolean        @default(false) @map("has_presentation")
-  managerComment   String?        @map("manager_comment") @db.Text
-  programThesis    String?        @map("program_thesis") @db.Text
-  newsletterQuote  String?        @map("newsletter_quote") @db.Text
-  presenceStatus   PresenceStatus? @map("presence_status")
+  id              Int             @id @default(autoincrement())
+  sessionId       Int             @map("session_id")
+  speakerId       Int             @map("speaker_id")
+  role            SpeakerRole     @default(speaker)
+  status          SpeakerStatus   @default(review)
+  statusDate      DateTime?       @map("status_date") @db.Date
+  sortOrder       Int             @default(0) @map("sort_order")
+  needsZoom       Boolean         @default(false) @map("needs_zoom")
+  hasPresentation Boolean         @default(false) @map("has_presentation")
+  managerComment  String?         @map("manager_comment") @db.Text
+  programThesis   String?         @map("program_thesis") @db.Text
+  newsletterQuote String?         @map("newsletter_quote") @db.Text
+  presenceStatus  PresenceStatus? @map("presence_status")
 
   session Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
   speaker Speaker @relation(fields: [speakerId], references: [id], onDelete: Cascade)
@@ -157,12 +158,11 @@ model SessionSpeaker {
   @@map("session_speakers")
 }
 
-
 model SessionQuestion {
-  id        Int    @id @default(autoincrement())
-  sessionId Int    @map("session_id")
+  id        Int     @id @default(autoincrement())
+  sessionId Int     @map("session_id")
   order     Int
-  title     String @db.VarChar(255)
+  title     String  @db.VarChar(255)
   body      String? @db.Text
 
   session Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)

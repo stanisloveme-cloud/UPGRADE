@@ -38,10 +38,10 @@ export class UploadsController {
                 cb(null, uniqueSuffix);
             }
         }),
-        limits: { fileSize: 50 * 1024 * 1024 }, // 50MB
+        limits: { fileSize: 30 * 1024 * 1024 }, // 30MB
         fileFilter: (req, file, cb) => {
-            if (!file.originalname.match(/\.(pdf|pptx)$/)) {
-                return cb(new BadRequestException('Only PDF/PPTX files are allowed!'), false);
+            if (!file.originalname.match(/\.(pdf|ppt|pptx)$/i)) {
+                return cb(new BadRequestException('Only PDF/PPT/PPTX files are allowed!'), false);
             }
             cb(null, true);
         }

@@ -25,7 +25,7 @@ const TrackBlock: React.FC<TrackBlockProps> = ({ track, rowIndex, filters, onSes
             background: '#f5f5f5',
             border: '1px solid #d9d9d9',
             borderRadius: '4px',
-            zIndex: 10, // Ensure track block covers grid lines
+            zIndex: 5, // Underneath sticky hall headers (20) and time scale (10)
             boxShadow: '0 2px 4px rgba(0,0,0,0.05)', // Subtle shadow for depth
             padding: '8px',
             minHeight: '150px',

@@ -149,10 +149,24 @@ export class SessionsService {
     }
 
     async update(id: number, updateSessionDto: UpdateSessionDto) {
-        const { speakers, questions, briefings, ignoreConflicts, ...sessionData } = updateSessionDto;
+        const { speakers, questions, briefings, ignoreConflicts, updatedAt, force, ...sessionData } = updateSessionDto as any;
 
         // Check if session exists
         const existingSession = await this.findOne(id);
+
+        // Optimistic Concurrency Control (OCC)
+        if (updatedAt && !force) {
+            const existingDate = new Date(existingSession.updatedAt).getTime();
+            const requestedDate = new Date(updatedAt).getTime();
+            // If DB is newer by more than a second, it's a conflict
+            if (existingDate > requestedDate + 1000) {
+                throw new ConflictException({
+                    message: 'Внимание: Эти данные были параллельно изменены другим пользователем.',
+                    code: 'CONCURRENT_EDIT',
+                    dbUpdatedAt: existingSession.updatedAt
+                });
+            }
+        }
 
         // Extract speaker IDs
         const speakerIds = speakers ? speakers.map((s: any) => Number(s.speakerId || s.id)).filter(Boolean) : [];

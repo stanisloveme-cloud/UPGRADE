@@ -18,7 +18,7 @@ const TimeScale: React.FC = () => {
                 borderBottom: '1px solid #d9d9d9',
                 position: 'sticky',
                 left: 0,
-                zIndex: 10, // Above everything: time slots (3) and hall rows (2)
+                zIndex: 30, // Above everything: time slots (10), hall rows (20), tracks (5)
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -46,7 +46,7 @@ const TimeScale: React.FC = () => {
                         fontWeight: 500,
                         position: 'sticky',
                         top: 0,
-                        zIndex: 5
+                        zIndex: 10 // Above Tracks (5), below Corner (30)
                     }}
                 >
                     {time}

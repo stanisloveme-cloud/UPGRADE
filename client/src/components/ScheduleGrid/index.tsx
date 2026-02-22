@@ -41,8 +41,8 @@ const ScheduleGrid: React.FC<ScheduleGridProps> = ({ data, loading, filters, onS
         <div style={{
             display: 'grid',
             // Column 1: Fixed 200px for Hall Names
-            // Columns 2...N: 1fr for each time slot (approx 150px min width)
-            gridTemplateColumns: `200px repeat(${timeSlots.length}, minmax(120px, 1fr))`,
+            // Columns 2...N: 1fr for each time slot (approx 96px min width to reduce by 20%)
+            gridTemplateColumns: `200px repeat(${timeSlots.length}, minmax(96px, 1fr))`,
             // Rows: Auto sized based on content
             gridAutoRows: 'minmax(100px, auto)',
             overflowX: 'auto',
