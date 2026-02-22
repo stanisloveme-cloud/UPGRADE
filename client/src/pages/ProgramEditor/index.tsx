@@ -1,31 +1,30 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
-import { Button, message, Tabs, Checkbox, Modal } from 'antd';
+import { Button, message, Tabs, Checkbox, Modal, Tooltip } from 'antd';
 import { SettingOutlined, PlusOutlined, DownloadOutlined } from '@ant-design/icons';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import HallsModal from './HallsModal';
-import SessionDrawer from './SessionDrawer';
-import TrackModal from './TrackModal';
 import ScheduleGrid from '../../components/ScheduleGrid';
+import SessionDrawer from './SessionDrawer';
+import HallsModal from './HallsModal';
+import TrackModal from './TrackModal';
 
 const ProgramEditor: React.FC = () => {
-    const { id } = useParams<{ id: string }>();
-    const eventId = id || 1;
-
+    const { eventId } = useParams<{ eventId: string }>();
     const [data, setData] = useState<any>(null);
     const [loading, setLoading] = useState(true);
-    const [hallsModalVisible, setHallsModalVisible] = useState(false);
+
     const [speakers, setSpeakers] = useState<any[]>([]);
 
-    // Session Drawer State
+    // Modals visibility
     const [sessionDrawerVisible, setSessionDrawerVisible] = useState(false);
-    const [currentSession, setCurrentSession] = useState<any>(null);
-
-    // Track Modal State
+    const [hallsModalVisible, setHallsModalVisible] = useState(false);
     const [trackModalVisible, setTrackModalVisible] = useState(false);
-    const [currentTrackHallId, setCurrentTrackHallId] = useState<number | undefined>(undefined);
-    const [currentTrack, setCurrentTrack] = useState<any>(null);
+
+    // Current editing items
+    const [currentSession, setCurrentSession] = useState<any>(null);
+    const [currentTrackHallId, setCurrentTrackHallId] = useState<number | null>(null);
+    const [currentTrack, setCurrentTrack] = useState<any>(null); // For editing an existing track
 
     const fetchData = async () => {
         try {
@@ -98,33 +97,34 @@ const ProgramEditor: React.FC = () => {
                     cancelText: 'Отмена',
                     onOk: () => {
                         if (isConcurrencyConflict) {
+                            // User clicked 'Force Save' - bypass concurrency check
                             handleSaveSession({ ...values, force: true });
                         } else {
-                            handleSaveSession({ ...values, ignoreConflicts: true });
+                            // Speaker conflict - bypass speaker conflict check
+                            handleSaveSession({ ...values, ignoreSpeakerConflicts: true });
                         }
                     }
                 });
-                return false; // Leave drawer open until confirmed
+                return false; // Prevent modal from closing yet
             }
             console.error('Failed to save session:', error);
-            message.error('Ошибка сохранения');
+            message.error('Ошибка сохранения сессии');
             return false;
         }
     };
 
-    const handleDeleteSession = async (sessionId: number) => {
+    const handleDeleteSession = async (id: number) => {
         try {
-            await axios.delete(`/api/sessions/${sessionId}`);
+            await axios.delete(`/api/sessions/${id}`);
             message.success('Сессия удалена');
             setSessionDrawerVisible(false);
             fetchData();
         } catch (error) {
             console.error('Failed to delete session:', error);
-            message.error('Ошибка удаления');
+            message.error('Ошибка удаления сессии');
         }
     };
 
-    // Track Handlers
     const handleAddTrack = (hallId: number) => {
         setCurrentTrackHallId(hallId);
         setCurrentTrack(null);
@@ -133,20 +133,20 @@ const ProgramEditor: React.FC = () => {
 
     const handleSaveTrack = async (values: any) => {
         try {
-            if (values.id) {
-                await axios.patch(`/api/tracks/${values.id}`, values);
+            if (currentTrack) {
+                // Update
+                await axios.put(`/api/tracks/${currentTrack.id}`, values);
                 message.success('Трек обновлен');
             } else {
+                // Create
                 await axios.post('/api/tracks', values);
-                message.success('Трек создан');
+                message.success('Трек добавлен');
             }
             setTrackModalVisible(false);
             fetchData();
-            return true;
         } catch (error) {
             console.error('Failed to save track:', error);
             message.error('Ошибка сохранения трека');
-            return false;
         }
     };
 
@@ -226,6 +226,11 @@ const ProgramEditor: React.FC = () => {
         return options;
     }, [data]);
 
+    // Determine if we can create sessions (must have at least one track)
+    const hasTracks = useMemo(() => {
+        return data?.halls?.some((hall: any) => hall.tracks && hall.tracks.length > 0) ?? false;
+    }, [data]);
+
     return (
         <PageContainer title={data?.name || "Загрузка..."}>
             <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -242,13 +247,16 @@ const ProgramEditor: React.FC = () => {
                     >
                         Экспорт в Excel
                     </Button>
-                    <Button
-                        type="primary"
-                        icon={<PlusOutlined />}
-                        onClick={handleCreateSession}
-                    >
-                        Создать сессию
-                    </Button>
+                    <Tooltip title={!hasTracks ? "Сначала создайте хотя бы один трек (в строке зала), чтобы добавлять сессии" : ""}>
+                        <Button
+                            type="primary"
+                            icon={<PlusOutlined />}
+                            onClick={handleCreateSession}
+                            disabled={!hasTracks}
+                        >
+                            Создать сессию
+                        </Button>
+                    </Tooltip>
                 </div>
             </div>
 
@@ -298,35 +306,33 @@ const ProgramEditor: React.FC = () => {
                 visible={hallsModalVisible}
                 onClose={() => {
                     setHallsModalVisible(false);
-                    fetchData(); // Refresh in case halls changed
+                    fetchData(); // Refresh if halls changed
                 }}
                 eventId={Number(eventId)}
+                halls={data?.halls || []}
             />
 
+            {/* Session Editing Drawer */}
             <SessionDrawer
                 visible={sessionDrawerVisible}
                 onClose={() => setSessionDrawerVisible(false)}
-                onFinish={handleSaveSession}
-                onDelete={handleDeleteSession}
-                initialValues={currentSession}
-                tracks={tracksOptions}
-                speakers={speakers.map(s => ({
-                    label: `${s.lastName} ${s.firstName}${s.company ? ` (${s.company})` : ''}`,
-                    value: s.id,
-                    phone: s.phone,
-                    telegram: s.telegram
-                }))}
+                session={currentSession}
+                tracksOptions={tracksOptions}
+                speakersList={speakers}
+                onSave={handleSaveSession}
+                onDelete={currentSession?.id ? handleDeleteSession : undefined}
             />
 
             <TrackModal
                 visible={trackModalVisible}
                 onClose={() => setTrackModalVisible(false)}
-                onFinish={handleSaveTrack}
-                onDelete={handleDeleteTrack}
-                initialValues={currentTrack}
-                hallId={currentTrackHallId}
+                track={currentTrack}
+                hallId={currentTrackHallId!}
                 eventId={Number(eventId)}
+                onSave={handleSaveTrack}
+                onDelete={currentTrack?.id ? handleDeleteTrack : undefined}
             />
+
         </PageContainer>
     );
 };

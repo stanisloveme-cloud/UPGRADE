@@ -18,7 +18,8 @@ const ScheduleGrid: React.FC<ScheduleGridProps> = ({ data, loading, filters, onS
     console.log('[ScheduleGrid] Data received:', data);
     if (loading) return <div style={{ padding: 24, textAlign: 'center' }}><Spin size="large" /></div>;
 
-    // Check if data is truly valid
+    // Check if data is truly valid: no halls AT ALL
+    // If halls exist but have no tracks, we SHOULD render the grid so the user can see the halls and click Add Track.
     if (!data || !data.halls || data.halls.length === 0) {
         return (
             <Alert
