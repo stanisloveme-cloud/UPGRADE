@@ -13,6 +13,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            echo "=== RUNNING PRISMA MIGRATE ==="
+            echo "=== DEBUGGING PRISMA ==="
             cd ~/upgrade-crm
-            docker compose exec app npx prisma migrate deploy
+            docker compose exec app env
+            docker compose exec app cat prisma/schema.prisma
