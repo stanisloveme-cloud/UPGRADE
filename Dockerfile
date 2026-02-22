@@ -15,6 +15,7 @@ RUN apt-get update -y && apt-get install -y openssl
 WORKDIR /app
 COPY package*.json ./
 COPY prisma ./prisma/
+COPY prisma.config.ts ./
 # Install production deps as root, then switch to non-root user
 RUN npm ci --omit=dev && npx prisma generate
 COPY --from=builder /app/dist ./dist
