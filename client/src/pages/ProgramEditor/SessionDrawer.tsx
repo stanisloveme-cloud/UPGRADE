@@ -1,5 +1,5 @@
 import React from 'react';
-import { DrawerForm, ProFormText, ProFormTextArea, ProFormTimePicker, ProFormSelect, ProFormList, ProFormDateTimePicker, ProFormSwitch, ProFormGroup, ProFormDependency } from '@ant-design/pro-components';
+import { DrawerForm, ProFormText, ProFormTextArea, ProFormTimePicker, ProFormSelect, ProFormList, ProFormDateTimePicker, ProFormSwitch, ProFormGroup, ProFormDependency, ProCard } from '@ant-design/pro-components';
 import { Button, Upload, message } from 'antd';
 import { FilePdfOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
@@ -132,22 +132,26 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                 placeholder="Краткое описание"
             />
 
-            <ProFormTimePicker.RangePicker
-                name="timeRange"
-                label="Время"
-                fieldProps={{ format: 'HH:mm' }}
-                rules={[{ required: true, message: 'Выберите время' }]}
-            />
+            <ProFormGroup>
+                <ProFormTimePicker.RangePicker
+                    name="timeRange"
+                    label="Время"
+                    fieldProps={{ format: 'HH:mm' }}
+                    rules={[{ required: true, message: 'Выберите время' }]}
+                    width="md"
+                />
 
-            <ProFormSelect
-                name="trackId"
-                label="Трек"
-                options={tracks}
-                disabled={!!trackId} // If track is pre-selected (e.g. valid drop), disable selection? Or allow moving?
-                // For now, allow changing if not strictly enforced
-                placeholder="Выберите трек"
-                rules={[{ required: true, message: 'Выберите трек' }]}
-            />
+                <ProFormSelect
+                    name="trackId"
+                    label="Трек"
+                    options={tracks}
+                    disabled={!!trackId} // If track is pre-selected (e.g. valid drop), disable selection? Or allow moving?
+                    // For now, allow changing if not strictly enforced
+                    placeholder="Выберите трек"
+                    rules={[{ required: true, message: 'Выберите трек' }]}
+                    width="md"
+                />
+            </ProFormGroup>
 
             {/* Questions List */}
             <ProFormList
@@ -223,14 +227,14 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                     creatorButtonText: 'Добавить спикера',
                 }}
                 itemContainerRender={(doms) => {
-                    return <div style={{ padding: '16px', background: '#fafafa', border: '1px solid #f0f0f0', borderRadius: '8px', marginBottom: '16px' }}>{doms}</div>;
+                    return <ProCard bordered size="small" style={{ marginBottom: 16 }}>{doms}</ProCard>;
                 }}
             >
                 {(_meta, _index, action) => (
-                    <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                    <div style={{ width: '100%' }}>
                         {/* Row 1: Speaker Info */}
-                        <div style={{ display: 'flex', gap: '16px', width: '100%' }}>
-                            <div style={{ flex: 3 }}>
+                        <ProFormGroup>
+                            <div style={{ width: '300px' }}>
                                 <ProFormSelect
                                     name="speakerId"
                                     label="Спикер"
@@ -251,43 +255,42 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                     }}
                                 </ProFormDependency>
                             </div>
-                            <div style={{ flex: 1 }}>
-                                <ProFormSelect
-                                    name="role"
-                                    label="Роль"
-                                    options={[
-                                        { value: 'speaker', label: 'Спикер' },
-                                        { value: 'moderator', label: 'Модератор' }
-                                    ]}
-                                    initialValue="speaker"
-                                    rules={[{ required: true, message: 'Обязательно' }]}
-                                />
-                            </div>
-                            <div style={{ flex: 2 }}>
-                                <ProFormText name="companySnapshot" label="Компания" />
-                            </div>
-                            <div style={{ flex: 2 }}>
-                                <ProFormText name="positionSnapshot" label="Должность" />
-                            </div>
-                        </div>
+
+                            <ProFormSelect
+                                name="role"
+                                label="Роль"
+                                options={[
+                                    { value: 'speaker', label: 'Спикер' },
+                                    { value: 'moderator', label: 'Модератор' }
+                                ]}
+                                initialValue="speaker"
+                                rules={[{ required: true, message: 'Обязательно' }]}
+                                width="sm"
+                            />
+
+                            <ProFormText name="companySnapshot" label="Компания" width="sm" />
+                            <ProFormText name="positionSnapshot" label="Должность" width="sm" />
+                        </ProFormGroup>
 
                         {/* Row 2: Presentation Info */}
-                        <div style={{ display: 'flex', gap: '16px', width: '100%', alignItems: 'center' }}>
-                            <div style={{ flex: '0 0 auto', alignSelf: 'flex-start' }}>
-                                <ProFormSwitch name="hasPresentation" label="С презентацией" />
-                            </div>
+                        <ProFormGroup align="center">
+                            <ProFormSwitch name="hasPresentation" label="С презентацией" />
 
                             <ProFormDependency name={['hasPresentation', 'presentationUrl']}>
                                 {({ hasPresentation, presentationUrl }) => {
                                     if (!hasPresentation) return null;
                                     return (
-                                        <div style={{ display: 'flex', gap: '16px', flex: 1, alignItems: 'flex-start' }}>
-                                            <div style={{ flex: 1 }}>
-                                                <ProFormText name="presentationTitle" label="Тема презентации" />
-                                            </div>
-                                            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px', paddingTop: '30px' }}>
+                                        <div style={{ display: 'flex', gap: '16px', flex: 1, alignItems: 'center' }}>
+                                            <ProFormText
+                                                name="presentationTitle"
+                                                label="Тема презентации"
+                                                width="md"
+                                                formItemProps={{ style: { marginBottom: 0 } }}
+                                            />
+
+                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                                                 {presentationUrl ? (
-                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', paddingTop: '30px' }}>
                                                         <a href={presentationUrl} target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                                                             <FilePdfOutlined /> Скачать презентацию
                                                         </a>
@@ -322,7 +325,9 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                                             }
                                                         }}
                                                     >
-                                                        <Button icon={<FilePdfOutlined />}>Загрузить файл</Button>
+                                                        <div style={{ paddingTop: '30px' }}>
+                                                            <Button icon={<FilePdfOutlined />}>Загрузить файл</Button>
+                                                        </div>
                                                     </Upload>
                                                 )}
                                                 {/* Hidden input to keep value in form */}
@@ -334,7 +339,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                     );
                                 }}
                             </ProFormDependency>
-                        </div>
+                        </ProFormGroup>
                     </div>
                 )}
             </ProFormList>
