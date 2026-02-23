@@ -97,7 +97,7 @@ jobs:
             fi
             
             $DC_CMD -f docker-compose.prod.yml down
-            $DC_CMD -f docker-compose.prod.yml up -d
+            $DC_CMD -f docker-compose.prod.yml up -d --remove-orphans
 
             # NOTE: Migrations run automatically inside NestJS on startup (PrismaService.onModuleInit)
             # No need to docker compose exec separately — that was causing exit 137 (SIGKILL)

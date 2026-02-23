@@ -91,10 +91,8 @@ CI/CD: Секреты на месте, готовы к первому депло
  # Точка входа
     base_url: "https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92"
     
-    # Креденшелы (В продакшне используй ENV переменные!)
-    credentials:
-      username: "user@example.com"
-      password: "CHANGEME"
+    # Креденшелы (Используй ENV переменные!)
+    credentials_note: "Используй process.env.UPGRADE_CRM_USERNAME и process.env.UPGRADE_CRM_PASSWORD"
     
     # ИНСТРУКЦИИ ДЛЯ СУБАГЕНТА (СЦЕНАРИЙ)
     instructions: |
@@ -102,8 +100,8 @@ CI/CD: Секреты на месте, готовы к первому депло
 
       STEP 1: AUTHENTICATION (If redirected to Login Page)
       - Check if the current URL contains '/login' or if a login form is visible.
-      - Action: Locate the input field for 'Email' or 'Username'. Type: "{{config.credentials.username}}".
-      - Action: Locate the input field for 'Password'. Type: "{{config.credentials.password}}".
+      - Action: Locate the input field for 'Email' or 'Username'. Type: ENV.UPGRADE_CRM_USERNAME
+      - Action: Locate the input field for 'Password'. Type: ENV.UPGRADE_CRM_PASSWORD
       - Action: Click the 'Login' / 'Sign In' button.
       - Wait: Ensure the page redirects to '/dashboard' or the target URL.
 
