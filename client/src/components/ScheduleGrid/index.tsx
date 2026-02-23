@@ -18,9 +18,22 @@ const ScheduleGrid: React.FC<ScheduleGridProps> = ({ data, loading, filters, onS
     console.log('[ScheduleGrid] Data received:', data);
     if (loading) return <div style={{ padding: 24, textAlign: 'center' }}><Spin size="large" /></div>;
 
+    // If data is null but we are not loading, it means the API fetch failed.
+    if (!data) {
+        return (
+            <Alert
+                message="Ошибка загрузки данных с сервера"
+                description="Не удалось загрузить структуру расписания. Возможно, произошла ошибка на сервере или база данных (миграции) не обновлена."
+                type="error"
+                showIcon
+                style={{ margin: 16 }}
+            />
+        );
+    }
+
     // Check if data is truly valid: no halls AT ALL
     // If halls exist but have no tracks, we SHOULD render the grid so the user can see the halls and click Add Track.
-    if (!data || !data.halls || data.halls.length === 0) {
+    if (!data.halls || data.halls.length === 0) {
         return (
             <Alert
                 message="Мероприятие создано, но пока пусто"
