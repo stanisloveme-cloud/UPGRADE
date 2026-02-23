@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ModalForm, ProFormList, ProFormText } from '@ant-design/pro-components';
+import { ModalForm, ProFormList, ProFormText, ProFormGroup } from '@ant-design/pro-components';
 import { message, Form } from 'antd';
 import axios from 'axios';
 
@@ -75,35 +75,27 @@ const HallsModal: React.FC<HallsModalProps> = ({ visible, onClose, eventId }) =>
                     position: 'bottom',
                     creatorButtonText: '+ Добавить зал',
                 }}
-                itemRender={({ listDom, action }) => {
-                    return (
-                        <div style={{ display: 'flex', gap: 16, alignItems: 'center', marginBottom: 16 }}>
-                            {listDom}
-                            {action}
-                        </div>
-                    );
-                }}
                 copyIconProps={{ tooltipText: 'Копировать' }}
                 deleteIconProps={{ tooltipText: 'Удалить' }}
             >
-                {/* HIDDEN ID FIELD IS CRITICAL FOR DIFFING */}
-                <ProFormText name="id" hidden />
+                <ProFormGroup key="group">
+                    {/* HIDDEN ID FIELD IS CRITICAL FOR DIFFING */}
+                    <ProFormText name="id" hidden />
 
-                <div style={{ flex: 1 }}>
                     <ProFormText
                         name="name"
                         placeholder="Название зала"
                         rules={[{ required: true, message: 'Обязательное поле' }]}
+                        width="md"
                     />
-                </div>
-                <div style={{ flex: 1 }}>
                     <ProFormText
                         name="capacity"
                         placeholder="Вместимость"
                         fieldProps={{ type: 'number' }}
                         transform={(val) => Number(val)}
+                        width="sm"
                     />
-                </div>
+                </ProFormGroup>
             </ProFormList>
         </ModalForm>
     );
