@@ -203,6 +203,7 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                                         label="Имя секретаря"
                                         style={{ flex: 1, marginBottom: 0 }}
                                         rules={[{ required: true, message: 'Обязательное поле' }]}
+                                        preserve={false}
                                     >
                                         <Input placeholder="Имя" />
                                     </Form.Item>
@@ -211,6 +212,7 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                                         label="Телефон/контакт секретаря"
                                         style={{ flex: 1, marginBottom: 0 }}
                                         rules={[{ required: true, message: 'Обязательное поле' }]}
+                                        preserve={false}
                                     >
                                         <Input placeholder="Телефон или Telegram" />
                                     </Form.Item>

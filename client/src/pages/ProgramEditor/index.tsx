@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
 import { Button, message, Tabs, Checkbox, Modal, Tooltip } from 'antd';
-import { SettingOutlined, PlusOutlined, DownloadOutlined } from '@ant-design/icons';
+import { SettingOutlined, PlusOutlined } from '@ant-design/icons';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import HallsModal from './HallsModal';
@@ -241,12 +241,14 @@ const ProgramEditor: React.FC = () => {
                     >
                         Управление залами
                     </Button>
+                    {/* 
                     <Button
                         icon={<DownloadOutlined />}
                         onClick={() => window.open(`/api/exports/schedule/${eventId}`, '_blank')}
                     >
                         Экспорт в Excel
                     </Button>
+                    */}
                     <Tooltip title={!hasTracks ? "Сначала создайте хотя бы один трек (в строке зала), чтобы добавлять сессии" : ""}>
                         <Button
                             type="primary"
