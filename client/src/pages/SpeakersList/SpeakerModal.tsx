@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, Form, Input, Upload, Avatar, message } from 'antd';
+import { Modal, Form, Input, Upload, Avatar, message, Button, Checkbox } from 'antd';
 import { UserOutlined, UploadOutlined } from '@ant-design/icons';
 import ImgCrop from 'antd-img-crop';
 
@@ -92,39 +92,20 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                                     accept="image/*"
                                     onChange={handleUploadChange}
                                 >
-                                    <button
-                                        style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: 6,
-                                            padding: '6px 14px',
-                                            borderRadius: 6,
-                                            border: '1px solid #d9d9d9',
-                                            background: 'white',
-                                            cursor: 'pointer',
-                                            fontSize: 14,
-                                        }}
-                                    >
-                                        <UploadOutlined /> Загрузить фото
-                                    </button>
+                                    <Button icon={<UploadOutlined />}>
+                                        Загрузить фото
+                                    </Button>
                                 </Upload>
                             </ImgCrop>
                             {photoUrl && (
-                                <button
+                                <Button
+                                    type="text"
+                                    danger
                                     onClick={() => setPhotoUrl(undefined)}
-                                    style={{
-                                        marginTop: 6,
-                                        display: 'block',
-                                        background: 'none',
-                                        border: 'none',
-                                        color: '#ff4d4f',
-                                        cursor: 'pointer',
-                                        padding: '2px 0',
-                                        fontSize: 13,
-                                    }}
+                                    style={{ padding: '2px 0', marginTop: 6, height: 'auto', fontSize: 13, background: 'none' }}
                                 >
                                     ✕ Удалить фото
-                                </button>
+                                </Button>
                             )}
                             <div style={{ fontSize: 12, color: '#8c8c8c', marginTop: 4 }}>
                                 JPG / PNG, до 5 МБ. Обрезка — по кругу.
@@ -205,23 +186,9 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                         valuePropName="checked"
                         style={{ marginBottom: 0 }}
                     >
-                        <Form.Item
-                            name="hasAssistant"
-                            valuePropName="checked"
-                            noStyle
-                        >
-                            <label style={{ cursor: 'pointer', fontWeight: 500, display: 'flex', alignItems: 'center' }}>
-                                <input
-                                    type="checkbox"
-                                    style={{ marginRight: 8, cursor: 'pointer' }}
-                                    onChange={(e) => {
-                                        form.setFieldsValue({ hasAssistant: e.target.checked });
-                                    }}
-                                    checked={form.getFieldValue('hasAssistant')}
-                                />
-                                Связь через секретаря
-                            </label>
-                        </Form.Item>
+                        <Checkbox style={{ fontWeight: 500 }}>
+                            Связь через секретаря
+                        </Checkbox>
                     </Form.Item>
 
                     <Form.Item
