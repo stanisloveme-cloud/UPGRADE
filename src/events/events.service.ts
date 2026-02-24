@@ -67,13 +67,7 @@ export class EventsService {
             return event;
         } catch (error) {
             console.error('Error in getFullStructure:', error);
-            // DEBUG: Return error directly to see what failed on production
-            return {
-                halls: [],
-                _isDebug: true,
-                message: error instanceof Error ? error.message : String(error),
-                stack: error instanceof Error ? error.stack : undefined
-            };
+            throw error;
         }
     }
 }
