@@ -48,7 +48,8 @@ jobs:
           {
             echo 'COMPOSE_CONFIG<<EOF'
             cat docker-compose.prod.yml
-            echo EOF
+            echo ""
+            echo 'EOF'
           } >> "$GITHUB_ENV"
 
       - name: Deploy to Server via SSH
