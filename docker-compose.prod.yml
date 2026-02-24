@@ -12,6 +12,8 @@ services:
       POSTGRES_DB: upgrade_crm
       # Allow frontend CORS if needed
       FRONTEND_URL: http://devupgrade.space4you.ru
+      # Limit V8 heap to prevent exceeding 512M docker limit
+      NODE_OPTIONS: "--max-old-space-size=384"
     depends_on:
       db:
         condition: service_healthy

@@ -8,3 +8,5 @@ docs
 client
 coverage
 test
+*.log
+*.txt

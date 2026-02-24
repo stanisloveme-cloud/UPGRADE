@@ -1,3 +1,33 @@
+# GOOGLE ANTI-GRAVITY CONFIGURATION
+# Project: Upgrade (Business Program Editor)
+
+# -----------------------------------------------------------------------------
+# 1. TECHNOLOGY STACK (HARD CONSTRAINTS)
+# -----------------------------------------------------------------------------
+stack:
+  backend:
+    framework: "NestJS"
+    language: "TypeScript (Strict)"
+    orm: "Prisma"
+    database: "PostgreSQL 15+"
+    api_style: "REST + Swagger"
+  
+  frontend:
+    framework: "React 18+"
+    build_tool: "Vite"
+    ui_library: "Ant Design v5"
+    pro_components: "@ant-design/pro-components"
+    state: "Zustand"
+  
+  infrastructure:
+    containerization: "Docker + Docker Compose"
+    ci_cd: "GitHub Actions"
+    reverse_proxy: "Nginx"
+    policy: "Infrastructure as Code (IaC)"
+
+# -----------------------------------------------------------------------------
+# 2. RULES (THE "DO NOT" LIST)
+# -----------------------------------------------------------------------------
 rules:
   # --- UI & Design System ---
   - id: "ui-strict-antd"
@@ -22,6 +52,10 @@ rules:
     severity: "critical"
     description: "Never commit .env files. Use .env.example for templates. Secrets are managed via CI/CD variables."
 
+  - id: "deploy-verify-always"
+    severity: "error"
+    description: "Always verify the deployment by checking 3 things: 1) Container status (HEALTHY), 2) Application logs (for crashes), 3) HTTP access (curl/browser). Do not assume success based on CI status alone."
+
   # --- Shell & Execution Stability (CRITICAL) ---
   - id: "shell-no-blocking"
     severity: "critical"
@@ -45,12 +79,35 @@ rules:
       Infrastructure (Docker, Nginx, GitHub Actions) must be code.
       If `.github/workflows/deploy.yml` is missing, IT MUST BE CREATED based on the actual folder structure.
 
-  # --- Shell & Execution Stability ---
-  # Rules deactivated: We switched to Git Bash (native Unix-like behavior).
-  # Strict PowerShell blocking rules are no longer needed.
+  - id: "cli-non-interactive"
+    severity: "error"
+    description: "Never use interactive CLI commands (like 'gh run watch' without ID or interactive prompts). Always use direct IDs and non-interactive flags to prevent agent hanging."
 
 # -----------------------------------------------------------------------------
-# 4. MCP INTEGRATIONS (Agent tooling — 2026-02-22)
+# 3. WORKFLOWS (STANDARD OPERATING PROCEDURES)
+# -----------------------------------------------------------------------------
+workflows:
+  - name: "scaffold-new-feature"
+    description: "End-to-end creation of a new business entity"
+    steps:
+      - "Analyze `docs/analysis/00_Legacy_System_Analysis.md` for business logic."
+      - "Check `docs/prd/` for specific field requirements."
+      - "Create DB Migration (Prisma)."
+      - "Generate NestJS Module (Controller/Service/DTO)."
+      - "Generate React Types & API Client."
+      - "Scaffold UI using ProTable/ProForm."
+
+  - name: "deploy-infrastructure"
+    description: "Setup server environment from scratch"
+    steps:
+      - "Read `docs/prd/06_Infrastructure_and_Release.md`."
+      - "Generate Dockerfiles for Front/Back."
+      - "Create `docker-compose.yml` with Postgres/Redis."
+      - "Generate Nginx Config."
+      - "Create GitHub Actions workflow."
+
+# -----------------------------------------------------------------------------
+# 4. MCP INTEGRATIONS (Agent tooling)
 # -----------------------------------------------------------------------------
 mcp_rules:
   - id: "mcp-context7-mandatory"
@@ -62,9 +119,10 @@ mcp_rules:
       Applies to: NestJS, Prisma, React, Ant Design, Vite, Docker, etc.
 
   - id: "mcp-github-native"
-    severity: "error"
+    severity: "critical"
     description: >
-      For ALL GitHub interactions (checking CI status, reading files, creating issues, PRs)
-      use native MCP github tools (mcp_github_*) from the Antigravity IDE integration.
-      AVOID using 'gh' CLI or 'node scripts/check_deploy.js' unless MCP is unavailable.
+      ABSOLUTE BAN on running terminal `git` commands (e.g., git add, git commit, git push).
+      ALL repository operations (commits, pushes, branching, creating PRs, reading files)
+      MUST be performed exclusively via the configured native GitHub MCP server tools (mcp_github_*).
+      AVOID using 'gh' CLI or 'node scripts/check_deploy.js' unless MCP is temporarily unavailable.
       The GitHub MCP token is configured in C:\Users\PC\.gemini\antigravity\mcp_config.json.
