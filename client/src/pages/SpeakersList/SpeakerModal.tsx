@@ -103,7 +103,8 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                             <Image
                                 width={80}
                                 height={80}
-                                src={photoUrl.startsWith('/uploads') ? `/api${photoUrl}` : photoUrl}
+                                src={photoUrl.startsWith('http') ? photoUrl : `/api${photoUrl.startsWith('/') ? '' : '/'}${photoUrl}`}
+                                fallback="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23d9d9d9'><circle cx='50' cy='50' r='45' stroke-width='4'/></svg>"
                                 style={{ borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: '2px solid #f0f0f0' }}
                             />
                         ) : (

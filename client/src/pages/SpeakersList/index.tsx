@@ -90,7 +90,7 @@ const SpeakersList: React.FC = () => {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     {record.photoUrl && (
                         <Image
-                            src={record.photoUrl?.startsWith('/uploads') ? `/api${record.photoUrl}` : record.photoUrl}
+                            src={record.photoUrl.startsWith('http') ? record.photoUrl : `/api${record.photoUrl.startsWith('/') ? '' : '/'}${record.photoUrl}`}
                             alt={`${record.firstName} ${record.lastName}`}
                             width={32}
                             height={32}
