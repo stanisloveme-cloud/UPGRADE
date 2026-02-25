@@ -32,7 +32,14 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
     const handleSubmit = async () => {
         try {
             const values = await form.validateFields();
-            await onFinish({ ...initialValues, ...values, photoUrl });
+
+            // Only include form fields, photoUrl, and id if editing (to prevent sending createdAt, updatedAt which fail validation)
+            const payload = { ...values, photoUrl };
+            if (initialValues?.id) {
+                payload.id = initialValues.id;
+            }
+
+            await onFinish(payload);
             onClose();
         } catch (error: any) {
             console.error('Validation or Finalization failed:', error);

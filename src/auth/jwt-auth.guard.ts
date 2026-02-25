@@ -1,4 +1,3 @@
-
 import { ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Reflector } from '@nestjs/core';
@@ -18,6 +17,12 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
         if (isPublic) {
             return true;
         }
+
+        const request = context.switchToHttp().getRequest();
+        if (request.url.startsWith('/api/uploads/')) {
+            return true;
+        }
+
         return super.canActivate(context);
     }
 

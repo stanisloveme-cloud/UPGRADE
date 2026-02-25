@@ -64,6 +64,12 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                     startTime: formatTime(start),
                     endTime: formatTime(end),
                 };
+
+                // Ensure id is passed for updates
+                if (initialValues?.id) {
+                    formattedValues.id = initialValues.id;
+                }
+
                 delete formattedValues.timeRange;
                 delete formattedValues.speakerIds;
                 delete formattedValues.speakersDetails;
@@ -96,6 +102,10 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                     message.error(`Ошибка сохранения: ${error.message || 'Проверьте форму'}`);
                     return false;
                 }
+            }}
+            onFinishFailed={(errorInfo) => {
+                console.error('SessionDrawer validation failed:', errorInfo);
+                message.error('Пожалуйста, проверьте форму на наличие ошибок заполнения (возможно, в скрытых вкладках или списках)');
             }}
             initialValues={normalizedInitialValues}
             drawerProps={{ destroyOnClose: true }}
