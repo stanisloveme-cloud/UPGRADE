@@ -21,7 +21,7 @@ import { NotificationsModule } from './notifications/notifications.module';
     ConfigModule.forRoot({ isGlobal: true }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'client', 'dist'),
-      exclude: ['/api/(.*)'], // Allow API and uploads routes to pass through
+      exclude: ['/api/{*path}'], // Allow API and uploads routes to pass through
     }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads'),
