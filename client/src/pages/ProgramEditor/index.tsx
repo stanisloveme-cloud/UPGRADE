@@ -77,7 +77,8 @@ const ProgramEditor: React.FC = () => {
     const handleSaveSession = async (values: any) => {
         try {
             if (values.id) {
-                await axios.patch(`/api/sessions/${values.id}`, values);
+                const { id, ...payload } = values;
+                await axios.patch(`/api/sessions/${id}`, payload);
                 message.success('Сессия обновлена');
             } else {
                 await axios.post('/api/sessions', values);

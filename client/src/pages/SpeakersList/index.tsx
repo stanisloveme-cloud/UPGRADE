@@ -61,7 +61,8 @@ const SpeakersList: React.FC = () => {
     const handleSave = async (values: any) => {
         try {
             if (values.id) {
-                await axios.patch(`/api/speakers/${values.id}`, values);
+                const { id, ...payload } = values;
+                await axios.patch(`/api/speakers/${id}`, payload);
                 message.success('Спикер обновлен');
             } else {
                 await axios.post('/api/speakers', values);
