@@ -33,11 +33,23 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
         try {
             const values = await form.validateFields();
 
-            // Only include form fields, photoUrl, and id if editing (to prevent sending createdAt, updatedAt which fail validation)
-            const payload = { ...values, photoUrl };
-            if (initialValues?.id) {
-                payload.id = initialValues.id;
-            }
+            // ONLY include form fields explicitly defined in CreateSpeakerDto/UpdateSpeakerDto.
+            const payload = {
+                firstName: values.firstName,
+                lastName: values.lastName,
+                company: values.company,
+                position: values.position,
+                email: values.email,
+                phone: values.phone,
+                telegram: values.telegram,
+                bio: values.bio,
+                internalComment: values.internalComment,
+                hasAssistant: values.hasAssistant,
+                assistantName: values.assistantName,
+                assistantContact: values.assistantContact,
+                photoUrl,
+                ...(initialValues?.id && { id: initialValues.id })
+            };
 
             await onFinish(payload);
             onClose();

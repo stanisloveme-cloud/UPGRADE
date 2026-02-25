@@ -74,11 +74,13 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                 delete formattedValues.speakerIds;
                 delete formattedValues.speakersDetails;
 
-                // Ensure speakerId is numeric for backend
+                // Ensure speakerId is numeric for backend and strip out UI-only fields like `hasPresentation`
                 if (values.speakers) {
                     formattedValues.speakers = values.speakers.map((s: any) => ({
-                        ...s,
                         speakerId: Number(s.speakerId),
+                        role: s.role,
+                        companySnapshot: s.companySnapshot,
+                        positionSnapshot: s.positionSnapshot,
                         presentationUrl: s.hasPresentation ? s.presentationUrl : null,
                         presentationTitle: s.hasPresentation ? s.presentationTitle : null,
                     }));
