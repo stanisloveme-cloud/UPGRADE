@@ -95,6 +95,7 @@ jobs:
             else
                 echo "Error: Docker Compose not found"
                 exit 1
+            fi
             $DC_CMD -f docker-compose.prod.yml down || true
             docker ps -a --filter "name=upgrade-crm" -q | xargs -r docker rm -f || true
             $DC_CMD -f docker-compose.prod.yml up -d --remove-orphans --force-recreate
