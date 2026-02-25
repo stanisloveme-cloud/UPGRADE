@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ModalForm, ProFormList, ProFormText, ProFormGroup } from '@ant-design/pro-components';
-import { message, Form } from 'antd';
+import { message, Form, Button } from 'antd';
 import axios from 'axios';
 
 interface HallsModalProps {
@@ -68,8 +68,19 @@ const HallsModal: React.FC<HallsModalProps> = ({ visible, onClose, eventId }) =>
             form={form}
             modalProps={{ destroyOnClose: true }}
             submitter={{
-                submitButtonProps: {
-                    disabled: false // Override strict internal ProForm validation that gets stuck
+                searchConfig: {
+                    submitText: 'Сохранить',
+                    resetText: 'Отмена',
+                },
+                render: (props, _dom) => {
+                    return [
+                        <Button key="cancel" onClick={() => props.onReset?.()}>
+                            Отмена
+                        </Button>,
+                        <Button key="submit" type="primary" onClick={() => props.submit?.()}>
+                            Сохранить
+                        </Button>
+                    ];
                 }
             }}
         >

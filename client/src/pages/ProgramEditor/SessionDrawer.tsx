@@ -88,8 +88,14 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                     }));
                 }
 
-                console.log('SessionModal onFinish fixed values:', formattedValues);
-                return onFinish(formattedValues);
+                try {
+                    console.log('SessionModal onFinish fixed values:', formattedValues);
+                    return await onFinish(formattedValues);
+                } catch (error: any) {
+                    console.error('SessionDrawer onFinish error:', error);
+                    message.error(`Ошибка сохранения: ${error.message || 'Проверьте форму'}`);
+                    return false;
+                }
             }}
             initialValues={normalizedInitialValues}
             drawerProps={{ destroyOnClose: true }}
@@ -98,7 +104,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                     submitText: 'Сохранить',
                     resetText: 'Отмена',
                 },
-                render: (_props, dom) => {
+                render: (props, _dom) => {
                     return [
                         initialValues?.id && onDelete && (
                             <Button
@@ -114,7 +120,12 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                 Удалить
                             </Button>
                         ),
-                        ...dom
+                        <Button key="cancel" onClick={() => props.onReset?.()}>
+                            Отмена
+                        </Button>,
+                        <Button key="submit" type="primary" onClick={() => props.submit?.()}>
+                            Сохранить
+                        </Button>
                     ];
                 },
             }}

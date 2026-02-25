@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { ModalForm, ProFormText, ProFormTimePicker } from '@ant-design/pro-components';
-import { Form, Button } from 'antd';
+import { Form, Button, message } from 'antd';
 
 
 interface TrackModalProps {
@@ -46,7 +46,13 @@ const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onD
                     // Let's assume day is passed or we default to '2025-10-21' (Day 1)
                     day: initialValues?.day || '2025-10-21T00:00:00.000Z',
                 };
-                return onFinish(submission);
+                try {
+                    return await onFinish(submission);
+                } catch (error: any) {
+                    console.error('TrackModal onFinish error:', error);
+                    message.error(`Ошибка сохранения: ${error.message || 'Проверьте форму'}`);
+                    return false;
+                }
             }}
             form={form}
             modalProps={{ destroyOnClose: true }}
@@ -55,7 +61,7 @@ const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onD
                     submitText: 'Сохранить',
                     resetText: 'Отмена',
                 },
-                render: (_props, dom) => {
+                render: (props, _dom) => {
                     return [
                         initialValues?.id && onDelete && (
                             <Button
@@ -71,7 +77,12 @@ const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onD
                                 Удалить
                             </Button>
                         ),
-                        ...dom
+                        <Button key="cancel" onClick={() => props.onReset?.()}>
+                            Отмена
+                        </Button>,
+                        <Button key="submit" type="primary" onClick={() => props.submit?.()}>
+                            Сохранить
+                        </Button>
                     ];
                 },
             }}
