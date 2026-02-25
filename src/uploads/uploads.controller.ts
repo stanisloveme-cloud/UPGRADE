@@ -1,8 +1,10 @@
-import { Controller, Post, UseInterceptors, UploadedFile, BadRequestException } from '@nestjs/common';
+import { Controller, Post, Get, UseInterceptors, UploadedFile, BadRequestException } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { v4 as uuidv4 } from 'uuid';
+import * as fs from 'fs';
+import * as path from 'path';
 
 @Controller('uploads')
 export class UploadsController {
@@ -27,6 +29,17 @@ export class UploadsController {
     uploadSpeakerPhoto(@UploadedFile() file: Express.Multer.File) {
         if (!file) throw new BadRequestException('File is required');
         return { url: `/api/uploads/photos/${file.filename}` };
+    }
+
+    @Get('debug-list')
+    debugList() {
+        const targetPath = path.resolve(process.cwd(), 'uploads/photos');
+        try {
+            const files = fs.readdirSync(targetPath);
+            return { cwd: process.cwd(), targetPath, files, success: true };
+        } catch (error: any) {
+            return { cwd: process.cwd(), targetPath, error: error.message, success: false };
+        }
     }
 
     @Post('presentation')
