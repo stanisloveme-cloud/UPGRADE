@@ -97,7 +97,9 @@ jobs:
                 exit 1
             fi
             
-            $DC_CMD -f docker-compose.prod.yml down
+            $DC_CMD -f docker-compose.prod.yml down || true
+            docker rm -f upgrade-crm-db-1 upgrade-crm-app-1 upgrade-crm-frontend-1 || true
+            docker rm -f upgrade-crm_db_1 upgrade-crm_app_1 upgrade-crm_frontend_1 || true
             $DC_CMD -f docker-compose.prod.yml up -d --remove-orphans
 
             # NOTE: Migrations run automatically inside NestJS on startup (PrismaService.onModuleInit)
