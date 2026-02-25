@@ -24,7 +24,7 @@ import { NotificationsModule } from './notifications/notifications.module';
       exclude: ['/api/{*path}'], // Allow API and uploads routes to pass through
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'uploads'),
+      rootPath: join(process.cwd(), 'uploads'),
       serveRoot: '/api/uploads',
     }),
     PrismaModule,
