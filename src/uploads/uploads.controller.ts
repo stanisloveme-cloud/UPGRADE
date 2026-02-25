@@ -26,7 +26,7 @@ export class UploadsController {
     }))
     uploadSpeakerPhoto(@UploadedFile() file: Express.Multer.File) {
         if (!file) throw new BadRequestException('File is required');
-        return { url: `/uploads/photos/${file.filename}` };
+        return { url: `/api/uploads/photos/${file.filename}` };
     }
 
     @Post('presentation')
@@ -48,6 +48,6 @@ export class UploadsController {
     }))
     uploadPresentation(@UploadedFile() file: Express.Multer.File) {
         if (!file) throw new BadRequestException('File is required');
-        return { url: `/uploads/presentations/${file.filename}` };
+        return { url: `/api/uploads/presentations/${file.filename}` };
     }
 }

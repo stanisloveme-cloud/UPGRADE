@@ -87,7 +87,7 @@ const SpeakersList: React.FC = () => {
             key: 'name',
             render: (_: any, record: any) => (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    {record.photoUrl && <img src={record.photoUrl} alt="" style={{ width: 24, height: 24, borderRadius: '50%', objectFit: 'cover' }} />}
+                    {record.photoUrl && <img src={record.photoUrl?.startsWith('/uploads') ? `/api${record.photoUrl}` : record.photoUrl} alt="" style={{ width: 24, height: 24, borderRadius: '50%', objectFit: 'cover' }} />}
                     <span style={{ fontWeight: 500 }}>{record.lastName} {record.firstName}</span>
                 </div>
             ),

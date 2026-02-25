@@ -34,8 +34,14 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
             const values = await form.validateFields();
             await onFinish({ ...initialValues, ...values, photoUrl });
             onClose();
-        } catch (error) {
-            console.error('Validation failed:', error);
+        } catch (error: any) {
+            console.error('Validation or Finalization failed:', error);
+            if (error.errorFields) {
+                const fields = error.errorFields.map((f: any) => f.name.join('.')).join(', ');
+                message.error(`Заполните корректно поля: ${fields}`);
+            } else {
+                message.error(`Ошибка сохранения: ${error.message || 'Неизвестная ошибка'}`);
+            }
         }
     };
 
@@ -76,7 +82,7 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                     <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                         <Avatar
                             size={80}
-                            src={photoUrl}
+                            src={photoUrl?.startsWith('/uploads') ? `/api${photoUrl}` : photoUrl}
                             icon={<UserOutlined />}
                             style={{ flexShrink: 0, border: '2px solid #f0f0f0' }}
                         />
