@@ -341,6 +341,7 @@ const ProgramEditor: React.FC = () => {
                     phone: s.phone,
                     telegram: s.telegram
                 }))}
+                onSpeakerCreated={fetchData}
             />
 
             <TrackModal

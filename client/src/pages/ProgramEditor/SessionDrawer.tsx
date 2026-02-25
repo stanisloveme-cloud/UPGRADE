@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { DrawerForm, ProFormText, ProFormTextArea, ProFormTimePicker, ProFormSelect, ProFormList, ProFormDateTimePicker, ProFormSwitch, ProFormGroup, ProFormDependency, ProCard } from '@ant-design/pro-components';
-import { Button, Upload, message } from 'antd';
+import { Button, Upload, message, Divider } from 'antd';
 import { FilePdfOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
+import axios from 'axios';
+import SpeakerModal from '../SpeakersList/SpeakerModal';
 
 
 interface SessionModalProps {
@@ -14,9 +16,14 @@ interface SessionModalProps {
     trackId?: number; // Pre-selected track for creation
     tracks?: { value: number; label: string }[]; // Available tracks for selection
     speakers?: { value: number; label: string; phone?: string; telegram?: string; }[];
+    onSpeakerCreated?: () => Promise<void>;
 }
 
-const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish, onDelete, initialValues, trackId, tracks, speakers }) => {
+const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish, onDelete, initialValues, trackId, tracks, speakers, onSpeakerCreated }) => {
+
+    const [speakerModalVisible, setSpeakerModalVisible] = useState(false);
+    const [addingSpeakerIndex, setAddingSpeakerIndex] = useState<number | null>(null);
+    const formRef = useRef<any>(null);
 
     // Transform initial values (HH:mm strings to dayjs objects for TimePicker)
     const normalizedInitialValues = {
@@ -44,6 +51,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
 
     return (
         <DrawerForm
+            formRef={formRef}
             title={initialValues?.id ? "Редактирование сессии" : "Создание сессии"}
             open={visible}
             width={1000}
@@ -263,7 +271,22 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                     label="Спикер"
                                     options={speakers}
                                     rules={[{ required: true, message: 'Обязательно' }]}
-                                    fieldProps={{ showSearch: true, optionFilterProp: 'label' }}
+                                    fieldProps={{
+                                        showSearch: true,
+                                        optionFilterProp: 'label',
+                                        dropdownRender: (menu) => (
+                                            <>
+                                                {menu}
+                                                <Divider style={{ margin: '8px 0' }} />
+                                                <Button type="text" block onClick={() => {
+                                                    setAddingSpeakerIndex(_index);
+                                                    setSpeakerModalVisible(true);
+                                                }}>
+                                                    + Добавить нового спикера
+                                                </Button>
+                                            </>
+                                        )
+                                    }}
                                 />
                                 <ProFormDependency name={['speakerId']}>
                                     {({ speakerId }) => {
@@ -369,6 +392,43 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                     </div>
                 )}
             </ProFormList>
+
+            {/* Inline Speaker Creation Modal */}
+            <SpeakerModal
+                visible={speakerModalVisible}
+                onClose={() => {
+                    setSpeakerModalVisible(false);
+                    setAddingSpeakerIndex(null);
+                }}
+                onFinish={async (values) => {
+                    try {
+                        const response = await axios.post('/api/speakers', values);
+                        message.success('Спикер сохранён');
+
+                        // Refresh the global speaker list in parent
+                        if (onSpeakerCreated) {
+                            await onSpeakerCreated();
+                        }
+
+                        // Auto-fill the newly created speaker into the correct row
+                        if (addingSpeakerIndex !== null && formRef.current) {
+                            const currentList = formRef.current.getFieldValue('speakers') || [];
+                            if (currentList[addingSpeakerIndex]) {
+                                currentList[addingSpeakerIndex] = {
+                                    ...currentList[addingSpeakerIndex],
+                                    speakerId: response.data.id
+                                };
+                                formRef.current.setFieldsValue({ speakers: currentList });
+                            }
+                        }
+
+                        setSpeakerModalVisible(false);
+                        setAddingSpeakerIndex(null);
+                    } catch (error) {
+                        message.error('Ошибка сохранения спикера');
+                    }
+                }}
+            />
         </DrawerForm>
     );
 };
