@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
-import { Table, Button, Space, message, Input, Popconfirm } from 'antd';
+import { Table, Button, Space, message, Input, Popconfirm, Image } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined, SearchOutlined, HistoryOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import SpeakerModal from './SpeakerModal';
@@ -88,7 +88,16 @@ const SpeakersList: React.FC = () => {
             key: 'name',
             render: (_: any, record: any) => (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    {record.photoUrl && <img src={record.photoUrl?.startsWith('/uploads') ? `/api${record.photoUrl}` : record.photoUrl} alt="" style={{ width: 24, height: 24, borderRadius: '50%', objectFit: 'cover' }} />}
+                    {record.photoUrl && (
+                        <Image
+                            src={record.photoUrl?.startsWith('/uploads') ? `/api${record.photoUrl}` : record.photoUrl}
+                            alt={`${record.firstName} ${record.lastName}`}
+                            width={32}
+                            height={32}
+                            style={{ borderRadius: '50%', objectFit: 'cover' }}
+                            preview={{ mask: null }}
+                        />
+                    )}
                     <span style={{ fontWeight: 500 }}>{record.lastName} {record.firstName}</span>
                 </div>
             ),

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, Form, Input, Upload, Avatar, message, Button, Checkbox } from 'antd';
-import { UserOutlined, UploadOutlined } from '@ant-design/icons';
+import { Modal, Form, Input, Upload, Avatar, message, Button, Checkbox, Image, Tooltip } from 'antd';
+import { UserOutlined, UploadOutlined, DeleteOutlined } from '@ant-design/icons';
 import ImgCrop from 'antd-img-crop';
 
 interface SpeakerModalProps {
@@ -99,12 +99,20 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                 {/* Photo Upload with Crop */}
                 <Form.Item label="Фото">
                     <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                        <Avatar
-                            size={80}
-                            src={photoUrl?.startsWith('/uploads') ? `/api${photoUrl}` : photoUrl}
-                            icon={<UserOutlined />}
-                            style={{ flexShrink: 0, border: '2px solid #f0f0f0' }}
-                        />
+                        {photoUrl ? (
+                            <Image
+                                width={80}
+                                height={80}
+                                src={photoUrl.startsWith('/uploads') ? `/api${photoUrl}` : photoUrl}
+                                style={{ borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: '2px solid #f0f0f0' }}
+                            />
+                        ) : (
+                            <Avatar
+                                size={80}
+                                icon={<UserOutlined />}
+                                style={{ flexShrink: 0, border: '2px solid #f0f0f0' }}
+                            />
+                        )}
                         <div>
                             <ImgCrop
                                 cropShape="round"
@@ -131,14 +139,15 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                                 </Upload>
                             </ImgCrop>
                             {photoUrl && (
-                                <Button
-                                    type="text"
-                                    danger
-                                    onClick={() => setPhotoUrl(undefined)}
-                                    style={{ padding: '2px 0', marginTop: 6, height: 'auto', fontSize: 13, background: 'none' }}
-                                >
-                                    ✕ Удалить фото
-                                </Button>
+                                <Tooltip title="Удалить фото">
+                                    <Button
+                                        type="text"
+                                        danger
+                                        icon={<DeleteOutlined />}
+                                        onClick={() => setPhotoUrl(undefined)}
+                                        style={{ marginLeft: 8 }}
+                                    />
+                                </Tooltip>
                             )}
                             <div style={{ fontSize: 12, color: '#8c8c8c', marginTop: 4 }}>
                                 JPG / PNG, до 5 МБ. Обрезка — по кругу.
