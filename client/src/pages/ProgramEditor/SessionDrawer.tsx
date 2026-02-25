@@ -305,7 +305,10 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                                         headers={{
                                                             authorization: `Bearer ${localStorage.getItem('token')}`,
                                                         }}
-                                                        showUploadList={false}
+                                                        showUploadList={{
+                                                            showDownloadIcon: true,
+                                                            showRemoveIcon: true,
+                                                        }}
                                                         accept=".pdf,.ppt,.pptx"
                                                         beforeUpload={(file) => {
                                                             const isLt30M = file.size / 1024 / 1024 < 30;
@@ -325,7 +328,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                                             }
                                                         }}
                                                     >
-                                                        <div style={{ paddingTop: '30px' }}>
+                                                        <div style={{ paddingTop: '10px' }}>
                                                             <Button icon={<FilePdfOutlined />}>Загрузить файл</Button>
                                                         </div>
                                                     </Upload>

@@ -14,6 +14,8 @@ interface SpeakerModalProps {
 const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish, initialValues, loading }) => {
     const [form] = Form.useForm();
     const [photoUrl, setPhotoUrl] = useState<string | undefined>(undefined);
+    const [uploading, setUploading] = useState(false);
+    const [uploadPercent, setUploadPercent] = useState(0);
 
     useEffect(() => {
         if (visible) {
@@ -38,13 +40,19 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
     };
 
     const handleUploadChange = (info: any) => {
-        if (info.file.status === 'done') {
+        if (info.file.status === 'uploading') {
+            setUploading(true);
+            setUploadPercent(info.file.percent || 0);
+        } else if (info.file.status === 'done') {
+            setUploading(false);
+            setUploadPercent(100);
             const url = info.file.response?.url;
             if (url) {
                 setPhotoUrl(url);
                 message.success('Фото успешно загружено');
             }
         } else if (info.file.status === 'error') {
+            setUploading(false);
             message.error('Ошибка загрузки фото');
         }
     };
@@ -86,14 +94,14 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                                     name="file"
                                     action="/api/uploads/speaker-photo"
                                     headers={{
-                                        authorization: `Bearer ${localStorage.getItem('token')}`,
+                                        authorization: `Bearer ${localStorage.getItem('access_token')}`,
                                     }}
                                     showUploadList={false}
                                     accept="image/*"
                                     onChange={handleUploadChange}
                                 >
-                                    <Button icon={<UploadOutlined />}>
-                                        Загрузить фото
+                                    <Button icon={<UploadOutlined />} loading={uploading}>
+                                        {uploading ? `Загрузка... ${Math.round(uploadPercent)}%` : 'Загрузить фото'}
                                     </Button>
                                 </Upload>
                             </ImgCrop>
@@ -195,15 +203,15 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                         shouldUpdate={(prevValues, currentValues) => prevValues.hasAssistant !== currentValues.hasAssistant}
                         noStyle
                     >
-                        {({ getFieldValue }) =>
-                            getFieldValue('hasAssistant') ? (
-                                <div style={{ display: 'flex', gap: 16, marginTop: 16 }}>
+                        {({ getFieldValue }) => {
+                            const isAssistant = !!getFieldValue('hasAssistant');
+                            return (
+                                <div style={{ display: isAssistant ? 'flex' : 'none', gap: 16, marginTop: 16 }}>
                                     <Form.Item
                                         name="assistantName"
                                         label="Имя секретаря"
                                         style={{ flex: 1, marginBottom: 0 }}
-                                        rules={[{ required: true, message: 'Обязательное поле' }]}
-                                        preserve={false}
+                                        rules={[{ required: isAssistant, message: 'Обязательное поле' }]}
                                     >
                                         <Input placeholder="Имя" />
                                     </Form.Item>
@@ -211,14 +219,13 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                                         name="assistantContact"
                                         label="Телефон/контакт секретаря"
                                         style={{ flex: 1, marginBottom: 0 }}
-                                        rules={[{ required: true, message: 'Обязательное поле' }]}
-                                        preserve={false}
+                                        rules={[{ required: isAssistant, message: 'Обязательное поле' }]}
                                     >
                                         <Input placeholder="Телефон или Telegram" />
                                     </Form.Item>
                                 </div>
-                            ) : null
-                        }
+                            );
+                        }}
                     </Form.Item>
                 </div>
 

@@ -15,6 +15,11 @@ const AuthContext = createContext<AuthContextType | null>(null);
 // Configure axios base URL if needed, but for now we assume relative paths or proxy
 // axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
+const initialToken = localStorage.getItem('access_token');
+if (initialToken) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${initialToken}`;
+}
+
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [token, setToken] = useState<string | null>(localStorage.getItem('access_token'));
     const [user, setUser] = useState<any>(null);

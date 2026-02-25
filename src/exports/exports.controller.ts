@@ -1,4 +1,5 @@
-import { Controller, Get, Param, ParseIntPipe, Res } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe, Res, Post, UseInterceptors, UploadedFile, BadRequestException } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { ExportsService } from './exports.service';
 import type { Response } from 'express';
 
@@ -20,5 +21,19 @@ export class ExportsController {
         });
 
         res.end(buffer);
+    }
+
+    @Post('import/:eventId')
+    @UseInterceptors(FileInterceptor('file'))
+    async importSchedule(
+        @Param('eventId', ParseIntPipe) eventId: number,
+        @UploadedFile() file: Express.Multer.File
+    ) {
+        if (!file) {
+            throw new BadRequestException('File is required');
+        }
+
+        const result = await this.exportsService.importScheduleFromBuffer(file.buffer, eventId);
+        return { message: 'Import successful', ...result };
     }
 }
