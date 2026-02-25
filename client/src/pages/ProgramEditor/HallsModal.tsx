@@ -67,6 +67,11 @@ const HallsModal: React.FC<HallsModalProps> = ({ visible, onClose, eventId }) =>
             initialValues={initialValues}
             form={form}
             modalProps={{ destroyOnClose: true }}
+            submitter={{
+                submitButtonProps: {
+                    disabled: false // Override strict internal ProForm validation that gets stuck
+                }
+            }}
         >
             <ProFormList
                 name="halls"
