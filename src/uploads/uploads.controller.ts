@@ -69,17 +69,4 @@ export class UploadsController {
             }
         });
     }
-
-    @Get('debug-ls')
-    debugLs() {
-        const fs = require('fs');
-        try {
-            return {
-                cwd: process.cwd(),
-                photos: fs.readdirSync('./uploads/photos'),
-            };
-        } catch (e) {
-            return { error: e.message };
-        }
-    }
 }
