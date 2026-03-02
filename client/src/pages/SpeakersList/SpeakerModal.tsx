@@ -103,7 +103,7 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                             <Image
                                 width={80}
                                 height={80}
-                                src={photoUrl.startsWith('http') ? photoUrl : `/api${photoUrl.startsWith('/') ? '' : '/'}${photoUrl}`}
+                                src={photoUrl.startsWith('http') || photoUrl.startsWith('/api') ? photoUrl : `/api${photoUrl.startsWith('/') ? '' : '/'}${photoUrl}`}
                                 fallback="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCI+PGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iNDAiIGZpbGw9IiNmMGYwZjAiLz48Y2lyY2xlIGN4PSI0MCIgY3k9IjMwIiByPSIxNSIgZmlsbD0iI2Q5ZDlkOSIvPjxwYXRoIGQ9Ik0yMCA3MEMyMCA1MCA2MCA1MCA2MCA3MCIgZmlsbD0iI2Q5ZDlkOSIvPjwvc3ZnPg=="
                                 style={{ borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: '2px solid #f0f0f0' }}
                             />

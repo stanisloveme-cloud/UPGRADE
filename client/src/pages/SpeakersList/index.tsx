@@ -90,7 +90,7 @@ const SpeakersList: React.FC = () => {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     {record.photoUrl && (
                         <Image
-                            src={record.photoUrl.startsWith('http') ? record.photoUrl : `/api${record.photoUrl.startsWith('/') ? '' : '/'}${record.photoUrl}`}
+                            src={record.photoUrl.startsWith('http') || record.photoUrl.startsWith('/api') ? record.photoUrl : `/api${record.photoUrl.startsWith('/') ? '' : '/'}${record.photoUrl}`}
                             fallback="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCI+PGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iNDAiIGZpbGw9IiNmMGYwZjAiLz48Y2lyY2xlIGN4PSI0MCIgY3k9IjMwIiByPSIxNSIgZmlsbD0iI2Q5ZDlkOSIvPjxwYXRoIGQ9Ik0yMCA3MEMyMCA1MCA2MCA1MCA2MCA3MCIgZmlsbD0iI2Q5ZDlkOSIvPjwvc3ZnPg=="
                             alt={`${record.firstName} ${record.lastName}`}
                             width={32}
