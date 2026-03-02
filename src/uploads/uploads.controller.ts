@@ -1,4 +1,5 @@
-import { Controller, Post, UseInterceptors, UploadedFile, BadRequestException } from '@nestjs/common';
+import { Controller, Post, Get, Param, Res, UseInterceptors, UploadedFile, BadRequestException } from '@nestjs/common';
+import type { Response } from 'express';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
@@ -49,5 +50,23 @@ export class UploadsController {
     uploadPresentation(@UploadedFile() file: Express.Multer.File) {
         if (!file) throw new BadRequestException('File is required');
         return { url: `/api/uploads/presentations/${file.filename}` };
+    }
+
+    @Get('photos/:filename')
+    servePhoto(@Param('filename') filename: string, @Res() res: Response) {
+        return res.sendFile(filename, { root: './uploads/photos' }, (err) => {
+            if (err) {
+                res.status(404).send('Not found');
+            }
+        });
+    }
+
+    @Get('presentations/:filename')
+    servePresentation(@Param('filename') filename: string, @Res() res: Response) {
+        return res.sendFile(filename, { root: './uploads/presentations' }, (err) => {
+            if (err) {
+                res.status(404).send('Not found');
+            }
+        });
     }
 }
