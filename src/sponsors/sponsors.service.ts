@@ -8,6 +8,26 @@ export class SponsorsService {
     async findAllByEvent(eventId: number) {
         return this.prisma.sponsor.findMany({
             where: { eventId },
+            include: { assignedManager: { select: { id: true, firstName: true, lastName: true } } },
+            orderBy: { createdAt: 'desc' }
+        });
+    }
+
+    async findAll(query: any) {
+        const { status, managerId, search } = query;
+        const where: any = {};
+        if (status) where.status = status;
+        if (managerId) where.assignedManagerId = Number(managerId);
+        if (search) {
+            where.name = { contains: search, mode: 'insensitive' };
+        }
+
+        return this.prisma.sponsor.findMany({
+            where,
+            include: {
+                assignedManager: { select: { id: true, firstName: true, lastName: true } },
+                event: { select: { id: true, name: true } }
+            },
             orderBy: { createdAt: 'desc' }
         });
     }
@@ -38,6 +58,7 @@ export class SponsorsService {
                 cfoEmail: data.cfoEmail,
                 cases: data.cases,
                 materialsUrl: data.materialsUrl,
+                assignedManagerId: data.assignedManagerId ? Number(data.assignedManagerId) : null,
             }
         });
     }
@@ -69,6 +90,7 @@ export class SponsorsService {
                 cases: data.cases,
                 materialsUrl: data.materialsUrl,
                 status: data.status,
+                assignedManagerId: data.assignedManagerId ? Number(data.assignedManagerId) : null,
             }
         });
     }

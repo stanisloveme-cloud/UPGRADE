@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, Query } from '@nestjs/common';
 import { SponsorsService } from './sponsors.service';
 import { Public } from '../auth/public.decorator';
 
@@ -9,6 +9,11 @@ export class SponsorsController {
     @Get('event/:eventId')
     findAllByEvent(@Param('eventId', ParseIntPipe) eventId: number) {
         return this.sponsorsService.findAllByEvent(eventId);
+    }
+
+    @Get('all')
+    findAll(@Query() query: any) {
+        return this.sponsorsService.findAll(query);
     }
 
     @Post()

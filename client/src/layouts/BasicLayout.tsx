@@ -78,6 +78,10 @@ export const BasicLayout: React.FC = () => {
                             name: 'Продажи',
                         },
                         {
+                            path: '/brands-check',
+                            name: 'Проверка брендов',
+                        },
+                        {
                             path: '/settings/users',
                             name: 'Администраторы',
                         }

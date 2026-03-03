@@ -16,6 +16,7 @@ import ProfilePage from './pages/Profile';
 import { ForgotPasswordPage } from './pages/ForgotPasswordPage';
 import { ResetPasswordPage } from './pages/ResetPasswordPage';
 import BrandApproval from './pages/BrandApproval';
+import BrandsCheck from './pages/BrandsCheck';
 
 dayjs.locale('ru');
 
@@ -37,6 +38,7 @@ const App: React.FC = () => {
               <Route path="dashboard" element={<Navigate to="/events" replace />} />
               <Route path="events/:id/program" element={<ProgramEditor />} />
               <Route path="sales" element={<div>Sales Placeholder</div>} />
+              <Route path="brands-check" element={<BrandsCheck />} />
               <Route path="profile" element={<ProfilePage />} />
               <Route path="settings/users" element={<UsersList />} />
             </Route>

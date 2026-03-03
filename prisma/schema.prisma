@@ -218,6 +218,7 @@ model User {
 
   events           UserEvent[]
   assignedSessions Session[]
+  sponsors         Sponsor[]
 
   @@map("users")
 }
@@ -268,6 +269,8 @@ model Sponsor {
   createdAt              DateTime @default(now()) @map("created_at")
 
   event                  Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  assignedManagerId      Int?     @map("assigned_manager_id")
+  assignedManager        User?    @relation(fields: [assignedManagerId], references: [id])
 
   @@map("sponsors")
 }
