@@ -1,32 +1,39 @@
 import { Injectable, Logger } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import * as nodemailer from 'nodemailer';
 
 @Injectable()
 export class NotificationsService {
-    private transporter: nodemailer.Transporter;
+    private transporter: nodemailer.Transporter | null = null;
     private readonly logger = new Logger(NotificationsService.name);
 
-    constructor() {
-        this.initTestAccount();
+    constructor(private configService: ConfigService) {
+        this.initTransporter();
     }
 
-    private async initTestAccount() {
+    private initTransporter() {
         try {
-            // Generate test SMTP service account from ethereal.email
-            const testAccount = await nodemailer.createTestAccount();
+            const host = this.configService.get<string>('SMTP_HOST') || 'smtp.ethereal.email';
+            const port = this.configService.get<number>('SMTP_PORT') || 587;
+            const secure = port === 465;
+            const user = this.configService.get<string>('SMTP_USER');
+            const pass = this.configService.get<string>('SMTP_PASSWORD');
 
-            this.transporter = nodemailer.createTransport({
-                host: "smtp.ethereal.email",
-                port: 587,
-                secure: false, // true for 465, false for other ports
-                auth: {
-                    user: testAccount.user, // generated ethereal user
-                    pass: testAccount.pass, // generated ethereal password
-                },
-            });
-            this.logger.log(`Ethereal Email initialized. Test credentials: ${testAccount.user}`);
+            if (user && pass) {
+                this.transporter = nodemailer.createTransport({
+                    host,
+                    port,
+                    secure,
+                    auth: { user, pass },
+                });
+                this.logger.log(`SMTP configured for ${host}:${port} with user ${user}`);
+            } else {
+                this.logger.warn('SMTP credentials not fully provided. Falling back to test Ethereal mode (or ignoring). Please set SMTP_USER and SMTP_PASSWORD.');
+                // Fallback to purely test / log behavior 
+                this.transporter = null;
+            }
         } catch (err) {
-            this.logger.error('Failed to create Ethereal test account', err);
+            this.logger.error('Failed to initialize SMTP transporter', err);
         }
     }
 
@@ -39,7 +46,7 @@ export class NotificationsService {
 
         try {
             const info = await this.transporter.sendMail({
-                from: '"UPGRADE CRM" <noreply@upgrade-crm.local>', // sender address
+                from: `"UPGRADE CRM" <${this.configService.get<string>('SMTP_USER') || 'noreply@upgrade-crm.local'}>`, // sender address matches SMTP Auth email to avoid spam blocks
                 to, // list of receivers
                 subject, // Subject line
                 text, // plain text body

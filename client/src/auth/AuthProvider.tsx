@@ -1,62 +1,58 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
+
+// Ensure the browser automatically attaches the secure HttpOnly session cookie
+axios.defaults.withCredentials = true;
 
 interface AuthContextType {
     user: any;
-    token: string | null;
-    login: (token: string) => void;
+    login: (userData: any) => void;
     logout: () => void;
     isAuthenticated: boolean;
+    loading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-// Configure axios base URL if needed, but for now we assume relative paths or proxy
-// axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-
-const initialToken = localStorage.getItem('access_token');
-if (initialToken) {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${initialToken}`;
-}
-
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [token, setToken] = useState<string | null>(localStorage.getItem('access_token'));
     const [user, setUser] = useState<any>(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (token) {
+        const checkSession = async () => {
             try {
-                const decoded = jwtDecode(token);
-                // Check expiry
-                if (decoded.exp && decoded.exp * 1000 < Date.now()) {
-                    logout();
-                } else {
-                    setUser(decoded);
-                    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+                // Excluded from /api prefix in main.ts
+                const response = await axios.get('/auth/profile');
+                if (response.data) {
+                    setUser(response.data);
                 }
             } catch (error) {
-                logout();
+                // Session expired or missing
+                setUser(null);
+            } finally {
+                setLoading(false);
             }
-        } else {
-            delete axios.defaults.headers.common['Authorization'];
-        }
-    }, [token]);
+        };
+        checkSession();
+    }, []);
 
-    const login = (newToken: string) => {
-        localStorage.setItem('access_token', newToken);
-        setToken(newToken);
+    const login = (userData: any) => {
+        setUser(userData);
     };
 
-    const logout = () => {
-        localStorage.removeItem('access_token');
-        setToken(null);
+    const logout = async () => {
+        try {
+            await axios.post('/auth/logout');
+        } catch (e) {
+            console.error(e);
+        }
         setUser(null);
     };
 
     return (
-        <AuthContext.Provider value={{ user, token, login, logout, isAuthenticated: !!token }}>
-            {children}
+        <AuthContext.Provider value={{ user, login, logout, isAuthenticated: !!user, loading }}>
+            {/* Delay rendering tree until session check finishes to prevent unauthenticated flashes */}
+            {!loading && children}
         </AuthContext.Provider>
     );
 };

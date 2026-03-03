@@ -27,6 +27,9 @@
 - [x] **Optimization**: Validated multi-stage build in `Dockerfile` and updated `.dockerignore` to prevent shipping redundant `.log`/`.txt` files into the context.
 - [x] **Cleanup**: Removed unused Redis container completely from development stack.
 
-## 4. Immediate Next Steps (Current Focus)
-- All Stabilization Sprint items have been completed!
+## 4. Bug Fixes (UI & Uploads Sprint - 2026-02-25)
+- [x] **Strict DTO Payload Fix**: Solved `400 Bad Request` silently failing save requests in Speaker and Session modals by separating URL params (e.g. `id`) from the HTTP JSON body payload.
+- [x] **Avatar Upload Pipeline**: Resolved 500 crashes and 404 missing image errors by migrating `ServeStaticModule` away from legacy NestJS wildcard syntax and changing `__dirname` relative roots to `process.cwd()` to securely align with Docker volume persistence logic.
+
+## 5. Immediate Next Steps (Current Focus)
 - Awaiting next feature requests.

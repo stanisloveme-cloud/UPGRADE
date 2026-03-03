@@ -11,6 +11,11 @@ import { RequireAuth } from './components/RequireAuth';
 import { LoginPage } from './pages/LoginPage';
 import EventsList from './pages/EventsList';
 import SpeakersList from './pages/SpeakersList';
+import UsersList from './pages/UsersList';
+import ProfilePage from './pages/Profile';
+import { ForgotPasswordPage } from './pages/ForgotPasswordPage';
+import { ResetPasswordPage } from './pages/ResetPasswordPage';
+import BrandApproval from './pages/BrandApproval';
 
 dayjs.locale('ru');
 
@@ -21,6 +26,9 @@ const App: React.FC = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
+            <Route path="/brand-approval/:hash" element={<BrandApproval />} />
 
             <Route path="/" element={<RequireAuth><BasicLayout /></RequireAuth>}>
               <Route index element={<Navigate to="/events" replace />} />
@@ -29,6 +37,8 @@ const App: React.FC = () => {
               <Route path="dashboard" element={<Navigate to="/events" replace />} />
               <Route path="events/:id/program" element={<ProgramEditor />} />
               <Route path="sales" element={<div>Sales Placeholder</div>} />
+              <Route path="profile" element={<ProfilePage />} />
+              <Route path="settings/users" element={<UsersList />} />
             </Route>
           </Routes>
         </BrowserRouter>

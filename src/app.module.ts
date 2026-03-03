@@ -11,10 +11,11 @@ import { SessionsModule } from './sessions/sessions.module';
 import { SpeakersModule } from './speakers/speakers.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
-import { JwtAuthGuard } from './auth/jwt-auth.guard';
+import { SessionGuard } from './auth/session.guard';
 import { UploadsModule } from './uploads/uploads.module';
 import { ExportsModule } from './exports/exports.module';
 import { NotificationsModule } from './notifications/notifications.module';
+import { SponsorsModule } from './sponsors/sponsors.module';
 
 @Module({
   imports: [
@@ -38,11 +39,12 @@ import { NotificationsModule } from './notifications/notifications.module';
     UploadsModule,
     ExportsModule,
     NotificationsModule,
+    SponsorsModule,
   ],
   providers: [
     {
       provide: 'APP_GUARD',
-      useClass: JwtAuthGuard,
+      useClass: SessionGuard,
     },
   ],
 })

@@ -29,6 +29,11 @@ export const BasicLayout: React.FC = () => {
 
     const menuItems: MenuProps['items'] = [
         {
+            key: 'profile',
+            icon: <UserOutlined />,
+            label: <Link to="/profile">Личный кабинет</Link>,
+        },
+        {
             key: 'change-password',
             icon: <KeyOutlined />,
             label: 'Изменить пароль',
@@ -61,14 +66,22 @@ export const BasicLayout: React.FC = () => {
                         path: '/events',
                         name: 'Все мероприятия',
                     },
-                    {
-                        path: '/speakers',
-                        name: 'Спикеры',
-                    },
-                    ...(user?.isSuperAdmin ? [{
-                        path: '/sales',
-                        name: 'Продажи',
-                    }] : [])
+                    ...((user?.isSuperAdmin || user?.canManageSpeakers) ? [
+                        {
+                            path: '/speakers',
+                            name: 'Спикеры',
+                        }
+                    ] : []),
+                    ...(user?.isSuperAdmin ? [
+                        {
+                            path: '/sales',
+                            name: 'Продажи',
+                        },
+                        {
+                            path: '/settings/users',
+                            name: 'Администраторы',
+                        }
+                    ] : [])
                 ]
             }}
             menuItemRender={(item, dom) => (

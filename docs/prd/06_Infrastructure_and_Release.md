@@ -14,7 +14,7 @@ graph TD
         Nginx -->|Proxy Pass| Frontend[Frontend Container (Nginx Static)]
         Nginx -->|Proxy Pass /api| Backend[Backend Container (NestJS)]
         Backend -->|TCP : 5432| DB[PostgreSQL 15]
-        Backend -->|TCP : 6379| Redis[Redis Cache]
+        Backend -->|TCP : 6379| Redis[Redis Cache for Sessions]
     end
 
     subgraph "Host Filesystem"

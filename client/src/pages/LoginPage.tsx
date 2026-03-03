@@ -3,7 +3,7 @@ import { Form, Input, Button, Card, Typography, message, Alert } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import { useAuth } from '../auth/AuthProvider';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 const { Title, Text } = Typography;
 
@@ -28,8 +28,8 @@ export const LoginPage: React.FC = () => {
                 password: values.password,
             });
 
-            if (response.data.access_token) {
-                login(response.data.access_token);
+            if (response.data.user) {
+                login(response.data.user);
                 message.success('Вход выполнен успешно');
                 navigate(from, { replace: true });
             }
@@ -86,9 +86,16 @@ export const LoginPage: React.FC = () => {
                     <Form.Item
                         name="password"
                         rules={[{ required: true, message: 'Введите пароль!' }]}
+                        style={{ marginBottom: 8 }}
                     >
                         <Input.Password prefix={<LockOutlined />} placeholder="Пароль" />
                     </Form.Item>
+
+                    <div style={{ textAlign: 'right', marginBottom: 24 }}>
+                        <Link to="/forgot-password" style={{ fontSize: 13 }}>
+                            Забыли пароль?
+                        </Link>
+                    </div>
 
                     <Form.Item>
                         <Button type="primary" htmlType="submit" block loading={loading}>

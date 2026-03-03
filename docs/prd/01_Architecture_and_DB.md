@@ -17,8 +17,8 @@
 * **Backend:** Node.js (рекомендуется **NestJS** для строгой типизации) \+ TypeORM/Prisma.  
 * **Database:** PostgreSQL 15+.  
 * **Frontend:** React \+ Vite \+ Ant Design Pro v5.  
-* **Infra:** Docker Compose (App \+ DB \+ Redis for caching).
-* **Security:** JWT Authentication (Stateless), NestJS Guards, React Context.
+* **Infra:** Docker Compose (App + DB + Redis for session caching).
+* **Security:** Redis Sessions (Stateful), NestJS Guards, React Context.
 * **UX:** Explicit error handling (Alerts) for login failures.
 
 ## **2\. Модель Данных (Database Schema)**
@@ -42,10 +42,19 @@ erDiagram
         int id PK
         string username
         string password
-        string role
+        boolean is_super_admin
+        boolean is_active
         date created_at
         date updated_at
     }
+
+    UserTrack {
+        int user_id FK
+        int track_id FK
+    }
+
+    User ||--|{ UserTrack : manages
+    Track ||--|{ UserTrack : managed_by
 
     SpeakerRating {
         int id PK
@@ -257,9 +266,15 @@ erDiagram
 * id: SERIAL PRIMARY KEY
 * username: VARCHAR(255) NOT NULL UNIQUE
 * password: VARCHAR(255) NOT NULL
-* role: VARCHAR(50) DEFAULT 'user'
+* is_super_admin: BOOLEAN DEFAULT FALSE
+* is_active: BOOLEAN DEFAULT TRUE
 * created_at: TIMESTAMP DEFAULT NOW()
 * updated_at: TIMESTAMP
+
+#### **Entity: UserTrack (Manager Assignments)**
+* user_id: INTEGER NOT NULL (FK -> User.id)
+* track_id: INTEGER NOT NULL (FK -> Track.id)
+* PRIMARY KEY (user_id, track_id)
 
 ## **3\. API Контракты (Core Endpoints)**
 
@@ -270,7 +285,8 @@ erDiagram
 * POST /api/tracks — CRUD для треков.  
 * POST /api/sessions — CRUD для сессий.  
 * POST /api/speakers — CRUD для глобальной базы спикеров.
-* POST /auth/login — Получение JWT токена. (Returns 401 Unauthorized for invalid creds).
+* POST /auth/login — Авторизация и создание сессии в Redis. (Returns 401 Unauthorized for invalid creds).
+* POST /auth/logout — Уничтожение сессии.
 * GET /auth/profile — Получение информации о текущем пользователе.
 
 ## **4\. Инструкции для разработчика (Agent Prompt)**

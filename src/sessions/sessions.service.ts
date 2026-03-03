@@ -113,7 +113,7 @@ export class SessionsService {
                     }))
                 } : undefined
             },
-            include: { speakers: { include: { speaker: true } }, questions: { orderBy: { order: 'asc' } }, briefings: { include: { moderator: true } } }
+            include: { manager: { select: { id: true, firstName: true, lastName: true, username: true } }, speakers: { include: { speaker: true } }, questions: { orderBy: { order: 'asc' } }, briefings: { include: { moderator: true } } }
         });
 
         if (speakers && speakers.length > 0) {
@@ -126,6 +126,7 @@ export class SessionsService {
     findAll() {
         return this.prisma.session.findMany({
             include: {
+                manager: { select: { id: true, firstName: true, lastName: true, username: true } },
                 speakers: { include: { speaker: true }, orderBy: { sortOrder: 'asc' } },
                 questions: { orderBy: { order: 'asc' } },
                 briefings: { include: { moderator: true } }
@@ -139,6 +140,7 @@ export class SessionsService {
             where: { id },
             include: {
                 track: true,
+                manager: { select: { id: true, firstName: true, lastName: true, username: true } },
                 speakers: { include: { speaker: true }, orderBy: { sortOrder: 'asc' } },
                 questions: { orderBy: { order: 'asc' } },
                 briefings: { include: { moderator: true } }
@@ -249,6 +251,7 @@ export class SessionsService {
             const updatedSession = await prisma.session.findUnique({
                 where: { id },
                 include: {
+                    manager: { select: { id: true, firstName: true, lastName: true, username: true } },
                     speakers: { include: { speaker: true }, orderBy: { sortOrder: 'asc' } },
                     questions: { orderBy: { order: 'asc' } },
                     briefings: { include: { moderator: true } }

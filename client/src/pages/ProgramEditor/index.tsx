@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
 import { Button, message, Tabs, Checkbox, Modal, Tooltip, Upload } from 'antd';
-import { SettingOutlined, PlusOutlined, UploadOutlined } from '@ant-design/icons';
+import { SettingOutlined, PlusOutlined, UploadOutlined, DownloadOutlined } from '@ant-design/icons';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import HallsModal from './HallsModal';
 import SessionDrawer from './SessionDrawer';
 import TrackModal from './TrackModal';
 import ScheduleGrid from '../../components/ScheduleGrid';
+import SpeakerSortingModal from './SpeakerSortingModal';
+import AnnouncementsModal from './AnnouncementsModal';
+import SpeakerNotificationsModal from './SpeakerNotificationsModal';
+import SponsorsModal from './SponsorsModal';
 
 const ProgramEditor: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -16,6 +20,10 @@ const ProgramEditor: React.FC = () => {
     const [data, setData] = useState<any>(null);
     const [loading, setLoading] = useState(true);
     const [hallsModalVisible, setHallsModalVisible] = useState(false);
+    const [speakerSortingVisible, setSpeakerSortingVisible] = useState(false);
+    const [announcementsVisible, setAnnouncementsVisible] = useState(false);
+    const [notificationsVisible, setNotificationsVisible] = useState(false);
+    const [sponsorsVisible, setSponsorsVisible] = useState(false);
     const [speakers, setSpeakers] = useState<any[]>([]);
 
     // Session Drawer State
@@ -242,6 +250,35 @@ const ProgramEditor: React.FC = () => {
                     >
                         Управление залами
                     </Button>
+                    <Button
+                        onClick={() => setSpeakerSortingVisible(true)}
+                    >
+                        Сортировка спикеров
+                    </Button>
+                    <Button
+                        onClick={() => setAnnouncementsVisible(true)}
+                    >
+                        Анонсы
+                    </Button>
+                    <Button
+                        onClick={() => setNotificationsVisible(true)}
+                    >
+                        Памятки
+                    </Button>
+                    <Button
+                        onClick={() => setSponsorsVisible(true)}
+                    >
+                        Спонсоры
+                    </Button>
+                    <Button
+                        type="primary"
+                        icon={<DownloadOutlined />}
+                        onClick={() => {
+                            window.open(`/api/events/${eventId}/presentations-zip`, '_blank');
+                        }}
+                    >
+                        Скачать презентации
+                    </Button>
                     <Upload
                         name="file"
                         action={`/api/exports/import/${eventId}`}
@@ -351,6 +388,30 @@ const ProgramEditor: React.FC = () => {
                 onDelete={handleDeleteTrack}
                 initialValues={currentTrack}
                 hallId={currentTrackHallId}
+                eventId={Number(eventId)}
+            />
+
+            <SpeakerSortingModal
+                visible={speakerSortingVisible}
+                onClose={() => setSpeakerSortingVisible(false)}
+                eventId={Number(eventId)}
+            />
+
+            <AnnouncementsModal
+                visible={announcementsVisible}
+                onClose={() => setAnnouncementsVisible(false)}
+                eventId={Number(eventId)}
+            />
+
+            <SpeakerNotificationsModal
+                visible={notificationsVisible}
+                onClose={() => setNotificationsVisible(false)}
+                eventId={Number(eventId)}
+            />
+
+            <SponsorsModal
+                visible={sponsorsVisible}
+                onClose={() => setSponsorsVisible(false)}
                 eventId={Number(eventId)}
             />
         </PageContainer>

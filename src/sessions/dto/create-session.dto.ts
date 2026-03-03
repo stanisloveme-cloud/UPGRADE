@@ -103,4 +103,8 @@ export class CreateSessionDto {
     @IsOptional()
     @IsBoolean()
     ignoreConflicts?: boolean;
+
+    @IsOptional()
+    @IsNumber()
+    managerId?: number;
 }

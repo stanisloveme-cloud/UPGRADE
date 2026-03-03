@@ -32,12 +32,7 @@ These fields are **accumulated** over time based on the speaker's participation.
 1.  **Expertise (Tags)**:
     *   *Examples*: "CRM", "Marketing in Retail", "Loyalty Programs".
     *   *Logic*: Assignable tags that persist across events. A speaker can gain new expertise tags over time (e.g., starting with CRM, later adding Loyalty).
-2.  **Internal Rating (Performance Grade)**:
-    *   *Confidential*: Visible ONLY to internal managers.
-    *   *Scale*: 1-5 Stars.
-    *   *Context*: Rated per event. "How well did they perform at Upgrade Autumn 2024?"
-    *   *Aggregated*: The system shows an average rating or "Last 3 Ratings".
-3.  **Employment History**:
+2.  **Employment History**:
     *   A derived list of companies they have represented in the past (e.g., "Ex-TechCorp, currently RetailSolutions").
 
 ### Level 3: Tactical Context (Event-Specific)
@@ -64,7 +59,6 @@ These fields apply **only** to a specific participation (Session/Event). They ar
 *   **Action**: Manager creates a "CRM" section for a new conference.
 *   **System**: Filters speakers by:
     *   Expertise Tag: "CRM" OR "Marketing".
-    *   Rating: > 4.0 stars (High quality speakers).
 *   **Result**: A "Long List" of proven experts to contact.
 
 ### Phase 2: Engagement (Adding to Session)
@@ -82,15 +76,6 @@ These fields apply **only** to a specific participation (Session/Event). They ar
 
 *   **Action**: Speaker uploads their presentation.
 *   **System**: Stores the file link in `SessionSpeaker`, tied to this specific date/topic.
-
-### Phase 4: Evaluation (Post-Event)
-*Goal: Grade performance for future reference.*
-
-*   **Action**: Event ends. Manager reviews the session.
-*   **System**: Prompts manager: "Rate Ivan Ivanov for Upgrade Autumn 2025".
-    *   *Criteria*: Punctuality, Content Quality, Audience Reaction.
-    *   *Input*: 5 Stars. Comment: "Excellent delivery, audience loved the Loyalty case."
-*   **Result**: Ivan's Global Rating is updated. The comment is saved in his history.
 
 ---
 
@@ -111,13 +96,7 @@ These fields apply **only** to a specific participation (Session/Event). They ar
     *   `presentationUrl` (String)
     *   `presentationTitle` (String)
 
-#### 3. `SpeakerRating` (New Model)
-*   `id`
-*   `speakerId` (Relation)
-*   `eventId` (Relation - context of the rating)
-*   `score` (Int: 1-5)
-*   `comment` (Text)
-*   `ratedBy` (UserId)
+
 
 #### 4. `SpeakerTag` / `Expertise` (New Model)
 *   `id`
@@ -128,5 +107,4 @@ These fields apply **only** to a specific participation (Session/Event). They ar
 
 ## 5. Summary of Benefits
 1.  **True History**: We never lose the fact that Ivan worked at "TechCorp" in 2024.
-2.  **Quality Control**: We stop inviting low-rated speakers (bad performers).
-3.  **Targeted Calling**: We can instantly find "Top-rated CRM experts" for a new event.
+2.  **Targeted Calling**: We can instantly find "CRM experts" using tags for a new event.

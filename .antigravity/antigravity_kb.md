@@ -87,3 +87,11 @@ Description: Curated list of documentation, tutorials, and troubleshooting guide
 
 > [!IMPORTANT]
 > Fallback tools (`gh run view`, `node scripts/check_deploy.js`) remain in `./scripts/` for cases where MCP is unavailable (e.g., after IDE restart before MCP initializes).
+
+## 7. Development Environment
+**Context:** Live dev testing environment details.
+
+### Test Credentials
+- **Login:** `admin`
+- **Password:** `admin123`
+_(These are temporary credentials for dynamic browser testing on the dev environment. To be deleted by the user later.)_

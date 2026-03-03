@@ -5,11 +5,11 @@
 **Target:** Backend & Frontend
 
 ## 1. Context
-The system currently supports basic JWT authentication with a predefined `role` enum (`admin`, `manager`). 
+The system will transition from basic JWT authentication to **Redis-backed Sessions** to ensure immediate session invalidation when users are blocked.
 The goal is to implement a **Super Admin** capability to:
-1.  Create and manage other users.
-2.  Assign granular permissions (access to specific sections and actions).
-3.  Control access via an "Admin Panel".
+1.  Create and manage other users (Managers).
+2.  Assign granular permissions by linking Managers to specific **Tracks**.
+3.  Control access via an "Admin Panel" to instantly activate/deactivate users.
 
 ## 2. User Roles & Hierarchy
 
@@ -21,23 +21,21 @@ The goal is to implement a **Super Admin** capability to:
     - Full access to all modules (Editor, Sales, Analytics).
     - Cannot be deleted.
 
-### 2.2. Manager (Configurable)
-- **Description**: Standard operating user.
-- **Capabilities**: Defined by assigned **Groups** or **Direct Permissions**.
-- **Examples**:
-    - *Program Manager*: Access to "Program Editor" (Read/Write).
-    - *Sales Rep*: Access to "Sales" (Read/Write), "Program Editor" (Read Only).
+### 2.2. Manager
+- **Description**: Users responsible for specific parts of the program.
+- **Capabilities**:
+    - Cannot create or manage other users.
+    - Assigned to specific **Tracks** (e.g., "Main Stage", "Startup Pitch").
+    - Can only edit sessions and data within their assigned Tracks.
 
 ## 3. Data Model (Schema Updates)
 
-To support granular permissions, we will transition from a simple `enum role` to a Permission-based system.
+To support granular permissions, we will transition from basic roles to a Track-based assignment system.
 
 ```mermaid
 erDiagram
-    User ||--|{ UserRole : has
-    Role ||--|{ UserRole : assigned_to
-    Role ||--|{ RolePermission : contains
-    Permission ||--|{ RolePermission : grants
+    User ||--|{ UserTrack : manages
+    Track ||--|{ UserTrack : managed_by
     
     User {
         int id PK
@@ -47,28 +45,16 @@ erDiagram
         boolean is_active "Soft delete/Block"
     }
 
-    Role {
-        int id PK
-        string name "e.g., Program Manager"
-        string description
-    }
-
-    Permission {
-        int id PK
-        string slug "e.g., program.read, program.edit"
-        string description
+    UserTrack {
+        int user_id FK
+        int track_id FK
     }
 ```
 
 ### 3.1. Primitives (Permissions)
-Permissions are hardcoded in the codebase (Backend Guards + Frontend Routes) but assigned dynamically in DB.
-
-**Proposed Permission List:**
-- `users.manage` (Create/Edit users) -> Super Admin only initially.
-- `program.view` (View Schedule)
-- `program.edit` (Create/Edit Sessions, Speakers)
-- `sales.view` (View Leads)
-- `sales.edit` (Manage Deals)
+Permissions are enforced at the API level based on track ownership.
+- `users.manage` -> Only SuperAdmin.
+- Modifying a Session -> Manager must be assigned to the `Session.Track`.
 
 ## 4. Interface Design (Frontend)
 
@@ -77,31 +63,24 @@ Permissions are hardcoded in the codebase (Backend Guards + Frontend Routes) but
 
 **UI Components**:
 1.  **User List Table**:
-    - Columns: Name, Email, Role(s), Status (Active/Blocked), Actions (Edit/Delete).
+    - Columns: Name, Login/Email, Track Assignments, Status (Active/Blocked), Actions (Edit/Delete).
     - "Create User" button.
 
 2.  **Create/Edit User Modal**:
-    - **Header**: Login Info (Email, Password, Name).
+    - **Header**: Login Info (Email, Password, Name). SuperAdmin sets passwords directly.
     - **Rights Block**:
         - Toggle: "Active".
-        - **Role Selection**: Dropdown/Tags (e.g., "Manager", "Sales").
-        - **Granular Overrides** (Advanced - MVP+): Accordion with Checkboxes.
-            - [ ] **Program Editor**
-                - [x] View
-                - [ ] Edit
-            - [ ] **Sales**
-                - [x] View
-                - [x] Edit
+        - **Track Selection**: Multi-select dropdown mapped to Conference Tracks. Managers gain edit rights over these specific tracks.
 
 ## 5. Implementation Stages
 
-### Stage 1: Foundation (Current Goal)
-- [ ] Add `is_super_admin` flag to User table.
-- [ ] Create API `POST /users` (Create User).
-- [ ] Create API `GET /users` (List Users).
-- [ ] Simple Frontend: "Admin Panel" with "Add User" form.
-- [ ] Password setting by Admin (temporary) or Invitation Link (ideal).
+### Stage 1: Security & Sessions
+- [ ] Setup `express-session` and `connect-redis` in NestJS.
+- [ ] Migrate Login logic to use Redis sessions instead of JWT.
+- [ ] Add `is_super_admin` and `is_active` flags to User table.
 
-### Stage 2: RBAC (Future)
-- [ ] Implement `Role` and `Permission` tables.
-- [ ] UI for managing Role definitions.
+### Stage 2: Admin Panel
+- [ ] Create `UserTrack` relation in Prisma.
+- [ ] Create API `POST /users`, `GET /users`, `PUT /users/:id`, `DELETE /users/:id`.
+- [ ] Build Frontend "Admin Panel" with User Grid and Edit Modal.
+- [ ] SuperAdmin can set basic passwords and assign managers to tracks.

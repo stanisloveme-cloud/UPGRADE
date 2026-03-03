@@ -46,7 +46,8 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
         briefings: initialValues?.briefings?.map((b: any) => ({
             ...b,
             datetime: b.datetime ? dayjs(b.datetime) : undefined
-        }))
+        })),
+        managerId: initialValues?.managerId || undefined // Explicitly expose
     };
 
     return (
@@ -180,6 +181,24 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                     // For now, allow changing if not strictly enforced
                     placeholder="Выберите трек"
                     rules={[{ required: true, message: 'Выберите трек' }]}
+                    width="md"
+                />
+
+                <ProFormSelect
+                    name="managerId"
+                    label="Ответственный менеджер"
+                    placeholder="Выберите менеджера"
+                    request={async () => {
+                        try {
+                            const { data } = await axios.get('/api/users/managers');
+                            return data.map((u: any) => ({
+                                label: [u.firstName, u.lastName].filter(Boolean).join(' ') || u.username,
+                                value: u.id
+                            }));
+                        } catch (e) {
+                            return [];
+                        }
+                    }}
                     width="md"
                 />
             </ProFormGroup>
