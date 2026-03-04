@@ -4,7 +4,7 @@ RUN apt-get update -y && apt-get install -y openssl
 WORKDIR /app
 COPY package*.json ./
 COPY prisma ./prisma/
-RUN npm ci
+RUN npm install
 COPY . .
 RUN npx prisma generate
 RUN npm run build
@@ -17,7 +17,7 @@ COPY package*.json ./
 COPY prisma ./prisma/
 COPY prisma.config.ts ./
 # Install production deps as root, then switch to non-root user
-RUN npm ci --omit=dev && npx prisma generate
+RUN npm install --omit=dev && npx prisma generate
 COPY --from=builder /app/dist ./dist
 # Create uploads dir with correct ownership before switching user
 RUN mkdir -p /app/uploads && chown -R node:node /app/uploads
