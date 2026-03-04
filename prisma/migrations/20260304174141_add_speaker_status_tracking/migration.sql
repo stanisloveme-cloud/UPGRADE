@@ -81,49 +81,49 @@ ALTER TABLE "sponsors" ADD COLUMN IF NOT EXISTS "assigned_manager_id" INTEGER;
 DO $$
 BEGIN
     IF NOT EXISTS (SELECT 1 FROM pg_class WHERE relname = 'user_events_user_id_event_id_key') THEN
-        CREATE UNIQUE INDEX "user_events_user_id_event_id_key" ON "user_events"("user_id", "event_id");
+        EXECUTE 'CREATE UNIQUE INDEX "user_events_user_id_event_id_key" ON "user_events"("user_id", "event_id")';
     END IF;
 
     IF NOT EXISTS (SELECT 1 FROM pg_class WHERE relname = 'sponsors_approval_hash_key') THEN
-        CREATE UNIQUE INDEX "sponsors_approval_hash_key" ON "sponsors"("approval_hash");
+        EXECUTE 'CREATE UNIQUE INDEX "sponsors_approval_hash_key" ON "sponsors"("approval_hash")';
     END IF;
 
     IF NOT EXISTS (SELECT 1 FROM pg_class WHERE relname = 'session_speakers_memo_hash_key') THEN
-        CREATE UNIQUE INDEX "session_speakers_memo_hash_key" ON "session_speakers"("memo_hash");
+        EXECUTE 'CREATE UNIQUE INDEX "session_speakers_memo_hash_key" ON "session_speakers"("memo_hash")';
     END IF;
 
     IF NOT EXISTS (SELECT 1 FROM pg_class WHERE relname = 'users_email_key') THEN
-        CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
+        EXECUTE 'CREATE UNIQUE INDEX "users_email_key" ON "users"("email")';
     END IF;
 
     IF NOT EXISTS (SELECT 1 FROM pg_class WHERE relname = 'users_reset_token_key') THEN
-        CREATE UNIQUE INDEX "users_reset_token_key" ON "users"("reset_token");
+        EXECUTE 'CREATE UNIQUE INDEX "users_reset_token_key" ON "users"("reset_token")';
     END IF;
 END $$;
 
 DO $$
 BEGIN
     IF NOT EXISTS (SELECT 1 FROM information_schema.table_constraints WHERE constraint_name = 'sessions_manager_id_fkey') THEN
-        ALTER TABLE "sessions" ADD CONSTRAINT "sessions_manager_id_fkey" FOREIGN KEY ("manager_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+        EXECUTE 'ALTER TABLE "sessions" ADD CONSTRAINT "sessions_manager_id_fkey" FOREIGN KEY ("manager_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE';
     END IF;
 
     IF NOT EXISTS (SELECT 1 FROM information_schema.table_constraints WHERE constraint_name = 'session_speakers_status_user_id_fkey') THEN
-        ALTER TABLE "session_speakers" ADD CONSTRAINT "session_speakers_status_user_id_fkey" FOREIGN KEY ("status_user_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+        EXECUTE 'ALTER TABLE "session_speakers" ADD CONSTRAINT "session_speakers_status_user_id_fkey" FOREIGN KEY ("status_user_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE';
     END IF;
 
     IF NOT EXISTS (SELECT 1 FROM information_schema.table_constraints WHERE constraint_name = 'user_events_user_id_fkey') THEN
-        ALTER TABLE "user_events" ADD CONSTRAINT "user_events_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+        EXECUTE 'ALTER TABLE "user_events" ADD CONSTRAINT "user_events_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE';
     END IF;
 
     IF NOT EXISTS (SELECT 1 FROM information_schema.table_constraints WHERE constraint_name = 'user_events_event_id_fkey') THEN
-        ALTER TABLE "user_events" ADD CONSTRAINT "user_events_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "events"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+        EXECUTE 'ALTER TABLE "user_events" ADD CONSTRAINT "user_events_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "events"("id") ON DELETE CASCADE ON UPDATE CASCADE';
     END IF;
 
     IF NOT EXISTS (SELECT 1 FROM information_schema.table_constraints WHERE constraint_name = 'sponsors_event_id_fkey') THEN
-        ALTER TABLE "sponsors" ADD CONSTRAINT "sponsors_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "events"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+        EXECUTE 'ALTER TABLE "sponsors" ADD CONSTRAINT "sponsors_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "events"("id") ON DELETE CASCADE ON UPDATE CASCADE';
     END IF;
 
     IF NOT EXISTS (SELECT 1 FROM information_schema.table_constraints WHERE constraint_name = 'sponsors_assigned_manager_id_fkey') THEN
-        ALTER TABLE "sponsors" ADD CONSTRAINT "sponsors_assigned_manager_id_fkey" FOREIGN KEY ("assigned_manager_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+        EXECUTE 'ALTER TABLE "sponsors" ADD CONSTRAINT "sponsors_assigned_manager_id_fkey" FOREIGN KEY ("assigned_manager_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE';
     END IF;
 END $$;
