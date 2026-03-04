@@ -195,7 +195,15 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                     <Form.Item
                         name="email"
                         label="Email"
-                        rules={[{ type: 'email', message: 'Некорректный email' }]}
+                        rules={[
+                            {
+                                validator: async (_, value) => {
+                                    if (!value) return Promise.resolve();
+                                    if (/^\S+@\S+\.\S+$/.test(value)) return Promise.resolve();
+                                    return Promise.reject(new Error('Некорректный email'));
+                                }
+                            }
+                        ]}
                         style={{ flex: 1 }}
                     >
                         <Input placeholder="email@example.com" />

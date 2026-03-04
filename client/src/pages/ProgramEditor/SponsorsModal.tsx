@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Modal, message, Button, Space, Typography, Tooltip, Tag, Tabs, Form, Upload } from 'antd';
+import { Modal, message, Button, Space, Typography, Tooltip, Tag, Tabs, Form, Upload, Checkbox } from 'antd';
 import { ActionType, ProColumns, ProTable, ModalForm, ProFormText, ProFormTextArea, ProForm, ProFormDigit, ProFormSelect, ProFormList } from '@ant-design/pro-components';
 import { PlusOutlined, CopyOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, UploadOutlined } from '@ant-design/icons';
 import axios from 'axios';
@@ -38,7 +38,15 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
             <ProFormTextArea name="shortDescription" label="Короткое описание деятельности" fieldProps={{ showCount: true, maxLength: 100 }} tooltip="Очень коротко, чем занимается бренд" />
 
             <ProFormText name="websiteUrl" label="Сайт" tooltip="Без 'https://', 'www' и UTM-меток" />
-            <ProFormText name="publicEmail" label="Публичный email" rules={[{ type: 'email' }]} />
+            <ProFormText name="publicEmail" label="Публичный email" rules={[
+                {
+                    validator: async (_, value) => {
+                        if (!value) return Promise.resolve();
+                        if (/^\S+@\S+\.\S+$/.test(value)) return Promise.resolve();
+                        return Promise.reject(new Error('Некорректный email'));
+                    }
+                }
+            ]} />
             <ProFormText name="publicPhone" label="Публичный телефон" placeholder="+7 (000) 000-00-00" />
 
             <ProFormTextArea name="catalogDescription" label="Описание для печатного каталога" fieldProps={{ showCount: true, maxLength: 500 }} tooltip="Чем занимается бренд" />
@@ -93,13 +101,7 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
             </Form.Item>
 
             <Form.Item name="exportToWebsite" valuePropName="checked">
-                <Button type="dashed" style={{ pointerEvents: 'none', border: 'none', padding: 0 }}>
-                    <input type="checkbox" style={{ marginRight: 8, pointerEvents: 'auto' }} onClick={(e) => {
-                        const evt = document.createEvent('HTMLEvents');
-                        evt.initEvent('change', false, true);
-                        e.currentTarget.dispatchEvent(evt);
-                    }} /> Выгружать на сайт
-                </Button>
+                <Checkbox>Выгружать на сайт</Checkbox>
             </Form.Item>
 
             <ProForm.Group>
@@ -121,7 +123,15 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
             <ProFormTextArea name="description" label="Справка о компании/Спикере (Внутренняя)" />
             <ProForm.Group>
                 <ProFormText name="contactName" label="Контактное лицо (Внутреннее)" width="sm" />
-                <ProFormText name="contactEmail" label="Email контакта (Внутреннее)" width="sm" rules={[{ type: 'email' }]} />
+                <ProFormText name="contactEmail" label="Email контакта (Внутреннее)" width="sm" rules={[
+                    {
+                        validator: async (_, value) => {
+                            if (!value) return Promise.resolve();
+                            if (/^\S+@\S+\.\S+$/.test(value)) return Promise.resolve();
+                            return Promise.reject(new Error('Некорректный email'));
+                        }
+                    }
+                ]} />
             </ProForm.Group>
         </>
     );

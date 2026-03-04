@@ -30,6 +30,28 @@ export class UploadsController {
         return { url: `/api/uploads/photos/${file.filename}` };
     }
 
+    @Post('logo')
+    @UseInterceptors(FileInterceptor('file', {
+        storage: diskStorage({
+            destination: './uploads/logos',
+            filename: (req, file, cb) => {
+                const uniqueSuffix = `${uuidv4()}${extname(file.originalname)}`;
+                cb(null, uniqueSuffix);
+            }
+        }),
+        limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
+        fileFilter: (req, file, cb) => {
+            if (file.mimetype !== 'image/png' && file.mimetype !== 'image/svg+xml') {
+                return cb(new BadRequestException('Only PNG or SVG files are allowed!'), false);
+            }
+            cb(null, true);
+        }
+    }))
+    uploadLogo(@UploadedFile() file: Express.Multer.File) {
+        if (!file) throw new BadRequestException('File is required');
+        return { url: `/api/uploads/logos/${file.filename}` };
+    }
+
     @Post('presentation')
     @UseInterceptors(FileInterceptor('file', {
         storage: diskStorage({
@@ -55,6 +77,15 @@ export class UploadsController {
     @Get('photos/:filename')
     servePhoto(@Param('filename') filename: string, @Res() res: Response) {
         return res.sendFile(filename, { root: './uploads/photos' }, (err) => {
+            if (err) {
+                res.status(404).send('Not found');
+            }
+        });
+    }
+
+    @Get('logos/:filename')
+    serveLogo(@Param('filename') filename: string, @Res() res: Response) {
+        return res.sendFile(filename, { root: './uploads/logos' }, (err) => {
             if (err) {
                 res.status(404).send('Not found');
             }
