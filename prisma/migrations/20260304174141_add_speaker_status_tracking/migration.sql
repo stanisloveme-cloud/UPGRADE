@@ -86,38 +86,43 @@ CREATE TABLE IF NOT EXISTS "user_events" (
     CONSTRAINT "user_events_pkey" PRIMARY KEY ("id")
 );
 
-CREATE TABLE IF NOT EXISTS "sponsors" (
-    "id" SERIAL NOT NULL,
-    "event_id" INTEGER NOT NULL,
-    "name" VARCHAR(255) NOT NULL,
-    "short_description" VARCHAR(255),
-    "website_url" VARCHAR(255),
-    "public_email" VARCHAR(100),
-    "public_phone" VARCHAR(50),
-    "logo_url" VARCHAR(512),
-    "description" TEXT,
-    "catalog_description" TEXT,
-    "service_card_description" TEXT,
-    "market_segments" JSONB,
-    "city" VARCHAR(100),
-    "employee_count" INTEGER,
-    "annual_turnover" VARCHAR(100),
-    "telegram" VARCHAR(100),
-    "whatsapp" VARCHAR(100),
-    "contact_name" VARCHAR(100),
-    "contact_email" VARCHAR(100),
-    "cfo_name" VARCHAR(100),
-    "cfo_phone" VARCHAR(50),
-    "cfo_email" VARCHAR(100),
-    "cases" JSONB,
-    "materials_url" VARCHAR(512),
-    "approval_hash" VARCHAR(36),
-    "status" VARCHAR(50) NOT NULL DEFAULT 'pending',
-    "rejection_reason" TEXT,
-    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "assigned_manager_id" INTEGER,
-    CONSTRAINT "sponsors_pkey" PRIMARY KEY ("id")
-);
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_tables WHERE schemaname = 'public' AND tablename = 'sponsors') THEN
+        EXECUTE 'CREATE TABLE "sponsors" (
+            "id" SERIAL NOT NULL,
+            "event_id" INTEGER NOT NULL,
+            "name" VARCHAR(255) NOT NULL,
+            "short_description" VARCHAR(255),
+            "website_url" VARCHAR(255),
+            "public_email" VARCHAR(100),
+            "public_phone" VARCHAR(50),
+            "logo_url" VARCHAR(512),
+            "description" TEXT,
+            "catalog_description" TEXT,
+            "service_card_description" TEXT,
+            "market_segments" JSONB,
+            "city" VARCHAR(100),
+            "employee_count" INTEGER,
+            "annual_turnover" VARCHAR(100),
+            "telegram" VARCHAR(100),
+            "whatsapp" VARCHAR(100),
+            "contact_name" VARCHAR(100),
+            "contact_email" VARCHAR(100),
+            "cfo_name" VARCHAR(100),
+            "cfo_phone" VARCHAR(50),
+            "cfo_email" VARCHAR(100),
+            "cases" JSONB,
+            "materials_url" VARCHAR(512),
+            "approval_hash" VARCHAR(36),
+            "status" VARCHAR(50) NOT NULL DEFAULT ''pending'',
+            "rejection_reason" TEXT,
+            "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            "assigned_manager_id" INTEGER,
+            CONSTRAINT "sponsors_pkey" PRIMARY KEY ("id")
+        )';
+    END IF;
+END $$;
 
 DO $$
 BEGIN
