@@ -79,7 +79,7 @@ export const BasicLayout: React.FC = () => {
                         },
                         {
                             path: '/brands-check',
-                            name: 'Проверка брендов',
+                            name: 'Бренды',
                         },
                         {
                             path: '/settings/users',

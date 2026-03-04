@@ -47,6 +47,7 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                 hasAssistant: values.hasAssistant,
                 assistantName: values.assistantName,
                 assistantContact: values.assistantContact,
+                exportToWebsite: values.exportToWebsite,
                 photoUrl,
                 ...(initialValues?.id && { id: initialValues.id })
             };
@@ -105,13 +106,13 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                                 height={80}
                                 src={photoUrl.startsWith('http') || photoUrl.startsWith('/api') ? photoUrl : `/api${photoUrl.startsWith('/') ? '' : '/'}${photoUrl}`}
                                 fallback="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCI+PGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iNDAiIGZpbGw9IiNmMGYwZjAiLz48Y2lyY2xlIGN4PSI0MCIgY3k9IjMwIiByPSIxNSIgZmlsbD0iI2Q5ZDlkOSIvPjxwYXRoIGQ9Ik0yMCA3MEMyMCA1MCA2MCA1MCA2MCA3MCIgZmlsbD0iI2Q5ZDlkOSIvPjwvc3ZnPg=="
-                                style={{ borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: '2px solid #f0f0f0' }}
+                                style={{ borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: '2px solid #f0f0f0', filter: 'grayscale(100%)' }}
                             />
                         ) : (
                             <Avatar
                                 size={80}
                                 icon={<UserOutlined />}
-                                style={{ flexShrink: 0, border: '2px solid #f0f0f0' }}
+                                style={{ flexShrink: 0, border: '2px solid #f0f0f0', filter: 'grayscale(100%)' }}
                             />
                         )}
                         <div>
@@ -220,6 +221,14 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                     label="Био (Описание)"
                 >
                     <Input.TextArea rows={3} placeholder="Краткая биография" />
+                </Form.Item>
+
+                <Form.Item
+                    name="exportToWebsite"
+                    valuePropName="checked"
+                    initialValue={true}
+                >
+                    <Checkbox>Выгружать на сайт (Tilda)</Checkbox>
                 </Form.Item>
 
                 {/* Assistant Block */}

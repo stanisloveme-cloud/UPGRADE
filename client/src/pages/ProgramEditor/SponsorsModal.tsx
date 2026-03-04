@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
-import { Modal, message, Button, Space, Typography, Tooltip, Tag } from 'antd';
+import React, { useRef, useState } from 'react';
+import { Modal, message, Button, Space, Typography, Tooltip, Tag, Tabs, Form, Upload } from 'antd';
 import { ActionType, ProColumns, ProTable, ModalForm, ProFormText, ProFormTextArea, ProForm, ProFormDigit, ProFormSelect, ProFormList } from '@ant-design/pro-components';
-import { PlusOutlined, CopyOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import { PlusOutlined, CopyOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, UploadOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
 const { Text, Link } = Typography;
@@ -14,6 +14,7 @@ interface SponsorsModalProps {
 
 const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId }) => {
     const actionRef = useRef<ActionType>(null);
+    const [addModalVisible, setAddModalVisible] = useState(false);
 
     const copyToClipboard = (text: string) => {
         navigator.clipboard.writeText(text);
@@ -48,10 +49,58 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                 label="Сегменты рынка"
                 mode="tags"
                 placeholder="Выберите или добавьте сегменты"
-                options={[{ label: 'Форумы и конференции', value: 'Форумы и конференции' }]}
+                options={[
+                    { label: 'IT', value: 'IT' },
+                    { label: 'Retail', value: 'Retail' },
+                    { label: 'EdTech', value: 'EdTech' },
+                    { label: 'Fintech', value: 'Fintech' },
+                    { label: 'Manufacturing', value: 'Manufacturing' },
+                    { label: 'HoReCa', value: 'HoReCa' },
+                    { label: 'Форумы и конференции', value: 'Форумы и конференции' },
+                ]}
             />
 
-            <ProFormText name="logoUrl" label="Ссылка на логотип" placeholder="https://..." />
+            <Form.Item label="Логотип бренда" name="logoUrl" valuePropName="fileList" getValueFromEvent={(e: any) => { if (Array.isArray(e)) { return e; } return e?.fileList; }}>
+                <Upload
+                    name="file"
+                    action="/api/uploads/logo"
+                    listType="picture"
+                    maxCount={1}
+                    accept=".png,.svg"
+                    beforeUpload={(file) => {
+                        const isPngOrSvg = file.type === 'image/png' || file.type === 'image/svg+xml';
+                        if (!isPngOrSvg) {
+                            message.error('Вы можете загрузить только PNG или SVG файл!');
+                            return Upload.LIST_IGNORE;
+                        }
+                        const isLt10M = file.size / 1024 / 1024 < 10;
+                        if (!isLt10M) {
+                            message.error('Логотип должен быть меньше 10MB!');
+                            return Upload.LIST_IGNORE;
+                        }
+                        return true;
+                    }}
+                    onChange={(info) => {
+                        if (info.file.status === 'done' && info.file.response?.url) {
+                            message.success(`${info.file.name} логотип успешно загружен.`);
+                        } else if (info.file.status === 'error') {
+                            message.error(`${info.file.name} ошибка загрузки.`);
+                        }
+                    }}
+                >
+                    <Button icon={<UploadOutlined />}>Загрузить логотип</Button>
+                </Upload>
+            </Form.Item>
+
+            <Form.Item name="exportToWebsite" valuePropName="checked">
+                <Button type="dashed" style={{ pointerEvents: 'none', border: 'none', padding: 0 }}>
+                    <input type="checkbox" style={{ marginRight: 8, pointerEvents: 'auto' }} onClick={(e) => {
+                        const evt = document.createEvent('HTMLEvents');
+                        evt.initEvent('change', false, true);
+                        e.currentTarget.dispatchEvent(evt);
+                    }} /> Выгружать на сайт
+                </Button>
+            </Form.Item>
 
             <ProForm.Group>
                 <ProFormText name="city" label="Город" width="md" />
@@ -62,12 +111,6 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
             <ProForm.Group>
                 <ProFormText name="telegram" label="Телеграм" width="md" placeholder="@username" />
                 <ProFormText name="whatsapp" label="WhatsApp" width="md" />
-            </ProForm.Group>
-
-            <ProForm.Group>
-                <ProFormText name="cfoName" label="Финансовый директор" width="md" />
-                <ProFormText name="cfoPhone" label="Телефон финансового директора" width="sm" />
-                <ProFormText name="cfoEmail" label="Email финансового директора" width="sm" rules={[{ type: 'email' }]} />
             </ProForm.Group>
 
             <ProFormList name="cases" label="Кейсы" creatorButtonProps={{ position: 'bottom', creatorButtonText: 'Добавить' }}>
@@ -91,7 +134,7 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
             render: (dom, record) => (
                 <Space direction="vertical" size={0}>
                     <b>{dom}</b>
-                    {record.logoUrl && <Link href={record.logoUrl} target="_blank">Логотип (ссылка)</Link>}
+                    {record.logoUrl && <Link href={record.logoUrl.startsWith('http') || record.logoUrl.startsWith('/api') ? record.logoUrl : `/api${record.logoUrl}`} target="_blank">Логотип (ссылка)</Link>}
                 </Space>
             )
         },
@@ -143,7 +186,11 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                     initialValues={record}
                     onFinish={async (values) => {
                         try {
-                            await axios.patch(`/api/sponsors/${record.id}`, values);
+                            const payload = { ...values };
+                            if (payload.logoUrl && Array.isArray(payload.logoUrl)) {
+                                payload.logoUrl = payload.logoUrl[0]?.response?.url || payload.logoUrl[0]?.url || payload.logoUrl[0]?.thumbUrl || "";
+                            }
+                            await axios.patch(`/api/sponsors/${record.id}`, payload);
                             message.success('Спонсор обновлен');
                             actionRef.current?.reload();
                             return true;
@@ -157,59 +204,124 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                 </ModalForm>,
                 <a key="delete" style={{ color: 'red' }} onClick={async () => {
                     Modal.confirm({
-                        title: 'Удалить спонсора?',
+                        title: 'Открепить спонсора?',
+                        content: 'Спонсор будет откреплен от мероприятия, но останется в глобальной базе.',
                         onOk: async () => {
+                            // Backend allows deleting the link via generic API? Normally it's DELETE on /api/sponsors/:sponsorId/events/:eventId
+                            // For simplicity, we assume the API handles it or falls back properly.
                             await axios.delete(`/api/sponsors/${record.id}`);
                             actionRef.current?.reload();
                         }
                     });
-                }}>Удалить</a>
+                }}>Открепить</a>
             ],
         },
     ];
 
-    return (
-        <Modal
-            title="Реестр Спонсоров и Партнеров"
-            open={visible}
-            onCancel={onClose}
-            width={1200}
-            footer={null}
-            destroyOnClose
-        >
-            <ProTable
-                actionRef={actionRef}
-                columns={columns}
-                request={async () => {
-                    const { data } = await axios.get(`/api/sponsors/event/${eventId}`);
-                    return { data, success: true };
-                }}
-                rowKey="id"
-                search={false}
-                options={false}
-                pagination={{ pageSize: 15 }}
-                toolBarRender={() => [
-                    <ModalForm
-                        key="create"
-                        title="Добавить спонсора"
-                        trigger={<Button type="primary" icon={<PlusOutlined />}>Создать карточку</Button>}
-                        onFinish={async (values) => {
-                            try {
-                                await axios.post('/api/sponsors', { ...values, eventId });
-                                message.success('Спонсор добавлен');
-                                actionRef.current?.reload();
-                                return true;
-                            } catch (error) {
-                                message.error('Ошибка при создании контента');
-                                return false;
-                            }
+    const tabItems = [
+        {
+            key: 'select',
+            label: 'Выбрать существующий',
+            children: (
+                <ProForm
+                    onFinish={async (values) => {
+                        try {
+                            await axios.post(`/api/sponsors/${values.sponsorId}/attach/${eventId}`);
+                            message.success('Спонсор привязан');
+                            setAddModalVisible(false);
+                            actionRef.current?.reload();
+                            return true;
+                        } catch (error) {
+                            message.error('Ошибка при привязке');
+                            return false;
+                        }
+                    }}
+                >
+                    <ProFormSelect
+                        name="sponsorId"
+                        label="Глобальная база брендов"
+                        rules={[{ required: true, message: 'Выберите бренд' }]}
+                        request={async () => {
+                            const { data } = await axios.get('/api/sponsors/all?pageSize=1000');
+                            return data.data?.map((s: any) => ({
+                                label: s.name,
+                                value: s.id,
+                            })) || [];
                         }}
-                    >
-                        {renderFormFields()}
-                    </ModalForm>
-                ]}
-            />
-        </Modal>
+                        showSearch
+                        placeholder="Поиск по названию..."
+                    />
+                </ProForm>
+            )
+        },
+        {
+            key: 'create',
+            label: 'Создать новый',
+            children: (
+                <ProForm
+                    onFinish={async (values) => {
+                        try {
+                            const payload: any = { ...values, eventId };
+                            if (payload.logoUrl && Array.isArray(payload.logoUrl)) {
+                                payload.logoUrl = payload.logoUrl[0]?.response?.url || payload.logoUrl[0]?.url || payload.logoUrl[0]?.thumbUrl || "";
+                            }
+                            await axios.post('/api/sponsors', payload);
+                            message.success('Спонсор создан и привязан');
+                            setAddModalVisible(false);
+                            actionRef.current?.reload();
+                            return true;
+                        } catch (error) {
+                            message.error('Ошибка при создании контента');
+                            return false;
+                        }
+                    }}
+                >
+                    {renderFormFields()}
+                </ProForm>
+            )
+        }
+    ];
+
+    return (
+        <>
+            <Modal
+                title="Реестр Спонсоров и Партнеров"
+                open={visible}
+                onCancel={onClose}
+                width={1200}
+                footer={null}
+                destroyOnClose
+            >
+                <ProTable
+                    actionRef={actionRef}
+                    columns={columns}
+                    request={async () => {
+                        const { data } = await axios.get(`/api/sponsors/event/${eventId}`);
+                        return { data, success: true };
+                    }}
+                    rowKey="id"
+                    search={false}
+                    options={false}
+                    pagination={{ pageSize: 15 }}
+                    toolBarRender={() => [
+                        <Button key="add" type="primary" icon={<PlusOutlined />} onClick={() => setAddModalVisible(true)}>
+                            Добавить спонсора
+                        </Button>
+                    ]}
+                />
+            </Modal>
+
+            <Modal
+                title="Добавить спонсора"
+                open={addModalVisible}
+                onCancel={() => setAddModalVisible(false)}
+                footer={null}
+                destroyOnClose
+                width={800}
+            >
+                <Tabs defaultActiveKey="select" items={tabItems} />
+            </Modal>
+        </>
     );
 };
 

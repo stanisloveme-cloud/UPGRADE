@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { PageContainer, ProTable, ActionType, ProColumns, ModalForm, ProFormText, ProFormTextArea, ProFormSelect, ProForm, ProFormDigit, ProFormList } from '@ant-design/pro-components';
-import { Button, Tag, Typography, Tooltip, message, Space, Avatar } from 'antd';
-import { CopyOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import { Button, Tag, Typography, Tooltip, message, Space, Avatar, Upload, Form } from 'antd';
+import { CopyOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, UploadOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import dayjs from 'dayjs';
 
@@ -81,20 +81,63 @@ const BrandsCheck: React.FC = () => {
                 label="Сегменты рынка"
                 mode="tags"
                 placeholder="Выберите или добавьте сегменты"
+                options={[
+                    { label: 'IT', value: 'IT' },
+                    { label: 'Retail', value: 'Retail' },
+                    { label: 'EdTech', value: 'EdTech' },
+                    { label: 'Fintech', value: 'Fintech' },
+                    { label: 'Manufacturing', value: 'Manufacturing' },
+                    { label: 'HoReCa', value: 'HoReCa' },
+                    { label: 'Форумы и конференции', value: 'Форумы и конференции' },
+                ]}
             />
 
-            <ProFormText name="logoUrl" label="Ссылка на логотип" placeholder="https://..." />
+            <Form.Item label="Логотип бренда" name="logoUrl" valuePropName="fileList" getValueFromEvent={(e: any) => { if (Array.isArray(e)) { return e; } return e?.fileList; }}>
+                <Upload
+                    name="file"
+                    action="/api/uploads/logo"
+                    listType="picture"
+                    maxCount={1}
+                    accept=".png,.svg"
+                    beforeUpload={(file) => {
+                        const isPngOrSvg = file.type === 'image/png' || file.type === 'image/svg+xml';
+                        if (!isPngOrSvg) {
+                            message.error('Вы можете загрузить только PNG или SVG файл!');
+                            return Upload.LIST_IGNORE;
+                        }
+                        const isLt10M = file.size / 1024 / 1024 < 10;
+                        if (!isLt10M) {
+                            message.error('Логотип должен быть меньше 10MB!');
+                            return Upload.LIST_IGNORE;
+                        }
+                        return true;
+                    }}
+                    onChange={(info) => {
+                        if (info.file.status === 'done' && info.file.response?.url) {
+                            message.success(`${info.file.name} логотип успешно загружен.`);
+                        } else if (info.file.status === 'error') {
+                            message.error(`${info.file.name} ошибка загрузки.`);
+                        }
+                    }}
+                >
+                    <Button icon={<UploadOutlined />}>Загрузить логотип</Button>
+                </Upload>
+            </Form.Item>
+
+            <Form.Item name="exportToWebsite" valuePropName="checked">
+                <Button type="dashed" style={{ pointerEvents: 'none', border: 'none', padding: 0 }}>
+                    <input type="checkbox" style={{ marginRight: 8, pointerEvents: 'auto' }} onClick={(e) => {
+                        const evt = document.createEvent('HTMLEvents');
+                        evt.initEvent('change', false, true);
+                        e.currentTarget.dispatchEvent(evt);
+                    }} /> Выгружать на сайт
+                </Button>
+            </Form.Item>
 
             <ProForm.Group>
                 <ProFormText name="city" label="Город" width="md" />
                 <ProFormDigit name="employeeCount" label="Количество сотрудников" width="sm" min={1} />
                 <ProFormText name="annualTurnover" label="Годовой оборот" width="sm" />
-            </ProForm.Group>
-
-            <ProForm.Group title="Контакты CFO">
-                <ProFormText name="cfoName" label="ФИО CFO" width="md" />
-                <ProFormText name="cfoPhone" label="Телефон CFO" width="sm" />
-                <ProFormText name="cfoEmail" label="Email CFO" rules={[{ type: 'email' }]} width="md" />
             </ProForm.Group>
 
             <ProFormList
@@ -218,7 +261,11 @@ const BrandsCheck: React.FC = () => {
                     initialValues={record}
                     onFinish={async (values) => {
                         try {
-                            await axios.patch(`/api/sponsors/${record.id}`, values);
+                            const payload = { ...values };
+                            if (payload.logoUrl && Array.isArray(payload.logoUrl)) {
+                                payload.logoUrl = payload.logoUrl[0]?.response?.url || payload.logoUrl[0]?.url || payload.logoUrl[0]?.thumbUrl || "";
+                            }
+                            await axios.patch(`/api/sponsors/${record.id}`, payload);
                             message.success('Данные обновлены');
                             actionRef.current?.reload();
                             return true;

@@ -1,0 +1,123 @@
+fetch-logs	Set up job	﻿2026-03-04T18:11:17.2753031Z Current runner version: '2.331.0'
+fetch-logs	Set up job	2026-03-04T18:11:17.2794760Z ##[group]Runner Image Provisioner
+fetch-logs	Set up job	2026-03-04T18:11:17.2796423Z Hosted Compute Agent
+fetch-logs	Set up job	2026-03-04T18:11:17.2797636Z Version: 20260213.493
+fetch-logs	Set up job	2026-03-04T18:11:17.2799123Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+fetch-logs	Set up job	2026-03-04T18:11:17.2800761Z Build Date: 2026-02-13T00:28:41Z
+fetch-logs	Set up job	2026-03-04T18:11:17.2802078Z Worker ID: {a683b5e7-fe23-4a07-9a19-317186d88ca2}
+fetch-logs	Set up job	2026-03-04T18:11:17.2803487Z Azure Region: eastus
+fetch-logs	Set up job	2026-03-04T18:11:17.2804560Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T18:11:17.2807647Z ##[group]Operating System
+fetch-logs	Set up job	2026-03-04T18:11:17.2809218Z Ubuntu
+fetch-logs	Set up job	2026-03-04T18:11:17.2810197Z 24.04.3
+fetch-logs	Set up job	2026-03-04T18:11:17.2811251Z LTS
+fetch-logs	Set up job	2026-03-04T18:11:17.2812365Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T18:11:17.2813643Z ##[group]Runner Image
+fetch-logs	Set up job	2026-03-04T18:11:17.2814977Z Image: ubuntu-24.04
+fetch-logs	Set up job	2026-03-04T18:11:17.2816107Z Version: 20260302.42.1
+fetch-logs	Set up job	2026-03-04T18:11:17.2818613Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260302.42/images/ubuntu/Ubuntu2404-Readme.md
+fetch-logs	Set up job	2026-03-04T18:11:17.2822623Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260302.42
+fetch-logs	Set up job	2026-03-04T18:11:17.2824520Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T18:11:17.2826802Z ##[group]GITHUB_TOKEN Permissions
+fetch-logs	Set up job	2026-03-04T18:11:17.2830399Z Contents: read
+fetch-logs	Set up job	2026-03-04T18:11:17.2831470Z Metadata: read
+fetch-logs	Set up job	2026-03-04T18:11:17.2832408Z Packages: read
+fetch-logs	Set up job	2026-03-04T18:11:17.2833550Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T18:11:17.2836810Z Secret source: Actions
+fetch-logs	Set up job	2026-03-04T18:11:17.2838977Z Prepare workflow directory
+fetch-logs	Set up job	2026-03-04T18:11:17.3442870Z Prepare all required actions
+fetch-logs	Set up job	2026-03-04T18:11:17.3504744Z Getting action download info
+fetch-logs	Set up job	2026-03-04T18:11:17.5570248Z Download action repository 'appleboy/ssh-action@v1.0.3' (SHA:029f5b4aeeeb58fdfe1410a5d17f967dacf36262)
+fetch-logs	Set up job	2026-03-04T18:11:17.9319756Z Complete job name: fetch-logs
+fetch-logs	Build appleboy/ssh-action@v1.0.3	﻿2026-03-04T18:11:17.9982663Z ##[group]Build container for action use: '/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile'.
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:18.0041080Z ##[command]/usr/bin/docker build -t f7315e:3d77ed3451bc45f8bbc1fd05bddf1350 -f "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile" "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3"
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:26.6898571Z #0 building with "default" instance using docker driver
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:26.6899522Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:26.6899860Z #1 [internal] load build definition from Dockerfile
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:26.6900765Z #1 transferring dockerfile: 149B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:26.6901449Z #1 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:26.6901747Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:26.6902176Z #2 [internal] load metadata for ghcr.io/appleboy/drone-ssh:1.7.3
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:26.9094294Z #2 DONE 0.4s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.0336361Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.0337953Z #3 [internal] load .dockerignore
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.0340093Z #3 transferring context: 2B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.0341715Z #3 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.0342628Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.0343184Z #4 [internal] load build context
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.0344534Z #4 transferring context: 108B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.0345883Z #4 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.0346505Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.0348177Z #5 [1/2] FROM ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.0350860Z #5 resolve ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.0353095Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.1391800Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.1395288Z #5 sha256:1a52f94820e830bc9734623deb03bbafa6a248fba19cdc2e5605c70d90d91441 1.24kB / 1.24kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.1398220Z #5 sha256:c4781b8d012b16b6c7468dc9104fad0a63f2a8815b2af8b7176bb544253ea8c7 3.86kB / 3.86kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.1401026Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 3.38MB / 3.38MB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.1404051Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 284.83kB / 284.83kB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.1407283Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 1.20kB / 1.20kB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.1410743Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 125B / 125B 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.1413808Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 2.44MB / 2.44MB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.1416876Z #5 sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 2.38kB / 2.38kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:27.3530441Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:28.7517396Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:28.9949520Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:28.9950768Z #5 extracting sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:28.9951921Z #5 extracting sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:28.9952701Z #5 DONE 1.9s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:28.9952944Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:28.9953178Z #6 [2/2] COPY entrypoint.sh /bin/entrypoint.sh
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:28.9953704Z #6 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:28.9953939Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:28.9954116Z #7 exporting to image
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:28.9954529Z #7 exporting layers
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:29.0050674Z #7 exporting layers 0.2s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:29.0260748Z #7 writing image sha256:64f5300b7899f8ee96b5a82be2716ab4f4510149dc3bf0c0bacfd00a2a0741c1 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:29.0261928Z #7 naming to docker.io/library/f7315e:3d77ed3451bc45f8bbc1fd05bddf1350 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:29.0263265Z #7 DONE 0.2s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:11:29.0420378Z ##[endgroup]
+fetch-logs	Fetch Logs	﻿2026-03-04T18:11:29.0714585Z ##[group]Run appleboy/ssh-action@v1.0.3
+fetch-logs	Fetch Logs	2026-03-04T18:11:29.0715242Z with:
+fetch-logs	Fetch Logs	2026-03-04T18:11:29.0715682Z   host: ***
+fetch-logs	Fetch Logs	2026-03-04T18:11:29.0715922Z   username: ***
+fetch-logs	Fetch Logs	2026-03-04T18:11:29.0717796Z   key: ***
+fetch-logs	Fetch Logs	2026-03-04T18:11:29.0718694Z   script: docker exec upgrade-crm-app-1 npx prisma migrate resolve --rolled-back 20260304174141_add_speaker_status_tracking || true
+fetch-logs	Fetch Logs	docker exec upgrade-crm-app-1 npx prisma migrate deploy
+fetch-logs	Fetch Logs	
+fetch-logs	Fetch Logs	2026-03-04T18:11:29.0719497Z   port: 22
+fetch-logs	Fetch Logs	2026-03-04T18:11:29.0719707Z   timeout: 30s
+fetch-logs	Fetch Logs	2026-03-04T18:11:29.0719917Z   command_timeout: 10m
+fetch-logs	Fetch Logs	2026-03-04T18:11:29.0720148Z   proxy_port: 22
+fetch-logs	Fetch Logs	2026-03-04T18:11:29.0720368Z   proxy_timeout: 30s
+fetch-logs	Fetch Logs	2026-03-04T18:11:29.0720840Z ##[endgroup]
+fetch-logs	Fetch Logs	2026-03-04T18:11:29.0844900Z ##[command]/usr/bin/docker run --name f7315e3d77ed3451bc45f8bbc1fd05bddf1350_223833 --label f7315e --workdir /github/workspace --rm -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" f7315e:3d77ed3451bc45f8bbc1fd05bddf1350
+fetch-logs	Fetch Logs	2026-03-04T18:11:30.1001488Z ======CMD======
+fetch-logs	Fetch Logs	2026-03-04T18:11:30.1002198Z docker exec upgrade-crm-app-1 npx prisma migrate resolve --rolled-back 20260304174141_add_speaker_status_tracking || true
+fetch-logs	Fetch Logs	2026-03-04T18:11:30.1002945Z docker exec upgrade-crm-app-1 npx prisma migrate deploy
+fetch-logs	Fetch Logs	2026-03-04T18:11:30.1003211Z 
+fetch-logs	Fetch Logs	2026-03-04T18:11:30.1003307Z ======END======
+fetch-logs	Fetch Logs	2026-03-04T18:11:36.2476781Z err: Loaded Prisma config from prisma.config.ts.
+fetch-logs	Fetch Logs	2026-03-04T18:11:36.5102139Z err: Prisma schema loaded from prisma/schema.prisma.
+fetch-logs	Fetch Logs	2026-03-04T18:11:36.5365272Z out: Datasource "db": PostgreSQL database "upgrade_crm", schema "public" at "db:5432"
+fetch-logs	Fetch Logs	2026-03-04T18:11:36.9505095Z out: Migration 20260304174141_add_speaker_status_tracking marked as rolled back.
+fetch-logs	Fetch Logs	2026-03-04T18:11:36.9677873Z err: ┌─────────────────────────────────────────────────────────┐
+fetch-logs	Fetch Logs	2026-03-04T18:11:36.9679089Z err: │  Update available 7.4.0 -> 7.4.2                        │
+fetch-logs	Fetch Logs	2026-03-04T18:11:36.9679976Z err: │  Run the following to update                            │
+fetch-logs	Fetch Logs	2026-03-04T18:11:36.9681569Z err: │    npm i --save-dev prisma@latest                       │
+fetch-logs	Fetch Logs	2026-03-04T18:11:36.9682537Z err: │    npm i @prisma/client@latest                          │
+fetch-logs	Fetch Logs	2026-03-04T18:11:36.9683426Z err: └─────────────────────────────────────────────────────────┘
+fetch-logs	Fetch Logs	2026-03-04T18:11:41.5255312Z err: Loaded Prisma config from prisma.config.ts.
+fetch-logs	Fetch Logs	2026-03-04T18:11:41.8063773Z err: Prisma schema loaded from prisma/schema.prisma.
+fetch-logs	Fetch Logs	2026-03-04T18:11:41.8503835Z out: Datasource "db": PostgreSQL database "upgrade_crm", schema "public" at "db:5432"
+fetch-logs	Fetch Logs	2026-03-04T18:11:42.0544062Z out: 8 migrations found in prisma/migrations
+fetch-logs	Fetch Logs	2026-03-04T18:11:42.2900719Z out: Applying migration `20260304174141_add_speaker_status_tracking`
+fetch-logs	Fetch Logs	2026-03-04T18:11:42.5123873Z err: Error: P3018
+fetch-logs	Fetch Logs	2026-03-04T18:11:42.5125174Z err: A migration failed to apply. New migrations cannot be applied before the error is recovered from. Read more about how to resolve migration issues in a production database: https://pris.ly/d/migrate-resolve
+fetch-logs	Fetch Logs	2026-03-04T18:11:42.5126346Z err: Migration name: 20260304174141_add_speaker_status_tracking
+fetch-logs	Fetch Logs	2026-03-04T18:11:42.5126839Z err: Database error code: 42703
+fetch-logs	Fetch Logs	2026-03-04T18:11:42.5127168Z err: Database error:
+fetch-logs	Fetch Logs	2026-03-04T18:11:42.5127705Z err: ERROR: column "assigned_manager_id" referenced in foreign key constraint does not exist
+fetch-logs	Fetch Logs	2026-03-04T18:11:42.5130999Z err: DbError { severity: "ERROR", parsed_severity: Some(Error), code: SqlState(E42703), message: "column \"assigned_manager_id\" referenced in foreign key constraint does not exist", detail: None, hint: None, position: None, where_: Some("SQL statement \"ALTER TABLE \"sponsors\" ADD CONSTRAINT \"sponsors_assigned_manager_id_fkey\" FOREIGN KEY (\"assigned_manager_id\") REFERENCES \"users\"(\"id\") ON DELETE SET NULL ON UPDATE CASCADE\"\nPL/pgSQL function inline_code_block line 24 at SQL statement"), schema: None, table: None, column: None, datatype: None, constraint: None, file: Some("tablecmds.c"), line: Some(11501), routine: Some("transformColumnNameList") }
+fetch-logs	Fetch Logs	2026-03-04T18:11:42.5955258Z 2026/03/04 18:11:42 Process exited with status 1
+fetch-logs	Complete job	﻿2026-03-04T18:11:42.6923141Z Cleaning up orphan processes

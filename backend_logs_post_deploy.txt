@@ -1,0 +1,729 @@
+fetch-logs	Set up job	﻿2026-03-04T18:08:31.7675556Z Current runner version: '2.331.0'
+fetch-logs	Set up job	2026-03-04T18:08:31.7701214Z ##[group]Runner Image Provisioner
+fetch-logs	Set up job	2026-03-04T18:08:31.7702173Z Hosted Compute Agent
+fetch-logs	Set up job	2026-03-04T18:08:31.7702934Z Version: 20260213.493
+fetch-logs	Set up job	2026-03-04T18:08:31.7703630Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+fetch-logs	Set up job	2026-03-04T18:08:31.7704387Z Build Date: 2026-02-13T00:28:41Z
+fetch-logs	Set up job	2026-03-04T18:08:31.7705238Z Worker ID: {112483ee-e10d-4d08-b0ca-51f73830f4fb}
+fetch-logs	Set up job	2026-03-04T18:08:31.7706296Z Azure Region: westus
+fetch-logs	Set up job	2026-03-04T18:08:31.7707132Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T18:08:31.7708658Z ##[group]Operating System
+fetch-logs	Set up job	2026-03-04T18:08:31.7709462Z Ubuntu
+fetch-logs	Set up job	2026-03-04T18:08:31.7710087Z 24.04.3
+fetch-logs	Set up job	2026-03-04T18:08:31.7710632Z LTS
+fetch-logs	Set up job	2026-03-04T18:08:31.7711236Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T18:08:31.7711832Z ##[group]Runner Image
+fetch-logs	Set up job	2026-03-04T18:08:31.7712562Z Image: ubuntu-24.04
+fetch-logs	Set up job	2026-03-04T18:08:31.7713222Z Version: 20260302.42.1
+fetch-logs	Set up job	2026-03-04T18:08:31.7714332Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260302.42/images/ubuntu/Ubuntu2404-Readme.md
+fetch-logs	Set up job	2026-03-04T18:08:31.7716544Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260302.42
+fetch-logs	Set up job	2026-03-04T18:08:31.7717749Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T18:08:31.7718975Z ##[group]GITHUB_TOKEN Permissions
+fetch-logs	Set up job	2026-03-04T18:08:31.7720964Z Contents: read
+fetch-logs	Set up job	2026-03-04T18:08:31.7721634Z Metadata: read
+fetch-logs	Set up job	2026-03-04T18:08:31.7722319Z Packages: read
+fetch-logs	Set up job	2026-03-04T18:08:31.7722979Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T18:08:31.7725223Z Secret source: Actions
+fetch-logs	Set up job	2026-03-04T18:08:31.7726290Z Prepare workflow directory
+fetch-logs	Set up job	2026-03-04T18:08:31.8052218Z Prepare all required actions
+fetch-logs	Set up job	2026-03-04T18:08:31.8092955Z Getting action download info
+fetch-logs	Set up job	2026-03-04T18:08:32.2483136Z Download action repository 'appleboy/ssh-action@v1.0.3' (SHA:029f5b4aeeeb58fdfe1410a5d17f967dacf36262)
+fetch-logs	Set up job	2026-03-04T18:08:33.3208037Z Complete job name: fetch-logs
+fetch-logs	Build appleboy/ssh-action@v1.0.3	﻿2026-03-04T18:08:33.3827532Z ##[group]Build container for action use: '/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile'.
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:33.3883658Z ##[command]/usr/bin/docker build -t 29def9:f898d87222894df0a2459f7b2bfa51a0 -f "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile" "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3"
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:44.7173158Z #0 building with "default" instance using docker driver
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:44.7173625Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:44.7173801Z #1 [internal] load build definition from Dockerfile
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:44.7174191Z #1 transferring dockerfile: 149B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:44.7174514Z #1 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:44.7174668Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:44.7174869Z #2 [internal] load metadata for ghcr.io/appleboy/drone-ssh:1.7.3
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.5999482Z #2 DONE 1.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7216515Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7217178Z #3 [internal] load .dockerignore
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7217821Z #3 transferring context: 2B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7218355Z #3 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7218787Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7219004Z #4 [internal] load build context
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7223583Z #4 transferring context: 108B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7225320Z #4 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7225646Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7226611Z #5 [1/2] FROM ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7228198Z #5 resolve ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7229707Z #5 sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 2.38kB / 2.38kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7231021Z #5 sha256:1a52f94820e830bc9734623deb03bbafa6a248fba19cdc2e5605c70d90d91441 1.24kB / 1.24kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7232317Z #5 sha256:c4781b8d012b16b6c7468dc9104fad0a63f2a8815b2af8b7176bb544253ea8c7 3.86kB / 3.86kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7233574Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0B / 3.38MB 0.1s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7234822Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0B / 284.83kB 0.1s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.7236255Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 0B / 1.20kB 0.1s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.8398758Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 3.38MB / 3.38MB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.8400526Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:45.8401674Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 0B / 125B 0.2s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:46.0207872Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 284.83kB / 284.83kB 0.2s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:46.0209283Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 1.20kB / 1.20kB 0.3s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:46.0210481Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 125B / 125B 0.3s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:46.0211635Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:46.0213046Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 2.44MB / 2.44MB 0.3s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:46.1311203Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:46.1312327Z #5 extracting sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:46.3585994Z #5 extracting sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:46.3587563Z #5 extracting sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:46.3588518Z #5 DONE 0.6s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:46.3588740Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:46.3588950Z #6 [2/2] COPY entrypoint.sh /bin/entrypoint.sh
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:46.3589467Z #6 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:46.3589678Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:46.3589839Z #7 exporting to image
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:46.3590280Z #7 exporting layers
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:47.0048896Z #7 exporting layers 0.8s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:47.0275723Z #7 writing image sha256:1903dfbd57988ec2f2505a9b1caf9b7989eb1abbd828301026d4f33d3a5a750a done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:47.0277239Z #7 naming to docker.io/library/29def9:f898d87222894df0a2459f7b2bfa51a0 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:47.0278032Z #7 DONE 0.8s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:08:47.0382589Z ##[endgroup]
+fetch-logs	Fetch Logs	﻿2026-03-04T18:08:47.0667191Z ##[group]Run appleboy/ssh-action@v1.0.3
+fetch-logs	Fetch Logs	2026-03-04T18:08:47.0667845Z with:
+fetch-logs	Fetch Logs	2026-03-04T18:08:47.0668279Z   host: ***
+fetch-logs	Fetch Logs	2026-03-04T18:08:47.0668497Z   username: ***
+fetch-logs	Fetch Logs	2026-03-04T18:08:47.0670287Z   key: ***
+fetch-logs	Fetch Logs	2026-03-04T18:08:47.0670614Z   script: docker exec upgrade-crm-db-1 pg_dump -U upgrade -s upgrade_crm
+fetch-logs	Fetch Logs	
+fetch-logs	Fetch Logs	2026-03-04T18:08:47.0670999Z   port: 22
+fetch-logs	Fetch Logs	2026-03-04T18:08:47.0671201Z   timeout: 30s
+fetch-logs	Fetch Logs	2026-03-04T18:08:47.0671432Z   command_timeout: 10m
+fetch-logs	Fetch Logs	2026-03-04T18:08:47.0671663Z   proxy_port: 22
+fetch-logs	Fetch Logs	2026-03-04T18:08:47.0671876Z   proxy_timeout: 30s
+fetch-logs	Fetch Logs	2026-03-04T18:08:47.0672311Z ##[endgroup]
+fetch-logs	Fetch Logs	2026-03-04T18:08:47.0800833Z ##[command]/usr/bin/docker run --name def9f898d87222894df0a2459f7b2bfa51a0_be1fe2 --label 29def9 --workdir /github/workspace --rm -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" 29def9:f898d87222894df0a2459f7b2bfa51a0
+fetch-logs	Fetch Logs	2026-03-04T18:08:48.0298816Z ======CMD======
+fetch-logs	Fetch Logs	2026-03-04T18:08:48.0299258Z docker exec upgrade-crm-db-1 pg_dump -U upgrade -s upgrade_crm
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.0503780Z 
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.0504162Z ======END======
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.0504562Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.0504806Z out: -- PostgreSQL database dump
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.0505101Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2035857Z out: \restrict cZYYbWPSKKwu4BQgYYaWdGHQixPUmkibIUW2cwrNUv4LJqZcbqD7y1G0W6Awwrf
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2037742Z out: -- Dumped from database version 15.16
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2038481Z out: -- Dumped by pg_dump version 15.16
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2038781Z out: SET statement_timeout = 0;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2039167Z out: SET lock_timeout = 0;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2039475Z out: SET idle_in_transaction_session_timeout = 0;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2039804Z out: SET client_encoding = 'UTF8';
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2040198Z out: SET standard_conforming_strings = on;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2040552Z out: SELECT pg_catalog.set_config('search_path', '', false);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2041157Z out: SET check_function_bodies = false;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2041447Z out: SET xmloption = content;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2042403Z out: SET client_min_messages = warning;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2042929Z out: SET row_security = off;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2043377Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2043896Z out: -- Name: EventStatus; Type: TYPE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2050589Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2051555Z out: CREATE TYPE public."EventStatus" AS ENUM (
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2053531Z out:     'draft',
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2054230Z out:     'published',
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2055020Z out:     'archived'
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2055379Z out: );
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2055905Z out: ALTER TYPE public."EventStatus" OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2056892Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2057427Z out: -- Name: PresenceStatus; Type: TYPE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2058140Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2058558Z out: CREATE TYPE public."PresenceStatus" AS ENUM (
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2059465Z out:     'planned',
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2061763Z out:     'onsite',
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2063071Z out:     'missing'
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2064524Z out: );
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2067668Z out: ALTER TYPE public."PresenceStatus" OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2069498Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2070867Z out: -- Name: SpeakerRole; Type: TYPE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2074215Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2074742Z out: CREATE TYPE public."SpeakerRole" AS ENUM (
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2075315Z out:     'moderator',
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2077476Z out:     'speaker'
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2077909Z out: );
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2081458Z out: ALTER TYPE public."SpeakerRole" OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2082944Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2083516Z out: -- Name: SpeakerStatus; Type: TYPE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2084286Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2085076Z out: CREATE TYPE public."SpeakerStatus" AS ENUM (
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2085952Z out:     'confirmed',
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2088627Z out:     'pre_confirmed',
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2089203Z out:     'contact',
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2089944Z out:     'to_contact',
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2090603Z out:     'declined',
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2090972Z out:     'review'
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2091461Z out: );
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2094087Z out: ALTER TYPE public."SpeakerStatus" OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2095144Z out: SET default_tablespace = '';
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2097512Z out: SET default_table_access_method = heap;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2100347Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2102894Z out: -- Name: _prisma_migrations; Type: TABLE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2103746Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2106940Z out: CREATE TABLE public._prisma_migrations (
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2108015Z out:     id character varying(36) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2109563Z out:     checksum character varying(64) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2110197Z out:     finished_at timestamp with time zone,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2110788Z out:     migration_name character varying(255) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2111347Z out:     logs text,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2111805Z out:     rolled_back_at timestamp with time zone,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2112464Z out:     started_at timestamp with time zone DEFAULT now() NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2113151Z out:     applied_steps_count integer DEFAULT 0 NOT NULL
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2113715Z out: );
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2114752Z out: ALTER TABLE public._prisma_migrations OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2115933Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2116820Z out: -- Name: briefings; Type: TABLE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2117432Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2119742Z out: CREATE TABLE public.briefings (
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2120469Z out:     id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2120978Z out:     session_id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2121499Z out:     moderator_id integer,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2122029Z out:     datetime timestamp with time zone NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2122699Z out:     is_done boolean DEFAULT false NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2123464Z out:     link character varying(512),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2124301Z out:     comment text
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2124708Z out: );
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2125992Z out: ALTER TABLE public.briefings OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2127737Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2129587Z out: -- Name: briefings_id_seq; Type: SEQUENCE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2130931Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2133460Z out: CREATE SEQUENCE public.briefings_id_seq
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2134022Z out:     AS integer
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2135553Z out:     START WITH 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2136842Z out:     INCREMENT BY 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2137266Z out:     NO MINVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2138216Z out:     NO MAXVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2138727Z out:     CACHE 1;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2140961Z out: ALTER TABLE public.briefings_id_seq OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2142189Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2142760Z out: -- Name: briefings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2143408Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2144536Z out: ALTER SEQUENCE public.briefings_id_seq OWNED BY public.briefings.id;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2146331Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2146837Z out: -- Name: events; Type: TABLE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2148716Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2149102Z out: CREATE TABLE public.events (
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2149852Z out:     id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2151684Z out:     name character varying(255) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2152174Z out:     description text,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2152608Z out:     start_date date NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2153156Z out:     end_date date NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2170172Z out:     status public."EventStatus" DEFAULT 'draft'::public."EventStatus" NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2171256Z out:     created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2172359Z out:     memo_template text
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2172619Z out: );
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2173154Z out: ALTER TABLE public.events OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2173870Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2174340Z out: -- Name: events_id_seq; Type: SEQUENCE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2174911Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2175120Z out: CREATE SEQUENCE public.events_id_seq
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2175546Z out:     AS integer
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2175760Z out:     START WITH 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2176192Z out:     INCREMENT BY 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2176612Z out:     NO MINVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2176988Z out:     NO MAXVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2177309Z out:     CACHE 1;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2177791Z out: ALTER TABLE public.events_id_seq OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2178369Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2178937Z out: -- Name: events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2179660Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2180188Z out: ALTER SEQUENCE public.events_id_seq OWNED BY public.events.id;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2180824Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2181320Z out: -- Name: halls; Type: TABLE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2181940Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2182299Z out: CREATE TABLE public.halls (
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2182751Z out:     id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2183197Z out:     event_id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2183711Z out:     name character varying(100) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2184261Z out:     capacity integer DEFAULT 0 NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2184804Z out:     sort_order integer DEFAULT 0 NOT NULL
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2185734Z out: );
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2189608Z out: ALTER TABLE public.halls OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2191268Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2191793Z out: -- Name: halls_id_seq; Type: SEQUENCE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2195694Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2196326Z out: CREATE SEQUENCE public.halls_id_seq
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2196828Z out:     AS integer
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2197210Z out:     START WITH 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2200411Z out:     INCREMENT BY 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2201073Z out:     NO MINVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2201436Z out:     NO MAXVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2201790Z out:     CACHE 1;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2204950Z out: ALTER TABLE public.halls_id_seq OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2205979Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2206754Z out: -- Name: halls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2208249Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2210749Z out: ALTER SEQUENCE public.halls_id_seq OWNED BY public.halls.id;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2213953Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2215222Z out: -- Name: session_questions; Type: TABLE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2216004Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2216663Z out: CREATE TABLE public.session_questions (
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2217477Z out:     id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2218857Z out:     session_id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2219486Z out:     "order" integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2220447Z out:     title character varying(255) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2221888Z out:     body text
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2222949Z out: );
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2225606Z out: ALTER TABLE public.session_questions OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2229283Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2230047Z out: -- Name: session_questions_id_seq; Type: SEQUENCE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2230883Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2231725Z out: CREATE SEQUENCE public.session_questions_id_seq
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2232534Z out:     AS integer
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2233487Z out:     START WITH 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2234072Z out:     INCREMENT BY 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2235542Z out:     NO MINVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2237093Z out:     NO MAXVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2238372Z out:     CACHE 1;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2242595Z out: ALTER TABLE public.session_questions_id_seq OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2243621Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2244265Z out: -- Name: session_questions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2246177Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2247196Z out: ALTER SEQUENCE public.session_questions_id_seq OWNED BY public.session_questions.id;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2248214Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2248753Z out: -- Name: session_speakers; Type: TABLE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2249585Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2250685Z out: CREATE TABLE public.session_speakers (
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2251568Z out:     id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2252254Z out:     session_id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2252953Z out:     speaker_id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2254915Z out:     role public."SpeakerRole" DEFAULT 'speaker'::public."SpeakerRole" NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2256526Z out:     status public."SpeakerStatus" DEFAULT 'review'::public."SpeakerStatus" NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2257495Z out:     status_date date,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2257981Z out:     sort_order integer DEFAULT 0 NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2258575Z out:     needs_zoom boolean DEFAULT false NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2259263Z out:     has_presentation boolean DEFAULT false NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2259860Z out:     manager_comment text,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2260329Z out:     program_thesis text,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2260797Z out:     newsletter_quote text,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2261292Z out:     presence_status public."PresenceStatus",
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2261876Z out:     company_snapshot character varying(255),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2262437Z out:     position_snapshot character varying(255),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2262958Z out:     presentation_title character varying(255),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2263570Z out:     presentation_url character varying(512),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2264148Z out:     memo_hash character varying(36),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2264752Z out:     notified_email boolean DEFAULT false NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2265424Z out:     notified_tg boolean DEFAULT false NOT NULL
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2265942Z out: );
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2267370Z out: ALTER TABLE public.session_speakers OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2268195Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2268762Z out: -- Name: session_speakers_id_seq; Type: SEQUENCE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2270495Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2270928Z out: CREATE SEQUENCE public.session_speakers_id_seq
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2271469Z out:     AS integer
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2272668Z out:     START WITH 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2273060Z out:     INCREMENT BY 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2273445Z out:     NO MINVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2273819Z out:     NO MAXVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2274182Z out:     CACHE 1;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2274704Z out: ALTER TABLE public.session_speakers_id_seq OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2275742Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2276978Z out: -- Name: session_speakers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2277778Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2278781Z out: ALTER SEQUENCE public.session_speakers_id_seq OWNED BY public.session_speakers.id;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2279548Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2280397Z out: -- Name: sessions; Type: TABLE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2281835Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2283171Z out: CREATE TABLE public.sessions (
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2284013Z out:     id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2285349Z out:     track_id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2285849Z out:     name character varying(255) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2286828Z out:     description text,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2287330Z out:     start_time character varying(5) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2289318Z out:     end_time character varying(5) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2289927Z out:     comments text,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2292010Z out:     clients text,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2293384Z out:     updated_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2295949Z out:     manager_id integer
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2296585Z out: );
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2297016Z out: ALTER TABLE public.sessions OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2297666Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2298239Z out: -- Name: sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2298976Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2299402Z out: CREATE SEQUENCE public.sessions_id_seq
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2299946Z out:     AS integer
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2300344Z out:     START WITH 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2301476Z out:     INCREMENT BY 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2301889Z out:     NO MINVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2302258Z out:     NO MAXVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2302814Z out:     CACHE 1;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2304720Z out: ALTER TABLE public.sessions_id_seq OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2307509Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2309059Z out: -- Name: sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2311759Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2312894Z out: ALTER SEQUENCE public.sessions_id_seq OWNED BY public.sessions.id;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2314258Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2315070Z out: -- Name: speakers; Type: TABLE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2315838Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2316445Z out: CREATE TABLE public.speakers (
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2316938Z out:     id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2318067Z out:     first_name character varying(100) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2318993Z out:     last_name character varying(100) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2320184Z out:     company character varying(255),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2320750Z out:     "position" character varying(255),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2321308Z out:     email character varying(255),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2321854Z out:     phone character varying(50),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2322383Z out:     telegram character varying(100),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2322935Z out:     photo_url character varying(512),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2323517Z out:     is_sponsor boolean DEFAULT false NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2324093Z out:     bio text,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2324490Z out:     internal_comment text,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2324996Z out:     assistant_contact character varying(255),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2325847Z out:     assistant_name character varying(100),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2326589Z out:     has_assistant boolean DEFAULT false NOT NULL
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2338776Z out: );
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2340009Z out: ALTER TABLE public.speakers OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2341622Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2343394Z out: -- Name: speakers_id_seq; Type: SEQUENCE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2344092Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2347203Z out: CREATE SEQUENCE public.speakers_id_seq
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2347955Z out:     AS integer
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2349542Z out:     START WITH 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2350001Z out:     INCREMENT BY 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2350406Z out:     NO MINVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2350785Z out:     NO MAXVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2351156Z out:     CACHE 1;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2353830Z out: ALTER TABLE public.speakers_id_seq OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2438815Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2440702Z out: -- Name: speakers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2446796Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2448945Z out: ALTER SEQUENCE public.speakers_id_seq OWNED BY public.speakers.id;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2449656Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2451497Z out: -- Name: sponsors; Type: TABLE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2453039Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2453412Z out: CREATE TABLE public.sponsors (
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2453909Z out:     id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2455861Z out:     event_id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2456856Z out:     name character varying(255) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2458727Z out:     short_description character varying(255),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2459322Z out:     website_url character varying(255),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2459886Z out:     public_email character varying(100),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2460705Z out:     public_phone character varying(50),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2461690Z out:     logo_url character varying(512),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2462216Z out:     description text,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2462801Z out:     catalog_description text,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2463486Z out:     service_card_description text,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2464004Z out:     market_segments jsonb,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2464607Z out:     city character varying(100),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2465096Z out:     employee_count integer,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2465642Z out:     annual_turnover character varying(100),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2466424Z out:     telegram character varying(100),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2467024Z out:     whatsapp character varying(100),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2467600Z out:     contact_name character varying(100),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2468188Z out:     contact_email character varying(100),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2468767Z out:     cfo_name character varying(100),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2469361Z out:     cfo_phone character varying(50),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2469915Z out:     cfo_email character varying(100),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2470428Z out:     cases jsonb,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2470880Z out:     materials_url character varying(512),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2471488Z out:     approval_hash character varying(36),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2472264Z out:     status character varying(50) DEFAULT 'pending'::character varying NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2473019Z out:     rejection_reason text,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2473508Z out:     created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2474141Z out: );
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2474582Z out: ALTER TABLE public.sponsors OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2474977Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2475533Z out: -- Name: sponsors_id_seq; Type: SEQUENCE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2476394Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2476785Z out: CREATE SEQUENCE public.sponsors_id_seq
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2477300Z out:     AS integer
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2477703Z out:     START WITH 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2478109Z out:     INCREMENT BY 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2478523Z out:     NO MINVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2478901Z out:     NO MAXVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2479510Z out:     CACHE 1;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2480006Z out: ALTER TABLE public.sponsors_id_seq OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2480575Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2481158Z out: -- Name: sponsors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2481950Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2482513Z out: ALTER SEQUENCE public.sponsors_id_seq OWNED BY public.sponsors.id;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2483206Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2483684Z out: -- Name: tracks; Type: TABLE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2484307Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2484662Z out: CREATE TABLE public.tracks (
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2485141Z out:     id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2485606Z out:     hall_id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2486278Z out:     name character varying(255) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2486852Z out:     description text,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2487295Z out:     day date NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2487784Z out:     start_time character varying(5) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2488405Z out:     end_time character varying(5) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2488989Z out:     sort_order integer DEFAULT 0 NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2489543Z out:     material_link character varying(512),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2490107Z out:     material_type character varying(100),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2490641Z out:     ready_date date,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2491338Z out:     status character varying(50) DEFAULT 'planned'::character varying NOT NULL
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2492086Z out: );
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2492483Z out: ALTER TABLE public.tracks OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2492986Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2493511Z out: -- Name: tracks_id_seq; Type: SEQUENCE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2494205Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2494846Z out: CREATE SEQUENCE public.tracks_id_seq
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2495367Z out:     AS integer
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2495741Z out:     START WITH 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2496267Z out:     INCREMENT BY 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2496723Z out:     NO MINVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2497106Z out:     NO MAXVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2497489Z out:     CACHE 1;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2497964Z out: ALTER TABLE public.tracks_id_seq OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2498535Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2499119Z out: -- Name: tracks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2499859Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2500387Z out: ALTER SEQUENCE public.tracks_id_seq OWNED BY public.tracks.id;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2501068Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2501575Z out: -- Name: user_events; Type: TABLE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2502235Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2502613Z out: CREATE TABLE public.user_events (
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2503126Z out:     id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2503605Z out:     user_id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2504091Z out:     event_id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2504821Z out:     created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2505560Z out: );
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2505969Z out: ALTER TABLE public.user_events OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2506686Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2507259Z out: -- Name: user_events_id_seq; Type: SEQUENCE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2507955Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2508373Z out: CREATE SEQUENCE public.user_events_id_seq
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2508913Z out:     AS integer
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2509363Z out:     START WITH 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2509757Z out:     INCREMENT BY 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2510141Z out:     NO MINVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2510514Z out:     NO MAXVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2510874Z out:     CACHE 1;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2511381Z out: ALTER TABLE public.user_events_id_seq OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2512004Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2512625Z out: -- Name: user_events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2513391Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2514212Z out: ALTER SEQUENCE public.user_events_id_seq OWNED BY public.user_events.id;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2514913Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2515374Z out: -- Name: users; Type: TABLE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2515971Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2516472Z out: CREATE TABLE public.users (
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2516950Z out:     id integer NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2517430Z out:     username character varying(255) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2518013Z out:     password character varying(255) NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2518581Z out:     role character varying(50) DEFAULT 'user'::character varying NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2519579Z out:     created_at timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2520463Z out:     updated_at timestamp(3) without time zone NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2521149Z out:     is_super_admin boolean DEFAULT false NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2521833Z out:     can_manage_speakers boolean DEFAULT false NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2522467Z out:     email character varying(255),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2522987Z out:     first_name character varying(100),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2523536Z out:     is_active boolean DEFAULT true NOT NULL,
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2524108Z out:     last_name character varying(100),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2524679Z out:     reset_token character varying(255),
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2525283Z out:     reset_token_expiry timestamp(3) without time zone
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2525938Z out: );
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2526744Z out: ALTER TABLE public.users OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2527282Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2527802Z out: -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2528453Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2528817Z out: CREATE SEQUENCE public.users_id_seq
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2529591Z out:     AS integer
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2529961Z out:     START WITH 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2530350Z out:     INCREMENT BY 1
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2530740Z out:     NO MINVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2531125Z out:     NO MAXVALUE
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2531485Z out:     CACHE 1;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2531940Z out: ALTER TABLE public.users_id_seq OWNER TO upgrade;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2532482Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2533070Z out: -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2533813Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2534326Z out: ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2534958Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2535488Z out: -- Name: briefings id; Type: DEFAULT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2536278Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2537083Z out: ALTER TABLE ONLY public.briefings ALTER COLUMN id SET DEFAULT nextval('public.briefings_id_seq'::regclass);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2538050Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2538584Z out: -- Name: events id; Type: DEFAULT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2539210Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2539941Z out: ALTER TABLE ONLY public.events ALTER COLUMN id SET DEFAULT nextval('public.events_id_seq'::regclass);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2540819Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2541301Z out: -- Name: halls id; Type: DEFAULT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2541908Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2542622Z out: ALTER TABLE ONLY public.halls ALTER COLUMN id SET DEFAULT nextval('public.halls_id_seq'::regclass);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2543472Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2544073Z out: -- Name: session_questions id; Type: DEFAULT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2544772Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2545657Z out: ALTER TABLE ONLY public.session_questions ALTER COLUMN id SET DEFAULT nextval('public.session_questions_id_seq'::regclass);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2546814Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2547378Z out: -- Name: session_speakers id; Type: DEFAULT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2548107Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2549006Z out: ALTER TABLE ONLY public.session_speakers ALTER COLUMN id SET DEFAULT nextval('public.session_speakers_id_seq'::regclass);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2550267Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2550780Z out: -- Name: sessions id; Type: DEFAULT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2551426Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2552197Z out: ALTER TABLE ONLY public.sessions ALTER COLUMN id SET DEFAULT nextval('public.sessions_id_seq'::regclass);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2553094Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2553591Z out: -- Name: speakers id; Type: DEFAULT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2554220Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2554999Z out: ALTER TABLE ONLY public.speakers ALTER COLUMN id SET DEFAULT nextval('public.speakers_id_seq'::regclass);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2555869Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2556526Z out: -- Name: sponsors id; Type: DEFAULT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2557186Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2557958Z out: ALTER TABLE ONLY public.sponsors ALTER COLUMN id SET DEFAULT nextval('public.sponsors_id_seq'::regclass);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2558861Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2559366Z out: -- Name: tracks id; Type: DEFAULT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2559998Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2560722Z out: ALTER TABLE ONLY public.tracks ALTER COLUMN id SET DEFAULT nextval('public.tracks_id_seq'::regclass);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2561593Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2562109Z out: -- Name: user_events id; Type: DEFAULT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2562781Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2563572Z out: ALTER TABLE ONLY public.user_events ALTER COLUMN id SET DEFAULT nextval('public.user_events_id_seq'::regclass);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2564491Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2564978Z out: -- Name: users id; Type: DEFAULT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2565611Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2566442Z out: ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2567534Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2568269Z out: -- Name: _prisma_migrations _prisma_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2569185Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2569609Z out: ALTER TABLE ONLY public._prisma_migrations
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2570304Z out:     ADD CONSTRAINT _prisma_migrations_pkey PRIMARY KEY (id);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2570955Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2571590Z out: -- Name: briefings briefings_pkey; Type: CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2572383Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2572752Z out: ALTER TABLE ONLY public.briefings
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2573326Z out:     ADD CONSTRAINT briefings_pkey PRIMARY KEY (id);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2573886Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2574485Z out: -- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2575217Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2575590Z out: ALTER TABLE ONLY public.events
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2576311Z out:     ADD CONSTRAINT events_pkey PRIMARY KEY (id);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2576865Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2577425Z out: -- Name: halls halls_pkey; Type: CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2578169Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2578502Z out: ALTER TABLE ONLY public.halls
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2578810Z out:     ADD CONSTRAINT halls_pkey PRIMARY KEY (id);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2579322Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2580080Z out: -- Name: session_questions session_questions_pkey; Type: CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2580992Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2581434Z out: ALTER TABLE ONLY public.session_questions
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2582135Z out:     ADD CONSTRAINT session_questions_pkey PRIMARY KEY (id);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2582615Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2583322Z out: -- Name: session_speakers session_speakers_pkey; Type: CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2584134Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2584440Z out: ALTER TABLE ONLY public.session_speakers
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2584931Z out:     ADD CONSTRAINT session_speakers_pkey PRIMARY KEY (id);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2585806Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2586563Z out: -- Name: sessions sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2587305Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2587687Z out: ALTER TABLE ONLY public.sessions
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2588209Z out:     ADD CONSTRAINT sessions_pkey PRIMARY KEY (id);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2588779Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2589229Z out: -- Name: speakers speakers_pkey; Type: CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2589950Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2590178Z out: ALTER TABLE ONLY public.speakers
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2590790Z out:     ADD CONSTRAINT speakers_pkey PRIMARY KEY (id);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2591377Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2591979Z out: -- Name: sponsors sponsors_pkey; Type: CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2592775Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2593156Z out: ALTER TABLE ONLY public.sponsors
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2593749Z out:     ADD CONSTRAINT sponsors_pkey PRIMARY KEY (id);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2594359Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2594948Z out: -- Name: tracks tracks_pkey; Type: CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2595690Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2596254Z out: ALTER TABLE ONLY public.tracks
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2596849Z out:     ADD CONSTRAINT tracks_pkey PRIMARY KEY (id);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2597434Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2597842Z out: -- Name: user_events user_events_pkey; Type: CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2598663Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2599555Z out: ALTER TABLE ONLY public.user_events
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2600156Z out:     ADD CONSTRAINT user_events_pkey PRIMARY KEY (id);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2601134Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2601722Z out: -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2603689Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2604767Z out: ALTER TABLE ONLY public.users
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2607563Z out:     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2608705Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2609613Z out: -- Name: session_speakers_memo_hash_key; Type: INDEX; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2610388Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2612089Z out: CREATE UNIQUE INDEX session_speakers_memo_hash_key ON public.session_speakers USING btree (memo_hash);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2616466Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2617233Z out: -- Name: session_speakers_session_id_speaker_id_key; Type: INDEX; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2618088Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2619004Z out: CREATE UNIQUE INDEX session_speakers_session_id_speaker_id_key ON public.session_speakers USING btree (session_id, speaker_id);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2620055Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2620659Z out: -- Name: sponsors_approval_hash_key; Type: INDEX; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2621401Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2622092Z out: CREATE UNIQUE INDEX sponsors_approval_hash_key ON public.sponsors USING btree (approval_hash);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2622943Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2623549Z out: -- Name: user_events_user_id_event_id_key; Type: INDEX; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2624299Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2625046Z out: CREATE UNIQUE INDEX user_events_user_id_event_id_key ON public.user_events USING btree (user_id, event_id);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2625967Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2626629Z out: -- Name: users_email_key; Type: INDEX; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2627281Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2627873Z out: CREATE UNIQUE INDEX users_email_key ON public.users USING btree (email);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2629233Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2629774Z out: -- Name: users_reset_token_key; Type: INDEX; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2630461Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2633029Z out: CREATE UNIQUE INDEX users_reset_token_key ON public.users USING btree (reset_token);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2635182Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2635771Z out: -- Name: users_username_key; Type: INDEX; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2636869Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2637469Z out: CREATE UNIQUE INDEX users_username_key ON public.users USING btree (username);
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2639639Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2640425Z out: -- Name: briefings briefings_moderator_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2641304Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2641655Z out: ALTER TABLE ONLY public.briefings
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2642811Z out:     ADD CONSTRAINT briefings_moderator_id_fkey FOREIGN KEY (moderator_id) REFERENCES public.speakers(id) ON UPDATE CASCADE ON DELETE SET NULL;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2644036Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2645200Z out: -- Name: briefings briefings_session_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2646205Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2646994Z out: ALTER TABLE ONLY public.briefings
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2648154Z out:     ADD CONSTRAINT briefings_session_id_fkey FOREIGN KEY (session_id) REFERENCES public.sessions(id) ON UPDATE CASCADE ON DELETE CASCADE;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2649324Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2649938Z out: -- Name: halls halls_event_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2650690Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2656334Z out: ALTER TABLE ONLY public.halls
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2657490Z out:     ADD CONSTRAINT halls_event_id_fkey FOREIGN KEY (event_id) REFERENCES public.events(id) ON UPDATE CASCADE ON DELETE CASCADE;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2658590Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2659413Z out: -- Name: session_questions session_questions_session_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2660360Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2660762Z out: ALTER TABLE ONLY public.session_questions
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2662014Z out:     ADD CONSTRAINT session_questions_session_id_fkey FOREIGN KEY (session_id) REFERENCES public.sessions(id) ON UPDATE CASCADE ON DELETE CASCADE;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2663482Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2664248Z out: -- Name: session_speakers session_speakers_session_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2665210Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2665631Z out: ALTER TABLE ONLY public.session_speakers
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2667017Z out:     ADD CONSTRAINT session_speakers_session_id_fkey FOREIGN KEY (session_id) REFERENCES public.sessions(id) ON UPDATE CASCADE ON DELETE CASCADE;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2668212Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2669006Z out: -- Name: session_speakers session_speakers_speaker_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2669930Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2670339Z out: ALTER TABLE ONLY public.session_speakers
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2671598Z out:     ADD CONSTRAINT session_speakers_speaker_id_fkey FOREIGN KEY (speaker_id) REFERENCES public.speakers(id) ON UPDATE CASCADE ON DELETE CASCADE;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2672840Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2673555Z out: -- Name: sessions sessions_manager_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2674102Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2678424Z out: ALTER TABLE ONLY public.sessions
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2679574Z out:     ADD CONSTRAINT sessions_manager_id_fkey FOREIGN KEY (manager_id) REFERENCES public.users(id) ON UPDATE CASCADE ON DELETE SET NULL;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2680723Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2681416Z out: -- Name: sessions sessions_track_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2682282Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2682658Z out: ALTER TABLE ONLY public.sessions
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2683718Z out:     ADD CONSTRAINT sessions_track_id_fkey FOREIGN KEY (track_id) REFERENCES public.tracks(id) ON UPDATE CASCADE ON DELETE CASCADE;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2684742Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2685425Z out: -- Name: sponsors sponsors_event_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2687569Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2687984Z out: ALTER TABLE ONLY public.sponsors
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2689050Z out:     ADD CONSTRAINT sponsors_event_id_fkey FOREIGN KEY (event_id) REFERENCES public.events(id) ON UPDATE CASCADE ON DELETE CASCADE;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2690116Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2690763Z out: -- Name: tracks tracks_hall_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2691582Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2691976Z out: ALTER TABLE ONLY public.tracks
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2692997Z out:     ADD CONSTRAINT tracks_hall_id_fkey FOREIGN KEY (hall_id) REFERENCES public.halls(id) ON UPDATE CASCADE ON DELETE CASCADE;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2694074Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2694798Z out: -- Name: user_events user_events_event_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2695804Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2696725Z out: ALTER TABLE ONLY public.user_events
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2698295Z out:     ADD CONSTRAINT user_events_event_id_fkey FOREIGN KEY (event_id) REFERENCES public.events(id) ON UPDATE CASCADE ON DELETE CASCADE;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2700380Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2701118Z out: -- Name: user_events user_events_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: upgrade
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2701948Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2702304Z out: ALTER TABLE ONLY public.user_events
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2703347Z out:     ADD CONSTRAINT user_events_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id) ON UPDATE CASCADE ON DELETE CASCADE;
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2704395Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2704768Z out: -- PostgreSQL database dump complete
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2705286Z out: --
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2705939Z out: \unrestrict cZYYbWPSKKwu4BQgYYaWdGHQixPUmkibIUW2cwrNUv4LJqZcbqD7y1G0W6Awwrf
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2709074Z ==============================================
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2820035Z ✅ Successfully executed commands to all host.
+fetch-logs	Fetch Logs	2026-03-04T18:08:51.2820822Z ==============================================
+fetch-logs	Complete job	﻿2026-03-04T18:08:51.3502603Z Cleaning up orphan processes

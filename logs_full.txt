@@ -1,0 +1,480 @@
+fetch-logs	Set up job	﻿2026-03-04T17:57:20.5287982Z Current runner version: '2.331.0'
+fetch-logs	Set up job	2026-03-04T17:57:20.5318101Z ##[group]Runner Image Provisioner
+fetch-logs	Set up job	2026-03-04T17:57:20.5319139Z Hosted Compute Agent
+fetch-logs	Set up job	2026-03-04T17:57:20.5319916Z Version: 20260213.493
+fetch-logs	Set up job	2026-03-04T17:57:20.5320664Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+fetch-logs	Set up job	2026-03-04T17:57:20.5321470Z Build Date: 2026-02-13T00:28:41Z
+fetch-logs	Set up job	2026-03-04T17:57:20.5322331Z Worker ID: {7553149d-9e42-424b-b1c2-68c731eb30d7}
+fetch-logs	Set up job	2026-03-04T17:57:20.5323121Z Azure Region: westus3
+fetch-logs	Set up job	2026-03-04T17:57:20.5323848Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T17:57:20.5325427Z ##[group]Operating System
+fetch-logs	Set up job	2026-03-04T17:57:20.5326147Z Ubuntu
+fetch-logs	Set up job	2026-03-04T17:57:20.5326898Z 24.04.3
+fetch-logs	Set up job	2026-03-04T17:57:20.5327502Z LTS
+fetch-logs	Set up job	2026-03-04T17:57:20.5328342Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T17:57:20.5328971Z ##[group]Runner Image
+fetch-logs	Set up job	2026-03-04T17:57:20.5329634Z Image: ubuntu-24.04
+fetch-logs	Set up job	2026-03-04T17:57:20.5330336Z Version: 20260302.42.1
+fetch-logs	Set up job	2026-03-04T17:57:20.5331551Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260302.42/images/ubuntu/Ubuntu2404-Readme.md
+fetch-logs	Set up job	2026-03-04T17:57:20.5333370Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260302.42
+fetch-logs	Set up job	2026-03-04T17:57:20.5334456Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T17:57:20.5335800Z ##[group]GITHUB_TOKEN Permissions
+fetch-logs	Set up job	2026-03-04T17:57:20.5338164Z Contents: read
+fetch-logs	Set up job	2026-03-04T17:57:20.5338951Z Metadata: read
+fetch-logs	Set up job	2026-03-04T17:57:20.5339574Z Packages: read
+fetch-logs	Set up job	2026-03-04T17:57:20.5340285Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T17:57:20.5342731Z Secret source: Actions
+fetch-logs	Set up job	2026-03-04T17:57:20.5343724Z Prepare workflow directory
+fetch-logs	Set up job	2026-03-04T17:57:20.5742962Z Prepare all required actions
+fetch-logs	Set up job	2026-03-04T17:57:20.5782212Z Getting action download info
+fetch-logs	Set up job	2026-03-04T17:57:20.9415202Z Download action repository 'appleboy/ssh-action@v1.0.3' (SHA:029f5b4aeeeb58fdfe1410a5d17f967dacf36262)
+fetch-logs	Set up job	2026-03-04T17:57:21.8378454Z Complete job name: fetch-logs
+fetch-logs	Build appleboy/ssh-action@v1.0.3	﻿2026-03-04T17:57:21.9049505Z ##[group]Build container for action use: '/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile'.
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:21.9110355Z ##[command]/usr/bin/docker build -t 6148bb:95c88a3bebce411b9cb8e5b1c4ad6a2e -f "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile" "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3"
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:27.4598789Z #0 building with "default" instance using docker driver
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:27.4599675Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:27.4599962Z #1 [internal] load build definition from Dockerfile
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:27.4600646Z #1 transferring dockerfile: 149B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:27.4601052Z #1 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:27.4601208Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:27.4601446Z #2 [internal] load metadata for ghcr.io/appleboy/drone-ssh:1.7.3
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.1154874Z #2 DONE 0.8s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2423178Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2423959Z #3 [internal] load .dockerignore
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2425054Z #3 transferring context: 2B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2425680Z #3 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2426119Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2426370Z #4 [internal] load build context
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2429224Z #4 transferring context: 108B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2430112Z #4 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2430539Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2431657Z #5 [1/2] FROM ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2433939Z #5 resolve ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2436002Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0B / 284.83kB 0.1s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2437355Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 0B / 1.20kB 0.1s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2438937Z #5 sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 2.38kB / 2.38kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2440362Z #5 sha256:1a52f94820e830bc9734623deb03bbafa6a248fba19cdc2e5605c70d90d91441 1.24kB / 1.24kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2441762Z #5 sha256:c4781b8d012b16b6c7468dc9104fad0a63f2a8815b2af8b7176bb544253ea8c7 3.86kB / 3.86kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.2443130Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0B / 3.38MB 0.1s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.3654091Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 284.83kB / 284.83kB 0.2s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.3655542Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 3.38MB / 3.38MB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.3656776Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.3659321Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 0B / 125B 0.2s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.3660448Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0B / 2.44MB 0.2s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.5377375Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 1.20kB / 1.20kB 0.2s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.5379716Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 125B / 125B 0.2s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.5381691Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 2.44MB / 2.44MB 0.3s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.5383443Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.5384961Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.6377854Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.6379237Z #5 extracting sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.6380994Z #5 extracting sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.6382253Z #5 DONE 0.5s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.6382491Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.6382708Z #6 [2/2] COPY entrypoint.sh /bin/entrypoint.sh
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.6383160Z #6 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.6384126Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.6384257Z #7 exporting to image
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:28.6384577Z #7 exporting layers
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:29.0056138Z #7 exporting layers 0.4s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:29.0293268Z #7 writing image sha256:57420e0d9817ff0ed06dabb0877fa59d99cde626a2f6c411080f4acd37ff66f8 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:29.0294712Z #7 naming to docker.io/library/6148bb:95c88a3bebce411b9cb8e5b1c4ad6a2e done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:29.0295639Z #7 DONE 0.4s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:57:29.0429516Z ##[endgroup]
+fetch-logs	Fetch Logs	﻿2026-03-04T17:57:29.0755352Z ##[group]Run appleboy/ssh-action@v1.0.3
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.0755997Z with:
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.0756455Z   host: ***
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.0756681Z   username: ***
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.0758785Z   key: ***
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.0759112Z   script: echo "Backend Logs:"
+fetch-logs	Fetch Logs	docker logs --tail 2000 upgrade-crm-app-1
+fetch-logs	Fetch Logs	
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.0759500Z   port: 22
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.0759691Z   timeout: 30s
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.0759900Z   command_timeout: 10m
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.0760150Z   proxy_port: 22
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.0760369Z   proxy_timeout: 30s
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.0760865Z ##[endgroup]
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.0896681Z ##[command]/usr/bin/docker run --name bb95c88a3bebce411b9cb8e5b1c4ad6a2e_9eee31 --label 6148bb --workdir /github/workspace --rm -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" 6148bb:95c88a3bebce411b9cb8e5b1c4ad6a2e
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.3071699Z ======CMD======
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.3072086Z echo "Backend Logs:"
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.3072423Z docker logs --tail 2000 upgrade-crm-app-1
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.3072759Z 
+fetch-logs	Fetch Logs	2026-03-04T17:57:29.3072863Z ======END======
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4266130Z out: Backend Logs:
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4713927Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4715151Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +127ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4716356Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4717825Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4719338Z out: [33m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [33m   WARN[39m [38;5;3m[NotificationsService] [39m[33mSMTP credentials not fully provided. Falling back to test Ethereal mode (or ignoring). Please set SMTP_USER and SMTP_PASSWORD.[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4721219Z out: [33m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [33m   WARN[39m [38;5;3m[MailService] [39m[33mSMTP configuration is missing. Emails will not be sent.[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4722351Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4723725Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4724899Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4726079Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4727231Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4728490Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUploadsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4729659Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNotificationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4730987Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMailModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4732123Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSponsorsModule dependencies initialized[39m[38;5;3m +4ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4733262Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEventsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4734368Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHallsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4735479Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTracksModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4736612Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSpeakersModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4737985Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mExportsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4739109Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4740199Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4741357Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4742432Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEventsController {/api/events}:[39m[38;5;3m +106ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4743558Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events, POST} route[39m[38;5;3m +13ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4744707Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/full-structure, GET} route[39m[38;5;3m +7ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4745987Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id, GET} route[39m[38;5;3m +3ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4747036Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4748493Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/session-speakers, GET} route[39m[38;5;3m +3ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4749794Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/session-speakers/sort, PATCH} route[39m[38;5;3m +7ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4751051Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/announcements, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4752272Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/announcements, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4753585Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/memo-template, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4754828Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/memo-template, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4756261Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/session-speakers/:id, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4757527Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/public/speaker-memo/:hash, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.4758890Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHallsController {/api/halls}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.5966731Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/halls, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.5969481Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/halls, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.5971774Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/halls/:id, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.5974040Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/halls/:id, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.5976386Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/halls/:id, DELETE} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.5978680Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTracksController {/api/tracks}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.5980662Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tracks, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.5982697Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tracks, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.5984675Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tracks/:id, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.5986972Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tracks/:id, PATCH} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.5989084Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tracks/:id, DELETE} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.5991057Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSessionsController {/api/sessions}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.5992930Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.5994770Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.5996627Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:id, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.5998644Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:id, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6000539Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:id, DELETE} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6002405Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSpeakersController {/api/speakers}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6004542Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6006355Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6008306Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers/:id, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6010193Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers/:id, PATCH} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6012097Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers/:id, DELETE} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6013912Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/api/auth}:[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6015661Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6017673Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6019440Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/logout, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6021290Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/forgot-password, POST} route[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6023181Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/reset-password, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6025014Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/api/users}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6027053Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6028934Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6030714Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users/:id, PUT} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6032518Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users/:id, DELETE} route[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6034440Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users/change-password, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6036388Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users/managers, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6038391Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users/profile, PUT} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6040210Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUploadsController {/api/uploads}:[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6042119Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/uploads/speaker-photo, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6044274Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/uploads/presentation, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6046258Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/uploads/photos/:filename, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6048481Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/uploads/presentations/:filename, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6050424Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mExportsController {/api/exports}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6052336Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/exports/schedule/:eventId, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6054370Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/exports/import/:eventId, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6056280Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSponsorsController {/api/sponsors}:[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6058352Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/event/:eventId, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6060274Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/all, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6062077Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6063898Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/:id, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6065887Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/:id, DELETE} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6068372Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/public/approval/:hash, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6070514Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/public/approval/:hash, PATCH} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6072367Z out: [32m[Nest] 1  - [39m03/04/2026, 5:50:00 PM [32m    LOG[39m [38;5;3m[PrismaService] [39m[32mRunning Prisma migrations...[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6074367Z out: [33m[Nest] 1  - [39m03/04/2026, 5:50:04 PM [33m   WARN[39m [38;5;3m[PrismaService] [39m[33mMigration warning (may be already applied): Command failed: npx prisma migrate deploy
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6075700Z out: Loaded Prisma config from prisma.config.ts.
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6076318Z out: Prisma schema loaded from prisma/schema.prisma.
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6076880Z out: Error: P3018
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6078438Z out: A migration failed to apply. New migrations cannot be applied before the error is recovered from. Read more about how to resolve migration issues in a production database: https://pris.ly/d/migrate-resolve
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6080114Z out: Migration name: 20260304174141_add_speaker_status_tracking
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6080729Z out: Database error code: 42701
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6081160Z out: Database error:
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6081701Z out: ERROR: column "memo_template" of relation "events" already exists
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6084358Z out: DbError { severity: "ERROR", parsed_severity: Some(Error), code: SqlState(E42701), message: "column \"memo_template\" of relation \"events\" already exists", detail: None, hint: None, position: None, where_: None, schema: None, table: None, column: None, datatype: None, constraint: None, file: Some("tablecmds.c"), line: Some(7279), routine: Some("check_for_column_name_collision") }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6087133Z out: npm notice
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6087906Z out: npm notice New major version of npm available! 10.8.2 -> 11.11.0
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6088791Z out: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.11.0
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6089596Z out: npm notice To update run: npm install -g npm@11.11.0
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6090166Z out: npm notice
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6091103Z out: [39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6092652Z out: [32m[Nest] 1  - [39m03/04/2026, 5:50:04 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +170ms[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6094364Z out: Fetching full structure for event 1...
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6094987Z out: Fetching full structure for event 1...
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6095564Z out: Fetching full structure for event 1...
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6096211Z err: Error in getFullStructure: PrismaClientKnownRequestError: 
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6096926Z err: Invalid `this.prisma.event.findUnique()` invocation in
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6097781Z err: /app/dist/src/events/events.service.js:81:51
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6098682Z err:   78         throw new common_1.NotFoundException(`Event #${id} not found or access denied`);
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6099400Z err:   79 }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6099883Z err:   80 console.log(`Fetching full structure for event ${id}...`);
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6100847Z err: → 81 const event = await this.prisma.event.findUnique(
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6101668Z err: The column `(not available)` does not exist in the current database.
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6102690Z err:     at zr.handleRequestError (/app/node_modules/@prisma/client/runtime/client.js:65:8172)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6103950Z err:     at zr.handleAndLogRequestError (/app/node_modules/@prisma/client/runtime/client.js:65:7467)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6105071Z err:     at zr.request (/app/node_modules/@prisma/client/runtime/client.js:65:7174)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6106006Z err:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6106983Z err:     at async a (/app/node_modules/@prisma/client/runtime/client.js:75:5816)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6108218Z err:     at async EventsService.getFullStructure (/app/dist/src/events/events.service.js:81:27)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6109390Z err:     at async /app/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6110413Z err:     at async /app/node_modules/@nestjs/core/router/router-proxy.js:9:17 {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6111120Z err:   code: 'P2022',
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6111509Z err:   meta: {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6111883Z err:     modelName: 'Event',
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6112469Z err:     driverAdapterError: DriverAdapterError: ColumnNotFound
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6113487Z err:         at PrismaPgAdapter.onError (/app/node_modules/@prisma/adapter-pg/dist/index.js:687:11)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6114726Z err:         at PrismaPgAdapter.performIO (/app/node_modules/@prisma/adapter-pg/dist/index.js:682:12)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6115945Z err:         at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6117213Z err:         at async PrismaPgAdapter.queryRaw (/app/node_modules/@prisma/adapter-pg/dist/index.js:602:30)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6118616Z err:         at async e.interpretNode (/app/node_modules/@prisma/client/runtime/client.js:11:43522)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6119782Z err:         at async e.interpretNode (/app/node_modules/@prisma/client/runtime/client.js:11:42651)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6120833Z err:         at async /app/node_modules/@prisma/client/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6121508Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6122420Z err:         at async e.interpretNode (/app/node_modules/@prisma/client/runtime/client.js:11:44599)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6123725Z err:         at async /app/node_modules/@prisma/client/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6124462Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6125292Z err:         at async e.interpretNode (/app/node_modules/@prisma/client/runtime/client.js:11:44599)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6126367Z err:         at async /app/node_modules/@prisma/client/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6127119Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6128134Z err:         at async e.interpretNode (/app/node_modules/@prisma/client/runtime/client.js:11:44599)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6129181Z err:         at async /app/node_modules/@prisma/client/runtime/client.js:11:44673 {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6129896Z err:       cause: [Object]
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6130311Z err:     }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6130648Z err:   },
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6130996Z err:   clientVersion: '7.4.0'
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6131453Z err: }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6132470Z err: [31m[Nest] 1  - [39m03/04/2026, 5:51:08 PM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPrismaClientKnownRequestError: 
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6133573Z err: Invalid `this.prisma.event.findUnique()` invocation in
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6134291Z err: /app/dist/src/events/events.service.js:81:51
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6135145Z err:   78         throw new common_1.NotFoundException(`Event #${id} not found or access denied`);
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6135592Z err:   79 }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6135964Z err:   80 console.log(`Fetching full structure for event ${id}...`);
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6136909Z err: → 81 const event = await this.prisma.event.findUnique(
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6137889Z err: The column `(not available)` does not exist in the current database.
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6139270Z err:     at zr.handleRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:8172[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6140933Z err:     at zr.handleAndLogRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7467[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6142163Z err:     at zr.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7174[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6142942Z err: [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6144449Z err:     at async a [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:75:5816[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6145979Z err:     at async EventsService.getFullStructure [90m(/app/[39mdist/src/events/events.service.js:81:27[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6147510Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-execution-context.js:46:28
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6149048Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-proxy.js:9:17 {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6149845Z err:   code: [32m'P2022'[39m,
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6150096Z err:   meta: {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6150563Z err:     modelName: [32m'Event'[39m,
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6150928Z err:     driverAdapterError: DriverAdapterError: ColumnNotFound
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6151636Z err:         at PrismaPgAdapter.onError [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:687:11[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6153189Z err:         at PrismaPgAdapter.performIO [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:682:12[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6154789Z err:     [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6156447Z err:         at async PrismaPgAdapter.queryRaw [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:602:30[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6157964Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:43522[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6159699Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:42651[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6161437Z err:         at async [90m/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6162312Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6163536Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44599[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6165035Z err:         at async [90m/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6165914Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6167129Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44599[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6168740Z err:         at async [90m/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6169607Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6170836Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44599[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6172326Z err:         at async [90m/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44673 {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6173177Z err:       cause: {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6173671Z err:         originalCode: [32m'42703'[39m,
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6174493Z err:         originalMessage: [32m'column session_speakers.status_user_id does not exist'[39m,
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6175033Z err:         kind: [32m'ColumnNotFound'[39m,
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6175360Z err:         column: [90mundefined[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6175713Z err:       }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6176046Z err:     }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6176348Z err:   },
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6176819Z err:   clientVersion: [32m'7.4.0'[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6177296Z err: }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6177944Z err: Error in getFullStructure: PrismaClientKnownRequestError: 
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6178784Z err: Invalid `this.prisma.event.findUnique()` invocation in
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6179517Z err: /app/dist/src/events/events.service.js:81:51
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6180400Z err:   78         throw new common_1.NotFoundException(`Event #${id} not found or access denied`);
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6181235Z err:   79 }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6181765Z err:   80 console.log(`Fetching full structure for event ${id}...`);
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6182789Z err: → 81 const event = await this.prisma.event.findUnique(
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6183330Z err: The column `(not available)` does not exist in the current database.
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6184357Z err:     at zr.handleRequestError (/app/node_modules/@prisma/client/runtime/client.js:65:8172)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6185620Z err:     at zr.handleAndLogRequestError (/app/node_modules/@prisma/client/runtime/client.js:65:7467)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6186585Z err:     at zr.request (/app/node_modules/@prisma/client/runtime/client.js:65:7174)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6187859Z err:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6189011Z err:     at async a (/app/node_modules/@prisma/client/runtime/client.js:75:5816)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6190083Z err:     at async EventsService.getFullStructure (/app/dist/src/events/events.service.js:81:27)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6191260Z err:     at async /app/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6192296Z err:     at async /app/node_modules/@nestjs/core/router/router-proxy.js:9:17 {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6193026Z err:   code: 'P2022',
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6193406Z err:   meta: {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6193618Z err:     modelName: 'Event',
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6194208Z err:     driverAdapterError: DriverAdapterError: ColumnNotFound
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6195090Z err:         at PrismaPgAdapter.onError (/app/node_modules/@prisma/adapter-pg/dist/index.js:687:11)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6196329Z err:         at PrismaPgAdapter.performIO (/app/node_modules/@prisma/adapter-pg/dist/index.js:682:12)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6197919Z err:         at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6199139Z err:         at async PrismaPgAdapter.queryRaw (/app/node_modules/@prisma/adapter-pg/dist/index.js:602:30)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6200348Z err:         at async e.interpretNode (/app/node_modules/@prisma/client/runtime/client.js:11:43522)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6201486Z err:         at async e.interpretNode (/app/node_modules/@prisma/client/runtime/client.js:11:42651)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6202489Z err:         at async /app/node_modules/@prisma/client/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6203208Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6204017Z err:         at async e.interpretNode (/app/node_modules/@prisma/client/runtime/client.js:11:44599)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6205016Z err:         at async /app/node_modules/@prisma/client/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6205749Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6206550Z err:         at async e.interpretNode (/app/node_modules/@prisma/client/runtime/client.js:11:44599)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6207711Z err:         at async /app/node_modules/@prisma/client/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6208430Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6209234Z err:         at async e.interpretNode (/app/node_modules/@prisma/client/runtime/client.js:11:44599)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6210262Z err:         at async /app/node_modules/@prisma/client/runtime/client.js:11:44673 {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6210955Z err:       cause: [Object]
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6211356Z err:     }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6211676Z err:   },
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6212024Z err:   clientVersion: '7.4.0'
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6212430Z err: }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6213464Z err: [31m[Nest] 1  - [39m03/04/2026, 5:51:18 PM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPrismaClientKnownRequestError: 
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6214540Z err: Invalid `this.prisma.event.findUnique()` invocation in
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6215240Z err: /app/dist/src/events/events.service.js:81:51
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6216071Z err:   78         throw new common_1.NotFoundException(`Event #${id} not found or access denied`);
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6216836Z err:   79 }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6217296Z err:   80 console.log(`Fetching full structure for event ${id}...`);
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6218572Z err: → 81 const event = await this.prisma.event.findUnique(
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6219255Z err: The column `(not available)` does not exist in the current database.
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6220485Z err:     at zr.handleRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:8172[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6221681Z err:     at zr.handleAndLogRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7467[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6222964Z err:     at zr.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7174[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6224208Z err: [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6225480Z err:     at async a [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:75:5816[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6226801Z err:     at async EventsService.getFullStructure [90m(/app/[39mdist/src/events/events.service.js:81:27[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6228698Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-execution-context.js:46:28
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6230340Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-proxy.js:9:17 {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6231250Z err:   code: [32m'P2022'[39m,
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6231693Z err:   meta: {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6232179Z err:     modelName: [32m'Event'[39m,
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6232781Z err:     driverAdapterError: DriverAdapterError: ColumnNotFound
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6234049Z err:         at PrismaPgAdapter.onError [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:687:11[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6235728Z err:         at PrismaPgAdapter.performIO [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:682:12[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6236988Z err:     [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6238155Z err:         at async PrismaPgAdapter.queryRaw [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:602:30[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6239410Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:43522[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6240941Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:42651[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6242259Z err:         at async [90m/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6243088Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6244290Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44599[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6245644Z err:         at async [90m/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6246443Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6247826Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44599[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6249427Z err:         at async [90m/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6250312Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6251454Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44599[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6252877Z err:         at async [90m/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44673 {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6331634Z err:       cause: {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6332519Z err:         originalCode: [32m'42703'[39m,
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6333209Z err:         originalMessage: [32m'column session_speakers.status_user_id does not exist'[39m,
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6333868Z err:         kind: [32m'ColumnNotFound'[39m,
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6334536Z err:         column: [90mundefined[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6335580Z err:       }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6335940Z err:     }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6336248Z err:   },
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6336720Z err:   clientVersion: [32m'7.4.0'[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6337211Z err: }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6337957Z err: Error in getFullStructure: PrismaClientKnownRequestError: 
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6338709Z err: Invalid `this.prisma.event.findUnique()` invocation in
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6339413Z err: /app/dist/src/events/events.service.js:81:51
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6340286Z err:   78         throw new common_1.NotFoundException(`Event #${id} not found or access denied`);
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6340996Z err:   79 }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6341472Z err:   80 console.log(`Fetching full structure for event ${id}...`);
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6342443Z err: → 81 const event = await this.prisma.event.findUnique(
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6343223Z err: The column `(not available)` does not exist in the current database.
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6344234Z err:     at zr.handleRequestError (/app/node_modules/@prisma/client/runtime/client.js:65:8172)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6345450Z err:     at zr.handleAndLogRequestError (/app/node_modules/@prisma/client/runtime/client.js:65:7467)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6346557Z err:     at zr.request (/app/node_modules/@prisma/client/runtime/client.js:65:7174)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6348464Z err:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6349561Z err:     at async a (/app/node_modules/@prisma/client/runtime/client.js:75:5816)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6350624Z err:     at async EventsService.getFullStructure (/app/dist/src/events/events.service.js:81:27)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6352074Z err:     at async /app/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6353012Z err:     at async /app/node_modules/@nestjs/core/router/router-proxy.js:9:17 {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6353724Z err:   code: 'P2022',
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6354088Z err:   meta: {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6354450Z err:     modelName: 'Event',
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6355024Z err:     driverAdapterError: DriverAdapterError: ColumnNotFound
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6356017Z err:         at PrismaPgAdapter.onError (/app/node_modules/@prisma/adapter-pg/dist/index.js:687:11)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6357284Z err:         at PrismaPgAdapter.performIO (/app/node_modules/@prisma/adapter-pg/dist/index.js:682:12)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6358671Z err:         at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6359848Z err:         at async PrismaPgAdapter.queryRaw (/app/node_modules/@prisma/adapter-pg/dist/index.js:602:30)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6360835Z err:         at async e.interpretNode (/app/node_modules/@prisma/client/runtime/client.js:11:43522)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6361457Z err:         at async e.interpretNode (/app/node_modules/@prisma/client/runtime/client.js:11:42651)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6362008Z err:         at async /app/node_modules/@prisma/client/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6362425Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6362877Z err:         at async e.interpretNode (/app/node_modules/@prisma/client/runtime/client.js:11:44599)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6363407Z err:         at async /app/node_modules/@prisma/client/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6363803Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6364240Z err:         at async e.interpretNode (/app/node_modules/@prisma/client/runtime/client.js:11:44599)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6364763Z err:         at async /app/node_modules/@prisma/client/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6365136Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6365567Z err:         at async e.interpretNode (/app/node_modules/@prisma/client/runtime/client.js:11:44599)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6366108Z err:         at async /app/node_modules/@prisma/client/runtime/client.js:11:44673 {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6366490Z err:       cause: [Object]
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6366721Z err:     }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6367112Z err:   },
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6367374Z err:   clientVersion: '7.4.0'
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6368044Z err: }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6369107Z err: [31m[Nest] 1  - [39m03/04/2026, 5:51:32 PM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPrismaClientKnownRequestError: 
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6370253Z err: Invalid `this.prisma.event.findUnique()` invocation in
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6370963Z err: /app/dist/src/events/events.service.js:81:51
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6371866Z err:   78         throw new common_1.NotFoundException(`Event #${id} not found or access denied`);
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6372555Z err:   79 }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6373043Z err:   80 console.log(`Fetching full structure for event ${id}...`);
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6373892Z err: → 81 const event = await this.prisma.event.findUnique(
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6374654Z err: The column `(not available)` does not exist in the current database.
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6375487Z err:     at zr.handleRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:8172[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6376604Z err:     at zr.handleAndLogRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7467[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6378359Z err:     at zr.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7174[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6379746Z err: [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6380911Z err:     at async a [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:75:5816[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6382324Z err:     at async EventsService.getFullStructure [90m(/app/[39mdist/src/events/events.service.js:81:27[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6384083Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-execution-context.js:46:28
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6385382Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-proxy.js:9:17 {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6386279Z err:   code: [32m'P2022'[39m,
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6386724Z err:   meta: {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6387225Z err:     modelName: [32m'Event'[39m,
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6388029Z err:     driverAdapterError: DriverAdapterError: ColumnNotFound
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6389393Z err:         at PrismaPgAdapter.onError [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:687:11[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6391100Z err:         at PrismaPgAdapter.performIO [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:682:12[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6392505Z err:     [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6393409Z err:         at async PrismaPgAdapter.queryRaw [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:602:30[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6394321Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:43522[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6395327Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:42651[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6396326Z err:         at async [90m/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6396894Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6397898Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44599[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6398799Z err:         at async [90m/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6399268Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6399986Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44599[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6400855Z err:         at async [90m/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44673
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6401608Z err:         at async Promise.all (index 0)
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6402333Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44599[90m)[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6403208Z err:         at async [90m/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:44673 {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6403734Z err:       cause: {
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6404014Z err:         originalCode: [32m'42703'[39m,
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6404633Z err:         originalMessage: [32m'column session_speakers.status_user_id does not exist'[39m,
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6405196Z err:         kind: [32m'ColumnNotFound'[39m,
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6405578Z err:         column: [90mundefined[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6405839Z err:       }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6406140Z err:     }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6406331Z err:   },
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6406572Z err:   clientVersion: [32m'7.4.0'[39m
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6406907Z err: }
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6407110Z ==============================================
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6407760Z ✅ Successfully executed commands to all host.
+fetch-logs	Fetch Logs	2026-03-04T17:57:31.6408243Z ==============================================
+fetch-logs	Complete job	﻿2026-03-04T17:57:31.7052901Z Cleaning up orphan processes

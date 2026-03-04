@@ -53,9 +53,9 @@ model Event {
   memoTemplate String?     @map("memo_template") @db.Text
   createdAt    DateTime    @default(now()) @map("created_at")
 
-  halls    Hall[]
-  users    UserEvent[]
-  sponsors Sponsor[]
+  halls        Hall[]
+  users        UserEvent[]
+  sponsors     EventSponsor[]
 
   @@map("events")
 }
@@ -157,9 +157,10 @@ model SessionSpeaker {
   newsletterQuote String?         @map("newsletter_quote") @db.Text
   presenceStatus  PresenceStatus? @map("presence_status")
 
-  notifiedTg    Boolean @default(false) @map("notified_tg")
-  notifiedEmail Boolean @default(false) @map("notified_email")
-  memoHash      String? @unique @default(uuid()) @map("memo_hash") @db.VarChar(36)
+  notifiedTg      Boolean @default(false) @map("notified_tg")
+  notifiedEmail   Boolean @default(false) @map("notified_email")
+  memoHash        String? @unique @default(uuid()) @map("memo_hash") @db.VarChar(36)
+  exportToWebsite Boolean @default(true) @map("export_to_website")
 
   session    Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
   speaker    Speaker @relation(fields: [speakerId], references: [id], onDelete: Cascade)
@@ -241,13 +242,14 @@ model UserEvent {
 
 model Sponsor {
   id                     Int     @id @default(autoincrement())
-  eventId                Int     @map("event_id")
   name                   String  @db.VarChar(255)
   shortDescription       String? @map("short_description") @db.VarChar(255)
   websiteUrl             String? @map("website_url") @db.VarChar(255)
   publicEmail            String? @map("public_email") @db.VarChar(100)
   publicPhone            String? @map("public_phone") @db.VarChar(50)
   logoUrl                String? @map("logo_url") @db.VarChar(512)
+  logoFileUrl            String? @map("logo_file_url") @db.VarChar(512)
+  exportToWebsite        Boolean @default(false) @map("export_to_website")
   description            String? @db.Text
   catalogDescription     String? @map("catalog_description") @db.Text
   serviceCardDescription String? @map("service_card_description") @db.Text
@@ -260,10 +262,7 @@ model Sponsor {
   contactName            String? @map("contact_name") @db.VarChar(100)
   contactEmail           String? @map("contact_email") @db.VarChar(100)
   cfoName                String? @map("cfo_name") @db.VarChar(100)
-  cfoPhone               String? @map("cfo_phone") @db.VarChar(50)
-  cfoEmail               String? @map("cfo_email") @db.VarChar(100)
   cases                  Json?
-  materialsUrl           String? @map("materials_url") @db.VarChar(512)
 
   approvalHash    String? @unique @default(uuid()) @map("approval_hash") @db.VarChar(36)
   status          String  @default("pending") @db.VarChar(50) // pending, approved, rejected
@@ -271,9 +270,21 @@ model Sponsor {
 
   createdAt DateTime @default(now()) @map("created_at")
 
-  event             Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
   assignedManagerId Int?  @map("assigned_manager_id")
   assignedManager   User? @relation(fields: [assignedManagerId], references: [id])
+  events            EventSponsor[]
 
   @@map("sponsors")
+}
+
+model EventSponsor {
+  eventId   Int      @map("event_id")
+  sponsorId Int      @map("sponsor_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  event   Event   @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  sponsor Sponsor @relation(fields: [sponsorId], references: [id], onDelete: Cascade)
+
+  @@id([eventId, sponsorId])
+  @@map("event_sponsors")
 }

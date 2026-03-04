@@ -31,6 +31,16 @@ export class SponsorsController {
         return this.sponsorsService.remove(id);
     }
 
+    @Post(':id/attach/:eventId')
+    attachToEvent(@Param('id', ParseIntPipe) sponsorId: number, @Param('eventId', ParseIntPipe) eventId: number) {
+        return this.sponsorsService.attachToEvent(eventId, sponsorId);
+    }
+
+    @Delete(':id/detach/:eventId')
+    detachFromEvent(@Param('id', ParseIntPipe) sponsorId: number, @Param('eventId', ParseIntPipe) eventId: number) {
+        return this.sponsorsService.detachFromEvent(eventId, sponsorId);
+    }
+
     @Public()
     @Get('public/approval/:hash')
     getPublicApprovalInfo(@Param('hash') hash: string) {

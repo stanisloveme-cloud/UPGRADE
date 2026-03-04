@@ -1,0 +1,194 @@
+fetch-logs	Set up job	﻿2026-03-04T18:46:37.8917706Z Current runner version: '2.331.0'
+fetch-logs	Set up job	2026-03-04T18:46:37.8944344Z ##[group]Runner Image Provisioner
+fetch-logs	Set up job	2026-03-04T18:46:37.8945595Z Hosted Compute Agent
+fetch-logs	Set up job	2026-03-04T18:46:37.8946372Z Version: 20260213.493
+fetch-logs	Set up job	2026-03-04T18:46:37.8947138Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+fetch-logs	Set up job	2026-03-04T18:46:37.8947927Z Build Date: 2026-02-13T00:28:41Z
+fetch-logs	Set up job	2026-03-04T18:46:37.8948646Z Worker ID: {69e12fa5-c200-4196-a053-51f5b2fe0fd1}
+fetch-logs	Set up job	2026-03-04T18:46:37.8949574Z Azure Region: northcentralus
+fetch-logs	Set up job	2026-03-04T18:46:37.8950244Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T18:46:37.8951835Z ##[group]Operating System
+fetch-logs	Set up job	2026-03-04T18:46:37.8952536Z Ubuntu
+fetch-logs	Set up job	2026-03-04T18:46:37.8953202Z 24.04.3
+fetch-logs	Set up job	2026-03-04T18:46:37.8953818Z LTS
+fetch-logs	Set up job	2026-03-04T18:46:37.8954370Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T18:46:37.8955019Z ##[group]Runner Image
+fetch-logs	Set up job	2026-03-04T18:46:37.8955974Z Image: ubuntu-24.04
+fetch-logs	Set up job	2026-03-04T18:46:37.8956648Z Version: 20260302.42.1
+fetch-logs	Set up job	2026-03-04T18:46:37.8957818Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260302.42/images/ubuntu/Ubuntu2404-Readme.md
+fetch-logs	Set up job	2026-03-04T18:46:37.8959723Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260302.42
+fetch-logs	Set up job	2026-03-04T18:46:37.8960735Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T18:46:37.8962132Z ##[group]GITHUB_TOKEN Permissions
+fetch-logs	Set up job	2026-03-04T18:46:37.8964039Z Contents: read
+fetch-logs	Set up job	2026-03-04T18:46:37.8964854Z Metadata: read
+fetch-logs	Set up job	2026-03-04T18:46:37.8965735Z Packages: read
+fetch-logs	Set up job	2026-03-04T18:46:37.8966464Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T18:46:37.8968645Z Secret source: Actions
+fetch-logs	Set up job	2026-03-04T18:46:37.8969495Z Prepare workflow directory
+fetch-logs	Set up job	2026-03-04T18:46:37.9417201Z Prepare all required actions
+fetch-logs	Set up job	2026-03-04T18:46:37.9474178Z Getting action download info
+fetch-logs	Set up job	2026-03-04T18:46:38.2271237Z Download action repository 'appleboy/ssh-action@v1.0.3' (SHA:029f5b4aeeeb58fdfe1410a5d17f967dacf36262)
+fetch-logs	Set up job	2026-03-04T18:46:38.7355646Z Complete job name: fetch-logs
+fetch-logs	Build appleboy/ssh-action@v1.0.3	﻿2026-03-04T18:46:38.7953567Z ##[group]Build container for action use: '/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile'.
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:38.8009885Z ##[command]/usr/bin/docker build -t 88dcbc:db9704aa0ab24f77baea7a8882509fd7 -f "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile" "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3"
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:39.3459357Z #0 building with "default" instance using docker driver
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:39.3461535Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:39.3462140Z #1 [internal] load build definition from Dockerfile
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:39.3463622Z #1 transferring dockerfile: 149B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:39.3464701Z #1 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:39.3465152Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:39.3465973Z #2 [internal] load metadata for ghcr.io/appleboy/drone-ssh:1.7.3
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:39.8851827Z #2 DONE 0.7s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0024469Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0025851Z #3 [internal] load .dockerignore
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0027612Z #3 transferring context: 2B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0029079Z #3 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0029841Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0030423Z #4 [internal] load build context
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0031897Z #4 transferring context: 108B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0033445Z #4 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0034211Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0036203Z #5 [1/2] FROM ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0039994Z #5 resolve ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0043809Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0047573Z #5 sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 2.38kB / 2.38kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0051597Z #5 sha256:1a52f94820e830bc9734623deb03bbafa6a248fba19cdc2e5605c70d90d91441 1.24kB / 1.24kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0055221Z #5 sha256:c4781b8d012b16b6c7468dc9104fad0a63f2a8815b2af8b7176bb544253ea8c7 3.86kB / 3.86kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0059688Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 3.38MB / 3.38MB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0064225Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 284.83kB / 284.83kB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0069648Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 1.20kB / 1.20kB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0074206Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 0B / 125B 0.1s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.0078985Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0B / 2.44MB 0.1s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.1263222Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.1264501Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 125B / 125B 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.1265785Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 2.44MB / 2.44MB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:40.1266707Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:41.4267755Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:41.6647478Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:41.6649075Z #5 extracting sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:41.6650593Z #5 extracting sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:41.6652534Z #5 DONE 1.6s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:41.6652952Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:41.6653304Z #6 [2/2] COPY entrypoint.sh /bin/entrypoint.sh
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:41.6654188Z #6 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:41.6654566Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:41.6654841Z #7 exporting to image
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:41.6655738Z #7 exporting layers
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:42.0041811Z #7 exporting layers 0.5s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:42.0220061Z #7 writing image sha256:cab13b5b491c1c733148257a33c5c914d7ae646dff5116115d9079de57e2d784 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:42.0222043Z #7 naming to docker.io/library/88dcbc:db9704aa0ab24f77baea7a8882509fd7 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:42.0222938Z #7 DONE 0.5s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:46:42.0292028Z ##[endgroup]
+fetch-logs	Fetch Backend Logs	﻿2026-03-04T18:46:42.0578920Z ##[group]Run appleboy/ssh-action@v1.0.3
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:42.0579609Z with:
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:42.0580054Z   host: ***
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:42.0580281Z   username: ***
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:42.0582213Z   key: ***
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:42.0582478Z   script: docker logs upgrade-crm-app-1 --tail 500
+fetch-logs	Fetch Backend Logs	
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:42.0582813Z   port: 22
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:42.0583015Z   timeout: 30s
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:42.0583242Z   command_timeout: 10m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:42.0583477Z   proxy_port: 22
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:42.0583694Z   proxy_timeout: 30s
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:42.0584146Z ##[endgroup]
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:42.0713476Z ##[command]/usr/bin/docker run --name dcbcdb9704aa0ab24f77baea7a8882509fd7_f112d0 --label 88dcbc --workdir /github/workspace --rm -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" 88dcbc:db9704aa0ab24f77baea7a8882509fd7
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:42.2529176Z ======CMD======
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:42.2529606Z docker logs upgrade-crm-app-1 --tail 500
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:42.2529917Z 
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6053991Z ======END======
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6206914Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:38 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6208365Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +258ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6209754Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6211831Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6214360Z out: [33m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [33m   WARN[39m [38;5;3m[NotificationsService] [39m[33mSMTP credentials not fully provided. Falling back to test Ethereal mode (or ignoring). Please set SMTP_USER and SMTP_PASSWORD.[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6218516Z out: [33m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [33m   WARN[39m [38;5;3m[MailService] [39m[33mSMTP configuration is missing. Emails will not be sent.[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6220890Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6222353Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6224063Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6225899Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6227396Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6229132Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUploadsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6230874Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNotificationsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6232583Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMailModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6234108Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSponsorsModule dependencies initialized[39m[38;5;3m +8ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6237001Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEventsModule dependencies initialized[39m[38;5;3m +3ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6238917Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHallsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6240045Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTracksModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6241151Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSpeakersModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6242250Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mExportsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6243360Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +3ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6244480Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6245913Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6247052Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEventsController {/api/events}:[39m[38;5;3m +391ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6248137Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events, POST} route[39m[38;5;3m +9ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6249273Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/full-structure, GET} route[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6250616Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6251656Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6252784Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/session-speakers, GET} route[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6254054Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/session-speakers/sort, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6255488Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/announcements, GET} route[39m[38;5;3m +3ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6256721Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/announcements, PATCH} route[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6258041Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/memo-template, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6260257Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/memo-template, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6262519Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/session-speakers/:id, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6264700Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/public/speaker-memo/:hash, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6267204Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHallsController {/api/halls}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6269040Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/halls, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6270886Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/halls, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6272707Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/halls/:id, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6274508Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/halls/:id, PATCH} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6276613Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/halls/:id, DELETE} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6278506Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTracksController {/api/tracks}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6280402Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tracks, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6282291Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tracks, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6284183Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tracks/:id, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6286357Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tracks/:id, PATCH} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6288545Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tracks/:id, DELETE} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6290636Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSessionsController {/api/sessions}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6292743Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6294386Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6296702Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:id, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6298167Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:id, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6299297Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:id, DELETE} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6300865Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSpeakersController {/api/speakers}:[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6302524Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6303972Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6305792Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers/:id, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6307194Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers/:id, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6308660Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers/:id, DELETE} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6310075Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/api/auth}:[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6311129Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6313150Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6314932Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/logout, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6317468Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/forgot-password, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6319266Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/reset-password, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6320386Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/api/users}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6321416Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6322630Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6323678Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users/:id, PUT} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6324930Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6326778Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users/change-password, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6328836Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users/managers, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6330895Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users/profile, PUT} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6332989Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUploadsController {/api/uploads}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6335020Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/uploads/speaker-photo, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6337300Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/uploads/presentation, POST} route[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6339907Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/uploads/photos/:filename, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6343391Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/uploads/presentations/:filename, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6344675Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mExportsController {/api/exports}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6346111Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/exports/schedule/:eventId, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6347287Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/exports/import/:eventId, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6348394Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSponsorsController {/api/sponsors}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6349925Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/event/:eventId, GET} route[39m[38;5;3m +3ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6351350Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/all, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6352785Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6354082Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/:id, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6355546Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/:id, DELETE} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6356902Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/public/approval/:hash, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6358745Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:39 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/public/approval/:hash, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6360045Z out: [32m[Nest] 1  - [39m03/04/2026, 6:46:40 PM [32m    LOG[39m [38;5;3m[PrismaService] [39m[32mRunning Prisma migrations...[39m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6360730Z ==============================================
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6361304Z ✅ Successfully executed commands to all host.
+fetch-logs	Fetch Backend Logs	2026-03-04T18:46:44.6361710Z ==============================================
+fetch-logs	Complete job	﻿2026-03-04T18:46:44.6966434Z Cleaning up orphan processes

@@ -1,0 +1,130 @@
+fix-db	Set up job	﻿2026-03-04T18:45:11.2271937Z Current runner version: '2.331.0'
+fix-db	Set up job	2026-03-04T18:45:11.2299250Z ##[group]Runner Image Provisioner
+fix-db	Set up job	2026-03-04T18:45:11.2300274Z Hosted Compute Agent
+fix-db	Set up job	2026-03-04T18:45:11.2301130Z Version: 20260213.493
+fix-db	Set up job	2026-03-04T18:45:11.2302099Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+fix-db	Set up job	2026-03-04T18:45:11.2303066Z Build Date: 2026-02-13T00:28:41Z
+fix-db	Set up job	2026-03-04T18:45:11.2303911Z Worker ID: {711863d6-e4b5-438c-8190-ddfdea59d5dc}
+fix-db	Set up job	2026-03-04T18:45:11.2304731Z Azure Region: westus
+fix-db	Set up job	2026-03-04T18:45:11.2305455Z ##[endgroup]
+fix-db	Set up job	2026-03-04T18:45:11.2307094Z ##[group]Operating System
+fix-db	Set up job	2026-03-04T18:45:11.2307897Z Ubuntu
+fix-db	Set up job	2026-03-04T18:45:11.2308520Z 24.04.3
+fix-db	Set up job	2026-03-04T18:45:11.2309107Z LTS
+fix-db	Set up job	2026-03-04T18:45:11.2309801Z ##[endgroup]
+fix-db	Set up job	2026-03-04T18:45:11.2310469Z ##[group]Runner Image
+fix-db	Set up job	2026-03-04T18:45:11.2311203Z Image: ubuntu-24.04
+fix-db	Set up job	2026-03-04T18:45:11.2312132Z Version: 20260302.42.1
+fix-db	Set up job	2026-03-04T18:45:11.2313332Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260302.42/images/ubuntu/Ubuntu2404-Readme.md
+fix-db	Set up job	2026-03-04T18:45:11.2315212Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260302.42
+fix-db	Set up job	2026-03-04T18:45:11.2316387Z ##[endgroup]
+fix-db	Set up job	2026-03-04T18:45:11.2317699Z ##[group]GITHUB_TOKEN Permissions
+fix-db	Set up job	2026-03-04T18:45:11.2319807Z Contents: read
+fix-db	Set up job	2026-03-04T18:45:11.2320604Z Metadata: read
+fix-db	Set up job	2026-03-04T18:45:11.2321565Z Packages: read
+fix-db	Set up job	2026-03-04T18:45:11.2322283Z ##[endgroup]
+fix-db	Set up job	2026-03-04T18:45:11.2324675Z Secret source: Actions
+fix-db	Set up job	2026-03-04T18:45:11.2325699Z Prepare workflow directory
+fix-db	Set up job	2026-03-04T18:45:11.2649360Z Prepare all required actions
+fix-db	Set up job	2026-03-04T18:45:11.2686670Z Getting action download info
+fix-db	Set up job	2026-03-04T18:45:11.7281192Z Download action repository 'appleboy/ssh-action@v1.0.3' (SHA:029f5b4aeeeb58fdfe1410a5d17f967dacf36262)
+fix-db	Set up job	2026-03-04T18:45:12.8123732Z Complete job name: fix-db
+fix-db	Build appleboy/ssh-action@v1.0.3	﻿2026-03-04T18:45:12.8739862Z ##[group]Build container for action use: '/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile'.
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:12.8797031Z ##[command]/usr/bin/docker build -t 868dcb:842e223bed154556b418149fd0e8193c -f "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile" "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3"
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:13.7242567Z #0 building with "default" instance using docker driver
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:13.7243344Z 
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:13.7243750Z #1 [internal] load build definition from Dockerfile
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:13.7244623Z #1 transferring dockerfile: 149B done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:13.7245353Z #1 DONE 0.0s
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:13.7245642Z 
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:13.7246107Z #2 [internal] load metadata for ghcr.io/appleboy/drone-ssh:1.7.3
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.5990755Z #2 DONE 1.0s
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.7164468Z 
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.7165121Z #3 [internal] load .dockerignore
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.7166144Z #3 transferring context: 2B done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.7166881Z #3 DONE 0.0s
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.7167336Z 
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.7167568Z #4 [internal] load build context
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.7168138Z #4 transferring context: 108B done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.7168696Z #4 DONE 0.0s
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.7168997Z 
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.7169729Z #5 [1/2] FROM ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.7171274Z #5 resolve ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.7172886Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.8170266Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0.1s done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.8172048Z #5 sha256:1a52f94820e830bc9734623deb03bbafa6a248fba19cdc2e5605c70d90d91441 1.24kB / 1.24kB done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.8173412Z #5 sha256:c4781b8d012b16b6c7468dc9104fad0a63f2a8815b2af8b7176bb544253ea8c7 3.86kB / 3.86kB done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.8174704Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 3.38MB / 3.38MB 0.1s done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.8176203Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 284.83kB / 284.83kB 0.2s done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.8178094Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 0B / 1.20kB 0.2s
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.8179390Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 0B / 125B 0.2s
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.8180529Z #5 sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 2.38kB / 2.38kB done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:14.8182037Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0B / 2.44MB 0.2s
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:15.0178648Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 1.20kB / 1.20kB 0.4s
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:15.0180277Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 125B / 125B 0.3s done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:15.0181177Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 2.44MB / 2.44MB 0.3s done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:15.0182623Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0.0s done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:15.4178782Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 1.20kB / 1.20kB 0.7s done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:17.4957491Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:17.7362887Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:17.7364550Z #5 extracting sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:17.7365921Z #5 extracting sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0.0s done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:17.7366822Z #5 DONE 3.0s
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:17.7367079Z 
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:17.7367309Z #6 [2/2] COPY entrypoint.sh /bin/entrypoint.sh
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:17.7367883Z #6 DONE 0.0s
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:17.7368565Z 
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:17.7368745Z #7 exporting to image
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:17.7369197Z #7 exporting layers
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:18.0042992Z #7 exporting layers 0.4s done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:18.0247052Z #7 writing image sha256:e563390e69874f2eb5e52fd8909757ca34ba5bfb9a9b8633b28914f1adccb140 done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:18.0250332Z #7 naming to docker.io/library/868dcb:842e223bed154556b418149fd0e8193c done
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:18.0251228Z #7 DONE 0.4s
+fix-db	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:45:18.0318232Z ##[endgroup]
+fix-db	Fix DB	﻿2026-03-04T18:45:18.0606624Z ##[group]Run appleboy/ssh-action@v1.0.3
+fix-db	Fix DB	2026-03-04T18:45:18.0607265Z with:
+fix-db	Fix DB	2026-03-04T18:45:18.0607710Z   host: ***
+fix-db	Fix DB	2026-03-04T18:45:18.0607933Z   username: ***
+fix-db	Fix DB	2026-03-04T18:45:18.0609719Z   key: ***
+fix-db	Fix DB	2026-03-04T18:45:18.0610530Z   script: docker exec upgrade-crm-app-1 npx prisma migrate resolve --rolled-back 20260304174141_add_speaker_status_tracking
+fix-db	Fix DB	docker exec upgrade-crm-app-1 npx prisma migrate deploy
+fix-db	Fix DB	docker restart upgrade-crm-app-1
+fix-db	Fix DB	
+fix-db	Fix DB	2026-03-04T18:45:18.0611586Z   port: 22
+fix-db	Fix DB	2026-03-04T18:45:18.0611807Z   timeout: 30s
+fix-db	Fix DB	2026-03-04T18:45:18.0612037Z   command_timeout: 10m
+fix-db	Fix DB	2026-03-04T18:45:18.0612267Z   proxy_port: 22
+fix-db	Fix DB	2026-03-04T18:45:18.0612473Z   proxy_timeout: 30s
+fix-db	Fix DB	2026-03-04T18:45:18.0613065Z ##[endgroup]
+fix-db	Fix DB	2026-03-04T18:45:18.0740581Z ##[command]/usr/bin/docker run --name dcb842e223bed154556b418149fd0e8193c_12d8e8 --label 868dcb --workdir /github/workspace --rm -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" 868dcb:842e223bed154556b418149fd0e8193c
+fix-db	Fix DB	2026-03-04T18:45:18.2741542Z ======CMD======
+fix-db	Fix DB	2026-03-04T18:45:18.2742389Z docker exec upgrade-crm-app-1 npx prisma migrate resolve --rolled-back 20260304174141_add_speaker_status_tracking
+fix-db	Fix DB	2026-03-04T18:45:18.2743091Z docker exec upgrade-crm-app-1 npx prisma migrate deploy
+fix-db	Fix DB	2026-03-04T18:45:18.2743463Z docker restart upgrade-crm-app-1
+fix-db	Fix DB	2026-03-04T18:45:18.2743655Z 
+fix-db	Fix DB	2026-03-04T18:45:18.2743739Z ======END======
+fix-db	Fix DB	2026-03-04T18:45:24.2799941Z err: Loaded Prisma config from prisma.config.ts.
+fix-db	Fix DB	2026-03-04T18:45:24.4189821Z err: Prisma schema loaded from prisma/schema.prisma.
+fix-db	Fix DB	2026-03-04T18:45:24.4300039Z out: Datasource "db": PostgreSQL database "upgrade_crm", schema "public" at "db:5432"
+fix-db	Fix DB	2026-03-04T18:45:24.6113129Z out: Migration 20260304174141_add_speaker_status_tracking marked as rolled back.
+fix-db	Fix DB	2026-03-04T18:45:24.6294246Z err: ┌─────────────────────────────────────────────────────────┐
+fix-db	Fix DB	2026-03-04T18:45:24.6294787Z err: │  Update available 7.4.0 -> 7.4.2                        │
+fix-db	Fix DB	2026-03-04T18:45:24.6295234Z err: │  Run the following to update                            │
+fix-db	Fix DB	2026-03-04T18:45:24.6296037Z err: │    npm i --save-dev prisma@latest                       │
+fix-db	Fix DB	2026-03-04T18:45:24.6296474Z err: │    npm i @prisma/client@latest                          │
+fix-db	Fix DB	2026-03-04T18:45:24.6296994Z err: └─────────────────────────────────────────────────────────┘
+fix-db	Fix DB	2026-03-04T18:45:27.7806121Z err: Loaded Prisma config from prisma.config.ts.
+fix-db	Fix DB	2026-03-04T18:45:27.9813073Z err: Prisma schema loaded from prisma/schema.prisma.
+fix-db	Fix DB	2026-03-04T18:45:27.9923508Z out: Datasource "db": PostgreSQL database "upgrade_crm", schema "public" at "db:5432"
+fix-db	Fix DB	2026-03-04T18:45:28.1591782Z out: 8 migrations found in prisma/migrations
+fix-db	Fix DB	2026-03-04T18:45:28.2701005Z out: Applying migration `20260304174141_add_speaker_status_tracking`
+fix-db	Fix DB	2026-03-04T18:45:28.4555771Z out: The following migration(s) have been applied:
+fix-db	Fix DB	2026-03-04T18:45:28.4556407Z out: migrations/
+fix-db	Fix DB	2026-03-04T18:45:28.4557004Z out:   └─ 20260304174141_add_speaker_status_tracking/
+fix-db	Fix DB	2026-03-04T18:45:28.4557430Z out:     └─ migration.sql
+fix-db	Fix DB	2026-03-04T18:45:28.4557841Z out: All migrations have been successfully applied.
+fix-db	Fix DB	2026-03-04T18:45:39.6026471Z out: upgrade-crm-app-1
+fix-db	Fix DB	2026-03-04T18:45:39.6062339Z ==============================================
+fix-db	Fix DB	2026-03-04T18:45:39.6063389Z ✅ Successfully executed commands to all host.
+fix-db	Fix DB	2026-03-04T18:45:39.6064112Z ==============================================
+fix-db	Complete job	﻿2026-03-04T18:45:39.6895415Z Cleaning up orphan processes

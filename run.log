@@ -1,0 +1,1582 @@
+build-and-deploy	Set up job	﻿2026-03-04T17:46:55.0429465Z Current runner version: '2.331.0'
+build-and-deploy	Set up job	2026-03-04T17:46:55.0468389Z ##[group]Runner Image Provisioner
+build-and-deploy	Set up job	2026-03-04T17:46:55.0470145Z Hosted Compute Agent
+build-and-deploy	Set up job	2026-03-04T17:46:55.0471324Z Version: 20260213.493
+build-and-deploy	Set up job	2026-03-04T17:46:55.0472693Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+build-and-deploy	Set up job	2026-03-04T17:46:55.0474168Z Build Date: 2026-02-13T00:28:41Z
+build-and-deploy	Set up job	2026-03-04T17:46:55.0475262Z Worker ID: {45362ebf-392c-4fbb-a194-0fbb7005a855}
+build-and-deploy	Set up job	2026-03-04T17:46:55.0476168Z Azure Region: eastus2
+build-and-deploy	Set up job	2026-03-04T17:46:55.0476897Z ##[endgroup]
+build-and-deploy	Set up job	2026-03-04T17:46:55.0478752Z ##[group]Operating System
+build-and-deploy	Set up job	2026-03-04T17:46:55.0479619Z Ubuntu
+build-and-deploy	Set up job	2026-03-04T17:46:55.0480231Z 24.04.3
+build-and-deploy	Set up job	2026-03-04T17:46:55.0480849Z LTS
+build-and-deploy	Set up job	2026-03-04T17:46:55.0481912Z ##[endgroup]
+build-and-deploy	Set up job	2026-03-04T17:46:55.0482639Z ##[group]Runner Image
+build-and-deploy	Set up job	2026-03-04T17:46:55.0483420Z Image: ubuntu-24.04
+build-and-deploy	Set up job	2026-03-04T17:46:55.0484085Z Version: 20260224.36.1
+build-and-deploy	Set up job	2026-03-04T17:46:55.0485364Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260224.36/images/ubuntu/Ubuntu2404-Readme.md
+build-and-deploy	Set up job	2026-03-04T17:46:55.0487211Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260224.36
+build-and-deploy	Set up job	2026-03-04T17:46:55.0488609Z ##[endgroup]
+build-and-deploy	Set up job	2026-03-04T17:46:55.0490023Z ##[group]GITHUB_TOKEN Permissions
+build-and-deploy	Set up job	2026-03-04T17:46:55.0492323Z Contents: read
+build-and-deploy	Set up job	2026-03-04T17:46:55.0493031Z Metadata: read
+build-and-deploy	Set up job	2026-03-04T17:46:55.0493821Z Packages: read
+build-and-deploy	Set up job	2026-03-04T17:46:55.0494526Z ##[endgroup]
+build-and-deploy	Set up job	2026-03-04T17:46:55.0496807Z Secret source: Actions
+build-and-deploy	Set up job	2026-03-04T17:46:55.0498061Z Prepare workflow directory
+build-and-deploy	Set up job	2026-03-04T17:46:55.0962974Z Prepare all required actions
+build-and-deploy	Set up job	2026-03-04T17:46:55.1017995Z Getting action download info
+build-and-deploy	Set up job	2026-03-04T17:46:55.5144443Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+build-and-deploy	Set up job	2026-03-04T17:46:55.6646085Z Download action repository 'docker/login-action@v3' (SHA:c94ce9fb468520275223c153574b00df6fe4bcc9)
+build-and-deploy	Set up job	2026-03-04T17:46:56.0416316Z Download action repository 'docker/build-push-action@v5' (SHA:ca052bb54ab0790a636c9b5f226502c73d547a25)
+build-and-deploy	Set up job	2026-03-04T17:46:56.3799339Z Download action repository 'appleboy/ssh-action@v1.0.3' (SHA:029f5b4aeeeb58fdfe1410a5d17f967dacf36262)
+build-and-deploy	Set up job	2026-03-04T17:46:56.7466366Z Complete job name: build-and-deploy
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	﻿2026-03-04T17:46:56.8007906Z ##[group]Build container for action use: '/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile'.
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:56.8068784Z ##[command]/usr/bin/docker build -t df1450:744897acef764e0bab62dd9d2d9bbcad -f "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile" "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3"
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.4298779Z #0 building with "default" instance using docker driver
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.4300197Z 
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.4300805Z #1 [internal] load build definition from Dockerfile
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.4302307Z #1 transferring dockerfile: 149B done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.4303643Z #1 DONE 0.0s
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.4304220Z 
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.4304990Z #2 [internal] load metadata for ghcr.io/appleboy/drone-ssh:1.7.3
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.8103670Z #2 DONE 0.5s
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.9131778Z 
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.9133277Z #3 [internal] load .dockerignore
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.9135113Z #3 transferring context: 2B done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.9137084Z #3 DONE 0.0s
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.9138710Z 
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.9139374Z #4 [internal] load build context
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.9141180Z #4 transferring context: 108B done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.9142778Z #4 DONE 0.0s
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.9143639Z 
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.9145871Z #5 [1/2] FROM ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.9150558Z #5 resolve ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:57.9154242Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.0332776Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0.1s done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.0337232Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 0B / 125B 0.1s
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.0342054Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0B / 2.44MB 0.1s
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.0344718Z #5 sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 2.38kB / 2.38kB done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.0348653Z #5 sha256:1a52f94820e830bc9734623deb03bbafa6a248fba19cdc2e5605c70d90d91441 1.24kB / 1.24kB done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.0351339Z #5 sha256:c4781b8d012b16b6c7468dc9104fad0a63f2a8815b2af8b7176bb544253ea8c7 3.86kB / 3.86kB done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.0355448Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 3.38MB / 3.38MB 0.1s done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.0361131Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0B / 284.83kB 0.1s
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.0365318Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 1.20kB / 1.20kB 0.1s done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.0369691Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.1382868Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 125B / 125B 0.1s done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.1386760Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 2.44MB / 2.44MB 0.2s done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.1390954Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 284.83kB / 284.83kB 0.1s done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.1394094Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0.0s done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.1396882Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.2383841Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.2387184Z #5 extracting sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.2390801Z #5 extracting sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0.0s done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.2393447Z #5 DONE 0.4s
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.2394096Z 
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.2394627Z #6 [2/2] COPY entrypoint.sh /bin/entrypoint.sh
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.2396566Z #6 DONE 0.0s
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.2398271Z 
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.2399068Z #7 exporting to image
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:58.2401315Z #7 exporting layers
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:59.0056050Z #7 exporting layers 0.8s done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:59.0335942Z #7 writing image sha256:17c1a9574b165489d12cda9ab8a57bcda25a921e2910aa622ef27646c1247da5 done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:59.0337939Z #7 naming to docker.io/library/df1450:744897acef764e0bab62dd9d2d9bbcad done
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:59.0339535Z #7 DONE 0.8s
+build-and-deploy	Build appleboy/ssh-action@v1.0.3	2026-03-04T17:46:59.0420389Z ##[endgroup]
+build-and-deploy	Checkout code	﻿2026-03-04T17:46:59.0748746Z ##[group]Run actions/checkout@v4
+build-and-deploy	Checkout code	2026-03-04T17:46:59.0749406Z with:
+build-and-deploy	Checkout code	2026-03-04T17:46:59.0749661Z   repository: stanisloveme-cloud/UPGRADE
+build-and-deploy	Checkout code	2026-03-04T17:46:59.0750166Z   token: ***
+build-and-deploy	Checkout code	2026-03-04T17:46:59.0750393Z   ssh-strict: true
+build-and-deploy	Checkout code	2026-03-04T17:46:59.0750620Z   ssh-user: git
+build-and-deploy	Checkout code	2026-03-04T17:46:59.0750856Z   persist-credentials: true
+build-and-deploy	Checkout code	2026-03-04T17:46:59.0751136Z   clean: true
+build-and-deploy	Checkout code	2026-03-04T17:46:59.0751366Z   sparse-checkout-cone-mode: true
+build-and-deploy	Checkout code	2026-03-04T17:46:59.0751638Z   fetch-depth: 1
+build-and-deploy	Checkout code	2026-03-04T17:46:59.0751888Z   fetch-tags: false
+build-and-deploy	Checkout code	2026-03-04T17:46:59.0752122Z   show-progress: true
+build-and-deploy	Checkout code	2026-03-04T17:46:59.0752343Z   lfs: false
+build-and-deploy	Checkout code	2026-03-04T17:46:59.0752541Z   submodules: false
+build-and-deploy	Checkout code	2026-03-04T17:46:59.0752777Z   set-safe-directory: true
+build-and-deploy	Checkout code	2026-03-04T17:46:59.0753358Z ##[endgroup]
+build-and-deploy	Checkout code	2026-03-04T17:46:59.1861166Z Syncing repository: stanisloveme-cloud/UPGRADE
+build-and-deploy	Checkout code	2026-03-04T17:46:59.1863301Z ##[group]Getting Git version info
+build-and-deploy	Checkout code	2026-03-04T17:46:59.1864049Z Working directory is '/home/runner/work/UPGRADE/UPGRADE'
+build-and-deploy	Checkout code	2026-03-04T17:46:59.1865241Z [command]/usr/bin/git version
+build-and-deploy	Checkout code	2026-03-04T17:46:59.1877815Z git version 2.53.0
+build-and-deploy	Checkout code	2026-03-04T17:46:59.1905207Z ##[endgroup]
+build-and-deploy	Checkout code	2026-03-04T17:46:59.1919835Z Temporarily overriding HOME='/home/runner/work/_temp/60e70c8e-ffe1-40ce-9e5f-f4d3d3adc9eb' before making global git config changes
+build-and-deploy	Checkout code	2026-03-04T17:46:59.1921378Z Adding repository directory to the temporary git global config as a safe directory
+build-and-deploy	Checkout code	2026-03-04T17:46:59.1933702Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/UPGRADE/UPGRADE
+build-and-deploy	Checkout code	2026-03-04T17:46:59.1970974Z Deleting the contents of '/home/runner/work/UPGRADE/UPGRADE'
+build-and-deploy	Checkout code	2026-03-04T17:46:59.1974909Z ##[group]Initializing the repository
+build-and-deploy	Checkout code	2026-03-04T17:46:59.1979973Z [command]/usr/bin/git init /home/runner/work/UPGRADE/UPGRADE
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2086755Z hint: Using 'master' as the name for the initial branch. This default branch name
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2088388Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2089453Z hint: to use in all of your new repositories, which will suppress this warning,
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2090245Z hint: call:
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2090610Z hint:
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2091087Z hint: 	git config --global init.defaultBranch <name>
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2091646Z hint:
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2092187Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2093127Z hint: 'development'. The just-created branch can be renamed via this command:
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2093655Z hint:
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2093894Z hint: 	git branch -m <name>
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2094164Z hint:
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2094518Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2095124Z Initialized empty Git repository in /home/runner/work/UPGRADE/UPGRADE/.git/
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2103979Z [command]/usr/bin/git remote add origin https://github.com/stanisloveme-cloud/UPGRADE
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2140969Z ##[endgroup]
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2141730Z ##[group]Disabling automatic garbage collection
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2145441Z [command]/usr/bin/git config --local gc.auto 0
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2173935Z ##[endgroup]
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2174587Z ##[group]Setting up auth
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2181328Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2211430Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2599713Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2629862Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2862119Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build-and-deploy	Checkout code	2026-03-04T17:46:59.2893065Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build-and-deploy	Checkout code	2026-03-04T17:46:59.3148378Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build-and-deploy	Checkout code	2026-03-04T17:46:59.3189712Z ##[endgroup]
+build-and-deploy	Checkout code	2026-03-04T17:46:59.3190241Z ##[group]Fetching the repository
+build-and-deploy	Checkout code	2026-03-04T17:46:59.3198514Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +42d0bd1d08ae100fbd7e2cc7d1103454c2aad8f6:refs/remotes/origin/main
+build-and-deploy	Checkout code	2026-03-04T17:46:59.9365016Z From https://github.com/stanisloveme-cloud/UPGRADE
+build-and-deploy	Checkout code	2026-03-04T17:46:59.9365687Z  * [new ref]         42d0bd1d08ae100fbd7e2cc7d1103454c2aad8f6 -> origin/main
+build-and-deploy	Checkout code	2026-03-04T17:46:59.9402192Z ##[endgroup]
+build-and-deploy	Checkout code	2026-03-04T17:46:59.9402946Z ##[group]Determining the checkout info
+build-and-deploy	Checkout code	2026-03-04T17:46:59.9405315Z ##[endgroup]
+build-and-deploy	Checkout code	2026-03-04T17:46:59.9411134Z [command]/usr/bin/git sparse-checkout disable
+build-and-deploy	Checkout code	2026-03-04T17:46:59.9454462Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build-and-deploy	Checkout code	2026-03-04T17:46:59.9482207Z ##[group]Checking out the ref
+build-and-deploy	Checkout code	2026-03-04T17:46:59.9486795Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+build-and-deploy	Checkout code	2026-03-04T17:47:00.0784274Z Switched to a new branch 'main'
+build-and-deploy	Checkout code	2026-03-04T17:47:00.0785230Z branch 'main' set up to track 'origin/main'.
+build-and-deploy	Checkout code	2026-03-04T17:47:00.0802094Z ##[endgroup]
+build-and-deploy	Checkout code	2026-03-04T17:47:00.0848698Z [command]/usr/bin/git log -1 --format=%H
+build-and-deploy	Checkout code	2026-03-04T17:47:00.0875214Z 42d0bd1d08ae100fbd7e2cc7d1103454c2aad8f6
+build-and-deploy	Log in to Docker Hub	﻿2026-03-04T17:47:00.1092562Z ##[group]Run docker/login-action@v3
+build-and-deploy	Log in to Docker Hub	2026-03-04T17:47:00.1092879Z with:
+build-and-deploy	Log in to Docker Hub	2026-03-04T17:47:00.1093191Z   username: ***
+build-and-deploy	Log in to Docker Hub	2026-03-04T17:47:00.1093520Z   password: ***
+build-and-deploy	Log in to Docker Hub	2026-03-04T17:47:00.1093737Z   logout: true
+build-and-deploy	Log in to Docker Hub	2026-03-04T17:47:00.1093949Z ##[endgroup]
+build-and-deploy	Log in to Docker Hub	2026-03-04T17:47:00.4256020Z Logging into docker.io...
+build-and-deploy	Log in to Docker Hub	2026-03-04T17:47:00.5651259Z Login Succeeded!
+build-and-deploy	Build and Push Backend	﻿2026-03-04T17:47:00.5823240Z ##[group]Run docker/build-push-action@v5
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.5823567Z with:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.5823767Z   context: .
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.5823984Z   file: Dockerfile
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.5824206Z   push: true
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.5824481Z   tags: ***/upgrade-backend:latest
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.5824766Z   load: false
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.5824976Z   no-cache: false
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.5825208Z   pull: false
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.5825525Z   github-token: ***
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.5825752Z ##[endgroup]
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8135739Z ##[group]GitHub Actions runtime token ACs
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8147263Z refs/heads/main: read/write
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8148590Z ##[endgroup]
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8149236Z ##[group]Docker info
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8192039Z [command]/usr/bin/docker version
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8387168Z Client: Docker Engine - Community
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8390477Z  Version:           28.0.4
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8390914Z  API version:       1.48
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8391325Z  Go version:        go1.23.7
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8391834Z  Git commit:        b8034c0
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8392267Z  Built:             Tue Mar 25 15:07:16 2025
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8392780Z  OS/Arch:           linux/amd64
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8393205Z  Context:           default
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8393465Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8393641Z Server: Docker Engine - Community
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8394065Z  Engine:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8394400Z   Version:          28.0.4
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8394849Z   API version:      1.48 (minimum version 1.24)
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8395356Z   Go version:       go1.23.7
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8395757Z   Git commit:       6430e49
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8396242Z   Built:            Tue Mar 25 15:07:16 2025
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8396737Z   OS/Arch:          linux/amd64
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8397171Z   Experimental:     false
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8397559Z  containerd:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8397895Z   Version:          v2.2.1
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8398601Z   GitCommit:        dea7da592f5d1d2b7755e3a161be07f43fad8f75
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8399147Z  runc:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8399492Z   Version:          1.3.4
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8399883Z   GitCommit:        v1.3.4-0-gd6d73eb8
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8400357Z  docker-init:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8400643Z   Version:          0.19.0
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8400890Z   GitCommit:        de40ad0
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:00.8441654Z [command]/usr/bin/docker info
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0358217Z Client: Docker Engine - Community
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0359636Z  Version:    28.0.4
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0360028Z  Context:    default
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0360401Z  Debug Mode: false
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0360754Z  Plugins:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0361117Z   buildx: Docker Buildx (Docker Inc.)
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0361574Z     Version:  v0.31.1
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0362078Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0362670Z   compose: Docker Compose (Docker Inc.)
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0363142Z     Version:  v2.38.2
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0363643Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0364077Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0364219Z Server:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0364544Z  Containers: 0
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0364885Z   Running: 0
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0365216Z   Paused: 0
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0365551Z   Stopped: 0
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0365879Z  Images: 2
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0366217Z  Server Version: 28.0.4
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0366619Z  Storage Driver: overlay2
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0367418Z   Backing Filesystem: extfs
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0367833Z   Supports d_type: true
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0368609Z   Using metacopy: false
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0369021Z   Native Overlay Diff: false
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0369280Z   userxattr: false
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0369502Z  Logging Driver: json-file
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0369737Z  Cgroup Driver: systemd
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0369963Z  Cgroup Version: 2
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0370188Z  Plugins:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0370384Z   Volume: local
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0370638Z   Network: bridge host ipvlan macvlan null overlay
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0371099Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0371958Z  Swarm: inactive
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0372193Z  Runtimes: io.containerd.runc.v2 runc
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0372471Z  Default Runtime: runc
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0372710Z  Init Binary: docker-init
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0373021Z  containerd version: dea7da592f5d1d2b7755e3a161be07f43fad8f75
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0373386Z  runc version: v1.3.4-0-gd6d73eb8
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0373642Z  init version: de40ad0
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0373862Z  Security Options:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0374070Z   apparmor
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0374252Z   seccomp
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0374443Z    Profile: builtin
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0374653Z   cgroupns
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0374846Z  Kernel Version: 6.14.0-1017-azure
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0375112Z  Operating System: Ubuntu 24.04.3 LTS
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0375387Z  OSType: linux
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0375755Z  Architecture: x86_64
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0376135Z  CPUs: 4
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0376445Z  Total Memory: 15.62GiB
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0376692Z  Name: runnervmnay03
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0376929Z  ID: 2798490f-3934-4089-859a-ba9f3856e68c
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0377213Z  Docker Root Dir: /var/lib/docker
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0377468Z  Debug Mode: false
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0377799Z  Username: ***
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0378018Z  Experimental: false
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0378553Z  Insecure Registries:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0382582Z   ::1/128
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0382819Z   127.0.0.0/8
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0383055Z  Live Restore Enabled: false
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0383229Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0383632Z ##[endgroup]
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0384087Z ##[group]Proxy configuration
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0384354Z No proxy configuration found
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.0384767Z ##[endgroup]
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.1049953Z ##[group]Buildx version
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.1090539Z [command]/usr/bin/docker buildx version
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.2571474Z github.com/docker/buildx v0.31.1 a2675950d46b2cb171b23c2015ca44fb88607531
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.2607478Z ##[endgroup]
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.2607946Z ##[group]Builder info
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3475295Z {
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3475724Z   "nodes": [
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3476069Z     {
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3476279Z       "name": "default",
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3476542Z       "endpoint": "default",
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3476797Z       "status": "running",
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3477029Z       "buildkit": "v0.20.2",
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3477381Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/386",
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3477797Z       "features": {
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3478322Z         "Automatically load images to the Docker Engine image store": true,
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3478725Z         "Cache export": true,
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3478981Z         "Direct push": true,
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3479232Z         "Docker exporter": true,
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3479504Z         "Multi-platform build": true,
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3479777Z         "OCI exporter": true
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3480008Z       },
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3480202Z       "labels": {
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3480542Z         "org.mobyproject.buildkit.worker.moby.host-gateway-ip": "172.17.0.1"
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3480952Z       }
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3481128Z     }
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3495371Z   ],
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3495605Z   "name": "default",
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3495867Z   "driver": "docker",
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3496135Z   "lastActivity": "2026-03-04T17:46:57.000Z"
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3496748Z }
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.3497240Z ##[endgroup]
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.4949883Z [command]/usr/bin/docker buildx build --file Dockerfile --iidfile /home/runner/work/_temp/docker-actions-toolkit-NbNKTH/build-iidfile-cc7ea451d4.txt --tag ***/upgrade-backend:latest --metadata-file /home/runner/work/_temp/docker-actions-toolkit-NbNKTH/build-metadata-065f1a3845.json --push .
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.7677903Z #0 building with "default" instance using docker driver
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.7678674Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.7678921Z #1 [internal] load build definition from Dockerfile
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.7679502Z #1 transferring dockerfile: 796B done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.7680257Z #1 DONE 0.0s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.7680390Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.7680569Z #2 [auth] library/node:pull token for registry-1.docker.io
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.7680942Z #2 DONE 0.0s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.7681072Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:01.7681261Z #3 [internal] load metadata for docker.io/library/node:20-slim
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.1466201Z #3 DONE 0.6s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2699450Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2700038Z #4 [internal] load .dockerignore
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2700587Z #4 transferring context: 124B done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2701052Z #4 DONE 0.0s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2701256Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2701430Z #5 [internal] load build context
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2701916Z #5 transferring context: 693.81kB 0.0s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2702397Z #5 DONE 0.0s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2702594Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2703261Z #6 [builder 1/9] FROM docker.io/library/node:20-slim@sha256:d8a35d586fad3af7abb6fdb9ba972388395405f4d462da9e4a4ddcde67b5e0fb
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2704659Z #6 resolve docker.io/library/node:20-slim@sha256:d8a35d586fad3af7abb6fdb9ba972388395405f4d462da9e4a4ddcde67b5e0fb done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2705450Z #6 sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 0B / 28.24MB 0.1s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2706087Z #6 sha256:05988a666f72e9607315b845938dece280a7f80deebc985944c7330233b75e93 0B / 3.31kB 0.1s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2706689Z #6 sha256:a0655704972fcc45126ac8450b9a9f55556904429b00db4b3f7737fa2937f7a7 0B / 40.98MB 0.1s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2707327Z #6 sha256:d8a35d586fad3af7abb6fdb9ba972388395405f4d462da9e4a4ddcde67b5e0fb 6.49kB / 6.49kB done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2707979Z #6 sha256:7d49fead4dbde89ba791d165a904f76eec446a4c1143862f14325e6348a3486d 1.93kB / 1.93kB done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.2708894Z #6 sha256:b810c2b3e7cced317a4a3b7a02aaf60f86e92ec9d49a3db7fbe7d280944e0c70 6.88kB / 6.88kB done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.4699754Z #6 sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 9.44MB / 28.24MB 0.3s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.4700593Z #6 sha256:05988a666f72e9607315b845938dece280a7f80deebc985944c7330233b75e93 3.31kB / 3.31kB 0.1s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.4701348Z #6 sha256:a0655704972fcc45126ac8450b9a9f55556904429b00db4b3f7737fa2937f7a7 3.15MB / 40.98MB 0.3s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.4702063Z #6 sha256:2664cf4489e51990ef76f94201408a31e43d6a369473cecdf7f8b8a40aeb1c29 1.71MB / 1.71MB 0.3s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.4702760Z #6 sha256:c2b9c0e674a1fd2c4d4825d85568fd9a852f660171cafc4466a8de90e329413b 0B / 448B 0.3s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.6702810Z #6 sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 19.92MB / 28.24MB 0.5s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.6703722Z #6 sha256:a0655704972fcc45126ac8450b9a9f55556904429b00db4b3f7737fa2937f7a7 8.39MB / 40.98MB 0.5s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.6704537Z #6 sha256:c2b9c0e674a1fd2c4d4825d85568fd9a852f660171cafc4466a8de90e329413b 448B / 448B 0.4s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.8566501Z #6 sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 26.21MB / 28.24MB 0.6s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.8567645Z #6 extracting sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.9574191Z #6 sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 28.24MB / 28.24MB 0.7s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:02.9575523Z #6 sha256:a0655704972fcc45126ac8450b9a9f55556904429b00db4b3f7737fa2937f7a7 12.58MB / 40.98MB 0.7s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:03.0622632Z #6 sha256:a0655704972fcc45126ac8450b9a9f55556904429b00db4b3f7737fa2937f7a7 15.73MB / 40.98MB 0.8s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:03.1636139Z #6 sha256:a0655704972fcc45126ac8450b9a9f55556904429b00db4b3f7737fa2937f7a7 19.92MB / 40.98MB 0.9s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:03.2681244Z #6 sha256:a0655704972fcc45126ac8450b9a9f55556904429b00db4b3f7737fa2937f7a7 22.02MB / 40.98MB 1.0s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:03.3692090Z #6 sha256:a0655704972fcc45126ac8450b9a9f55556904429b00db4b3f7737fa2937f7a7 26.21MB / 40.98MB 1.2s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:03.4692213Z #6 sha256:a0655704972fcc45126ac8450b9a9f55556904429b00db4b3f7737fa2937f7a7 30.41MB / 40.98MB 1.3s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:03.6692660Z #6 sha256:a0655704972fcc45126ac8450b9a9f55556904429b00db4b3f7737fa2937f7a7 36.70MB / 40.98MB 1.5s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:03.7692423Z #6 sha256:a0655704972fcc45126ac8450b9a9f55556904429b00db4b3f7737fa2937f7a7 38.80MB / 40.98MB 1.6s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:03.9453603Z #6 sha256:a0655704972fcc45126ac8450b9a9f55556904429b00db4b3f7737fa2937f7a7 40.98MB / 40.98MB 1.7s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:03.9454997Z #6 extracting sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 1.1s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:04.0756436Z #6 extracting sha256:05988a666f72e9607315b845938dece280a7f80deebc985944c7330233b75e93 done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:04.0757219Z #6 extracting sha256:a0655704972fcc45126ac8450b9a9f55556904429b00db4b3f7737fa2937f7a7
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:05.2947567Z #6 extracting sha256:a0655704972fcc45126ac8450b9a9f55556904429b00db4b3f7737fa2937f7a7 1.1s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:05.2950703Z #6 extracting sha256:2664cf4489e51990ef76f94201408a31e43d6a369473cecdf7f8b8a40aeb1c29
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:05.5345267Z #6 extracting sha256:2664cf4489e51990ef76f94201408a31e43d6a369473cecdf7f8b8a40aeb1c29 0.0s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:05.5347225Z #6 extracting sha256:c2b9c0e674a1fd2c4d4825d85568fd9a852f660171cafc4466a8de90e329413b done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:05.5348263Z #6 DONE 3.2s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:05.5348477Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:05.5348826Z #7 [builder 2/9] RUN apt-get update -y && apt-get install -y openssl
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:05.5650040Z #7 0.181 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:05.7106937Z #7 0.199 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:05.7119111Z #7 0.206 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:05.7120186Z #7 0.263 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8792 kB]
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:05.7121163Z #7 0.326 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:05.8942990Z #7 0.360 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [293 kB]
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:06.4674448Z #7 1.083 Fetched 9346 kB in 1s (10.1 MB/s)
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:06.8697670Z #7 1.083 Reading package lists...
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.2891300Z #7 1.502 Reading package lists...
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.4084752Z #7 1.914 Building dependency tree...
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.4085298Z #7 2.024 Reading state information...
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.5185048Z #7 2.116 The following additional packages will be installed:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.5185818Z #7 2.117   libssl3
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.5186223Z #7 2.117 Suggested packages:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.5186668Z #7 2.117   ca-certificates
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.5187170Z #7 2.134 The following NEW packages will be installed:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.7001075Z #7 2.134   libssl3 openssl
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.7001706Z #7 2.193 0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.7002344Z #7 2.193 Need to get 3462 kB of archives.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.7003006Z #7 2.193 After this operation, 8532 kB of additional disk space will be used.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.7004006Z #7 2.193 Get:1 http://deb.debian.org/debian-security bookworm-security/main amd64 libssl3 amd64 3.0.18-1~deb12u2 [2030 kB]
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.7005205Z #7 2.228 Get:2 http://deb.debian.org/debian-security bookworm-security/main amd64 openssl amd64 3.0.18-1~deb12u2 [1433 kB]
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.7006112Z #7 2.316 debconf: delaying package configuration, since apt-utils is not installed
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8623037Z #7 2.336 Fetched 3462 kB in 0s (37.2 MB/s)
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8624057Z #7 2.351 Selecting previously unselected package libssl3:amd64.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8624465Z #7 2.351 (Reading database ... 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8624762Z (Reading database ... 5%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8625059Z (Reading database ... 10%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8625334Z (Reading database ... 15%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8625609Z (Reading database ... 20%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8625871Z (Reading database ... 25%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8626129Z (Reading database ... 30%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8626398Z (Reading database ... 35%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8626669Z (Reading database ... 40%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8626935Z (Reading database ... 45%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8627468Z (Reading database ... 50%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8627742Z (Reading database ... 55%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8628026Z (Reading database ... 60%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8628536Z (Reading database ... 65%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8628852Z (Reading database ... 70%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8629209Z (Reading database ... 75%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8629639Z (Reading database ... 80%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8630089Z (Reading database ... 85%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8630560Z (Reading database ... 90%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8631007Z (Reading database ... 95%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8631453Z (Reading database ... 100%
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8632113Z (Reading database ... 6096 files and directories currently installed.)
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8632627Z #7 2.358 Preparing to unpack .../libssl3_3.0.18-1~deb12u2_amd64.deb ...
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8633316Z #7 2.360 Unpacking libssl3:amd64 (3.0.18-1~deb12u2) ...
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.8633711Z #7 2.478 Selecting previously unselected package openssl.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.9660999Z #7 2.479 Preparing to unpack .../openssl_3.0.18-1~deb12u2_amd64.deb ...
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.9661842Z #7 2.483 Unpacking openssl (3.0.18-1~deb12u2) ...
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:07.9662365Z #7 2.582 Setting up libssl3:amd64 (3.0.18-1~deb12u2) ...
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.0665099Z #7 2.585 Setting up openssl (3.0.18-1~deb12u2) ...
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.0665922Z #7 2.591 Processing triggers for libc-bin (2.36-9+deb12u13) ...
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.0666925Z #7 DONE 2.6s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.0667140Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.0667309Z #8 [builder 3/9] WORKDIR /app
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.0667742Z #8 DONE 0.0s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.0667945Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.0668312Z #9 [builder 4/9] COPY package*.json ./
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.0668798Z #9 DONE 0.0s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.0669002Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.0669180Z #10 [builder 5/9] COPY prisma ./prisma/
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.0669642Z #10 DONE 0.0s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.0669776Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.0669899Z #11 [builder 6/9] RUN npm ci
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.2366321Z #11 ...
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.2367274Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.2367695Z #12 [stage-1 6/9] COPY prisma.config.ts ./
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.2368454Z #12 DONE 0.0s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.3858700Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:08.3874625Z #13 [stage-1 7/9] RUN npm ci --omit=dev && npx prisma generate
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:11.2516179Z #13 3.167 npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:11.7949335Z #13 3.710 npm warn deprecated lodash.isequal@4.5.0: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:11.9502293Z #13 3.865 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:12.7193266Z #13 4.634 npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:12.9860616Z #13 4.900 npm warn deprecated fstream@1.0.12: This package is no longer supported.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:13.6836258Z #13 5.597 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:13.8438389Z #13 5.629 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:15.0733520Z #13 6.775 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:15.0758336Z #13 6.837 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:17.8400228Z #13 ...
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:17.8400561Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:17.8400725Z #11 [builder 6/9] RUN npm ci
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:17.8404849Z #11 4.775 npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:17.8406606Z #11 5.776 npm warn deprecated lodash.isequal@4.5.0: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:17.8412369Z #11 6.306 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:17.8414466Z #11 6.760 npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:17.8415585Z #11 7.325 npm warn deprecated fstream@1.0.12: This package is no longer supported.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:17.8417650Z #11 9.773 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:17.9842538Z #11 9.916 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:18.4976251Z #11 10.43 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:20.1241366Z #11 12.06 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:20.2842361Z #11 12.12 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:20.2844917Z #11 12.15 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:20.2846801Z #11 12.22 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:20.4877636Z #11 12.27 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:24.9131334Z #11 ...
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:24.9134923Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:24.9139393Z #13 [stage-1 7/9] RUN npm ci --omit=dev && npx prisma generate
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:24.9140295Z #13 16.83 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:24.9140915Z #13 16.83 added 479 packages, and audited 480 packages in 17s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.0569569Z #13 16.83 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.0571880Z #13 16.83 74 packages are looking for funding
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.0579790Z #13 16.83   run `npm fund` for details
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.0580314Z #13 16.97 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.0580746Z #13 16.97 12 vulnerabilities (8 moderate, 4 high)
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.0581281Z #13 16.97 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.0581731Z #13 16.97 To address issues that do not require attention, run:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.0582550Z #13 16.97   npm audit fix
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.0582957Z #13 16.97 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.0583808Z #13 16.97 To address all issues possible (including breaking changes), run:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.0584497Z #13 16.97   npm audit fix --force
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.0584914Z #13 16.97 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.0585392Z #13 16.97 Some issues need review, and may require choosing
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.0586107Z #13 16.97 a different dependency.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.0586555Z #13 16.97 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.0586904Z #13 16.97 Run `npm audit` for details.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.2096651Z #13 16.97 npm notice
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.2097762Z #13 16.97 npm notice New major version of npm available! 10.8.2 -> 11.11.0
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.2098984Z #13 16.97 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.11.0
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.2099860Z #13 16.97 npm notice To update run: npm install -g npm@11.11.0
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:25.2100460Z #13 16.97 npm notice
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:26.7394171Z #13 18.65 Loaded Prisma config from prisma.config.ts.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:26.7394956Z #13 18.65 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:26.9091086Z #13 18.82 Prisma schema loaded from prisma/schema.prisma.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:27.3935292Z #13 19.31 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:27.3936619Z #13 19.31 ✔ Generated Prisma Client (v7.4.0) to ./node_modules/@prisma/client in 316ms
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:27.3937281Z #13 19.31 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:27.3937772Z #13 19.31 Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:27.3938446Z #13 19.31 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:27.3938652Z #13 19.31 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:29.3273493Z #13 DONE 21.2s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:29.3273869Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:29.3274048Z #11 [builder 6/9] RUN npm ci
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.1972350Z #11 24.13 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.1972955Z #11 24.13 added 1025 packages, and audited 1026 packages in 24s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.1973430Z #11 24.13 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.1973689Z #11 24.13 164 packages are looking for funding
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.1974012Z #11 24.13   run `npm fund` for details
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.3301387Z #11 24.26 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.3302308Z #11 24.26 20 vulnerabilities (14 moderate, 6 high)
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.3302896Z #11 24.26 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.3303415Z #11 24.26 To address issues that do not require attention, run:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.3304100Z #11 24.26   npm audit fix
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.3304536Z #11 24.26 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.3305110Z #11 24.26 To address all issues possible (including breaking changes), run:
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.3305856Z #11 24.26   npm audit fix --force
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.3306333Z #11 24.26 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.3307170Z #11 24.26 Some issues need review, and may require choosing
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.3307834Z #11 24.26 a different dependency.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.3308951Z #11 24.26 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.3309565Z #11 24.26 Run `npm audit` for details.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.4819362Z #11 24.26 npm notice
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.4820071Z #11 24.26 npm notice New major version of npm available! 10.8.2 -> 11.11.0
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.4820899Z #11 24.26 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.11.0
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.4821993Z #11 24.26 npm notice To update run: npm install -g npm@11.11.0
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.4822383Z #11 24.26 npm notice
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.5972775Z #11 DONE 24.5s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.7802834Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.7803636Z #14 [builder 7/9] COPY . .
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.7804133Z #14 DONE 0.0s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.7804352Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:32.7804546Z #15 [builder 8/9] RUN npx prisma generate
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:33.9822965Z #15 1.352 Loaded Prisma config from prisma.config.ts.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:33.9823623Z #15 1.352 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:34.0826999Z #15 1.453 Prisma schema loaded from prisma/schema.prisma.
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:34.4770658Z #15 1.847 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:34.4771688Z #15 1.847 ✔ Generated Prisma Client (v7.4.0) to ./node_modules/@prisma/client in 237ms
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:34.4772247Z #15 1.847 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:34.4772641Z #15 1.847 Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:34.4773080Z #15 1.847 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:34.4773274Z #15 1.847 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:34.6792270Z #15 DONE 1.9s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:34.6792525Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:34.6792695Z #16 [builder 9/9] RUN npm run build
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:34.7984941Z #16 0.270 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:34.7985455Z #16 0.270 > upgrade-crm@0.0.1 build
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:34.7985985Z #16 0.270 > nest build
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:34.7986406Z #16 0.270 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:40.3634989Z #16 DONE 5.8s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:41.2229544Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:41.2230551Z #17 [stage-1 8/9] COPY --from=builder /app/dist ./dist
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:41.3792664Z #17 DONE 0.0s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:41.3792999Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:41.3793410Z #18 [stage-1 9/9] RUN mkdir -p /app/uploads && chown -R node:node /app/uploads
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:41.3794156Z #18 DONE 0.1s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:41.5314537Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:41.5315624Z #19 exporting to image
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:41.5316538Z #19 exporting layers
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.3547627Z #19 exporting layers 5.0s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5571552Z #19 writing image sha256:cd0dd93c713fd4fab90872238ee1cde2a6c39da55eefb5ac8443384cabfdc757 done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5572753Z #19 naming to docker.io/***/upgrade-backend:latest done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5573461Z #19 DONE 5.0s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5573674Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5573874Z #20 resolving provenance for metadata file
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5574356Z #20 DONE 0.0s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5574562Z 
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5574861Z #21 pushing ***/upgrade-backend:latest with docker
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5575434Z #21 pushing layer aaa8a334a00b
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5575884Z #21 pushing layer 32568cd538c1
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5576316Z #21 pushing layer 585d81467951
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5576756Z #21 pushing layer c2bcba4385d2
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5577107Z #21 pushing layer fe0d1789421a
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5577385Z #21 pushing layer 1b0ad1bb38ba
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5577774Z #21 pushing layer 4d94cf35c400
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5578058Z #21 pushing layer ebd35b3d4648
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5578614Z #21 pushing layer ed3ccf27687d
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5578984Z #21 pushing layer f1e6c923f639
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5579406Z #21 pushing layer ce197feaf29d
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5579715Z #21 pushing layer b97fee92f06e
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.5580073Z #21 pushing layer 9eb9a78eeb10
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.6098250Z #21 pushing layer c2bcba4385d2 512B / 271B 0.2s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.8021011Z #21 pushing layer 32568cd538c1 856.06kB / 697.58kB 0.3s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.8021640Z #21 pushing layer c2bcba4385d2 2.56kB / 271B 0.2s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:46.8022211Z #21 pushing layer fe0d1789421a 62.98kB / 46.95kB 0.3s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:47.4905318Z #21 pushing layer aaa8a334a00b 1.1s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:47.4905940Z #21 pushing layer c2bcba4385d2 1.0s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:47.6002995Z #21 pushing layer fe0d1789421a 1.1s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:47.7010503Z #21 pushing layer 1b0ad1bb38ba 504.83kB / 501.79kB 1.3s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:47.8184469Z #21 pushing layer 585d81467951 31.18MB / 601.48MB 1.4s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:47.8185483Z #21 pushing layer ebd35b3d4648 2.65MB / 26.93MB 1.4s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:47.9326563Z #21 pushing layer 32568cd538c1 1.5s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:47.9335486Z #21 pushing layer ebd35b3d4648 5.30MB / 26.93MB 1.5s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:48.0441839Z #21 pushing layer ebd35b3d4648 7.89MB / 26.93MB 1.6s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:48.1695567Z #21 pushing layer ebd35b3d4648 10.55MB / 26.93MB 1.7s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:48.2780997Z #21 pushing layer ebd35b3d4648 13.20MB / 26.93MB 1.8s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:48.3872149Z #21 pushing layer ebd35b3d4648 16.15MB / 26.93MB 1.9s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:48.4883886Z #21 pushing layer ebd35b3d4648 19.10MB / 26.93MB 2.0s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:48.6122576Z #21 pushing layer 1b0ad1bb38ba 2.2s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:48.6123248Z #21 pushing layer 4d94cf35c400 2.1s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:48.6123878Z #21 pushing layer ebd35b3d4648 21.75MB / 26.93MB 2.1s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:48.7177182Z #21 pushing layer ebd35b3d4648 26.98MB / 26.93MB 2.3s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:48.9637459Z #21 pushing layer 585d81467951 63.99MB / 601.48MB 2.6s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:50.0071456Z #21 pushing layer ebd35b3d4648 3.5s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:50.1228895Z #21 pushing layer 585d81467951 96.74MB / 601.48MB 3.7s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:51.3308616Z #21 pushing layer 585d81467951 128.87MB / 601.48MB 4.9s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:52.5165034Z #21 pushing layer 585d81467951 159.30MB / 601.48MB 6.1s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:53.4087742Z #21 pushing layer 585d81467951 192.36MB / 601.48MB 7.0s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:54.6377278Z #21 pushing layer 585d81467951 224.70MB / 601.48MB 8.2s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:55.6250163Z #21 pushing layer 585d81467951 256.96MB / 601.48MB 9.2s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:56.6985062Z #21 pushing layer 585d81467951 288.08MB / 601.48MB 10.3s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:57.9171741Z #21 pushing layer 585d81467951 320.34MB / 601.48MB 11.5s
+build-and-deploy	Build and Push Backend	2026-03-04T17:47:59.0347321Z #21 pushing layer 585d81467951 352.73MB / 601.48MB 12.6s
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:00.0946177Z #21 pushing layer 585d81467951 383.85MB / 601.48MB 13.7s
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:01.1797755Z #21 pushing layer 585d81467951 416.04MB / 601.48MB 14.8s
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:02.3683129Z #21 pushing layer 585d81467951 448.20MB / 601.48MB 16.0s
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:03.2527913Z #21 pushing layer 585d81467951 481.32MB / 601.48MB 16.8s
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:04.0889414Z #21 pushing layer 585d81467951 514.63MB / 601.48MB 17.7s
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:04.6098766Z #21 pushing layer 585d81467951 545.15MB / 601.48MB 18.2s
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:05.3348762Z #21 pushing layer 585d81467951 576.59MB / 601.48MB 18.9s
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:05.7540316Z #21 pushing layer 585d81467951 614.44MB / 601.48MB 19.3s
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:08.4999585Z #21 pushing layer 585d81467951 22.1s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.1288937Z #21 pushing layer f1e6c923f639 24.7s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.2795839Z #21 pushing layer ed3ccf27687d 24.7s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.2796482Z #21 pushing layer ce197feaf29d 24.7s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.2796972Z #21 pushing layer b97fee92f06e 24.7s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.2797313Z #21 pushing layer 9eb9a78eeb10 24.7s done
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.2797612Z #21 DONE 24.7s
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6717181Z ##[group]ImageID
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6717842Z sha256:cd0dd93c713fd4fab90872238ee1cde2a6c39da55eefb5ac8443384cabfdc757
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6719936Z ##[endgroup]
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6720684Z ##[group]Digest
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6721360Z sha256:0965394e22e4cc9c64631f58c150f361d75d6a705b018cbda50db4be58d5a64c
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6722394Z ##[endgroup]
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6723078Z ##[group]Metadata
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6723447Z {
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6723813Z   "buildx.build.provenance": {
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6724273Z     "builder": {
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6724638Z       "id": ""
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6724945Z     },
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6725365Z     "buildType": "https://mobyproject.org/buildkit@v1",
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6725877Z     "materials": [
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6726216Z       {
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6726734Z         "uri": "pkg:docker/node@20-slim?platform=linux%2Famd64",
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6727352Z         "digest": {
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6727985Z           "sha256": "d8a35d586fad3af7abb6fdb9ba972388395405f4d462da9e4a4ddcde67b5e0fb"
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6729023Z         }
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6729381Z       }
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6729707Z     ],
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6730047Z     "invocation": {
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6730803Z       "configSource": {
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6731237Z         "entryPoint": "Dockerfile"
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6731721Z       },
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6732069Z       "parameters": {
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6732493Z         "frontend": "dockerfile.v0",
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6732968Z         "locals": [
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6733357Z           {
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6733685Z             "name": "context"
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6734139Z           },
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6734490Z           {
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6734849Z             "name": "dockerfile"
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6735286Z           }
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6735616Z         ]
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6736185Z       },
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6736532Z       "environment": {
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6736955Z         "platform": "linux/amd64"
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6737429Z       }
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6737755Z     }
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6738248Z   },
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6738759Z   "buildx.build.ref": "default/default/r3ujbg80dvsys7jknxr0q49f4",
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6739966Z   "containerimage.config.digest": "sha256:cd0dd93c713fd4fab90872238ee1cde2a6c39da55eefb5ac8443384cabfdc757",
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6741332Z   "containerimage.digest": "sha256:0965394e22e4cc9c64631f58c150f361d75d6a705b018cbda50db4be58d5a64c",
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6742479Z   "image.name": "docker.io/***/upgrade-backend:latest"
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6743033Z }
+build-and-deploy	Build and Push Backend	2026-03-04T17:48:11.6743946Z ##[endgroup]
+build-and-deploy	Build and Push Frontend	﻿2026-03-04T17:48:11.6880807Z ##[group]Run docker/build-push-action@v5
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.6881132Z with:
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.6881335Z   context: ./client
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.6881569Z   file: client/Dockerfile
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.6881800Z   push: true
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.6882079Z   tags: ***/upgrade-frontend:latest
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.6882358Z   load: false
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.6882562Z   no-cache: false
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.6882775Z   pull: false
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.6883094Z   github-token: ***
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.6883325Z ##[endgroup]
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9177590Z ##[group]GitHub Actions runtime token ACs
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9188908Z refs/heads/main: read/write
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9190175Z ##[endgroup]
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9190914Z ##[group]Docker info
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9232176Z [command]/usr/bin/docker version
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9419335Z Client: Docker Engine - Community
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9423169Z  Version:           28.0.4
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9423615Z  API version:       1.48
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9424013Z  Go version:        go1.23.7
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9424478Z  Git commit:        b8034c0
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9424906Z  Built:             Tue Mar 25 15:07:16 2025
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9425389Z  OS/Arch:           linux/amd64
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9425804Z  Context:           default
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9426060Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9426237Z Server: Docker Engine - Community
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9426649Z  Engine:
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9426966Z   Version:          28.0.4
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9427420Z   API version:      1.48 (minimum version 1.24)
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9427918Z   Go version:       go1.23.7
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9428584Z   Git commit:       6430e49
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9429031Z   Built:            Tue Mar 25 15:07:16 2025
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9429515Z   OS/Arch:          linux/amd64
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9429945Z   Experimental:     false
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9430333Z  containerd:
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9430671Z   Version:          v2.2.1
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9431185Z   GitCommit:        dea7da592f5d1d2b7755e3a161be07f43fad8f75
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9431732Z  runc:
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9432258Z   Version:          1.3.4
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9432587Z   GitCommit:        v1.3.4-0-gd6d73eb8
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9432870Z  docker-init:
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9433292Z   Version:          0.19.0
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9433532Z   GitCommit:        de40ad0
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:11.9468996Z [command]/usr/bin/docker info
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0032136Z Client: Docker Engine - Community
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0032738Z  Version:    28.0.4
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0034043Z  Context:    default
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0034733Z  Debug Mode: false
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0035406Z  Plugins:
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0036275Z   buildx: Docker Buildx (Docker Inc.)
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0036768Z     Version:  v0.31.1
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0037326Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0037960Z   compose: Docker Compose (Docker Inc.)
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0038678Z     Version:  v2.38.2
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0039214Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0039685Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0039839Z Server:
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0040175Z  Containers: 0
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0040552Z   Running: 0
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0040900Z   Paused: 0
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0041240Z   Stopped: 0
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0041585Z  Images: 3
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0041904Z  Server Version: 28.0.4
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0042313Z  Storage Driver: overlay2
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0042768Z   Backing Filesystem: extfs
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0043206Z   Supports d_type: true
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0043638Z   Using metacopy: false
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0044061Z   Native Overlay Diff: false
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0044530Z   userxattr: false
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0044941Z  Logging Driver: json-file
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0045372Z  Cgroup Driver: systemd
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0045781Z  Cgroup Version: 2
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0046202Z  Plugins:
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0046546Z   Volume: local
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0047000Z   Network: bridge host ipvlan macvlan null overlay
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0047765Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0049143Z  Swarm: inactive
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0049579Z  Runtimes: io.containerd.runc.v2 runc
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0050089Z  Default Runtime: runc
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0050519Z  Init Binary: docker-init
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0051091Z  containerd version: dea7da592f5d1d2b7755e3a161be07f43fad8f75
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0051728Z  runc version: v1.3.4-0-gd6d73eb8
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0052218Z  init version: de40ad0
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0052623Z  Security Options:
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0053000Z   apparmor
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0053458Z   seccomp
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0053845Z    Profile: builtin
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0054225Z   cgroupns
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0054595Z  Kernel Version: 6.14.0-1017-azure
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0055086Z  Operating System: Ubuntu 24.04.3 LTS
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0055575Z  OSType: linux
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0055941Z  Architecture: x86_64
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0056323Z  CPUs: 4
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0056673Z  Total Memory: 15.62GiB
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0057090Z  Name: runnervmnay03
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0057516Z  ID: 2798490f-3934-4089-859a-ba9f3856e68c
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0058023Z  Docker Root Dir: /var/lib/docker
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0058905Z  Debug Mode: false
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0059509Z  Username: ***
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0059875Z  Experimental: false
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0060263Z  Insecure Registries:
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0060666Z   ::1/128
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0060973Z   127.0.0.0/8
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0061325Z  Live Restore Enabled: false
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0061609Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0062114Z ##[endgroup]
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0062745Z ##[group]Proxy configuration
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0063183Z No proxy configuration found
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0063832Z ##[endgroup]
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0903862Z ##[group]Buildx version
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.0950692Z [command]/usr/bin/docker buildx version
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.1552203Z github.com/docker/buildx v0.31.1 a2675950d46b2cb171b23c2015ca44fb88607531
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.1588968Z ##[endgroup]
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.1589630Z ##[group]Builder info
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2379181Z {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2379477Z   "nodes": [
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2379708Z     {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2379928Z       "name": "default",
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2380192Z       "endpoint": "default",
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2380445Z       "status": "running",
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2380688Z       "buildkit": "v0.20.2",
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2381041Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/386",
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2381427Z       "features": {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2381754Z         "Automatically load images to the Docker Engine image store": true,
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2382461Z         "Cache export": true,
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2382725Z         "Direct push": true,
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2382981Z         "Docker exporter": true,
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2383246Z         "Multi-platform build": true,
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2383526Z         "OCI exporter": true
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2383754Z       },
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2383945Z       "labels": {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2384298Z         "org.mobyproject.buildkit.worker.moby.host-gateway-ip": "172.17.0.1"
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2384689Z       }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2384875Z     }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2385050Z   ],
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2385231Z   "name": "default",
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2385455Z   "driver": "docker",
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2385699Z   "lastActivity": "2026-03-04T17:47:01.000Z"
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2385970Z }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.2386497Z ##[endgroup]
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.3826661Z [command]/usr/bin/docker buildx build --file client/Dockerfile --iidfile /home/runner/work/_temp/docker-actions-toolkit-lxzhQe/build-iidfile-22c08e00f7.txt --tag ***/upgrade-frontend:latest --metadata-file /home/runner/work/_temp/docker-actions-toolkit-lxzhQe/build-metadata-595cb24f94.json --push ./client
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.4660600Z #0 building with "default" instance using docker driver
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.4661018Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.4661178Z #1 [internal] load build definition from Dockerfile
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.6538700Z #1 transferring dockerfile: 342B done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.6539710Z #1 DONE 0.0s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.6539940Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.6540233Z #2 [auth] library/nginx:pull token for registry-1.docker.io
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.6540702Z #2 DONE 0.0s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.6540843Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.6541060Z #3 [internal] load metadata for docker.io/library/node:18-alpine
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.8837729Z #3 DONE 0.4s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.8838287Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.8838608Z #4 [internal] load metadata for docker.io/library/nginx:alpine
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.9846649Z #4 DONE 0.5s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.9858407Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.9858921Z #5 [internal] load .dockerignore
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.9861332Z #5 transferring context: 2B done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.9861858Z #5 DONE 0.0s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.9862074Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.9862774Z #6 [build 1/6] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:12.9864892Z #6 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.0879095Z #6 ...
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.0879908Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.0880159Z #7 [internal] load build context
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.0880739Z #7 transferring context: 419.45kB 0.0s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.0881269Z #7 DONE 0.0s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.0881484Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.0882029Z #6 [build 1/6] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.0882960Z #6 sha256:ee77c6cd7c1886ecc802ad6cedef3a8ec1ea27d1fb96162bf03dd3710839b8da 6.18kB / 6.18kB done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.0883780Z #6 sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0B / 3.64MB 0.1s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.0884531Z #6 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 0B / 40.01MB 0.1s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.0885294Z #6 sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 0B / 1.26MB 0.1s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.0886000Z #6 sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 7.67kB / 7.67kB done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.0886646Z #6 sha256:929b04d7c782f04f615cf785488fed452b6569f87c73ff666ad553a7554f0006 1.72kB / 1.72kB done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.2883800Z #6 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 7.34MB / 40.01MB 0.3s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.2884806Z #6 sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 1.26MB / 1.26MB 0.2s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.2885680Z #6 sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 0B / 446B 0.3s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.3917270Z #6 sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 1.05MB / 3.64MB 0.4s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.3918360Z #6 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 9.44MB / 40.01MB 0.4s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.3919120Z #6 sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 446B / 446B 0.4s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.5800195Z #6 sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 2.10MB / 3.64MB 0.5s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.5801581Z #6 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 13.63MB / 40.01MB 0.5s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.5802717Z #6 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.6875380Z #6 sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 3.64MB / 3.64MB 0.6s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.6876712Z #6 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 25.17MB / 40.01MB 0.7s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.7923948Z #6 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 27.43MB / 40.01MB 0.8s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.7926137Z #6 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0.1s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.9398406Z #6 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 36.70MB / 40.01MB 0.9s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:13.9400921Z #6 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:14.0426611Z #6 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 40.01MB / 40.01MB 0.9s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0112022Z #6 ...
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0113660Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0115132Z #8 [stage-1 1/3] FROM docker.io/library/nginx:alpine@sha256:1d13701a5f9f3fb01aaa88cef2344d65b6b5bf6b7d9fa4cf0dca557a8d7702ba
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0116977Z #8 resolve docker.io/library/nginx:alpine@sha256:1d13701a5f9f3fb01aaa88cef2344d65b6b5bf6b7d9fa4cf0dca557a8d7702ba 0.0s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0118611Z #8 sha256:1d13701a5f9f3fb01aaa88cef2344d65b6b5bf6b7d9fa4cf0dca557a8d7702ba 10.33kB / 10.33kB done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0119984Z #8 sha256:c032460d1fd73978317479ba23c37bcb57d93156cab122eb3c54b8e4bdc292fa 2.50kB / 2.50kB done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0121202Z #8 sha256:b76de378d57272a1dd9091a05dd548a3639dfb792ebdbf95d06704d2950afdea 11.65kB / 11.65kB done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0122144Z #8 sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 3.86MB / 3.86MB 0.6s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0123060Z #8 sha256:bca5d04786e112d958f100a66f8257b2aeefc14b64d81e405c3c44acff2fb000 1.86MB / 1.86MB 0.8s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0123967Z #8 extracting sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 0.1s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0125162Z #8 sha256:3e2c181db1b0985ce357c7aaf48ac615f30f392cd15d5c5ba34c4faa1f4f39a2 626B / 626B 0.7s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0126352Z #8 extracting sha256:bca5d04786e112d958f100a66f8257b2aeefc14b64d81e405c3c44acff2fb000 0.1s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0127536Z #8 sha256:6b7b6c7061b76cdb8601e18722d12ae3232f0ddcfa1d2983754abcc6ce0a8a83 954B / 954B 0.8s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0128863Z #8 sha256:399d0898a94e0084f81499a3e3c29824357118c7ce551648ea1dbab813884661 404B / 404B 0.9s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0130010Z #8 sha256:955a8478f9aceb66cbf2f579fa3c24e1af278d1fa3ffd3043d6260e21d2f7416 1.21kB / 1.21kB 0.9s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0131162Z #8 extracting sha256:3e2c181db1b0985ce357c7aaf48ac615f30f392cd15d5c5ba34c4faa1f4f39a2 done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0132308Z #8 sha256:6d397a54a185dd0b6638d1a3934b81daef7a140741e12697377d6279066f7ca7 1.40kB / 1.40kB 1.1s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0133484Z #8 sha256:5e7756927bef33a266e1221356d5da8553139cb80bc5b1b3827010811d9ea268 20.24MB / 20.24MB 1.4s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0134597Z #8 extracting sha256:6b7b6c7061b76cdb8601e18722d12ae3232f0ddcfa1d2983754abcc6ce0a8a83 done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0135644Z #8 extracting sha256:399d0898a94e0084f81499a3e3c29824357118c7ce551648ea1dbab813884661 done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0136756Z #8 extracting sha256:955a8478f9aceb66cbf2f579fa3c24e1af278d1fa3ffd3043d6260e21d2f7416 done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0138297Z #8 extracting sha256:6d397a54a185dd0b6638d1a3934b81daef7a140741e12697377d6279066f7ca7 done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0139387Z #8 extracting sha256:5e7756927bef33a266e1221356d5da8553139cb80bc5b1b3827010811d9ea268 0.4s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0140169Z #8 DONE 2.0s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0140370Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.0141005Z #6 [build 1/6] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.1430255Z #6 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 1.2s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.2579064Z #6 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 0.0s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.4660403Z #6 extracting sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.4661295Z #6 DONE 2.3s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.4661502Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.4661669Z #9 [build 2/6] WORKDIR /app
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.4662091Z #9 DONE 0.0s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.4662339Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.4662524Z #10 [build 3/6] COPY package*.json ./
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.4663022Z #10 DONE 0.0s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.4663285Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:15.4663476Z #11 [build 4/6] RUN npm ci
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.1829422Z #11 0.867 npm warn EBADENGINE Unsupported engine {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.1830248Z #11 0.867 npm warn EBADENGINE   package: '@vitejs/plugin-react@5.1.4',
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.1833345Z #11 0.867 npm warn EBADENGINE   required: { node: '^20.19.0 || >=22.12.0' },
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.1834134Z #11 0.867 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.1834778Z #11 0.867 npm warn EBADENGINE }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.3371980Z #11 0.870 npm warn EBADENGINE Unsupported engine {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.3372809Z #11 0.870 npm warn EBADENGINE   package: 'react-router@7.13.0',
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.3373569Z #11 0.870 npm warn EBADENGINE   required: { node: '>=20.0.0' },
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.3374345Z #11 0.870 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.3375076Z #11 0.870 npm warn EBADENGINE }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.3375600Z #11 0.870 npm warn EBADENGINE Unsupported engine {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.3376306Z #11 0.870 npm warn EBADENGINE   package: 'react-router-dom@7.13.0',
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.3377084Z #11 0.870 npm warn EBADENGINE   required: { node: '>=20.0.0' },
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.3377891Z #11 0.870 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.3378823Z #11 0.870 npm warn EBADENGINE }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.3379367Z #11 0.871 npm warn EBADENGINE Unsupported engine {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.3380019Z #11 0.871 npm warn EBADENGINE   package: 'vite@7.3.1',
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.3380762Z #11 0.871 npm warn EBADENGINE   required: { node: '^20.19.0 || >=22.12.0' },
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.3381603Z #11 0.871 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:16.3382290Z #11 0.871 npm warn EBADENGINE }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.6360625Z #11 12.32 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.6361313Z #11 12.32 added 344 packages, and audited 345 packages in 12s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.8026902Z #11 12.32 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.8027383Z #11 12.32 53 packages are looking for funding
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.8027924Z #11 12.32   run `npm fund` for details
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.8028567Z #11 12.34 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.8028943Z #11 12.34 3 vulnerabilities (1 moderate, 2 high)
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.8029425Z #11 12.34 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.8029787Z #11 12.34 To address all issues, run:
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.8030214Z #11 12.34   npm audit fix
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.8030579Z #11 12.34 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.8030913Z #11 12.34 Run `npm audit` for details.
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.8031343Z #11 12.34 npm notice
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.8031863Z #11 12.34 npm notice New major version of npm available! 10.8.2 -> 11.11.0
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.8032677Z #11 12.34 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.11.0
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.8033437Z #11 12.34 npm notice To update run: npm install -g npm@11.11.0
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:27.8034426Z #11 12.34 npm notice
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:28.8236588Z #11 DONE 13.5s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:28.9961770Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:28.9962299Z #12 [build 5/6] COPY . .
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:28.9962754Z #12 DONE 0.0s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:28.9962965Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:28.9963152Z #13 [build 6/6] RUN npm run build
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:29.1236233Z #13 0.278 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:29.1236729Z #13 0.278 > client@0.0.0 build
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:29.1237219Z #13 0.278 > tsc -b && vite build
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:29.1237696Z #13 0.278 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:34.6039465Z #13 5.758 You are using Node.js 18.20.8. Vite requires Node.js version 20.19+ or 22.12+. Please upgrade your Node.js version.
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:34.7895323Z #13 5.944 vite v7.3.1 building client environment for production...
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:35.0092577Z #13 6.013 transforming...
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:52.0082256Z #13 23.16 ✓ 9965 modules transformed.
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:53.4750876Z #13 24.63 rendering chunks...
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:53.5805471Z #13 24.66 computing gzip size...
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:53.5807019Z #13 24.73 dist/index.html                     0.45 kB │ gzip:   0.29 kB
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:53.5808509Z #13 24.73 dist/assets/index-CvivjFEo.css      1.19 kB │ gzip:   0.57 kB
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:53.7319066Z #13 24.74 dist/assets/index-LrUSxciL.js   2,512.07 kB │ gzip: 792.01 kB
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:53.7319719Z #13 24.74 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:53.7320035Z #13 24.74 (!) Some chunks are larger than 500 kB after minification. Consider:
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:53.7320885Z #13 24.74 - Using dynamic import() to code-split the application
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:53.7321702Z #13 24.74 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:53.7322656Z #13 24.74 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:53.7323213Z #13 24.74 ✓ built in 18.76s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:53.8224395Z #13 DONE 25.0s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:54.7846303Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:54.7847375Z #14 [stage-1 2/3] COPY --from=build /app/dist /usr/share/nginx/html
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:54.9731686Z #14 DONE 0.0s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:54.9731927Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:54.9732138Z #15 [stage-1 3/3] COPY nginx.conf /etc/nginx/conf.d/default.conf
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:54.9732539Z #15 DONE 0.0s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:54.9732668Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:54.9732772Z #16 exporting to image
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:54.9733022Z #16 exporting layers
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.0094124Z #16 exporting layers 0.2s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1694442Z #16 writing image sha256:15af2edb22a94b764c9491021fb18f6d615afb719e039cd5da7e6ae6490220b0 done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1695669Z #16 naming to docker.io/***/upgrade-frontend:latest done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1696095Z #16 DONE 0.2s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1696228Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1696351Z #17 resolving provenance for metadata file
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1696764Z #17 DONE 0.0s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1696890Z 
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1697580Z #18 pushing ***/upgrade-frontend:latest with docker
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1698286Z #18 pushing layer d2d34486688a
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1698691Z #18 pushing layer 96a01c522d42
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1699124Z #18 pushing layer da3ac26fdf0f
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1699594Z #18 pushing layer 7***3554e63
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1700071Z #18 pushing layer 6c0e59fd138a 0.1s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1700761Z #18 pushing layer aa0fc249df10
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1701110Z #18 pushing layer f35bcec50d8c
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1701592Z #18 pushing layer 660f9a93104f
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1702054Z #18 pushing layer 53998a5033c3
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.1702527Z #18 pushing layer 989e799e6349
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.3240577Z #18 pushing layer d2d34486688a 512B / 1.42kB 0.2s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.4861850Z #18 pushing layer d2d34486688a 4.61kB / 1.42kB 0.3s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:55.4862541Z #18 pushing layer 96a01c522d42 2.52MB / 2.52MB 0.3s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:56.1886575Z #18 pushing layer d2d34486688a 1.1s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:56.3094421Z #18 pushing layer 96a01c522d42 1.2s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:58.8168610Z #18 pushing layer aa0fc249df10 3.7s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:58.9676527Z #18 pushing layer da3ac26fdf0f 3.7s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:58.9678645Z #18 pushing layer 7***3554e63 3.7s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:58.9679064Z #18 pushing layer 6c0e59fd138a 3.7s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:58.9679390Z #18 pushing layer f35bcec50d8c 3.7s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:58.9679706Z #18 pushing layer 660f9a93104f 3.7s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:58.9680008Z #18 pushing layer 53998a5033c3 3.7s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:58.9680316Z #18 pushing layer 989e799e6349 3.7s done
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:58.9680629Z #18 DONE 3.8s
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2920009Z ##[group]ImageID
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2920688Z sha256:15af2edb22a94b764c9491021fb18f6d615afb719e039cd5da7e6ae6490220b0
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2924102Z ##[endgroup]
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2924800Z ##[group]Digest
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2925465Z sha256:430dd3335d3685239183609553b7ddbbb4b17341489800ff2eb6a0f6158f5f7e
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2926695Z ##[endgroup]
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2927419Z ##[group]Metadata
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2927794Z {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2928345Z   "buildx.build.provenance": {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2928811Z     "builder": {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2929150Z       "id": ""
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2929453Z     },
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2929854Z     "buildType": "https://mobyproject.org/buildkit@v1",
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2930520Z     "materials": [
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2930848Z       {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2931279Z         "uri": "pkg:docker/nginx@alpine?platform=linux%2Famd64",
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2931828Z         "digest": {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2932421Z           "sha256": "1d13701a5f9f3fb01aaa88cef2344d65b6b5bf6b7d9fa4cf0dca557a8d7702ba"
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2933526Z         }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2933855Z       },
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2934144Z       {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2934630Z         "uri": "pkg:docker/node@18-alpine?platform=linux%2Famd64",
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2935219Z         "digest": {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2935828Z           "sha256": "8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e"
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2936501Z         }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2936832Z       }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2937206Z     ],
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2937549Z     "invocation": {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2937930Z       "configSource": {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2938981Z         "entryPoint": "Dockerfile"
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2939439Z       },
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2939785Z       "parameters": {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2940196Z         "frontend": "dockerfile.v0",
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2940656Z         "locals": [
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2941004Z           {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2941355Z             "name": "context"
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2941771Z           },
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2942081Z           {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2942435Z             "name": "dockerfile"
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2942853Z           }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2943175Z         ]
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2943502Z       },
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2943831Z       "environment": {
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2944235Z         "platform": "linux/amd64"
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2944666Z       }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2944980Z     }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2945264Z   },
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2945783Z   "buildx.build.ref": "default/default/6s54i4mn4l1ijlwimw5ehvre4",
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2946896Z   "containerimage.config.digest": "sha256:15af2edb22a94b764c9491021fb18f6d615afb719e039cd5da7e6ae6490220b0",
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2948631Z   "containerimage.digest": "sha256:430dd3335d3685239183609553b7ddbbb4b17341489800ff2eb6a0f6158f5f7e",
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2949763Z   "image.name": "docker.io/***/upgrade-frontend:latest"
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2950342Z }
+build-and-deploy	Build and Push Frontend	2026-03-04T17:48:59.2950971Z ##[endgroup]
+build-and-deploy	Read Configuration	﻿2026-03-04T17:48:59.3034004Z ##[group]Run {
+build-and-deploy	Read Configuration	2026-03-04T17:48:59.3034298Z [36;1m{[0m
+build-and-deploy	Read Configuration	2026-03-04T17:48:59.3034523Z [36;1m  echo 'COMPOSE_CONFIG<<EOF'[0m
+build-and-deploy	Read Configuration	2026-03-04T17:48:59.3034876Z [36;1m  cat docker-compose.prod.yml[0m
+build-and-deploy	Read Configuration	2026-03-04T17:48:59.3035159Z [36;1m  echo ""[0m
+build-and-deploy	Read Configuration	2026-03-04T17:48:59.3035382Z [36;1m  echo 'EOF'[0m
+build-and-deploy	Read Configuration	2026-03-04T17:48:59.3035613Z [36;1m} >> "$GITHUB_ENV"[0m
+build-and-deploy	Read Configuration	2026-03-04T17:48:59.3091229Z shell: /usr/bin/bash -e {0}
+build-and-deploy	Read Configuration	2026-03-04T17:48:59.3091537Z ##[endgroup]
+build-and-deploy	Deploy to Server via SSH	﻿2026-03-04T17:48:59.3300210Z ##[group]Run appleboy/ssh-action@v1.0.3
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.3300584Z with:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.3301083Z   host: ***
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.3301381Z   username: ***
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.3307210Z   key: ***
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.3307437Z   envs: COMPOSE_CONFIG
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.3313728Z   script: # Stop on first error
+build-and-deploy	Deploy to Server via SSH	set -e
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Export variables for docker-compose
+build-and-deploy	Deploy to Server via SSH	export DOCKER_USERNAME=***
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Login to Docker Hub to avoid rate limits
+build-and-deploy	Deploy to Server via SSH	echo "***" | docker login -u "***" --password-stdin
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Pull the latest images
+build-and-deploy	Deploy to Server via SSH	docker pull ***/upgrade-backend:latest
+build-and-deploy	Deploy to Server via SSH	docker pull ***/upgrade-frontend:latest
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Create project directory
+build-and-deploy	Deploy to Server via SSH	mkdir -p ~/upgrade-crm
+build-and-deploy	Deploy to Server via SSH	cd ~/upgrade-crm
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Write config file directly (Single Source of Truth)
+build-and-deploy	Deploy to Server via SSH	echo "$COMPOSE_CONFIG" > docker-compose.prod.yml
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# DEBUG: Verify config file content
+build-and-deploy	Deploy to Server via SSH	echo "=== DOCKER COMPOSE CONFIG ==="
+build-and-deploy	Deploy to Server via SSH	cat docker-compose.prod.yml
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Restart services using new images
+build-and-deploy	Deploy to Server via SSH	# Prioritize 'docker compose' (v2)
+build-and-deploy	Deploy to Server via SSH	if docker compose version &> /dev/null; then
+build-and-deploy	Deploy to Server via SSH	    DC_CMD="docker compose"
+build-and-deploy	Deploy to Server via SSH	elif command -v docker-compose &> /dev/null; then
+build-and-deploy	Deploy to Server via SSH	    DC_CMD="docker-compose"
+build-and-deploy	Deploy to Server via SSH	else
+build-and-deploy	Deploy to Server via SSH	    echo "Error: Docker Compose not found"
+build-and-deploy	Deploy to Server via SSH	    exit 1
+build-and-deploy	Deploy to Server via SSH	fi
+build-and-deploy	Deploy to Server via SSH	$DC_CMD -f docker-compose.prod.yml down || true
+build-and-deploy	Deploy to Server via SSH	docker ps -a --filter "name=upgrade-crm" -q | xargs -r docker rm -f || true
+build-and-deploy	Deploy to Server via SSH	$DC_CMD -f docker-compose.prod.yml up -d --remove-orphans --force-recreate
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# NOTE: Migrations run automatically inside NestJS on startup (PrismaService.onModuleInit)
+build-and-deploy	Deploy to Server via SSH	# No need to docker compose exec separately — that was causing exit 137 (SIGKILL)
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Prune unused images
+build-and-deploy	Deploy to Server via SSH	docker image prune -f
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# DEBUG: Show running containers and logs
+build-and-deploy	Deploy to Server via SSH	echo "=== RUNNING CONTAINERS ==="
+build-and-deploy	Deploy to Server via SSH	docker ps -a
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	echo "=== NGINX CONFIG CHECKSUM ==="
+build-and-deploy	Deploy to Server via SSH	$DC_CMD -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	echo "=== FRONTEND LOGS ==="
+build-and-deploy	Deploy to Server via SSH	docker logs -n 20 upgrade-crm-frontend-1 || docker logs -n 20 upgrade-crm_frontend_1 || echo "Container name prediction failed"
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	echo "=== BACKEND LOGS ==="
+build-and-deploy	Deploy to Server via SSH	docker logs -n 50 upgrade-crm-app-1 || docker logs -n 50 upgrade-crm_app_1 || echo "Container name prediction failed"
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.3320008Z   port: 22
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.3320212Z   timeout: 30s
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.3320410Z   command_timeout: 10m
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.3320627Z   proxy_port: 22
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.3320826Z   proxy_timeout: 30s
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.3321032Z env:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.3326430Z   COMPOSE_CONFIG: services:
+build-and-deploy	Deploy to Server via SSH	  app:
+build-and-deploy	Deploy to Server via SSH	    # Use image from Docker Hub (built by CI/CD)
+build-and-deploy	Deploy to Server via SSH	    image: ${DOCKER_USERNAME}/upgrade-backend:latest
+build-and-deploy	Deploy to Server via SSH	    ports:
+build-and-deploy	Deploy to Server via SSH	      - '3000:3000'
+build-and-deploy	Deploy to Server via SSH	    environment:
+build-and-deploy	Deploy to Server via SSH	      DATABASE_URL: ***db:5432/upgrade_crm
+build-and-deploy	Deploy to Server via SSH	      REDIS_URL: redis://redis:6379
+build-and-deploy	Deploy to Server via SSH	      JWT_SECRET: "complex_secret_value_change_me_in_prod"
+build-and-deploy	Deploy to Server via SSH	      POSTGRES_USER: upgrade
+build-and-deploy	Deploy to Server via SSH	      POSTGRES_PASSWORD: upgrade_pass
+build-and-deploy	Deploy to Server via SSH	      POSTGRES_DB: upgrade_crm
+build-and-deploy	Deploy to Server via SSH	      # Allow frontend CORS if needed
+build-and-deploy	Deploy to Server via SSH	      FRONTEND_URL: http://devupgrade.***.ru
+build-and-deploy	Deploy to Server via SSH	      # Limit V8 heap to prevent exceeding 512M docker limit
+build-and-deploy	Deploy to Server via SSH	      NODE_OPTIONS: "--max-old-space-size=384"
+build-and-deploy	Deploy to Server via SSH	    depends_on:
+build-and-deploy	Deploy to Server via SSH	      db:
+build-and-deploy	Deploy to Server via SSH	        condition: service_healthy
+build-and-deploy	Deploy to Server via SSH	      redis:
+build-and-deploy	Deploy to Server via SSH	        condition: service_started
+build-and-deploy	Deploy to Server via SSH	    volumes:
+build-and-deploy	Deploy to Server via SSH	      - uploads_data:/app/uploads
+build-and-deploy	Deploy to Server via SSH	    deploy:
+build-and-deploy	Deploy to Server via SSH	      resources:
+build-and-deploy	Deploy to Server via SSH	        limits:
+build-and-deploy	Deploy to Server via SSH	          memory: 512M
+build-and-deploy	Deploy to Server via SSH	    restart: always
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	  frontend:
+build-and-deploy	Deploy to Server via SSH	    # Use image from Docker Hub (built by CI/CD)
+build-and-deploy	Deploy to Server via SSH	    image: ${DOCKER_USERNAME}/upgrade-frontend:latest
+build-and-deploy	Deploy to Server via SSH	    ports:
+build-and-deploy	Deploy to Server via SSH	      - '80:80'
+build-and-deploy	Deploy to Server via SSH	    depends_on:
+build-and-deploy	Deploy to Server via SSH	      - app
+build-and-deploy	Deploy to Server via SSH	    deploy:
+build-and-deploy	Deploy to Server via SSH	      resources:
+build-and-deploy	Deploy to Server via SSH	        limits:
+build-and-deploy	Deploy to Server via SSH	          memory: 128M
+build-and-deploy	Deploy to Server via SSH	    restart: always
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	  db:
+build-and-deploy	Deploy to Server via SSH	    image: postgres:15-alpine
+build-and-deploy	Deploy to Server via SSH	    environment:
+build-and-deploy	Deploy to Server via SSH	      POSTGRES_USER: upgrade
+build-and-deploy	Deploy to Server via SSH	      POSTGRES_PASSWORD: upgrade_pass
+build-and-deploy	Deploy to Server via SSH	      POSTGRES_DB: upgrade_crm
+build-and-deploy	Deploy to Server via SSH	    volumes:
+build-and-deploy	Deploy to Server via SSH	      - pgdata:/var/lib/postgresql/data
+build-and-deploy	Deploy to Server via SSH	    deploy:
+build-and-deploy	Deploy to Server via SSH	      resources:
+build-and-deploy	Deploy to Server via SSH	        limits:
+build-and-deploy	Deploy to Server via SSH	          memory: 256M
+build-and-deploy	Deploy to Server via SSH	    healthcheck:
+build-and-deploy	Deploy to Server via SSH	      test: [ 'CMD-SHELL', 'pg_isready -U upgrade -d upgrade_crm' ]
+build-and-deploy	Deploy to Server via SSH	      interval: 5s
+build-and-deploy	Deploy to Server via SSH	      timeout: 5s
+build-and-deploy	Deploy to Server via SSH	      retries: 5
+build-and-deploy	Deploy to Server via SSH	    restart: always
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	  redis:
+build-and-deploy	Deploy to Server via SSH	    image: redis:alpine
+build-and-deploy	Deploy to Server via SSH	    container_name: upgrade_redis_prod
+build-and-deploy	Deploy to Server via SSH	    restart: always
+build-and-deploy	Deploy to Server via SSH	    ports:
+build-and-deploy	Deploy to Server via SSH	      - "6379:6379"
+build-and-deploy	Deploy to Server via SSH	    volumes:
+build-and-deploy	Deploy to Server via SSH	      - redis_data:/data
+build-and-deploy	Deploy to Server via SSH	    deploy:
+build-and-deploy	Deploy to Server via SSH	      resources:
+build-and-deploy	Deploy to Server via SSH	        limits:
+build-and-deploy	Deploy to Server via SSH	          memory: 128M
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	volumes:
+build-and-deploy	Deploy to Server via SSH	  pgdata:
+build-and-deploy	Deploy to Server via SSH	  uploads_data:
+build-and-deploy	Deploy to Server via SSH	  redis_data:
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.3332598Z ##[endgroup]
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.3438271Z ##[command]/usr/bin/docker run --name df1450744897acef764e0bab62dd9d2d9bbcad_588f4d --label df1450 --workdir /github/workspace --rm -e "COMPOSE_CONFIG" -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_ENVS" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" df1450:744897acef764e0bab62dd9d2d9bbcad
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5138495Z ======CMD======
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5139010Z # Stop on first error
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5139402Z set -e
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5139593Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5139793Z # Export variables for docker-compose
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5140487Z export DOCKER_USERNAME=***
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5140669Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5140805Z # Login to Docker Hub to avoid rate limits
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5141692Z echo "***" | docker login -u "***" --password-stdin
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5142090Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5142256Z # Pull the latest images
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5142775Z docker pull ***/upgrade-backend:latest
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5143192Z docker pull ***/upgrade-frontend:latest
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5143407Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5143506Z # Create project directory
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5143762Z mkdir -p ~/upgrade-crm
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5143999Z cd ~/upgrade-crm
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5144128Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5144270Z # Write config file directly (Single Source of Truth)
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5144623Z echo "$COMPOSE_CONFIG" > docker-compose.prod.yml
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5144842Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5144939Z # DEBUG: Verify config file content
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5145221Z echo "=== DOCKER COMPOSE CONFIG ==="
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5145496Z cat docker-compose.prod.yml
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5145659Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5145762Z # Restart services using new images
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5146036Z # Prioritize 'docker compose' (v2)
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5146321Z if docker compose version &> /dev/null; then
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5146615Z     DC_CMD="docker compose"
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5147174Z elif command -v docker-compose &> /dev/null; then
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5147647Z     DC_CMD="docker-compose"
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5147877Z else
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5148276Z     echo "Error: Docker Compose not found"
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5148629Z     exit 1
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5148816Z fi
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5149050Z $DC_CMD -f docker-compose.prod.yml down || true
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5149477Z docker ps -a --filter "name=upgrade-crm" -q | xargs -r docker rm -f || true
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5149990Z $DC_CMD -f docker-compose.prod.yml up -d --remove-orphans --force-recreate
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5150294Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5150557Z # NOTE: Migrations run automatically inside NestJS on startup (PrismaService.onModuleInit)
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5151366Z # No need to docker compose exec separately — that was causing exit 137 (SIGKILL)
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5151675Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5151765Z # Prune unused images
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5152001Z docker image prune -f
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5152143Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5152256Z # DEBUG: Show running containers and logs
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5152561Z echo "=== RUNNING CONTAINERS ==="
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5152820Z docker ps -a
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5152954Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5153052Z echo "=== NGINX CONFIG CHECKSUM ==="
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5153472Z $DC_CMD -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5153802Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5153900Z echo "=== FRONTEND LOGS ==="
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5154426Z docker logs -n 20 upgrade-crm-frontend-1 || docker logs -n 20 upgrade-crm_frontend_1 || echo "Container name prediction failed"
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5154884Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5154981Z echo "=== BACKEND LOGS ==="
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5155456Z docker logs -n 50 upgrade-crm-app-1 || docker logs -n 50 upgrade-crm_app_1 || echo "Container name prediction failed"
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5155875Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:48:59.5155961Z ======END======
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:02.5833784Z out: Login Succeeded
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3312863Z out: latest: Pulling from ***/upgrade-backend
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3313384Z out: 84a2afebaf4d: Already exists
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3425651Z out: 05988a666f72: Already exists
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3582772Z out: a0655704972f: Already exists
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3666031Z out: 2664cf4489e5: Already exists
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3744911Z out: c2b9c0e674a1: Already exists
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3866070Z out: a47f0eb43ba7: Pulling fs layer
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3866838Z out: fa0700ebbaa7: Pulling fs layer
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3867504Z out: ab19fa8ae46e: Pulling fs layer
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3868064Z out: f07bbdac623f: Pulling fs layer
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3868668Z out: c6a7c496e750: Pulling fs layer
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3869100Z out: c4951045d7a1: Pulling fs layer
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3869401Z out: e10b979b1f25: Pulling fs layer
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3869691Z out: 6140d972e350: Pulling fs layer
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3869971Z out: f07bbdac623f: Waiting
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3870233Z out: c4951045d7a1: Waiting
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3870522Z out: e10b979b1f25: Waiting
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3870775Z out: 6140d972e350: Waiting
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:04.3871030Z out: c6a7c496e750: Waiting
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:05.1081222Z out: fa0700ebbaa7: Verifying Checksum
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:05.1081694Z out: fa0700ebbaa7: Download complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:05.1740481Z out: ab19fa8ae46e: Verifying Checksum
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:05.1740988Z out: ab19fa8ae46e: Download complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:05.7096051Z out: a47f0eb43ba7: Verifying Checksum
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:05.7096575Z out: a47f0eb43ba7: Download complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:05.8094475Z out: f07bbdac623f: Verifying Checksum
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:05.8094942Z out: f07bbdac623f: Download complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:06.1559738Z out: a47f0eb43ba7: Pull complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:06.2169527Z out: fa0700ebbaa7: Pull complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:06.2545428Z out: c6a7c496e750: Verifying Checksum
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:06.2545924Z out: c6a7c496e750: Download complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:06.2758352Z out: ab19fa8ae46e: Pull complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:06.3314979Z out: f07bbdac623f: Pull complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:06.3836119Z out: c6a7c496e750: Pull complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:06.7863076Z out: e10b979b1f25: Verifying Checksum
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:06.7863697Z out: e10b979b1f25: Download complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:06.9413773Z out: 6140d972e350: Verifying Checksum
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:06.9414518Z out: 6140d972e350: Download complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:15.0882615Z out: c4951045d7a1: Verifying Checksum
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:15.0883033Z out: c4951045d7a1: Download complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:34.3862871Z out: c4951045d7a1: Pull complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:34.5508990Z out: e10b979b1f25: Pull complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:34.6106089Z out: 6140d972e350: Pull complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:34.6353988Z out: Digest: sha256:0965394e22e4cc9c64631f58c150f361d75d6a705b018cbda50db4be58d5a64c
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:34.6481686Z out: Status: Downloaded newer image for ***/upgrade-backend:latest
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:34.6542078Z out: docker.io/***/upgrade-backend:latest
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:36.4772972Z out: latest: Pulling from ***/upgrade-frontend
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:36.4773528Z out: 589002ba0eae: Already exists
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:36.4872691Z out: bca5d04786e1: Already exists
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:36.4995598Z out: 3e2c181db1b0: Already exists
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:36.5112781Z out: 6b7b6c7061b7: Already exists
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:36.5239683Z out: 399d0898a94e: Already exists
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:36.5356238Z out: 955a8478f9ac: Already exists
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:36.5520499Z out: 6d397a54a185: Already exists
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:36.5732136Z out: 5e7756927bef: Already exists
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:36.5837652Z out: ba236a41e1ac: Pulling fs layer
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:36.5838298Z out: 77c1daaf9b2a: Pulling fs layer
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.2033978Z out: 77c1daaf9b2a: Verifying Checksum
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.2034470Z out: 77c1daaf9b2a: Download complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.4154758Z out: ba236a41e1ac: Verifying Checksum
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.4155295Z out: ba236a41e1ac: Download complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.4940567Z out: ba236a41e1ac: Pull complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.5485015Z out: 77c1daaf9b2a: Pull complete
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.5798388Z out: Digest: sha256:430dd3335d3685239183609553b7ddbbb4b17341489800ff2eb6a0f6158f5f7e
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.5960583Z out: Status: Downloaded newer image for ***/upgrade-frontend:latest
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6028762Z out: docker.io/***/upgrade-frontend:latest
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6123745Z out: === DOCKER COMPOSE CONFIG ===
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6155397Z out: services:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6156178Z out:   app:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6157229Z out:     # Use image from Docker Hub (built by CI/CD)
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6159574Z out:     image: ${DOCKER_USERNAME}/upgrade-backend:latest
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6160171Z out:     ports:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6160550Z out:       - '3000:3000'
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6160957Z out:     environment:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6161748Z out:       DATABASE_URL: ***db:5432/upgrade_crm
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6162141Z out:       REDIS_URL: redis://redis:6379
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6162536Z out:       JWT_SECRET: "complex_secret_value_change_me_in_prod"
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6162943Z out:       POSTGRES_USER: upgrade
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6163253Z out:       POSTGRES_PASSWORD: upgrade_pass
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6163589Z out:       POSTGRES_DB: upgrade_crm
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6163893Z out:       # Allow frontend CORS if needed
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6164280Z out:       FRONTEND_URL: http://devupgrade.***.ru
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6164692Z out:       # Limit V8 heap to prevent exceeding 512M docker limit
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6165112Z out:       NODE_OPTIONS: "--max-old-space-size=384"
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6165444Z out:     depends_on:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6165683Z out:       db:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6165925Z out:         condition: service_healthy
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6166220Z out:       redis:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6166478Z out:         condition: service_started
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6166770Z out:     volumes:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6167015Z out:       - uploads_data:/app/uploads
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6167308Z out:     deploy:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6167535Z out:       resources:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6167774Z out:         limits:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6168557Z out:           memory: 512M
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6168985Z out:     restart: always
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6169219Z out:   frontend:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6169470Z out:     # Use image from Docker Hub (built by CI/CD)
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6169832Z out:     image: ${DOCKER_USERNAME}/upgrade-frontend:latest
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6170150Z out:     ports:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6170357Z out:       - '80:80'
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6170568Z out:     depends_on:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6170782Z out:       - app
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6170993Z out:     deploy:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6171202Z out:       resources:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6171418Z out:         limits:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6171632Z out:           memory: 128M
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6171874Z out:     restart: always
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6172095Z out:   db:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6172302Z out:     image: postgres:15-alpine
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6172562Z out:     environment:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6172785Z out:       POSTGRES_USER: upgrade
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6173069Z out:       POSTGRES_PASSWORD: upgrade_pass
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6173392Z out:       POSTGRES_DB: upgrade_crm
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6173649Z out:     volumes:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6173893Z out:       - pgdata:/var/lib/postgresql/data
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6174171Z out:     deploy:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6174374Z out:       resources:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6174586Z out:         limits:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6174799Z out:           memory: 256M
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6175028Z out:     healthcheck:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6175334Z out:       test: [ 'CMD-SHELL', 'pg_isready -U upgrade -d upgrade_crm' ]
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6175685Z out:       interval: 5s
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6175909Z out:       timeout: 5s
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6176123Z out:       retries: 5
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6176335Z out:     restart: always
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6176559Z out:   redis:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6176764Z out:     image: redis:alpine
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6177027Z out:     container_name: upgrade_redis_prod
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6177312Z out:     restart: always
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6177535Z out:     ports:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6177746Z out:       - "6379:6379"
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6177961Z out:     volumes:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6178307Z out:       - redis_data:/data
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6178551Z out:     deploy:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6178754Z out:       resources:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6178963Z out:         limits:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6179178Z out:           memory: 128M
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6179408Z out: volumes:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6179604Z out:   pgdata:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6179807Z out:   uploads_data:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.6180017Z out:   redis_data:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:37.9373806Z err:  Container upgrade-crm-frontend-1  Stopping
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:38.8430044Z err:  Container upgrade-crm-frontend-1  Stopped
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:38.8430660Z err:  Container upgrade-crm-frontend-1  Removing
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:38.8935731Z err:  Container upgrade-crm-frontend-1  Removed
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:38.8936341Z err:  Container upgrade-crm-app-1  Stopping
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:49.2523918Z err:  Container upgrade-crm-app-1  Stopped
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:49.2524468Z err:  Container upgrade-crm-app-1  Removing
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:49.2831150Z err:  Container upgrade-crm-app-1  Removed
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:49.2831670Z err:  Container upgrade_redis_prod  Stopping
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:49.2832113Z err:  Container upgrade-crm-db-1  Stopping
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:49.6243341Z err:  Container upgrade_redis_prod  Stopped
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:49.6244143Z err:  Container upgrade_redis_prod  Removing
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:49.6376535Z err:  Container upgrade-crm-db-1  Stopped
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:49.6377035Z err:  Container upgrade-crm-db-1  Removing
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:49.6605357Z err:  Container upgrade_redis_prod  Removed
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:49.6735283Z err:  Container upgrade-crm-db-1  Removed
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:49.6760180Z err:  Network upgrade-crm_default  Removing
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:49.8471983Z err:  Network upgrade-crm_default  Removed
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:50.0677082Z err:  Network upgrade-crm_default  Creating
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:50.1711759Z err:  Network upgrade-crm_default  Created
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:50.1767308Z err:  Container upgrade-crm-db-1  Creating
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:50.1768623Z err:  Container upgrade_redis_prod  Creating
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:50.3002361Z err:  Container upgrade-crm-db-1  Created
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:50.3023594Z err:  Container upgrade_redis_prod  Created
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:50.3024880Z err:  Container upgrade-crm-app-1  Creating
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:50.3637409Z err:  Container upgrade-crm-app-1  Created
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:50.3638376Z err:  Container upgrade-crm-frontend-1  Creating
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:50.4310396Z err:  Container upgrade-crm-frontend-1  Created
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:50.4337724Z err:  Container upgrade-crm-db-1  Starting
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:50.4338366Z err:  Container upgrade_redis_prod  Starting
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:50.8101389Z err:  Container upgrade-crm-db-1  Started
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:50.8771093Z err:  Container upgrade_redis_prod  Started
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:50.8775348Z err:  Container upgrade-crm-db-1  Waiting
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:56.3804394Z err:  Container upgrade-crm-db-1  Healthy
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:56.3804963Z err:  Container upgrade-crm-app-1  Starting
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:56.6640886Z err:  Container upgrade-crm-app-1  Started
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:56.6641517Z err:  Container upgrade-crm-frontend-1  Starting
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:57.0500288Z err:  Container upgrade-crm-frontend-1  Started
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1725434Z out: Deleted Images:
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1726220Z out: untagged: ***/upgrade-frontend@sha256:fdd495de7d9922444a9cac0d43bc4ce0e79e22cbeb00989809b2b6c1af78daee
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1727045Z out: deleted: sha256:b3df26db49f385246a1b072391b17bed9931c94942ce77f70c84db77c08b206d
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1727746Z out: deleted: sha256:4ddb9e520e387230efe295cf0ab135eb1ac707a11ccfb4e1432bcbfab32a991e
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1728724Z out: deleted: sha256:2ff4e2ca0b911be9819dfbee7cb5ff0d26d44fcab9528cd07630d5699fd10e89
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1729576Z out: untagged: ***/upgrade-backend@sha256:f99642f31ae206cf45ee65caffcde804f1a283bb87c8d7eeb19985939e9da6f8
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1730404Z out: deleted: sha256:c3ef5ab88eb7733ae02874817e0e20625854e1ae8abb8a90a40c207bfefb9b7a
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1731107Z out: deleted: sha256:0001c42a2f85fbf9d4ec2b7115f1e5d7170ccf9c80b60739b6957aedefb22401
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1731787Z out: deleted: sha256:175da019f4c20950e400cec4ecc99e561bcc6f6f699f9ce55e9d01195ff1ba64
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1732475Z out: deleted: sha256:2208daaad0a2fd888914a30bb217d3377a96529dd7b99ec91cce5af6b02cfedd
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1733146Z out: deleted: sha256:57abac46c954f1796098571486f5c7bbf972f1553401df27185571b78dedb896
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1733823Z out: deleted: sha256:5b924430bdc9c459cb214db4cfedb3c5086aad46e68deaa1c7986932f36bae6e
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1734499Z out: deleted: sha256:a07d22961769cb1f9fab7346d61e0480f0fdc9d74d11ca257f4148a0642fbe18
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1735175Z out: deleted: sha256:8ef04b9449e2c743591ab6109b9cd2c22d3e6ec8190f5e5267e6c42780889f4a
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1735847Z out: deleted: sha256:57dc06df2f299b775c19a4aed83b752e100cf7322f22fad7d78e098504a5ac16
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1736370Z out: Total reclaimed space: 632.1MB
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.1770670Z out: === RUNNING CONTAINERS ===
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.2111679Z out: CONTAINER ID   IMAGE                               COMMAND                  CREATED         STATUS                   PORTS                                         NAMES
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.2114160Z out: 7c4ff61aafe1   ***/upgrade-frontend:latest   "/docker-entrypoint.…"   9 seconds ago   Up 2 seconds             0.0.0.0:80->80/tcp, [::]:80->80/tcp           upgrade-crm-frontend-1
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.2115959Z out: f29785a542e8   ***/upgrade-backend:latest    "docker-entrypoint.s…"   9 seconds ago   Up 2 seconds             0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp   upgrade-crm-app-1
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.2117357Z out: 2747631fba91   redis:alpine                        "docker-entrypoint.s…"   9 seconds ago   Up 8 seconds             0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp   upgrade_redis_prod
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.2118852Z out: 512418f2935b   postgres:15-alpine                  "docker-entrypoint.s…"   9 seconds ago   Up 8 seconds (healthy)   5432/tcp                                      upgrade-crm-db-1
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.2191320Z out: === NGINX CONFIG CHECKSUM ===
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5164035Z out: server {
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5164513Z out:     listen 80;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5164940Z out:     server_name localhost;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5165377Z out:     *** /usr/share/nginx/html;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5165705Z out:     index index.html;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5166090Z out:     # Do not cache index.html so frontend updates are immediate
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5166516Z out:     location / {
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5166817Z out:         try_files $uri $uri/ /index.html;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5167155Z out:         
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5167406Z out:         # Kill cache for HTML files
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5167768Z out:         if ($request_filename ~* ^.*\.html$) {
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5168415Z out:             add_header Cache-Control "no-cache, no-store, must-revalidate";
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5168945Z out:             add_header Pragma "no-cache";
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5169296Z out:             expires 0;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5169571Z out:         }
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5169802Z out:     }
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5170185Z out:     # Cache static assets (JS, CSS, Images, Fonts) which have hashes in filenames
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5170801Z out:     location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5171250Z out:         expires 1y;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5171639Z out:         add_header Cache-Control "public, max-age=31536000, immutable";
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5172084Z out:         access_log off;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5172356Z out:     }
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5172586Z out:     location ^~ /api/ {
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5172925Z out:         proxy_pass http://app:3000;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5173264Z out:         proxy_http_version 1.1;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5173569Z out:         proxy_set_header Upgrade $http_upgrade;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5173917Z out:         proxy_set_header Connection 'upgrade';
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5174237Z out:         proxy_set_header Host $host;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5174551Z out:         proxy_cache_bypass $http_upgrade;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5174828Z out:     }
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5175030Z out:     location ^~ /auth/ {
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5175303Z out:         proxy_pass http://app:3000;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5175595Z out:         proxy_http_version 1.1;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5175895Z out:         proxy_set_header Upgrade $http_upgrade;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5176223Z out:         proxy_set_header Connection 'upgrade';
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5176540Z out:         proxy_set_header Host $host;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5176839Z out:         proxy_cache_bypass $http_upgrade;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5177109Z out:     }
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5177320Z out:     error_page 500 502 503 504 /50x.html;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5177596Z out:     location = /50x.html {
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5177863Z out:         *** /usr/share/nginx/html;
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5178232Z out:     }
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5417747Z out: }=== FRONTEND LOGS ===
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5767383Z out: /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5769255Z out: /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5770669Z out: /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5772353Z out: 10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5773730Z out: 10-listen-on-ipv6-by-default.sh: info: /etc/nginx/conf.d/default.conf differs from the packaged version
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5774488Z out: /docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.5775143Z out: /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.6023086Z err: 2026/03/04 17:49:57 [notice] 1#1: using the "epoll" event method
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.6024113Z out: /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.6025187Z err: 2026/03/04 17:49:57 [notice] 1#1: nginx/1.29.5
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.6025643Z err: 2026/03/04 17:49:57 [notice] 1#1: built by gcc 15.2.0 (Alpine 15.2.0) 
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.6026206Z out: /docker-entrypoint.sh: Configuration complete; ready for start up
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.6026730Z err: 2026/03/04 17:49:57 [notice] 1#1: OS: Linux 6.8.0-100-generic
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.6027233Z err: 2026/03/04 17:49:57 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.6027740Z err: 2026/03/04 17:49:57 [notice] 1#1: start worker processes
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.6028407Z err: 2026/03/04 17:49:57 [notice] 1#1: start worker process 28
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.6028865Z err: 2026/03/04 17:49:57 [notice] 1#1: start worker process 29
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.6029250Z out: === BACKEND LOGS ===
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.6232432Z out: [32m[Nest] 1  - [39m03/04/2026, 5:49:59 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.6320230Z ==============================================
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.6320982Z ✅ Successfully executed commands to all host.
+build-and-deploy	Deploy to Server via SSH	2026-03-04T17:49:59.6321503Z ==============================================
+build-and-deploy	Post Build and Push Frontend	﻿2026-03-04T17:49:59.7112714Z Post job cleanup.
+build-and-deploy	Post Build and Push Frontend	2026-03-04T17:49:59.9416399Z ##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-lxzhQe
+build-and-deploy	Post Build and Push Frontend	2026-03-04T17:49:59.9419443Z ##[endgroup]
+build-and-deploy	Post Build and Push Frontend	2026-03-04T17:49:59.9420178Z ##[group]Post cache
+build-and-deploy	Post Build and Push Frontend	2026-03-04T17:49:59.9420636Z State not set
+build-and-deploy	Post Build and Push Frontend	2026-03-04T17:49:59.9421316Z ##[endgroup]
+build-and-deploy	Post Build and Push Backend	﻿2026-03-04T17:49:59.9551821Z Post job cleanup.
+build-and-deploy	Post Build and Push Backend	2026-03-04T17:50:00.1780437Z ##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-NbNKTH
+build-and-deploy	Post Build and Push Backend	2026-03-04T17:50:00.1793882Z ##[endgroup]
+build-and-deploy	Post Build and Push Backend	2026-03-04T17:50:00.1794396Z ##[group]Post cache
+build-and-deploy	Post Build and Push Backend	2026-03-04T17:50:00.1796397Z State not set
+build-and-deploy	Post Build and Push Backend	2026-03-04T17:50:00.1796907Z ##[endgroup]
+build-and-deploy	Post Log in to Docker Hub	﻿2026-03-04T17:50:00.1907182Z Post job cleanup.
+build-and-deploy	Post Log in to Docker Hub	2026-03-04T17:50:00.4963546Z ##[group]Logout from docker.io
+build-and-deploy	Post Log in to Docker Hub	2026-03-04T17:50:00.5011118Z [command]/usr/bin/docker logout docker.io
+build-and-deploy	Post Log in to Docker Hub	2026-03-04T17:50:00.5147225Z Removing login credentials for docker.io
+build-and-deploy	Post Log in to Docker Hub	2026-03-04T17:50:00.5178855Z ##[endgroup]
+build-and-deploy	Post Log in to Docker Hub	2026-03-04T17:50:00.5179286Z ##[group]Post cache
+build-and-deploy	Post Log in to Docker Hub	2026-03-04T17:50:00.5180998Z State not set
+build-and-deploy	Post Log in to Docker Hub	2026-03-04T17:50:00.5181531Z ##[endgroup]
+build-and-deploy	Post Checkout code	﻿2026-03-04T17:50:00.5329026Z Post job cleanup.
+build-and-deploy	Post Checkout code	2026-03-04T17:50:00.6322221Z [command]/usr/bin/git version
+build-and-deploy	Post Checkout code	2026-03-04T17:50:00.6359937Z git version 2.53.0
+build-and-deploy	Post Checkout code	2026-03-04T17:50:00.6405017Z Temporarily overriding HOME='/home/runner/work/_temp/0718a3f7-9490-43ae-afb4-9d073dba504b' before making global git config changes
+build-and-deploy	Post Checkout code	2026-03-04T17:50:00.6406411Z Adding repository directory to the temporary git global config as a safe directory
+build-and-deploy	Post Checkout code	2026-03-04T17:50:00.6412231Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/UPGRADE/UPGRADE
+build-and-deploy	Post Checkout code	2026-03-04T17:50:00.6451132Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build-and-deploy	Post Checkout code	2026-03-04T17:50:00.6484690Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build-and-deploy	Post Checkout code	2026-03-04T17:50:00.6726871Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build-and-deploy	Post Checkout code	2026-03-04T17:50:00.6748722Z http.https://github.com/.extraheader
+build-and-deploy	Post Checkout code	2026-03-04T17:50:00.6761071Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+build-and-deploy	Post Checkout code	2026-03-04T17:50:00.6792121Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build-and-deploy	Post Checkout code	2026-03-04T17:50:00.7027167Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build-and-deploy	Post Checkout code	2026-03-04T17:50:00.7059642Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build-and-deploy	Complete job	﻿2026-03-04T17:50:00.7422680Z Cleaning up orphan processes

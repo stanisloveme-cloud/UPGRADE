@@ -1,0 +1,100 @@
+fetch-logs	Set up job	﻿2026-03-04T18:43:04.3327744Z Current runner version: '2.331.0'
+fetch-logs	Set up job	2026-03-04T18:43:04.3358579Z ##[group]Runner Image Provisioner
+fetch-logs	Set up job	2026-03-04T18:43:04.3359619Z Hosted Compute Agent
+fetch-logs	Set up job	2026-03-04T18:43:04.3360289Z Version: 20260213.493
+fetch-logs	Set up job	2026-03-04T18:43:04.3361086Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+fetch-logs	Set up job	2026-03-04T18:43:04.3361953Z Build Date: 2026-02-13T00:28:41Z
+fetch-logs	Set up job	2026-03-04T18:43:04.3362751Z Worker ID: {0c714e8d-85b1-42fb-8ec1-f2839fbd0303}
+fetch-logs	Set up job	2026-03-04T18:43:04.3363569Z Azure Region: eastus
+fetch-logs	Set up job	2026-03-04T18:43:04.3364212Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T18:43:04.3366714Z ##[group]Operating System
+fetch-logs	Set up job	2026-03-04T18:43:04.3367560Z Ubuntu
+fetch-logs	Set up job	2026-03-04T18:43:04.3368274Z 24.04.3
+fetch-logs	Set up job	2026-03-04T18:43:04.3368900Z LTS
+fetch-logs	Set up job	2026-03-04T18:43:04.3369502Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T18:43:04.3370201Z ##[group]Runner Image
+fetch-logs	Set up job	2026-03-04T18:43:04.3370911Z Image: ubuntu-24.04
+fetch-logs	Set up job	2026-03-04T18:43:04.3371647Z Version: 20260302.42.1
+fetch-logs	Set up job	2026-03-04T18:43:04.3372795Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260302.42/images/ubuntu/Ubuntu2404-Readme.md
+fetch-logs	Set up job	2026-03-04T18:43:04.3374786Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260302.42
+fetch-logs	Set up job	2026-03-04T18:43:04.3375861Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T18:43:04.3377506Z ##[group]GITHUB_TOKEN Permissions
+fetch-logs	Set up job	2026-03-04T18:43:04.3379971Z Contents: read
+fetch-logs	Set up job	2026-03-04T18:43:04.3380832Z Metadata: read
+fetch-logs	Set up job	2026-03-04T18:43:04.3381503Z Packages: read
+fetch-logs	Set up job	2026-03-04T18:43:04.3382187Z ##[endgroup]
+fetch-logs	Set up job	2026-03-04T18:43:04.3384519Z Secret source: Actions
+fetch-logs	Set up job	2026-03-04T18:43:04.3385866Z Prepare workflow directory
+fetch-logs	Set up job	2026-03-04T18:43:04.3765477Z Prepare all required actions
+fetch-logs	Set up job	2026-03-04T18:43:04.3804581Z Getting action download info
+fetch-logs	Set up job	2026-03-04T18:43:04.7061643Z Download action repository 'appleboy/ssh-action@v1.0.3' (SHA:029f5b4aeeeb58fdfe1410a5d17f967dacf36262)
+fetch-logs	Set up job	2026-03-04T18:43:05.0812165Z Complete job name: fetch-logs
+fetch-logs	Build appleboy/ssh-action@v1.0.3	﻿2026-03-04T18:43:05.1447608Z ##[group]Build container for action use: '/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile'.
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:05.1503761Z ##[command]/usr/bin/docker build -t d1b88d:e7ff3a1ec56d42ad8a13225ef456e644 -f "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile" "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3"
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:05.8557885Z #0 building with "default" instance using docker driver
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:05.8558831Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:05.8559237Z #1 [internal] load build definition from Dockerfile
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:05.8560255Z #1 transferring dockerfile: 149B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:05.8561045Z #1 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:05.8561383Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:05.8561873Z #2 [internal] load metadata for ghcr.io/appleboy/drone-ssh:1.7.3
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.0083142Z #2 DONE 0.3s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1265838Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1270092Z #3 [internal] load .dockerignore
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1272052Z #3 transferring context: 2B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1273541Z #3 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1274356Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1275536Z #4 [internal] load build context
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1278425Z #4 transferring context: 108B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1279892Z #4 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1280582Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1282061Z #5 [1/2] FROM ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1284948Z #5 resolve ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1287963Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1291393Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 3.38MB / 3.38MB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1294684Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 284.83kB / 284.83kB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1298190Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 1.20kB / 1.20kB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1301978Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 125B / 125B 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1306097Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0B / 2.44MB 0.1s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1310905Z #5 sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 2.38kB / 2.38kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1315641Z #5 sha256:1a52f94820e830bc9734623deb03bbafa6a248fba19cdc2e5605c70d90d91441 1.24kB / 1.24kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.1320914Z #5 sha256:c4781b8d012b16b6c7468dc9104fad0a63f2a8815b2af8b7176bb544253ea8c7 3.86kB / 3.86kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.2492851Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.2497750Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 2.44MB / 2.44MB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.2502099Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.8323413Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.9381867Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.9385564Z #5 extracting sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:06.9387154Z #5 extracting sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:07.0438988Z #5 DONE 0.9s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:07.0439438Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:07.0439751Z #6 [2/2] COPY entrypoint.sh /bin/entrypoint.sh
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:07.0440490Z #6 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:07.0443992Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:07.0444338Z #7 exporting to image
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:07.0444935Z #7 exporting layers 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:07.0445976Z #7 writing image sha256:8ea9b9e4ab20b5d886f0ece360a3d44f9f94a44beb2c09b6c84dad9bb5056791 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:07.0447447Z #7 naming to docker.io/library/d1b88d:e7ff3a1ec56d42ad8a13225ef456e644 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:07.0448818Z #7 DONE 0.1s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-04T18:43:07.0524421Z ##[endgroup]
+fetch-logs	Fetch Backend Logs	﻿2026-03-04T18:43:07.0831693Z ##[group]Run appleboy/ssh-action@v1.0.3
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:07.0832405Z with:
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:07.0832960Z   host: ***
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:07.0833247Z   username: ***
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:07.0835150Z   key: ***
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:07.0835477Z   script: docker logs upgrade-crm-backend-1 --tail 300
+fetch-logs	Fetch Backend Logs	
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:07.0835856Z   port: 22
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:07.0836099Z   timeout: 30s
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:07.0836362Z   command_timeout: 10m
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:07.0836886Z   proxy_port: 22
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:07.0837142Z   proxy_timeout: 30s
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:07.0837683Z ##[endgroup]
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:07.0967564Z ##[command]/usr/bin/docker run --name d1b88de7ff3a1ec56d42ad8a13225ef456e644_fe9640 --label d1b88d --workdir /github/workspace --rm -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" d1b88d:e7ff3a1ec56d42ad8a13225ef456e644
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:07.2950612Z ======CMD======
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:07.2951091Z docker logs upgrade-crm-backend-1 --tail 300
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:07.2951346Z 
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:07.2951491Z ======END======
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:09.0711978Z err: Error response from daemon: No such container: upgrade-crm-backend-1
+fetch-logs	Fetch Backend Logs	2026-03-04T18:43:09.0765070Z 2026/03/04 18:43:09 Process exited with status 1
+fetch-logs	Complete job	﻿2026-03-04T18:43:09.1666836Z Cleaning up orphan processes

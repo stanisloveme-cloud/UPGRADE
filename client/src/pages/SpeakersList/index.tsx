@@ -95,7 +95,7 @@ const SpeakersList: React.FC = () => {
                             alt={`${record.firstName} ${record.lastName}`}
                             width={32}
                             height={32}
-                            style={{ borderRadius: '50%', objectFit: 'cover' }}
+                            style={{ borderRadius: '50%', objectFit: 'cover', filter: 'grayscale(100%)' }}
                             preview={{ mask: null }}
                         />
                     )}
