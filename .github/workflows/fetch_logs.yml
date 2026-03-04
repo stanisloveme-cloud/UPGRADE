@@ -12,4 +12,4 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker exec upgrade-db-1 pg_dump -U upgrade -s upgrade_crm
+            docker exec upgrade-crm-db-1 pg_dump -U upgrade -s upgrade_crm
