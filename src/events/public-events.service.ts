@@ -35,7 +35,13 @@ export class PublicEventsService {
                         shortDescription: true,
                         websiteUrl: true,
                         logoFileUrl: true,
-                        marketSegments: true,
+                        segments: {
+                            select: {
+                                marketSegment: {
+                                    select: { id: true, name: true, parentId: true }
+                                }
+                            }
+                        }
                     },
                 },
             },

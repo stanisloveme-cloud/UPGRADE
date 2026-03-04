@@ -13,7 +13,7 @@ export class MarketSegmentsService {
 
         // Build tree
         const segmentMap = new Map();
-        const tree = [];
+        const tree: any[] = [];
 
         // Initialize map
         allSegments.forEach(s => {
