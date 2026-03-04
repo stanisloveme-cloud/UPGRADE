@@ -71,8 +71,23 @@ const SpeakerNotificationsModal: React.FC<SpeakerNotificationsModalProps> = ({ v
     };
 
     const copyToClipboard = (text: string) => {
-        navigator.clipboard.writeText(text);
-        message.success('Ссылка скопирована');
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text);
+            message.success('Ссылка скопирована');
+        } else {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                message.success('Ссылка скопирована');
+            } catch (err) {
+                message.error('Не удалось скопировать ссылку');
+            }
+            document.body.removeChild(textArea);
+        }
     };
 
     const filteredData = useMemo(() => {

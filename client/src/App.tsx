@@ -17,6 +17,7 @@ import { ForgotPasswordPage } from './pages/ForgotPasswordPage';
 import { ResetPasswordPage } from './pages/ResetPasswordPage';
 import BrandApproval from './pages/BrandApproval';
 import BrandsCheck from './pages/BrandsCheck';
+import SpeakerMemoPage from './pages/SpeakerMemoPage';
 
 dayjs.locale('ru');
 
@@ -30,6 +31,7 @@ const App: React.FC = () => {
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             <Route path="/reset-password" element={<ResetPasswordPage />} />
             <Route path="/brand-approval/:hash" element={<BrandApproval />} />
+            <Route path="/speaker-memo/:hash" element={<SpeakerMemoPage />} />
 
             <Route path="/" element={<RequireAuth><BasicLayout /></RequireAuth>}>
               <Route index element={<Navigate to="/events" replace />} />

@@ -17,8 +17,24 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
     const [addModalVisible, setAddModalVisible] = useState(false);
 
     const copyToClipboard = (text: string) => {
-        navigator.clipboard.writeText(text);
-        message.success('Ссылка на согласование скопирована');
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text);
+            message.success('Ссылка на согласование скопирована');
+        } else {
+            // Fallback for non-https contexts
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                message.success('Ссылка на согласование скопирована');
+            } catch (err) {
+                message.error('Не удалось скопировать ссылку');
+            }
+            document.body.removeChild(textArea);
+        }
     };
 
     const StatusTag = ({ status, reason }: { status: string, reason?: string }) => {
@@ -194,7 +210,8 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                     trigger={<a>Изменить</a>}
                     initialValues={{
                         ...record,
-                        segments: record.segments?.map((s: any) => [s.marketSegmentId]) // Very basic initial value mapping. In reality, Cascader likes full paths [[1, 2, 3]], but changeOnSelect often forgives it if IDs are unique. We can improve this if needed. Let's just pass [[id]].
+                        cases: Array.isArray(record.cases) ? record.cases : [],
+                        segments: Array.isArray(record.segments) ? record.segments.map((s: any) => [s.marketSegmentId]) : undefined
                     }}
                     onFinish={async (values) => {
                         try {
@@ -221,7 +238,7 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                         onOk: async () => {
                             // Backend allows deleting the link via generic API? Normally it's DELETE on /api/sponsors/:sponsorId/events/:eventId
                             // For simplicity, we assume the API handles it or falls back properly.
-                            await axios.delete(`/api/sponsors/${record.id}`);
+                            await axios.delete(`/api/sponsors/${record.id}/detach/${eventId}`);
                             actionRef.current?.reload();
                         }
                     });

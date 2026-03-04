@@ -157,6 +157,7 @@ const AnnouncementsModal: React.FC<AnnouncementsModalProps> = ({ visible, onClos
                 editable={{
                     type: 'multiple',
                     editableKeys,
+                    deletePopconfirmMessage: 'Удалить этот анонс?',
                     onSave: async (_rowKey, d, _row) => {
                         await handleSave(d);
                     },
