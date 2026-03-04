@@ -23,8 +23,14 @@ BEGIN
     END IF;
 END $$;
 
--- Attempt to modify status_date to timestamptz (if not already)
-ALTER TABLE "session_speakers" ALTER COLUMN "status_date" SET DATA TYPE TIMESTAMPTZ;
+DO $$
+BEGIN
+    EXECUTE 'ALTER TABLE "session_speakers" ALTER COLUMN "status_date" SET DATA TYPE TIMESTAMPTZ';
+EXCEPTION
+    WHEN undefined_column THEN
+        -- Handle case if table/column does not exist yet gracefully, or ignore
+        NULL;
+END $$;
 
 DO $$
 BEGIN
@@ -78,13 +84,18 @@ BEGIN
 END $$;
 
 -- Add tables IF NOT EXISTS
-CREATE TABLE IF NOT EXISTS "user_events" (
-    "id" SERIAL NOT NULL,
-    "user_id" INTEGER NOT NULL,
-    "event_id" INTEGER NOT NULL,
-    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT "user_events_pkey" PRIMARY KEY ("id")
-);
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_tables WHERE schemaname = 'public' AND tablename = 'user_events') THEN
+        EXECUTE 'CREATE TABLE "user_events" (
+            "id" SERIAL NOT NULL,
+            "user_id" INTEGER NOT NULL,
+            "event_id" INTEGER NOT NULL,
+            "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            CONSTRAINT "user_events_pkey" PRIMARY KEY ("id")
+        )';
+    END IF;
+END $$;
 
 DO $$
 BEGIN
