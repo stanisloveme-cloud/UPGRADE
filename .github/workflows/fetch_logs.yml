@@ -13,4 +13,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "Backend Logs:"
-            docker logs --tail 200 upgrade-crm-app-1
+            docker logs --tail 2000 upgrade-crm-app-1
