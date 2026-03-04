@@ -459,15 +459,7 @@ async function main() {
         }
     });
 
-    // 3. Rate him for 2024
-    await (prisma as any).speakerRating.create({
-        data: {
-            speakerId: ivan.id,
-            eventId: event2024.id,
-            score: 4,
-            comment: 'Good technical content, slightly nervous.',
-        }
-    });
+
 
     // 4. Create Event 2025 (Future/Current)
     const event2025 = await prisma.event.create({
