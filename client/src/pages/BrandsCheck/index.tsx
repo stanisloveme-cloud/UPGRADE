@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { PageContainer, ProTable, ActionType, ProColumns, ModalForm, ProFormText, ProFormTextArea, ProFormSelect, ProForm, ProFormDigit, ProFormList, ProFormCascader } from '@ant-design/pro-components';
-import { Button, Tag, Typography, Tooltip, message, Space, Avatar, Upload, Form } from 'antd';
+import { Button, Tag, Typography, Tooltip, message, Space, Upload, Form } from 'antd';
 import { CopyOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, UploadOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import dayjs from 'dayjs';
