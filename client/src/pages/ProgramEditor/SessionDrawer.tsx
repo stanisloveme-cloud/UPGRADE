@@ -36,6 +36,9 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
         speakers: initialValues?.speakers?.map((s: any) => ({
             speakerId: s.speakerId || s.id,
             role: s.role || 'speaker',
+            status: s.status || 'review',
+            statusDate: s.statusDate,
+            statusUser: s.statusUser,
             companySnapshot: s.companySnapshot,
             positionSnapshot: s.positionSnapshot,
             hasPresentation: !!s.presentationTitle || !!s.presentationUrl,
@@ -88,6 +91,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                     formattedValues.speakers = values.speakers.map((s: any) => ({
                         speakerId: Number(s.speakerId),
                         role: s.role,
+                        status: s.status,
                         companySnapshot: s.companySnapshot,
                         positionSnapshot: s.positionSnapshot,
                         presentationUrl: s.hasPresentation ? s.presentationUrl : null,
@@ -332,6 +336,34 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                 rules={[{ required: true, message: 'Обязательно' }]}
                                 width="sm"
                             />
+
+                            <ProFormSelect
+                                name="status"
+                                label="Статус"
+                                options={[
+                                    { value: 'confirmed', label: 'Подтвержден' },
+                                    { value: 'pre_confirmed', label: 'Предварительно подтвержден' },
+                                    { value: 'contact', label: 'Контакт' },
+                                    { value: 'to_contact', label: 'Выйти на связь' },
+                                    { value: 'declined', label: 'Отказ' },
+                                    { value: 'review', label: 'На рассмотрении' }
+                                ]}
+                                initialValue="review"
+                                allowClear={false}
+                                width="sm"
+                            />
+
+                            <ProFormDependency name={['statusDate', 'statusUser']}>
+                                {({ statusDate, statusUser }) => {
+                                    if (!statusDate) return null;
+                                    const shortName = statusUser ? `${statusUser.lastName || ''} ${statusUser.firstName ? statusUser.firstName.charAt(0) + '.' : ''}` : '';
+                                    return (
+                                        <div style={{ fontSize: '12px', color: '#8c8c8c', alignSelf: 'center', marginTop: '10px', marginLeft: '-15px', marginRight: '15px' }}>
+                                            {dayjs(statusDate).format('DD.MM.YY HH:mm')} {shortName ? `(${shortName})` : ''}
+                                        </div>
+                                    );
+                                }}
+                            </ProFormDependency>
 
                             <ProFormText name="companySnapshot" label="Компания" width="sm" />
                             <ProFormText name="positionSnapshot" label="Должность" width="sm" />

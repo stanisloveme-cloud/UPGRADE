@@ -1,5 +1,5 @@
 # PROJECT STATUS
-**Last Updated:** 2026-02-24
+**Last Updated:** 2026-03-04
 **Current Phase:** MVP DEPLOYED ✅
 
 ---
@@ -33,3 +33,8 @@
 
 ## 5. Immediate Next Steps (Current Focus)
 - Awaiting next feature requests.
+
+## 6. Post-Release Bug Fixes (2026-03-04)
+- [x] **White Screen of Death (Frontend)**: Added a root-level catch-all route `<Route path="*">` to intercept deprecated or cached URLs to gracefully redirect users to `/events` instead of natively crashing React Router.
+- [x] **Admin Seeding (Backend)**: Implemented an automated database seed step within the `PrismaService.onModuleInit` lifecycle to inject the MVP `admin` user on startup, fixing `401 Unauthorized` on fresh deployments.
+- [x] **Redis Session Disconnect (Production)**: Injected the missing `REDIS_URL` back into `docker-compose.prod.yml` to prevent `express-session` from defaulting to the container's localhost, resolving dropped HTTP connections and the "Ошибка сервера" alert on the frontend login page.

@@ -44,14 +44,14 @@ enum PresenceStatus {
 // ============================================================
 
 model Event {
-  id          Int         @id @default(autoincrement())
-  name        String      @db.VarChar(255)
-  description String?     @db.Text
-  startDate     DateTime    @map("start_date") @db.Date
-  endDate       DateTime    @map("end_date") @db.Date
-  status        EventStatus @default(draft)
-  memoTemplate  String?     @map("memo_template") @db.Text
-  createdAt     DateTime    @default(now()) @map("created_at")
+  id           Int         @id @default(autoincrement())
+  name         String      @db.VarChar(255)
+  description  String?     @db.Text
+  startDate    DateTime    @map("start_date") @db.Date
+  endDate      DateTime    @map("end_date") @db.Date
+  status       EventStatus @default(draft)
+  memoTemplate String?     @map("memo_template") @db.Text
+  createdAt    DateTime    @default(now()) @map("created_at")
 
   halls    Hall[]
   users    UserEvent[]
@@ -84,12 +84,12 @@ model Track {
   sortOrder   Int      @default(0) @map("sort_order")
 
   // Announcement Metadata
-  materialType  String?   @map("material_type") @db.VarChar(100)
-  readyDate     DateTime? @map("ready_date") @db.Date
-  status        String    @default("planned") @db.VarChar(50)
-  materialLink  String?   @map("material_link") @db.VarChar(512)
+  materialType String?   @map("material_type") @db.VarChar(100)
+  readyDate    DateTime? @map("ready_date") @db.Date
+  status       String    @default("planned") @db.VarChar(50)
+  materialLink String?   @map("material_link") @db.VarChar(512)
 
-  hall     Hall        @relation(fields: [hallId], references: [id], onDelete: Cascade)
+  hall     Hall      @relation(fields: [hallId], references: [id], onDelete: Cascade)
   sessions Session[]
 
   @@map("tracks")
@@ -147,21 +147,23 @@ model SessionSpeaker {
   speakerId       Int             @map("speaker_id")
   role            SpeakerRole     @default(speaker)
   status          SpeakerStatus   @default(review)
-  statusDate      DateTime?       @map("status_date") @db.Date
+  statusDate      DateTime?       @map("status_date") @db.Timestamptz
+  statusUserId    Int?            @map("status_user_id")
   sortOrder       Int             @default(0) @map("sort_order")
   needsZoom       Boolean         @default(false) @map("needs_zoom")
   hasPresentation Boolean         @default(false) @map("has_presentation")
-  managerComment    String?         @map("manager_comment") @db.Text
-  programThesis     String?         @map("program_thesis") @db.Text
-  newsletterQuote   String?         @map("newsletter_quote") @db.Text
-  presenceStatus    PresenceStatus? @map("presence_status")
+  managerComment  String?         @map("manager_comment") @db.Text
+  programThesis   String?         @map("program_thesis") @db.Text
+  newsletterQuote String?         @map("newsletter_quote") @db.Text
+  presenceStatus  PresenceStatus? @map("presence_status")
 
-  notifiedTg        Boolean         @default(false) @map("notified_tg")
-  notifiedEmail     Boolean         @default(false) @map("notified_email")
-  memoHash          String?         @unique @default(uuid()) @map("memo_hash") @db.VarChar(36)
+  notifiedTg    Boolean @default(false) @map("notified_tg")
+  notifiedEmail Boolean @default(false) @map("notified_email")
+  memoHash      String? @unique @default(uuid()) @map("memo_hash") @db.VarChar(36)
 
-  session Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
-  speaker Speaker @relation(fields: [speakerId], references: [id], onDelete: Cascade)
+  session    Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  speaker    Speaker @relation(fields: [speakerId], references: [id], onDelete: Cascade)
+  statusUser User?   @relation(fields: [statusUserId], references: [id], onDelete: SetNull)
 
   // Snapshots for historical accuracy
   companySnapshot   String? @map("company_snapshot") @db.VarChar(255)
@@ -201,24 +203,25 @@ model Briefing {
 }
 
 model User {
-  id           Int      @id @default(autoincrement())
-  username     String   @unique @db.VarChar(255)
-  password     String   @db.VarChar(255)
-  firstName    String?  @map("first_name") @db.VarChar(100)
-  lastName     String?  @map("last_name") @db.VarChar(100)
-  email        String?  @unique @db.VarChar(255)
-  resetToken   String?  @unique @map("reset_token") @db.VarChar(255)
-  resetTokenExpiry DateTime? @map("reset_token_expiry")
-  role         String   @default("user") @db.VarChar(50)
-  isSuperAdmin      Boolean  @default(false) @map("is_super_admin")
-  isActive          Boolean  @default(true) @map("is_active")
-  canManageSpeakers Boolean  @default(false) @map("can_manage_speakers")
-  createdAt         DateTime @default(now()) @map("created_at")
-  updatedAt    DateTime @updatedAt @map("updated_at")
+  id                Int       @id @default(autoincrement())
+  username          String    @unique @db.VarChar(255)
+  password          String    @db.VarChar(255)
+  firstName         String?   @map("first_name") @db.VarChar(100)
+  lastName          String?   @map("last_name") @db.VarChar(100)
+  email             String?   @unique @db.VarChar(255)
+  resetToken        String?   @unique @map("reset_token") @db.VarChar(255)
+  resetTokenExpiry  DateTime? @map("reset_token_expiry")
+  role              String    @default("user") @db.VarChar(50)
+  isSuperAdmin      Boolean   @default(false) @map("is_super_admin")
+  isActive          Boolean   @default(true) @map("is_active")
+  canManageSpeakers Boolean   @default(false) @map("can_manage_speakers")
+  createdAt         DateTime  @default(now()) @map("created_at")
+  updatedAt         DateTime  @updatedAt @map("updated_at")
 
   events           UserEvent[]
   assignedSessions Session[]
   sponsors         Sponsor[]
+  sessionSpeakers  SessionSpeaker[]
 
   @@map("users")
 }
@@ -237,40 +240,40 @@ model UserEvent {
 }
 
 model Sponsor {
-  id                     Int      @id @default(autoincrement())
-  eventId                Int      @map("event_id")
-  name                   String   @db.VarChar(255)
-  shortDescription       String?  @map("short_description") @db.VarChar(255)
-  websiteUrl             String?  @map("website_url") @db.VarChar(255)
-  publicEmail            String?  @map("public_email") @db.VarChar(100)
-  publicPhone            String?  @map("public_phone") @db.VarChar(50)
-  logoUrl                String?  @map("logo_url") @db.VarChar(512)
-  description            String?  @db.Text
-  catalogDescription     String?  @map("catalog_description") @db.Text
-  serviceCardDescription String?  @map("service_card_description") @db.Text
-  marketSegments         Json?    @map("market_segments")
-  city                   String?  @db.VarChar(100)
-  employeeCount          Int?     @map("employee_count")
-  annualTurnover         String?  @map("annual_turnover") @db.VarChar(100)
-  telegram               String?  @db.VarChar(100)
-  whatsapp               String?  @db.VarChar(100)
-  contactName            String?  @map("contact_name") @db.VarChar(100)
-  contactEmail           String?  @map("contact_email") @db.VarChar(100)
-  cfoName                String?  @map("cfo_name") @db.VarChar(100)
-  cfoPhone               String?  @map("cfo_phone") @db.VarChar(50)
-  cfoEmail               String?  @map("cfo_email") @db.VarChar(100)
+  id                     Int     @id @default(autoincrement())
+  eventId                Int     @map("event_id")
+  name                   String  @db.VarChar(255)
+  shortDescription       String? @map("short_description") @db.VarChar(255)
+  websiteUrl             String? @map("website_url") @db.VarChar(255)
+  publicEmail            String? @map("public_email") @db.VarChar(100)
+  publicPhone            String? @map("public_phone") @db.VarChar(50)
+  logoUrl                String? @map("logo_url") @db.VarChar(512)
+  description            String? @db.Text
+  catalogDescription     String? @map("catalog_description") @db.Text
+  serviceCardDescription String? @map("service_card_description") @db.Text
+  marketSegments         Json?   @map("market_segments")
+  city                   String? @db.VarChar(100)
+  employeeCount          Int?    @map("employee_count")
+  annualTurnover         String? @map("annual_turnover") @db.VarChar(100)
+  telegram               String? @db.VarChar(100)
+  whatsapp               String? @db.VarChar(100)
+  contactName            String? @map("contact_name") @db.VarChar(100)
+  contactEmail           String? @map("contact_email") @db.VarChar(100)
+  cfoName                String? @map("cfo_name") @db.VarChar(100)
+  cfoPhone               String? @map("cfo_phone") @db.VarChar(50)
+  cfoEmail               String? @map("cfo_email") @db.VarChar(100)
   cases                  Json?
-  materialsUrl           String?  @map("materials_url") @db.VarChar(512)
-  
-  approvalHash           String?  @unique @default(uuid()) @map("approval_hash") @db.VarChar(36)
-  status                 String   @default("pending") @db.VarChar(50) // pending, approved, rejected
-  rejectionReason        String?  @map("rejection_reason") @db.Text
+  materialsUrl           String? @map("materials_url") @db.VarChar(512)
 
-  createdAt              DateTime @default(now()) @map("created_at")
+  approvalHash    String? @unique @default(uuid()) @map("approval_hash") @db.VarChar(36)
+  status          String  @default("pending") @db.VarChar(50) // pending, approved, rejected
+  rejectionReason String? @map("rejection_reason") @db.Text
 
-  event                  Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
-  assignedManagerId      Int?     @map("assigned_manager_id")
-  assignedManager        User?    @relation(fields: [assignedManagerId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at")
+
+  event             Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  assignedManagerId Int?  @map("assigned_manager_id")
+  assignedManager   User? @relation(fields: [assignedManagerId], references: [id])
 
   @@map("sponsors")
 }

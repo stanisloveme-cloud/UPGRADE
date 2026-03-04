@@ -70,7 +70,7 @@ export class SessionsService {
         }
     }
 
-    async create(createSessionDto: CreateSessionDto) {
+    async create(createSessionDto: CreateSessionDto, user?: any) {
         const { speakers, questions, briefings, ignoreConflicts, ...sessionData } = createSessionDto;
 
         // Extract speaker IDs
@@ -89,6 +89,8 @@ export class SessionsService {
                         speaker: { connect: { id: s.speakerId || s.id } },
                         role: s.role || 'speaker',
                         status: s.status || 'confirmed',
+                        statusDate: s.status ? new Date() : null,
+                        statusUserId: s.status && user?.id ? user.id : null,
                         sortOrder: index,
                         companySnapshot: s.companySnapshot,
                         positionSnapshot: s.positionSnapshot,
@@ -113,7 +115,7 @@ export class SessionsService {
                     }))
                 } : undefined
             },
-            include: { manager: { select: { id: true, firstName: true, lastName: true, username: true } }, speakers: { include: { speaker: true } }, questions: { orderBy: { order: 'asc' } }, briefings: { include: { moderator: true } } }
+            include: { manager: { select: { id: true, firstName: true, lastName: true, username: true } }, speakers: { include: { speaker: true, statusUser: { select: { id: true, firstName: true, lastName: true } } } }, questions: { orderBy: { order: 'asc' } }, briefings: { include: { moderator: true } } }
         });
 
         if (speakers && speakers.length > 0) {
@@ -127,7 +129,7 @@ export class SessionsService {
         return this.prisma.session.findMany({
             include: {
                 manager: { select: { id: true, firstName: true, lastName: true, username: true } },
-                speakers: { include: { speaker: true }, orderBy: { sortOrder: 'asc' } },
+                speakers: { include: { speaker: true, statusUser: { select: { id: true, firstName: true, lastName: true } } }, orderBy: { sortOrder: 'asc' } },
                 questions: { orderBy: { order: 'asc' } },
                 briefings: { include: { moderator: true } }
             },
@@ -141,7 +143,7 @@ export class SessionsService {
             include: {
                 track: true,
                 manager: { select: { id: true, firstName: true, lastName: true, username: true } },
-                speakers: { include: { speaker: true }, orderBy: { sortOrder: 'asc' } },
+                speakers: { include: { speaker: true, statusUser: { select: { id: true, firstName: true, lastName: true } } }, orderBy: { sortOrder: 'asc' } },
                 questions: { orderBy: { order: 'asc' } },
                 briefings: { include: { moderator: true } }
             }
@@ -150,7 +152,7 @@ export class SessionsService {
         return session;
     }
 
-    async update(id: number, updateSessionDto: UpdateSessionDto) {
+    async update(id: number, updateSessionDto: UpdateSessionDto, user?: any) {
         const { speakers, questions, briefings, ignoreConflicts, updatedAt, force, ...sessionData } = updateSessionDto as any;
 
         // Check if session exists
@@ -200,16 +202,25 @@ export class SessionsService {
                         where: { id },
                         data: {
                             speakers: {
-                                create: speakers.map((s: any, index: number) => ({
-                                    speaker: { connect: { id: Number(s.speakerId) } },
-                                    role: s.role || 'speaker',
-                                    status: s.status || 'confirmed',
-                                    companySnapshot: s.companySnapshot,
-                                    positionSnapshot: s.positionSnapshot,
-                                    presentationTitle: s.presentationTitle,
-                                    presentationUrl: s.presentationUrl,
-                                    sortOrder: index
-                                }))
+                                create: speakers.map((s: any, index: number) => {
+                                    // Check if status changed compared to existing DB entry
+                                    const oldSp = existingSession.speakers.find((ex: any) => ex.speakerId === Number(s.speakerId));
+                                    const statusChanged = !oldSp || oldSp.status !== s.status;
+
+
+                                    return {
+                                        speaker: { connect: { id: Number(s.speakerId) } },
+                                        role: s.role || 'speaker',
+                                        status: s.status || 'confirmed',
+                                        statusDate: statusChanged ? new Date() : oldSp.statusDate,
+                                        statusUserId: statusChanged ? user?.id : oldSp.statusUserId,
+                                        companySnapshot: s.companySnapshot,
+                                        positionSnapshot: s.positionSnapshot,
+                                        presentationTitle: s.presentationTitle,
+                                        presentationUrl: s.presentationUrl,
+                                        sortOrder: index
+                                    };
+                                })
                             }
                         }
                     });
@@ -252,7 +263,7 @@ export class SessionsService {
                 where: { id },
                 include: {
                     manager: { select: { id: true, firstName: true, lastName: true, username: true } },
-                    speakers: { include: { speaker: true }, orderBy: { sortOrder: 'asc' } },
+                    speakers: { include: { speaker: true, statusUser: { select: { id: true, firstName: true, lastName: true } } }, orderBy: { sortOrder: 'asc' } },
                     questions: { orderBy: { order: 'asc' } },
                     briefings: { include: { moderator: true } }
                 }
