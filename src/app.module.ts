@@ -16,6 +16,7 @@ import { UploadsModule } from './uploads/uploads.module';
 import { ExportsModule } from './exports/exports.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { SponsorsModule } from './sponsors/sponsors.module';
+import { MarketSegmentsModule } from './market-segments/market-segments.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { SponsorsModule } from './sponsors/sponsors.module';
     ExportsModule,
     NotificationsModule,
     SponsorsModule,
+    MarketSegmentsModule,
   ],
   providers: [
     {

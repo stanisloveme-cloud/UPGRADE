@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { PageContainer, ProTable, ActionType, ProColumns, ModalForm, ProFormText, ProFormTextArea, ProFormSelect, ProForm, ProFormDigit, ProFormList } from '@ant-design/pro-components';
+import { PageContainer, ProTable, ActionType, ProColumns, ModalForm, ProFormText, ProFormTextArea, ProFormSelect, ProForm, ProFormDigit, ProFormList, ProFormCascader } from '@ant-design/pro-components';
 import { Button, Tag, Typography, Tooltip, message, Space, Avatar, Upload, Form } from 'antd';
 import { CopyOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, UploadOutlined } from '@ant-design/icons';
 import axios from 'axios';
@@ -76,20 +76,19 @@ const BrandsCheck: React.FC = () => {
             <ProFormTextArea name="catalogDescription" label="Описание для печатного каталога" fieldProps={{ showCount: true, maxLength: 500 }} tooltip="Чем занимается бренд" />
             <ProFormTextArea name="serviceCardDescription" label="Подробное описание для карты сервисов" />
 
-            <ProFormSelect
-                name="marketSegments"
+            <ProFormCascader
+                name="segments"
                 label="Сегменты рынка"
-                mode="tags"
-                placeholder="Выберите или добавьте сегменты"
-                options={[
-                    { label: 'IT', value: 'IT' },
-                    { label: 'Retail', value: 'Retail' },
-                    { label: 'EdTech', value: 'EdTech' },
-                    { label: 'Fintech', value: 'Fintech' },
-                    { label: 'Manufacturing', value: 'Manufacturing' },
-                    { label: 'HoReCa', value: 'HoReCa' },
-                    { label: 'Форумы и конференции', value: 'Форумы и конференции' },
-                ]}
+                placeholder="Выберите сегменты"
+                request={async () => {
+                    const { data } = await axios.get('/api/market-segments/tree');
+                    return data;
+                }}
+                fieldProps={{
+                    multiple: true,
+                    changeOnSelect: true,
+                    fieldNames: { label: 'name', value: 'id', children: 'children' }
+                }}
             />
 
             <Form.Item label="Логотип бренда" name="logoUrl" valuePropName="fileList" getValueFromEvent={(e: any) => { if (Array.isArray(e)) { return e; } return e?.fileList; }}>
@@ -179,18 +178,27 @@ const BrandsCheck: React.FC = () => {
         },
         {
             title: 'Категории',
-            dataIndex: 'marketSegments',
+            dataIndex: 'segments',
+            valueType: 'cascader',
+            request: async () => {
+                const { data } = await axios.get('/api/market-segments/tree');
+                return data;
+            },
+            fieldProps: {
+                changeOnSelect: true,
+                fieldNames: { label: 'name', value: 'id', children: 'children' }
+            },
             render: (_, entity) => (
                 <Space direction="vertical" size={4}>
                     <Space align="start">
                         {entity.logoUrl ? <Avatar src={entity.logoUrl} shape="circle" /> : <Avatar>{entity.name?.[0]}</Avatar>}
                         <Text>{entity.shortDescription || 'Нет описания'}</Text>
                     </Space>
-                    {entity.marketSegments && Array.isArray(entity.marketSegments) && (
+                    {entity.segments && Array.isArray(entity.segments) && (
                         <div>
-                            {entity.marketSegments.map((segment: string) => (
-                                <Text key={segment} type="secondary" style={{ fontSize: '12px', marginRight: 8 }}>
-                                    • {segment}
+                            {entity.segments.map((s: any) => (
+                                <Text key={s.marketSegment?.id} type="secondary" style={{ fontSize: '12px', marginRight: 8 }}>
+                                    • {s.marketSegment?.name}
                                 </Text>
                             ))}
                         </div>
@@ -198,7 +206,6 @@ const BrandsCheck: React.FC = () => {
                 </Space>
             ),
             width: 300,
-            hideInSearch: true,
         },
         {
             title: 'Ссылка',
@@ -258,7 +265,10 @@ const BrandsCheck: React.FC = () => {
                             Редактировать
                         </Button>
                     }
-                    initialValues={record}
+                    initialValues={{
+                        ...record,
+                        segments: record.segments?.map((s: any) => [s.marketSegmentId])
+                    }}
                     onFinish={async (values) => {
                         try {
                             const payload = { ...values };
@@ -307,11 +317,17 @@ const BrandsCheck: React.FC = () => {
                 actionRef={actionRef}
                 columns={columns}
                 request={async (params) => {
-                    const { status, search, managerId } = params;
+                    const { status, search, managerId, segments } = params;
                     let url = `/api/sponsors/all?`;
                     if (status && status !== 'all') url += `status=${status}&`;
                     if (search) url += `search=${search}&`;
                     if (managerId) url += `managerId=${managerId}&`;
+
+                    if (segments && Array.isArray(segments)) {
+                        // Cascader filter passes array of arrays if multiple, or just array of id path: e.g. [1, 2, 3] from a single selection
+                        const flatSegments = Array.from(new Set(segments.flat()));
+                        url += `segments=${flatSegments.join(',')}&`;
+                    }
 
                     const { data } = await axios.get(url);
                     return { data, success: true };

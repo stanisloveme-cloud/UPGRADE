@@ -26,12 +26,21 @@ export class SponsorsService {
         if (search) {
             where.name = { contains: search, mode: 'insensitive' };
         }
+        if (query.segments) {
+            const segmentIds = query.segments.split(',').map(Number);
+            where.segments = {
+                some: {
+                    marketSegmentId: { in: segmentIds }
+                }
+            };
+        }
 
         return this.prisma.sponsor.findMany({
             where,
             include: {
                 assignedManager: { select: { id: true, firstName: true, lastName: true } },
-                events: { include: { event: { select: { id: true, name: true } } } }
+                events: { include: { event: { select: { id: true, name: true } } } },
+                segments: { include: { marketSegment: { select: { id: true, name: true, parentId: true } } } }
             },
             orderBy: { createdAt: 'desc' }
         });
@@ -50,7 +59,6 @@ export class SponsorsService {
                 description: data.description,
                 catalogDescription: data.catalogDescription,
                 serviceCardDescription: data.serviceCardDescription,
-                marketSegments: data.marketSegments,
                 exportToWebsite: typeof data.exportToWebsite === 'boolean' ? data.exportToWebsite : data.exportToWebsite === 'true',
                 city: data.city,
                 employeeCount: data.employeeCount ? Number(data.employeeCount) : null,
@@ -65,6 +73,16 @@ export class SponsorsService {
             }
         });
 
+        // Parse multidimensional array from Cascader: [[1, 2, 3], [1, 4]] -> unique [1, 2, 3, 4]
+        if (data.segments && Array.isArray(data.segments)) {
+            const uniqueSegmentIds = Array.from(new Set(data.segments.flat())).filter(id => typeof id === 'number');
+            if (uniqueSegmentIds.length > 0) {
+                await this.prisma.sponsorSegment.createMany({
+                    data: uniqueSegmentIds.map(id => ({ sponsorId: sponsor.id, marketSegmentId: Number(id) }))
+                });
+            }
+        }
+
         if (data.eventId) {
             await this.prisma.eventSponsor.create({
                 data: {
@@ -77,7 +95,7 @@ export class SponsorsService {
     }
 
     async update(id: number, data: any) {
-        return this.prisma.sponsor.update({
+        const sponsor = await this.prisma.sponsor.update({
             where: { id: Number(id) },
             data: {
                 name: data.name,
@@ -90,7 +108,6 @@ export class SponsorsService {
                 description: data.description,
                 catalogDescription: data.catalogDescription,
                 serviceCardDescription: data.serviceCardDescription,
-                marketSegments: data.marketSegments,
                 exportToWebsite: typeof data.exportToWebsite === 'boolean' ? data.exportToWebsite : data.exportToWebsite === 'true',
                 city: data.city,
                 employeeCount: data.employeeCount ? Number(data.employeeCount) : null,
@@ -105,6 +122,18 @@ export class SponsorsService {
                 assignedManagerId: data.assignedManagerId ? Number(data.assignedManagerId) : null,
             }
         });
+
+        if (data.segments && Array.isArray(data.segments)) {
+            const uniqueSegmentIds = Array.from(new Set(data.segments.flat())).filter(id => typeof id === 'number');
+            await this.prisma.sponsorSegment.deleteMany({ where: { sponsorId: id } });
+            if (uniqueSegmentIds.length > 0) {
+                await this.prisma.sponsorSegment.createMany({
+                    data: uniqueSegmentIds.map(sid => ({ sponsorId: id, marketSegmentId: Number(sid) }))
+                });
+            }
+        }
+
+        return sponsor;
     }
 
     async remove(id: number) {

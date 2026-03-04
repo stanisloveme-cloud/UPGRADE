@@ -253,7 +253,10 @@ model Sponsor {
   description            String? @db.Text
   catalogDescription     String? @map("catalog_description") @db.Text
   serviceCardDescription String? @map("service_card_description") @db.Text
-  marketSegments         Json?   @map("market_segments")
+
+  // Relationships
+  segments               SponsorSegment[]
+
   city                   String? @db.VarChar(100)
   employeeCount          Int?    @map("employee_count")
   annualTurnover         String? @map("annual_turnover") @db.VarChar(100)
@@ -287,4 +290,38 @@ model EventSponsor {
 
   @@id([eventId, sponsorId])
   @@map("event_sponsors")
+}
+
+// ==========================================
+// NEW MODEL: MarketSegment (Hierarchical Directory)
+// ==========================================
+model MarketSegment {
+  id          Int             @id @default(autoincrement())
+  name        String          @unique @db.VarChar(255)
+  
+  // Self-relation for hierarchy (up to 3 levels: Category -> Subcategory -> Niche)
+  parentId    Int?            @map("parent_id")
+  parent      MarketSegment?  @relation("SegmentHierarchy", fields: [parentId], references: [id])
+  children    MarketSegment[] @relation("SegmentHierarchy")
+
+  sponsors    SponsorSegment[]
+
+  createdAt   DateTime        @default(now()) @map("created_at")
+  updatedAt   DateTime        @updatedAt @map("updated_at")
+
+  @@map("market_segments")
+}
+
+// ==========================================
+// Join table for Sponsor <-> MarketSegment Many-to-Many relationship
+// ==========================================
+model SponsorSegment {
+  sponsorId       Int @map("sponsor_id")
+  marketSegmentId Int @map("market_segment_id")
+
+  sponsor         Sponsor       @relation(fields: [sponsorId], references: [id], onDelete: Cascade)
+  marketSegment   MarketSegment @relation(fields: [marketSegmentId], references: [id], onDelete: Cascade)
+
+  @@id([sponsorId, marketSegmentId])
+  @@map("sponsor_segments")
 }

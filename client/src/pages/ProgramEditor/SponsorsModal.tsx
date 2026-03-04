@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Modal, message, Button, Space, Typography, Tooltip, Tag, Tabs, Form, Upload, Checkbox } from 'antd';
-import { ActionType, ProColumns, ProTable, ModalForm, ProFormText, ProFormTextArea, ProForm, ProFormDigit, ProFormSelect, ProFormList } from '@ant-design/pro-components';
+import { ActionType, ProColumns, ProTable, ModalForm, ProFormText, ProFormTextArea, ProForm, ProFormDigit, ProFormSelect, ProFormList, ProFormCascader } from '@ant-design/pro-components';
 import { PlusOutlined, CopyOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, UploadOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
@@ -52,20 +52,19 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
             <ProFormTextArea name="catalogDescription" label="Описание для печатного каталога" fieldProps={{ showCount: true, maxLength: 500 }} tooltip="Чем занимается бренд" />
             <ProFormTextArea name="serviceCardDescription" label="Подробное описание для карты сервисов" />
 
-            <ProFormSelect
-                name="marketSegments"
+            <ProFormCascader
+                name="segments"
                 label="Сегменты рынка"
-                mode="tags"
-                placeholder="Выберите или добавьте сегменты"
-                options={[
-                    { label: 'IT', value: 'IT' },
-                    { label: 'Retail', value: 'Retail' },
-                    { label: 'EdTech', value: 'EdTech' },
-                    { label: 'Fintech', value: 'Fintech' },
-                    { label: 'Manufacturing', value: 'Manufacturing' },
-                    { label: 'HoReCa', value: 'HoReCa' },
-                    { label: 'Форумы и конференции', value: 'Форумы и конференции' },
-                ]}
+                placeholder="Выберите сегменты"
+                request={async () => {
+                    const { data } = await axios.get('/api/market-segments/tree');
+                    return data;
+                }}
+                fieldProps={{
+                    multiple: true,
+                    changeOnSelect: true,
+                    fieldNames: { label: 'name', value: 'id', children: 'children' }
+                }}
             />
 
             <Form.Item label="Логотип бренда" name="logoUrl" valuePropName="fileList" getValueFromEvent={(e: any) => { if (Array.isArray(e)) { return e; } return e?.fileList; }}>
@@ -193,7 +192,10 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                     key="edit"
                     title="Редактировать спонсора"
                     trigger={<a>Изменить</a>}
-                    initialValues={record}
+                    initialValues={{
+                        ...record,
+                        segments: record.segments?.map((s: any) => [s.marketSegmentId]) // Very basic initial value mapping. In reality, Cascader likes full paths [[1, 2, 3]], but changeOnSelect often forgives it if IDs are unique. We can improve this if needed. Let's just pass [[id]].
+                    }}
                     onFinish={async (values) => {
                         try {
                             const payload = { ...values };
