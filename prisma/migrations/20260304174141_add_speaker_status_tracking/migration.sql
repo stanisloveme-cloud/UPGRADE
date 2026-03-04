@@ -1,36 +1,81 @@
 -- This is a manual hotfix migration to only add what's missing in prod and avoid the "already exists" errors.
 
--- Attempt to add memo_template IF NOT EXISTS
-ALTER TABLE "events" ADD COLUMN IF NOT EXISTS "memo_template" TEXT;
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='events' AND column_name='memo_template') THEN
+        EXECUTE 'ALTER TABLE "events" ADD COLUMN "memo_template" TEXT';
+    END IF;
 
--- Attempt to add new session_speakers fields IF NOT EXISTS
-ALTER TABLE "session_speakers" ADD COLUMN IF NOT EXISTS "memo_hash" VARCHAR(36);
-ALTER TABLE "session_speakers" ADD COLUMN IF NOT EXISTS "notified_email" BOOLEAN NOT NULL DEFAULT false;
-ALTER TABLE "session_speakers" ADD COLUMN IF NOT EXISTS "notified_tg" BOOLEAN NOT NULL DEFAULT false;
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='session_speakers' AND column_name='memo_hash') THEN
+        EXECUTE 'ALTER TABLE "session_speakers" ADD COLUMN "memo_hash" VARCHAR(36)';
+    END IF;
 
--- Add the truly new field
-ALTER TABLE "session_speakers" ADD COLUMN IF NOT EXISTS "status_user_id" INTEGER;
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='session_speakers' AND column_name='notified_email') THEN
+        EXECUTE 'ALTER TABLE "session_speakers" ADD COLUMN "notified_email" BOOLEAN NOT NULL DEFAULT false';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='session_speakers' AND column_name='notified_tg') THEN
+        EXECUTE 'ALTER TABLE "session_speakers" ADD COLUMN "notified_tg" BOOLEAN NOT NULL DEFAULT false';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='session_speakers' AND column_name='status_user_id') THEN
+        EXECUTE 'ALTER TABLE "session_speakers" ADD COLUMN "status_user_id" INTEGER';
+    END IF;
+END $$;
 
 -- Attempt to modify status_date to timestamptz (if not already)
 ALTER TABLE "session_speakers" ALTER COLUMN "status_date" SET DATA TYPE TIMESTAMPTZ;
 
--- Attempt to add new sessions fields IF NOT EXISTS
-ALTER TABLE "sessions" ADD COLUMN IF NOT EXISTS "manager_id" INTEGER;
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='sessions' AND column_name='manager_id') THEN
+        EXECUTE 'ALTER TABLE "sessions" ADD COLUMN "manager_id" INTEGER';
+    END IF;
 
--- Attempt to add new tracks fields IF NOT EXISTS
-ALTER TABLE "tracks" ADD COLUMN IF NOT EXISTS "material_link" VARCHAR(512);
-ALTER TABLE "tracks" ADD COLUMN IF NOT EXISTS "material_type" VARCHAR(100);
-ALTER TABLE "tracks" ADD COLUMN IF NOT EXISTS "ready_date" DATE;
-ALTER TABLE "tracks" ADD COLUMN IF NOT EXISTS "status" VARCHAR(50) NOT NULL DEFAULT 'planned';
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='tracks' AND column_name='material_link') THEN
+        EXECUTE 'ALTER TABLE "tracks" ADD COLUMN "material_link" VARCHAR(512)';
+    END IF;
 
--- Attempt to add new users fields IF NOT EXISTS
-ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "can_manage_speakers" BOOLEAN NOT NULL DEFAULT false;
-ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "email" VARCHAR(255);
-ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "first_name" VARCHAR(100);
-ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "is_active" BOOLEAN NOT NULL DEFAULT true;
-ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "last_name" VARCHAR(100);
-ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "reset_token" VARCHAR(255);
-ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "reset_token_expiry" TIMESTAMP(3);
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='tracks' AND column_name='material_type') THEN
+        EXECUTE 'ALTER TABLE "tracks" ADD COLUMN "material_type" VARCHAR(100)';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='tracks' AND column_name='ready_date') THEN
+        EXECUTE 'ALTER TABLE "tracks" ADD COLUMN "ready_date" DATE';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='tracks' AND column_name='status') THEN
+        EXECUTE 'ALTER TABLE "tracks" ADD COLUMN "status" VARCHAR(50) NOT NULL DEFAULT ''planned''';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='can_manage_speakers') THEN
+        EXECUTE 'ALTER TABLE "users" ADD COLUMN "can_manage_speakers" BOOLEAN NOT NULL DEFAULT false';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='email') THEN
+        EXECUTE 'ALTER TABLE "users" ADD COLUMN "email" VARCHAR(255)';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='first_name') THEN
+        EXECUTE 'ALTER TABLE "users" ADD COLUMN "first_name" VARCHAR(100)';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='is_active') THEN
+        EXECUTE 'ALTER TABLE "users" ADD COLUMN "is_active" BOOLEAN NOT NULL DEFAULT true';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='last_name') THEN
+        EXECUTE 'ALTER TABLE "users" ADD COLUMN "last_name" VARCHAR(100)';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='reset_token') THEN
+        EXECUTE 'ALTER TABLE "users" ADD COLUMN "reset_token" VARCHAR(255)';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='reset_token_expiry') THEN
+        EXECUTE 'ALTER TABLE "users" ADD COLUMN "reset_token_expiry" TIMESTAMP(3)';
+    END IF;
+END $$;
 
 -- Add tables IF NOT EXISTS
 CREATE TABLE IF NOT EXISTS "user_events" (
@@ -74,8 +119,12 @@ CREATE TABLE IF NOT EXISTS "sponsors" (
     CONSTRAINT "sponsors_pkey" PRIMARY KEY ("id")
 );
 
--- Explicitly add columns to sponsors if the table already existed but was missing them
-ALTER TABLE "sponsors" ADD COLUMN IF NOT EXISTS "assigned_manager_id" INTEGER;
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='sponsors' AND column_name='assigned_manager_id') THEN
+        EXECUTE 'ALTER TABLE "sponsors" ADD COLUMN "assigned_manager_id" INTEGER';
+    END IF;
+END $$;
 
 -- Note: We wrap index and foreign key creation in anonymous DO blocks so they don't fail if they already exist.
 DO $$
