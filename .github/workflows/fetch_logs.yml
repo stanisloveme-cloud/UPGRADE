@@ -12,5 +12,4 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker exec upgrade-crm-app-1 npx prisma db pull --schema=/tmp/schema.prisma || true
-            docker exec upgrade-crm-app-1 cat /tmp/schema.prisma
+            docker exec upgrade-db-1 pg_dump -U upgrade -s upgrade_crm
