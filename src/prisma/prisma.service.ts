@@ -28,9 +28,34 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
                     env: { ...process.env },
                 });
                 this.logger.log('Migrations complete: ' + (stdout || 'no output'));
+
+                await this.seedAdminUser();
             } catch (err) {
                 this.logger.warn('Migration warning (may be already applied): ' + err.message);
+
+                await this.seedAdminUser();
             }
+        }
+    }
+
+    private async seedAdminUser() {
+        try {
+            const adminUser = 'admin';
+            const existingAdmin = await this.user.findUnique({ where: { username: adminUser } });
+            if (!existingAdmin) {
+                this.logger.log('Seeding MVP admin user...');
+                await this.user.create({
+                    data: {
+                        username: adminUser,
+                        password: 'admin123',
+                        role: 'admin',
+                        isSuperAdmin: true,
+                    },
+                });
+                this.logger.log('MVP admin user created successfully.');
+            }
+        } catch (err) {
+            this.logger.error('Failed to seed admin user: ' + err.message);
         }
     }
 

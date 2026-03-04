@@ -41,7 +41,11 @@ const App: React.FC = () => {
               <Route path="brands-check" element={<BrandsCheck />} />
               <Route path="profile" element={<ProfilePage />} />
               <Route path="settings/users" element={<UsersList />} />
+              <Route path="*" element={<Navigate to="/events" replace />} />
             </Route>
+
+            {/* Global catch-all. If unauthenticated, will redirect to events which requires auth, so to login. */}
+            <Route path="*" element={<Navigate to="/events" replace />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
