@@ -13,7 +13,7 @@
     base_url: "https://sales.upgradecrm.ru/dashboard/program/event/16#conference-id-92"
     
     # Креденшелы (Используй ENV переменные!)
-    credentials_note: "Используй process.env.UPGRADE_CRM_USERNAME и process.env.UPGRADE_CRM_PASSWORD"
+    credentials_note: "логин — admin, пароль — admin123"
     
     # ИНСТРУКЦИИ ДЛЯ СУБАГЕНТА (СЦЕНАРИЙ)
     instructions: |

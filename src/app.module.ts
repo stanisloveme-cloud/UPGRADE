@@ -22,7 +22,7 @@ import { SponsorsModule } from './sponsors/sponsors.module';
     ConfigModule.forRoot({ isGlobal: true }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'client', 'dist'),
-      exclude: ['/api/:path(.*)'], // Fix for path-to-regexp v8 requirements
+      exclude: ['/api/{*splat}'], // Fix for path-to-regexp v8 requirements
     }),
     ServeStaticModule.forRoot({
       rootPath: join(process.cwd(), 'uploads'),
