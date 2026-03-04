@@ -12,4 +12,4 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker logs upgrade-crm-backend-1 --tail 300
+            docker logs upgrade-crm-app-1 --tail 500
