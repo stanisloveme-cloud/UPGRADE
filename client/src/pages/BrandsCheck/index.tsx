@@ -206,8 +206,20 @@ const BrandsCheck: React.FC = () => {
             render: (_, entity) => (
                 <Space direction="vertical" size={4}>
                     <Space align="start">
-                        {entity.logoUrl ? <Avatar src={entity.logoUrl} shape="circle" /> : <Avatar>{entity.name?.[0]}</Avatar>}
-                        <Text>{entity.shortDescription || 'Нет описания'}</Text>
+                        {entity.logoUrl ? (
+                            <img
+                                src={entity.logoUrl.startsWith('http') || entity.logoUrl.startsWith('/api') ? entity.logoUrl : `/api${entity.logoUrl.startsWith('/') ? '' : '/'}${entity.logoUrl}`}
+                                alt="logo"
+                                style={{ width: 60, height: 40, objectFit: 'contain', background: '#fff', border: '1px solid #f0f0f0', borderRadius: 4 }}
+                            />
+                        ) : (
+                            <div style={{ width: 60, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fafafa', border: '1px solid #f0f0f0', borderRadius: 4, color: '#bfbfbf', fontSize: 16, fontWeight: 'bold' }}>
+                                {entity.name?.[0]?.toUpperCase()}
+                            </div>
+                        )}
+                        <Text style={{ maxWidth: 200 }} ellipsis={{ tooltip: entity.shortDescription }}>
+                            {entity.shortDescription || 'Нет описания'}
+                        </Text>
                     </Space>
                     {entity.segments && Array.isArray(entity.segments) && (
                         <div>
@@ -282,7 +294,9 @@ const BrandsCheck: React.FC = () => {
                     }
                     initialValues={{
                         ...record,
-                        segments: record.segments?.map((s: any) => [s.marketSegmentId])
+                        cases: Array.isArray(record.cases) ? record.cases : [],
+                        segments: Array.isArray(record.segments) ? record.segments.map((s: any) => [s.marketSegmentId]) : undefined,
+                        logoUrl: record.logoUrl ? [{ uid: '-1', name: 'logo', status: 'done', url: record.logoUrl, response: { url: record.logoUrl } }] : []
                     }}
                     onFinish={async (values) => {
                         try {

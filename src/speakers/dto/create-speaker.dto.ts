@@ -56,4 +56,8 @@ export class CreateSpeakerDto {
     @IsOptional()
     @IsString()
     assistantContact?: string;
+
+    @IsOptional()
+    @IsBoolean()
+    exportToWebsite?: boolean;
 }

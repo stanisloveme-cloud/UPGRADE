@@ -81,17 +81,7 @@ const BrandApproval: React.FC = () => {
         return <Result status="404" title="404" subTitle="Страница не найдена или ссылка недействительна." />;
     }
 
-    if (submitted) {
-        return (
-            <div style={{ maxWidth: 600, margin: '50px auto' }}>
-                <Result
-                    status={submitted.status === 'approved' ? 'success' : 'info'}
-                    title={submitted.status === 'approved' ? 'Данные подтверждены' : 'Правки отправлены'}
-                    subTitle="Спасибо за сотрудничество! Эта страница больше не требует действий."
-                />
-            </div>
-        );
-    }
+
 
     const InfoRow = ({ title, help, value, isLink = false, isLogo = false, isHtml = false }: any) => {
         if (!value && !isLogo) return null;
@@ -194,38 +184,49 @@ const BrandApproval: React.FC = () => {
                 </div>
 
                 <div style={{ marginTop: 60 }}>
-                    <Title level={3} style={{ marginBottom: 32 }}>Выберите статус</Title>
-                    <Space size="middle" wrap>
-                        <Button
-                            shape="round"
-                            size="large"
-                            onClick={handleApprove}
-                            loading={submitting}
-                            style={{
-                                borderColor: '#52c41a',
-                                color: '#52c41a',
-                                padding: '0 32px',
-                                height: 48,
-                                fontSize: 16
-                            }}
-                        >
-                            Данные верны, изменений не требуется
-                        </Button>
-                        <Button
-                            shape="round"
-                            size="large"
-                            onClick={() => setRejectModalVisible(true)}
-                            style={{
-                                borderColor: '#ff4d4f',
-                                color: '#ff4d4f',
-                                padding: '0 32px',
-                                height: 48,
-                                fontSize: 16
-                            }}
-                        >
-                            Данные не верны, требуются изменения
-                        </Button>
-                    </Space>
+                    {submitted ? (
+                        <Result
+                            status={submitted.status === 'approved' ? 'success' : 'info'}
+                            title={submitted.status === 'approved' ? 'Данные подтверждены' : 'Правки отправлены'}
+                            subTitle="Спасибо за сотрудничество! Эта страница больше не требует действий."
+                            style={{ background: '#fafafa', borderRadius: 8, padding: '32px' }}
+                        />
+                    ) : (
+                        <>
+                            <Title level={3} style={{ marginBottom: 32 }}>Выберите статус</Title>
+                            <Space size="middle" wrap>
+                                <Button
+                                    shape="round"
+                                    size="large"
+                                    onClick={handleApprove}
+                                    loading={submitting}
+                                    style={{
+                                        borderColor: '#52c41a',
+                                        color: '#52c41a',
+                                        padding: '0 32px',
+                                        height: 48,
+                                        fontSize: 16
+                                    }}
+                                >
+                                    Данные верны, изменений не требуется
+                                </Button>
+                                <Button
+                                    shape="round"
+                                    size="large"
+                                    onClick={() => setRejectModalVisible(true)}
+                                    style={{
+                                        borderColor: '#ff4d4f',
+                                        color: '#ff4d4f',
+                                        padding: '0 32px',
+                                        height: 48,
+                                        fontSize: 16
+                                    }}
+                                >
+                                    Данные не верны, требуются изменения
+                                </Button>
+                            </Space>
+                        </>
+                    )}
                 </div>
 
                 <Modal
