@@ -1,51 +1,47 @@
-/*
-  Warnings:
+-- This is a manual hotfix migration to only add what's missing in prod and avoid the "already exists" errors.
 
-  - A unique constraint covering the columns `[memo_hash]` on the table `session_speakers` will be added. If there are existing duplicate values, this will fail.
-  - A unique constraint covering the columns `[email]` on the table `users` will be added. If there are existing duplicate values, this will fail.
-  - A unique constraint covering the columns `[reset_token]` on the table `users` will be added. If there are existing duplicate values, this will fail.
+-- Attempt to add memo_template IF NOT EXISTS
+ALTER TABLE "events" ADD COLUMN IF NOT EXISTS "memo_template" TEXT;
 
-*/
--- AlterTable
-ALTER TABLE "events" ADD COLUMN     "memo_template" TEXT;
+-- Attempt to add new session_speakers fields IF NOT EXISTS
+ALTER TABLE "session_speakers" ADD COLUMN IF NOT EXISTS "memo_hash" VARCHAR(36);
+ALTER TABLE "session_speakers" ADD COLUMN IF NOT EXISTS "notified_email" BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE "session_speakers" ADD COLUMN IF NOT EXISTS "notified_tg" BOOLEAN NOT NULL DEFAULT false;
 
--- AlterTable
-ALTER TABLE "session_speakers" ADD COLUMN     "memo_hash" VARCHAR(36),
-ADD COLUMN     "notified_email" BOOLEAN NOT NULL DEFAULT false,
-ADD COLUMN     "notified_tg" BOOLEAN NOT NULL DEFAULT false,
-ADD COLUMN     "status_user_id" INTEGER,
-ALTER COLUMN "status_date" SET DATA TYPE TIMESTAMPTZ;
+-- Add the truly new field
+ALTER TABLE "session_speakers" ADD COLUMN IF NOT EXISTS "status_user_id" INTEGER;
 
--- AlterTable
-ALTER TABLE "sessions" ADD COLUMN     "manager_id" INTEGER;
+-- Attempt to modify status_date to timestamptz (if not already)
+ALTER TABLE "session_speakers" ALTER COLUMN "status_date" SET DATA TYPE TIMESTAMPTZ;
 
--- AlterTable
-ALTER TABLE "tracks" ADD COLUMN     "material_link" VARCHAR(512),
-ADD COLUMN     "material_type" VARCHAR(100),
-ADD COLUMN     "ready_date" DATE,
-ADD COLUMN     "status" VARCHAR(50) NOT NULL DEFAULT 'planned';
+-- Attempt to add new sessions fields IF NOT EXISTS
+ALTER TABLE "sessions" ADD COLUMN IF NOT EXISTS "manager_id" INTEGER;
 
--- AlterTable
-ALTER TABLE "users" ADD COLUMN     "can_manage_speakers" BOOLEAN NOT NULL DEFAULT false,
-ADD COLUMN     "email" VARCHAR(255),
-ADD COLUMN     "first_name" VARCHAR(100),
-ADD COLUMN     "is_active" BOOLEAN NOT NULL DEFAULT true,
-ADD COLUMN     "last_name" VARCHAR(100),
-ADD COLUMN     "reset_token" VARCHAR(255),
-ADD COLUMN     "reset_token_expiry" TIMESTAMP(3);
+-- Attempt to add new tracks fields IF NOT EXISTS
+ALTER TABLE "tracks" ADD COLUMN IF NOT EXISTS "material_link" VARCHAR(512);
+ALTER TABLE "tracks" ADD COLUMN IF NOT EXISTS "material_type" VARCHAR(100);
+ALTER TABLE "tracks" ADD COLUMN IF NOT EXISTS "ready_date" DATE;
+ALTER TABLE "tracks" ADD COLUMN IF NOT EXISTS "status" VARCHAR(50) NOT NULL DEFAULT 'planned';
 
--- CreateTable
-CREATE TABLE "user_events" (
+-- Attempt to add new users fields IF NOT EXISTS
+ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "can_manage_speakers" BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "email" VARCHAR(255);
+ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "first_name" VARCHAR(100);
+ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "is_active" BOOLEAN NOT NULL DEFAULT true;
+ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "last_name" VARCHAR(100);
+ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "reset_token" VARCHAR(255);
+ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "reset_token_expiry" TIMESTAMP(3);
+
+-- Add tables IF NOT EXISTS
+CREATE TABLE IF NOT EXISTS "user_events" (
     "id" SERIAL NOT NULL,
     "user_id" INTEGER NOT NULL,
     "event_id" INTEGER NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
     CONSTRAINT "user_events_pkey" PRIMARY KEY ("id")
 );
 
--- CreateTable
-CREATE TABLE "sponsors" (
+CREATE TABLE IF NOT EXISTS "sponsors" (
     "id" SERIAL NOT NULL,
     "event_id" INTEGER NOT NULL,
     "name" VARCHAR(255) NOT NULL,
@@ -75,39 +71,56 @@ CREATE TABLE "sponsors" (
     "rejection_reason" TEXT,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "assigned_manager_id" INTEGER,
-
     CONSTRAINT "sponsors_pkey" PRIMARY KEY ("id")
 );
 
--- CreateIndex
-CREATE UNIQUE INDEX "user_events_user_id_event_id_key" ON "user_events"("user_id", "event_id");
+-- Note: We wrap index and foreign key creation in anonymous DO blocks so they don't fail if they already exist.
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_class WHERE relname = 'user_events_user_id_event_id_key') THEN
+        CREATE UNIQUE INDEX "user_events_user_id_event_id_key" ON "user_events"("user_id", "event_id");
+    END IF;
 
--- CreateIndex
-CREATE UNIQUE INDEX "sponsors_approval_hash_key" ON "sponsors"("approval_hash");
+    IF NOT EXISTS (SELECT 1 FROM pg_class WHERE relname = 'sponsors_approval_hash_key') THEN
+        CREATE UNIQUE INDEX "sponsors_approval_hash_key" ON "sponsors"("approval_hash");
+    END IF;
 
--- CreateIndex
-CREATE UNIQUE INDEX "session_speakers_memo_hash_key" ON "session_speakers"("memo_hash");
+    IF NOT EXISTS (SELECT 1 FROM pg_class WHERE relname = 'session_speakers_memo_hash_key') THEN
+        CREATE UNIQUE INDEX "session_speakers_memo_hash_key" ON "session_speakers"("memo_hash");
+    END IF;
 
--- CreateIndex
-CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
+    IF NOT EXISTS (SELECT 1 FROM pg_class WHERE relname = 'users_email_key') THEN
+        CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
+    END IF;
 
--- CreateIndex
-CREATE UNIQUE INDEX "users_reset_token_key" ON "users"("reset_token");
+    IF NOT EXISTS (SELECT 1 FROM pg_class WHERE relname = 'users_reset_token_key') THEN
+        CREATE UNIQUE INDEX "users_reset_token_key" ON "users"("reset_token");
+    END IF;
+END $$;
 
--- AddForeignKey
-ALTER TABLE "sessions" ADD CONSTRAINT "sessions_manager_id_fkey" FOREIGN KEY ("manager_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM information_schema.table_constraints WHERE constraint_name = 'sessions_manager_id_fkey') THEN
+        ALTER TABLE "sessions" ADD CONSTRAINT "sessions_manager_id_fkey" FOREIGN KEY ("manager_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+    END IF;
 
--- AddForeignKey
-ALTER TABLE "session_speakers" ADD CONSTRAINT "session_speakers_status_user_id_fkey" FOREIGN KEY ("status_user_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+    IF NOT EXISTS (SELECT 1 FROM information_schema.table_constraints WHERE constraint_name = 'session_speakers_status_user_id_fkey') THEN
+        ALTER TABLE "session_speakers" ADD CONSTRAINT "session_speakers_status_user_id_fkey" FOREIGN KEY ("status_user_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+    END IF;
 
--- AddForeignKey
-ALTER TABLE "user_events" ADD CONSTRAINT "user_events_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+    IF NOT EXISTS (SELECT 1 FROM information_schema.table_constraints WHERE constraint_name = 'user_events_user_id_fkey') THEN
+        ALTER TABLE "user_events" ADD CONSTRAINT "user_events_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+    END IF;
 
--- AddForeignKey
-ALTER TABLE "user_events" ADD CONSTRAINT "user_events_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "events"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+    IF NOT EXISTS (SELECT 1 FROM information_schema.table_constraints WHERE constraint_name = 'user_events_event_id_fkey') THEN
+        ALTER TABLE "user_events" ADD CONSTRAINT "user_events_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "events"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+    END IF;
 
--- AddForeignKey
-ALTER TABLE "sponsors" ADD CONSTRAINT "sponsors_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "events"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+    IF NOT EXISTS (SELECT 1 FROM information_schema.table_constraints WHERE constraint_name = 'sponsors_event_id_fkey') THEN
+        ALTER TABLE "sponsors" ADD CONSTRAINT "sponsors_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "events"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+    END IF;
 
--- AddForeignKey
-ALTER TABLE "sponsors" ADD CONSTRAINT "sponsors_assigned_manager_id_fkey" FOREIGN KEY ("assigned_manager_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+    IF NOT EXISTS (SELECT 1 FROM information_schema.table_constraints WHERE constraint_name = 'sponsors_assigned_manager_id_fkey') THEN
+        ALTER TABLE "sponsors" ADD CONSTRAINT "sponsors_assigned_manager_id_fkey" FOREIGN KEY ("assigned_manager_id") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+    END IF;
+END $$;
