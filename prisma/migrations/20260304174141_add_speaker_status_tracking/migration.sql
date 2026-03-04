@@ -74,6 +74,9 @@ CREATE TABLE IF NOT EXISTS "sponsors" (
     CONSTRAINT "sponsors_pkey" PRIMARY KEY ("id")
 );
 
+-- Explicitly add columns to sponsors if the table already existed but was missing them
+ALTER TABLE "sponsors" ADD COLUMN IF NOT EXISTS "assigned_manager_id" INTEGER;
+
 -- Note: We wrap index and foreign key creation in anonymous DO blocks so they don't fail if they already exist.
 DO $$
 BEGIN
