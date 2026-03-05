@@ -211,7 +211,8 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                     initialValues={{
                         ...record,
                         cases: Array.isArray(record.cases) ? record.cases : [],
-                        segments: Array.isArray(record.segments) ? record.segments.map((s: any) => [s.marketSegmentId]) : undefined
+                        segments: Array.isArray(record.segments) ? record.segments.map((s: any) => [s.marketSegmentId]) : undefined,
+                        logoUrl: record.logoUrl ? [{ uid: '-1', name: 'logo', status: 'done', url: record.logoUrl, response: { url: record.logoUrl } }] : []
                     }}
                     onFinish={async (values) => {
                         try {
@@ -236,10 +237,13 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                         title: 'Открепить спонсора?',
                         content: 'Спонсор будет откреплен от мероприятия, но останется в глобальной базе.',
                         onOk: async () => {
-                            // Backend allows deleting the link via generic API? Normally it's DELETE on /api/sponsors/:sponsorId/events/:eventId
-                            // For simplicity, we assume the API handles it or falls back properly.
-                            await axios.delete(`/api/sponsors/${record.id}/detach/${eventId}`);
-                            actionRef.current?.reload();
+                            try {
+                                await axios.delete(`/api/sponsors/${record.id}/detach/${eventId}`);
+                                message.success('Спонсор откреплен от мероприятия');
+                                actionRef.current?.reload();
+                            } catch (e) {
+                                message.error('Ошибка открепления спонсора');
+                            }
                         }
                     });
                 }}>Открепить</a>
