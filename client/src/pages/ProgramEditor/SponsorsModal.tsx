@@ -210,7 +210,16 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                     trigger={<a>Изменить</a>}
                     initialValues={{
                         ...record,
-                        cases: Array.isArray(record.cases) ? record.cases : [],
+                        cases: (() => {
+                            if (Array.isArray(record.cases)) return record.cases;
+                            if (typeof record.cases === 'string') {
+                                try {
+                                    const parsed = JSON.parse(record.cases);
+                                    return Array.isArray(parsed) ? parsed : [];
+                                } catch (e) { return []; }
+                            }
+                            return [];
+                        })(),
                         segments: Array.isArray(record.segments) ? record.segments.map((s: any) => [s.marketSegmentId]) : undefined,
                         logoUrl: record.logoUrl ? [{ uid: '-1', name: 'logo', status: 'done', url: record.logoUrl, response: { url: record.logoUrl } }] : []
                     }}
@@ -232,7 +241,7 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                 >
                     {renderFormFields()}
                 </ModalForm>,
-                <a key="delete" style={{ color: 'red' }} onClick={async () => {
+                <a key="delete" style={{ color: 'red', marginLeft: 16 }} onClick={async () => {
                     Modal.confirm({
                         title: 'Открепить спонсора?',
                         content: 'Спонсор будет откреплен от мероприятия, но останется в глобальной базе.',

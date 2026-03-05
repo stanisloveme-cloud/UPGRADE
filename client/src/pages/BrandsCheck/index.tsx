@@ -294,7 +294,16 @@ const BrandsCheck: React.FC = () => {
                     }
                     initialValues={{
                         ...record,
-                        cases: Array.isArray(record.cases) ? record.cases : [],
+                        cases: (() => {
+                            if (Array.isArray(record.cases)) return record.cases;
+                            if (typeof record.cases === 'string') {
+                                try {
+                                    const parsed = JSON.parse(record.cases);
+                                    return Array.isArray(parsed) ? parsed : [];
+                                } catch (e) { return []; }
+                            }
+                            return [];
+                        })(),
                         segments: Array.isArray(record.segments) ? record.segments.map((s: any) => [s.marketSegmentId]) : undefined,
                         logoUrl: record.logoUrl ? [{ uid: '-1', name: 'logo', status: 'done', url: record.logoUrl, response: { url: record.logoUrl } }] : []
                     }}
