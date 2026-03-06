@@ -61,55 +61,59 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
             width={1000}
             onOpenChange={(v) => !v && onClose()}
             onFinish={async (values) => {
-                // Transform timeRange back to HH:mm strings
-                const [start, end] = values.timeRange || [];
-
-                const formatTime = (t: any) => {
-                    if (!t) return null;
-                    if (t && typeof t.format === 'function') return t.format('HH:mm');
-                    if (typeof t === 'string') return t.substring(0, 5);
-                    return t;
-                };
-
-                const formattedValues: any = {
-                    ...values,
-                    startTime: formatTime(start),
-                    endTime: formatTime(end),
-                };
-
-                // Ensure id is passed for updates
-                if (initialValues?.id) {
-                    formattedValues.id = initialValues.id;
-                }
-
-                delete formattedValues.timeRange;
-                delete formattedValues.speakerIds;
-                delete formattedValues.speakersDetails;
-
-                // Ensure speakerId is numeric for backend and strip out UI-only fields like `hasPresentation`
-                if (values.speakers) {
-                    formattedValues.speakers = values.speakers.map((s: any) => ({
-                        speakerId: Number(s.speakerId),
-                        role: s.role,
-                        status: s.status,
-                        companySnapshot: s.companySnapshot,
-                        positionSnapshot: s.positionSnapshot,
-                        presentationUrl: s.hasPresentation ? s.presentationUrl : null,
-                        presentationTitle: s.hasPresentation ? s.presentationTitle : null,
-                    }));
-                }
-
-                // Format briefings array for backend (dayjs -> ISO string)
-                if (values.briefings) {
-                    formattedValues.briefings = values.briefings.map((b: any) => ({
-                        ...b,
-                        datetime: b.datetime && typeof b.datetime.toISOString === 'function'
-                            ? b.datetime.toISOString()
-                            : b.datetime
-                    }));
-                }
-
                 try {
+                    // Transform timeRange back to HH:mm strings
+                    const [start, end] = values.timeRange || [];
+
+                    const formatTime = (t: any) => {
+                        if (!t) return null;
+                        if (t && typeof t.format === 'function') return t.format('HH:mm');
+                        if (typeof t === 'string') return t.substring(0, 5);
+                        return t;
+                    };
+
+                    const formattedValues: any = {
+                        ...values,
+                        startTime: formatTime(start),
+                        endTime: formatTime(end),
+                    };
+
+                    // Ensure id is passed for updates
+                    if (initialValues?.id) {
+                        formattedValues.id = initialValues.id;
+                    }
+
+                    delete formattedValues.timeRange;
+                    delete formattedValues.speakerIds;
+                    delete formattedValues.speakersDetails;
+
+                    // Ensure speakerId is numeric for backend and strip out UI-only fields like `hasPresentation`
+                    if (values.speakers) {
+                        formattedValues.speakers = values.speakers
+                            .filter((s: any) => s != null) // Avoid holes from drag&drop/deletion
+                            .map((s: any) => ({
+                                speakerId: Number(s.speakerId),
+                                role: s.role,
+                                status: s.status,
+                                companySnapshot: s.companySnapshot,
+                                positionSnapshot: s.positionSnapshot,
+                                presentationUrl: s.hasPresentation ? s.presentationUrl : null,
+                                presentationTitle: s.hasPresentation ? s.presentationTitle : null,
+                            }));
+                    }
+
+                    // Format briefings array for backend (dayjs -> ISO string)
+                    if (values.briefings) {
+                        formattedValues.briefings = values.briefings
+                            .filter((b: any) => b != null)
+                            .map((b: any) => ({
+                                ...b,
+                                datetime: b.datetime && typeof b.datetime.toISOString === 'function'
+                                    ? b.datetime.toISOString()
+                                    : b.datetime
+                            }));
+                    }
+
                     console.log('SessionModal onFinish fixed values:', formattedValues);
                     return await onFinish(formattedValues);
                 } catch (error: any) {
@@ -148,7 +152,17 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                         <Button key="cancel" onClick={() => props.onReset?.()}>
                             Отмена
                         </Button>,
-                        <Button key="submit" type="primary" onClick={() => props.submit?.()}>
+                        <Button key="submit" type="primary" onClick={async () => {
+                            try {
+                                await formRef.current?.validateFields();
+                                props.submit?.();
+                            } catch (e: any) {
+                                console.error("Validation failed:", e);
+                                const errFields = e.errorFields?.map((f: any) => f.name.join('.')).join(', ');
+                                message.error(`Ошибки валидации: ${errFields || 'Проверьте скрытые поля'}`);
+                                props.submit?.(); // Let form display validation marks
+                            }
+                        }}>
                             Сохранить
                         </Button>
                     ];
