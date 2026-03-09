@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
-import { DrawerForm, ProFormText, ProFormTextArea, ProFormTimePicker, ProFormSelect, ProFormList, ProFormDateTimePicker, ProFormSwitch, ProFormGroup, ProFormDependency, ProCard } from '@ant-design/pro-components';
+import { ProFormText, ProFormTextArea, ProFormTimePicker, ProFormSelect, ProFormList, ProFormDateTimePicker, ProFormSwitch, ProFormGroup, ProFormDependency, ProCard } from '@ant-design/pro-components';
 import { Button, Upload, message, Divider } from 'antd';
 import { FilePdfOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import axios from 'axios';
 import SpeakerModal from '../SpeakersList/SpeakerModal';
+import { SafeDrawerForm } from '../../components/SafeForms/SafeDrawerForm';
+import { sanitizeFormValues } from '../../utils/formSanitizer';
 
 
 interface SessionModalProps {
@@ -53,8 +55,12 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
         managerId: initialValues?.managerId || undefined // Explicitly expose
     };
 
+    const sanitizedValues = sanitizeFormValues(normalizedInitialValues, {
+        listFields: ['speakers', 'briefings', 'questions']
+    });
+
     return (
-        <DrawerForm
+        <SafeDrawerForm
             formRef={formRef}
             title={initialValues?.id ? "Редактирование сессии" : "Создание сессии"}
             open={visible}
@@ -122,52 +128,9 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                     return false;
                 }
             }}
-            onFinishFailed={(errorInfo) => {
-                console.error('SessionDrawer validation failed:', errorInfo);
-                message.error('Пожалуйста, проверьте форму на наличие ошибок заполнения (возможно, в скрытых вкладках или списках)');
-            }}
-            initialValues={normalizedInitialValues}
+            initialValues={sanitizedValues}
             drawerProps={{ destroyOnClose: true }}
-            submitter={{
-                searchConfig: {
-                    submitText: 'Сохранить',
-                    resetText: 'Отмена',
-                },
-                render: (props, _dom) => {
-                    return [
-                        initialValues?.id && onDelete && (
-                            <Button
-                                key="delete"
-                                type="primary"
-                                danger
-                                onClick={() => {
-                                    if (window.confirm('Вы уверены, что хотите удалить эту сессию?')) {
-                                        onDelete(initialValues.id);
-                                    }
-                                }}
-                            >
-                                Удалить
-                            </Button>
-                        ),
-                        <Button key="cancel" onClick={() => props.onReset?.()}>
-                            Отмена
-                        </Button>,
-                        <Button key="submit" type="primary" onClick={async () => {
-                            try {
-                                await formRef.current?.validateFields();
-                                props.submit?.();
-                            } catch (e: any) {
-                                console.error("Validation failed:", e);
-                                const errFields = e.errorFields?.map((f: any) => f.name.join('.')).join(', ');
-                                message.error(`Ошибки валидации: ${errFields || 'Проверьте скрытые поля'}`);
-                                props.submit?.(); // Let form display validation marks
-                            }
-                        }}>
-                            Сохранить
-                        </Button>
-                    ];
-                },
-            }}
+            onDelete={initialValues?.id ? () => onDelete?.(initialValues.id) : undefined}
         >
             <ProFormText
                 name="name"
@@ -494,7 +457,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                     }
                 }}
             />
-        </DrawerForm>
+        </SafeDrawerForm>
     );
 };
 

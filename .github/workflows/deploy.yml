@@ -98,6 +98,24 @@ jobs:
             fi
             $DC_CMD -f docker-compose.prod.yml down || true
             docker ps -a --filter "name=upgrade-crm" -q | xargs -r docker rm -f || true
+
+            # Install certbot if not present
+            if ! command -v certbot &> /dev/null; then
+                sudo apt-get update
+                sudo apt-get install -y certbot
+            fi
+
+            # Check and run Certbot before bringing containers up
+            if [ ! -d "/etc/letsencrypt/live/devupgrade.space4you.ru" ]; then
+                echo "Certificates not found. Generating via certbot standalone..."
+                sudo certbot certonly --standalone -d devupgrade.space4you.ru --non-interactive --agree-tos -m dev@space4you.ru
+            fi
+
+            # Setup cron for certbot renewal if not exists
+            if ! sudo crontab -l | grep -q "certbot renew"; then
+                (sudo crontab -l 2>/dev/null; echo "0 3 * * * certbot renew --pre-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml stop frontend\" --post-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml start frontend\"") | sudo crontab -
+            fi
+
             $DC_CMD -f docker-compose.prod.yml up -d --remove-orphans --force-recreate
 
             # NOTE: Migrations run automatically inside NestJS on startup (PrismaService.onModuleInit)

@@ -77,7 +77,7 @@ const HallsModal: React.FC<HallsModalProps> = ({ visible, onClose, eventId }) =>
                         <Button key="cancel" onClick={() => props.onReset?.()}>
                             Отмена
                         </Button>,
-                        <Button key="submit" type="primary" onClick={() => props.submit?.()}>
+                        <Button key="submit" type="primary" onClick={() => form.submit()}>
                             Сохранить
                         </Button>
                     ];

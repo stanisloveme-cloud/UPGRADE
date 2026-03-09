@@ -9,9 +9,10 @@ Dependencies: All previous PRDs
 Для этапа MVP и первых внедрений используется архитектура "Все в одном".
 graph TD
     User[Client Browser] -->|HTTPS : 443| Nginx[Nginx Proxy (Host)]
+    User -->|HTTP : 80 (Redirects to HTTPS)| Nginx
     
     subgraph "Docker Network (Internal)"
-        Nginx -->|Proxy Pass| Frontend[Frontend Container (Nginx Static)]
+        Nginx -->|Proxy Pass| Frontend[Frontend Container (Nginx Static, SSL)]
         Nginx -->|Proxy Pass /api| Backend[Backend Container (NestJS)]
         Backend -->|TCP : 5432| DB[PostgreSQL 15]
         Backend -->|TCP : 6379| Redis[Redis Cache for Sessions]
@@ -20,6 +21,7 @@ graph TD
     subgraph "Host Filesystem"
         DB -->|Mount| VolDB[/opt/upgrade/data/postgres/]
         Backend -->|Mount| VolFiles[/opt/upgrade/uploads/]
+        Frontend -->|Mount /etc/letsencrypt (ro)| LetsEncrypt[/etc/letsencrypt on Host]
     end
 
 
@@ -49,9 +51,18 @@ Test: Запуск unit-тестов.
 Push: Отправка образов в GitHub Container Registry (GHCR).
 Deploy:
 Подключение к серверу по SSH.
+Установка/генерация SSL-сертификатов Let's Encrypt (Certbot) на хосте, если они отсутствуют.
+Обновление crontab для автоматического продления сертификатов (pre-hook / post-hook для Nginx).
 docker compose pull (скачивание новых образов).
 docker compose up -d (перезапуск контейнеров).
 docker system prune (очистка старого).
+
+4.1. SSL & HTTPS (Let's Encrypt)
+Управление сертификатами происходит на уровне хост-машины (Ubuntu):
+Certbot (standalone) генерирует ключи в `/etc/letsencrypt/live/devupgrade.space4you.ru/`.
+Фронтенд-контейнер (Nginx) монтирует эти ключи в режиме `ro` (read-only) и прослушивает порт 443.
+Все HTTP запросы (порт 80) автоматически редиректятся Nginx'ом на HTTPS (301 Moved Permanently).
+Продление сертификатов происходит автоматически через cron-задачу на хосте (`certbot renew`).
 5. Инфраструктура проекта (File Structure)
 **CRITICAL**: Структура проекта зафиксирована (Hard Coded Context). Изменения запрещены.
 

@@ -1,0 +1,25 @@
+
+Running 1 test using 1 worker
+
+[1A[2K[1/1] [devstand] › tests\brands.spec.ts:21:9 › Brands Library (TC-06) › should navigate to Brands and add a new brand
+[1A[2K  1) [devstand] › tests\brands.spec.ts:21:9 › Brands Library (TC-06) › should navigate to Brands and add a new brand 
+
+    Error: page.goto: net::ERR_CONNECTION_CLOSED at https://devupgrade.space4you.ru/
+    Call log:
+    [2m  - navigating to "https://devupgrade.space4you.ru/", waiting until "load"[22m
+
+
+      4 |     test.beforeEach(async ({ page }) => {
+      5 |         // Navigate to the app (uses baseURL)
+    > 6 |         await page.goto('/');
+        |                    ^
+      7 |         await page.fill('#login_form_username', 'vladislav.shirobokov@gmail.com');
+      8 |         await page.fill('#login_form_password', '123456');
+      9 |         await page.click('button[type="submit"]:has-text("Войти")');
+        at D:\UPGRADE\e2e\tests\brands.spec.ts:6:20
+
+
+[1A[2K  1 failed
+    [devstand] › tests\brands.spec.ts:21:9 › Brands Library (TC-06) › should navigate to Brands and add a new brand 
+
+[36m  Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.[39m

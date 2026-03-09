@@ -1,0 +1,120 @@
+
+Running 1 test using 1 worker
+
+[1A[2K[1/1] [chromium] › tests\session_editor.spec.ts:26:9 › Session Editor & Conflicts (TC-03 & TC-04) › should open Session Editor and modify internal comment
+[1A[2K[chromium] › tests\session_editor.spec.ts:26:9 › Session Editor & Conflicts (TC-03 & TC-04) › should open Session Editor and modify internal comment
+--- VISIBLE TEXT ---
+
+[1A[2KUPGRADE CRM
+Все мероприятия
+Спикеры
+Продажи
+Бренды
+Администраторы
+vladislav.shirobokov@gmail.com
+ADMIN
+Retail Tech 2024
+Управление залами
+Сортировка спикеров
+Анонсы
+Памятки
+Спонсоры
+Скачать презентации
+Умный Импорт (Excel)
+Создать сессию
+Скрыть сессии
+Скрыть бейджи спикеров
+Показать статусы присутствия
+20 мая
+Залы
+09:00
+09:30
+10:00
+10:30
+11:00
+11:30
+12:00
+12:30
+13:00
+13:30
+14:00
+14:30
+15:00
+15:30
+16:00
+16:30
+17:00
+17:30
+18:00
+18:30
+19:00
+19:30
+Main Hall
+0 чел.
+Трек
+Track 1
+-
+AI in Retail 2024
+1
+Редактирование сессии
+Название
+Описание
+Время
+Трек
+Main Hall - Track 1
+Ответственный менеджер
+Выберите менеджера
+Вопросы для обсуждения
+Добавить вопрос
+Бриф-звонки (Подготовка)
+Добавить бриф
+Спикеры сессии (Drag-and-Drop для сортировки)
+Спикер
+Ivanov Ivan (RetailSolutions)
+📞 +79990000001
+Роль
+Спикер
+Статус
+На рассмотрении
+Компания
+Должность
+С презентацией
+Тема презентации
+Загрузить файл
+Добавить спикера
+Удалить
+Отмена
+Сохранить
+
+[1A[2K  1) [chromium] › tests\session_editor.spec.ts:26:9 › Session Editor & Conflicts (TC-03 & TC-04) › should open Session Editor and modify internal comment 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeHidden[2m([22m[2m)[22m failed
+
+    Locator:  locator('.ant-drawer-title').filter({ hasText: 'Редактирование сессии' })
+    Expected: hidden
+    Received: visible
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toBeHidden" with timeout 5000ms[22m
+    [2m  - waiting for locator('.ant-drawer-title').filter({ hasText: 'Редактирование сессии' })[22m
+    [2m    9 × locator resolved to <div id="_r_s_" class="ant-drawer-title">Редактирование сессии</div>[22m
+    [2m      - unexpected value "visible"[22m
+
+
+      73 |
+      74 |         // Verify it closes
+    > 75 |         await expect(drawerTitle).toBeHidden();
+         |                                   ^
+      76 |     });
+      77 | });
+      78 |
+        at D:\UPGRADE\e2e\tests\session_editor.spec.ts:75:35
+
+    Error Context: test-results\session_editor-Session-Edi-aae1a-and-modify-internal-comment-chromium\error-context.md
+
+
+[1A[2K  1 failed
+    [chromium] › tests\session_editor.spec.ts:26:9 › Session Editor & Conflicts (TC-03 & TC-04) › should open Session Editor and modify internal comment 
+
+[36m  Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.[39m

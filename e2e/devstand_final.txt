@@ -1,0 +1,193 @@
+
+Running 6 tests using 6 workers
+
+[1A[2K[1/6] [devstand] › tests\example.spec.ts:3:5 › has title
+[1A[2K[2/6] [devstand] › tests\brands.spec.ts:15:9 › Brands Library (TC-06) › should navigate to Brands and add a new brand
+[1A[2K[3/6] [devstand] › tests\example.spec.ts:10:5 › get started link
+[1A[2K[4/6] [devstand] › tests\session_editor.spec.ts:26:9 › Session Editor & Conflicts (TC-03 & TC-04) › should open Session Editor and modify internal comment
+[1A[2K[5/6] [devstand] › tests\grid.spec.ts:17:9 › Schedule Grid (TC-02) › should filter sessions and badges using header checkboxes
+[1A[2K[6/6] [devstand] › tests\halls.spec.ts:17:9 › Halls Management (TC-01) › should open halls management modal and add a new hall
+[1A[2K[devstand] › tests\session_editor.spec.ts:26:9 › Session Editor & Conflicts (TC-03 & TC-04) › should open Session Editor and modify internal comment
+BROWSER CONSOLE: SessionModal onFinish fixed values: {name: AI in Retail 2024, description: test comment via playwright 1773077271833, trackId: 273, questions: Array(0), briefings: Array(0)}
+
+[1A[2KBROWSER CONSOLE: Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+
+[1A[2KBROWSER CONSOLE: Failed to save session: AxiosError: Request failed with status code 500
+    at yne (http://devupgrade.space4you.ru/assets/index-Bnayofb9.js:993:1094)
+    at XMLHttpRequest.x (http://devupgrade.space4you.ru/assets/index-Bnayofb9.js:993:5977)
+    at fu.request (http://devupgrade.space4you.ru/assets/index-Bnayofb9.js:995:2102)
+    at async j (http://devupgrade.space4you.ru/assets/index-Bnayofb9.js:1078:20392)
+    at async onFinish (http://devupgrade.space4you.ru/assets/index-Bnayofb9.js:1076:31551)
+
+[1A[2KAPI ERROR: http://devupgrade.space4you.ru/api/sessions/289 [33m500[39m {"statusCode":500,"message":"Internal server error"}
+
+[1A[2K--- VISIBLE TEXT ---
+
+[1A[2KUPGRADE CRM
+Все мероприятия
+Спикеры
+Продажи
+Бренды
+Администраторы
+vladislav.shirobokov@gmail.com
+ADMIN
+Retail Tech 2024
+Управление залами
+Сортировка спикеров
+Анонсы
+Памятки
+Спонсоры
+Скачать презентации
+Умный Импорт (Excel)
+Создать сессию
+Скрыть сессии
+Скрыть бейджи спикеров
+Показать статусы присутствия
+20 мая
+Залы
+09:00
+09:30
+10:00
+10:30
+11:00
+11:30
+12:00
+12:30
+13:00
+13:30
+14:00
+14:30
+15:00
+15:30
+16:00
+16:30
+17:00
+17:30
+18:00
+18:30
+19:00
+19:30
+Main Hall
+0 чел.
+Трек
+Track 1
+-
+AI in Retail 2024
+1
+Редактирование сессии
+Название
+Описание
+Время
+Трек
+Main Hall - Track 1
+Ответственный менеджер
+Выберите менеджера
+Вопросы для обсуждения
+Добавить вопрос
+Бриф-звонки (Подготовка)
+Добавить бриф
+Спикеры сессии (Drag-and-Drop для сортировки)
+Спикер
+Ivanov Ivan (RetailSolutions)
+📞 +79990000001
+Роль
+Спикер
+Статус
+На рассмотрении
+Компания
+Должность
+С презентацией
+Тема презентации
+Загрузить файл
+Добавить спикера
+Удалить
+Отмена
+Сохранить
+
+[1A[2K  1) [devstand] › tests\session_editor.spec.ts:26:9 › Session Editor & Conflicts (TC-03 & TC-04) › should open Session Editor and modify internal comment 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeHidden[2m([22m[2m)[22m failed
+
+    Locator:  locator('.ant-drawer-title').filter({ hasText: 'Редактирование сессии' })
+    Expected: hidden
+    Received: visible
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toBeHidden" with timeout 5000ms[22m
+    [2m  - waiting for locator('.ant-drawer-title').filter({ hasText: 'Редактирование сессии' })[22m
+    [2m    9 × locator resolved to <div id="_r_s_" class="ant-drawer-title">Редактирование сессии</div>[22m
+    [2m      - unexpected value "visible"[22m
+
+
+      70 |
+      71 |         // Verify it closes
+    > 72 |         await expect(drawerTitle).toBeHidden();
+         |                                   ^
+      73 |     });
+      74 | });
+      75 |
+        at D:\UPGRADE\e2e\tests\session_editor.spec.ts:72:35
+
+    Error Context: test-results\session_editor-Session-Edi-aae1a-and-modify-internal-comment-devstand\error-context.md
+
+
+[1A[2K  2) [devstand] › tests\brands.spec.ts:15:9 › Brands Library (TC-06) › should navigate to Brands and add a new brand 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('button:has-text("Добавить"), button:has-text("Создать")').first()[22m
+    [2m    - locator resolved to <button type="button" class="ant-btn css-mncuj7 ant-btn-primary ant-btn-color-primary ant-btn-variant-solid">…</button>[22m
+    [2m  - attempting click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - element is not visible[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m  - element was detached from the DOM, retrying[22m
+
+
+      24 |         // If the button exists, we click it. Otherwise the page might just have a table.
+      25 |         if (await createBtn.count() > 0) {
+    > 26 |             await createBtn.click();
+         |                             ^
+      27 |
+      28 |             // Ensure modal opens
+      29 |             await expect(page.locator('.ant-modal-title').first()).toBeVisible();
+        at D:\UPGRADE\e2e\tests\brands.spec.ts:26:29
+
+    Error Context: test-results\brands-Brands-Library-TC-0-d3e7e--Brands-and-add-a-new-brand-devstand\error-context.md
+
+
+[1A[2K  3) [devstand] › tests\halls.spec.ts:17:9 › Halls Management (TC-01) › should open halls management modal and add a new hall 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.fill: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for getByPlaceholder('Название зала').last()[22m
+
+
+      33 |         // 7. Fill the hall name for the newly added row
+      34 |         const newHallInput = page.getByPlaceholder('Название зала').last();
+    > 35 |         await newHallInput.fill('Автотест Зал');
+         |                            ^
+      36 |
+      37 |         // 8. Click Save/Submit by triggering the native HTML5 form submission
+      38 |         await page.waitForTimeout(1000); // Wait for React state to settle after fill
+        at D:\UPGRADE\e2e\tests\halls.spec.ts:35:28
+
+    Error Context: test-results\halls-Halls-Management-TC--6ae42-nt-modal-and-add-a-new-hall-devstand\error-context.md
+
+
+[1A[2K  3 failed
+    [devstand] › tests\brands.spec.ts:15:9 › Brands Library (TC-06) › should navigate to Brands and add a new brand 
+    [devstand] › tests\halls.spec.ts:17:9 › Halls Management (TC-01) › should open halls management modal and add a new hall 
+    [devstand] › tests\session_editor.spec.ts:26:9 › Session Editor & Conflicts (TC-03 & TC-04) › should open Session Editor and modify internal comment 
+  3 passed (31.8s)
+
+[36m  Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.[39m
