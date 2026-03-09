@@ -90,7 +90,7 @@ export class SessionsService {
                         role: s.role || 'speaker',
                         status: s.status || 'confirmed',
                         statusDate: s.status ? new Date() : null,
-                        statusUserId: s.status && user?.id ? user.id : null,
+                        statusUser: s.status && user?.id ? { connect: { id: user.id } } : undefined,
                         sortOrder: index,
                         companySnapshot: s.companySnapshot,
                         positionSnapshot: s.positionSnapshot,
@@ -208,12 +208,14 @@ export class SessionsService {
                                     const statusChanged = !oldSp || oldSp.status !== s.status;
 
 
+                                    const resolvedStatusUserId = statusChanged ? user?.id : oldSp?.statusUserId;
+
                                     return {
                                         speaker: { connect: { id: Number(s.speakerId) } },
                                         role: s.role || 'speaker',
                                         status: s.status || 'confirmed',
                                         statusDate: statusChanged ? new Date() : oldSp.statusDate,
-                                        statusUserId: statusChanged ? user?.id : oldSp.statusUserId,
+                                        statusUser: resolvedStatusUserId ? { connect: { id: resolvedStatusUserId } } : undefined,
                                         companySnapshot: s.companySnapshot,
                                         positionSnapshot: s.positionSnapshot,
                                         presentationTitle: s.presentationTitle,
