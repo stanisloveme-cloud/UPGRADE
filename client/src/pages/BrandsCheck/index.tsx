@@ -1,9 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { PageContainer, ProTable, ActionType, ProColumns, ModalForm, ProFormText, ProFormTextArea, ProFormSelect, ProForm, ProFormDigit, ProFormList, ProFormCascader } from '@ant-design/pro-components';
+import { PageContainer, ProTable, ActionType, ProColumns, ProFormText, ProFormTextArea, ProFormSelect, ProForm, ProFormDigit, ProFormList, ProFormCascader } from '@ant-design/pro-components';
 import { Button, Tag, Typography, Tooltip, message, Space, Upload, Form } from 'antd';
 import { CopyOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, UploadOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import dayjs from 'dayjs';
+import { SafeModalForm } from '../../components/SafeForms/SafeModalForm';
+import { sanitizeFormValues } from '../../utils/formSanitizer';
 
 const { Text, Link } = Typography;
 
@@ -284,7 +286,7 @@ const BrandsCheck: React.FC = () => {
             valueType: 'option',
             width: 150,
             render: (_, record) => [
-                <ModalForm
+                <SafeModalForm
                     key="edit"
                     title="Редактировать спонсора"
                     trigger={
@@ -292,21 +294,11 @@ const BrandsCheck: React.FC = () => {
                             Редактировать
                         </Button>
                     }
-                    initialValues={{
+                    initialValues={sanitizeFormValues({
                         ...record,
-                        cases: (() => {
-                            if (Array.isArray(record.cases)) return record.cases;
-                            if (typeof record.cases === 'string') {
-                                try {
-                                    const parsed = JSON.parse(record.cases);
-                                    return Array.isArray(parsed) ? parsed : [];
-                                } catch (e) { return []; }
-                            }
-                            return [];
-                        })(),
                         segments: Array.isArray(record.segments) ? record.segments.map((s: any) => [s.marketSegmentId]) : undefined,
                         logoUrl: record.logoUrl ? [{ uid: '-1', name: 'logo', status: 'done', url: record.logoUrl, response: { url: record.logoUrl } }] : []
-                    }}
+                    }, { arrayFields: ['cases'], listFields: ['cases'] })}
                     onFinish={async (values) => {
                         try {
                             const payload = { ...values };
@@ -324,7 +316,7 @@ const BrandsCheck: React.FC = () => {
                     }}
                 >
                     {renderFormFields()}
-                </ModalForm>
+                </SafeModalForm>
             ],
         },
         {

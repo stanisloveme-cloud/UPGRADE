@@ -1,8 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { Modal, message, Button, Space, Typography, Tooltip, Tag, Tabs, Form, Upload, Checkbox } from 'antd';
-import { ActionType, ProColumns, ProTable, ModalForm, ProFormText, ProFormTextArea, ProForm, ProFormDigit, ProFormSelect, ProFormList, ProFormCascader } from '@ant-design/pro-components';
+import { ActionType, ProColumns, ProTable, ProFormText, ProFormTextArea, ProForm, ProFormDigit, ProFormSelect, ProFormList, ProFormCascader } from '@ant-design/pro-components';
 import { PlusOutlined, CopyOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, UploadOutlined } from '@ant-design/icons';
 import axios from 'axios';
+import { SafeModalForm } from '../../components/SafeForms/SafeModalForm';
+import { sanitizeFormValues } from '../../utils/formSanitizer';
 
 const { Text, Link } = Typography;
 
@@ -204,25 +206,15 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
             valueType: 'option',
             width: '10%',
             render: (_text, record, _, _action) => [
-                <ModalForm
+                <SafeModalForm
                     key="edit"
                     title="Редактировать спонсора"
                     trigger={<a>Изменить</a>}
-                    initialValues={{
+                    initialValues={sanitizeFormValues({
                         ...record,
-                        cases: (() => {
-                            if (Array.isArray(record.cases)) return record.cases;
-                            if (typeof record.cases === 'string') {
-                                try {
-                                    const parsed = JSON.parse(record.cases);
-                                    return Array.isArray(parsed) ? parsed : [];
-                                } catch (e) { return []; }
-                            }
-                            return [];
-                        })(),
                         segments: Array.isArray(record.segments) ? record.segments.map((s: any) => [s.marketSegmentId]) : undefined,
                         logoUrl: record.logoUrl ? [{ uid: '-1', name: 'logo', status: 'done', url: record.logoUrl, response: { url: record.logoUrl } }] : []
-                    }}
+                    }, { arrayFields: ['cases'], listFields: ['cases'] })}
                     onFinish={async (values) => {
                         try {
                             const payload = { ...values };
@@ -240,7 +232,7 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                     }}
                 >
                     {renderFormFields()}
-                </ModalForm>,
+                </SafeModalForm>,
                 <a key="delete" style={{ color: 'red', marginLeft: 16 }} onClick={async () => {
                     Modal.confirm({
                         title: 'Открепить спонсора?',
