@@ -180,4 +180,46 @@ export class SponsorsService {
             where: { eventId_sponsorId: { eventId, sponsorId } }
         });
     }
+
+    // Import extracted legacy brands
+    async importLegacyBrands() {
+        const fs = require('fs');
+        const path = require('path');
+        const count = { success: 0, errors: 0 };
+        const dataPath = path.join(process.cwd(), 'scripts', 'scraped_brands.json');
+
+        if (!fs.existsSync(dataPath)) {
+            throw new NotFoundException('Legacy brands data file not found');
+        }
+
+        const brands = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+
+        for (const brand of brands) {
+            try {
+                // Check if brand already exists by name
+                const existing = await this.prisma.sponsor.findFirst({
+                    where: { name: brand.name }
+                });
+
+                if (!existing) {
+                    await this.prisma.sponsor.create({
+                        data: {
+                            name: brand.name,
+                            description: brand.description || '',
+                            websiteUrl: brand.websiteUrl || '',
+                            logoFileUrl: brand.logoFileUrl || '',
+                            status: 'approved',
+                            exportToWebsite: true
+                        }
+                    });
+                    count.success++;
+                }
+            } catch (err) {
+                console.error(`Failed to import brand ${brand.name}:`, err.message);
+                count.errors++;
+            }
+        }
+
+        return { message: 'Migration Complete', ...count };
+    }
 }

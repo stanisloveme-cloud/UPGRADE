@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { PageContainer, ProTable, ActionType, ProColumns, ProFormText, ProFormTextArea, ProFormSelect, ProForm, ProFormDigit, ProFormList, ProFormCascader } from '@ant-design/pro-components';
-import { Button, Tag, Typography, Tooltip, message, Space, Upload, Form } from 'antd';
-import { CopyOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, UploadOutlined } from '@ant-design/icons';
+import { Button, Tag, Typography, Tooltip, message, Space, Upload, Form, Modal } from 'antd';
+import { CopyOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, UploadOutlined, CloudDownloadOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import { SafeModalForm } from '../../components/SafeForms/SafeModalForm';
@@ -57,6 +57,30 @@ const BrandsCheck: React.FC = () => {
             </Tooltip>
         );
         return <Tag color="processing" icon={<ClockCircleOutlined />}>Нет ответа</Tag>;
+    };
+
+    const handleImportLegacyBrands = () => {
+        Modal.confirm({
+            title: 'Импортировать бренды из старой системы?',
+            content: 'Это действие загрузит бренды из файла миграции. Бренды с совпадающими названиями будут пропущены.',
+            okText: 'Импортировать',
+            cancelText: 'Отмена',
+            onOk: async () => {
+                const hide = message.loading('Выполняется импорт...', 0);
+                try {
+                    const res = await axios.post('/api/sponsors/import-legacy');
+                    hide();
+                    if (res.data) {
+                        message.success(`Импорт завершен. Успешно: ${res.data.success}, Ошибок: ${res.data.errors}`);
+                    }
+                    actionRef.current?.reload();
+                } catch (error) {
+                    hide();
+                    console.error('Import failed', error);
+                    message.error('Ошибка при импорте. Проверьте консоль.');
+                }
+            }
+        });
     };
 
     const renderFormFields = () => (
@@ -369,6 +393,11 @@ const BrandsCheck: React.FC = () => {
                     if (record.status === 'rejected') return 'row-rejected';
                     return 'row-pending';
                 }}
+                toolBarRender={() => [
+                    <Button key="import" type="primary" icon={<CloudDownloadOutlined />} onClick={handleImportLegacyBrands}>
+                        Импорт из старой базы
+                    </Button>
+                ]}
             />
             <style>{`
                 .row-approved > td { background-color: #f6ffed !important; }

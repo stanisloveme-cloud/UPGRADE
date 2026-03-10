@@ -1,0 +1,1050 @@
+[
+  {
+    "name": "Индустрия мебели",
+    "description": "",
+    "websiteUrl": "https://industrymebel.ru/",
+    "logoFileUrl": "/uploads/legacy_brands/brand_77602d43-a09c-49ca-a5c3-d0e655353f9c.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Logistika Expo",
+    "description": "Международная выставка складской и транспортной логистики",
+    "websiteUrl": "https://logistika-expo.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_cc379b27-b8b5-4108-85e4-14a6b13fd1ac.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Логистика360",
+    "description": "",
+    "websiteUrl": "https://logistics360.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_d3234de4-795f-4893-8035-9761829a25b4.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "TimeOut",
+    "description": "",
+    "websiteUrl": "https://timeout.ru/msk",
+    "logoFileUrl": "/uploads/legacy_brands/brand_d2511863-3bb8-42c5-b131-c83929e677b8.png",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "ExpressRMS",
+    "description": "Фулфилмент для интернет-магазинов и продавцов на маркетплейсах",
+    "websiteUrl": "https://эрмс.рф",
+    "logoFileUrl": "/uploads/legacy_brands/brand_8d47b603-f817-47c7-81e7-f79b0d064435.png",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Post post",
+    "description": "",
+    "websiteUrl": "https://postpost.ru/",
+    "logoFileUrl": "/uploads/legacy_brands/brand_592afef0-733d-404d-9445-47d2cf2fce6b.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "unibell",
+    "description": "",
+    "websiteUrl": "https://unibell.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_1145907b-6c96-45ba-99bf-865799fc0953.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Centra",
+    "description": "",
+    "websiteUrl": "https://centra.ai",
+    "logoFileUrl": "/uploads/legacy_brands/brand_9f597713-a0c9-4432-86f9-e4ce9bb61e5f.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Нойтех",
+    "description": "",
+    "websiteUrl": "https://noytech.com/",
+    "logoFileUrl": "/uploads/legacy_brands/brand_bddf800a-1b35-410d-a442-1477721ab3b0.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "inSales",
+    "description": "inSales — это e-commerce платформа для создания сайтов и автоматизации продаж на маркетплейсах.",
+    "websiteUrl": "https://insales.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_badb06fb-66e9-4dfe-812e-079ece9ad575.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Ecoplatform",
+    "description": "Российский производитель и оператор фандоматов и экотехнологий.",
+    "websiteUrl": "https://ecoplatform.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_b588b1a2-e37a-4f43-b670-d67e4e5f77bc.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Holding Finance Broker",
+    "description": "Российско-китайская компания, лидер на рынке мультимодальных и контейнерных перевозок",
+    "websiteUrl": "https://hfbroker.net",
+    "logoFileUrl": "/uploads/legacy_brands/brand_95fd28b5-60fc-4499-a5ca-d5bdc5ea3569.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Framed",
+    "description": "",
+    "websiteUrl": "https://framed.pro",
+    "logoFileUrl": "/uploads/legacy_brands/brand_540c7150-b59c-4bb2-8bad-2156c095f09f.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Служба доставки Dalli",
+    "description": "Dalli — курьерская компания для интернет-магазинов и омниритейла",
+    "websiteUrl": "https://dalli-service.com",
+    "logoFileUrl": "/uploads/legacy_brands/brand_9c724f2f-f767-4a29-8953-4679cec5b828.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Ensi",
+    "description": "Мы разрабатываем SOA платформу Ensi и экосистему AaaS-приложений Ensi Cloud.",
+    "websiteUrl": "https://ensi.tech",
+    "logoFileUrl": "/uploads/legacy_brands/brand_22902689-dc0b-4dbd-88a8-479a43d95f58.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "promopult",
+    "description": "",
+    "websiteUrl": "https://promopult.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_ed61fc48-5ea6-47d6-995c-a9e8c7d142de.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "DashaMail",
+    "description": "",
+    "websiteUrl": "https://dashamail.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_0ae1026e-a09a-4818-98cb-a4f1e31c6c48.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "PIM Solutions",
+    "description": "PIM Solutions – экосистема сервисов для интернет-магазинов и маркетплейсов",
+    "websiteUrl": "https://pimsolutions.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_081c089d-7c46-4145-98f6-230792d4284f.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "cleverpumpkin",
+    "description": "",
+    "websiteUrl": "https://cleverpumpkin.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_ea994b64-5480-4e0c-8a4b-76e83bc3c0d6.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Наймикс",
+    "description": "Наймикс — экосистема сервисов, помогающая компаниям автоматизировать HR-процессы.",
+    "websiteUrl": "https://naimix.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_28aee600-17e6-44ad-ba4b-0456704f3b7d.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Банковское обозрение",
+    "description": "",
+    "websiteUrl": "https://bosfera.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_07411f32-a08e-49b6-a1d2-0b1c842d0c06.jpg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Доктор на работе",
+    "description": "",
+    "websiteUrl": "https://client.doktornarabote.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_352eebbc-9d1f-416b-b312-1b5c57abed55.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Московские аптеки",
+    "description": "",
+    "websiteUrl": "https://mosapteki.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_e34e7ff5-a263-4d9a-b2d2-f9f9869062b4.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Бета Про",
+    "description": "",
+    "websiteUrl": "https://betapro.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_0e89cf28-0ade-481a-a688-9e3f0ee43c06.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "МИРБИС",
+    "description": "",
+    "websiteUrl": "",
+    "logoFileUrl": "/uploads/legacy_brands/brand_dd91dce1-7451-4782-b062-f63be6b89d8e.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "AWG",
+    "description": "Ведущий ИТ-интегратор для цифровой трансформации и омниканальных решений",
+    "websiteUrl": "https://awg.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_02c634eb-c4c8-4b57-831d-bb0f096a2852.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Факт",
+    "description": "Веб-интегратор «Факт» - проектируем, строим, развиваем гибкие цифровые экосистемы точно в срок.",
+    "websiteUrl": "https://fact.digital",
+    "logoFileUrl": "/uploads/legacy_brands/brand_8bcae49b-aa24-40ab-ba32-52ebec8988f6.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Insales Журнал",
+    "description": "",
+    "websiteUrl": "https://journal.insales.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_3da19570-75f1-4ec3-9208-07760d767db6.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "РЕГ.РУ",
+    "description": "",
+    "websiteUrl": "https://reg.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_0bc1953a-88a8-4cd5-95ad-4eb9dc67f372.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Аврора Центр",
+    "description": "Платформа управления корпоративными устройствами и приложениями на ОС «Аврора», Android и Linux",
+    "websiteUrl": "https://www.omp.ru/aurora-center",
+    "logoFileUrl": "/uploads/legacy_brands/brand_a8952430-516d-4251-a521-8078bc60c794.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Imredi",
+    "description": "Imredi — разработчик одноименной цифровой платформы для контроля и развития розничных сетей.",
+    "websiteUrl": "https://imredi.biz",
+    "logoFileUrl": "/uploads/legacy_brands/brand_548ae22a-0ea2-4339-b0a9-6ac1fc2f6975.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "АРТ Логистик",
+    "description": "",
+    "websiteUrl": "https://artlogistik.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_423a6b4a-6583-4281-9655-a6487c910289.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "impulse.guru",
+    "description": "SEO ДЛЯ БИЗНЕСА. Мы делаем поисковый маркетинг для бизнеса рентабельным",
+    "websiteUrl": "https://impulse.guru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_d2386ef0-af08-47ce-a308-563010d1bee0.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "К2ТЕХ",
+    "description": "18 лет являемся экспертами в области системной интеграции, разработки программных решений и ИТ-сервиса",
+    "websiteUrl": "https://k2.tech",
+    "logoFileUrl": "/uploads/legacy_brands/brand_831a94a3-e7ce-4f3d-b0d6-f14d15661096.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "НАВИНИЯ РУС",
+    "description": "Комплексные логистические услуги для решения ваших задач. Делаем логистику прозрачной и полезной.",
+    "websiteUrl": "https://nawinia.com",
+    "logoFileUrl": "/uploads/legacy_brands/brand_e33e1b0f-5642-4eea-8190-51e97a51384d.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Малый бизнес Москвы",
+    "description": "",
+    "websiteUrl": "https://mbm.mos.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_f9cdf1a1-f2e0-43e9-bbfc-549186b7e664.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Itinfra",
+    "description": "",
+    "websiteUrl": "https://www.itinfrastructure.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_c617f4be-749c-4236-be88-a6885009d8d7.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Decornews.ru",
+    "description": "Журнал о дизайне интерьера и архитектуре",
+    "websiteUrl": "https://decornews.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_4ba693e3-28c3-4a89-96f7-8b05cf9be22a.png",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Красота и здоровье",
+    "description": "Российский проект для женщин о том, как сохранить молодость, красоту и здоровье",
+    "websiteUrl": "https://kiz.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_a611f409-a1bd-4be6-a871-08b7625511fe.png",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "РИА Мода",
+    "description": "",
+    "websiteUrl": "https://riamoda.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_088a735c-dd65-43ba-a1bb-2440916b8c07.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "ИнФинанс",
+    "description": "Инфинанс — финансово-юридический консалтинг для бизнеса",
+    "websiteUrl": "https://infinans.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_04a002f4-95b8-44d1-9cf8-fcc1ae42c894.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "ReStaff",
+    "description": "Легально и безопасно платите самозанятым и внештатным исполнителям",
+    "websiteUrl": "https://restaff.work",
+    "logoFileUrl": "/uploads/legacy_brands/brand_8c1ee8c9-015f-4f55-961d-28e42c50e543.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "SocialJet",
+    "description": "Крупнейший поставщик трафика в социальных сетях и мессенджерах",
+    "websiteUrl": "https://socialjet.pro",
+    "logoFileUrl": "/uploads/legacy_brands/brand_dc17338f-6456-40ca-96d9-5b69a4b75958.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Кислород",
+    "description": "",
+    "websiteUrl": "https://o2k.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_c715b7bb-2882-4d5f-b398-5f7d169c6e02.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Мир Квартир",
+    "description": "",
+    "websiteUrl": "https://mirkvartir.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_f458c2f2-c432-4b04-8892-cdf9e63fdc4e.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Media research family",
+    "description": "",
+    "websiteUrl": "https://serm-orm.ru/",
+    "logoFileUrl": "/uploads/legacy_brands/brand_09f66c3c-7f37-48b0-8592-792a6c59825d.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "modanews",
+    "description": "",
+    "websiteUrl": "https://modanews.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_6fd04798-633e-49c8-8c01-c012975a7cd1.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Ассоциация развития интерактивной рекламы",
+    "description": "",
+    "websiteUrl": "https://interactivead.ru/",
+    "logoFileUrl": "/uploads/legacy_brands/brand_aa3467a0-9eb9-482d-8590-cfd93208f7d0.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "SWAIRS",
+    "description": "Предлагаем полный спектр услуг:\nот аудита и создания проектов до внедрения и контроля",
+    "websiteUrl": "https://swairs.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_819cba3c-7c06-4f42-beee-b3540e51e51a.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Points:Ecom",
+    "description": "Помогаем брендам и селлерам масштабировать бизнес на маркетплейсах с помощью экспертизы и технологий.",
+    "websiteUrl": "https://pointsgroup.ru/ecom",
+    "logoFileUrl": "/uploads/legacy_brands/brand_bc609ac6-06d8-4398-a59a-5c86a3c51a56.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Fittin",
+    "description": "FITTIN-Разработчик мобильных приложений, сайтов и AI продуктов",
+    "websiteUrl": "https://fittin.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_607fe805-16fa-4c3a-b64d-2bf5a6f7efcc.png",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Банк Точка",
+    "description": "Банк Точка — банк для предпринимателей и предприятий. Делаем мир удобным для бизнеса",
+    "websiteUrl": "https://tochka.com/marketplace/?",
+    "logoFileUrl": "/uploads/legacy_brands/brand_7262ca8d-e6f4-4ed6-acb3-d79394d8d2e5.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Вестник лицензионного рынка",
+    "description": "",
+    "websiteUrl": "https://licensingrussia.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_cdffb332-a68d-4ae3-a68d-955feecb040e.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "New Retail",
+    "description": "Популярный В2В интернет-портал о розничной торговле, интернет-коммерции, технологиях и маркетинге",
+    "websiteUrl": "https://new-retail.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_73de7b4a-265e-48be-ba1a-e27716b04c6a.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Beta PRO",
+    "description": "Логистические услуги для интернет-магазинов, продавцов маркетплейсов, каталогов и партнерских сетей",
+    "websiteUrl": "https://betapro.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_4b1caad8-ad04-4089-9cba-463268b4cc1a.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Центр Евразийского Сотрудничества",
+    "description": "",
+    "websiteUrl": "https://eurasian-center.com",
+    "logoFileUrl": "/uploads/legacy_brands/brand_60e7eb7d-066b-4731-8c21-aa679abdd0e8.png",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Ареал",
+    "description": "Создаем и развиваем цифровые решения для ритейла и b2b-торговли.",
+    "websiteUrl": "https://areal.dev",
+    "logoFileUrl": "/uploads/legacy_brands/brand_834d9b84-1c0d-4c34-adec-19b332f7756d.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "НЕЙРОИНФОРМ",
+    "description": "Нейроинформ. Защита бизнеса стоит в разы дешевле, чем устранение последствий от взлома.",
+    "websiteUrl": "https://neuroinform.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_adacdb95-16d4-43a6-b4b1-1fcd9de11976.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Мегамаркет",
+    "description": "Маркетплейс Мегамаркет — онлайн-площадка, где собраны товары из 20 основных категорий",
+    "websiteUrl": "https://megamarket.ru/?utm_source=new+retail+forum&utm_medium=banner_logo&utm_campaign=megamarket",
+    "logoFileUrl": "/uploads/legacy_brands/brand_d9736882-e433-4756-9595-9358ec11ab15.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "aiso",
+    "description": "Меняем сотрудника на робота aiso для работы в чатах.",
+    "websiteUrl": "https://aiso.team",
+    "logoFileUrl": "/uploads/legacy_brands/brand_7514dbb8-cb6e-4b11-98a4-c8671bb08b10.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "IMSHOP",
+    "description": "Крупнейшая в России команда экспертов по запуску и развитию приложений для ритейла и ecom-а",
+    "websiteUrl": "https://imshop.io",
+    "logoFileUrl": "/uploads/legacy_brands/brand_ab2a169e-ce71-47e1-bd34-ebd77a5004a8.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Меркатус",
+    "description": "Школа по маркетплейсам для селлеров, предпринимателей, производителей, поставщиков и менеджеров",
+    "websiteUrl": "https://merkatys.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_fe4c5749-675a-4f1a-8880-0ae04298bb89.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "RetailCRM",
+    "description": "CRM для управления маркетингом и продажами в ритейле и eCommerce. Дарим тестовые 14 дней",
+    "websiteUrl": "https://retailcrm.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_2659ea64-4b84-4962-8172-388d03b855c1.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "СДЭК",
+    "description": "Международная логистическая компания. 5650+ пунктов выдачи в 44 странах. Доставка от 2 дней",
+    "websiteUrl": "https://cdek.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_1af48d93-ac75-437c-86f2-078d7ea94064.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "AKFA",
+    "description": "AKFA — эксперт в логистике с 30-летним опытом, решающий вопросы ВЭД, таможни и фулфилмента для селлеров.",
+    "websiteUrl": "https://akfa.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_eaca63b6-d158-41b7-97cc-6d8a0f875715.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "DPD в России",
+    "description": "DPD в России — крупнейший негосударственный логистический оператор, признанный лидер экспресс-доставки.",
+    "websiteUrl": "https://dpd.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_9b2d28e3-4236-44d1-a3d2-cf85f8df8e49.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Все займы онлайн",
+    "description": "",
+    "websiteUrl": "https://vsezaimyonline.ru/",
+    "logoFileUrl": "/uploads/legacy_brands/brand_6b003219-9366-49ad-8b3b-c3064d6e0475.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "TrackAd",
+    "description": "",
+    "websiteUrl": "",
+    "logoFileUrl": "/uploads/legacy_brands/brand_9346eecb-f49a-4679-8abd-52faebc9c84b.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Indexis",
+    "description": "Студия заказной web-разработки для E-com",
+    "websiteUrl": "https://indexis.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_58c980f7-b722-44db-9490-06420ecb910d.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Optimization",
+    "description": "",
+    "websiteUrl": "https://2025.optimization.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_09abb483-26e0-4f81-bf23-2712fe7d6752.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "moda 24/7",
+    "description": "",
+    "websiteUrl": "https://moda247.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_221a3240-1f41-41f2-96ce-42a8733f00db.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "SEOnews",
+    "description": "",
+    "websiteUrl": "https://m.seonews.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_158568a8-ed8e-4e26-8d30-37e203047ae2.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "CPAExchange",
+    "description": "Платформа CPAExchange (www.cpaexchange.ru) занимается рекламой с оплатой за результат",
+    "websiteUrl": "https://cpaexchange.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_3f866387-ab9b-4165-a317-8386093b177b.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Major Terminal",
+    "description": "Складской оператор Major Terminal – надежный поставщик всего комплекса складских услуг.",
+    "websiteUrl": "https://major-terminal.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_279523a2-5dcd-4afb-8a30-4e50213c48c1.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "РИА Банки и финансы",
+    "description": "",
+    "websiteUrl": "https://banks-finance.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_3b9a3f44-8770-4ad5-abab-e69577ca7f5f.png",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Friflex",
+    "description": "1 место в Рейтинге Рунета 2024 среди разработчиков мобильных приложений для торговли.",
+    "websiteUrl": "https://friflex.com",
+    "logoFileUrl": "/uploads/legacy_brands/brand_2712d82f-b4c5-4caa-abe9-046592131247.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Yandex Crowd Solutions",
+    "description": "Комплексные решения на основе данных для повышения товарооборота.",
+    "websiteUrl": "https://crowdsolutions.yandex.ru/",
+    "logoFileUrl": "/uploads/legacy_brands/brand_9252b008-a04e-4b00-a158-09b8f75c942e.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Any",
+    "description": "AI-решения any для роста продаж в e-commerce: поиск, рекомендации, отзывы",
+    "websiteUrl": "https://anyquery.diginetica.com",
+    "logoFileUrl": "/uploads/legacy_brands/brand_953fc8fd-30e4-4af9-a714-d0f6ed21f89f.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Дигифт",
+    "description": "Помогаем ритейлу запускать и масштабировать подарочные карты быстро и просто с нашими IT-решениями.",
+    "websiteUrl": "https://digift.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_8d029c30-902e-445a-bd4f-bb5a241f8607.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Verme",
+    "description": "Cервис, который помогает компаниям сократить затраты на персонал на 10% и увеличить продажи на 5%.",
+    "websiteUrl": "https://verme.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_10036d2b-efb6-4c3a-bcfb-bde4b1c51d38.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Whiteleads",
+    "description": "Агентство мобильного маркетинга. Масштабируем мобильные приложения и показываем лучшие performance-результаты",
+    "websiteUrl": "https://whiteleads.ru/",
+    "logoFileUrl": "/uploads/legacy_brands/brand_5ad6829b-1517-4883-a0ab-a938a4bfa709.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "WhoIsBlogger",
+    "description": "WhoIsBlogger  —  экосистема решений, использующая Big Data для анализа аудитории блогеров.",
+    "websiteUrl": "https://whoisblogger.com",
+    "logoFileUrl": "/uploads/legacy_brands/brand_3a56bf18-392e-495e-8b6c-1860a0020f26.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Vitamin.tools",
+    "description": "рекламная экосистема с единым кабинетом для \r\nпополнения рекламы и возвратом до 18% от нее.",
+    "websiteUrl": "https://vitamin.tools",
+    "logoFileUrl": "/uploads/legacy_brands/brand_08ffa0aa-5144-43e3-9a40-550cb817881b.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Авито",
+    "description": "Крупнейшая онлайн-платформа для коммерции в России (по данным SimilarWeb, март 2022)",
+    "websiteUrl": "https://avito.ru/business",
+    "logoFileUrl": "/uploads/legacy_brands/brand_690e2eeb-2f38-41da-91d5-9d73db0ab3c5.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "SF.RU",
+    "description": "SF.RU — агентство интернет-маркетинга и консалтинга",
+    "websiteUrl": "https://sf.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_a41ab954-6f6f-44f8-9192-5997af72120d.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "CashCow.agency",
+    "description": "CashCow.agency — агентство омниканального маркетинга.",
+    "websiteUrl": "https://cashcow.agency",
+    "logoFileUrl": "/uploads/legacy_brands/brand_035ba6c1-8c1f-47a6-bc38-437da13bf240.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "GdeJob",
+    "description": "",
+    "websiteUrl": "https://gdejob.com",
+    "logoFileUrl": "/uploads/legacy_brands/brand_089e44f7-4c57-407e-8729-658f5d28c119.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "i-Media",
+    "description": "i-Media - агентство digital- маркетинга",
+    "websiteUrl": "https://i-media.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_09edc0a0-210f-4978-9149-cfa07997a1aa.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Nectarin",
+    "description": "",
+    "websiteUrl": "",
+    "logoFileUrl": "/uploads/legacy_brands/brand_0c5e38ba-67e3-4beb-a264-6413ce879d31.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Beta HR",
+    "description": "",
+    "websiteUrl": "https://betahr.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_decdaeb1-91fa-40ad-a6ba-abd95c7c0027.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Merlion",
+    "description": "Наша стратегия — в диверсификации бизнеса и предвосхищении ключевых изменений",
+    "websiteUrl": "https://merlion.com",
+    "logoFileUrl": "/uploads/legacy_brands/brand_2396e8a3-b7f2-4cc1-8058-0971cf0c78ee.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Giftery",
+    "description": "",
+    "websiteUrl": "https://giftery.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_4289fc52-23d4-4d5c-9af9-5d1cac235e91.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Agima",
+    "description": "",
+    "websiteUrl": "https://agima.ru/",
+    "logoFileUrl": "/uploads/legacy_brands/brand_5438bb18-5b32-49d4-bffc-71c14ecef921.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "На полке",
+    "description": "",
+    "websiteUrl": "https://napolke.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_387d62d0-6bf1-4a1b-b7ca-88f38f8f8bad.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "EW",
+    "description": "",
+    "websiteUrl": "https://club.ecomweekend.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_09c8210b-715f-419a-858c-470128e7dc87.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "РБК Франшизы",
+    "description": "",
+    "websiteUrl": "https://biztorg.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_a438d6be-fb5b-46de-a871-024416926077.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Логирус",
+    "description": "Интернет-СМИ — эксклюзивно и профессионально о логистике в России",
+    "websiteUrl": "https://logirus.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_25eb478e-6033-4342-852c-86ef8bdda84e.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "ProFashion",
+    "description": "",
+    "websiteUrl": "https://profashion.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_8f06b8ba-7d15-4c3f-a67a-ee7ff190def9.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Журнал Логистика",
+    "description": "",
+    "websiteUrl": "https://logistika-prim.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_7d6d4b97-c78f-4c2f-a87c-c4f036e083aa.jpg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Logistics.ru",
+    "description": "",
+    "websiteUrl": "https://logistics.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_56ffe8d3-ac2d-4de4-b8f5-932261d06025.png",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Interfax",
+    "description": "Информационное агентство",
+    "websiteUrl": "https://interfax.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_1222c2cb-1580-48e4-9134-e5b9fe04b6fd.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "IT-World",
+    "description": "",
+    "websiteUrl": "https://it-world.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_400efde4-58cd-4710-8daa-c91ca5004211.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Envybox",
+    "description": "Необходимые сервисы для комфортной работы бизнеса и эффективных продаж",
+    "websiteUrl": "https://envybox.io",
+    "logoFileUrl": "/uploads/legacy_brands/brand_ab3c9ca8-dc94-4b93-8b86-693739ff7301.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "townsend",
+    "description": "",
+    "websiteUrl": "",
+    "logoFileUrl": "/uploads/legacy_brands/brand_4311bfa5-a9df-4c7d-a4c4-7a83854d6a94.png",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "PRO100ROBOT",
+    "description": "",
+    "websiteUrl": "https://pro100robot.com",
+    "logoFileUrl": "/uploads/legacy_brands/brand_0ed911db-87d6-45bf-ad49-daa08c12b4f7.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Leadhit",
+    "description": "",
+    "websiteUrl": "https://leadhit.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_abd5b786-1571-407a-9285-cf2e1f5c28dd.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Intensa",
+    "description": "Услуги e-commerce: разработка интернет-магазинов, интеграции, продвижение, аналитика, маркетплейсы",
+    "websiteUrl": "https://intensa.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_70be7e38-51ad-4132-adb6-471db3fe6f31.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "SberDevices",
+    "description": "SberDevices — российский вендор программного обеспечения и умных устройств.",
+    "websiteUrl": "https://sberdevices.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_49af2c13-41a4-42d0-8e59-c1f47d3c08dd.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "RDV",
+    "description": "IT консалтинг и комплексная автоматизация бизнеса",
+    "websiteUrl": "https://rdv-market.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_72e39696-edaf-445c-b489-ac2230779e01.png",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Спикс",
+    "description": "сервис умной обработки и аналитики отзывов на маркетплейсах.",
+    "websiteUrl": "https://spix.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_77efe1ec-1c24-4c56-bf60-f4125e5cb987.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Оджетто",
+    "description": "Надежные IT‑решения для крупного eCommerce",
+    "websiteUrl": "https://oggetto.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_4d05fb26-ac48-43d2-bddb-307e53d77a12.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "INDEEPA",
+    "description": "INDEEPA – репрайсер для управления ценами и кросс-маркетплейс ценообразования на Wildberries и Ozon.",
+    "websiteUrl": "https://indeepa.com",
+    "logoFileUrl": "/uploads/legacy_brands/brand_e6e6a80b-8392-488a-97fb-7c2a80b459cb.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Socialist",
+    "description": "",
+    "websiteUrl": "https://socialist.pro",
+    "logoFileUrl": "/uploads/legacy_brands/brand_d577d912-e0ae-44ac-9462-5540c0f692f3.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Brand Analytics",
+    "description": "Brand Analytics — российская инновационная ИТ-компания, разработчик одноименной системы мониторинга и анализа",
+    "websiteUrl": "https://brandanalytics.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_ea599857-5329-4c9f-bf5f-a9b817ef3bf2.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Skillbox Media",
+    "description": "Отраслевое издание для профессионалов, от начинающих до самых опытных",
+    "websiteUrl": "https://skillbox.ru/media/marketing/",
+    "logoFileUrl": "/uploads/legacy_brands/brand_849ad5d4-b070-4716-b6ad-b066929cd3bc.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "SellerDenAi",
+    "description": "",
+    "websiteUrl": "https://sellerden.ai/?",
+    "logoFileUrl": "/uploads/legacy_brands/brand_7720fe24-ce21-4d2c-b1bb-60e752912704.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Novofon",
+    "description": "Novofon предоставляет услуги облачной связи: виртуальные номера, бесплатная АТС и многое другое.",
+    "websiteUrl": "https://novofon.com",
+    "logoFileUrl": "/uploads/legacy_brands/brand_1399803e-add5-455c-b9ec-11fa04e54278.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "PHPDev.ORG",
+    "description": "",
+    "websiteUrl": "https://phpdev.org/",
+    "logoFileUrl": "/uploads/legacy_brands/brand_cf4a1028-d50a-4cc7-b167-2d9da5427230.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Атико",
+    "description": "",
+    "websiteUrl": "https://atiko.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_1d40eca1-a354-4076-9528-451baa70aa75.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "demis group",
+    "description": "",
+    "websiteUrl": "https://demis.ru/?",
+    "logoFileUrl": "/uploads/legacy_brands/brand_8bb08890-41fb-47ba-aa3e-d2ce74e5bd0a.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Notisend",
+    "description": "",
+    "websiteUrl": "https://notisend.ru/",
+    "logoFileUrl": "/uploads/legacy_brands/brand_cc2f5b82-8140-4ce4-b2d9-7b78f660f6a2.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "onpeak",
+    "description": "Агентство Onpeak - digital-решения для бизнеса, сайты, реклама, интернет-маркетинг",
+    "websiteUrl": "https://onpeak.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_7912a805-370f-404a-836e-49632ea584f9.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "SellerDen",
+    "description": "",
+    "websiteUrl": "https://sellerden.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_3dbbf0c5-5b17-43bc-8fef-aa0652484375.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "INSIDE",
+    "description": "Золотой партнер \"Битрикс24 - интернет-агентство \"Инсайд\", входит в ТОП-10 интеграторов CRM.",
+    "websiteUrl": "https://inside.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_2b44cf2b-fb88-4db7-9857-7ad8ce80040a.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "X WAY",
+    "description": "XWAY — сервис для эффективного управления рекламой на Wildberries при помощи AI-технологии",
+    "websiteUrl": "https://xway.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_f6fd2b5c-012e-459d-be9a-703045640b80.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "IT-Agency",
+    "description": "Маркетинговое агентство с эволюционным подходом к росту бизнеса",
+    "websiteUrl": "https://it-agency.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_2de60fa4-d405-47f1-95e4-09bfb074c667.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Банк ВТБ (ПАО)",
+    "description": "Банк ВТБ – один из лидеров финансовых услуг, обслуживает 1,5 млн клиентов среднего и малого бизнес",
+    "websiteUrl": "https://vtb.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_c83127cc-3555-41a7-9294-b1f1be398956.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "ROBOKASSA",
+    "description": "Robokassa—один из ведущих fintech-сервисов для приема онлайн-платежей для ИП, юр. лиц и самозанятых.",
+    "websiteUrl": "https://robokassa.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_3ce8203e-4a40-45cc-abfa-33ad5e27a917.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "MD Audit",
+    "description": "MD Audit — AI‑платформа с цифровыми ассистентами для управления бизнесом",
+    "websiteUrl": "https://mdaudit.ru",
+    "logoFileUrl": "/uploads/legacy_brands/brand_b423898b-ba7b-4c16-bf6f-d47a173619eb.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "СберАналитика",
+    "description": "",
+    "websiteUrl": "",
+    "logoFileUrl": "/uploads/legacy_brands/brand_a5ff117a-9aa7-4e11-b429-90d67cbba5d6.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  },
+  {
+    "name": "Alto",
+    "description": "",
+    "websiteUrl": "https://alto.codes",
+    "logoFileUrl": "/uploads/legacy_brands/brand_5fb12aa9-e638-4afe-99e8-87ab94ad326c.svg",
+    "status": "approved",
+    "exportToWebsite": true
+  }
+]
