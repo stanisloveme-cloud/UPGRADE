@@ -51,12 +51,9 @@ test.describe('Session Editor & Conflicts (TC-03 & TC-04)', () => {
             console.log('BROWSER CONSOLE:', msg.text());
         });
 
-        // Click "Сохранить" by triggering the native HTML5 form submission
+        // Click "Сохранить" using standard Playwright click
         await page.waitForTimeout(1000); // Wait for React state to settle
-        await page.evaluate(() => {
-            const form = document.querySelector('.ant-drawer-content form') as HTMLFormElement;
-            if (form) form.requestSubmit();
-        });
+        await page.click('.ant-drawer-content button:has-text("Сохранить")');
 
         await page.waitForTimeout(2000); // Give it a sec to show validation
 

@@ -29,6 +29,7 @@ export const SafeDrawerForm = <T extends Record<string, any>>({
     return (
         <DrawerForm<T>
             {...props}
+            onFinish={onFinish}
             formRef={actualFormRef as any}
             submitter={{
                 ...props.submitter,

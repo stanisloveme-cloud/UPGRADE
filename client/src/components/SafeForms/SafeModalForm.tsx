@@ -27,6 +27,7 @@ export const SafeModalForm = <T extends Record<string, any>>({
     return (
         <ModalForm<T>
             {...props}
+            onFinish={onFinish}
             formRef={actualFormRef as any}
             submitter={{
                 ...props.submitter,

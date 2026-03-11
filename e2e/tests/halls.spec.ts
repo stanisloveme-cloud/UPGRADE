@@ -35,11 +35,9 @@ test.describe('Halls Management (TC-01)', () => {
         await newHallInput.fill('Автотест Зал');
 
         // 8. Click Save/Submit by triggering the native HTML5 form submission
+        // 8. Click "Сохранить" using standard Playwright click
         await page.waitForTimeout(1000); // Wait for React state to settle after fill
-        await page.evaluate(() => {
-            const form = document.querySelector('.ant-modal-content form') as HTMLFormElement;
-            if (form) form.requestSubmit();
-        });
+        await page.click('.ant-modal-content button:has-text("Сохранить")');
 
         // 9. Verify the drawer/modal closes
         await expect(modalTitle).toBeHidden();
