@@ -30,6 +30,7 @@ The following core Business Data requirements have been fully analyzed, implemen
 ## 3. Change Log (Post-MVP)
 *Agents: Add your completed tasks here in reverse chronological order (newest at the top).*
 
+- **2026-03-12**: Fixed two regressions found by E2E testing: (1) **Defect #1** — `HallsModal.tsx`: PATCH halls request sent `id` in the body, causing 400 from `forbidNonWhitelisted` ValidationPipe; fixed by destructuring `id` out of the payload. (2) **Defect #2** — `CreateSpeakerDto` contained `exportToWebsite` field absent from the `Speaker` Prisma model (it belongs to `SessionSpeaker`), causing Prisma crash → 500; removed the field from DTO, modal payload, and form UI. Commit: `fb9091dd`.
 - **2026-03-12**: Established comprehensive E2E API and UI testing workflows on the DevStand. Created the `/e2e_devstand_ui` workflow.
 - **2026-03-11**: Fixed critical silent failures in `SafeDrawerForm` and `SafeModalForm` where the "Save" (Сохранить) button was completely dropping the form payload due to a missing `onFinish` pass-down.
 - **2026-03-09**: Refactored forms application-wide to use robust global error handling (`SafeDrawerForm`, `ErrorBoundary`) to prevent white-screen crashes on malformed data.
