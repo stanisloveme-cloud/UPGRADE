@@ -46,9 +46,8 @@ export const SafeDrawerForm = <T extends Record<string, any>>({
                             type="primary"
                             onClick={async () => {
                                 try {
-                                    await actualFormRef.current?.validateFields();
-                                    // Use form direct submit instead of submitterProps which can be flaky in tests
-                                    actualFormRef.current?.submit();
+                                    await submitterProps.form?.validateFields();
+                                    submitterProps.form?.submit();
                                 } catch (e: any) {
                                     console.error("SafeDrawerForm Validation failed:", e);
                                     const errorFields = e.errorFields?.map((f: any) => f.name.join(' -> ')).join(', ');
@@ -58,8 +57,6 @@ export const SafeDrawerForm = <T extends Record<string, any>>({
                                         description: `Проверьте выделенные красным поля. Если вы не видите ошибку, проверьте свернутые вкладки или списки. Незаполненные поля: ${errorFields || 'Неизвестно'}`,
                                         duration: 8,
                                     });
-
-                                    actualFormRef.current?.submit();
                                 }
                             }}
                         >

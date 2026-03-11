@@ -46,7 +46,7 @@ export const SafeModalForm = <T extends Record<string, any>>({
                             onClick={async () => {
                                 try {
                                     // Force validation of all fields, even hidden ones
-                                    await actualFormRef.current?.validateFields();
+                                    await submitterProps.form?.validateFields();
                                     // If successful, hand over to the default submit handler
                                     submitterProps.submit?.();
                                 } catch (e: any) {
@@ -60,9 +60,6 @@ export const SafeModalForm = <T extends Record<string, any>>({
                                         description: `Проверьте выделенные красным поля. Если вы не видите ошибку, проверьте свернутые вкладки или списки. Незаполненные поля: ${errorFields || 'Неизвестно'}`,
                                         duration: 8, // stay open longer so user can read it
                                     });
-
-                                    // We still call submit() so Ant Design can highlight the visible fields in red
-                                    submitterProps.submit?.();
                                 }
                             }}
                         >
