@@ -47,7 +47,6 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                 hasAssistant: values.hasAssistant,
                 assistantName: values.assistantName,
                 assistantContact: values.assistantContact,
-                exportToWebsite: values.exportToWebsite,
                 photoUrl,
                 ...(initialValues?.id && { id: initialValues.id })
             };
@@ -231,14 +230,6 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                     <Input.TextArea rows={3} placeholder="Краткая биография" />
                 </Form.Item>
 
-                <Form.Item
-                    name="exportToWebsite"
-                    valuePropName="checked"
-                    initialValue={true}
-                >
-                    <Checkbox>Выгружать на сайт (Tilda)</Checkbox>
-                </Form.Item>
-
                 {/* Assistant Block */}
                 <div style={{ marginTop: 24, padding: 16, background: '#fafafa', borderRadius: 8, border: '1px solid #f0f0f0' }}>
                     <Form.Item
@@ -289,7 +280,7 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
                     <Input.TextArea rows={2} placeholder="Заметки для команды" />
                 </Form.Item>
             </Form>
-        </Modal >
+        </Modal>
     );
 };
 
