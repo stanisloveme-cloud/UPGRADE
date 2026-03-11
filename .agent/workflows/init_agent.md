@@ -16,9 +16,10 @@ The agent MUST immediately read the following files using the `view_file` tool t
 1. **GitHub Constraints:** The agent must ABSOLUTELY NEVER use `git commit`, `git push`, or `git add` in the bash terminal. 
 2. **MCP Verification:** The agent must verify its connection to the native `github` MCP server. All future repository modifications MUST be done via tools like `mcp_github_create_or_update_file`, `mcp_github_push_files`, etc.
 
-## 3. Project Status & Change Tracking (CRITICAL)
+## 3. Project Status, Tracking & Testing (CRITICAL)
 - **Status Document:** The agent MUST read `d:\UPGRADE\docs\PROJECT_STATUS.md` to understand what features are currently deployed and what the latest changes are.
 - **Change Log Duty:** UPGRADE CRM is in the **Post-MVP (Change Request)** phase. Before finishing any task or session, you MUST append a bullet point to the "Change Log (Post-MVP)" section in `docs/PROJECT_STATUS.md` detailing the architectural changes, bug fixes, or new features you successfully resolved.
+- **Post-Release Testing:** If you have just deployed a fix or feature to `main` (which triggers a deploy to DevStand), you MUST remind the user to run the Full Regression suite. Offer to execute the `/e2e_devstand_ui` workflow to verify the live environment.
 
 ## 4. Workflows & Skills
 The agent should be aware of other user-defined workflows in `d:\UPGRADE\.agent\workflows\`:
