@@ -42,7 +42,7 @@ export default defineConfig({
       name: 'devstand',
       use: {
         ...devices['Desktop Chrome'],
-        baseURL: 'http://devupgrade.space4you.ru',
+        baseURL: 'https://devupgrade.space4you.ru',
       },
     },
 

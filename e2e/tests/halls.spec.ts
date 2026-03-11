@@ -2,6 +2,14 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Halls Management (TC-01)', () => {
     test.beforeEach(async ({ page }) => {
+        // Intercept logs to debug silent fails
+        page.on('response', async resp => {
+            if (resp.url().includes('/api') && resp.status() >= 400) {
+                console.log('API ERROR:', resp.url(), resp.status(), await resp.text());
+            }
+        });
+        page.on('console', msg => console.log('BROWSER CONSOLE:', msg.text()));
+
         // 1. Navigate to the app (uses baseURL from playwright.config.ts)
         await page.goto('/');
 

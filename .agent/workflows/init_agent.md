@@ -16,14 +16,14 @@ The agent MUST immediately read the following files using the `view_file` tool t
 1. **GitHub Constraints:** The agent must ABSOLUTELY NEVER use `git commit`, `git push`, or `git add` in the bash terminal. 
 2. **MCP Verification:** The agent must verify its connection to the native `github` MCP server. All future repository modifications MUST be done via tools like `mcp_github_create_or_update_file`, `mcp_github_push_files`, etc.
 
-## 3. Project Status (As of March 2026)
-- **Frontend (`client/`):** React + Vite + Ant Design Pro. We have recently fixed critical bugs where Modals/Drawers were failing silently on "Сохранить" (Save) due to missing `onFinish` props in `SafeDrawerForm` and `SafeModalForm`.
-- **Backend (`src/`):** NestJS + Prisma. Legacy Brands data migration tools have been built.
-- **Testing (`e2e/`):** Playwright is fully configured for both **UI** and **API** testing against the production-like environment (`https://devupgrade.space4you.ru`).
-- **Dev/Prod Flow:** Pushing to the `main` branch triggers a GitHub Action (`.github/workflows/deploy.yml`) that automatically builds and deploys to the DevStand within a few minutes.
+## 3. Project Status & Change Tracking (CRITICAL)
+- **Status Document:** The agent MUST read `d:\UPGRADE\docs\PROJECT_STATUS.md` to understand what features are currently deployed and what the latest changes are.
+- **Change Log Duty:** UPGRADE CRM is in the **Post-MVP (Change Request)** phase. Before finishing any task or session, you MUST append a bullet point to the "Change Log (Post-MVP)" section in `docs/PROJECT_STATUS.md` detailing the architectural changes, bug fixes, or new features you successfully resolved.
 
 ## 4. Workflows & Skills
 The agent should be aware of other user-defined workflows in `d:\UPGRADE\.agent\workflows\`:
+- `/frontend_guidelines`: Rules for building React/Ant Design Pro components.
+- `/backend_guidelines`: Rules for NestJS/Prisma architecture.
 - `/e2e_devstand_ui`: For running E2E UI and API tests.
 - `/health_check`: For verifying the local deployment state.
 - `/smtp_yandex_integration`: For reviewing email service configuration.
