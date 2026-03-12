@@ -207,14 +207,14 @@ export class SessionsService {
                                     const oldSp = existingSession.speakers.find((ex: any) => ex.speakerId === Number(s.speakerId));
                                     const statusChanged = !oldSp || oldSp.status !== s.status;
 
-
                                     const resolvedStatusUserId = statusChanged ? user?.id : oldSp?.statusUserId;
 
                                     return {
                                         speaker: { connect: { id: Number(s.speakerId) } },
                                         role: s.role || 'speaker',
                                         status: s.status || 'confirmed',
-                                        statusDate: statusChanged ? new Date() : oldSp.statusDate,
+                                        // FIX Defect #3: oldSp is undefined for NEW speakers → use optional chaining
+                                        statusDate: statusChanged ? new Date() : (oldSp?.statusDate ?? new Date()),
                                         statusUser: resolvedStatusUserId ? { connect: { id: resolvedStatusUserId } } : undefined,
                                         companySnapshot: s.companySnapshot,
                                         positionSnapshot: s.positionSnapshot,
