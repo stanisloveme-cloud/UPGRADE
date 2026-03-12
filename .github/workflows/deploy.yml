@@ -84,6 +84,11 @@ jobs:
             mkdir -p ~/upgrade-crm
             cd ~/upgrade-crm
 
+            # Remove directory prometheus.yml if it was created by docker daemon by mistake
+            if [ -d "prometheus.yml" ]; then
+                rm -rf prometheus.yml
+            fi
+
             # Write config file directly (Single Source of Truth)
             echo "$COMPOSE_CONFIG" > docker-compose.prod.yml
             echo "$PROMETHEUS_CONFIG" > prometheus.yml
