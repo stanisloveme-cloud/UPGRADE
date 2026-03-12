@@ -11,7 +11,7 @@ async function bootstrap() {
     origin: true,
     credentials: true,
   });
-  app.setGlobalPrefix('api', { exclude: ['auth/{*path}'] });
+  app.setGlobalPrefix('api', { exclude: ['auth/{*path}', 'metrics'] });
 
   // Initialize Redis Client
   const redisClient = createClient({
