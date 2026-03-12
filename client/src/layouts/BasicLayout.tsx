@@ -84,6 +84,10 @@ export const BasicLayout: React.FC = () => {
                         {
                             path: '/settings/users',
                             name: 'Администраторы',
+                        },
+                        {
+                            path: '/system-status',
+                            name: 'Статус системы',
                         }
                     ] : [])
                 ]
