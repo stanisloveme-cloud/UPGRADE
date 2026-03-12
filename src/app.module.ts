@@ -16,7 +16,9 @@ import { UploadsModule } from './uploads/uploads.module';
 import { ExportsModule } from './exports/exports.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { SponsorsModule } from './sponsors/sponsors.module';
+import { PrometheusModule } from '@willsoto/nestjs-prometheus';
 import { MarketSegmentsModule } from './market-segments/market-segments.module';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -41,7 +43,9 @@ import { MarketSegmentsModule } from './market-segments/market-segments.module';
     ExportsModule,
     NotificationsModule,
     SponsorsModule,
+    PrometheusModule.register(),
     MarketSegmentsModule,
+    HealthModule,
   ],
   providers: [
     {
