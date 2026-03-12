@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
 import { Card, Col, Row, Statistic, Tag, Spin, Button, message, Alert } from 'antd';
-import { DatabaseOutlined, HddOutlined, ArrowUpOutlined, ArrowDownOutlined, DashboardOutlined, SafetyCertificateOutlined } from '@ant-design/icons';
+import { DatabaseOutlined, HddOutlined, DashboardOutlined, SafetyCertificateOutlined } from '@ant-design/icons';
 
 interface HealthResponse {
   status: 'ok' | 'error' | 'shutting_down';
