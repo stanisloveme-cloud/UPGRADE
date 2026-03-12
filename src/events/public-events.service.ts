@@ -93,4 +93,105 @@ export class PublicEventsService {
             halls,
         };
     }
+
+    async getSponsorsForEvent(eventId: number) {
+        const eventSponsors = await this.prisma.eventSponsor.findMany({
+            where: {
+                eventId,
+                sponsor: { exportToWebsite: true },
+            },
+            include: {
+                sponsor: {
+                    select: {
+                        id: true,
+                        name: true,
+                        shortDescription: true,
+                        websiteUrl: true,
+                        logoFileUrl: true,
+                    },
+                },
+            },
+        });
+
+        return eventSponsors.map((es: any) => es.sponsor);
+    }
+
+    async getScheduleForEvent(eventId: number) {
+        const halls = await this.prisma.hall.findMany({
+            where: { eventId },
+            orderBy: { sortOrder: 'asc' },
+            include: {
+                tracks: {
+                    orderBy: { sortOrder: 'asc' },
+                    include: {
+                        sessions: {
+                            orderBy: { startTime: 'asc' },
+                            include: {
+                                speakers: {
+                                    where: {
+                                        exportToWebsite: true,
+                                        status: { in: ['confirmed', 'pre_confirmed'] },
+                                    },
+                                    orderBy: { sortOrder: 'asc' },
+                                    include: {
+                                        speaker: {
+                                            select: {
+                                                id: true,
+                                                firstName: true,
+                                                lastName: true,
+                                                company: true,
+                                                position: true,
+                                                photoUrl: true,
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        });
+
+        return halls;
+    }
+
+    async getSpeakersForEvent(eventId: number) {
+        // Find all session speakers grouped by speaker
+        const sessionSpeakers = await this.prisma.sessionSpeaker.findMany({
+            where: {
+                session: {
+                    track: {
+                        hall: {
+                            eventId: eventId
+                        }
+                    }
+                },
+                exportToWebsite: true,
+                status: { in: ['confirmed', 'pre_confirmed'] }
+            },
+            include: {
+                speaker: {
+                    select: {
+                        id: true,
+                        firstName: true,
+                        lastName: true,
+                        company: true,
+                        position: true,
+                        photoUrl: true
+                    }
+                }
+            }
+        });
+
+        // Deduplicate speakers
+        const uniqueSpeakers = new Map();
+        for (const sessionSpeaker of sessionSpeakers) {
+            if (sessionSpeaker.speaker && !uniqueSpeakers.has(sessionSpeaker.speaker.id)) {
+                uniqueSpeakers.set(sessionSpeaker.speaker.id, sessionSpeaker.speaker);
+            }
+        }
+        
+        return Array.from(uniqueSpeakers.values());
+    }
 }

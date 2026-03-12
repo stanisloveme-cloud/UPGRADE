@@ -11,4 +11,22 @@ export class PublicEventsController {
     getWebsiteData(@Param('id', ParseIntPipe) id: number) {
         return this.publicEventsService.getWebsiteDataForEvent(id);
     }
+
+    @Public()
+    @Get(':id/schedule')
+    getSchedule(@Param('id', ParseIntPipe) id: number) {
+        return this.publicEventsService.getScheduleForEvent(id);
+    }
+
+    @Public()
+    @Get(':id/speakers')
+    getSpeakers(@Param('id', ParseIntPipe) id: number) {
+        return this.publicEventsService.getSpeakersForEvent(id);
+    }
+
+    @Public()
+    @Get(':id/sponsors')
+    getSponsors(@Param('id', ParseIntPipe) id: number) {
+        return this.publicEventsService.getSponsorsForEvent(id);
+    }
 }
