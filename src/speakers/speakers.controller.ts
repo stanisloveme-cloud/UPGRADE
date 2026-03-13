@@ -2,6 +2,7 @@ import { Controller, Get, Post, Patch, Delete, Body, Param, ParseIntPipe } from 
 import { SpeakersService } from './speakers.service';
 import { CreateSpeakerDto } from './dto/create-speaker.dto';
 import { UpdateSpeakerDto } from './dto/update-speaker.dto';
+import { Public } from '../auth/public.decorator';
 
 @Controller('speakers')
 export class SpeakersController {
@@ -12,7 +13,14 @@ export class SpeakersController {
         return this.speakersService.create(createSpeakerDto);
     }
 
+    @Post('import-legacy')
+    @Public()
+    importLegacy() {
+        return this.speakersService.importLegacy();
+    }
+
     @Get()
+    @Public()
     findAll() {
         return this.speakersService.findAll();
     }
