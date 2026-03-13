@@ -54,42 +54,41 @@ export class SpeakersService {
             let updated = 0;
 
             for (const ls of speakersData) {
-                let existing: any[] = [];
+                let existing = null;
                 if (ls.email) {
-                    existing = await this.prisma.$queryRaw`SELECT id, email, phone, telegram, position FROM "Speaker" WHERE email = ${ls.email} LIMIT 1`;
+                    existing = await this.prisma.speaker.findFirst({ where: { email: ls.email } });
                 }
-                if (existing.length === 0 && ls.phone) {
-                    existing = await this.prisma.$queryRaw`SELECT id, email, phone, telegram, position FROM "Speaker" WHERE phone = ${ls.phone} LIMIT 1`;
+                if (!existing && ls.phone) {
+                    existing = await this.prisma.speaker.findFirst({ where: { phone: ls.phone } });
                 }
-                if (existing.length === 0 && ls.name && ls.surname) {
-                    existing = await this.prisma.$queryRaw`SELECT id, email, phone, telegram, position FROM "Speaker" WHERE first_name = ${ls.name} AND last_name = ${ls.surname} LIMIT 1`;
+                if (!existing && ls.name && ls.surname) {
+                    existing = await this.prisma.speaker.findFirst({
+                        where: { firstName: ls.name, lastName: ls.surname }
+                    });
                 }
 
-                if (existing.length > 0) {
-                    const row = existing[0];
-                    const position = row.position || (ls.details ? ls.details.substring(0, 255) : null);
-                    const email = row.email || (ls.email ? ls.email.substring(0, 255) : null);
-                    const phone = row.phone || (ls.phone ? ls.phone.substring(0, 50) : null);
-                    const telegram = row.telegram || (ls.telegram ? ls.telegram.substring(0, 100) : null);
+                const data = {
+                    firstName: ls.name,
+                    lastName: ls.surname || '',
+                    position: ls.details ? ls.details.substring(0, 255) : null,
+                    email: ls.email ? ls.email.substring(0, 255) : null,
+                    phone: ls.phone ? ls.phone.substring(0, 50) : null,
+                    telegram: ls.telegram ? ls.telegram.substring(0, 100) : null,
+                };
 
-                    await this.prisma.$executeRaw`
-                        UPDATE "Speaker"
-                        SET position = ${position}, email = ${email}, phone = ${phone}, telegram = ${telegram}
-                        WHERE id = ${row.id}
-                    `;
+                if (existing) {
+                    await this.prisma.speaker.update({
+                        where: { id: existing.id },
+                        data: {
+                            position: existing.position || data.position,
+                            email: existing.email || data.email,
+                            phone: existing.phone || data.phone,
+                            telegram: existing.telegram || data.telegram,
+                        }
+                    });
                     updated++;
                 } else {
-                    const firstName = ls.name;
-                    const lastName = ls.surname || '';
-                    const position = ls.details ? ls.details.substring(0, 255) : null;
-                    const email = ls.email ? ls.email.substring(0, 255) : null;
-                    const phone = ls.phone ? ls.phone.substring(0, 50) : null;
-                    const telegram = ls.telegram ? ls.telegram.substring(0, 100) : null;
-
-                    await this.prisma.$executeRaw`
-                        INSERT INTO "Speaker" (first_name, last_name, position, email, phone, telegram)
-                        VALUES (${firstName}, ${lastName}, ${position}, ${email}, ${phone}, ${telegram})
-                    `;
+                    await this.prisma.speaker.create({ data });
                     added++;
                 }
             }
