@@ -1,5 +1,5 @@
 (function() {
-    // Tilda Integration Script for UPGRADE CRM
+    // Tilda Integration Script for UPGRADE CRM v1.0.1
     // Retrieves schedule and speakers data and renders it cleanly.
 
     const STYLES = `
