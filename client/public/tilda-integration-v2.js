@@ -1,16 +1,55 @@
 (function() {
-    // Tilda Integration Script for UPGRADE CRM v1.0.1
-    // Retrieves schedule and speakers data and renders it cleanly.
+    // Tilda Integration Script for UPGRADE CRM v2.0
+    // Pixel-Perfect implementation based on Bootstrap 5
 
     const STYLES = `
-      /* Кастомные стили, специфичные для нашей интеграции (изолированные) */
       #crm-schedule-root {
-        max-width: 1200px; margin: 0 auto; padding: 20px; font-family: Montserrat, sans-serif;
-        color: rgb(33, 37, 41);
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: inherit;
+        color: #212529;
       }
-      #crm-schedule-root * {
-        box-sizing: border-box;
+
+      #crm-schedule-root .v-hall {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
       }
+
+      #crm-schedule-root #prog-left-side {
+        scrollbar-width: thin;
+        scrollbar-color: #c5c5c5 #dfe9eb;
+      }
+      #crm-schedule-root #prog-left-side::-webkit-scrollbar {
+        width: 4px;
+      }
+      #crm-schedule-root #prog-left-side::-webkit-scrollbar-track {
+        border-radius: 5px;
+        background-color: #dfe9eb;
+      }
+      #crm-schedule-root #prog-left-side::-webkit-scrollbar-thumb {
+        background-color: #c5c5c5;
+        border-radius: 5px;
+      }
+
+      #crm-schedule-root .bg-sidebar {
+        background-color: #f8f9fa !important;
+      }
+
+      #crm-schedule-root a.prog-day-link {
+        color: #0d6efd;
+        text-decoration: none;
+      }
+      #crm-schedule-root a.prog-day-link.active {
+        font-weight: bold;
+        color: #000;
+      }
+
+      #crm-schedule-root .program-block-hilite {
+        box-shadow: 0 0 15px rgba(13,110,253,0.5);
+        transition: box-shadow 0.3s ease;
+      }
+
       #crm-schedule-root .speaker-avatar {
         width: 60px;
         height: 60px;
@@ -19,98 +58,48 @@
         filter: grayscale(100%);
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       }
+      
       #crm-schedule-root .sponsor-logo {
-        max-height: 45px;
-        max-width: 140px;
+        max-height: 40px;
+        max-width: 120px;
         object-fit: contain;
       }
-      #crm-schedule-root .session-title {
-        font-weight: 500;
-        font-size: 1.15rem;
-        color: rgb(33, 37, 41);
-        line-height: 1.3;
-        margin-top: 0;
-        margin-bottom: 1rem;
-        font-family: Montserrat, sans-serif;
-      }
-      #crm-schedule-root .time-col h5 {
-        font-weight: 700; color: rgb(33, 37, 41); margin: 0; font-family: Montserrat, sans-serif;
-        font-size: 1.15rem;
-      }
-      #crm-schedule-root .crm-border-top {
-        border-top: 1px solid rgb(174, 175, 255) !important;
-      }
-      
-      /* Flexbox Grid (без Bootstrap) */
-      #crm-schedule-root .crm-row {
-        display: flex;
-        flex-wrap: wrap;
-        margin-right: -15px;
-        margin-left: -15px;
-      }
-      #crm-schedule-root .crm-col {
-        position: relative;
-        width: 100%;
-        padding-right: 15px;
-        padding-left: 15px;
-      }
-      @media (min-width: 992px) {
-        #crm-schedule-root .crm-col-lg-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
-        #crm-schedule-root .crm-col-lg-6 { flex: 0 0 50%; max-width: 50%; }
-        #crm-schedule-root .crm-col-lg-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
-        #crm-schedule-root .crm-text-lg-end { text-align: right !important; }
-      }
-      
-      #crm-schedule-root .d-flex { display: flex !important; }
-      #crm-schedule-root .align-items-center { align-items: center !important; }
-      #crm-schedule-root .flex-wrap { flex-wrap: wrap !important; }
-      #crm-schedule-root .gap-3 { gap: 1rem !important; }
-      #crm-schedule-root .me-3 { margin-right: 1rem !important; }
-      #crm-schedule-root .mb-2 { margin-bottom: 0.5rem !important; }
-      #crm-schedule-root .mb-3 { margin-bottom: 1rem !important; }
-      #crm-schedule-root .mb-4 { margin-bottom: 1.5rem !important; }
-      #crm-schedule-root .mt-3 { margin-top: 1rem !important; }
-      #crm-schedule-root .mt-4 { margin-top: 1.5rem !important; }
-      #crm-schedule-root .pt-3 { padding-top: 1rem !important; }
-      #crm-schedule-root .pt-4 { padding-top: 1.5rem !important; }
-      #crm-schedule-root .text-muted { color: #6c757d !important; }
-      #crm-schedule-root .small { font-size: 80%; font-weight: 400; }
-      #crm-schedule-root .fw-bold { font-weight: 700 !important; color: #212529; }
-      #crm-schedule-root .fw-light { font-weight: 300 !important; }
-      #crm-schedule-root .fs-6 { font-size: 1rem !important; }
-      #crm-schedule-root .lh-sm { line-height: 1.25 !important; }
     `;
 
-    function injectStyles() {
-        if (document.getElementById('crm-schedule-styles')) return;
-        const style = document.createElement('style');
-        style.id = 'crm-schedule-styles';
-        style.innerHTML = STYLES;
-        document.head.appendChild(style);
+    function injectDependencies() {
+        // Inject Bootstrap 5 CSS if not present
+        if (!document.getElementById('bootstrap-css')) {
+            const bsCss = document.createElement('link');
+            bsCss.id = 'bootstrap-css';
+            bsCss.rel = 'stylesheet';
+            bsCss.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+            document.head.appendChild(bsCss);
+        }
+
+        // Inject Custom Styles
+        if (!document.getElementById('crm-schedule-styles')) {
+            const style = document.createElement('style');
+            style.id = 'crm-schedule-styles';
+            style.innerHTML = STYLES;
+            document.head.appendChild(style);
+        }
     }
 
-    // Определяем окружение на основе того, где запущен скрипт
-    // Если на localhost, стучимся на DevStand или локальный сервер
     const scriptUrl = document.currentScript ? document.currentScript.src : '';
     let isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    
-    // В боевом режиме всегда берем продакшн API
     let BASE_URL = 'https://devupgrade.space4you.ru';
-    
-    // Переопределение для локального dev-сервера NestJS (если запущен)
+
     if (isLocal && scriptUrl.includes('localhost:5173')) {
-        // Мы тестируем из-под Vite, но данные нужны с боевого DevStand для визуального теста
         BASE_URL = 'https://devupgrade.space4you.ru';
     }
 
     async function loadSchedule(root) {
-      // ID мероприятия берем из data-event-id="1" или используем 1 как fallback
       const rootEventId = root.getAttribute('data-event-id');
       const EVENT_ID = rootEventId || window.crmEventId || 1; 
       
-      const API_URL = `${BASE_URL}/api/public/events/${EVENT_ID}/website-data`;
+      const API_URL = \`\${BASE_URL}/api/public/events/\${EVENT_ID}/website-data\`;
       
-      root.innerHTML = '<div style="text-align: center; color: #888; padding: 50px;">Загрузка программы...</div>';
+      root.innerHTML = '<div class="text-center text-muted p-5">Загрузка программы...</div>';
 
       try {
         const response = await fetch(API_URL);
@@ -119,30 +108,36 @@
         renderSchedule(root, data);
       } catch (error) {
         console.error('Error loading CRM schedule:', error);
-        root.innerHTML = '<div style="text-align: center; color: red; padding: 20px;">Не удалось загрузить расписание.</div>';
+        root.innerHTML = '<div class="text-center text-danger p-4">Не удалось загрузить расписание.</div>';
       }
     }
 
     function formatTime(dateString) {
       if (!dateString) return '';
       const date = new Date(dateString);
-      // Если это ISO строка
       if (!isNaN(date.getTime())) {
           return date.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
       }
-      return dateString; // fallback, если дата уже "10:00"
+      return dateString;
+    }
+    
+    function extractDate(dateString) {
+      if (!dateString) return '';
+      const date = new Date(dateString);
+      if (!isNaN(date.getTime())) {
+          return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
+      }
+      return '';
     }
 
     function renderSchedule(root, data) {
       let sessions = [];
       
-      // Извлечение сессий из структуры halls -> tracks -> sessions
       if (data.halls && Array.isArray(data.halls)) {
         data.halls.forEach(hall => {
           if (hall.tracks && Array.isArray(hall.tracks)) {
             hall.tracks.forEach(track => {
               if (track.sessions && Array.isArray(track.sessions)) {
-                // Добавляем инфо о зале и треке в саму сессию
                 const trackSessions = track.sessions.map(s => Object.assign({}, s, { hallName: hall.name, trackName: track.name }));
                 sessions = sessions.concat(trackSessions);
               }
@@ -150,7 +145,6 @@
           }
         });
       } else if (Array.isArray(data)) {
-        // Fallback для эндпоинта /schedule (который возвращает массив залов)
         data.forEach(hall => {
           if (hall.tracks && Array.isArray(hall.tracks)) {
             hall.tracks.forEach(track => {
@@ -166,104 +160,197 @@
       }
 
       if (!sessions || sessions.length === 0) {
-        root.innerHTML = '<div style="text-align: center; padding: 30px; font-size: 1.2rem;">Программа формируется...</div>';
+        root.innerHTML = '<div class="text-center p-5 fs-5">Программа в стадии формирования...</div>';
         return;
       }
 
-      // Сортировка по времени начала
       sessions.sort((a, b) => {
         if (!a.startTime) return 1;
         if (!b.startTime) return -1;
         return a.startTime.localeCompare(b.startTime);
       });
 
-      let html = '';
+      // Group by Date for the sidebar
+      const sessionsByDate = {};
+      sessions.forEach(s => {
+          const dateStr = extractDate(s.startTime);
+          if (dateStr) {
+              if (!sessionsByDate[dateStr]) sessionsByDate[dateStr] = [];
+              sessionsByDate[dateStr].push(s);
+          }
+      });
       
-      sessions.forEach(session => {
-        const startTime = formatTime(session.startTime);
-        const endTime = formatTime(session.endTime);
-        const timeRange = startTime && endTime ? `${startTime} — ${endTime}` : startTime;
+      const uniqueDates = Object.keys(sessionsByDate);
 
-        const moderators = (session.speakers || []).filter(s => s.role === 'Организатор' || s.isModerator);
-        const speakers = (session.speakers || []).filter(s => s.role !== 'Организатор' && !s.isModerator);
-        const sponsors = session.sponsors || [];
+      let html = \`
+        <div class="container small px-0">
+          <div class="row gx-1">
+            <!-- Left Sidebar -->
+            <div class="col-3 col-lg-2 fs-6 pb-2" style="z-index: 100;">
+              <div id="prog-left-side" class="sticky-top bg-sidebar p-3 rounded-2 shadow-sm d-none d-md-block" style="top:90px; max-height: 80vh; overflow-y: auto;">
+                <ul class="nav flex-column mb-auto">
+      \`;
 
-        let rowHtml = `
-          <div class="crm-row crm-border-top pt-4 mb-4">
-            <div class="crm-col crm-col-lg-2 crm-text-lg-end mb-3 time-col">
-                <h5>${timeRange}</h5>
+      uniqueDates.forEach((date, i) => {
+          html += \`
+            <li class="nav-item">
+              <a href="#link-date-\${i}" class="nav-link prog-day-link px-0 py-2 \${i === 0 ? 'active' : ''}">
+                \${date}
+              </a>
+            </li>
+          \`;
+      });
+      
+      html += \`
+                </ul>
+              </div>
             </div>
             
-            <div class="crm-col crm-col-lg-6 mb-3">
-                ${session.hallName ? `<div class="fw-bold mb-1" style="color: #0d6efd; font-size: 0.85rem; text-transform: uppercase; font-family: Montserrat;">Зал: ${session.hallName}</div>` : ''}
-                <h5 class="session-title">${session.title || session.name || ''}</h5>
-                ${session.description ? `<div class="mb-3 text-muted small">${session.description}</div>` : ''}
-                
-                ${sponsors.length > 0 ? `
-                  <div class="mt-4 pt-3" style="border-top: 1px solid #eee;">
-                    <div class="small text-muted mb-2">Партнеры сессии:</div>
-                    <div class="d-flex flex-wrap gap-3 align-items-center">
-                      ${sponsors.map(sp => sp.logoFileUrl 
-                          ? `<img src="${BASE_URL}${sp.logoFileUrl}" alt="${sp.name}" class="sponsor-logo" onerror="this.src='${sp.logoFileUrl}'"/>` 
-                          : `<span style="padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 12px;">${sp.name}</span>`
-                      ).join('')}
+            <!-- Main Content Area -->
+            <div class="col-9 col-lg-10 pt-3">
+              <div class="row align-items-start">
+      \`;
+
+      // Render days and sessions
+      uniqueDates.forEach((date, i) => {
+          html += \`<div id="link-date-\${i}" class="w-100" style="scroll-margin-top: 90px;"></div>\`;
+          
+          sessionsByDate[date].forEach(session => {
+              const startTime = formatTime(session.startTime);
+              const endTime = formatTime(session.endTime);
+              const timeRange = startTime && endTime ? \`\${startTime} — \${endTime}\` : startTime;
+
+              const moderators = (session.speakers || []).filter(s => s.role === 'Организатор' || s.isModerator);
+              const speakers = (session.speakers || []).filter(s => s.role !== 'Организатор' && !s.isModerator);
+              const sponsors = session.sponsors || [];
+              
+              const blockId = \`block-\${session.id || Math.random().toString(36).substr(2, 9)}\`;
+
+              html += \`
+                <!-- Session Tile -->
+                <div class="bg-body-tertiary col-12 col-lg mx-2 p-2 rounded-3 position-relative mb-3 shadow-sm" id="\${blockId}">
+                  
+                  <!-- Session Link Wrapper -->
+                  <a href="#\${blockId}" class="stretched-link d-lg-none"></a>
+                  
+                  <div class="row shadow-sm mx-1 my-2 bg-body rounded-2 pb-0 pt-0 text-decoration-none text-dark d-flex overflow-hidden border">
+                    
+                    \${session.hallName ? \`
+                    <div class="col-1 p-0 m-0 border-end border-3 border-danger bg-danger bg-opacity-10 d-flex flex-column justify-content-center align-items-center">
+                      <span class="v-hall fw-bold fs-6 text-danger py-2">\${session.hallName}</span>
+                    </div>
+                    \` : ''}
+                    
+                    <div class="col py-2">
+                       <div class="row">
+                          <div class="col-12 col-lg-3 fw-bold fs-5 text-lg-end border-end pb-2 mb-2 pb-lg-0 mb-lg-0 border-sm-0 border-sm-bottom">
+                            \${timeRange}
+                          </div>
+                          <div class="col-12 col-lg-9">
+                            <span class="fw-bold fs-5">\${session.title || session.name || ''}</span>
+                            
+                            <!-- Detailed Content (Visible on Desktop or Expandable) -->
+                            <div class="mt-3">
+                              \${session.description ? \`<p class="text-muted small">\${session.description}</p>\` : ''}
+                              
+                              <!-- Sponsors -->
+                              \${sponsors.length > 0 ? \`
+                                <div class="mb-3">
+                                  <div class="d-flex flex-wrap gap-2">
+                                    \${sponsors.map(sp => sp.logoFileUrl 
+                                        ? \`<img src="\${BASE_URL}\${sp.logoFileUrl}" alt="\${sp.name}" class="sponsor-logo shadow-sm border rounded px-2 bg-white" onerror="this.src='\${sp.logoFileUrl}'"/>\` 
+                                        : \`<span class="badge bg-light text-dark border">\${sp.name}</span>\`
+                                    ).join('')}
+                                  </div>
+                                </div>
+                              \` : ''}
+                              
+                              <div class="row mt-3">
+                                <!-- Moderators -->
+                                \${moderators.length > 0 ? \`
+                                  <div class="col-12 col-md-6 mb-3">
+                                    <div class="text-secondary small fw-bold text-uppercase mb-2">Модераторы</div>
+                                    \${moderators.map(mod => {
+                                      const sp = mod.speaker || mod;
+                                      const photoUrl = sp.photoUrl ? (sp.photoUrl.startsWith('http') ? sp.photoUrl : \`\${BASE_URL}\${sp.photoUrl}\`) : '';
+                                      return \`
+                                        <div class="d-flex align-items-center mb-2">
+                                          \${photoUrl ? \`<img src="\${photoUrl}" class="speaker-avatar me-2" />\` : ''}
+                                          <div>
+                                            <div class="fw-bold lh-sm">\${sp.name || (sp.firstName + ' ' + sp.lastName)}</div>
+                                            \${(sp.company || sp.position || sp.role) ? \`
+                                              <div class="small text-muted lh-1 mt-1">\${sp.position || sp.role || ''} \${sp.company ? '<br/>' + sp.company : ''}</div>
+                                            \` : ''}
+                                          </div>
+                                        </div>
+                                      \`;
+                                    }).join('')}
+                                  </div>
+                                \` : ''}
+                                
+                                <!-- Speakers -->
+                                \${speakers.length > 0 ? \`
+                                  <div class="col-12 col-md-6 mb-3">
+                                    <div class="text-secondary small fw-bold text-uppercase mb-2">Спикеры</div>
+                                      \${speakers.map(s => {
+                                      const sp = s.speaker || s;
+                                      const photoUrl = sp.photoUrl ? (sp.photoUrl.startsWith('http') ? sp.photoUrl : \`\${BASE_URL}\${sp.photoUrl}\`) : '';
+                                      return \`
+                                        <div class="d-flex align-items-center mb-2">
+                                          \${photoUrl ? \`<img src="\${photoUrl}" class="speaker-avatar me-2" />\` : ''}
+                                          <div>
+                                            <div class="fw-bold lh-sm">\${sp.name || (sp.firstName + ' ' + sp.lastName)}</div>
+                                            \${(sp.company || sp.position || sp.role) ? \`
+                                              <div class="small text-muted lh-1 mt-1">\${sp.position || sp.role || ''} \${sp.company ? '<br/>' + sp.company : ''}</div>
+                                            \` : ''}
+                                          </div>
+                                        </div>
+                                      \`;
+                                    }).join('')}
+                                  </div>
+                                \` : ''}
+                              </div>
+                            </div>
+                            
+                          </div>
+                       </div>
                     </div>
                   </div>
-                ` : ''}
-            </div>
-
-            <div class="crm-col crm-col-lg-4">
-        `;
-
-        // Модераторы
-        if (moderators.length > 0) {
-          rowHtml += `<div class="fw-light fs-6 mb-2 text-muted" style="text-transform: uppercase; font-size: 0.85rem !important;">Модератор${moderators.length > 1 ? 'ы' : ''}</div>`;
-          moderators.forEach(mod => {
-            const sp = mod.speaker || mod; // Поддержка разных форматов API
-            const photoUrl = sp.photoUrl ? (sp.photoUrl.startsWith('http') ? sp.photoUrl : `${BASE_URL}${sp.photoUrl}`) : '';
-            rowHtml += `
-              <div class="d-flex align-items-center mb-3">
-                ${photoUrl ? `<img src="${photoUrl}" class="speaker-avatar me-3" />` : ''}
-                <div class="lh-sm">
-                  <div class="fw-bold">${sp.name || (sp.firstName + ' ' + sp.lastName)}</div>
-                  <div class="small text-muted">${sp.company || sp.position || sp.role || ''}</div>
                 </div>
-              </div>
-            `;
+              \`;
           });
-        }
-
-        // Спикеры
-        if (speakers.length > 0) {
-          rowHtml += `<div class="fw-light fs-6 mb-2 mt-3 text-muted" style="text-transform: uppercase; font-size: 0.85rem !important;">Спикеры</div>`;
-          speakers.forEach(s => {
-            const sp = s.speaker || s;
-            const photoUrl = sp.photoUrl ? (sp.photoUrl.startsWith('http') ? sp.photoUrl : `${BASE_URL}${sp.photoUrl}`) : '';
-            rowHtml += `
-              <div class="d-flex align-items-center mb-3">
-                ${photoUrl ? `<img src="${photoUrl}" class="speaker-avatar me-3" />` : ''}
-                <div class="lh-sm">
-                  <div class="fw-bold">${sp.name || (sp.firstName + ' ' + sp.lastName)}</div>
-                  <div class="small text-muted">${sp.company || sp.position || sp.role || ''}</div>
-                </div>
-              </div>
-            `;
-          });
-        }
-
-        rowHtml += `
-            </div>
-          </div>
-        `;
-        
-        html += rowHtml;
       });
 
+      html += \`
+              </div>
+            </div>
+          </div>
+        </div>
+      \`;
+
       root.innerHTML = html;
+      
+      // Setup simple scrollspy for sidebar links
+      const links = root.querySelectorAll('.prog-day-link');
+      links.forEach(link => {
+          link.addEventListener('click', function(e) {
+              e.preventDefault();
+              const targetId = this.getAttribute('href').substring(1);
+              const targetEl = document.getElementById(targetId);
+              if (targetEl) {
+                  window.scrollTo({
+                      top: targetEl.offsetTop - 100,
+                      behavior: 'smooth'
+                  });
+              }
+              links.forEach(l => l.classList.remove('active'));
+              this.classList.add('active');
+          });
+      });
     }
 
     window.initUpgradeCrmWidget = function() {
-        injectStyles();
+        injectDependencies();
         const rootElements = document.querySelectorAll('#crm-schedule-root');
         rootElements.forEach(root => {
             loadSchedule(root);
