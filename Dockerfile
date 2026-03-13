@@ -20,6 +20,7 @@ COPY prisma.config.ts ./
 RUN npm install --omit=dev && npx prisma generate
 COPY --from=builder /app/dist ./dist
 COPY scripts/scraped_brands.json ./scripts/
+COPY scripts/scraped_speakers.json ./scripts/
 COPY uploads/legacy_brands ./uploads/legacy_brands
 # Create uploads dir with correct ownership before switching user
 RUN mkdir -p /app/uploads && chown -R node:node /app/uploads
