@@ -232,9 +232,9 @@ const BrandsCheck: React.FC = () => {
             render: (_, entity) => (
                 <Space direction="vertical" size={4}>
                     <Space align="start">
-                        {entity.logoUrl ? (
+                        {entity.logoUrl || entity.logoFileUrl ? (
                             <img
-                                src={entity.logoUrl.startsWith('http') || entity.logoUrl.startsWith('/api') ? entity.logoUrl : `/api${entity.logoUrl.startsWith('/') ? '' : '/'}${entity.logoUrl}`}
+                                src={entity.logoUrl || entity.logoFileUrl}
                                 alt="logo"
                                 style={{ width: 60, height: 40, objectFit: 'contain', background: '#fff', border: '1px solid #f0f0f0', borderRadius: 4 }}
                             />
@@ -321,7 +321,7 @@ const BrandsCheck: React.FC = () => {
                     initialValues={sanitizeFormValues({
                         ...record,
                         segments: Array.isArray(record.segments) ? record.segments.map((s: any) => [s.marketSegmentId]) : undefined,
-                        logoUrl: record.logoUrl ? [{ uid: '-1', name: 'logo', status: 'done', url: record.logoUrl, response: { url: record.logoUrl } }] : []
+                        logoUrl: record.logoUrl || record.logoFileUrl ? [{ uid: '-1', name: 'logo', status: 'done', url: record.logoUrl || record.logoFileUrl, response: { url: record.logoUrl || record.logoFileUrl } }] : []
                     }, { arrayFields: ['cases'], listFields: ['cases'] })}
                     onFinish={async (values) => {
                         try {
@@ -387,7 +387,7 @@ const BrandsCheck: React.FC = () => {
                     return { data, success: true };
                 }}
                 rowKey="id"
-                pagination={{ pageSize: 15 }}
+                pagination={{ defaultPageSize: 100, showSizeChanger: true, pageSizeOptions: ['15', '50', '100', '200'] }}
                 rowClassName={(record) => {
                     if (record.status === 'approved') return 'row-approved';
                     if (record.status === 'rejected') return 'row-rejected';

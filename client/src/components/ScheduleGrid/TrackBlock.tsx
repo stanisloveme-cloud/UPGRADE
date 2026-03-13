@@ -49,13 +49,20 @@ const TrackBlock: React.FC<TrackBlockProps> = ({ track, rowIndex, filters, onSes
                 />
             </div>
 
-            {/* Sessions Container - Flex Column for simplicity within a track */}
+            {/* Sessions Container - Grid aligned with time slots */}
             {!filters?.hideSessions && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: `repeat(${colSpan}, 1fr)`, // Subgrid matching track span
+                    gap: '4px',
+                    flex: 1,
+                    position: 'relative'
+                }}>
                     {track.sessions?.map((session: any) => (
                         <SessionCard
                             key={session.id}
                             session={session}
+                            trackStart={track.startTime} // Pass track start to calculate relative offset
                             filters={filters}
                             onClick={() => onSessionClick?.(session)}
                         />

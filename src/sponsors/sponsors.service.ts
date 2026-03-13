@@ -207,8 +207,9 @@ export class SponsorsService {
                             name: brand.name,
                             description: brand.description || '',
                             websiteUrl: brand.websiteUrl || '',
+                            logoUrl: brand.logoFileUrl || '',
                             logoFileUrl: brand.logoFileUrl || '',
-                            status: 'approved',
+                            status: 'pending', // Requires review default
                             exportToWebsite: true
                         }
                     });

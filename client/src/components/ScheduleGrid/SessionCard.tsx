@@ -6,22 +6,35 @@ const { Text } = Typography;
 
 interface SessionCardProps {
     session: any;
+    trackStart?: string;
     filters?: any;
     onClick?: () => void;
 }
 
-const SessionCard: React.FC<SessionCardProps> = ({ session, filters, onClick }) => {
+import { durationToGridSpan, timeToGridColumn } from './utils'; // Added import
+
+const SessionCard: React.FC<SessionCardProps> = ({ session, trackStart, filters, onClick }) => {
     // Mock counts for badges until backend provides aggregated counts
     const moderatorsCount = session.speakers?.filter((s: any) => s.role === 'moderator').length || 0;
     const speakersCount = session.speakers?.filter((s: any) => s.role === 'speaker').length || 0;
+
+    // Calculate relative grid position inside the track
+    let colStart = 1;
+    let colSpan = 1;
+    if (trackStart && session.start_time && session.end_time) {
+        const trackStartCol = timeToGridColumn(trackStart);
+        const sessionStartCol = timeToGridColumn(session.start_time);
+        colStart = Math.max(1, sessionStartCol - trackStartCol + 1);
+        colSpan = Math.max(1, durationToGridSpan(session.start_time, session.end_time));
+    }
 
     return (
         <Card
             size="small"
             className="session-card"
-            // hoverable - removed default antd hover
             onClick={onClick}
             style={{
+                gridColumn: `${colStart} / span ${colSpan}`, // Position within TrackBlock
                 height: '100%',
                 overflow: 'hidden',
                 borderRadius: '4px',
