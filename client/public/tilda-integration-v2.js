@@ -120,12 +120,12 @@
     }
     
     function extractDate(dateString) {
-      if (!dateString) return '';
+      if (!dateString) return 'Программа';
       const date = new Date(dateString);
       if (!isNaN(date.getTime())) {
           return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
       }
-      return '';
+      return 'Программа'; // Fallback so it doesn't break if API sends HH:MM
     }
 
     function renderSchedule(root, data) {
@@ -224,25 +224,25 @@
 
               html += `
                 <!-- Session Tile -->
-                <div class="bg-body-tertiary col-12 col-lg mx-2 p-2 rounded-3 position-relative mb-3 shadow-sm" id="${blockId}">
+                <div class="bg-body-tertiary col-12 rounded-3 position-relative mb-4 shadow-sm p-3" id="${blockId}">
                   
                   <!-- Session Link Wrapper -->
                   <a href="#${blockId}" class="stretched-link d-lg-none"></a>
                   
-                  <div class="row shadow-sm mx-1 my-2 bg-body rounded-2 pb-0 pt-0 text-decoration-none text-dark d-flex overflow-hidden border">
+                  <div class="row shadow-sm mx-0 bg-body rounded-2 pb-0 pt-0 text-decoration-none text-dark d-flex overflow-hidden border">
                     
                     ${session.hallName ? `
-                    <div class="col-1 p-0 m-0 border-end border-3 border-danger bg-danger bg-opacity-10 d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-1 p-0 m-0 border-end border-3 border-danger bg-danger bg-opacity-10 d-flex flex-column justify-content-center align-items-center" style="min-width: 40px; width: 40px;">
                       <span class="v-hall fw-bold fs-6 text-danger py-2">${session.hallName}</span>
                     </div>
                     ` : ''}
                     
-                    <div class="col py-2">
+                    <div class="col py-3 px-3">
                        <div class="row">
-                          <div class="col-12 col-lg-3 fw-bold fs-5 text-lg-end border-end pb-2 mb-2 pb-lg-0 mb-lg-0 border-sm-0 border-sm-bottom">
+                          <div class="col-12 col-lg-3 fw-bold fs-5 text-lg-end border-end pb-2 mb-2 pb-lg-0 mb-lg-0 border-sm-0">
                             ${timeRange}
                           </div>
-                          <div class="col-12 col-lg-9">
+                          <div class="col-12 col-lg-9 ps-lg-4">
                             <span class="fw-bold fs-5">${session.title || session.name || ''}</span>
                             
                             <!-- Detailed Content (Visible on Desktop or Expandable) -->
