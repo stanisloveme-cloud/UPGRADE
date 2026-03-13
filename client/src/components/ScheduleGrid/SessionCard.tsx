@@ -21,11 +21,11 @@ const SessionCard: React.FC<SessionCardProps> = ({ session, trackStart, filters,
     // Calculate relative grid position inside the track
     let colStart = 1;
     let colSpan = 1;
-    if (trackStart && session.start_time && session.end_time) {
+    if (trackStart && session.startTime && session.endTime) {
         const trackStartCol = timeToGridColumn(trackStart);
-        const sessionStartCol = timeToGridColumn(session.start_time);
+        const sessionStartCol = timeToGridColumn(session.startTime);
         colStart = Math.max(1, sessionStartCol - trackStartCol + 1);
-        colSpan = Math.max(1, durationToGridSpan(session.start_time, session.end_time));
+        colSpan = Math.max(1, durationToGridSpan(session.startTime, session.endTime));
     }
 
     return (
@@ -46,7 +46,7 @@ const SessionCard: React.FC<SessionCardProps> = ({ session, trackStart, filters,
         >
             <div style={{ marginBottom: '4px' }}>
                 <Text type="secondary" style={{ fontSize: '11px' }}>
-                    {(session.start_time || '').slice(0, 5)} - {(session.end_time || '').slice(0, 5)}
+                    {(session.startTime || '').slice(0, 5)} - {(session.endTime || '').slice(0, 5)}
                 </Text>
             </div>
 
