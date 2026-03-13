@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ProFormText, ProFormTextArea, ProFormTimePicker, ProFormSelect, ProFormList, ProFormDateTimePicker, ProFormSwitch, ProFormGroup, ProFormDependency, ProCard } from '@ant-design/pro-components';
 import { Button, Upload, message, Divider } from 'antd';
 import { FilePdfOutlined } from '@ant-design/icons';
@@ -58,6 +58,19 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
     const sanitizedValues = sanitizeFormValues(normalizedInitialValues, {
         listFields: ['speakers', 'briefings', 'questions']
     });
+
+    // Force Ant Design form to consume new initial values when opened
+    // DrawerForm caches the underlying form instance indefinitely.
+    useEffect(() => {
+        if (visible && formRef.current) {
+            formRef.current.resetFields();
+            formRef.current.setFieldsValue(sanitizedValues);
+            
+            // Log form injection for debugging
+            console.log("Drawer opened. Force-injected values:", sanitizedValues);
+            console.log("Actual form fields after inject:", formRef.current.getFieldsValue());
+        }
+    }, [visible]);
 
     return (
         <SafeDrawerForm
