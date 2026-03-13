@@ -97,17 +97,18 @@
     // В боевом режиме всегда берем продакшн API
     let BASE_URL = 'https://devupgrade.space4you.ru';
     
-    // Если тестирование проходит локально и хочется смотреть локальный бекенд:
-    // if (isLocal && scriptUrl.includes('localhost:5173')) {
-    //    BASE_URL = 'http://localhost:3000';
-    // }
+    // Переопределение для локального dev-сервера NestJS (если запущен)
+    if (isLocal && scriptUrl.includes('localhost:5173')) {
+        // Мы тестируем из-под Vite, но данные нужны с боевого DevStand для визуального теста
+        BASE_URL = 'https://devupgrade.space4you.ru';
+    }
 
     async function loadSchedule(root) {
       // ID мероприятия берем из data-event-id="1" или используем 1 как fallback
       const rootEventId = root.getAttribute('data-event-id');
       const EVENT_ID = rootEventId || window.crmEventId || 1; 
       
-      const API_URL = \`\${BASE_URL}/api/public/events/\${EVENT_ID}/website-data\`;
+      const API_URL = `${BASE_URL}/api/public/events/${EVENT_ID}/website-data`;
       
       root.innerHTML = '<div style="text-align: center; color: #888; padding: 50px;">Загрузка программы...</div>';
 
@@ -145,78 +146,78 @@
       sessions.forEach(session => {
         const startTime = formatTime(session.startTime);
         const endTime = formatTime(session.endTime);
-        const timeRange = startTime && endTime ? \`\${startTime} — \${endTime}\` : startTime;
+        const timeRange = startTime && endTime ? `${startTime} — ${endTime}` : startTime;
 
         const moderators = (session.speakers || []).filter(s => s.role === 'Организатор' || s.isModerator);
         const speakers = (session.speakers || []).filter(s => s.role !== 'Организатор' && !s.isModerator);
         const sponsors = session.sponsors || [];
 
-        let rowHtml = \`
+        let rowHtml = `
           <div class="crm-row crm-border-top pt-4 mb-4">
             <div class="crm-col crm-col-lg-2 crm-text-lg-end mb-3 time-col">
-                <h5>\${timeRange}</h5>
+                <h5>${timeRange}</h5>
             </div>
             
             <div class="crm-col crm-col-lg-6 mb-3">
-                <h5 class="session-title">\${session.title || session.name || ''}</h5>
-                \${session.description ? \`<div class="mb-3 text-muted small">\${session.description}</div>\` : ''}
+                <h5 class="session-title">${session.title || session.name || ''}</h5>
+                ${session.description ? `<div class="mb-3 text-muted small">${session.description}</div>` : ''}
                 
-                \${sponsors.length > 0 ? \`
+                ${sponsors.length > 0 ? `
                   <div class="mt-4 pt-3" style="border-top: 1px solid #eee;">
                     <div class="small text-muted mb-2">Партнеры сессии:</div>
                     <div class="d-flex flex-wrap gap-3 align-items-center">
-                      \${sponsors.map(sp => sp.logoFileUrl 
-                          ? \`<img src="\${BASE_URL}\${sp.logoFileUrl}" alt="\${sp.name}" class="sponsor-logo" onerror="this.src='\${sp.logoFileUrl}'"/>\` 
-                          : \`<span style="padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 12px;">\${sp.name}</span>\`
+                      ${sponsors.map(sp => sp.logoFileUrl 
+                          ? `<img src="${BASE_URL}${sp.logoFileUrl}" alt="${sp.name}" class="sponsor-logo" onerror="this.src='${sp.logoFileUrl}'"/>` 
+                          : `<span style="padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 12px;">${sp.name}</span>`
                       ).join('')}
                     </div>
                   </div>
-                \` : ''}
+                ` : ''}
             </div>
 
             <div class="crm-col crm-col-lg-4">
-        \`;
+        `;
 
         // Модераторы
         if (moderators.length > 0) {
-          rowHtml += \`<div class="fw-light fs-6 mb-2 text-muted" style="text-transform: uppercase; font-size: 0.85rem !important;">Модератор\${moderators.length > 1 ? 'ы' : ''}</div>\`;
+          rowHtml += `<div class="fw-light fs-6 mb-2 text-muted" style="text-transform: uppercase; font-size: 0.85rem !important;">Модератор${moderators.length > 1 ? 'ы' : ''}</div>`;
           moderators.forEach(mod => {
             const sp = mod.speaker || mod; // Поддержка разных форматов API
-            const photoUrl = sp.photoUrl ? (sp.photoUrl.startsWith('http') ? sp.photoUrl : \`\${BASE_URL}\${sp.photoUrl}\`) : '';
-            rowHtml += \`
+            const photoUrl = sp.photoUrl ? (sp.photoUrl.startsWith('http') ? sp.photoUrl : `${BASE_URL}${sp.photoUrl}`) : '';
+            rowHtml += `
               <div class="d-flex align-items-center mb-3">
-                \${photoUrl ? \`<img src="\${photoUrl}" class="speaker-avatar me-3" />\` : ''}
+                ${photoUrl ? `<img src="${photoUrl}" class="speaker-avatar me-3" />` : ''}
                 <div class="lh-sm">
-                  <div class="fw-bold">\${sp.name || (sp.firstName + ' ' + sp.lastName)}</div>
-                  <div class="small text-muted">\${sp.company || sp.position || sp.role || ''}</div>
+                  <div class="fw-bold">${sp.name || (sp.firstName + ' ' + sp.lastName)}</div>
+                  <div class="small text-muted">${sp.company || sp.position || sp.role || ''}</div>
                 </div>
               </div>
-            \`;
+            `;
           });
         }
 
         // Спикеры
         if (speakers.length > 0) {
-          rowHtml += \`<div class="fw-light fs-6 mb-2 mt-3 text-muted" style="text-transform: uppercase; font-size: 0.85rem !important;">Спикеры</div>\`;
+          rowHtml += `<div class="fw-light fs-6 mb-2 mt-3 text-muted" style="text-transform: uppercase; font-size: 0.85rem !important;">Спикеры</div>`;
           speakers.forEach(s => {
             const sp = s.speaker || s;
-            const photoUrl = sp.photoUrl ? (sp.photoUrl.startsWith('http') ? sp.photoUrl : \`\${BASE_URL}\${sp.photoUrl}\`) : '';
-            rowHtml += \`
+            const photoUrl = sp.photoUrl ? (sp.photoUrl.startsWith('http') ? sp.photoUrl : `${BASE_URL}${sp.photoUrl}`) : '';
+            rowHtml += `
               <div class="d-flex align-items-center mb-3">
-                \${photoUrl ? \`<img src="\${photoUrl}" class="speaker-avatar me-3" />\` : ''}
+                ${photoUrl ? `<img src="${photoUrl}" class="speaker-avatar me-3" />` : ''}
                 <div class="lh-sm">
-                  <div class="fw-bold">\${sp.name || (sp.firstName + ' ' + sp.lastName)}</div>
-                  <div class="small text-muted">\${sp.company || sp.position || sp.role || ''}</div>
+                  <div class="fw-bold">${sp.name || (sp.firstName + ' ' + sp.lastName)}</div>
+                  <div class="small text-muted">${sp.company || sp.position || sp.role || ''}</div>
                 </div>
               </div>
-            \`;
+            `;
           });
         }
 
-        rowHtml += \`
+        rowHtml += `
             </div>
           </div>
-        \`;
+        `;
         
         html += rowHtml;
       });
@@ -224,7 +225,7 @@
       root.innerHTML = html;
     }
 
-    function init() {
+    window.initUpgradeCrmWidget = function() {
         injectStyles();
         const rootElements = document.querySelectorAll('#crm-schedule-root');
         rootElements.forEach(root => {
@@ -233,8 +234,8 @@
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
+      document.addEventListener('DOMContentLoaded', window.initUpgradeCrmWidget);
     } else {
-      init();
+      window.initUpgradeCrmWidget();
     }
 })();
