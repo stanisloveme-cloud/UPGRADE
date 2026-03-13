@@ -12,6 +12,11 @@ export class SpeakersController {
         return this.speakersService.create(createSpeakerDto);
     }
 
+    @Post('import-legacy')
+    importLegacy() {
+        return this.speakersService.importLegacy();
+    }
+
     @Get()
     findAll() {
         return this.speakersService.findAll();
