@@ -121,12 +121,24 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                             }));
                     }
 
-                    // Format briefings array for backend (dayjs -> ISO string)
+                    if (values.questions) {
+                        formattedValues.questions = values.questions
+                            .filter((q: any) => q != null)
+                            .map((q: any) => ({
+                                title: q.title,
+                                body: q.body
+                            }));
+                    }
+
+                    // Format briefings array for backend (dayjs -> ISO string) and strip unnecessary fields
                     if (values.briefings) {
                         formattedValues.briefings = values.briefings
                             .filter((b: any) => b != null)
                             .map((b: any) => ({
-                                ...b,
+                                moderatorId: b.moderatorId,
+                                isDone: b.isDone,
+                                link: b.link,
+                                comment: b.comment,
                                 datetime: b.datetime && typeof b.datetime.toISOString === 'function'
                                     ? b.datetime.toISOString()
                                     : b.datetime
