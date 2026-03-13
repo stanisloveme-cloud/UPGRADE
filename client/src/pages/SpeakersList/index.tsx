@@ -176,7 +176,11 @@ const SpeakersList: React.FC = () => {
                 dataSource={filteredSpeakers}
                 rowKey="id"
                 loading={loading}
-                pagination={{ pageSize: 20 }}
+                pagination={{ 
+                    defaultPageSize: 20, 
+                    showSizeChanger: true,
+                    pageSizeOptions: ['10', '20', '50', '100', '200']
+                }}
                 size="middle"
             />
 
