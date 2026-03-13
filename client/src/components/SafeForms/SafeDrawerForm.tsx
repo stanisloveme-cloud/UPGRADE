@@ -31,6 +31,17 @@ export const SafeDrawerForm = <T extends Record<string, any>>({
             {...props}
             onFinish={onFinish}
             formRef={actualFormRef as any}
+            onFinishFailed={(errorInfo: any) => {
+                console.error("SafeDrawerForm Validation failed:", errorInfo);
+                const errorFields = errorInfo.errorFields?.map((f: any) => f.name.join(' -> ')).join(', ');
+
+                notification.error({
+                    message: 'Ошибка заполнения формы',
+                    description: `Проверьте выделенные красным поля. Если вы не видите ошибку, проверьте свернутые вкладки или списки. Незаполненные поля: ${errorFields || 'Неизвестно'}`,
+                    duration: 8,
+                });
+                props.onFinishFailed?.(errorInfo);
+            }}
             submitter={{
                 ...props.submitter,
                 render: (submitterProps, defaultDoms) => {
@@ -38,32 +49,7 @@ export const SafeDrawerForm = <T extends Record<string, any>>({
                         return props.submitter.render(submitterProps, defaultDoms);
                     }
 
-                    const doms = [
-                        <Button key="cancel" onClick={() => submitterProps.onReset?.()}>
-                            {cancelText}
-                        </Button>,
-                        <Button
-                            key="submit"
-                            type="primary"
-                            onClick={async () => {
-                                try {
-                                    await submitterProps.form?.validateFields();
-                                    submitterProps.form?.submit();
-                                } catch (e: any) {
-                                    console.error("SafeDrawerForm Validation failed:", e);
-                                    const errorFields = e.errorFields?.map((f: any) => f.name.join(' -> ')).join(', ');
-
-                                    notification.error({
-                                        message: 'Ошибка заполнения формы',
-                                        description: `Проверьте выделенные красным поля. Если вы не видите ошибку, проверьте свернутые вкладки или списки. Незаполненные поля: ${errorFields || 'Неизвестно'}`,
-                                        duration: 8,
-                                    });
-                                }
-                            }}
-                        >
-                            {submitText}
-                        </Button>
-                    ];
+                    const doms = [...defaultDoms];
 
                     if (onDelete) {
                         doms.unshift(

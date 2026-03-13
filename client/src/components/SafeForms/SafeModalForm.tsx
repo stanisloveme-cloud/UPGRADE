@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { ModalForm, ModalFormProps } from '@ant-design/pro-components';
-import { Button, notification } from 'antd';
+import { notification } from 'antd';
 import { ErrorBoundary } from '../ErrorBoundary';
 
 export interface SafeModalFormProps<T = Record<string, any>> extends ModalFormProps<T> {
@@ -29,44 +29,25 @@ export const SafeModalForm = <T extends Record<string, any>>({
             {...props}
             onFinish={onFinish}
             formRef={actualFormRef as any}
+            onFinishFailed={(errorInfo: any) => {
+                console.error("SafeModalForm Validation failed:", errorInfo);
+                const errorFields = errorInfo.errorFields?.map((f: any) => f.name.join(' -> ')).join(', ');
+
+                notification.error({
+                    message: 'Ошибка заполнения формы',
+                    description: `Проверьте выделенные красным поля. Если вы не видите ошибку, проверьте свернутые вкладки или списки. Незаполненные поля: ${errorFields || 'Неизвестно'}`,
+                    duration: 8,
+                });
+                props.onFinishFailed?.(errorInfo);
+            }}
             submitter={{
                 ...props.submitter,
                 render: (submitterProps, defaultDoms) => {
-                    // If the user provided a completely custom submitter render, use it (though they lose safety)
                     if (props.submitter && props.submitter.render) {
                         return props.submitter.render(submitterProps, defaultDoms);
                     }
 
-                    return [
-                        <Button key="cancel" onClick={() => submitterProps.onReset?.()}>
-                            {cancelText}
-                        </Button>,
-                        <Button
-                            key="submit"
-                            type="primary"
-                            onClick={async () => {
-                                try {
-                                    // Force validation of all fields, even hidden ones
-                                    await submitterProps.form?.validateFields();
-                                    // If successful, hand over to the default submit handler
-                                    submitterProps.form?.submit();
-                                } catch (e: any) {
-                                    console.error("SafeModalForm Validation failed:", e);
-
-                                    // Extract field names that failed validation
-                                    const errorFields = e.errorFields?.map((f: any) => f.name.join(' -> ')).join(', ');
-
-                                    notification.error({
-                                        message: 'Ошибка заполнения формы',
-                                        description: `Проверьте выделенные красным поля. Если вы не видите ошибку, проверьте свернутые вкладки или списки. Незаполненные поля: ${errorFields || 'Неизвестно'}`,
-                                        duration: 8, // stay open longer so user can read it
-                                    });
-                                }
-                            }}
-                        >
-                            {submitText}
-                        </Button>
-                    ];
+                    return defaultDoms;
                 }
             }}
         >
