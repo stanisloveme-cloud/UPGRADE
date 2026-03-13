@@ -134,12 +134,48 @@
     }
 
     function renderSchedule(root, data) {
-      const sessions = data.sessions || (Array.isArray(data) ? data : []);
+      let sessions = [];
       
+      // Извлечение сессий из структуры halls -> tracks -> sessions
+      if (data.halls && Array.isArray(data.halls)) {
+        data.halls.forEach(hall => {
+          if (hall.tracks && Array.isArray(hall.tracks)) {
+            hall.tracks.forEach(track => {
+              if (track.sessions && Array.isArray(track.sessions)) {
+                // Добавляем инфо о зале и треке в саму сессию
+                const trackSessions = track.sessions.map(s => Object.assign({}, s, { hallName: hall.name, trackName: track.name }));
+                sessions = sessions.concat(trackSessions);
+              }
+            });
+          }
+        });
+      } else if (Array.isArray(data)) {
+        // Fallback для эндпоинта /schedule (который возвращает массив залов)
+        data.forEach(hall => {
+          if (hall.tracks && Array.isArray(hall.tracks)) {
+            hall.tracks.forEach(track => {
+              if (track.sessions && Array.isArray(track.sessions)) {
+                const trackSessions = track.sessions.map(s => Object.assign({}, s, { hallName: hall.name, trackName: track.name }));
+                sessions = sessions.concat(trackSessions);
+              }
+            });
+          }
+        });
+      } else if (data.sessions && Array.isArray(data.sessions)) {
+        sessions = data.sessions;
+      }
+
       if (!sessions || sessions.length === 0) {
         root.innerHTML = '<div style="text-align: center; padding: 30px; font-size: 1.2rem;">Программа формируется...</div>';
         return;
       }
+
+      // Сортировка по времени начала
+      sessions.sort((a, b) => {
+        if (!a.startTime) return 1;
+        if (!b.startTime) return -1;
+        return a.startTime.localeCompare(b.startTime);
+      });
 
       let html = '';
       
@@ -159,6 +195,7 @@
             </div>
             
             <div class="crm-col crm-col-lg-6 mb-3">
+                ${session.hallName ? `<div class="fw-bold mb-1" style="color: #0d6efd; font-size: 0.85rem; text-transform: uppercase; font-family: Montserrat;">Зал: ${session.hallName}</div>` : ''}
                 <h5 class="session-title">${session.title || session.name || ''}</h5>
                 ${session.description ? `<div class="mb-3 text-muted small">${session.description}</div>` : ''}
                 
