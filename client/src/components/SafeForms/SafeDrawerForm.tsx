@@ -48,7 +48,7 @@ export const SafeDrawerForm = <T extends Record<string, any>>({
                             onClick={async () => {
                                 try {
                                     await submitterProps.form?.validateFields();
-                                    submitterProps.submit?.();
+                                    submitterProps.form?.submit();
                                 } catch (e: any) {
                                     console.error("SafeDrawerForm Validation failed:", e);
                                     const errorFields = e.errorFields?.map((f: any) => f.name.join(' -> ')).join(', ');

@@ -49,7 +49,7 @@ export const SafeModalForm = <T extends Record<string, any>>({
                                     // Force validation of all fields, even hidden ones
                                     await submitterProps.form?.validateFields();
                                     // If successful, hand over to the default submit handler
-                                    submitterProps.submit?.();
+                                    submitterProps.form?.submit();
                                 } catch (e: any) {
                                     console.error("SafeModalForm Validation failed:", e);
 
