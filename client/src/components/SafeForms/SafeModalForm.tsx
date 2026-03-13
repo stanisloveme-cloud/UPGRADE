@@ -1,11 +1,13 @@
 import { useRef } from 'react';
 import { ModalForm, ModalFormProps } from '@ant-design/pro-components';
-import { notification } from 'antd';
+import { notification, Button, Modal } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 import { ErrorBoundary } from '../ErrorBoundary';
 
 export interface SafeModalFormProps<T = Record<string, any>> extends ModalFormProps<T> {
     submitText?: string;
     cancelText?: string;
+    onDelete?: () => void;
 }
 
 /**
@@ -18,6 +20,7 @@ export const SafeModalForm = <T extends Record<string, any>>({
     children,
     submitText = 'Сохранить',
     cancelText = 'Отмена',
+    onDelete,
     onFinish,
     ...props
 }: SafeModalFormProps<T>) => {
@@ -47,7 +50,30 @@ export const SafeModalForm = <T extends Record<string, any>>({
                         return props.submitter.render(submitterProps, defaultDoms);
                     }
 
-                    return defaultDoms;
+                    const doms = [...defaultDoms];
+
+                    if (onDelete) {
+                        doms.unshift(
+                            <Button
+                                key="delete"
+                                type="primary"
+                                danger
+                                icon={<DeleteOutlined />}
+                                onClick={() => {
+                                    Modal.confirm({
+                                        title: 'Удаление',
+                                        content: 'Вы уверены, что хотите удалить эту запись?',
+                                        okText: 'Удалить',
+                                        okType: 'danger',
+                                        cancelText: 'Отмена',
+                                        onOk: () => onDelete()
+                                    });
+                                }}
+                            />
+                        );
+                    }
+
+                    return doms;
                 }
             }}
         >

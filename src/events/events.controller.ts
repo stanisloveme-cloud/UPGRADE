@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Patch, Body, Param, ParseIntPipe, Request } from '@nestjs/common';
+import { Controller, Get, Post, Patch, Delete, Body, Param, ParseIntPipe, Request } from '@nestjs/common';
 import { Public } from '../auth/public.decorator';
 import { EventsService } from './events.service';
 import { CreateEventDto } from './dto/create-event.dto';
@@ -20,6 +20,16 @@ export class EventsController {
     @Get(':id')
     findOne(@Param('id', ParseIntPipe) id: number, @Request() req: any) {
         return this.eventsService.findOne(id, req.user);
+    }
+
+    @Patch(':id')
+    update(@Param('id', ParseIntPipe) id: number, @Body() updateEventDto: any, @Request() req: any) {
+        return this.eventsService.update(id, updateEventDto, req.user);
+    }
+
+    @Delete(':id')
+    remove(@Param('id', ParseIntPipe) id: number, @Request() req: any) {
+        return this.eventsService.remove(id, req.user);
     }
 
     @Get()

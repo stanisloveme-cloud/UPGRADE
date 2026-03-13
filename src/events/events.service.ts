@@ -64,6 +64,32 @@ export class EventsService {
         return event;
     }
 
+    async update(id: number, updateData: any, user?: any) {
+        // findOne already checks access
+        const event = await this.findOne(id, user);
+
+        return this.prisma.event.update({
+            where: { id },
+            data: {
+                name: updateData.name,
+                description: updateData.description,
+                startDate: updateData.startDate ? new Date(updateData.startDate) : undefined,
+                endDate: updateData.endDate ? new Date(updateData.endDate) : undefined,
+            }
+        });
+    }
+
+    async remove(id: number, user?: any) {
+        if (!user || !user.isSuperAdmin) {
+            throw new NotFoundException(`Access denied. Only SuperAdmins can delete events.`);
+        }
+        
+        // Explicit check if it exists
+        await this.prisma.event.findUniqueOrThrow({ where: { id } });
+
+        return this.prisma.event.delete({ where: { id } });
+    }
+
     async getFullStructure(id: number, user?: any) {
         try {
             if (user && !user.isSuperAdmin) {

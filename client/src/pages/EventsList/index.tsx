@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
 import { Table, Tag, Button, Space, message, Modal, Form, Input, DatePicker } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { ExperimentOutlined, PlusOutlined } from '@ant-design/icons';
+import { ExperimentOutlined, PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import { useAuth } from '../../auth/AuthProvider';
@@ -19,6 +19,7 @@ const EventsList: React.FC = () => {
     const [events, setEvents] = useState<Event[]>([]);
     const [loading, setLoading] = useState(true);
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [editingEventId, setEditingEventId] = useState<number | null>(null);
     const [form] = Form.useForm();
     const navigate = useNavigate();
     const { user } = useAuth();
@@ -40,7 +41,7 @@ const EventsList: React.FC = () => {
         fetchEvents();
     }, []);
 
-    const handleCreate = async (values: any) => {
+    const handleSave = async (values: any) => {
         try {
             const payload = {
                 name: values.name,
@@ -48,16 +49,54 @@ const EventsList: React.FC = () => {
                 startDate: values.dates[0].toISOString(),
                 endDate: values.dates[1].toISOString(),
             };
-            const response = await axios.post('/api/events', payload);
-            message.success('Мероприятие создано');
-            setIsModalVisible(false);
-            form.resetFields();
-            // Redirect to the new event's program editor
-            navigate(`/events/${response.data.id}/program`);
+            if (editingEventId) {
+                await axios.patch(`/api/events/${editingEventId}`, payload);
+                message.success('Мероприятие обновлено');
+                setIsModalVisible(false);
+                setEditingEventId(null);
+                form.resetFields();
+                fetchEvents();
+            } else {
+                const response = await axios.post('/api/events', payload);
+                message.success('Мероприятие создано');
+                setIsModalVisible(false);
+                setEditingEventId(null);
+                form.resetFields();
+                navigate(`/events/${response.data.id}/program`);
+            }
         } catch (error) {
-            console.error('Failed to create event:', error);
-            message.error('Ошибка создания мероприятия');
+            console.error('Failed to save event:', error);
+            message.error('Ошибка сохранения мероприятия');
         }
+    };
+
+    const handleEditClick = (record: Event) => {
+        setEditingEventId(record.id);
+        form.setFieldsValue({
+            name: record.name,
+            dates: [dayjs(record.startDate), dayjs(record.endDate)],
+        });
+        setIsModalVisible(true);
+    };
+
+    const handleDeleteClick = (record: Event) => {
+        Modal.confirm({
+            title: 'Удалить мероприятие?',
+            content: `Вы уверены, что хотите удалить мероприятие "${record.name}"? Это действие необратимо и удалит все связанные залы, треки и сессии.`,
+            okText: 'Удалить',
+            okType: 'danger',
+            cancelText: 'Отмена',
+            onOk: async () => {
+                try {
+                    await axios.delete(`/api/events/${record.id}`);
+                    message.success('Мероприятие удалено');
+                    fetchEvents();
+                } catch (error) {
+                    console.error('Failed to delete event:', error);
+                    message.error('Ошибка удаления мероприятия');
+                }
+            }
+        });
     };
 
     const columns = [
@@ -112,6 +151,20 @@ const EventsList: React.FC = () => {
                     >
                         Программа
                     </Button>
+                    <Button
+                        type="default"
+                        icon={<EditOutlined />}
+                        onClick={() => handleEditClick(record)}
+                    >
+                        Изменить
+                    </Button>
+                    {user?.isSuperAdmin && (
+                        <Button
+                            danger
+                            icon={<DeleteOutlined />}
+                            onClick={() => handleDeleteClick(record)}
+                        />
+                    )}
                 </Space>
             ),
         },
@@ -122,7 +175,11 @@ const EventsList: React.FC = () => {
             title="Все мероприятия"
             extra={[
                 user?.isSuperAdmin ? (
-                    <Button key="create" type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)}>
+                    <Button key="create" type="primary" icon={<PlusOutlined />} onClick={() => {
+                        setEditingEventId(null);
+                        form.resetFields();
+                        setIsModalVisible(true);
+                    }}>
                         Создать мероприятие
                     </Button>
                 ) : null
@@ -137,16 +194,20 @@ const EventsList: React.FC = () => {
             />
 
             <Modal
-                title="Новое мероприятие"
+                title={editingEventId ? "Редактирование мероприятия" : "Новое мероприятие"}
                 open={isModalVisible}
-                onCancel={() => setIsModalVisible(false)}
+                onCancel={() => {
+                    setIsModalVisible(false);
+                    setEditingEventId(null);
+                    form.resetFields();
+                }}
                 onOk={() => form.submit()}
                 destroyOnClose
             >
                 <Form
                     form={form}
                     layout="vertical"
-                    onFinish={handleCreate}
+                    onFinish={handleSave}
                 >
                     <Form.Item
                         name="name"

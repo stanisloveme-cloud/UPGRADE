@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { DrawerForm, DrawerFormProps } from '@ant-design/pro-components';
-import { Button, notification } from 'antd';
+import { Button, notification, Modal } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 import { ErrorBoundary } from '../ErrorBoundary';
 
 export interface SafeDrawerFormProps<T = Record<string, any>> extends DrawerFormProps<T> {
@@ -57,14 +58,18 @@ export const SafeDrawerForm = <T extends Record<string, any>>({
                                 key="delete"
                                 type="primary"
                                 danger
+                                icon={<DeleteOutlined />}
                                 onClick={() => {
-                                    if (window.confirm('Вы уверены, что хотите удалить эту запись?')) {
-                                        onDelete();
-                                    }
+                                    Modal.confirm({
+                                        title: 'Удаление',
+                                        content: 'Вы уверены, что хотите удалить эту запись?',
+                                        okText: 'Удалить',
+                                        okType: 'danger',
+                                        cancelText: 'Отмена',
+                                        onOk: () => onDelete()
+                                    });
                                 }}
-                            >
-                                Удалить
-                            </Button>
+                            />
                         );
                     }
 
