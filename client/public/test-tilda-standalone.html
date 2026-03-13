@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Tilda Integration Standalone</title>
+    <!-- Имитация стилей обертки Tilda -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff;
+            margin: 0;
+            padding: 40px;
+        }
+        .tilda-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px 0;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+        .instructions {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0d6efd;
+            padding: 20px;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tilda-container">
+        <h1>Проверка интеграции (Test Tilda)</h1>
+        
+        <div class="instructions">
+            <strong>Инструкция для разработчика Tilda:</strong><br><br>
+            Вам необходимо добавить на страницу блок (HTML / T123) и вставить туда следующий код:<br><br>
+            <code>
+            &lt;div id="crm-schedule-root" data-event-id="1"&gt;&lt;/div&gt;<br>
+            &lt;script src="https://devupgrade.space4you.ru/tilda-integration.js" defer&gt;&lt;/script&gt;
+            </code>
+            <br><br>
+            <em>* Замените data-event-id на нужный ID мероприятия, если требуется (по умолчанию 1).</em>
+        </div>
+
+        <hr style="margin: 40px 0; border: 0; border-top: 1px solid #eaeaea;">
+
+        <h2 style="text-align:center;">Результат рендеринга ниже:</h2>
+
+        <!-- Tilda Snippet Start -->
+        <div id="crm-schedule-root" data-event-id="1"></div>
+        <script src="https://devupgrade.space4you.ru/tilda-integration.js" defer></script>
+        <!-- Tilda Snippet End -->
+
+    </div>
+
+</body>
+</html>
