@@ -1,0 +1,111 @@
+name: Deploy Application (Pre-Prod)
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push Backend
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/upgrade-backend:dev
+
+      - name: Build and Push Frontend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./client
+          file: client/Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/upgrade-frontend:dev
+
+      - name: Read Configuration
+        id: read_config
+        run: |
+          {
+            echo 'COMPOSE_CONFIG<<EOF'
+            cat docker-compose.prod.yml
+            echo ""
+            echo 'EOF'
+            echo 'PROMETHEUS_CONFIG<<EOF'
+            cat prometheus.yml
+            echo ""
+            echo 'EOF'
+          } >> "$GITHUB_ENV"
+
+      - name: Deploy to Server via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          COMPOSE_CONFIG: ${{ env.COMPOSE_CONFIG }}
+          PROMETHEUS_CONFIG: ${{ env.PROMETHEUS_CONFIG }}
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: COMPOSE_CONFIG,PROMETHEUS_CONFIG
+          script: |
+            set -e
+            
+            # Export DEV variables
+            export DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}
+            export DOMAIN=devupgrade.space4you.ru
+            export DOCKER_TAG=dev
+            
+            echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+            docker pull ${{ secrets.DOCKER_USERNAME }}/upgrade-backend:dev
+            docker pull ${{ secrets.DOCKER_USERNAME }}/upgrade-frontend:dev
+            
+            mkdir -p ~/upgrade-crm
+            cd ~/upgrade-crm
+
+            if [ -d "prometheus.yml" ]; then
+                rm -rf prometheus.yml
+            fi
+
+            echo "$COMPOSE_CONFIG" > docker-compose.prod.yml
+            echo "$PROMETHEUS_CONFIG" > prometheus.yml
+
+            if docker compose version &> /dev/null; then
+                DC_CMD="docker compose"
+            elif command -v docker-compose &> /dev/null; then
+                DC_CMD="docker-compose"
+            else
+                exit 1
+            fi
+            $DC_CMD -f docker-compose.prod.yml down || true
+            docker ps -a --filter "name=upgrade-crm" -q | xargs -r docker rm -f || true
+
+            if ! command -v certbot &> /dev/null; then
+                sudo apt-get update
+                sudo apt-get install -y certbot
+            fi
+
+            if [ ! -d "/etc/letsencrypt/live/devupgrade.space4you.ru" ]; then
+                sudo certbot certonly --standalone -d devupgrade.space4you.ru --non-interactive --agree-tos -m dev@space4you.ru
+            fi
+
+            if ! sudo crontab -l | grep -q "certbot renew"; then
+                (sudo crontab -l 2>/dev/null; echo "0 3 * * * certbot renew --pre-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml stop frontend\" --post-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml start frontend\"") | sudo crontab -
+            fi
+
+            $DC_CMD -f docker-compose.prod.yml up -d --remove-orphans --force-recreate
+
+            docker image prune -f
