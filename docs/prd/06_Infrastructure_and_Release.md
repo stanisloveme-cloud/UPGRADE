@@ -7,6 +7,7 @@ Dependencies: All previous PRDs
 Принцип: "Infrastructure as Code" (IaC) — никаких ручных правок на сервере.
 2. Целевая Архитектура (Single Node Monolith)
 Для этапа MVP и первых внедрений используется архитектура "Все в одном".
+```mermaid
 graph TD
     User[Client Browser] -->|HTTPS : 443| Nginx[Nginx Proxy (Host)]
     User -->|HTTP : 80 (Redirects to HTTPS)| Nginx
@@ -16,6 +17,12 @@ graph TD
         Nginx -->|Proxy Pass /api| Backend[Backend Container (NestJS)]
         Backend -->|TCP : 5432| DB[PostgreSQL 15]
         Backend -->|TCP : 6379| Redis[Redis Cache for Sessions]
+        
+        Nginx -->|Proxy Pass /grafana| Grafana[Grafana Dashboard]
+        Prometheus[Prometheus Metrics] -->|Scrape| Backend
+        Prometheus -->|Scrape| NodeExporter[Node Exporter]
+        Prometheus -->|Scrape| cAdvisor[cAdvisor]
+        Grafana -->|Query| Prometheus
     end
 
     subgraph "Host Filesystem"
@@ -23,6 +30,9 @@ graph TD
         Backend -->|Mount| VolFiles[/opt/upgrade/uploads/]
         Frontend -->|Mount /etc/letsencrypt (ro)| LetsEncrypt[/etc/letsencrypt on Host]
     end
+```
+
+**System Status (In-App)**: The Frontend React application includes a "System Status" page for admins that queries the NestJS Terminus endpoints for real-time application health checks.
 
 
 2.1. Требования к Серверу
@@ -63,6 +73,13 @@ Certbot (standalone) генерирует ключи в `/etc/letsencrypt/live/d
 Фронтенд-контейнер (Nginx) монтирует эти ключи в режиме `ro` (read-only) и прослушивает порт 443.
 Все HTTP запросы (порт 80) автоматически редиректятся Nginx'ом на HTTPS (301 Moved Permanently).
 Продление сертификатов происходит автоматически через cron-задачу на хосте (`certbot renew`).
+
+**ВАЖНО (Nginx):** Для поддержки загрузки больших файлов презентаций (PDF) и логотипов, в конфигурации `client/nginx.conf` директива `client_max_body_size` установлена в `50M`.
+
+## 4.2. E2E и Интеграционное Тестирование
+Для проверки стабильности DevStand используются автоматизированные Playwright тесты (находятся в директории `e2e/`).
+- **Локальный запуск на DevStand:** тесты (UI + API) можно запустить через команду-воркфлоу агента `/e2e_devstand_ui`.
+- Интегрировано автоматическое тестирование форм и общих бизнес-флоу.
 5. Инфраструктура проекта (File Structure)
 **CRITICAL**: Структура проекта зафиксирована (Hard Coded Context). Изменения запрещены.
 
