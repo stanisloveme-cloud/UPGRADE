@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Patch, Delete, Body, Param, ParseIntPipe } from '@nestjs/common';
+import { Public } from '../auth/public.decorator';
 import { SpeakersService } from './speakers.service';
 import { CreateSpeakerDto } from './dto/create-speaker.dto';
 import { UpdateSpeakerDto } from './dto/update-speaker.dto';
@@ -18,6 +19,7 @@ export class SpeakersController {
     }
 
     @Post('sync-photos')
+    @Public()
     syncPhotos() {
         return this.speakersService.syncPhotos();
     }
