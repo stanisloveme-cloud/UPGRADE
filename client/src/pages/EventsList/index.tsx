@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
-import { Table, Tag, Button, Space, message, Modal, Form, Input, DatePicker } from 'antd';
+import { Table, Tag, Button, Space, message, Modal, Form, Input, DatePicker, Popconfirm } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { ExperimentOutlined, PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import axios from 'axios';
@@ -87,24 +87,15 @@ const EventsList: React.FC = () => {
         setIsModalVisible(true);
     };
 
-    const handleDeleteClick = (record: Event) => {
-        Modal.confirm({
-            title: 'Удалить мероприятие?',
-            content: `Вы уверены, что хотите удалить мероприятие "${record.name}"? Это действие необратимо и удалит все связанные залы, треки и сессии.`,
-            okText: 'Удалить',
-            okType: 'danger',
-            cancelText: 'Отмена',
-            onOk: async () => {
-                try {
-                    await axios.delete(`/api/events/${record.id}`);
-                    message.success('Мероприятие удалено');
-                    fetchEvents();
-                } catch (error) {
-                    console.error('Failed to delete event:', error);
-                    message.error('Ошибка удаления мероприятия');
-                }
-            }
-        });
+    const handleDeleteConfirm = async (record: Event) => {
+        try {
+            await axios.delete(`/api/events/${record.id}`);
+            message.success('Мероприятие удалено');
+            fetchEvents();
+        } catch (error) {
+            console.error('Failed to delete event:', error);
+            message.error('Ошибка удаления мероприятия');
+        }
     };
 
     const columns = [
@@ -167,15 +158,21 @@ const EventsList: React.FC = () => {
                         Изменить
                     </Button>
                     {user?.isSuperAdmin && (
-                        <Button
-                            danger
-                            icon={<DeleteOutlined />}
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                e.preventDefault();
-                                handleDeleteClick(record);
-                            }}
-                        />
+                        <div onClick={(e) => { e.stopPropagation(); e.preventDefault(); }}>
+                            <Popconfirm
+                                title="Удалить мероприятие?"
+                                description={`удалить мероприятие "${record.name}" (необратимо)?`}
+                                onConfirm={() => handleDeleteConfirm(record)}
+                                okText="Удалить"
+                                cancelText="Отмена"
+                                okButtonProps={{ danger: true }}
+                            >
+                                <Button
+                                    danger
+                                    icon={<DeleteOutlined />}
+                                />
+                            </Popconfirm>
+                        </div>
                     )}
                 </Space>
             ),
