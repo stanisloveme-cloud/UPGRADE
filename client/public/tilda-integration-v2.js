@@ -1,360 +1,476 @@
 (function() {
-    // Tilda Integration Script for UPGRADE CRM v2.0
-    // Pixel-Perfect implementation based on Bootstrap 5
+    console.log("UPGRADE CRM Tilda Integration Widget V3 (Vanilla CSS) Loaded");
 
+    const CONFIG = {
+        API_BASE: 'https://devupgrade.space4you.ru/api/public',
+        rootId: 'crm-schedule-root'
+    };
+
+    // --- VANILLA CSS STYLES ---
+    // Specifically tailored to match the spring.upgrade.st/program UX without Bootstrap
     const STYLES = `
-      #crm-schedule-root {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-        font-family: inherit;
-        color: #212529;
-      }
+        /* Reset and Base within the Widget Context */
+        .upg-widget {
+            font-family: inherit; /* Usually Montserrat on Tilda */
+            color: #333;
+            line-height: 1.5;
+            box-sizing: border-box;
+            background: #fff;
+            width: 100%;
+        }
+        .upg-widget * {
+            box-sizing: inherit;
+        }
+        
+        /* Layout Grid */
+        .upg-layout {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin: 0 auto;
+        }
+        @media (min-width: 900px) {
+            .upg-layout {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
 
-      #crm-schedule-root .v-hall {
-        writing-mode: vertical-rl;
-        transform: rotate(180deg);
-      }
+        /* Sidebar (Dates & Tracks list) */
+        .upg-sidebar {
+            background-color: #EBEBEB;
+            padding: 30px;
+            width: 100%;
+        }
+        @media (min-width: 900px) {
+            .upg-sidebar {
+                width: 25%;
+                min-width: 250px;
+                max-width: 300px;
+                flex-shrink: 0;
+                position: sticky;
+                top: 20px;
+                max-height: calc(100vh - 40px);
+                overflow-y: auto;
+            }
+        }
+        
+        .upg-sidebar-date {
+            font-size: 22px;
+            font-weight: 700;
+            color: #4B4698; /* Theme Purple */
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+        }
+        
+        .upg-sidebar-track-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 40px 0;
+        }
+        
+        .upg-sidebar-track-item {
+            margin-bottom: 12px;
+        }
+        
+        .upg-sidebar-track-link {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+            cursor: pointer;
+            line-height: 1.3;
+        }
+        .upg-sidebar-track-link:hover {
+            color: #4B4698;
+        }
 
-      #crm-schedule-root #prog-left-side {
-        scrollbar-width: thin;
-        scrollbar-color: #c5c5c5 #dfe9eb;
-      }
-      #crm-schedule-root #prog-left-side::-webkit-scrollbar {
-        width: 4px;
-      }
-      #crm-schedule-root #prog-left-side::-webkit-scrollbar-track {
-        border-radius: 5px;
-        background-color: #dfe9eb;
-      }
-      #crm-schedule-root #prog-left-side::-webkit-scrollbar-thumb {
-        background-color: #c5c5c5;
-        border-radius: 5px;
-      }
+        /* Main Content Panel */
+        .upg-content {
+            flex-grow: 1;
+            padding: 0;
+            background: #FAFAFB;
+        }
+        @media (min-width: 900px) {
+            .upg-content {
+                width: 75%;
+            }
+        }
 
-      #crm-schedule-root .bg-sidebar {
-        background-color: #f8f9fa !important;
-      }
+        /* Grouping */
+        .upg-date-group {
+            margin-bottom: 0;
+        }
+        
+        /* Track Header Row */
+        .upg-track-header {
+            font-size: 18px;
+            font-weight: 500;
+            color: #4B4698;
+            padding: 15px 30px;
+            background: #FAFAFB;
+            border-bottom: 1px solid #EAEAEA;
+            margin: 0;
+            scroll-margin-top: 20px; /* For anchor links */
+        }
+        
+        /* Hall row (Vertical Marker + Grid) */
+        .upg-hall-row {
+            display: flex;
+            flex-direction: row;
+            border-bottom: 1px solid #eee;
+            background: #FAFAFB;
+            min-height: 150px;
+        }
+        
+        /* Vertical Hall Marker */
+        .upg-hall-marker-wrap {
+            width: 50px;
+            flex-shrink: 0;
+            border-right: 1px solid #EAEAEA;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
+        
+        .upg-hall-marker {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            white-space: nowrap;
+            color: #888;
+            font-size: 14px;
+            letter-spacing: 1px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
 
-      #crm-schedule-root a.prog-day-link {
-        color: #0d6efd;
-        text-decoration: none;
-      }
-      #crm-schedule-root a.prog-day-link.active {
-        font-weight: bold;
-        color: #000;
-      }
-
-      #crm-schedule-root .program-block-hilite {
-        box-shadow: 0 0 15px rgba(13,110,253,0.5);
-        transition: box-shadow 0.3s ease;
-      }
-
-      #crm-schedule-root .speaker-avatar {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        object-fit: cover;
-        filter: grayscale(100%);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      }
-      
-      #crm-schedule-root .sponsor-logo {
-        max-height: 40px;
-        max-width: 120px;
-        object-fit: contain;
-      }
+        /* Sessions Grid */
+        .upg-sessions-grid {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            padding: 20px 30px;
+            align-items: start;
+        }
+        
+        /* Individual Session Card */
+        .upg-session-card {
+            background-color: #F4F4F4;
+            border-radius: 6px;
+            padding: 20px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.2s;
+        }
+        .upg-session-card:hover {
+            background-color: #EEEEEE;
+        }
+        
+        .upg-session-time {
+            font-size: 13px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        
+        .upg-session-title {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.4;
+            flex-grow: 1; /* Pushes speakers to the bottom */
+        }
+        
+        /* Speakers */
+        .upg-speakers {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .upg-speaker {
+            display: flex;
+            align-items: center;
+        }
+        .upg-speaker-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin-right: 10px;
+            flex-shrink: 0;
+            filter: grayscale(100%);
+            background-color: #ddd;
+        }
+        .upg-speaker-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .upg-speaker-name {
+            font-size: 12px;
+            font-weight: bold;
+            color: #000;
+        }
+        .upg-speaker-role {
+            font-size: 11px;
+            color: #666;
+            line-height: 1.2;
+        }
+        
+        /* Utilities */
+        .upg-loading, .upg-error {
+            padding: 40px;
+            text-align: center;
+            font-family: sans-serif;
+            color: #666;
+            width: 100%;
+        }
+        .upg-error {
+            color: #d9534f;
+        }
     `;
 
-    function injectDependencies() {
-        if (!document.getElementById('bootstrap-css')) {
-            const bsCss = document.createElement('link');
-            bsCss.id = 'bootstrap-css';
-            bsCss.rel = 'stylesheet';
-            bsCss.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
-            document.head.appendChild(bsCss);
-        }
+    // --- HELPERS ---
 
-        if (!document.getElementById('crm-schedule-styles')) {
-            const style = document.createElement('style');
-            style.id = 'crm-schedule-styles';
-            style.innerHTML = STYLES;
-            document.head.appendChild(style);
-        }
-    }
-
-    const scriptUrl = document.currentScript ? document.currentScript.src : '';
-    let isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    let BASE_URL = 'https://devupgrade.space4you.ru';
-
-    if (isLocal && scriptUrl.includes('localhost:5173')) {
-        BASE_URL = 'https://devupgrade.space4you.ru';
-    }
-
-    async function loadSchedule(root) {
-      const rootEventId = root.getAttribute('data-event-id');
-      const EVENT_ID = rootEventId || window.crmEventId || 1; 
-      
-      const API_URL = `${BASE_URL}/api/public/events/${EVENT_ID}/website-data`;
-      
-      root.innerHTML = '<div class="text-center text-muted p-5">Загрузка программы...</div>';
-
-      try {
-        const response = await fetch(API_URL);
-        if (!response.ok) throw new Error('Network response was not ok: ' + response.status);
-        const data = await response.json();
-        renderSchedule(root, data);
-      } catch (error) {
-        console.error('Error loading CRM schedule:', error);
-        root.innerHTML = '<div class="text-center text-danger p-4">Не удалось загрузить расписание.</div>';
-      }
-    }
-
-    function formatTime(dateString) {
-      if (!dateString) return '';
-      const date = new Date(dateString);
-      if (!isNaN(date.getTime())) {
-          return date.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
-      }
-      return dateString;
-    }
-    
+    // Parses a datetime or time-only string and extracts the human-readable date
     function extractDate(dateString) {
       if (!dateString) return 'Программа';
+      // If it's a short time-only format like '10:00'
+      if (dateString.length <= 8 && dateString.includes(':')) {
+          return 'Программа';
+      }
       const date = new Date(dateString);
       if (!isNaN(date.getTime())) {
           return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
       }
-      return 'Программа'; // Fallback so it doesn't break if API sends HH:MM
+      return 'Программа';
     }
+
+    // Formats the start and end times into "10:00 — 11:30"
+    function formatTime(startTime, endTime) {
+        if (!startTime) return '';
+        let sTime = startTime;
+        let eTime = endTime;
+        
+        // Process startTime
+        if (sTime.includes('T')) {
+            const d = new Date(sTime);
+            if (!isNaN(d.getTime())) {
+                sTime = d.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+            }
+        } else {
+            // "10:00:00" -> "10:00"
+            sTime = sTime.split(':').slice(0, 2).join(':');
+        }
+        
+        // Process endTime
+        if (eTime) {
+           if (eTime.includes('T')) {
+                const d = new Date(eTime);
+                if (!isNaN(d.getTime())) {
+                    eTime = d.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+                }
+            } else {
+                eTime = eTime.split(':').slice(0, 2).join(':');
+            }
+            return `${sTime} — ${eTime}`;
+        }
+        return sTime;
+    }
+
+    // Default Avatar
+    const DEFAULT_AVATAR = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ccc"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>';
+
+
+    // --- RENDERING CORE ---
 
     function renderSchedule(root, data) {
-      let sessions = [];
-      
-      if (data.halls && Array.isArray(data.halls)) {
+        // 1. Data Bucketing
+        // We need to map data matching the legacy visual hierarchy:
+        // Date -> Track -> Hall -> [Sessions]
+        
+        const buckets = {};
+        
+        if (!data.halls || !Array.isArray(data.halls)) {
+            root.innerHTML = '<div class="upg-error">Неверный формат данных мероприятия.</div>';
+            return;
+        }
+
         data.halls.forEach(hall => {
-          if (hall.tracks && Array.isArray(hall.tracks)) {
-            hall.tracks.forEach(track => {
-              if (track.sessions && Array.isArray(track.sessions)) {
-                const trackSessions = track.sessions.map(s => Object.assign({}, s, { hallName: hall.name, trackName: track.name }));
-                sessions = sessions.concat(trackSessions);
-              }
-            });
-          }
+            const hallName = hall.name || 'Общий зал';
+            if (hall.tracks && Array.isArray(hall.tracks)) {
+                hall.tracks.forEach(track => {
+                    const trackName = track.name || 'Общая программа';
+                    if (track.sessions && Array.isArray(track.sessions)) {
+                        track.sessions.forEach(session => {
+                            let dateKey = 'Программа';
+                            if (session.startTime && session.startTime.includes('T')) {
+                                dateKey = extractDate(session.startTime);
+                            }
+                            
+                            if (!buckets[dateKey]) buckets[dateKey] = {};
+                            if (!buckets[dateKey][trackName]) buckets[dateKey][trackName] = {};
+                            if (!buckets[dateKey][trackName][hallName]) buckets[dateKey][trackName][hallName] = [];
+                            
+                            buckets[dateKey][trackName][hallName].push(session);
+                        });
+                    }
+                });
+            }
         });
-      } else if (Array.isArray(data)) {
-        data.forEach(hall => {
-          if (hall.tracks && Array.isArray(hall.tracks)) {
-            hall.tracks.forEach(track => {
-              if (track.sessions && Array.isArray(track.sessions)) {
-                const trackSessions = track.sessions.map(s => Object.assign({}, s, { hallName: hall.name, trackName: track.name }));
-                sessions = sessions.concat(trackSessions);
-              }
-            });
-          }
-        });
-      } else if (data.sessions && Array.isArray(data.sessions)) {
-        sessions = data.sessions;
-      }
 
-      if (!sessions || sessions.length === 0) {
-        root.innerHTML = '<div class="text-center p-5 fs-5">Программа в стадии формирования...</div>';
-        return;
-      }
-
-      sessions.sort((a, b) => {
-        if (!a.startTime) return 1;
-        if (!b.startTime) return -1;
-        return a.startTime.localeCompare(b.startTime);
-      });
-
-      const sessionsByDate = {};
-      sessions.forEach(s => {
-          const dateStr = extractDate(s.startTime);
-          if (dateStr) {
-              if (!sessionsByDate[dateStr]) sessionsByDate[dateStr] = [];
-              sessionsByDate[dateStr].push(s);
-          }
-      });
-      
-      const uniqueDates = Object.keys(sessionsByDate);
-
-      let html = `
-        <div class="container small px-0">
-          <div class="row gx-1">
-            <!-- Left Sidebar -->
-            <div class="col-3 col-lg-2 fs-6 pb-2" style="z-index: 100;">
-              <div id="prog-left-side" class="sticky-top bg-sidebar p-3 rounded-2 shadow-sm d-none d-md-block" style="top:90px; max-height: 80vh; overflow-y: auto;">
-                <ul class="nav flex-column mb-auto">
-      `;
-
-      uniqueDates.forEach((date, i) => {
-          html += `
-            <li class="nav-item">
-              <a href="#link-date-${i}" class="nav-link prog-day-link px-0 py-2 ${i === 0 ? 'active' : ''}">
-                ${date}
-              </a>
-            </li>
-          `;
-      });
-      
-      html += `
-                </ul>
-              </div>
-            </div>
+        // 2. HTML Generation
+        // Using string contatenation since it's the fastest and safest in this constrained context
+        
+        let html = `<div class="upg-widget"><div class="upg-layout">`;
+        
+        // --- Sidebar (Left) ---
+        html += `<div class="upg-sidebar">`;
+        for (const [dateKey, tracksObj] of Object.entries(buckets)) {
+            html += `<h3 class="upg-sidebar-date">${dateKey}</h3>`;
+            html += `<ul class="upg-sidebar-track-list">`;
+            for (const trackName of Object.keys(tracksObj)) {
+                // Anchor link safely encoded
+                const anchorId = `track-${encodeURIComponent(trackName).replace(/[^a-zA-Z0-9]/g, '')}`;
+                html += `
+                    <li class="upg-sidebar-track-item">
+                        <a href="#${anchorId}" class="upg-sidebar-track-link">${trackName}</a>
+                    </li>
+                `;
+            }
+            html += `</ul>`;
+        }
+        html += `</div>`; // End Sidebar
+        
+        
+        // --- Main Content (Right) ---
+        html += `<div class="upg-content">`;
+        for (const [dateKey, tracksObj] of Object.entries(buckets)) {
+            html += `<div class="upg-date-group">`;
             
-            <!-- Main Content Area -->
-            <div class="col-9 col-lg-10 pt-3">
-              <div class="row align-items-start">
-      `;
-
-      uniqueDates.forEach((date, i) => {
-          html += `<div id="link-date-${i}" class="w-100" style="scroll-margin-top: 90px;"></div>`;
-          
-          sessionsByDate[date].forEach(session => {
-              const startTime = formatTime(session.startTime);
-              const endTime = formatTime(session.endTime);
-              const timeRange = startTime && endTime ? `${startTime} — ${endTime}` : startTime;
-
-              const moderators = (session.speakers || []).filter(s => s.role === 'Организатор' || s.isModerator);
-              const speakers = (session.speakers || []).filter(s => s.role !== 'Организатор' && !s.isModerator);
-              const sponsors = session.sponsors || [];
-              
-              const blockId = `block-${session.id || Math.random().toString(36).substr(2, 9)}`;
-
-              html += `
-                <!-- Session Tile -->
-                <div class="bg-body-tertiary col-12 rounded-3 position-relative mb-4 shadow-sm p-3" id="${blockId}">
-                  
-                  <!-- Session Link Wrapper -->
-                  <a href="#${blockId}" class="stretched-link d-lg-none"></a>
-                  
-                  <div class="row shadow-sm mx-0 bg-body rounded-2 pb-0 pt-0 text-decoration-none text-dark d-flex overflow-hidden border">
+            for (const [trackName, hallsObj] of Object.entries(tracksObj)) {
+                const anchorId = `track-${encodeURIComponent(trackName).replace(/[^a-zA-Z0-9]/g, '')}`;
+                
+                // Track Header (e.g. "Ритейл стратегии")
+                html += `<h2 class="upg-track-header" id="${anchorId}">${trackName}</h2>`;
+                
+                // Halls belonging to this Track
+                for (const [hallName, sessionsArray] of Object.entries(hallsObj)) {
                     
-                    ${session.hallName ? `
-                    <div class="col-1 p-0 m-0 border-end border-3 border-danger bg-danger bg-opacity-10 d-flex flex-column justify-content-center align-items-center" style="min-width: 40px; width: 40px;">
-                      <span class="v-hall fw-bold fs-6 text-danger py-2">${session.hallName}</span>
-                    </div>
-                    ` : ''}
+                    // Sort sessions chronologically
+                    sessionsArray.sort((a, b) => {
+                        const tA = (a.startTime || '').split('T').pop();
+                        const tB = (b.startTime || '').split('T').pop();
+                        return tA.localeCompare(tB);
+                    });
                     
-                    <div class="col py-3 px-3">
-                       <div class="row">
-                          <div class="col-12 col-lg-3 fw-bold fs-5 text-lg-end border-end pb-2 mb-2 pb-lg-0 mb-lg-0 border-sm-0">
-                            ${timeRange}
-                          </div>
-                          <div class="col-12 col-lg-9 ps-lg-4">
-                            <span class="fw-bold fs-5">${session.title || session.name || ''}</span>
+                    html += `<div class="upg-hall-row">`;
+                        // Vertical Hall Marker
+                        html += `<div class="upg-hall-marker-wrap">`;
+                        html += `<span class="upg-hall-marker">${hallName}</span>`;
+                        html += `</div>`;
+                        
+                        // Session Grid
+                        html += `<div class="upg-sessions-grid">`;
+                        
+                        sessionsArray.forEach(session => {
+                            const timeRange = formatTime(session.startTime, session.endTime);
+                            const sessionTitle = session.title || session.name || '';
                             
-                            <!-- Detailed Content (Visible on Desktop or Expandable) -->
-                            <div class="mt-3">
-                              ${session.description ? `<p class="text-muted small">${session.description}</p>` : ''}
-                              
-                              <!-- Sponsors -->
-                              ${sponsors.length > 0 ? `
-                                <div class="mb-3">
-                                  <div class="d-flex flex-wrap gap-2">
-                                    ${sponsors.map(sp => sp.logoFileUrl 
-                                        ? `<img src="${BASE_URL}${sp.logoFileUrl}" alt="${sp.name}" class="sponsor-logo shadow-sm border rounded px-2 bg-white" onerror="this.src='${sp.logoFileUrl}'"/>` 
-                                        : `<span class="badge bg-light text-dark border">${sp.name}</span>`
-                                    ).join('')}
-                                  </div>
-                                </div>
-                              ` : ''}
-                              
-                              <div class="row mt-3">
-                                <!-- Moderators -->
-                                ${moderators.length > 0 ? `
-                                  <div class="col-12 col-md-6 mb-3">
-                                    <div class="text-secondary small fw-bold text-uppercase mb-2">Модераторы</div>
-                                    ${moderators.map(mod => {
-                                      const sp = mod.speaker || mod;
-                                      const photoUrl = sp.photoUrl ? (sp.photoUrl.startsWith('http') ? sp.photoUrl : `${BASE_URL}${sp.photoUrl}`) : '';
-                                      return `
-                                        <div class="d-flex align-items-center mb-2">
-                                          ${photoUrl ? `<img src="${photoUrl}" class="speaker-avatar me-2" />` : ''}
-                                          <div>
-                                            <div class="fw-bold lh-sm">${sp.name || (sp.firstName + ' ' + sp.lastName)}</div>
-                                            ${(sp.company || sp.position || sp.role) ? `
-                                              <div class="small text-muted lh-1 mt-1">${sp.position || sp.role || ''} ${sp.company ? '<br/>' + sp.company : ''}</div>
-                                            ` : ''}
-                                          </div>
-                                        </div>
-                                      `;
-                                    }).join('')}
-                                  </div>
-                                ` : ''}
-                                
-                                <!-- Speakers -->
-                                ${speakers.length > 0 ? `
-                                  <div class="col-12 col-md-6 mb-3">
-                                    <div class="text-secondary small fw-bold text-uppercase mb-2">Спикеры</div>
-                                      ${speakers.map(s => {
-                                      const sp = s.speaker || s;
-                                      const photoUrl = sp.photoUrl ? (sp.photoUrl.startsWith('http') ? sp.photoUrl : `${BASE_URL}${sp.photoUrl}`) : '';
-                                      return `
-                                        <div class="d-flex align-items-center mb-2">
-                                          ${photoUrl ? `<img src="${photoUrl}" class="speaker-avatar me-2" />` : ''}
-                                          <div>
-                                            <div class="fw-bold lh-sm">${sp.name || (sp.firstName + ' ' + sp.lastName)}</div>
-                                            ${(sp.company || sp.position || sp.role) ? `
-                                              <div class="small text-muted lh-1 mt-1">${sp.position || sp.role || ''} ${sp.company ? '<br/>' + sp.company : ''}</div>
-                                            ` : ''}
-                                          </div>
-                                        </div>
-                                      `;
-                                    }).join('')}
-                                  </div>
-                                ` : ''}
-                              </div>
-                            </div>
+                            html += `<div class="upg-session-card">`;
+                            html += `<div class="upg-session-time">${timeRange}</div>`;
+                            html += `<div class="upg-session-title">${sessionTitle}</div>`;
                             
-                          </div>
-                       </div>
-                    </div>
-                  </div>
-                </div>
-              `;
-          });
-      });
+                            // Render Speakers
+                            if (session.speakers && session.speakers.length > 0) {
+                                html += `<div class="upg-speakers">`;
+                                session.speakers.forEach(speaker => {
+                                    const photoUrl = speaker.photoUrl || DEFAULT_AVATAR;
+                                    const fullName = `${speaker.firstName || ''} ${speaker.lastName || ''}`.trim();
+                                    const roleStr = `${speaker.position || ''} ${speaker.company || ''}`.trim();
+                                    
+                                    html += `
+                                    <div class="upg-speaker">
+                                        <div class="upg-speaker-avatar" style="background-image: url('${photoUrl}')"></div>
+                                        <div class="upg-speaker-info">
+                                            <span class="upg-speaker-name">${fullName}</span>
+                                            <span class="upg-speaker-role">${roleStr}</span>
+                                        </div>
+                                    </div>
+                                    `;
+                                });
+                                html += `</div>`;
+                            }
+                            html += `</div>`; // End Card
+                        });
+                        
+                        html += `</div>`; // End Session Grid
+                    html += `</div>`; // End Hall Row
+                }
+            }
+            html += `</div>`; // End date-group
+        }
+        
+        html += `</div>`; // End Main Content
+        html += `</div></div>`; // End Layout & Widget Wrapper
 
-      html += `
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-
-      root.innerHTML = html;
-      
-      const links = root.querySelectorAll('.prog-day-link');
-      links.forEach(link => {
-          link.addEventListener('click', function(e) {
-              e.preventDefault();
-              const targetId = this.getAttribute('href').substring(1);
-              const targetEl = document.getElementById(targetId);
-              if (targetEl) {
-                  window.scrollTo({
-                      top: targetEl.offsetTop - 100,
-                      behavior: 'smooth'
-                  });
-              }
-              links.forEach(l => l.classList.remove('active'));
-              this.classList.add('active');
-          });
-      });
+        root.innerHTML = html;
+        
+        // Note: IntersectionObserver could be added here to highlight sidebar links on scroll,
+        // but basic anchor links usually suffice for Tilda blocks.
     }
 
-    window.initUpgradeCrmWidget = function() {
-        injectDependencies();
-        const rootElements = document.querySelectorAll('#crm-schedule-root');
+
+    // --- INITIALIZATION ---
+
+    function init() {
+        // Inject Custom CSS block to <head> exactly once
+        if (!document.getElementById('upg-tilda-vanilla-styles')) {
+            const styleEl = document.createElement('style');
+            styleEl.id = 'upg-tilda-vanilla-styles';
+            styleEl.innerHTML = STYLES;
+            document.head.appendChild(styleEl);
+        }
+
+        const rootElements = document.querySelectorAll('#' + CONFIG.rootId);
+        if (rootElements.length === 0) {
+            console.error(`UPGRADE CRM Tilda Widget: Container "#${CONFIG.rootId}" not found.`);
+            return;
+        }
+
+        // Process all instances found (usually just one)
         rootElements.forEach(root => {
-            loadSchedule(root);
+            const eventId = root.getAttribute('data-event-id') || 1;
+            
+            root.innerHTML = '<div class="upg-loading">Загрузка программы...</div>';
+
+            fetch(`${CONFIG.API_BASE}/events/${eventId}/website-data`) // Supports mock local API_BASE logic if overridden
+                .then(response => {
+                    if (!response.ok) throw new Error(`Network error: ${response.status}`);
+                    return response.json();
+                })
+                .then(data => {
+                    renderSchedule(root, data);
+                })
+                .catch(error => {
+                    console.error('UPGRADE CRM Tilda Widget Data Error:', error);
+                    root.innerHTML = '<div class="upg-error">Не удалось загрузить данные расписания. Пожалуйста, обновите страницу.</div>';
+                });
         });
     }
 
+    // Attach to DOM
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', window.initUpgradeCrmWidget);
+        document.addEventListener('DOMContentLoaded', init);
     } else {
-      window.initUpgradeCrmWidget();
+        init();
     }
 })();

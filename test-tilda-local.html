@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Tilda Integration (CR-13)</title>
+    <!-- Имитация стилей обертки Tilda -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            margin: 0;
+            padding: 40px;
+        }
+        .tilda-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tilda-container">
+        <h2>Спонсоры (ID: 1)</h2>
+        <div class="upgrade-crm-widget" data-widget="sponsors" data-event-id="1"></div>
+    </div>
+
+    <div class="tilda-container">
+        <h2>Спикеры (ID: 1)</h2>
+        <div class="upgrade-crm-widget" data-widget="speakers" data-event-id="1"></div>
+    </div>
+
+    <div class="tilda-container">
+        <h2>Расписание (ID: 1)</h2>
+        <div class="upgrade-crm-widget" data-widget="schedule" data-event-id="1"></div>
+    </div>
+
+    <!-- Подключение виджета напрямую с продакшена -->
+    <script src="https://devupgrade.space4you.ru/tilda-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+--- Inspecting Initial Inertia JSON ---
+Session Sample Title: Ритейл стратегии. Понимаем реальную ситуацию на рынке, снижаем издержки, запускаем новые форматы и бизнес-модели
+Session Keys: [
+  'id',          'event_id',
+  'date',        'title',
+  'description', 'event_hall_id',
+  'is_online',   'translation_link',
+  'sort',        'created_at',
+  'updated_at',  'raw_date',
+  'event_hall',  'sessions'
+]
+⚠️ No obvious direct users/speakers property on Session.
+
+Global Program Users array length: undefined

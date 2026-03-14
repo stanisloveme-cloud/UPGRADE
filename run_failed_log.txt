@@ -1,0 +1,340 @@
+build-and-deploy	Deploy to Server via SSH	﻿2026-03-13T20:52:16.7579787Z ##[group]Run appleboy/ssh-action@v1.0.3
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.7580096Z with:
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.7580363Z   host: ***
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.7580568Z   username: ***
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.7582241Z   key: ***
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.7582464Z   envs: COMPOSE_CONFIG,PROMETHEUS_CONFIG
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.7594744Z   script: # Stop on first error
+build-and-deploy	Deploy to Server via SSH	set -e
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Export variables for docker-compose
+build-and-deploy	Deploy to Server via SSH	export DOCKER_USERNAME=***
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Login to Docker Hub to avoid rate limits
+build-and-deploy	Deploy to Server via SSH	echo "***" | docker login -u "***" --password-stdin
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Pull the latest images
+build-and-deploy	Deploy to Server via SSH	docker pull ***/upgrade-backend:latest
+build-and-deploy	Deploy to Server via SSH	docker pull ***/upgrade-frontend:latest
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Create project directory
+build-and-deploy	Deploy to Server via SSH	mkdir -p ~/upgrade-crm
+build-and-deploy	Deploy to Server via SSH	cd ~/upgrade-crm
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Remove directory prometheus.yml if it was created by docker daemon by mistake
+build-and-deploy	Deploy to Server via SSH	if [ -d "prometheus.yml" ]; then
+build-and-deploy	Deploy to Server via SSH	    rm -rf prometheus.yml
+build-and-deploy	Deploy to Server via SSH	fi
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Write config file directly (Single Source of Truth)
+build-and-deploy	Deploy to Server via SSH	echo "$COMPOSE_CONFIG" > docker-compose.prod.yml
+build-and-deploy	Deploy to Server via SSH	echo "$PROMETHEUS_CONFIG" > prometheus.yml
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# DEBUG: Verify config file content
+build-and-deploy	Deploy to Server via SSH	echo "=== DOCKER COMPOSE CONFIG ==="
+build-and-deploy	Deploy to Server via SSH	cat docker-compose.prod.yml
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Restart services using new images
+build-and-deploy	Deploy to Server via SSH	# Prioritize 'docker compose' (v2)
+build-and-deploy	Deploy to Server via SSH	if docker compose version &> /dev/null; then
+build-and-deploy	Deploy to Server via SSH	    DC_CMD="docker compose"
+build-and-deploy	Deploy to Server via SSH	elif command -v docker-compose &> /dev/null; then
+build-and-deploy	Deploy to Server via SSH	    DC_CMD="docker-compose"
+build-and-deploy	Deploy to Server via SSH	else
+build-and-deploy	Deploy to Server via SSH	    echo "Error: Docker Compose not found"
+build-and-deploy	Deploy to Server via SSH	    exit 1
+build-and-deploy	Deploy to Server via SSH	fi
+build-and-deploy	Deploy to Server via SSH	$DC_CMD -f docker-compose.prod.yml down || true
+build-and-deploy	Deploy to Server via SSH	docker ps -a --filter "name=upgrade-crm" -q | xargs -r docker rm -f || true
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Install certbot if not present
+build-and-deploy	Deploy to Server via SSH	if ! command -v certbot &> /dev/null; then
+build-and-deploy	Deploy to Server via SSH	    sudo apt-get update
+build-and-deploy	Deploy to Server via SSH	    sudo apt-get install -y certbot
+build-and-deploy	Deploy to Server via SSH	fi
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Check and run Certbot before bringing containers up
+build-and-deploy	Deploy to Server via SSH	if [ ! -d "/etc/letsencrypt/live/devupgrade.***.ru" ]; then
+build-and-deploy	Deploy to Server via SSH	    echo "Certificates not found. Generating via certbot standalone..."
+build-and-deploy	Deploy to Server via SSH	    sudo certbot certonly --standalone -d devupgrade.***.ru --non-interactive --agree-tos -m dev@***.ru
+build-and-deploy	Deploy to Server via SSH	fi
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Setup cron for certbot renewal if not exists
+build-and-deploy	Deploy to Server via SSH	if ! sudo crontab -l | grep -q "certbot renew"; then
+build-and-deploy	Deploy to Server via SSH	    (sudo crontab -l 2>/dev/null; echo "0 3 * * * certbot renew --pre-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml stop frontend\" --post-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml start frontend\"") | sudo crontab -
+build-and-deploy	Deploy to Server via SSH	fi
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	$DC_CMD -f docker-compose.prod.yml up -d --remove-orphans --force-recreate
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# NOTE: Migrations run automatically inside NestJS on startup (PrismaService.onModuleInit)
+build-and-deploy	Deploy to Server via SSH	# No need to docker compose exec separately — that was causing exit 137 (SIGKILL)
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# Prune unused images
+build-and-deploy	Deploy to Server via SSH	docker image prune -f
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	# DEBUG: Show running containers and logs
+build-and-deploy	Deploy to Server via SSH	echo "=== RUNNING CONTAINERS ==="
+build-and-deploy	Deploy to Server via SSH	docker ps -a
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	echo "=== NGINX CONFIG CHECKSUM ==="
+build-and-deploy	Deploy to Server via SSH	$DC_CMD -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	echo "=== FRONTEND LOGS ==="
+build-and-deploy	Deploy to Server via SSH	docker logs -n 20 upgrade-crm-frontend-1 || docker logs -n 20 upgrade-crm_frontend_1 || echo "Container name prediction failed"
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	echo "=== BACKEND LOGS ==="
+build-and-deploy	Deploy to Server via SSH	docker logs -n 50 upgrade-crm-app-1 || docker logs -n 50 upgrade-crm_app_1 || echo "Container name prediction failed"
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.7603613Z   port: 22
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.7603844Z   timeout: 30s
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.7604049Z   command_timeout: 10m
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.7604270Z   proxy_port: 22
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.7604473Z   proxy_timeout: 30s
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.7604677Z env:
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.7614563Z   COMPOSE_CONFIG: services:
+build-and-deploy	Deploy to Server via SSH	  app:
+build-and-deploy	Deploy to Server via SSH	    # Use image from Docker Hub (built by CI/CD)
+build-and-deploy	Deploy to Server via SSH	    image: ${DOCKER_USERNAME}/upgrade-backend:latest
+build-and-deploy	Deploy to Server via SSH	    ports:
+build-and-deploy	Deploy to Server via SSH	      - '3000:3000'
+build-and-deploy	Deploy to Server via SSH	    environment:
+build-and-deploy	Deploy to Server via SSH	      DATABASE_URL: ***db:5432/upgrade_crm
+build-and-deploy	Deploy to Server via SSH	      REDIS_URL: redis://redis:6379
+build-and-deploy	Deploy to Server via SSH	      JWT_SECRET: "complex_secret_value_change_me_in_prod"
+build-and-deploy	Deploy to Server via SSH	      POSTGRES_USER: upgrade
+build-and-deploy	Deploy to Server via SSH	      POSTGRES_PASSWORD: upgrade_pass
+build-and-deploy	Deploy to Server via SSH	      POSTGRES_DB: upgrade_crm
+build-and-deploy	Deploy to Server via SSH	      # Allow frontend CORS if needed
+build-and-deploy	Deploy to Server via SSH	      FRONTEND_URL: http://devupgrade.***.ru
+build-and-deploy	Deploy to Server via SSH	      # Limit V8 heap to prevent exceeding 512M docker limit
+build-and-deploy	Deploy to Server via SSH	      NODE_OPTIONS: "--max-old-space-size=384"
+build-and-deploy	Deploy to Server via SSH	    depends_on:
+build-and-deploy	Deploy to Server via SSH	      db:
+build-and-deploy	Deploy to Server via SSH	        condition: service_healthy
+build-and-deploy	Deploy to Server via SSH	      redis:
+build-and-deploy	Deploy to Server via SSH	        condition: service_started
+build-and-deploy	Deploy to Server via SSH	    volumes:
+build-and-deploy	Deploy to Server via SSH	      - uploads_data:/app/uploads
+build-and-deploy	Deploy to Server via SSH	    deploy:
+build-and-deploy	Deploy to Server via SSH	      resources:
+build-and-deploy	Deploy to Server via SSH	        limits:
+build-and-deploy	Deploy to Server via SSH	          memory: 512M
+build-and-deploy	Deploy to Server via SSH	    restart: always
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	  frontend:
+build-and-deploy	Deploy to Server via SSH	    # Use image from Docker Hub (built by CI/CD)
+build-and-deploy	Deploy to Server via SSH	    image: ${DOCKER_USERNAME}/upgrade-frontend:latest
+build-and-deploy	Deploy to Server via SSH	    ports:
+build-and-deploy	Deploy to Server via SSH	      - '80:80'
+build-and-deploy	Deploy to Server via SSH	      - '443:443'
+build-and-deploy	Deploy to Server via SSH	    depends_on:
+build-and-deploy	Deploy to Server via SSH	      - app
+build-and-deploy	Deploy to Server via SSH	    volumes:
+build-and-deploy	Deploy to Server via SSH	      - /etc/letsencrypt:/etc/letsencrypt:ro
+build-and-deploy	Deploy to Server via SSH	    deploy:
+build-and-deploy	Deploy to Server via SSH	      resources:
+build-and-deploy	Deploy to Server via SSH	        limits:
+build-and-deploy	Deploy to Server via SSH	          memory: 128M
+build-and-deploy	Deploy to Server via SSH	    restart: always
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	  db:
+build-and-deploy	Deploy to Server via SSH	    image: postgres:15-alpine
+build-and-deploy	Deploy to Server via SSH	    environment:
+build-and-deploy	Deploy to Server via SSH	      POSTGRES_USER: upgrade
+build-and-deploy	Deploy to Server via SSH	      POSTGRES_PASSWORD: upgrade_pass
+build-and-deploy	Deploy to Server via SSH	      POSTGRES_DB: upgrade_crm
+build-and-deploy	Deploy to Server via SSH	    volumes:
+build-and-deploy	Deploy to Server via SSH	      - pgdata:/var/lib/postgresql/data
+build-and-deploy	Deploy to Server via SSH	    deploy:
+build-and-deploy	Deploy to Server via SSH	      resources:
+build-and-deploy	Deploy to Server via SSH	        limits:
+build-and-deploy	Deploy to Server via SSH	          memory: 256M
+build-and-deploy	Deploy to Server via SSH	    healthcheck:
+build-and-deploy	Deploy to Server via SSH	      test: [ 'CMD-SHELL', 'pg_isready -U upgrade -d upgrade_crm' ]
+build-and-deploy	Deploy to Server via SSH	      interval: 5s
+build-and-deploy	Deploy to Server via SSH	      timeout: 5s
+build-and-deploy	Deploy to Server via SSH	      retries: 5
+build-and-deploy	Deploy to Server via SSH	    restart: always
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	  redis:
+build-and-deploy	Deploy to Server via SSH	    image: redis:alpine
+build-and-deploy	Deploy to Server via SSH	    container_name: upgrade_redis_prod
+build-and-deploy	Deploy to Server via SSH	    restart: always
+build-and-deploy	Deploy to Server via SSH	    ports:
+build-and-deploy	Deploy to Server via SSH	      - "6379:6379"
+build-and-deploy	Deploy to Server via SSH	    volumes:
+build-and-deploy	Deploy to Server via SSH	      - redis_data:/data
+build-and-deploy	Deploy to Server via SSH	    deploy:
+build-and-deploy	Deploy to Server via SSH	      resources:
+build-and-deploy	Deploy to Server via SSH	        limits:
+build-and-deploy	Deploy to Server via SSH	          memory: 128M
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	  prometheus:
+build-and-deploy	Deploy to Server via SSH	    image: prom/prometheus:latest
+build-and-deploy	Deploy to Server via SSH	    container_name: prometheus
+build-and-deploy	Deploy to Server via SSH	    volumes:
+build-and-deploy	Deploy to Server via SSH	      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+build-and-deploy	Deploy to Server via SSH	      - prometheus_data:/prometheus
+build-and-deploy	Deploy to Server via SSH	    command:
+build-and-deploy	Deploy to Server via SSH	      - '--config.file=/etc/prometheus/prometheus.yml'
+build-and-deploy	Deploy to Server via SSH	      - '--storage.tsdb.path=/prometheus'
+build-and-deploy	Deploy to Server via SSH	      - '--web.console.libraries=/etc/prometheus/console_libraries'
+build-and-deploy	Deploy to Server via SSH	      - '--web.console.templates=/etc/prometheus/consoles'
+build-and-deploy	Deploy to Server via SSH	      - '--web.enable-lifecycle'
+build-and-deploy	Deploy to Server via SSH	    ports:
+build-and-deploy	Deploy to Server via SSH	      - "9090:9090"
+build-and-deploy	Deploy to Server via SSH	    restart: always
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	  grafana:
+build-and-deploy	Deploy to Server via SSH	    image: grafana/grafana:latest
+build-and-deploy	Deploy to Server via SSH	    container_name: grafana
+build-and-deploy	Deploy to Server via SSH	    ports:
+build-and-deploy	Deploy to Server via SSH	      - "3001:3000"
+build-and-deploy	Deploy to Server via SSH	    volumes:
+build-and-deploy	Deploy to Server via SSH	      - grafana_data:/var/lib/grafana
+build-and-deploy	Deploy to Server via SSH	    restart: always
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	  node-exporter:
+build-and-deploy	Deploy to Server via SSH	    image: prom/node-exporter:latest
+build-and-deploy	Deploy to Server via SSH	    container_name: node_exporter
+build-and-deploy	Deploy to Server via SSH	    volumes:
+build-and-deploy	Deploy to Server via SSH	      - /proc:/host/proc:ro
+build-and-deploy	Deploy to Server via SSH	      - /sys:/host/sys:ro
+build-and-deploy	Deploy to Server via SSH	      - /:/***fs:ro
+build-and-deploy	Deploy to Server via SSH	    command:
+build-and-deploy	Deploy to Server via SSH	      - '--path.procfs=/host/proc'
+build-and-deploy	Deploy to Server via SSH	      - '--path.***fs=/***fs'
+build-and-deploy	Deploy to Server via SSH	      - '--path.sysfs=/host/sys'
+build-and-deploy	Deploy to Server via SSH	      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+build-and-deploy	Deploy to Server via SSH	    restart: always
+build-and-deploy	Deploy to Server via SSH	    ports:
+build-and-deploy	Deploy to Server via SSH	      - "9100:9100"
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	  cadvisor:
+build-and-deploy	Deploy to Server via SSH	    image: gcr.io/cadvisor/cadvisor:v0.47.0
+build-and-deploy	Deploy to Server via SSH	    container_name: cadvisor
+build-and-deploy	Deploy to Server via SSH	    ports:
+build-and-deploy	Deploy to Server via SSH	      - "8080:8080"
+build-and-deploy	Deploy to Server via SSH	    volumes:
+build-and-deploy	Deploy to Server via SSH	      - /:/***fs:ro
+build-and-deploy	Deploy to Server via SSH	      - /var/run:/var/run:ro
+build-and-deploy	Deploy to Server via SSH	      - /sys:/sys:ro
+build-and-deploy	Deploy to Server via SSH	      - /var/lib/docker/:/var/lib/docker:ro
+build-and-deploy	Deploy to Server via SSH	      - /dev/disk/:/dev/disk:ro
+build-and-deploy	Deploy to Server via SSH	    devices:
+build-and-deploy	Deploy to Server via SSH	      - /dev/kmsg
+build-and-deploy	Deploy to Server via SSH	    restart: always
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	volumes:
+build-and-deploy	Deploy to Server via SSH	  pgdata:
+build-and-deploy	Deploy to Server via SSH	  uploads_data:
+build-and-deploy	Deploy to Server via SSH	  redis_data:
+build-and-deploy	Deploy to Server via SSH	  prometheus_data:
+build-and-deploy	Deploy to Server via SSH	  grafana_data:
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.7626487Z   PROMETHEUS_CONFIG: global:
+build-and-deploy	Deploy to Server via SSH	  scrape_interval: 15s
+build-and-deploy	Deploy to Server via SSH	  evaluation_interval: 15s
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	scrape_configs:
+build-and-deploy	Deploy to Server via SSH	  - job_name: 'prometheus'
+build-and-deploy	Deploy to Server via SSH	    static_configs:
+build-and-deploy	Deploy to Server via SSH	      - targets: ['localhost:9090']
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	  - job_name: 'node-exporter'
+build-and-deploy	Deploy to Server via SSH	    static_configs:
+build-and-deploy	Deploy to Server via SSH	      - targets: ['node-exporter:9100']
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	  - job_name: 'cadvisor'
+build-and-deploy	Deploy to Server via SSH	    static_configs:
+build-and-deploy	Deploy to Server via SSH	      - targets: ['cadvisor:8080']
+build-and-deploy	Deploy to Server via SSH	
+build-and-deploy	Deploy to Server via SSH	  - job_name: 'nestjs-app'
+build-and-deploy	Deploy to Server via SSH	    static_configs:
+build-and-deploy	Deploy to Server via SSH	      - targets: ['app:3000']
+build-and-deploy	Deploy to Server via SSH	    metrics_path: '/metrics'
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.7628622Z ##[endgroup]
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.7748925Z ##[command]/usr/bin/docker run --name f0a06e3074bac750439494306cd5f7383cfe_8d70b3 --label 21f0a0 --workdir /github/workspace --rm -e "COMPOSE_CONFIG" -e "PROMETHEUS_CONFIG" -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_ENVS" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" 21f0a0:6e3074bac750439494306cd5f7383cfe
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9091849Z ======CMD======
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9092348Z # Stop on first error
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9092724Z set -e
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9092921Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9093101Z # Export variables for docker-compose
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9093919Z export DOCKER_USERNAME=***
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9094216Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9094326Z # Login to Docker Hub to avoid rate limits
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9094825Z echo "***" | docker login -u "***" --password-stdin
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9095046Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9095139Z # Pull the latest images
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9095432Z docker pull ***/upgrade-backend:latest
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9095739Z docker pull ***/upgrade-frontend:latest
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9095929Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9096027Z # Create project directory
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9096268Z mkdir -p ~/upgrade-crm
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9096489Z cd ~/upgrade-crm
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9096617Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9096839Z # Remove directory prometheus.yml if it was created by docker daemon by mistake
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9097240Z if [ -d "prometheus.yml" ]; then
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9097498Z     rm -rf prometheus.yml
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9097717Z fi
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9097822Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9097954Z # Write config file directly (Single Source of Truth)
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9098510Z echo "$COMPOSE_CONFIG" > docker-compose.prod.yml
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9098832Z echo "$PROMETHEUS_CONFIG" > prometheus.yml
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9099027Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9099132Z # DEBUG: Verify config file content
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9099401Z echo "=== DOCKER COMPOSE CONFIG ==="
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9099675Z cat docker-compose.prod.yml
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9099839Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9099943Z # Restart services using new images
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9100207Z # Prioritize 'docker compose' (v2)
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9100488Z if docker compose version &> /dev/null; then
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9100762Z     DC_CMD="docker compose"
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9101035Z elif command -v docker-compose &> /dev/null; then
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9101338Z     DC_CMD="docker-compose"
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9101555Z else
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9101758Z     echo "Error: Docker Compose not found"
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9102024Z     exit 1
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9102203Z fi
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9102431Z $DC_CMD -f docker-compose.prod.yml down || true
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9102840Z docker ps -a --filter "name=upgrade-crm" -q | xargs -r docker rm -f || true
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9103122Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9103216Z # Install certbot if not present
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9103485Z if ! command -v certbot &> /dev/null; then
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9104745Z     sudo apt-get update
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9104984Z     sudo apt-get install -y certbot
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9105274Z fi
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9105369Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9105514Z # Check and run Certbot before bringing containers up
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9105947Z if [ ! -d "/etc/letsencrypt/live/devupgrade.***.ru" ]; then
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9106352Z     echo "Certificates not found. Generating via certbot standalone..."
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9106987Z     sudo certbot certonly --standalone -d devupgrade.***.ru --non-interactive --agree-tos -m dev@***.ru
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9107436Z fi
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9107540Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9107659Z # Setup cron for certbot renewal if not exists
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9107992Z if ! sudo crontab -l | grep -q "certbot renew"; then
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9108954Z     (sudo crontab -l 2>/dev/null; echo "0 3 * * * certbot renew --pre-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml stop frontend\" --post-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml start frontend\"") | sudo crontab -
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9109887Z fi
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9109979Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9110180Z $DC_CMD -f docker-compose.prod.yml up -d --remove-orphans --force-recreate
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9110467Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9110725Z # NOTE: Migrations run automatically inside NestJS on startup (PrismaService.onModuleInit)
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9111491Z # No need to docker compose exec separately — that was causing exit 137 (SIGKILL)
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9111783Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9111873Z # Prune unused images
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9112107Z docker image prune -f
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9112248Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9112359Z # DEBUG: Show running containers and logs
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9112655Z echo "=== RUNNING CONTAINERS ==="
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9112904Z docker ps -a
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9113027Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9113128Z echo "=== NGINX CONFIG CHECKSUM ==="
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9113644Z $DC_CMD -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9114020Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9114114Z echo "=== FRONTEND LOGS ==="
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9114627Z docker logs -n 20 upgrade-crm-frontend-1 || docker logs -n 20 upgrade-crm_frontend_1 || echo "Container name prediction failed"
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9115058Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9115157Z echo "=== BACKEND LOGS ==="
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9115611Z docker logs -n 50 upgrade-crm-app-1 || docker logs -n 50 upgrade-crm_app_1 || echo "Container name prediction failed"
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9116003Z 
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:16.9116090Z ======END======
+build-and-deploy	Deploy to Server via SSH	2026-03-13T20:52:46.9097685Z 2026/03/13 20:52:46 dial tcp ***:22: i/o timeout

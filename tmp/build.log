@@ -1,0 +1,1471 @@
+﻿2026-03-13T20:50:02.5700049Z Current runner version: '2.332.0'
+2026-03-13T20:50:02.5724350Z ##[group]Runner Image Provisioner
+2026-03-13T20:50:02.5725270Z Hosted Compute Agent
+2026-03-13T20:50:02.5725913Z Version: 20260213.493
+2026-03-13T20:50:02.5726523Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-03-13T20:50:02.5727269Z Build Date: 2026-02-13T00:28:41Z
+2026-03-13T20:50:02.5727969Z Worker ID: {2c7902f8-b260-412c-9b39-4b21734733cb}
+2026-03-13T20:50:02.5728678Z Azure Region: westcentralus
+2026-03-13T20:50:02.5729285Z ##[endgroup]
+2026-03-13T20:50:02.5730735Z ##[group]Operating System
+2026-03-13T20:50:02.5731424Z Ubuntu
+2026-03-13T20:50:02.5731937Z 24.04.3
+2026-03-13T20:50:02.5732854Z LTS
+2026-03-13T20:50:02.5733379Z ##[endgroup]
+2026-03-13T20:50:02.5734228Z ##[group]Runner Image
+2026-03-13T20:50:02.5734811Z Image: ubuntu-24.04
+2026-03-13T20:50:02.5735405Z Version: 20260302.42.1
+2026-03-13T20:50:02.5736703Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260302.42/images/ubuntu/Ubuntu2404-Readme.md
+2026-03-13T20:50:02.5738116Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260302.42
+2026-03-13T20:50:02.5738997Z ##[endgroup]
+2026-03-13T20:50:02.5740187Z ##[group]GITHUB_TOKEN Permissions
+2026-03-13T20:50:02.5742578Z Contents: read
+2026-03-13T20:50:02.5743240Z Metadata: read
+2026-03-13T20:50:02.5743895Z Packages: read
+2026-03-13T20:50:02.5744490Z ##[endgroup]
+2026-03-13T20:50:02.5747029Z Secret source: Actions
+2026-03-13T20:50:02.5747728Z Prepare workflow directory
+2026-03-13T20:50:02.6111523Z Prepare all required actions
+2026-03-13T20:50:02.6149867Z Getting action download info
+2026-03-13T20:50:03.0277578Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-03-13T20:50:03.1578709Z Download action repository 'docker/login-action@v3' (SHA:c94ce9fb468520275223c153574b00df6fe4bcc9)
+2026-03-13T20:50:03.9780322Z Download action repository 'docker/build-push-action@v5' (SHA:ca052bb54ab0790a636c9b5f226502c73d547a25)
+2026-03-13T20:50:04.8866862Z Download action repository 'appleboy/ssh-action@v1.0.3' (SHA:029f5b4aeeeb58fdfe1410a5d17f967dacf36262)
+2026-03-13T20:50:05.5474983Z Complete job name: build-and-deploy
+2026-03-13T20:50:05.5845477Z ##[group]Build container for action use: '/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile'.
+2026-03-13T20:50:05.5883443Z ##[command]/usr/bin/docker build -t 21f0a0:6e3074bac750439494306cd5f7383cfe -f "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile" "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3"
+2026-03-13T20:50:06.1164215Z #0 building with "default" instance using docker driver
+2026-03-13T20:50:06.1164713Z 
+2026-03-13T20:50:06.1164916Z #1 [internal] load build definition from Dockerfile
+2026-03-13T20:50:06.1165315Z #1 transferring dockerfile: 149B done
+2026-03-13T20:50:06.1165741Z #1 DONE 0.0s
+2026-03-13T20:50:06.1165893Z 
+2026-03-13T20:50:06.1166170Z #2 [internal] load metadata for ghcr.io/appleboy/drone-ssh:1.7.3
+2026-03-13T20:50:06.9076005Z #2 DONE 0.9s
+2026-03-13T20:50:07.0237739Z 
+2026-03-13T20:50:07.0238524Z #3 [internal] load .dockerignore
+2026-03-13T20:50:07.0239030Z #3 transferring context: 2B done
+2026-03-13T20:50:07.0239554Z #3 DONE 0.0s
+2026-03-13T20:50:07.0239739Z 
+2026-03-13T20:50:07.0239862Z #4 [internal] load build context
+2026-03-13T20:50:07.0240273Z #4 transferring context: 108B done
+2026-03-13T20:50:07.0240649Z #4 DONE 0.0s
+2026-03-13T20:50:07.0240794Z 
+2026-03-13T20:50:07.0241195Z #5 [1/2] FROM ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158
+2026-03-13T20:50:07.0242075Z #5 resolve ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 done
+2026-03-13T20:50:07.0242878Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 0B / 1.20kB 0.1s
+2026-03-13T20:50:07.1849422Z #5 sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 2.38kB / 2.38kB done
+2026-03-13T20:50:07.1850799Z #5 sha256:1a52f94820e830bc9734623deb03bbafa6a248fba19cdc2e5605c70d90d91441 1.24kB / 1.24kB done
+2026-03-13T20:50:07.1852498Z #5 sha256:c4781b8d012b16b6c7468dc9104fad0a63f2a8815b2af8b7176bb544253ea8c7 3.86kB / 3.86kB done
+2026-03-13T20:50:07.1853980Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0B / 3.38MB 0.2s
+2026-03-13T20:50:07.1855312Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 284.83kB / 284.83kB 0.2s done
+2026-03-13T20:50:07.1856357Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 0B / 125B 0.2s
+2026-03-13T20:50:07.1857283Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca
+2026-03-13T20:50:07.3014719Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 1.20kB / 1.20kB 0.3s done
+2026-03-13T20:50:07.3016265Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 3.38MB / 3.38MB 0.3s done
+2026-03-13T20:50:07.3017743Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0.1s done
+2026-03-13T20:50:07.3019043Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0B / 2.44MB 0.3s
+2026-03-13T20:50:07.3020138Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0.0s done
+2026-03-13T20:50:07.4227061Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 125B / 125B 0.3s done
+2026-03-13T20:50:07.4711634Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 2.44MB / 2.44MB 0.4s done
+2026-03-13T20:50:07.9192889Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c
+2026-03-13T20:50:08.0194130Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c done
+2026-03-13T20:50:08.0195980Z #5 extracting sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 done
+2026-03-13T20:50:08.0197354Z #5 extracting sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0.0s done
+2026-03-13T20:50:08.0198818Z #5 DONE 1.1s
+2026-03-13T20:50:08.0200035Z 
+2026-03-13T20:50:08.0200270Z #6 [2/2] COPY entrypoint.sh /bin/entrypoint.sh
+2026-03-13T20:50:08.0201306Z #6 DONE 0.0s
+2026-03-13T20:50:08.0201772Z 
+2026-03-13T20:50:08.0201965Z #7 exporting to image
+2026-03-13T20:50:08.0202492Z #7 exporting layers 0.0s done
+2026-03-13T20:50:08.0203348Z #7 writing image sha256:af856d0a4354ea8abb9d3e13dfb4bc7109b2dc641fecf4dec63d6530abc9fc4b
+2026-03-13T20:50:08.0361472Z #7 writing image sha256:af856d0a4354ea8abb9d3e13dfb4bc7109b2dc641fecf4dec63d6530abc9fc4b done
+2026-03-13T20:50:08.0362868Z #7 naming to docker.io/library/21f0a0:6e3074bac750439494306cd5f7383cfe done
+2026-03-13T20:50:08.0403495Z #7 DONE 0.0s
+2026-03-13T20:50:08.0411481Z ##[endgroup]
+2026-03-13T20:50:08.0682742Z ##[group]Run actions/checkout@v4
+2026-03-13T20:50:08.0683455Z with:
+2026-03-13T20:50:08.0684007Z   repository: stanisloveme-cloud/UPGRADE
+2026-03-13T20:50:08.0684598Z   token: ***
+2026-03-13T20:50:08.0684922Z   ssh-strict: true
+2026-03-13T20:50:08.0685280Z   ssh-user: git
+2026-03-13T20:50:08.0685658Z   persist-credentials: true
+2026-03-13T20:50:08.0686018Z   clean: true
+2026-03-13T20:50:08.0686338Z   sparse-checkout-cone-mode: true
+2026-03-13T20:50:08.0686673Z   fetch-depth: 1
+2026-03-13T20:50:08.0686998Z   fetch-tags: false
+2026-03-13T20:50:08.0687325Z   show-progress: true
+2026-03-13T20:50:08.0687619Z   lfs: false
+2026-03-13T20:50:08.0687965Z   submodules: false
+2026-03-13T20:50:08.0688270Z   set-safe-directory: true
+2026-03-13T20:50:08.0688952Z ##[endgroup]
+2026-03-13T20:50:08.1699864Z Syncing repository: stanisloveme-cloud/UPGRADE
+2026-03-13T20:50:08.1701796Z ##[group]Getting Git version info
+2026-03-13T20:50:08.1702488Z Working directory is '/home/runner/work/UPGRADE/UPGRADE'
+2026-03-13T20:50:08.1703263Z [command]/usr/bin/git version
+2026-03-13T20:50:08.1703824Z git version 2.53.0
+2026-03-13T20:50:08.1724141Z ##[endgroup]
+2026-03-13T20:50:08.1736509Z Temporarily overriding HOME='/home/runner/work/_temp/eef79056-d6f9-408a-b272-f40fe15431ac' before making global git config changes
+2026-03-13T20:50:08.1738228Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-13T20:50:08.1748861Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/UPGRADE/UPGRADE
+2026-03-13T20:50:08.1781361Z Deleting the contents of '/home/runner/work/UPGRADE/UPGRADE'
+2026-03-13T20:50:08.1784283Z ##[group]Initializing the repository
+2026-03-13T20:50:08.1788041Z [command]/usr/bin/git init /home/runner/work/UPGRADE/UPGRADE
+2026-03-13T20:50:08.1875610Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-03-13T20:50:08.1876651Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-03-13T20:50:08.1877502Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-03-13T20:50:08.1878005Z hint: call:
+2026-03-13T20:50:08.1878349Z hint:
+2026-03-13T20:50:08.1878797Z hint: 	git config --global init.defaultBranch <name>
+2026-03-13T20:50:08.1879439Z hint:
+2026-03-13T20:50:08.1880150Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-03-13T20:50:08.1881159Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-03-13T20:50:08.1881766Z hint:
+2026-03-13T20:50:08.1882105Z hint: 	git branch -m <name>
+2026-03-13T20:50:08.1882428Z hint:
+2026-03-13T20:50:08.1882898Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-03-13T20:50:08.1884059Z Initialized empty Git repository in /home/runner/work/UPGRADE/UPGRADE/.git/
+2026-03-13T20:50:08.1890020Z [command]/usr/bin/git remote add origin https://github.com/stanisloveme-cloud/UPGRADE
+2026-03-13T20:50:08.1917251Z ##[endgroup]
+2026-03-13T20:50:08.1918223Z ##[group]Disabling automatic garbage collection
+2026-03-13T20:50:08.1920897Z [command]/usr/bin/git config --local gc.auto 0
+2026-03-13T20:50:08.1943145Z ##[endgroup]
+2026-03-13T20:50:08.1943786Z ##[group]Setting up auth
+2026-03-13T20:50:08.1949780Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-13T20:50:08.1973908Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-13T20:50:08.2263959Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-13T20:50:08.2290403Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-13T20:50:08.2468594Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-13T20:50:08.2495026Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-13T20:50:08.2677655Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-03-13T20:50:08.2706898Z ##[endgroup]
+2026-03-13T20:50:08.2715354Z ##[group]Fetching the repository
+2026-03-13T20:50:08.2716999Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +28fd547cdd53cf08ee42c8b8fe191ce151345ef3:refs/remotes/origin/main
+2026-03-13T20:50:10.0767195Z From https://github.com/stanisloveme-cloud/UPGRADE
+2026-03-13T20:50:10.0768694Z  * [new ref]         28fd547cdd53cf08ee42c8b8fe191ce151345ef3 -> origin/main
+2026-03-13T20:50:10.0795625Z ##[endgroup]
+2026-03-13T20:50:10.0796204Z ##[group]Determining the checkout info
+2026-03-13T20:50:10.0797718Z ##[endgroup]
+2026-03-13T20:50:10.0802452Z [command]/usr/bin/git sparse-checkout disable
+2026-03-13T20:50:10.0837625Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-03-13T20:50:10.0858121Z ##[group]Checking out the ref
+2026-03-13T20:50:10.0861874Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-03-13T20:50:10.3218987Z Switched to a new branch 'main'
+2026-03-13T20:50:10.3219744Z branch 'main' set up to track 'origin/main'.
+2026-03-13T20:50:10.3232836Z ##[endgroup]
+2026-03-13T20:50:10.3265125Z [command]/usr/bin/git log -1 --format=%H
+2026-03-13T20:50:10.3284606Z 28fd547cdd53cf08ee42c8b8fe191ce151345ef3
+2026-03-13T20:50:10.3478947Z ##[group]Run docker/login-action@v3
+2026-03-13T20:50:10.3479380Z with:
+2026-03-13T20:50:10.3479778Z   username: ***
+2026-03-13T20:50:10.3480229Z   password: ***
+2026-03-13T20:50:10.3480536Z   logout: true
+2026-03-13T20:50:10.3480825Z ##[endgroup]
+2026-03-13T20:50:10.6188565Z Logging into docker.io...
+2026-03-13T20:50:11.0877714Z Login Succeeded!
+2026-03-13T20:50:11.1055572Z ##[group]Run docker/build-push-action@v5
+2026-03-13T20:50:11.1055873Z with:
+2026-03-13T20:50:11.1056066Z   context: .
+2026-03-13T20:50:11.1056268Z   file: Dockerfile
+2026-03-13T20:50:11.1056481Z   push: true
+2026-03-13T20:50:11.1056749Z   tags: ***/upgrade-backend:latest
+2026-03-13T20:50:11.1057025Z   load: false
+2026-03-13T20:50:11.1057224Z   no-cache: false
+2026-03-13T20:50:11.1057429Z   pull: false
+2026-03-13T20:50:11.1057746Z   github-token: ***
+2026-03-13T20:50:11.1057954Z ##[endgroup]
+2026-03-13T20:50:11.3140658Z ##[group]GitHub Actions runtime token ACs
+2026-03-13T20:50:11.3150214Z refs/heads/main: read/write
+2026-03-13T20:50:11.3151499Z ##[endgroup]
+2026-03-13T20:50:11.3152461Z ##[group]Docker info
+2026-03-13T20:50:11.3191626Z [command]/usr/bin/docker version
+2026-03-13T20:50:11.3376308Z Client: Docker Engine - Community
+2026-03-13T20:50:11.3379324Z  Version:           28.0.4
+2026-03-13T20:50:11.3381982Z  API version:       1.48
+2026-03-13T20:50:11.3382522Z  Go version:        go1.23.7
+2026-03-13T20:50:11.3383110Z  Git commit:        b8034c0
+2026-03-13T20:50:11.3383437Z  Built:             Tue Mar 25 15:07:16 2025
+2026-03-13T20:50:11.3384024Z  OS/Arch:           linux/amd64
+2026-03-13T20:50:11.3384274Z  Context:           default
+2026-03-13T20:50:11.3384431Z 
+2026-03-13T20:50:11.3384539Z Server: Docker Engine - Community
+2026-03-13T20:50:11.3384817Z  Engine:
+2026-03-13T20:50:11.3385007Z   Version:          28.0.4
+2026-03-13T20:50:11.3385278Z   API version:      1.48 (minimum version 1.24)
+2026-03-13T20:50:11.3385568Z   Go version:       go1.23.7
+2026-03-13T20:50:11.3385813Z   Git commit:       6430e49
+2026-03-13T20:50:11.3386077Z   Built:            Tue Mar 25 15:07:16 2025
+2026-03-13T20:50:11.3386373Z   OS/Arch:          linux/amd64
+2026-03-13T20:50:11.3386618Z   Experimental:     false
+2026-03-13T20:50:11.3386856Z  containerd:
+2026-03-13T20:50:11.3387058Z   Version:          v2.2.1
+2026-03-13T20:50:11.3387359Z   GitCommit:        dea7da592f5d1d2b7755e3a161be07f43fad8f75
+2026-03-13T20:50:11.3387686Z  runc:
+2026-03-13T20:50:11.3387874Z   Version:          1.3.4
+2026-03-13T20:50:11.3388112Z   GitCommit:        v1.3.4-0-gd6d73eb8
+2026-03-13T20:50:11.3388366Z  docker-init:
+2026-03-13T20:50:11.3388572Z   Version:          0.19.0
+2026-03-13T20:50:11.3388804Z   GitCommit:        de40ad0
+2026-03-13T20:50:11.3417110Z [command]/usr/bin/docker info
+2026-03-13T20:50:11.4955462Z Client: Docker Engine - Community
+2026-03-13T20:50:11.4956058Z  Version:    28.0.4
+2026-03-13T20:50:11.4956392Z  Context:    default
+2026-03-13T20:50:11.4956754Z  Debug Mode: false
+2026-03-13T20:50:11.4957118Z  Plugins:
+2026-03-13T20:50:11.4957476Z   buildx: Docker Buildx (Docker Inc.)
+2026-03-13T20:50:11.4957936Z     Version:  v0.31.1
+2026-03-13T20:50:11.4958426Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2026-03-13T20:50:11.4958895Z   compose: Docker Compose (Docker Inc.)
+2026-03-13T20:50:11.4959171Z     Version:  v2.38.2
+2026-03-13T20:50:11.4959478Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2026-03-13T20:50:11.4959710Z 
+2026-03-13T20:50:11.4959794Z Server:
+2026-03-13T20:50:11.4959994Z  Containers: 0
+2026-03-13T20:50:11.4960226Z   Running: 0
+2026-03-13T20:50:11.4960448Z   Paused: 0
+2026-03-13T20:50:11.4960658Z   Stopped: 0
+2026-03-13T20:50:11.4960858Z  Images: 2
+2026-03-13T20:50:11.4961065Z  Server Version: 28.0.4
+2026-03-13T20:50:11.4961565Z  Storage Driver: overlay2
+2026-03-13T20:50:11.4961820Z   Backing Filesystem: extfs
+2026-03-13T20:50:11.4962115Z   Supports d_type: true
+2026-03-13T20:50:11.4962479Z   Using metacopy: false
+2026-03-13T20:50:11.4962809Z   Native Overlay Diff: false
+2026-03-13T20:50:11.4963050Z   userxattr: false
+2026-03-13T20:50:11.4963276Z  Logging Driver: json-file
+2026-03-13T20:50:11.4963519Z  Cgroup Driver: systemd
+2026-03-13T20:50:11.4964135Z  Cgroup Version: 2
+2026-03-13T20:50:11.4964344Z  Plugins:
+2026-03-13T20:50:11.4964552Z   Volume: local
+2026-03-13T20:50:11.4964801Z   Network: bridge host ipvlan macvlan null overlay
+2026-03-13T20:50:11.4965369Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2026-03-13T20:50:11.4965787Z  Swarm: inactive
+2026-03-13T20:50:11.4966035Z  Runtimes: io.containerd.runc.v2 runc
+2026-03-13T20:50:11.4966390Z  Default Runtime: runc
+2026-03-13T20:50:11.4966775Z  Init Binary: docker-init
+2026-03-13T20:50:11.4967269Z  containerd version: dea7da592f5d1d2b7755e3a161be07f43fad8f75
+2026-03-13T20:50:11.4967632Z  runc version: v1.3.4-0-gd6d73eb8
+2026-03-13T20:50:11.4967888Z  init version: de40ad0
+2026-03-13T20:50:11.4968108Z  Security Options:
+2026-03-13T20:50:11.4968328Z   apparmor
+2026-03-13T20:50:11.4968514Z   seccomp
+2026-03-13T20:50:11.4968709Z    Profile: builtin
+2026-03-13T20:50:11.4968914Z   cgroupns
+2026-03-13T20:50:11.4969113Z  Kernel Version: 6.14.0-1017-azure
+2026-03-13T20:50:11.4969391Z  Operating System: Ubuntu 24.04.3 LTS
+2026-03-13T20:50:11.4969648Z  OSType: linux
+2026-03-13T20:50:11.4969856Z  Architecture: x86_64
+2026-03-13T20:50:11.4970116Z  CPUs: 4
+2026-03-13T20:50:11.4970421Z  Total Memory: 15.61GiB
+2026-03-13T20:50:11.4970708Z  Name: runnervm0kj6c
+2026-03-13T20:50:11.4970952Z  ID: 189d60bd-a351-4054-af4e-5414e7eef06b
+2026-03-13T20:50:11.4971229Z  Docker Root Dir: /var/lib/docker
+2026-03-13T20:50:11.4971482Z  Debug Mode: false
+2026-03-13T20:50:11.4971777Z  Username: ***
+2026-03-13T20:50:11.4971982Z  Experimental: false
+2026-03-13T20:50:11.4972221Z  Insecure Registries:
+2026-03-13T20:50:11.4977686Z   ::1/128
+2026-03-13T20:50:11.4977982Z   127.0.0.0/8
+2026-03-13T20:50:11.4978328Z  Live Restore Enabled: false
+2026-03-13T20:50:11.4978518Z 
+2026-03-13T20:50:11.4979066Z ##[endgroup]
+2026-03-13T20:50:11.4979492Z ##[group]Proxy configuration
+2026-03-13T20:50:11.4979747Z No proxy configuration found
+2026-03-13T20:50:11.4980149Z ##[endgroup]
+2026-03-13T20:50:11.5582387Z ##[group]Buildx version
+2026-03-13T20:50:11.5604314Z [command]/usr/bin/docker buildx version
+2026-03-13T20:50:11.6182057Z github.com/docker/buildx v0.31.1 a2675950d46b2cb171b23c2015ca44fb88607531
+2026-03-13T20:50:11.6207611Z ##[endgroup]
+2026-03-13T20:50:11.6208239Z ##[group]Builder info
+2026-03-13T20:50:11.6868028Z {
+2026-03-13T20:50:11.6868333Z   "nodes": [
+2026-03-13T20:50:11.6868576Z     {
+2026-03-13T20:50:11.6868777Z       "name": "default",
+2026-03-13T20:50:11.6869035Z       "endpoint": "default",
+2026-03-13T20:50:11.6869287Z       "status": "running",
+2026-03-13T20:50:11.6869547Z       "buildkit": "v0.20.2",
+2026-03-13T20:50:11.6869936Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/amd64/v4,linux/386",
+2026-03-13T20:50:11.6870334Z       "features": {
+2026-03-13T20:50:11.6870657Z         "Automatically load images to the Docker Engine image store": true,
+2026-03-13T20:50:11.6871031Z         "Cache export": true,
+2026-03-13T20:50:11.6871278Z         "Direct push": true,
+2026-03-13T20:50:11.6871525Z         "Docker exporter": true,
+2026-03-13T20:50:11.6871788Z         "Multi-platform build": true,
+2026-03-13T20:50:11.6872057Z         "OCI exporter": true
+2026-03-13T20:50:11.6872314Z       },
+2026-03-13T20:50:11.6872513Z       "labels": {
+2026-03-13T20:50:11.6872857Z         "org.mobyproject.buildkit.worker.moby.host-gateway-ip": "172.17.0.1"
+2026-03-13T20:50:11.6873247Z       }
+2026-03-13T20:50:11.6873433Z     }
+2026-03-13T20:50:11.6873791Z   ],
+2026-03-13T20:50:11.6874005Z   "name": "default",
+2026-03-13T20:50:11.6874231Z   "driver": "docker",
+2026-03-13T20:50:11.6874752Z   "lastActivity": "2026-03-13T20:50:05.000Z"
+2026-03-13T20:50:11.6875017Z }
+2026-03-13T20:50:11.6875541Z ##[endgroup]
+2026-03-13T20:50:11.8169135Z [command]/usr/bin/docker buildx build --file Dockerfile --iidfile /home/runner/work/_temp/docker-actions-toolkit-qo51Lj/build-iidfile-f774754aee.txt --tag ***/upgrade-backend:latest --metadata-file /home/runner/work/_temp/docker-actions-toolkit-qo51Lj/build-metadata-94a0c95794.json --push .
+2026-03-13T20:50:12.0617317Z #0 building with "default" instance using docker driver
+2026-03-13T20:50:12.0617758Z 
+2026-03-13T20:50:12.0618588Z #1 [internal] load build definition from Dockerfile
+2026-03-13T20:50:12.0619503Z #1 transferring dockerfile: 901B done
+2026-03-13T20:50:12.0620031Z #1 DONE 0.0s
+2026-03-13T20:50:12.0620253Z 
+2026-03-13T20:50:12.0620571Z #2 [internal] load metadata for docker.io/library/node:20-slim
+2026-03-13T20:50:12.2144761Z #2 ...
+2026-03-13T20:50:12.2145050Z 
+2026-03-13T20:50:12.2145314Z #3 [auth] library/node:pull token for registry-1.docker.io
+2026-03-13T20:50:12.2145817Z #3 DONE 0.0s
+2026-03-13T20:50:12.3647451Z 
+2026-03-13T20:50:12.3648020Z #2 [internal] load metadata for docker.io/library/node:20-slim
+2026-03-13T20:50:12.7349557Z #2 DONE 0.8s
+2026-03-13T20:50:12.8484553Z 
+2026-03-13T20:50:12.8485658Z #4 [internal] load .dockerignore
+2026-03-13T20:50:12.8485989Z #4 transferring context: 124B done
+2026-03-13T20:50:12.8486248Z #4 DONE 0.0s
+2026-03-13T20:50:12.8486376Z 
+2026-03-13T20:50:12.8486480Z #5 [internal] load build context
+2026-03-13T20:50:12.8486745Z #5 transferring context: 11.77MB 0.1s done
+2026-03-13T20:50:12.8487005Z #5 DONE 0.1s
+2026-03-13T20:50:12.8487119Z 
+2026-03-13T20:50:12.8487522Z #6 [builder 1/9] FROM docker.io/library/node:20-slim@sha256:a82f40540f5959e0003fb7b3c0f80490def2927be8bdbee7e3e0ac65cce3be92
+2026-03-13T20:50:12.8488298Z #6 resolve docker.io/library/node:20-slim@sha256:a82f40540f5959e0003fb7b3c0f80490def2927be8bdbee7e3e0ac65cce3be92 done
+2026-03-13T20:50:12.8488980Z #6 sha256:a82f40540f5959e0003fb7b3c0f80490def2927be8bdbee7e3e0ac65cce3be92 6.49kB / 6.49kB done
+2026-03-13T20:50:12.8489582Z #6 sha256:eef3816042c0f522a2ca9655c1947ca6f97c908b0c227aa50e19432646342ab7 1.93kB / 1.93kB done
+2026-03-13T20:50:12.8490174Z #6 sha256:0917f806cde0cc3c2bf1e63c552396861e5f9dd481dcdcc88f6d86e447fd145d 6.87kB / 6.87kB done
+2026-03-13T20:50:12.8490767Z #6 sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 0B / 28.24MB 0.1s
+2026-03-13T20:50:12.8491358Z #6 sha256:4e46de9abb28ae464ce63eabe3a40e078ab06e4c362f17ee6b4dc1389db63917 0B / 3.32kB 0.1s
+2026-03-13T20:50:12.8491946Z #6 sha256:38bb63ca310250905b2eb552b96ee4f04b26bfd91eddd5e4a535d2d04d7cfe23 0B / 41.42MB 0.1s
+2026-03-13T20:50:13.0481465Z #6 sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 11.53MB / 28.24MB 0.3s
+2026-03-13T20:50:13.0482192Z #6 sha256:4e46de9abb28ae464ce63eabe3a40e078ab06e4c362f17ee6b4dc1389db63917 3.32kB / 3.32kB 0.3s done
+2026-03-13T20:50:13.0482827Z #6 sha256:626acebb8e40416188b154b1d1a1fc1cba88533b2586cdff64d0cfb515175acf 0B / 1.71MB 0.3s
+2026-03-13T20:50:13.1485591Z #6 sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 20.97MB / 28.24MB 0.4s
+2026-03-13T20:50:13.1486279Z #6 sha256:38bb63ca310250905b2eb552b96ee4f04b26bfd91eddd5e4a535d2d04d7cfe23 3.15MB / 41.42MB 0.4s
+2026-03-13T20:50:13.2815684Z #6 sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 27.26MB / 28.24MB 0.5s
+2026-03-13T20:50:13.2816957Z #6 sha256:38bb63ca310250905b2eb552b96ee4f04b26bfd91eddd5e4a535d2d04d7cfe23 12.58MB / 41.42MB 0.5s
+2026-03-13T20:50:13.2818014Z #6 extracting sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c
+2026-03-13T20:50:13.3833350Z #6 sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 28.24MB / 28.24MB 0.5s done
+2026-03-13T20:50:13.3834947Z #6 sha256:38bb63ca310250905b2eb552b96ee4f04b26bfd91eddd5e4a535d2d04d7cfe23 19.92MB / 41.42MB 0.6s
+2026-03-13T20:50:13.3835864Z #6 sha256:626acebb8e40416188b154b1d1a1fc1cba88533b2586cdff64d0cfb515175acf 1.71MB / 1.71MB 0.5s done
+2026-03-13T20:50:13.3837133Z #6 sha256:f9d9eff651020566eec16405a597f3771597aa46872fb9f41b9d05a53f45cd0a 0B / 450B 0.6s
+2026-03-13T20:50:13.4989243Z #6 sha256:38bb63ca310250905b2eb552b96ee4f04b26bfd91eddd5e4a535d2d04d7cfe23 31.46MB / 41.42MB 0.7s
+2026-03-13T20:50:13.4990457Z #6 sha256:f9d9eff651020566eec16405a597f3771597aa46872fb9f41b9d05a53f45cd0a 450B / 450B 0.7s done
+2026-03-13T20:50:13.6007194Z #6 sha256:38bb63ca310250905b2eb552b96ee4f04b26bfd91eddd5e4a535d2d04d7cfe23 37.75MB / 41.42MB 0.8s
+2026-03-13T20:50:13.7494747Z #6 sha256:38bb63ca310250905b2eb552b96ee4f04b26bfd91eddd5e4a535d2d04d7cfe23 41.42MB / 41.42MB 0.8s done
+2026-03-13T20:50:14.1325247Z #6 extracting sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 0.8s done
+2026-03-13T20:50:14.1326371Z #6 extracting sha256:4e46de9abb28ae464ce63eabe3a40e078ab06e4c362f17ee6b4dc1389db63917
+2026-03-13T20:50:14.2776054Z #6 extracting sha256:4e46de9abb28ae464ce63eabe3a40e078ab06e4c362f17ee6b4dc1389db63917 done
+2026-03-13T20:50:14.2777595Z #6 extracting sha256:38bb63ca310250905b2eb552b96ee4f04b26bfd91eddd5e4a535d2d04d7cfe23
+2026-03-13T20:50:15.2476726Z #6 extracting sha256:38bb63ca310250905b2eb552b96ee4f04b26bfd91eddd5e4a535d2d04d7cfe23 0.9s done
+2026-03-13T20:50:15.2477693Z #6 extracting sha256:626acebb8e40416188b154b1d1a1fc1cba88533b2586cdff64d0cfb515175acf
+2026-03-13T20:50:15.4619654Z #6 extracting sha256:626acebb8e40416188b154b1d1a1fc1cba88533b2586cdff64d0cfb515175acf 0.0s done
+2026-03-13T20:50:15.4620470Z #6 extracting sha256:f9d9eff651020566eec16405a597f3771597aa46872fb9f41b9d05a53f45cd0a done
+2026-03-13T20:50:15.4620909Z #6 DONE 2.6s
+2026-03-13T20:50:15.4621032Z 
+2026-03-13T20:50:15.4621260Z #7 [builder 2/9] RUN apt-get update -y && apt-get install -y openssl
+2026-03-13T20:50:15.4837796Z #7 0.173 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+2026-03-13T20:50:15.7004199Z #7 0.225 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+2026-03-13T20:50:15.7005443Z #7 0.245 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+2026-03-13T20:50:15.7006355Z #7 0.272 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8792 kB]
+2026-03-13T20:50:15.7007006Z #7 0.389 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+2026-03-13T20:50:15.8507913Z #7 0.389 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [294 kB]
+2026-03-13T20:50:16.4710665Z #7 1.160 Fetched 9348 kB in 1s (8954 kB/s)
+2026-03-13T20:50:16.8733279Z #7 1.160 Reading package lists...
+2026-03-13T20:50:17.2796604Z #7 1.578 Reading package lists...
+2026-03-13T20:50:17.4616259Z #7 1.978 Building dependency tree...
+2026-03-13T20:50:17.4617027Z #7 2.058 Reading state information...
+2026-03-13T20:50:17.4617644Z #7 2.150 The following additional packages will be installed:
+2026-03-13T20:50:17.6590280Z #7 2.151   libssl3
+2026-03-13T20:50:17.6590717Z #7 2.151 Suggested packages:
+2026-03-13T20:50:17.6591005Z #7 2.151   ca-certificates
+2026-03-13T20:50:17.6591337Z #7 2.165 The following NEW packages will be installed:
+2026-03-13T20:50:17.6591663Z #7 2.165   libssl3 openssl
+2026-03-13T20:50:17.6591983Z #7 2.236 0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+2026-03-13T20:50:17.6592346Z #7 2.236 Need to get 3462 kB of archives.
+2026-03-13T20:50:17.6592724Z #7 2.236 After this operation, 8532 kB of additional disk space will be used.
+2026-03-13T20:50:17.6593370Z #7 2.236 Get:1 http://deb.debian.org/debian-security bookworm-security/main amd64 libssl3 amd64 3.0.18-1~deb12u2 [2030 kB]
+2026-03-13T20:50:17.6594392Z #7 2.348 Get:2 http://deb.debian.org/debian-security bookworm-security/main amd64 openssl amd64 3.0.18-1~deb12u2 [1433 kB]
+2026-03-13T20:50:17.7691569Z #7 2.432 debconf: delaying package configuration, since apt-utils is not installed
+2026-03-13T20:50:17.7692101Z #7 2.447 Fetched 3462 kB in 0s (18.3 MB/s)
+2026-03-13T20:50:17.7692467Z #7 2.458 Selecting previously unselected package libssl3:amd64.
+2026-03-13T20:50:17.8934323Z #7 2.458 (Reading database ... 
+2026-03-13T20:50:17.8934938Z (Reading database ... 5%
+2026-03-13T20:50:17.8935178Z (Reading database ... 10%
+2026-03-13T20:50:17.8935411Z (Reading database ... 15%
+2026-03-13T20:50:17.8935637Z (Reading database ... 20%
+2026-03-13T20:50:17.8935865Z (Reading database ... 25%
+2026-03-13T20:50:17.8936092Z (Reading database ... 30%
+2026-03-13T20:50:17.8936323Z (Reading database ... 35%
+2026-03-13T20:50:17.8936545Z (Reading database ... 40%
+2026-03-13T20:50:17.8936778Z (Reading database ... 45%
+2026-03-13T20:50:17.8936997Z (Reading database ... 50%
+2026-03-13T20:50:17.8937216Z (Reading database ... 55%
+2026-03-13T20:50:17.8937447Z (Reading database ... 60%
+2026-03-13T20:50:17.8937776Z (Reading database ... 65%
+2026-03-13T20:50:17.8938002Z (Reading database ... 70%
+2026-03-13T20:50:17.8938232Z (Reading database ... 75%
+2026-03-13T20:50:17.8938455Z (Reading database ... 80%
+2026-03-13T20:50:17.8938680Z (Reading database ... 85%
+2026-03-13T20:50:17.8939052Z (Reading database ... 90%
+2026-03-13T20:50:17.8939376Z (Reading database ... 95%
+2026-03-13T20:50:17.8939930Z (Reading database ... 100%
+2026-03-13T20:50:17.8940379Z (Reading database ... 6096 files and directories currently installed.)
+2026-03-13T20:50:17.8941601Z #7 2.463 Preparing to unpack .../libssl3_3.0.18-1~deb12u2_amd64.deb ...
+2026-03-13T20:50:17.8942143Z #7 2.464 Unpacking libssl3:amd64 (3.0.18-1~deb12u2) ...
+2026-03-13T20:50:17.8942868Z #7 2.582 Selecting previously unselected package openssl.
+2026-03-13T20:50:18.0172623Z #7 2.583 Preparing to unpack .../openssl_3.0.18-1~deb12u2_amd64.deb ...
+2026-03-13T20:50:18.0173423Z #7 2.584 Unpacking openssl (3.0.18-1~deb12u2) ...
+2026-03-13T20:50:18.0174392Z #7 2.675 Setting up libssl3:amd64 (3.0.18-1~deb12u2) ...
+2026-03-13T20:50:18.0175637Z #7 2.676 Setting up openssl (3.0.18-1~deb12u2) ...
+2026-03-13T20:50:18.0176357Z #7 2.680 Processing triggers for libc-bin (2.36-9+deb12u13) ...
+2026-03-13T20:50:18.0176992Z #7 DONE 2.7s
+2026-03-13T20:50:18.2174535Z 
+2026-03-13T20:50:18.2175403Z #8 [builder 3/9] WORKDIR /app
+2026-03-13T20:50:18.2176225Z #8 DONE 0.0s
+2026-03-13T20:50:18.2176635Z 
+2026-03-13T20:50:18.2177181Z #9 [builder 4/9] COPY package*.json ./
+2026-03-13T20:50:18.2177963Z #9 DONE 0.0s
+2026-03-13T20:50:18.2178398Z 
+2026-03-13T20:50:18.2178736Z #10 [builder 5/9] COPY prisma ./prisma/
+2026-03-13T20:50:18.2179369Z #10 DONE 0.0s
+2026-03-13T20:50:18.2186186Z 
+2026-03-13T20:50:18.2186567Z #11 [stage-1  6/11] COPY prisma.config.ts ./
+2026-03-13T20:50:18.2187062Z #11 DONE 0.0s
+2026-03-13T20:50:18.2187248Z 
+2026-03-13T20:50:18.2187553Z #12 [stage-1  7/11] RUN npm install --omit=dev && npx prisma generate
+2026-03-13T20:50:28.1184784Z #12 ...
+2026-03-13T20:50:28.1185205Z 
+2026-03-13T20:50:28.1186068Z #13 [builder 6/9] RUN npm install
+2026-03-13T20:50:28.9982849Z #13 ...
+2026-03-13T20:50:28.9983955Z 
+2026-03-13T20:50:28.9984354Z #12 [stage-1  7/11] RUN npm install --omit=dev && npx prisma generate
+2026-03-13T20:50:28.9985311Z #12 10.93 npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+2026-03-13T20:50:29.2695378Z #12 11.20 npm warn deprecated lodash.isequal@4.5.0: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
+2026-03-13T20:50:29.5608125Z #12 11.49 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2026-03-13T20:50:30.0034611Z #12 11.94 npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+2026-03-13T20:50:30.2172315Z #12 12.15 npm warn deprecated fstream@1.0.12: This package is no longer supported.
+2026-03-13T20:50:30.8462191Z #12 12.78 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-13T20:50:30.9528518Z #12 12.89 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-13T20:50:31.9518764Z #12 13.85 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-13T20:50:31.9522216Z #12 13.88 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-13T20:50:37.0934589Z #12 ...
+2026-03-13T20:50:37.0938416Z 
+2026-03-13T20:50:37.0938758Z #13 [builder 6/9] RUN npm install
+2026-03-13T20:50:37.0939352Z #13 12.59 npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+2026-03-13T20:50:37.0940067Z #13 13.25 npm warn deprecated lodash.isequal@4.5.0: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
+2026-03-13T20:50:37.0941235Z #13 13.67 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2026-03-13T20:50:37.0942307Z #13 13.79 npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+2026-03-13T20:50:37.0942864Z #13 14.35 npm warn deprecated fstream@1.0.12: This package is no longer supported.
+2026-03-13T20:50:37.0945197Z #13 16.66 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-13T20:50:37.0949853Z #13 16.78 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-13T20:50:37.0953209Z #13 17.06 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-13T20:50:37.0956255Z #13 18.49 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-13T20:50:37.0959195Z #13 18.75 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-13T20:50:37.0962023Z #13 18.83 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-13T20:50:37.0965067Z #13 18.88 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-13T20:50:37.0968305Z #13 18.89 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+2026-03-13T20:50:40.4662664Z #13 ...
+2026-03-13T20:50:40.4663074Z 
+2026-03-13T20:50:40.4663699Z #12 [stage-1  7/11] RUN npm install --omit=dev && npx prisma generate
+2026-03-13T20:50:40.4664276Z #12 22.40 
+2026-03-13T20:50:40.4664715Z #12 22.40 added 497 packages, and audited 498 packages in 22s
+2026-03-13T20:50:40.4665301Z #12 22.40 
+2026-03-13T20:50:40.4665996Z #12 22.40 79 packages are looking for funding
+2026-03-13T20:50:40.4666508Z #12 22.40   run `npm fund` for details
+2026-03-13T20:50:40.5803120Z #12 22.51 
+2026-03-13T20:50:40.5803735Z #12 22.51 15 vulnerabilities (7 moderate, 8 high)
+2026-03-13T20:50:40.5804284Z #12 22.51 
+2026-03-13T20:50:40.5804673Z #12 22.51 To address issues that do not require attention, run:
+2026-03-13T20:50:40.5805250Z #12 22.51   npm audit fix
+2026-03-13T20:50:40.5805583Z #12 22.51 
+2026-03-13T20:50:40.5806039Z #12 22.51 To address all issues possible (including breaking changes), run:
+2026-03-13T20:50:40.5806643Z #12 22.51   npm audit fix --force
+2026-03-13T20:50:40.5807001Z #12 22.51 
+2026-03-13T20:50:40.5807389Z #12 22.51 Some issues need review, and may require choosing
+2026-03-13T20:50:40.5807907Z #12 22.51 a different dependency.
+2026-03-13T20:50:40.5808299Z #12 22.51 
+2026-03-13T20:50:40.5808597Z #12 22.51 Run `npm audit` for details.
+2026-03-13T20:50:40.7307755Z #12 22.51 npm notice
+2026-03-13T20:50:40.7308484Z #12 22.51 npm notice New major version of npm available! 10.8.2 -> 11.11.1
+2026-03-13T20:50:40.7309303Z #12 22.51 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.11.1
+2026-03-13T20:50:40.7310056Z #12 22.51 npm notice To update run: npm install -g npm@11.11.1
+2026-03-13T20:50:40.7310587Z #12 22.51 npm notice
+2026-03-13T20:50:41.9860731Z #12 23.92 Loaded Prisma config from prisma.config.ts.
+2026-03-13T20:50:41.9861554Z #12 23.92 
+2026-03-13T20:50:42.1551219Z #12 24.09 Prisma schema loaded from prisma/schema.prisma.
+2026-03-13T20:50:42.6715039Z #12 24.60 
+2026-03-13T20:50:42.6716304Z #12 24.60 ✔ Generated Prisma Client (v7.4.0) to ./node_modules/@prisma/client in 321ms
+2026-03-13T20:50:42.6717988Z #12 24.60 
+2026-03-13T20:50:42.6719128Z #12 24.60 Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+2026-03-13T20:50:42.6720083Z #12 24.60 
+2026-03-13T20:50:42.6724062Z #12 24.60 
+2026-03-13T20:50:45.7730907Z #12 DONE 27.7s
+2026-03-13T20:50:45.7731194Z 
+2026-03-13T20:50:45.7731411Z #13 [builder 6/9] RUN npm install
+2026-03-13T20:50:47.9101003Z #13 29.86 
+2026-03-13T20:50:47.9101432Z #13 29.86 added 1042 packages, and audited 1043 packages in 30s
+2026-03-13T20:50:47.9101796Z #13 29.86 
+2026-03-13T20:50:47.9102035Z #13 29.86 167 packages are looking for funding
+2026-03-13T20:50:47.9102334Z #13 29.86   run `npm fund` for details
+2026-03-13T20:50:48.0409697Z #13 29.99 
+2026-03-13T20:50:48.0410313Z #13 29.99 24 vulnerabilities (13 moderate, 11 high)
+2026-03-13T20:50:48.0410867Z #13 29.99 
+2026-03-13T20:50:48.0411324Z #13 29.99 To address issues that do not require attention, run:
+2026-03-13T20:50:48.0411856Z #13 29.99   npm audit fix
+2026-03-13T20:50:48.0412285Z #13 29.99 
+2026-03-13T20:50:48.0412693Z #13 29.99 To address all issues possible (including breaking changes), run:
+2026-03-13T20:50:48.0413473Z #13 29.99   npm audit fix --force
+2026-03-13T20:50:48.0414354Z #13 29.99 
+2026-03-13T20:50:48.0414702Z #13 29.99 Some issues need review, and may require choosing
+2026-03-13T20:50:48.0415225Z #13 29.99 a different dependency.
+2026-03-13T20:50:48.0415581Z #13 29.99 
+2026-03-13T20:50:48.0415877Z #13 29.99 Run `npm audit` for details.
+2026-03-13T20:50:48.1938101Z #13 29.99 npm notice
+2026-03-13T20:50:48.1938745Z #13 29.99 npm notice New major version of npm available! 10.8.2 -> 11.11.1
+2026-03-13T20:50:48.1939635Z #13 29.99 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.11.1
+2026-03-13T20:50:48.1940754Z #13 29.99 npm notice To update run: npm install -g npm@11.11.1
+2026-03-13T20:50:48.1941348Z #13 29.99 npm notice
+2026-03-13T20:50:48.2236762Z #13 DONE 30.2s
+2026-03-13T20:50:48.4196174Z 
+2026-03-13T20:50:48.4196642Z #14 [builder 7/9] COPY . .
+2026-03-13T20:50:48.4197101Z #14 DONE 0.0s
+2026-03-13T20:50:48.4197309Z 
+2026-03-13T20:50:48.4197502Z #15 [builder 8/9] RUN npx prisma generate
+2026-03-13T20:50:49.4421543Z #15 1.173 Loaded Prisma config from prisma.config.ts.
+2026-03-13T20:50:49.4421981Z #15 1.173 
+2026-03-13T20:50:49.5447376Z #15 1.274 Prisma schema loaded from prisma/schema.prisma.
+2026-03-13T20:50:49.9452240Z #15 1.676 
+2026-03-13T20:50:49.9453335Z #15 1.676 ✔ Generated Prisma Client (v7.4.0) to ./node_modules/@prisma/client in 261ms
+2026-03-13T20:50:49.9454263Z #15 1.676 
+2026-03-13T20:50:49.9454924Z #15 1.676 Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+2026-03-13T20:50:49.9455682Z #15 1.676 
+2026-03-13T20:50:49.9456014Z #15 1.676 
+2026-03-13T20:50:50.1360246Z #15 DONE 1.7s
+2026-03-13T20:50:50.1361451Z 
+2026-03-13T20:50:50.1361645Z #16 [builder 9/9] RUN npm run build
+2026-03-13T20:50:50.4261840Z #16 0.443 
+2026-03-13T20:50:50.4262290Z #16 0.443 > upgrade-crm@0.0.1 build
+2026-03-13T20:50:50.4262760Z #16 0.443 > nest build
+2026-03-13T20:50:50.4263124Z #16 0.443 
+2026-03-13T20:50:55.8744845Z #16 DONE 5.9s
+2026-03-13T20:50:56.4695529Z 
+2026-03-13T20:50:56.4696479Z #17 [stage-1  8/11] COPY --from=builder /app/dist ./dist
+2026-03-13T20:50:56.6712707Z #17 DONE 0.0s
+2026-03-13T20:50:56.6713000Z 
+2026-03-13T20:50:56.6713321Z #18 [stage-1  9/11] COPY scripts/scraped_brands.json ./scripts/
+2026-03-13T20:50:56.6714204Z #18 DONE 0.0s
+2026-03-13T20:50:56.6714397Z 
+2026-03-13T20:50:56.6714689Z #19 [stage-1 10/11] COPY uploads/legacy_brands ./uploads/legacy_brands
+2026-03-13T20:50:56.6715260Z #19 DONE 0.0s
+2026-03-13T20:50:56.6715443Z 
+2026-03-13T20:50:56.6715783Z #20 [stage-1 11/11] RUN mkdir -p /app/uploads && chown -R node:node /app/uploads
+2026-03-13T20:50:56.6716378Z #20 DONE 0.1s
+2026-03-13T20:50:56.8227056Z 
+2026-03-13T20:50:56.8227589Z #21 exporting to image
+2026-03-13T20:50:56.8228054Z #21 exporting layers
+2026-03-13T20:51:01.7042508Z #21 exporting layers 5.0s done
+2026-03-13T20:51:01.8747896Z #21 writing image sha256:1ffa5ab81140c05555771744e953dc1c6be51421f7c95092eb5dcfea65fe4868 done
+2026-03-13T20:51:01.8748702Z #21 naming to docker.io/***/upgrade-backend:latest done
+2026-03-13T20:51:01.8749070Z #21 DONE 5.0s
+2026-03-13T20:51:01.8749189Z 
+2026-03-13T20:51:01.8749313Z #22 resolving provenance for metadata file
+2026-03-13T20:51:01.8749582Z #22 DONE 0.0s
+2026-03-13T20:51:01.8749735Z 
+2026-03-13T20:51:01.8749901Z #23 pushing ***/upgrade-backend:latest with docker
+2026-03-13T20:51:01.8786848Z #23 pushing layer ad28b254c93e
+2026-03-13T20:51:02.0298925Z #23 pushing layer fb15817de4ef
+2026-03-13T20:51:02.0299284Z #23 pushing layer c5b7a09a80e1
+2026-03-13T20:51:02.0299622Z #23 pushing layer 96a399f224af
+2026-03-13T20:51:02.0299899Z #23 pushing layer 2ee6192a15a9
+2026-03-13T20:51:02.0300145Z #23 pushing layer 48f9c09d54eb
+2026-03-13T20:51:02.0300469Z #23 pushing layer 5d6ecfb81560
+2026-03-13T20:51:02.0300717Z #23 pushing layer 45a934a0c34b
+2026-03-13T20:51:02.0300959Z #23 pushing layer 106eb71471a5
+2026-03-13T20:51:02.0301303Z #23 pushing layer c9cf6f90b2da
+2026-03-13T20:51:02.0301550Z #23 pushing layer 36411816830b
+2026-03-13T20:51:02.0301783Z #23 pushing layer 75865ff3fe02
+2026-03-13T20:51:02.0302101Z #23 pushing layer 8d24b1612a64
+2026-03-13T20:51:02.0302342Z #23 pushing layer 56668f255b47
+2026-03-13T20:51:02.0302581Z #23 pushing layer 9eb9a78eeb10
+2026-03-13T20:51:02.3773734Z #23 pushing layer c5b7a09a80e1 45.57kB / 42.87kB 0.4s
+2026-03-13T20:51:02.3774841Z #23 pushing layer 96a399f224af 460.80kB / 824.19kB 0.5s
+2026-03-13T20:51:02.5186038Z #23 pushing layer ad28b254c93e 189.95kB / 3.34MB 0.5s
+2026-03-13T20:51:02.5186559Z #23 pushing layer fb15817de4ef 189.95kB / 3.34MB 0.5s
+2026-03-13T20:51:02.5187232Z #23 pushing layer 96a399f224af 1.01MB / 824.19kB 0.5s
+2026-03-13T20:51:02.6268775Z #23 pushing layer ad28b254c93e 750.08kB / 3.34MB 0.6s
+2026-03-13T20:51:02.6270154Z #23 pushing layer fb15817de4ef 750.08kB / 3.34MB 0.7s
+2026-03-13T20:51:02.7282238Z #23 pushing layer ad28b254c93e 3.45MB / 3.34MB 0.8s
+2026-03-13T20:51:02.7285057Z #23 pushing layer fb15817de4ef 3.45MB / 3.34MB 0.8s
+2026-03-13T20:51:03.5118330Z #23 pushing layer c5b7a09a80e1 1.6s done
+2026-03-13T20:51:03.7242313Z #23 pushing layer 96a399f224af 1.7s done
+2026-03-13T20:51:03.7243359Z #23 pushing layer 48f9c09d54eb 512B / 271B 1.8s
+2026-03-13T20:51:03.8539556Z #23 pushing layer 48f9c09d54eb 2.56kB / 271B 1.8s
+2026-03-13T20:51:03.9607799Z #23 pushing layer ad28b254c93e 2.0s done
+2026-03-13T20:51:03.9608369Z #23 pushing layer fb15817de4ef 2.0s done
+2026-03-13T20:51:03.9608916Z #23 pushing layer 2ee6192a15a9 42.20MB / 814.80MB 2.1s
+2026-03-13T20:51:03.9609393Z #23 pushing layer 5d6ecfb81560 87.55kB / 68.98kB 2.0s
+2026-03-13T20:51:04.1730796Z #23 pushing layer 45a934a0c34b 33.79kB / 503.50kB 2.2s
+2026-03-13T20:51:04.2842215Z #23 pushing layer 45a934a0c34b 506.37kB / 503.50kB 2.3s
+2026-03-13T20:51:04.9425278Z #23 pushing layer 48f9c09d54eb 3.0s done
+2026-03-13T20:51:05.1568845Z #23 pushing layer 5d6ecfb81560 3.2s done
+2026-03-13T20:51:05.4674287Z #23 pushing layer 45a934a0c34b 3.6s done
+2026-03-13T20:51:05.4674868Z #23 pushing layer 106eb71471a5 3.5s done
+2026-03-13T20:51:05.4675422Z #23 pushing layer c9cf6f90b2da 2.06MB / 26.93MB 3.6s
+2026-03-13T20:51:05.5725905Z #23 pushing layer 2ee6192a15a9 85.60MB / 814.80MB 3.6s
+2026-03-13T20:51:05.5726407Z #23 pushing layer c9cf6f90b2da 4.41MB / 26.93MB 3.7s
+2026-03-13T20:51:05.6803960Z #23 pushing layer c9cf6f90b2da 7.02MB / 26.93MB 3.8s
+2026-03-13T20:51:05.7805988Z #23 pushing layer c9cf6f90b2da 9.96MB / 26.93MB 3.9s
+2026-03-13T20:51:05.8885774Z #23 pushing layer c9cf6f90b2da 12.91MB / 26.93MB 4.0s
+2026-03-13T20:51:05.9933879Z #23 pushing layer c9cf6f90b2da 15.86MB / 26.93MB 4.1s
+2026-03-13T20:51:06.1016075Z #23 pushing layer c9cf6f90b2da 18.81MB / 26.93MB 4.2s
+2026-03-13T20:51:06.2097811Z #23 pushing layer c9cf6f90b2da 21.76MB / 26.93MB 4.3s
+2026-03-13T20:51:06.3145064Z #23 pushing layer c9cf6f90b2da 24.71MB / 26.93MB 4.4s
+2026-03-13T20:51:06.4891601Z #23 pushing layer c9cf6f90b2da 26.98MB / 26.93MB 4.5s
+2026-03-13T20:51:07.1748127Z #23 pushing layer 2ee6192a15a9 127.19MB / 814.80MB 5.3s
+2026-03-13T20:51:07.8826880Z #23 pushing layer c9cf6f90b2da 5.9s done
+2026-03-13T20:51:08.8284569Z #23 pushing layer 2ee6192a15a9 170.83MB / 814.80MB 6.9s
+2026-03-13T20:51:10.1732224Z #23 pushing layer 2ee6192a15a9 213.86MB / 814.80MB 8.3s
+2026-03-13T20:51:11.5865672Z #23 pushing layer 2ee6192a15a9 257.51MB / 814.80MB 9.7s
+2026-03-13T20:51:13.0433336Z #23 pushing layer 2ee6192a15a9 299.93MB / 814.80MB 11.2s
+2026-03-13T20:51:14.5030862Z #23 pushing layer 2ee6192a15a9 340.76MB / 814.80MB 12.6s
+2026-03-13T20:51:16.0668614Z #23 pushing layer 2ee6192a15a9 384.26MB / 814.80MB 14.2s
+2026-03-13T20:51:17.3813327Z #23 pushing layer 2ee6192a15a9 425.49MB / 814.80MB 15.5s
+2026-03-13T20:51:18.9155890Z #23 pushing layer 2ee6192a15a9 468.38MB / 814.80MB 17.0s
+2026-03-13T20:51:19.6557394Z #23 pushing layer 2ee6192a15a9 514.26MB / 814.80MB 17.8s
+2026-03-13T20:51:20.1709583Z #23 pushing layer 2ee6192a15a9 556.54MB / 814.80MB 18.3s
+2026-03-13T20:51:21.0948194Z #23 pushing layer 2ee6192a15a9 606.56MB / 814.80MB 19.2s
+2026-03-13T20:51:21.9339828Z #23 pushing layer 2ee6192a15a9 650.12MB / 814.80MB 20.1s
+2026-03-13T20:51:22.4562986Z #23 pushing layer 2ee6192a15a9 691.32MB / 814.80MB 20.6s
+2026-03-13T20:51:22.9704734Z #23 pushing layer 2ee6192a15a9 745.31MB / 814.80MB 21.1s
+2026-03-13T20:51:23.7081403Z #23 pushing layer 2ee6192a15a9 796.44MB / 814.80MB 21.8s
+2026-03-13T20:51:24.3361617Z #23 pushing layer 2ee6192a15a9 838.52MB / 814.80MB 22.5s
+2026-03-13T20:51:27.1656087Z #23 pushing layer 2ee6192a15a9 25.3s done
+2026-03-13T20:51:30.6196930Z #23 pushing layer 75865ff3fe02 28.7s done
+2026-03-13T20:51:30.7705026Z #23 pushing layer 36411816830b 28.7s done
+2026-03-13T20:51:30.7706066Z #23 pushing layer 8d24b1612a64 28.7s done
+2026-03-13T20:51:30.7706514Z #23 pushing layer 56668f255b47 28.7s done
+2026-03-13T20:51:30.7706922Z #23 pushing layer 9eb9a78eeb10 28.7s done
+2026-03-13T20:51:30.7707245Z #23 DONE 28.9s
+2026-03-13T20:51:31.8748470Z ##[group]ImageID
+2026-03-13T20:51:31.8748908Z sha256:1ffa5ab81140c05555771744e953dc1c6be51421f7c95092eb5dcfea65fe4868
+2026-03-13T20:51:31.8749814Z ##[endgroup]
+2026-03-13T20:51:31.8750375Z ##[group]Digest
+2026-03-13T20:51:31.8750882Z sha256:9872012653f2bcfe72cab3f15ac865197b09e8263f159c398df573ddaaef444a
+2026-03-13T20:51:31.8751643Z ##[endgroup]
+2026-03-13T20:51:31.8752198Z ##[group]Metadata
+2026-03-13T20:51:31.8752701Z {
+2026-03-13T20:51:31.8752916Z   "buildx.build.provenance": {
+2026-03-13T20:51:31.8753167Z     "builder": {
+2026-03-13T20:51:31.8753369Z       "id": ""
+2026-03-13T20:51:31.8753732Z     },
+2026-03-13T20:51:31.8754051Z     "buildType": "https://mobyproject.org/buildkit@v1",
+2026-03-13T20:51:31.8754412Z     "materials": [
+2026-03-13T20:51:31.8754698Z       {
+2026-03-13T20:51:31.8754995Z         "uri": "pkg:docker/node@20-slim?platform=linux%2Famd64",
+2026-03-13T20:51:31.8755329Z         "digest": {
+2026-03-13T20:51:31.8755696Z           "sha256": "a82f40540f5959e0003fb7b3c0f80490def2927be8bdbee7e3e0ac65cce3be92"
+2026-03-13T20:51:31.8756107Z         }
+2026-03-13T20:51:31.8756336Z       }
+2026-03-13T20:51:31.8756547Z     ],
+2026-03-13T20:51:31.8756772Z     "invocation": {
+2026-03-13T20:51:31.8757031Z       "configSource": {
+2026-03-13T20:51:31.8757305Z         "entryPoint": "Dockerfile"
+2026-03-13T20:51:31.8757587Z       },
+2026-03-13T20:51:31.8757843Z       "parameters": {
+2026-03-13T20:51:31.8758114Z         "frontend": "dockerfile.v0",
+2026-03-13T20:51:31.8758419Z         "locals": [
+2026-03-13T20:51:31.8758647Z           {
+2026-03-13T20:51:31.8758886Z             "name": "context"
+2026-03-13T20:51:31.8759174Z           },
+2026-03-13T20:51:31.8759385Z           {
+2026-03-13T20:51:31.8759636Z             "name": "dockerfile"
+2026-03-13T20:51:31.8759895Z           }
+2026-03-13T20:51:31.8760097Z         ]
+2026-03-13T20:51:31.8760327Z       },
+2026-03-13T20:51:31.8760539Z       "environment": {
+2026-03-13T20:51:31.8760808Z         "platform": "linux/amd64"
+2026-03-13T20:51:31.8761074Z       }
+2026-03-13T20:51:31.8761296Z     }
+2026-03-13T20:51:31.8761493Z   },
+2026-03-13T20:51:31.8761820Z   "buildx.build.ref": "default/default/cws1f3m7f02e2d733ya0f0dws",
+2026-03-13T20:51:31.8762462Z   "containerimage.config.digest": "sha256:1ffa5ab81140c05555771744e953dc1c6be51421f7c95092eb5dcfea65fe4868",
+2026-03-13T20:51:31.8763245Z   "containerimage.digest": "sha256:9872012653f2bcfe72cab3f15ac865197b09e8263f159c398df573ddaaef444a",
+2026-03-13T20:51:31.8764170Z   "image.name": "docker.io/***/upgrade-backend:latest"
+2026-03-13T20:51:31.8764541Z }
+2026-03-13T20:51:31.8765051Z ##[endgroup]
+2026-03-13T20:51:31.8859536Z ##[group]Run docker/build-push-action@v5
+2026-03-13T20:51:31.8859844Z with:
+2026-03-13T20:51:31.8860042Z   context: ./client
+2026-03-13T20:51:31.8860277Z   file: client/Dockerfile
+2026-03-13T20:51:31.8860522Z   push: true
+2026-03-13T20:51:31.8860782Z   tags: ***/upgrade-frontend:latest
+2026-03-13T20:51:31.8861037Z   load: false
+2026-03-13T20:51:31.8861244Z   no-cache: false
+2026-03-13T20:51:31.8861445Z   pull: false
+2026-03-13T20:51:31.8861766Z   github-token: ***
+2026-03-13T20:51:31.8861973Z ##[endgroup]
+2026-03-13T20:51:32.0920904Z ##[group]GitHub Actions runtime token ACs
+2026-03-13T20:51:32.0931039Z refs/heads/main: read/write
+2026-03-13T20:51:32.0932193Z ##[endgroup]
+2026-03-13T20:51:32.0934980Z ##[group]Docker info
+2026-03-13T20:51:32.0971578Z [command]/usr/bin/docker version
+2026-03-13T20:51:32.1168536Z Client: Docker Engine - Community
+2026-03-13T20:51:32.1169061Z  Version:           28.0.4
+2026-03-13T20:51:32.1169483Z  API version:       1.48
+2026-03-13T20:51:32.1169965Z  Go version:        go1.23.7
+2026-03-13T20:51:32.1170366Z  Git commit:        b8034c0
+2026-03-13T20:51:32.1171501Z  Built:             Tue Mar 25 15:07:16 2025
+2026-03-13T20:51:32.1172414Z  OS/Arch:           linux/amd64
+2026-03-13T20:51:32.1172789Z  Context:           default
+2026-03-13T20:51:32.1173026Z 
+2026-03-13T20:51:32.1173201Z Server: Docker Engine - Community
+2026-03-13T20:51:32.1173777Z  Engine:
+2026-03-13T20:51:32.1174090Z   Version:          28.0.4
+2026-03-13T20:51:32.1174487Z   API version:      1.48 (minimum version 1.24)
+2026-03-13T20:51:32.1174968Z   Go version:       go1.23.7
+2026-03-13T20:51:32.1175336Z   Git commit:       6430e49
+2026-03-13T20:51:32.1175798Z   Built:            Tue Mar 25 15:07:16 2025
+2026-03-13T20:51:32.1176232Z   OS/Arch:          linux/amd64
+2026-03-13T20:51:32.1176626Z   Experimental:     false
+2026-03-13T20:51:32.1177000Z  containerd:
+2026-03-13T20:51:32.1177369Z   Version:          v2.2.1
+2026-03-13T20:51:32.1177889Z   GitCommit:        dea7da592f5d1d2b7755e3a161be07f43fad8f75
+2026-03-13T20:51:32.1178420Z  runc:
+2026-03-13T20:51:32.1178715Z   Version:          1.3.4
+2026-03-13T20:51:32.1179099Z   GitCommit:        v1.3.4-0-gd6d73eb8
+2026-03-13T20:51:32.1179539Z  docker-init:
+2026-03-13T20:51:32.1179862Z   Version:          0.19.0
+2026-03-13T20:51:32.1180240Z   GitCommit:        de40ad0
+2026-03-13T20:51:32.1213680Z [command]/usr/bin/docker info
+2026-03-13T20:51:32.1710384Z Client: Docker Engine - Community
+2026-03-13T20:51:32.1710875Z  Version:    28.0.4
+2026-03-13T20:51:32.1711227Z  Context:    default
+2026-03-13T20:51:32.1711526Z  Debug Mode: false
+2026-03-13T20:51:32.1711851Z  Plugins:
+2026-03-13T20:51:32.1712219Z   buildx: Docker Buildx (Docker Inc.)
+2026-03-13T20:51:32.1712655Z     Version:  v0.31.1
+2026-03-13T20:51:32.1713092Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2026-03-13T20:51:32.1714022Z   compose: Docker Compose (Docker Inc.)
+2026-03-13T20:51:32.1714511Z     Version:  v2.38.2
+2026-03-13T20:51:32.1715040Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2026-03-13T20:51:32.1715476Z 
+2026-03-13T20:51:32.1715627Z Server:
+2026-03-13T20:51:32.1715970Z  Containers: 0
+2026-03-13T20:51:32.1716339Z   Running: 0
+2026-03-13T20:51:32.1716687Z   Paused: 0
+2026-03-13T20:51:32.1717018Z   Stopped: 0
+2026-03-13T20:51:32.1717336Z  Images: 3
+2026-03-13T20:51:32.1717638Z  Server Version: 28.0.4
+2026-03-13T20:51:32.1718044Z  Storage Driver: overlay2
+2026-03-13T20:51:32.1718470Z   Backing Filesystem: extfs
+2026-03-13T20:51:32.1718873Z   Supports d_type: true
+2026-03-13T20:51:32.1719251Z   Using metacopy: false
+2026-03-13T20:51:32.1719665Z   Native Overlay Diff: false
+2026-03-13T20:51:32.1720082Z   userxattr: false
+2026-03-13T20:51:32.1720477Z  Logging Driver: json-file
+2026-03-13T20:51:32.1720860Z  Cgroup Driver: systemd
+2026-03-13T20:51:32.1721250Z  Cgroup Version: 2
+2026-03-13T20:51:32.1721613Z  Plugins:
+2026-03-13T20:51:32.1721940Z   Volume: local
+2026-03-13T20:51:32.1722363Z   Network: bridge host ipvlan macvlan null overlay
+2026-03-13T20:51:32.1723700Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2026-03-13T20:51:32.1724268Z  Swarm: inactive
+2026-03-13T20:51:32.1724640Z  Runtimes: io.containerd.runc.v2 runc
+2026-03-13T20:51:32.1725075Z  Default Runtime: runc
+2026-03-13T20:51:32.1725449Z  Init Binary: docker-init
+2026-03-13T20:51:32.1725916Z  containerd version: dea7da592f5d1d2b7755e3a161be07f43fad8f75
+2026-03-13T20:51:32.1726472Z  runc version: v1.3.4-0-gd6d73eb8
+2026-03-13T20:51:32.1726908Z  init version: de40ad0
+2026-03-13T20:51:32.1727289Z  Security Options:
+2026-03-13T20:51:32.1727678Z   apparmor
+2026-03-13T20:51:32.1727963Z   seccomp
+2026-03-13T20:51:32.1728274Z    Profile: builtin
+2026-03-13T20:51:32.1728586Z   cgroupns
+2026-03-13T20:51:32.1728887Z  Kernel Version: 6.14.0-1017-azure
+2026-03-13T20:51:32.1729303Z  Operating System: Ubuntu 24.04.3 LTS
+2026-03-13T20:51:32.1729695Z  OSType: linux
+2026-03-13T20:51:32.1730022Z  Architecture: x86_64
+2026-03-13T20:51:32.1730326Z  CPUs: 4
+2026-03-13T20:51:32.1730610Z  Total Memory: 15.61GiB
+2026-03-13T20:51:32.1730973Z  Name: runnervm0kj6c
+2026-03-13T20:51:32.1731333Z  ID: 189d60bd-a351-4054-af4e-5414e7eef06b
+2026-03-13T20:51:32.1732035Z  Docker Root Dir: /var/lib/docker
+2026-03-13T20:51:32.1732428Z  Debug Mode: false
+2026-03-13T20:51:32.1732867Z  Username: ***
+2026-03-13T20:51:32.1733166Z  Experimental: false
+2026-03-13T20:51:32.1733504Z  Insecure Registries:
+2026-03-13T20:51:32.1734062Z   ::1/128
+2026-03-13T20:51:32.1734362Z   127.0.0.0/8
+2026-03-13T20:51:32.1734698Z  Live Restore Enabled: false
+2026-03-13T20:51:32.1734969Z 
+2026-03-13T20:51:32.1735504Z ##[endgroup]
+2026-03-13T20:51:32.1736103Z ##[group]Proxy configuration
+2026-03-13T20:51:32.1736524Z No proxy configuration found
+2026-03-13T20:51:32.1737141Z ##[endgroup]
+2026-03-13T20:51:32.2354008Z ##[group]Buildx version
+2026-03-13T20:51:32.2375498Z [command]/usr/bin/docker buildx version
+2026-03-13T20:51:32.2942438Z github.com/docker/buildx v0.31.1 a2675950d46b2cb171b23c2015ca44fb88607531
+2026-03-13T20:51:32.2964249Z ##[endgroup]
+2026-03-13T20:51:32.2964717Z ##[group]Builder info
+2026-03-13T20:51:32.3672161Z {
+2026-03-13T20:51:32.3672538Z   "nodes": [
+2026-03-13T20:51:32.3672863Z     {
+2026-03-13T20:51:32.3673207Z       "name": "default",
+2026-03-13T20:51:32.3673798Z       "endpoint": "default",
+2026-03-13T20:51:32.3674224Z       "status": "running",
+2026-03-13T20:51:32.3674624Z       "buildkit": "v0.20.2",
+2026-03-13T20:51:32.3675301Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/amd64/v4,linux/386",
+2026-03-13T20:51:32.3675997Z       "features": {
+2026-03-13T20:51:32.3676547Z         "Automatically load images to the Docker Engine image store": true,
+2026-03-13T20:51:32.3677177Z         "Cache export": true,
+2026-03-13T20:51:32.3677606Z         "Direct push": true,
+2026-03-13T20:51:32.3678036Z         "Docker exporter": true,
+2026-03-13T20:51:32.3678473Z         "Multi-platform build": true,
+2026-03-13T20:51:32.3678923Z         "OCI exporter": true
+2026-03-13T20:51:32.3679329Z       },
+2026-03-13T20:51:32.3679662Z       "labels": {
+2026-03-13T20:51:32.3680244Z         "org.mobyproject.buildkit.worker.moby.host-gateway-ip": "172.17.0.1"
+2026-03-13T20:51:32.3680859Z       }
+2026-03-13T20:51:32.3681160Z     }
+2026-03-13T20:51:32.3681432Z   ],
+2026-03-13T20:51:32.3681727Z   "name": "default",
+2026-03-13T20:51:32.3682105Z   "driver": "docker",
+2026-03-13T20:51:32.3682524Z   "lastActivity": "2026-03-13T20:50:11.000Z"
+2026-03-13T20:51:32.3682985Z }
+2026-03-13T20:51:32.3684008Z ##[endgroup]
+2026-03-13T20:51:32.5020335Z [command]/usr/bin/docker buildx build --file client/Dockerfile --iidfile /home/runner/work/_temp/docker-actions-toolkit-Ipcdwd/build-iidfile-1147ed90b1.txt --tag ***/upgrade-frontend:latest --metadata-file /home/runner/work/_temp/docker-actions-toolkit-Ipcdwd/build-metadata-fde1814992.json --push ./client
+2026-03-13T20:51:32.7348058Z #0 building with "default" instance using docker driver
+2026-03-13T20:51:32.7348336Z 
+2026-03-13T20:51:32.7348482Z #1 [internal] load build definition from Dockerfile
+2026-03-13T20:51:32.7349128Z #1 transferring dockerfile: 342B done
+2026-03-13T20:51:32.7349408Z #1 DONE 0.0s
+2026-03-13T20:51:32.7349533Z 
+2026-03-13T20:51:32.7349697Z #2 [internal] load metadata for docker.io/library/node:18-alpine
+2026-03-13T20:51:32.8976927Z #2 ...
+2026-03-13T20:51:32.8977126Z 
+2026-03-13T20:51:32.8977334Z #3 [auth] library/nginx:pull token for registry-1.docker.io
+2026-03-13T20:51:32.8977676Z #3 DONE 0.0s
+2026-03-13T20:51:33.0479159Z 
+2026-03-13T20:51:33.0479810Z #4 [internal] load metadata for docker.io/library/nginx:alpine
+2026-03-13T20:51:33.2336798Z #4 ...
+2026-03-13T20:51:33.2336985Z 
+2026-03-13T20:51:33.2337212Z #2 [internal] load metadata for docker.io/library/node:18-alpine
+2026-03-13T20:51:33.2337574Z #2 DONE 0.6s
+2026-03-13T20:51:33.3841207Z 
+2026-03-13T20:51:33.3841868Z #4 [internal] load metadata for docker.io/library/nginx:alpine
+2026-03-13T20:51:33.4177365Z #4 DONE 0.8s
+2026-03-13T20:51:33.5343694Z 
+2026-03-13T20:51:33.5344276Z #5 [internal] load .dockerignore
+2026-03-13T20:51:33.5344820Z #5 transferring context: 2B done
+2026-03-13T20:51:33.5345152Z #5 DONE 0.0s
+2026-03-13T20:51:33.5345308Z 
+2026-03-13T20:51:33.5345446Z #6 [internal] load build context
+2026-03-13T20:51:33.5346217Z #6 transferring context: 498.56kB done
+2026-03-13T20:51:33.5346493Z #6 DONE 0.0s
+2026-03-13T20:51:33.5346613Z 
+2026-03-13T20:51:33.5346989Z #7 [build 1/6] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2026-03-13T20:51:33.5347766Z #7 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e done
+2026-03-13T20:51:33.5348451Z #7 sha256:929b04d7c782f04f615cf785488fed452b6569f87c73ff666ad553a7554f0006 1.72kB / 1.72kB done
+2026-03-13T20:51:33.5349080Z #7 sha256:ee77c6cd7c1886ecc802ad6cedef3a8ec1ea27d1fb96162bf03dd3710839b8da 6.18kB / 6.18kB done
+2026-03-13T20:51:33.5349672Z #7 sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0B / 3.64MB 0.1s
+2026-03-13T20:51:33.5350256Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 0B / 40.01MB 0.1s
+2026-03-13T20:51:33.5350843Z #7 sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 0B / 1.26MB 0.1s
+2026-03-13T20:51:33.5351426Z #7 sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 7.67kB / 7.67kB done
+2026-03-13T20:51:33.7148925Z #7 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870
+2026-03-13T20:51:33.8344649Z #7 sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 3.64MB / 3.64MB 0.3s done
+2026-03-13T20:51:33.8345337Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 4.19MB / 40.01MB 0.4s
+2026-03-13T20:51:33.8345977Z #7 sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 1.26MB / 1.26MB 0.4s done
+2026-03-13T20:51:33.8346617Z #7 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0.1s done
+2026-03-13T20:51:33.8347242Z #7 sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 0B / 446B 0.4s
+2026-03-13T20:51:33.9357957Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 12.58MB / 40.01MB 0.5s
+2026-03-13T20:51:33.9358896Z #7 sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 446B / 446B 0.4s done
+2026-03-13T20:51:34.0358406Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 20.97MB / 40.01MB 0.6s
+2026-03-13T20:51:34.1899764Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 31.46MB / 40.01MB 0.7s
+2026-03-13T20:51:34.3342028Z #7 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 40.01MB / 40.01MB 0.9s done
+2026-03-13T20:51:34.4358000Z #7 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e
+2026-03-13T20:51:35.3879400Z #7 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 0.9s done
+2026-03-13T20:51:35.3880487Z #7 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3
+2026-03-13T20:51:35.6031880Z #7 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 0.0s done
+2026-03-13T20:51:35.6032657Z #7 extracting sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 done
+2026-03-13T20:51:35.6033093Z #7 DONE 2.0s
+2026-03-13T20:51:35.6033223Z 
+2026-03-13T20:51:35.6033718Z #8 [stage-1 1/3] FROM docker.io/library/nginx:alpine@sha256:f46cb72c7df02710e693e863a983ac42f6a9579058a59a35f1ae36c9958e4ce0
+2026-03-13T20:51:35.6034683Z #8 resolve docker.io/library/nginx:alpine@sha256:f46cb72c7df02710e693e863a983ac42f6a9579058a59a35f1ae36c9958e4ce0 done
+2026-03-13T20:51:35.6035370Z #8 sha256:08fe94b0d1e72fc687840f5696f6e107a85c327b1bcb8a7acc22f8c100227c67 2.50kB / 2.50kB done
+2026-03-13T20:51:35.6035978Z #8 sha256:d0c7807749103be4b1fcd09378f16ed4146c79e76e97ad26d0545004cc67474c 12.32kB / 12.32kB done
+2026-03-13T20:51:35.6036610Z #8 sha256:f46cb72c7df02710e693e863a983ac42f6a9579058a59a35f1ae36c9958e4ce0 10.33kB / 10.33kB done
+2026-03-13T20:51:35.6037240Z #8 sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 3.86MB / 3.86MB 0.7s done
+2026-03-13T20:51:35.6037882Z #8 sha256:d2a46166eee6d30856269bbf4ad826481d04dd4108aca73e3e974fab7fdb6dad 1.87MB / 1.87MB 0.8s done
+2026-03-13T20:51:35.6038796Z #8 extracting sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 0.1s done
+2026-03-13T20:51:35.6039396Z #8 sha256:593488f95c358628770935110ccf26bd7b3aba382b10126980e630a6dd2757fc 626B / 626B 0.8s done
+2026-03-13T20:51:35.6039998Z #8 extracting sha256:d2a46166eee6d30856269bbf4ad826481d04dd4108aca73e3e974fab7fdb6dad 0.0s done
+2026-03-13T20:51:35.6040611Z #8 sha256:e19aff8f2cce9241a3cbb1f501d16d9d76b7f22e7b544f4e373d8b22496bfcaf 952B / 952B 0.9s done
+2026-03-13T20:51:35.6041198Z #8 extracting sha256:593488f95c358628770935110ccf26bd7b3aba382b10126980e630a6dd2757fc done
+2026-03-13T20:51:35.6041795Z #8 sha256:1f25242adbdb4bf04c16ac9fbe5385a46cf0f1fbee7d8e7945ef342b794d1bf1 1.21kB / 1.21kB 1.1s done
+2026-03-13T20:51:35.6042425Z #8 sha256:1549d7aec9620db68aa7a5ea05aa08590d8f46598bb4b4e0e356753b44c694d4 403B / 403B 1.0s done
+2026-03-13T20:51:35.6043046Z #8 extracting sha256:e19aff8f2cce9241a3cbb1f501d16d9d76b7f22e7b544f4e373d8b22496bfcaf done
+2026-03-13T20:51:35.6043781Z #8 sha256:c32126d2b96c212b17a4fa8384c2aaf3e3418d4b2988c303df255de884a2a73a 1.40kB / 1.40kB 1.1s done
+2026-03-13T20:51:35.6044393Z #8 extracting sha256:1549d7aec9620db68aa7a5ea05aa08590d8f46598bb4b4e0e356753b44c694d4 done
+2026-03-13T20:51:35.6044971Z #8 extracting sha256:1f25242adbdb4bf04c16ac9fbe5385a46cf0f1fbee7d8e7945ef342b794d1bf1 done
+2026-03-13T20:51:35.6045587Z #8 sha256:c24026275c332ec39b54c7094c7ce6d97b0dde17bb91e53b4b2d7dd88da7d8f0 20.25MB / 20.25MB 1.5s done
+2026-03-13T20:51:35.6046204Z #8 extracting sha256:c32126d2b96c212b17a4fa8384c2aaf3e3418d4b2988c303df255de884a2a73a done
+2026-03-13T20:51:35.6046795Z #8 extracting sha256:c24026275c332ec39b54c7094c7ce6d97b0dde17bb91e53b4b2d7dd88da7d8f0 0.3s done
+2026-03-13T20:51:35.6047379Z #8 DONE 2.0s
+2026-03-13T20:51:35.6047556Z 
+2026-03-13T20:51:35.6047691Z #9 [build 2/6] WORKDIR /app
+2026-03-13T20:51:35.6048054Z #9 DONE 0.0s
+2026-03-13T20:51:35.6048238Z 
+2026-03-13T20:51:35.6048445Z #10 [build 3/6] COPY package*.json ./
+2026-03-13T20:51:35.6048734Z #10 DONE 0.0s
+2026-03-13T20:51:35.6048854Z 
+2026-03-13T20:51:35.6048951Z #11 [build 4/6] RUN npm ci
+2026-03-13T20:51:36.1727290Z #11 0.720 npm warn EBADENGINE Unsupported engine {
+2026-03-13T20:51:36.1728021Z #11 0.720 npm warn EBADENGINE   package: '@vitejs/plugin-react@5.1.4',
+2026-03-13T20:51:36.1728788Z #11 0.720 npm warn EBADENGINE   required: { node: '^20.19.0 || >=22.12.0' },
+2026-03-13T20:51:36.1729279Z #11 0.720 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-03-13T20:51:36.1729726Z #11 0.720 npm warn EBADENGINE }
+2026-03-13T20:51:36.3265101Z #11 0.722 npm warn EBADENGINE Unsupported engine {
+2026-03-13T20:51:36.3265713Z #11 0.722 npm warn EBADENGINE   package: 'react-router@7.13.0',
+2026-03-13T20:51:36.3266466Z #11 0.722 npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-03-13T20:51:36.3266897Z #11 0.722 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-03-13T20:51:36.3267292Z #11 0.722 npm warn EBADENGINE }
+2026-03-13T20:51:36.3267586Z #11 0.723 npm warn EBADENGINE Unsupported engine {
+2026-03-13T20:51:36.3267963Z #11 0.723 npm warn EBADENGINE   package: 'react-router-dom@7.13.0',
+2026-03-13T20:51:36.3268356Z #11 0.723 npm warn EBADENGINE   required: { node: '>=20.0.0' },
+2026-03-13T20:51:36.3268778Z #11 0.723 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-03-13T20:51:36.3269132Z #11 0.723 npm warn EBADENGINE }
+2026-03-13T20:51:36.3269404Z #11 0.723 npm warn EBADENGINE Unsupported engine {
+2026-03-13T20:51:36.3269741Z #11 0.723 npm warn EBADENGINE   package: 'vite@7.3.1',
+2026-03-13T20:51:36.3270122Z #11 0.723 npm warn EBADENGINE   required: { node: '^20.19.0 || >=22.12.0' },
+2026-03-13T20:51:36.3270557Z #11 0.723 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-03-13T20:51:36.3270911Z #11 0.723 npm warn EBADENGINE }
+2026-03-13T20:51:45.9018444Z #11 10.45 
+2026-03-13T20:51:45.9019017Z #11 10.45 added 344 packages, and audited 345 packages in 10s
+2026-03-13T20:51:45.9019926Z #11 10.45 
+2026-03-13T20:51:46.0721605Z #11 10.45 53 packages are looking for funding
+2026-03-13T20:51:46.0722057Z #11 10.45   run `npm fund` for details
+2026-03-13T20:51:46.0722341Z #11 10.47 
+2026-03-13T20:51:46.0722591Z #11 10.47 4 vulnerabilities (1 moderate, 3 high)
+2026-03-13T20:51:46.0722872Z #11 10.47 
+2026-03-13T20:51:46.0723083Z #11 10.47 To address all issues, run:
+2026-03-13T20:51:46.0723346Z #11 10.47   npm audit fix
+2026-03-13T20:51:46.0723763Z #11 10.47 
+2026-03-13T20:51:46.0724095Z #11 10.47 Run `npm audit` for details.
+2026-03-13T20:51:46.0724519Z #11 10.47 npm notice
+2026-03-13T20:51:46.0724880Z #11 10.47 npm notice New major version of npm available! 10.8.2 -> 11.11.1
+2026-03-13T20:51:46.0725546Z #11 10.47 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.11.1
+2026-03-13T20:51:46.0726279Z #11 10.47 npm notice To update run: npm install -g npm@11.11.1
+2026-03-13T20:51:46.0726604Z #11 10.47 npm notice
+2026-03-13T20:51:46.5701961Z #11 DONE 11.1s
+2026-03-13T20:51:46.7358982Z 
+2026-03-13T20:51:46.7359758Z #12 [build 5/6] COPY . .
+2026-03-13T20:51:46.7360064Z #12 DONE 0.0s
+2026-03-13T20:51:46.7360193Z 
+2026-03-13T20:51:46.7360301Z #13 [build 6/6] RUN npm run build
+2026-03-13T20:51:46.8140488Z #13 0.229 
+2026-03-13T20:51:46.8140899Z #13 0.229 > client@0.0.0 build
+2026-03-13T20:51:46.8141364Z #13 0.229 > tsc -b && vite build
+2026-03-13T20:51:46.8141782Z #13 0.229 
+2026-03-13T20:51:51.8756634Z #13 5.290 You are using Node.js 18.20.8. Vite requires Node.js version 20.19+ or 22.12+. Please upgrade your Node.js version.
+2026-03-13T20:51:52.0441618Z #13 5.459 vite v7.3.1 building client environment for production...
+2026-03-13T20:51:52.2581924Z #13 5.522 transforming...
+2026-03-13T20:52:07.1908305Z #13 20.61 ✓ 9972 modules transformed.
+2026-03-13T20:52:08.6057442Z #13 22.02 rendering chunks...
+2026-03-13T20:52:08.7064354Z #13 22.05 computing gzip size...
+2026-03-13T20:52:08.7065243Z #13 22.12 dist/index.html                     0.45 kB │ gzip:   0.29 kB
+2026-03-13T20:52:08.7066180Z #13 22.12 dist/assets/index-CvivjFEo.css      1.19 kB │ gzip:   0.57 kB
+2026-03-13T20:52:08.8582698Z #13 22.12 dist/assets/index-B6PAO_wi.js   2,562.22 kB │ gzip: 805.85 kB
+2026-03-13T20:52:08.8584063Z #13 22.12 
+2026-03-13T20:52:08.8587378Z #13 22.12 (!) Some chunks are larger than 500 kB after minification. Consider:
+2026-03-13T20:52:08.8588084Z #13 22.12 - Using dynamic import() to code-split the application
+2026-03-13T20:52:08.8589165Z #13 22.12 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+2026-03-13T20:52:08.8590306Z #13 22.12 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+2026-03-13T20:52:08.8591068Z #13 22.12 ✓ built in 16.63s
+2026-03-13T20:52:08.8782848Z #13 DONE 22.3s
+2026-03-13T20:52:09.5478652Z 
+2026-03-13T20:52:09.5479446Z #14 [stage-1 2/3] COPY --from=build /app/dist /usr/share/nginx/html
+2026-03-13T20:52:09.7238716Z #14 DONE 0.0s
+2026-03-13T20:52:09.7239016Z 
+2026-03-13T20:52:09.7239335Z #15 [stage-1 3/3] COPY nginx.conf /etc/nginx/conf.d/default.conf
+2026-03-13T20:52:09.7239741Z #15 DONE 0.0s
+2026-03-13T20:52:09.7239860Z 
+2026-03-13T20:52:09.7239956Z #16 exporting to image
+2026-03-13T20:52:09.7240179Z #16 exporting layers
+2026-03-13T20:52:10.0055317Z #16 exporting layers 0.4s done
+2026-03-13T20:52:10.1747133Z #16 writing image sha256:27f9ae1c2f9dd02066158ae9a9ae4982823f5bd24cd845314c72e30042050d01 done
+2026-03-13T20:52:10.1747824Z #16 naming to docker.io/***/upgrade-frontend:latest done
+2026-03-13T20:52:10.1748145Z #16 DONE 0.4s
+2026-03-13T20:52:10.1748285Z 
+2026-03-13T20:52:10.1748415Z #17 resolving provenance for metadata file
+2026-03-13T20:52:10.1748698Z #17 DONE 0.0s
+2026-03-13T20:52:10.1748834Z 
+2026-03-13T20:52:10.1749150Z #18 pushing ***/upgrade-frontend:latest with docker
+2026-03-13T20:52:10.1965318Z #18 pushing layer 5ff8924d4cc6
+2026-03-13T20:52:10.3468864Z #18 pushing layer 3bae2606c542
+2026-03-13T20:52:10.3469223Z #18 pushing layer d408059e7553
+2026-03-13T20:52:10.3469862Z #18 pushing layer 5693fac86db4
+2026-03-13T20:52:10.3470117Z #18 pushing layer 04297a721e7f
+2026-03-13T20:52:10.3470372Z #18 pushing layer e0fe744d26d4
+2026-03-13T20:52:10.3470621Z #18 pushing layer 09c3b60a3926
+2026-03-13T20:52:10.3470862Z #18 pushing layer ea6528e53783
+2026-03-13T20:52:10.3471114Z #18 pushing layer 5bb518009c83
+2026-03-13T20:52:10.3471358Z #18 pushing layer 989e799e6349
+2026-03-13T20:52:10.6287231Z #18 pushing layer 5ff8924d4cc6 512B / 1.79kB 0.4s
+2026-03-13T20:52:10.7418401Z #18 pushing layer 5ff8924d4cc6 5.12kB / 1.79kB 0.4s
+2026-03-13T20:52:10.7418953Z #18 pushing layer 3bae2606c542 265.22kB / 2.59MB 0.5s
+2026-03-13T20:52:10.8420607Z #18 pushing layer 3bae2606c542 1.08MB / 2.59MB 0.6s
+2026-03-13T20:52:10.9426644Z #18 pushing layer 3bae2606c542 2.23MB / 2.59MB 0.7s
+2026-03-13T20:52:11.1072873Z #18 pushing layer 3bae2606c542 2.60MB / 2.59MB 0.8s
+2026-03-13T20:52:11.8717529Z #18 pushing layer 5ff8924d4cc6 1.7s done
+2026-03-13T20:52:12.1467566Z #18 pushing layer 3bae2606c542 2.0s done
+2026-03-13T20:52:15.5418369Z #18 pushing layer d408059e7553 5.3s done
+2026-03-13T20:52:15.6924147Z #18 pushing layer 5693fac86db4 5.3s done
+2026-03-13T20:52:15.6924718Z #18 pushing layer 04297a721e7f 5.3s done
+2026-03-13T20:52:15.6925202Z #18 pushing layer e0fe744d26d4 5.3s done
+2026-03-13T20:52:15.6925679Z #18 pushing layer 09c3b60a3926 5.3s done
+2026-03-13T20:52:15.6926072Z #18 pushing layer ea6528e53783 5.3s done
+2026-03-13T20:52:15.6926338Z #18 pushing layer 5bb518009c83 5.3s done
+2026-03-13T20:52:15.6926602Z #18 pushing layer 989e799e6349 5.3s done
+2026-03-13T20:52:15.6926860Z #18 DONE 5.5s
+2026-03-13T20:52:16.7270294Z ##[group]ImageID
+2026-03-13T20:52:16.7270932Z sha256:27f9ae1c2f9dd02066158ae9a9ae4982823f5bd24cd845314c72e30042050d01
+2026-03-13T20:52:16.7271823Z ##[endgroup]
+2026-03-13T20:52:16.7272423Z ##[group]Digest
+2026-03-13T20:52:16.7272996Z sha256:7d6defe3d0ea30fe34f0fee83fe80d9b21677fdedbc6233dfef24af061e5a433
+2026-03-13T20:52:16.7275853Z ##[endgroup]
+2026-03-13T20:52:16.7276513Z ##[group]Metadata
+2026-03-13T20:52:16.7276851Z {
+2026-03-13T20:52:16.7277190Z   "buildx.build.provenance": {
+2026-03-13T20:52:16.7277624Z     "builder": {
+2026-03-13T20:52:16.7277962Z       "id": ""
+2026-03-13T20:52:16.7278164Z     },
+2026-03-13T20:52:16.7278430Z     "buildType": "https://mobyproject.org/buildkit@v1",
+2026-03-13T20:52:16.7278735Z     "materials": [
+2026-03-13T20:52:16.7279006Z       {
+2026-03-13T20:52:16.7279298Z         "uri": "pkg:docker/nginx@alpine?platform=linux%2Famd64",
+2026-03-13T20:52:16.7279628Z         "digest": {
+2026-03-13T20:52:16.7279970Z           "sha256": "f46cb72c7df02710e693e863a983ac42f6a9579058a59a35f1ae36c9958e4ce0"
+2026-03-13T20:52:16.7280371Z         }
+2026-03-13T20:52:16.7280575Z       },
+2026-03-13T20:52:16.7280783Z       {
+2026-03-13T20:52:16.7281273Z         "uri": "pkg:docker/node@18-alpine?platform=linux%2Famd64",
+2026-03-13T20:52:16.7281614Z         "digest": {
+2026-03-13T20:52:16.7281943Z           "sha256": "8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e"
+2026-03-13T20:52:16.7282345Z         }
+2026-03-13T20:52:16.7282554Z       }
+2026-03-13T20:52:16.7282759Z     ],
+2026-03-13T20:52:16.7282969Z     "invocation": {
+2026-03-13T20:52:16.7283228Z       "configSource": {
+2026-03-13T20:52:16.7283492Z         "entryPoint": "Dockerfile"
+2026-03-13T20:52:16.7283935Z       },
+2026-03-13T20:52:16.7284170Z       "parameters": {
+2026-03-13T20:52:16.7284444Z         "frontend": "dockerfile.v0",
+2026-03-13T20:52:16.7284731Z         "locals": [
+2026-03-13T20:52:16.7284948Z           {
+2026-03-13T20:52:16.7285184Z             "name": "context"
+2026-03-13T20:52:16.7285440Z           },
+2026-03-13T20:52:16.7285651Z           {
+2026-03-13T20:52:16.7285889Z             "name": "dockerfile"
+2026-03-13T20:52:16.7286148Z           }
+2026-03-13T20:52:16.7286350Z         ]
+2026-03-13T20:52:16.7286557Z       },
+2026-03-13T20:52:16.7286776Z       "environment": {
+2026-03-13T20:52:16.7287025Z         "platform": "linux/amd64"
+2026-03-13T20:52:16.7287438Z       }
+2026-03-13T20:52:16.7287638Z     }
+2026-03-13T20:52:16.7287839Z   },
+2026-03-13T20:52:16.7288147Z   "buildx.build.ref": "default/default/o2r02d93c50yzdr8mn6qwe4ck",
+2026-03-13T20:52:16.7288775Z   "containerimage.config.digest": "sha256:27f9ae1c2f9dd02066158ae9a9ae4982823f5bd24cd845314c72e30042050d01",
+2026-03-13T20:52:16.7289534Z   "containerimage.digest": "sha256:7d6defe3d0ea30fe34f0fee83fe80d9b21677fdedbc6233dfef24af061e5a433",
+2026-03-13T20:52:16.7290255Z   "image.name": "docker.io/***/upgrade-frontend:latest"
+2026-03-13T20:52:16.7290576Z }
+2026-03-13T20:52:16.7291000Z ##[endgroup]
+2026-03-13T20:52:16.7364056Z ##[group]Run {
+2026-03-13T20:52:16.7364349Z [36;1m{[0m
+2026-03-13T20:52:16.7364578Z [36;1m  echo 'COMPOSE_CONFIG<<EOF'[0m
+2026-03-13T20:52:16.7364913Z [36;1m  cat docker-compose.prod.yml[0m
+2026-03-13T20:52:16.7365189Z [36;1m  echo ""[0m
+2026-03-13T20:52:16.7365417Z [36;1m  echo 'EOF'[0m
+2026-03-13T20:52:16.7365656Z [36;1m  echo 'PROMETHEUS_CONFIG<<EOF'[0m
+2026-03-13T20:52:16.7366499Z [36;1m  cat prometheus.yml[0m
+2026-03-13T20:52:16.7366802Z [36;1m  echo ""[0m
+2026-03-13T20:52:16.7373025Z [36;1m  echo 'EOF'[0m
+2026-03-13T20:52:16.7373274Z [36;1m} >> "$GITHUB_ENV"[0m
+2026-03-13T20:52:16.7409114Z shell: /usr/bin/bash -e {0}
+2026-03-13T20:52:16.7409392Z ##[endgroup]
+2026-03-13T20:52:16.7579798Z ##[group]Run appleboy/ssh-action@v1.0.3
+2026-03-13T20:52:16.7580099Z with:
+2026-03-13T20:52:16.7580365Z   host: ***
+2026-03-13T20:52:16.7580570Z   username: ***
+2026-03-13T20:52:16.7582243Z   key: ***
+2026-03-13T20:52:16.7582466Z   envs: COMPOSE_CONFIG,PROMETHEUS_CONFIG
+2026-03-13T20:52:16.7594835Z   script: # Stop on first error
+set -e
+
+# Export variables for docker-compose
+export DOCKER_USERNAME=***
+
+# Login to Docker Hub to avoid rate limits
+echo "***" | docker login -u "***" --password-stdin
+
+# Pull the latest images
+docker pull ***/upgrade-backend:latest
+docker pull ***/upgrade-frontend:latest
+
+# Create project directory
+mkdir -p ~/upgrade-crm
+cd ~/upgrade-crm
+
+# Remove directory prometheus.yml if it was created by docker daemon by mistake
+if [ -d "prometheus.yml" ]; then
+    rm -rf prometheus.yml
+fi
+
+# Write config file directly (Single Source of Truth)
+echo "$COMPOSE_CONFIG" > docker-compose.prod.yml
+echo "$PROMETHEUS_CONFIG" > prometheus.yml
+
+# DEBUG: Verify config file content
+echo "=== DOCKER COMPOSE CONFIG ==="
+cat docker-compose.prod.yml
+
+# Restart services using new images
+# Prioritize 'docker compose' (v2)
+if docker compose version &> /dev/null; then
+    DC_CMD="docker compose"
+elif command -v docker-compose &> /dev/null; then
+    DC_CMD="docker-compose"
+else
+    echo "Error: Docker Compose not found"
+    exit 1
+fi
+$DC_CMD -f docker-compose.prod.yml down || true
+docker ps -a --filter "name=upgrade-crm" -q | xargs -r docker rm -f || true
+
+# Install certbot if not present
+if ! command -v certbot &> /dev/null; then
+    sudo apt-get update
+    sudo apt-get install -y certbot
+fi
+
+# Check and run Certbot before bringing containers up
+if [ ! -d "/etc/letsencrypt/live/devupgrade.***.ru" ]; then
+    echo "Certificates not found. Generating via certbot standalone..."
+    sudo certbot certonly --standalone -d devupgrade.***.ru --non-interactive --agree-tos -m dev@***.ru
+fi
+
+# Setup cron for certbot renewal if not exists
+if ! sudo crontab -l | grep -q "certbot renew"; then
+    (sudo crontab -l 2>/dev/null; echo "0 3 * * * certbot renew --pre-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml stop frontend\" --post-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml start frontend\"") | sudo crontab -
+fi
+
+$DC_CMD -f docker-compose.prod.yml up -d --remove-orphans --force-recreate
+
+# NOTE: Migrations run automatically inside NestJS on startup (PrismaService.onModuleInit)
+# No need to docker compose exec separately — that was causing exit 137 (SIGKILL)
+
+# Prune unused images
+docker image prune -f
+
+# DEBUG: Show running containers and logs
+echo "=== RUNNING CONTAINERS ==="
+docker ps -a
+
+echo "=== NGINX CONFIG CHECKSUM ==="
+$DC_CMD -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
+
+echo "=== FRONTEND LOGS ==="
+docker logs -n 20 upgrade-crm-frontend-1 || docker logs -n 20 upgrade-crm_frontend_1 || echo "Container name prediction failed"
+
+echo "=== BACKEND LOGS ==="
+docker logs -n 50 upgrade-crm-app-1 || docker logs -n 50 upgrade-crm_app_1 || echo "Container name prediction failed"
+
+2026-03-13T20:52:16.7603619Z   port: 22
+2026-03-13T20:52:16.7603846Z   timeout: 30s
+2026-03-13T20:52:16.7604051Z   command_timeout: 10m
+2026-03-13T20:52:16.7604272Z   proxy_port: 22
+2026-03-13T20:52:16.7604475Z   proxy_timeout: 30s
+2026-03-13T20:52:16.7604680Z env:
+2026-03-13T20:52:16.7614784Z   COMPOSE_CONFIG: services:
+  app:
+    # Use image from Docker Hub (built by CI/CD)
+    image: ${DOCKER_USERNAME}/upgrade-backend:latest
+    ports:
+      - '3000:3000'
+    environment:
+      DATABASE_URL: ***db:5432/upgrade_crm
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: "complex_secret_value_change_me_in_prod"
+      POSTGRES_USER: upgrade
+      POSTGRES_PASSWORD: upgrade_pass
+      POSTGRES_DB: upgrade_crm
+      # Allow frontend CORS if needed
+      FRONTEND_URL: http://devupgrade.***.ru
+      # Limit V8 heap to prevent exceeding 512M docker limit
+      NODE_OPTIONS: "--max-old-space-size=384"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    volumes:
+      - uploads_data:/app/uploads
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    restart: always
+
+  frontend:
+    # Use image from Docker Hub (built by CI/CD)
+    image: ${DOCKER_USERNAME}/upgrade-frontend:latest
+    ports:
+      - '80:80'
+      - '443:443'
+    depends_on:
+      - app
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+    restart: always
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: upgrade
+      POSTGRES_PASSWORD: upgrade_pass
+      POSTGRES_DB: upgrade_crm
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    healthcheck:
+      test: [ 'CMD-SHELL', 'pg_isready -U upgrade -d upgrade_crm' ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: always
+
+  redis:
+    image: redis:alpine
+    container_name: upgrade_redis_prod
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    ports:
+      - "9090:9090"
+    restart: always
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3001:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    restart: always
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node_exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/***fs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.***fs=/***fs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    restart: always
+    ports:
+      - "9100:9100"
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.47.0
+    container_name: cadvisor
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/***fs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg
+    restart: always
+
+volumes:
+  pgdata:
+  uploads_data:
+  redis_data:
+  prometheus_data:
+  grafana_data:
+2026-03-13T20:52:16.7626510Z   PROMETHEUS_CONFIG: global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
+
+  - job_name: 'nestjs-app'
+    static_configs:
+      - targets: ['app:3000']
+    metrics_path: '/metrics'
+2026-03-13T20:52:16.7628629Z ##[endgroup]
+2026-03-13T20:52:16.7749127Z ##[command]/usr/bin/docker run --name f0a06e3074bac750439494306cd5f7383cfe_8d70b3 --label 21f0a0 --workdir /github/workspace --rm -e "COMPOSE_CONFIG" -e "PROMETHEUS_CONFIG" -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_ENVS" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" 21f0a0:6e3074bac750439494306cd5f7383cfe
+2026-03-13T20:52:16.9091891Z ======CMD======
+2026-03-13T20:52:16.9092352Z # Stop on first error
+2026-03-13T20:52:16.9092728Z set -e
+2026-03-13T20:52:16.9092925Z 
+2026-03-13T20:52:16.9093114Z # Export variables for docker-compose
+2026-03-13T20:52:16.9093924Z export DOCKER_USERNAME=***
+2026-03-13T20:52:16.9094220Z 
+2026-03-13T20:52:16.9094329Z # Login to Docker Hub to avoid rate limits
+2026-03-13T20:52:16.9094828Z echo "***" | docker login -u "***" --password-stdin
+2026-03-13T20:52:16.9095048Z 
+2026-03-13T20:52:16.9095151Z # Pull the latest images
+2026-03-13T20:52:16.9095435Z docker pull ***/upgrade-backend:latest
+2026-03-13T20:52:16.9095740Z docker pull ***/upgrade-frontend:latest
+2026-03-13T20:52:16.9095932Z 
+2026-03-13T20:52:16.9096030Z # Create project directory
+2026-03-13T20:52:16.9096271Z mkdir -p ~/upgrade-crm
+2026-03-13T20:52:16.9096491Z cd ~/upgrade-crm
+2026-03-13T20:52:16.9096618Z 
+2026-03-13T20:52:16.9096842Z # Remove directory prometheus.yml if it was created by docker daemon by mistake
+2026-03-13T20:52:16.9097242Z if [ -d "prometheus.yml" ]; then
+2026-03-13T20:52:16.9097501Z     rm -rf prometheus.yml
+2026-03-13T20:52:16.9097719Z fi
+2026-03-13T20:52:16.9097824Z 
+2026-03-13T20:52:16.9097957Z # Write config file directly (Single Source of Truth)
+2026-03-13T20:52:16.9098513Z echo "$COMPOSE_CONFIG" > docker-compose.prod.yml
+2026-03-13T20:52:16.9098835Z echo "$PROMETHEUS_CONFIG" > prometheus.yml
+2026-03-13T20:52:16.9099028Z 
+2026-03-13T20:52:16.9099134Z # DEBUG: Verify config file content
+2026-03-13T20:52:16.9099407Z echo "=== DOCKER COMPOSE CONFIG ==="
+2026-03-13T20:52:16.9099678Z cat docker-compose.prod.yml
+2026-03-13T20:52:16.9099841Z 
+2026-03-13T20:52:16.9099945Z # Restart services using new images
+2026-03-13T20:52:16.9100210Z # Prioritize 'docker compose' (v2)
+2026-03-13T20:52:16.9100491Z if docker compose version &> /dev/null; then
+2026-03-13T20:52:16.9100765Z     DC_CMD="docker compose"
+2026-03-13T20:52:16.9101037Z elif command -v docker-compose &> /dev/null; then
+2026-03-13T20:52:16.9101341Z     DC_CMD="docker-compose"
+2026-03-13T20:52:16.9101557Z else
+2026-03-13T20:52:16.9101760Z     echo "Error: Docker Compose not found"
+2026-03-13T20:52:16.9102027Z     exit 1
+2026-03-13T20:52:16.9102206Z fi
+2026-03-13T20:52:16.9102440Z $DC_CMD -f docker-compose.prod.yml down || true
+2026-03-13T20:52:16.9102843Z docker ps -a --filter "name=upgrade-crm" -q | xargs -r docker rm -f || true
+2026-03-13T20:52:16.9103124Z 
+2026-03-13T20:52:16.9103219Z # Install certbot if not present
+2026-03-13T20:52:16.9104440Z if ! command -v certbot &> /dev/null; then
+2026-03-13T20:52:16.9104747Z     sudo apt-get update
+2026-03-13T20:52:16.9104986Z     sudo apt-get install -y certbot
+2026-03-13T20:52:16.9105277Z fi
+2026-03-13T20:52:16.9105371Z 
+2026-03-13T20:52:16.9105516Z # Check and run Certbot before bringing containers up
+2026-03-13T20:52:16.9105949Z if [ ! -d "/etc/letsencrypt/live/devupgrade.***.ru" ]; then
+2026-03-13T20:52:16.9106355Z     echo "Certificates not found. Generating via certbot standalone..."
+2026-03-13T20:52:16.9106991Z     sudo certbot certonly --standalone -d devupgrade.***.ru --non-interactive --agree-tos -m dev@***.ru
+2026-03-13T20:52:16.9107438Z fi
+2026-03-13T20:52:16.9107542Z 
+2026-03-13T20:52:16.9107662Z # Setup cron for certbot renewal if not exists
+2026-03-13T20:52:16.9107994Z if ! sudo crontab -l | grep -q "certbot renew"; then
+2026-03-13T20:52:16.9108961Z     (sudo crontab -l 2>/dev/null; echo "0 3 * * * certbot renew --pre-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml stop frontend\" --post-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml start frontend\"") | sudo crontab -
+2026-03-13T20:52:16.9109889Z fi
+2026-03-13T20:52:16.9109981Z 
+2026-03-13T20:52:16.9110182Z $DC_CMD -f docker-compose.prod.yml up -d --remove-orphans --force-recreate
+2026-03-13T20:52:16.9110469Z 
+2026-03-13T20:52:16.9110727Z # NOTE: Migrations run automatically inside NestJS on startup (PrismaService.onModuleInit)
+2026-03-13T20:52:16.9111495Z # No need to docker compose exec separately — that was causing exit 137 (SIGKILL)
+2026-03-13T20:52:16.9111785Z 
+2026-03-13T20:52:16.9111883Z # Prune unused images
+2026-03-13T20:52:16.9112109Z docker image prune -f
+2026-03-13T20:52:16.9112250Z 
+2026-03-13T20:52:16.9112362Z # DEBUG: Show running containers and logs
+2026-03-13T20:52:16.9112658Z echo "=== RUNNING CONTAINERS ==="
+2026-03-13T20:52:16.9112907Z docker ps -a
+2026-03-13T20:52:16.9113029Z 
+2026-03-13T20:52:16.9113131Z echo "=== NGINX CONFIG CHECKSUM ==="
+2026-03-13T20:52:16.9113658Z $DC_CMD -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
+2026-03-13T20:52:16.9114022Z 
+2026-03-13T20:52:16.9114116Z echo "=== FRONTEND LOGS ==="
+2026-03-13T20:52:16.9114631Z docker logs -n 20 upgrade-crm-frontend-1 || docker logs -n 20 upgrade-crm_frontend_1 || echo "Container name prediction failed"
+2026-03-13T20:52:16.9115060Z 
+2026-03-13T20:52:16.9115159Z echo "=== BACKEND LOGS ==="
+2026-03-13T20:52:16.9115622Z docker logs -n 50 upgrade-crm-app-1 || docker logs -n 50 upgrade-crm_app_1 || echo "Container name prediction failed"
+2026-03-13T20:52:16.9116005Z 
+2026-03-13T20:52:16.9116093Z ======END======
+2026-03-13T20:52:46.9097720Z 2026/03/13 20:52:46 dial tcp ***:22: i/o timeout
+2026-03-13T20:52:46.9874887Z Post job cleanup.
+2026-03-13T20:52:47.1897286Z ##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-Ipcdwd
+2026-03-13T20:52:47.1910294Z ##[endgroup]
+2026-03-13T20:52:47.1910944Z ##[group]Post cache
+2026-03-13T20:52:47.1911364Z State not set
+2026-03-13T20:52:47.1911984Z ##[endgroup]
+2026-03-13T20:52:47.2047194Z Post job cleanup.
+2026-03-13T20:52:47.4066597Z ##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-qo51Lj
+2026-03-13T20:52:47.4076394Z ##[endgroup]
+2026-03-13T20:52:47.4076932Z ##[group]Post cache
+2026-03-13T20:52:47.4078143Z State not set
+2026-03-13T20:52:47.4079131Z ##[endgroup]
+2026-03-13T20:52:47.4161152Z Post job cleanup.
+2026-03-13T20:52:47.6905058Z ##[group]Logout from docker.io
+2026-03-13T20:52:47.6948868Z [command]/usr/bin/docker logout docker.io
+2026-03-13T20:52:47.7075172Z Removing login credentials for docker.io
+2026-03-13T20:52:47.7097859Z ##[endgroup]
+2026-03-13T20:52:47.7098524Z ##[group]Post cache
+2026-03-13T20:52:47.7099322Z State not set
+2026-03-13T20:52:47.7100257Z ##[endgroup]
+2026-03-13T20:52:47.7207560Z Post job cleanup.
+2026-03-13T20:52:47.8073839Z [command]/usr/bin/git version
+2026-03-13T20:52:47.8106853Z git version 2.53.0
+2026-03-13T20:52:47.8146222Z Temporarily overriding HOME='/home/runner/work/_temp/f6205c54-c9c5-49d3-9e80-098def067e7c' before making global git config changes
+2026-03-13T20:52:47.8148392Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-13T20:52:47.8153903Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/UPGRADE/UPGRADE
+2026-03-13T20:52:47.8186295Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-13T20:52:47.8214864Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-13T20:52:47.8395659Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-13T20:52:47.8413415Z http.https://github.com/.extraheader
+2026-03-13T20:52:47.8424435Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-03-13T20:52:47.8451060Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-13T20:52:47.8622477Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-13T20:52:47.8648426Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-13T20:52:47.8909358Z Cleaning up orphan processes
+2026-03-13T20:52:47.9162006Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, docker/build-push-action@v5, docker/login-action@v3. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
