@@ -30,6 +30,9 @@ The following core Business Data requirements have been fully analyzed, implemen
 ## 3. Change Log (Post-MVP)
 *Agents: Add your completed tasks here in reverse chronological order (newest at the top).*
 
+- **2026-03-14**: Fixed speaker status and timestamp layout in `SessionDrawer.tsx` editor. The timestamp is now placed neatly under the status dropdown in a single column instead of floating incorrectly due to Flexbox.
+
+- **2026-03-14**: Successfully extracted 188 speaker photographs from the legacy `spring.upgrade.st` Tilda grid (PRD-14) using the Visual Browser Subagent to bypass obfuscation and LazyLoading. Developed the `POST /api/speakers/sync-photos` DevStand backend route to dynamically ingest JSON payloads and hydrate the PostgreSQL DB natively over HTTP. Established the `/tilda_scraping_guide` workflow for future agents.
 - **2026-03-12**: Fixed `413 Request Entity Too Large` error when uploading large files (e.g. PDF presentations) by increasing `client_max_body_size` to `50M` in the frontend Nginx configuration (`client/nginx.conf`).
 - **2026-03-12**: Designed and implemented a comprehensive Infrastructure and Application Monitoring Solution. Added an "In-App System Status" page for admins (Frontend React + NestJS Terminus). Integrated a full prometheus + Grafana stack (`prometheus`, `grafana`, `node-exporter`, `cadvisor`) into `docker-compose.prod.yml` for deep infrastructure metrics tracking.
 - **2026-03-12**: Established comprehensive E2E API and UI testing workflows on the DevStand. Created the `/e2e_devstand_ui` workflow.

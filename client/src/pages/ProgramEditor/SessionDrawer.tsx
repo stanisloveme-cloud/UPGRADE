@@ -339,33 +339,35 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                 width="sm"
                             />
 
-                            <ProFormSelect
-                                name="status"
-                                label="Статус"
-                                options={[
-                                    { value: 'confirmed', label: 'Подтвержден' },
-                                    { value: 'pre_confirmed', label: 'Предварительно подтвержден' },
-                                    { value: 'contact', label: 'Контакт' },
-                                    { value: 'to_contact', label: 'Выйти на связь' },
-                                    { value: 'declined', label: 'Отказ' },
-                                    { value: 'review', label: 'На рассмотрении' }
-                                ]}
-                                initialValue="review"
-                                allowClear={false}
-                                width="sm"
-                            />
+                            <div style={{ width: '216px' }}>
+                                <ProFormSelect
+                                    name="status"
+                                    label="Статус"
+                                    options={[
+                                        { value: 'confirmed', label: 'Подтвержден' },
+                                        { value: 'pre_confirmed', label: 'Предварительно подтвержден' },
+                                        { value: 'contact', label: 'Контакт' },
+                                        { value: 'to_contact', label: 'Выйти на связь' },
+                                        { value: 'declined', label: 'Отказ' },
+                                        { value: 'review', label: 'На рассмотрении' }
+                                    ]}
+                                    initialValue="review"
+                                    allowClear={false}
+                                    width="sm"
+                                />
 
-                            <ProFormDependency name={['statusDate', 'statusUser']}>
-                                {({ statusDate, statusUser }) => {
-                                    if (!statusDate) return null;
-                                    const shortName = statusUser ? `${statusUser.lastName || ''} ${statusUser.firstName ? statusUser.firstName.charAt(0) + '.' : ''}` : '';
-                                    return (
-                                        <div style={{ fontSize: '12px', color: '#8c8c8c', alignSelf: 'center', marginTop: '10px', marginLeft: '-15px', marginRight: '15px' }}>
-                                            {dayjs(statusDate).format('DD.MM.YY HH:mm')} {shortName ? `(${shortName})` : ''}
-                                        </div>
-                                    );
-                                }}
-                            </ProFormDependency>
+                                <ProFormDependency name={['statusDate', 'statusUser']}>
+                                    {({ statusDate, statusUser }) => {
+                                        if (!statusDate) return null;
+                                        const shortName = statusUser ? `${statusUser.lastName || ''} ${statusUser.firstName ? statusUser.firstName.charAt(0) + '.' : ''}` : '';
+                                        return (
+                                            <div style={{ fontSize: '12px', color: '#8c8c8c', marginTop: '-20px', marginBottom: '8px' }}>
+                                                {dayjs(statusDate).format('DD.MM.YY HH:mm')} {shortName ? `(${shortName})` : ''}
+                                            </div>
+                                        );
+                                    }}
+                                </ProFormDependency>
+                            </div>
 
                             <ProFormText name="companySnapshot" label="Компания" width="sm" />
                             <ProFormText name="positionSnapshot" label="Должность" width="sm" />
