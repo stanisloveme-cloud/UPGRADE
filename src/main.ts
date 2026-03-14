@@ -42,6 +42,10 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }));
 
+  // Increase payload limit for large legacy JSON imports
+  app.use(require('express').json({ limit: '50mb' }));
+  app.use(require('express').urlencoded({ limit: '50mb', extended: true }));
+
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();

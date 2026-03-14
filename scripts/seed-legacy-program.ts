@@ -1,39 +1,37 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
-import { AppService } from './app.service';
-import { PrismaService } from './prisma/prisma.service';
-import { Public } from './auth/public.decorator';
+import { PrismaClient } from '@prisma/client';
+import * as fs from 'fs';
+import * as path from 'path';
 
-@Controller()
-export class AppController {
-  constructor(
-    private readonly appService: AppService,
-    private readonly prisma: PrismaService
-  ) {}
+const prisma = new PrismaClient();
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
-
-  @Post('seed-legacy')
-  @Public()
-  async seedLegacy(@Body() parsed: any) {
+async function run() {
     console.log('🚀 Starting Legacy Event Seeding...');
 
+    const dataPath = path.resolve(__dirname, '../tmp/legacy_event_16.json');
+    if (!fs.existsSync(dataPath)) {
+        console.error('❌ File tmp/legacy_event_16.json not found!');
+        process.exit(1);
+    }
+
+    const rawData = fs.readFileSync(dataPath, 'utf8');
+    const parsed = JSON.parse(rawData);
+    
     const program = parsed.props?.program;
     if (!program || !program.conferences) {
-        return { success: false, error: 'Could not find "conferences" in the JSON payload.' };
+        console.error('❌ Could not find "conferences" in the JSON payload.');
+        process.exit(1);
     }
 
     // 1. Create a Master Event
-    const event = await this.prisma.event.create({
+    const event = await prisma.event.create({
         data: {
             name: "New Retail Forum 2025",
             startDate: new Date("2025-10-21"),
-            endDate: new Date("2025-10-22"),
+            endDate: new Date("2025-10-22"), // Assuming 2 days
             status: "published"
         }
     });
+    console.log(`✅ Created Event: ${event.name} (ID: ${event.id})`);
 
     const conferencesMap = program.conferences;
     const hallMap = new Map<string, any>(); 
@@ -43,6 +41,7 @@ export class AppController {
     let speakerCount = 0;
 
     for (const [dateStr, hallsObj] of Object.entries(conferencesMap)) {
+        // hallsObj is a map of hallId -> Array of conferences
         const typedHallsObj = hallsObj as Record<string, any[]>;
         
         for (const [legacyHallId, conferencesArr] of Object.entries(typedHallsObj)) {
@@ -51,13 +50,14 @@ export class AppController {
                 let dbHall = hallMap.get(legacyHallId);
                 if (!dbHall) {
                     const hallName = conf.event_hall?.title || `Hall ${legacyHallId}`;
-                    dbHall = await this.prisma.hall.create({
+                    dbHall = await prisma.hall.create({
                         data: {
                             eventId: event.id,
                             name: hallName
                         }
                     });
                     hallMap.set(legacyHallId, dbHall);
+                    console.log(`🏛️  Created Hall: ${hallName}`);
                 }
 
                 // Determine start and end times
@@ -75,8 +75,9 @@ export class AppController {
                     maxEnd = "18:00";
                 }
 
+                // Create Track (Conference in Legacy)
                 const day = new Date(conf.raw_date || "2025-10-21");
-                const track = await this.prisma.track.create({
+                const track = await prisma.track.create({
                     data: {
                         hallId: dbHall.id,
                         name: conf.title || "Untitled Track",
@@ -87,11 +88,12 @@ export class AppController {
                 });
                 trackCount++;
 
+                // Create Sessions
                 for (const sess of sessionsResp) {
-                    const session = await this.prisma.session.create({
+                    const session = await prisma.session.create({
                         data: {
                             trackId: track.id,
-                            name: conf.title || `Session ${sess.id}`,
+                            name: conf.title || `Session ${sess.id}`, // Legacy uses the conference title as context
                             description: sess.description || null,
                             startTime: sess.time_start.substring(0, 5),
                             endTime: sess.time_end.substring(0, 5)
@@ -99,10 +101,11 @@ export class AppController {
                     });
                     sessionCount++;
 
+                    // Create Speakers
                     const speakersResp = sess.speakers || [];
                     for (const spk of speakersResp) {
                         const person = spk.speaker_person;
-                        if (!person && !spk.temp_contact) continue;
+                        if (!person && !spk.temp_contact) continue; // skip empty
 
                         const fName = person ? (person.name || "Unknown") : (spk.temp_contact || "Unknown");
                         const lName = person ? (person.surname || "") : "";
@@ -114,12 +117,13 @@ export class AppController {
                             photoUrl = person.speaker_photo.urls.default;
                         }
 
-                        let dbSpeaker = await this.prisma.speaker.findFirst({
+                        // Upsert Speaker by Name + Last Name logic to prevent duplicates
+                        let dbSpeaker = await prisma.speaker.findFirst({
                             where: { firstName: fName, lastName: lName }
                         });
 
                         if (!dbSpeaker) {
-                            dbSpeaker = await this.prisma.speaker.create({
+                            dbSpeaker = await prisma.speaker.create({
                                 data: {
                                     firstName: fName,
                                     lastName: lName,
@@ -131,7 +135,8 @@ export class AppController {
                             });
                         }
 
-                        await this.prisma.sessionSpeaker.create({
+                        // Attach Speaker to Session
+                        await prisma.sessionSpeaker.create({
                             data: {
                                 sessionId: session.id,
                                 speakerId: dbSpeaker.id,
@@ -147,12 +152,19 @@ export class AppController {
         }
     }
 
-    return {
-        success: true,
-        eventId: event.id,
-        trackCount,
-        sessionCount,
-        speakerCount
-    };
-  }
+    console.log(`\n🎉 Import Complete!`);
+    console.log(`➡️  Tracks Imported: ${trackCount}`);
+    console.log(`➡️  Sessions Imported: ${sessionCount}`);
+    console.log(`➡️  Speakers Attached: ${speakerCount}`);
+    console.log(`\n💡 To view this event on Tilda DevStand, open:`);
+    console.log(`https://devupgrade.space4you.ru/test-tilda-standalone.html?eventId=${event.id}`);
 }
+
+run()
+    .catch((e) => {
+        console.error(e);
+        process.exit(1);
+    })
+    .finally(async () => {
+        await prisma.$disconnect();
+    });
