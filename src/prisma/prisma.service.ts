@@ -23,6 +23,21 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
         if (process.env.NODE_ENV !== 'test') {
             try {
                 this.logger.log('Running Prisma migrations...');
+                
+                // --- HOTFIX FOR FAILED MIGRATION ---
+                // The DevStand db already has 20260314155000 marked as aborted/failed.
+                // We resolve it as rolled back so the corrected migration can be applied.
+                try {
+                    this.logger.log('Attempting to resolve previously failed migration...');
+                    await execAsync('npx prisma migrate resolve --rolled-back 20260314155000_add_event_location_and_logo', {
+                        env: { ...process.env },
+                    });
+                    this.logger.log('Migration resolve successful.');
+                } catch (resolveErr) {
+                    this.logger.log('Migration resolve not needed or failed (safe to ignore): ' + resolveErr.message);
+                }
+                // --- END HOTFIX ---
+
                 const { stdout } = await execAsync('npx prisma migrate deploy', {
                     timeout: 60000, // 60 second timeout
                     env: { ...process.env },

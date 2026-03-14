@@ -30,6 +30,8 @@ The following core Business Data requirements have been fully analyzed, implemen
 ## 3. Change Log (Post-MVP)
 *Agents: Add your completed tasks here in reverse chronological order (newest at the top).*
 
+- **2026-03-14**: Fixed DevStand `500 Internal Server Error` on the `/api/events` endpoint. The previous agent created a manual migration mapping to the `"Event"` table instead of the `"events"` table, causing a Prisma client mismatch that silently bricked the events module. Wrote a surgical hotfix into `PrismaService` to `prisma migrate resolve --rolled-back` the failed migration on production before automatically deploying the corrected SQL file.
+
 - **2026-03-14**: Fixed speaker status and timestamp layout in `SessionDrawer.tsx` editor. The timestamp is now placed neatly under the status dropdown in a single column instead of floating incorrectly due to Flexbox.
 
 - **2026-03-14**: Successfully extracted 188 speaker photographs from the legacy `spring.upgrade.st` Tilda grid (PRD-14) using the Visual Browser Subagent to bypass obfuscation and LazyLoading. Developed the `POST /api/speakers/sync-photos` DevStand backend route to dynamically ingest JSON payloads and hydrate the PostgreSQL DB natively over HTTP. Established the `/tilda_scraping_guide` workflow for future agents.
