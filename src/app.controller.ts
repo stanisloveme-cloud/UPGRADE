@@ -101,6 +101,7 @@ export class AppController {
                     sessionCount++;
 
                     const speakersResp = sess.speakers || [];
+                    const addedSpeakerIds = new Set<number>();
                     for (const spk of speakersResp) {
                         const person = spk.speaker_person;
                         if (!person && !spk.temp_contact) continue;
@@ -131,6 +132,11 @@ export class AppController {
                                 }
                             });
                         }
+                        
+                        if (addedSpeakerIds.has(dbSpeaker.id)) {
+                            continue;
+                        }
+                        addedSpeakerIds.add(dbSpeaker.id);
 
                         await this.prisma.sessionSpeaker.create({
                             data: {
