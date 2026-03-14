@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { AppController } from './app.controller';
 import { PrismaModule } from './prisma/prisma.module';
 import { EventsModule } from './events/events.module';
 import { HallsModule } from './halls/halls.module';
@@ -47,6 +48,7 @@ import { HealthModule } from './health/health.module';
     MarketSegmentsModule,
     HealthModule,
   ],
+  controllers: [AppController],
   providers: [
     {
       provide: 'APP_GUARD',
