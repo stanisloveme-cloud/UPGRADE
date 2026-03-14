@@ -116,18 +116,23 @@ export class AppController {
                             photoUrl = person.speaker_photo.urls.default;
                         }
 
-                        let dbSpeaker = await this.prisma.speaker.findFirst({
-                            where: { firstName: fName, lastName: lName }
-                        });
+                        const safeFName = fName.substring(0, 100);
+                        const safeLName = lName.substring(0, 100);
+                        const safeCompany = company ? company.substring(0, 255) : null;
+                        const safePosition = position ? position.substring(0, 255) : null;
+                        const safePhotoUrl = photoUrl ? photoUrl.substring(0, 512) : null;
 
+                        let dbSpeaker = await this.prisma.speaker.findFirst({
+                            where: { firstName: safeFName, lastName: safeLName }
+                        });
                         if (!dbSpeaker) {
                             dbSpeaker = await this.prisma.speaker.create({
                                 data: {
-                                    firstName: fName,
-                                    lastName: lName,
-                                    company: company,
-                                    position: position,
-                                    photoUrl: photoUrl,
+                                    firstName: safeFName,
+                                    lastName: safeLName,
+                                    company: safeCompany,
+                                    position: safePosition,
+                                    photoUrl: safePhotoUrl,
                                     bio: person ? person.biography : null
                                 }
                             });
