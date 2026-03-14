@@ -4,6 +4,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { AppController } from './app.controller';
+import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
 import { EventsModule } from './events/events.module';
 import { HallsModule } from './halls/halls.module';
@@ -50,6 +51,7 @@ import { HealthModule } from './health/health.module';
   ],
   controllers: [AppController],
   providers: [
+    AppService,
     {
       provide: 'APP_GUARD',
       useClass: SessionGuard,
