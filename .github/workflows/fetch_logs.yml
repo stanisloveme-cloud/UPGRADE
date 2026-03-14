@@ -12,6 +12,6 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker exec upgrade-crm-db-1 psql -U upgrade -d upgrade_crm -c "\d sponsors"
-            docker exec upgrade-crm-db-1 psql -U upgrade -d upgrade_crm -c "\d user_events"
+            docker logs --tail 250 upgrade-crm-app-1 || docker logs --tail 250 upgrade-crm_app_1
+            echo "--- DB MIGRATIONS ---"
             docker exec upgrade-crm-db-1 psql -U upgrade -d upgrade_crm -c "SELECT * FROM _prisma_migrations ORDER BY started_at DESC LIMIT 5"
