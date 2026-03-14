@@ -17,6 +17,11 @@ export class SpeakersController {
         return this.speakersService.importLegacy();
     }
 
+    @Post('sync-photos')
+    syncPhotos() {
+        return this.speakersService.syncPhotos();
+    }
+
     @Get()
     findAll() {
         return this.speakersService.findAll();
