@@ -20,8 +20,8 @@ export class SpeakersController {
 
     @Post('sync-photos')
     @Public()
-    syncPhotos() {
-        return this.speakersService.syncPhotos();
+    syncPhotos(@Body() payload: { name: string, photoUrl: string }[]) {
+        return this.speakersService.syncPhotos(payload);
     }
 
     @Get()
