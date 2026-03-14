@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Inject, forwardRef } from '@nestjs/common';
 import { AppService } from './app.service';
 import { PrismaService } from './prisma/prisma.service';
 import { Public } from './auth/public.decorator';
@@ -6,6 +6,7 @@ import { Public } from './auth/public.decorator';
 @Controller()
 export class AppController {
   constructor(
+    @Inject(forwardRef(() => AppService))
     private readonly appService: AppService,
     private readonly prisma: PrismaService
   ) {}
