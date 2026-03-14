@@ -3,7 +3,8 @@
 
     const CONFIG = {
         API_BASE: 'https://devupgrade.space4you.ru/api/public',
-        rootId: 'crm-schedule-root'
+        rootId: 'crm-schedule-root',
+        defaultRegistrationUrl: 'https://spring.upgrade.st/registration'
     };
 
     // --- VANILLA CSS STYLES ---
@@ -225,6 +226,29 @@
             line-height: 1.2;
         }
         
+        /* Participate Button */
+        .upg-participate-wrap {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0 60px 0;
+            width: 100%;
+        }
+        .upg-participate-btn {
+            background-color: #311c60; /* Deep Purple */
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 14px 40px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(49, 28, 96, 0.2);
+        }
+        .upg-participate-btn:hover {
+            background-color: #211244;
+        }
+
         /* Utilities */
         .upg-loading, .upg-error {
             padding: 40px;
@@ -292,7 +316,7 @@
 
     // --- RENDERING CORE ---
 
-    function renderSchedule(root, data) {
+    function renderSchedule(root, data, registrationUrl) {
         // 1. Data Bucketing
         // We need to map data matching the legacy visual hierarchy:
         // Date -> Track -> Hall -> [Sessions]
@@ -415,6 +439,15 @@
                         html += `</div>`; // End Session Grid
                     html += `</div>`; // End Hall Row
                 }
+
+                // Append Participate Button at the end of the Track
+                if (registrationUrl) {
+                    html += `
+                    <div class="upg-participate-wrap">
+                        <a href="${registrationUrl}" class="upg-participate-btn" target="_blank" rel="noopener noreferrer">Участвовать</a>
+                    </div>
+                    `;
+                }
             }
             html += `</div>`; // End date-group
         }
@@ -449,6 +482,7 @@
         // Process all instances found (usually just one)
         rootElements.forEach(root => {
             const eventId = root.getAttribute('data-event-id') || 1;
+            const registrationUrl = root.getAttribute('data-registration-url') || CONFIG.defaultRegistrationUrl;
             
             root.innerHTML = '<div class="upg-loading">Загрузка программы...</div>';
 
@@ -458,7 +492,7 @@
                     return response.json();
                 })
                 .then(data => {
-                    renderSchedule(root, data);
+                    renderSchedule(root, data, registrationUrl);
                 })
                 .catch(error => {
                     console.error('UPGRADE CRM Tilda Widget Data Error:', error);
