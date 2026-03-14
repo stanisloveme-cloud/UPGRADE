@@ -1,0 +1,589 @@
+fetch-logs	Set up job	﻿2026-03-14T02:03:07.3909234Z Current runner version: '2.332.0'
+fetch-logs	Set up job	2026-03-14T02:03:07.3933843Z ##[group]Runner Image Provisioner
+fetch-logs	Set up job	2026-03-14T02:03:07.3934801Z Hosted Compute Agent
+fetch-logs	Set up job	2026-03-14T02:03:07.3935396Z Version: 20260213.493
+fetch-logs	Set up job	2026-03-14T02:03:07.3936009Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+fetch-logs	Set up job	2026-03-14T02:03:07.3936746Z Build Date: 2026-02-13T00:28:41Z
+fetch-logs	Set up job	2026-03-14T02:03:07.3937487Z Worker ID: {c3995ed0-c008-4ad8-83b5-67859a350c28}
+fetch-logs	Set up job	2026-03-14T02:03:07.3938180Z Azure Region: northcentralus
+fetch-logs	Set up job	2026-03-14T02:03:07.3938780Z ##[endgroup]
+fetch-logs	Set up job	2026-03-14T02:03:07.3940602Z ##[group]Operating System
+fetch-logs	Set up job	2026-03-14T02:03:07.3941249Z Ubuntu
+fetch-logs	Set up job	2026-03-14T02:03:07.3941846Z 24.04.3
+fetch-logs	Set up job	2026-03-14T02:03:07.3942363Z LTS
+fetch-logs	Set up job	2026-03-14T02:03:07.3942906Z ##[endgroup]
+fetch-logs	Set up job	2026-03-14T02:03:07.3943454Z ##[group]Runner Image
+fetch-logs	Set up job	2026-03-14T02:03:07.3944035Z Image: ubuntu-24.04
+fetch-logs	Set up job	2026-03-14T02:03:07.3944580Z Version: 20260302.42.1
+fetch-logs	Set up job	2026-03-14T02:03:07.3945663Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260302.42/images/ubuntu/Ubuntu2404-Readme.md
+fetch-logs	Set up job	2026-03-14T02:03:07.3947254Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260302.42
+fetch-logs	Set up job	2026-03-14T02:03:07.3948187Z ##[endgroup]
+fetch-logs	Set up job	2026-03-14T02:03:07.3949335Z ##[group]GITHUB_TOKEN Permissions
+fetch-logs	Set up job	2026-03-14T02:03:07.3951458Z Contents: read
+fetch-logs	Set up job	2026-03-14T02:03:07.3952414Z Metadata: read
+fetch-logs	Set up job	2026-03-14T02:03:07.3952959Z Packages: read
+fetch-logs	Set up job	2026-03-14T02:03:07.3953481Z ##[endgroup]
+fetch-logs	Set up job	2026-03-14T02:03:07.3955521Z Secret source: Actions
+fetch-logs	Set up job	2026-03-14T02:03:07.3956571Z Prepare workflow directory
+fetch-logs	Set up job	2026-03-14T02:03:07.4265137Z Prepare all required actions
+fetch-logs	Set up job	2026-03-14T02:03:07.4301643Z Getting action download info
+fetch-logs	Set up job	2026-03-14T02:03:07.7067700Z Download action repository 'appleboy/ssh-action@v1.0.3' (SHA:029f5b4aeeeb58fdfe1410a5d17f967dacf36262)
+fetch-logs	Set up job	2026-03-14T02:03:08.1398176Z Complete job name: fetch-logs
+fetch-logs	Build appleboy/ssh-action@v1.0.3	﻿2026-03-14T02:03:08.1791185Z ##[group]Build container for action use: '/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile'.
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:08.1829234Z ##[command]/usr/bin/docker build -t 184bca:ac79ac46d8e44550aefa230573b2a31d -f "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile" "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3"
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:08.7194548Z #0 building with "default" instance using docker driver
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:08.7195325Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:08.7195847Z #1 [internal] load build definition from Dockerfile
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:08.7196646Z #1 transferring dockerfile: 149B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:08.7197293Z #1 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:08.7197663Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:08.7198094Z #2 [internal] load metadata for ghcr.io/appleboy/drone-ssh:1.7.3
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:08.9284674Z #2 DONE 0.4s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0416388Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0417818Z #3 [internal] load .dockerignore
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0419426Z #3 transferring context: 2B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0420955Z #3 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0422309Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0422916Z #4 [internal] load build context
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0424714Z #4 transferring context: 108B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0426655Z #4 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0427525Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0429477Z #5 [1/2] FROM ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0433761Z #5 resolve ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0437929Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0442032Z #5 sha256:c4781b8d012b16b6c7468dc9104fad0a63f2a8815b2af8b7176bb544253ea8c7 3.86kB / 3.86kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0445771Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 3.38MB / 3.38MB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0450271Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 284.83kB / 284.83kB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0455599Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 1.20kB / 1.20kB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0460285Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 0B / 125B 0.1s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0464507Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0B / 2.44MB 0.1s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0468818Z #5 sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 2.38kB / 2.38kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.0473560Z #5 sha256:1a52f94820e830bc9734623deb03bbafa6a248fba19cdc2e5605c70d90d91441 1.24kB / 1.24kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.2922636Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.2924270Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 125B / 125B 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.2925160Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 2.44MB / 2.44MB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:09.2925941Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:12.0661526Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:12.2987615Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:12.2988588Z #5 extracting sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:12.2989421Z #5 extracting sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:12.2990014Z #5 DONE 3.2s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:12.2990288Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:12.2990461Z #6 [2/2] COPY entrypoint.sh /bin/entrypoint.sh
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:12.2990886Z #6 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:12.2991113Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:12.2991277Z #7 exporting to image
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:12.2991652Z #7 exporting layers
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:13.0041471Z #7 exporting layers 0.9s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:13.0187760Z #7 writing image sha256:8eac5a31f6edf931bb37e3690c49f01816da48b1c0e55e66cadf1ac6c424e0f5 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:13.0189584Z #7 naming to docker.io/library/184bca:ac79ac46d8e44550aefa230573b2a31d done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:13.0190538Z #7 DONE 0.9s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T02:03:13.0239460Z ##[endgroup]
+fetch-logs	Fetch Backend Logs	﻿2026-03-14T02:03:13.0527395Z ##[group]Run appleboy/ssh-action@v1.0.3
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:13.0528193Z with:
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:13.0528729Z   host: ***
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:13.0529028Z   username: ***
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:13.0530993Z   key: ***
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:13.0531332Z   script: docker logs upgrade-crm-app-1 --tail 500
+fetch-logs	Fetch Backend Logs	
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:13.0531880Z   port: 22
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:13.0532207Z   timeout: 30s
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:13.0532484Z   command_timeout: 10m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:13.0532848Z   proxy_port: 22
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:13.0533137Z   proxy_timeout: 30s
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:13.0533771Z ##[endgroup]
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:13.0660199Z ##[command]/usr/bin/docker run --name bcaac79ac46d8e44550aefa230573b2a31d_1c54d7 --label 184bca --workdir /github/workspace --rm -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" 184bca:ac79ac46d8e44550aefa230573b2a31d
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:13.2311280Z ======CMD======
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:13.2311986Z docker logs upgrade-crm-app-1 --tail 500
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:13.2312300Z 
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:13.2312419Z ======END======
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1506565Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1507600Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +52ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1508598Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1509583Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +4ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1510544Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHttpModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1511551Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrometheusModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1513424Z out: [33m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [33m   WARN[39m [38;5;3m[NotificationsService] [39m[33mSMTP credentials not fully provided. Falling back to test Ethereal mode (or ignoring). Please set SMTP_USER and SMTP_PASSWORD.[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1514656Z out: [33m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [33m   WARN[39m [38;5;3m[MailService] [39m[33mSMTP configuration is missing. Emails will not be sent.[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1515625Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1516848Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1517853Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTerminusModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1519057Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1520082Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1521106Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMarketSegmentsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1522218Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUploadsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1523386Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNotificationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1524370Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMailModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1525323Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHealthModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1526299Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSponsorsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1527258Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEventsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1528203Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHallsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1529178Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTracksModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1530134Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSpeakersModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1531088Z out: [32m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mExportsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1532073Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1532938Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +60ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1533985Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1534969Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1535925Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHttpModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1536899Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrometheusModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1538163Z out: [33m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [33m   WARN[39m [38;5;3m[NotificationsService] [39m[33mSMTP credentials not fully provided. Falling back to test Ethereal mode (or ignoring). Please set SMTP_USER and SMTP_PASSWORD.[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1539364Z out: [33m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [33m   WARN[39m [38;5;3m[MailService] [39m[33mSMTP configuration is missing. Emails will not be sent.[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1540301Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1541299Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1542712Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTerminusModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1543712Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1544790Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1545795Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMarketSegmentsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1546789Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUploadsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1547766Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNotificationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1548731Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMailModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1549698Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHealthModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1550658Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSponsorsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1551618Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEventsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1552882Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHallsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1553831Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTracksModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1554793Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSpeakersModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1555917Z out: [32m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mExportsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1556780Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1557642Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +53ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1558611Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1559592Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1560573Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHttpModule dependencies initialized[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1561543Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrometheusModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1562860Z out: [33m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [33m   WARN[39m [38;5;3m[NotificationsService] [39m[33mSMTP credentials not fully provided. Falling back to test Ethereal mode (or ignoring). Please set SMTP_USER and SMTP_PASSWORD.[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1564055Z out: [33m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [33m   WARN[39m [38;5;3m[MailService] [39m[33mSMTP configuration is missing. Emails will not be sent.[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1565076Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1566033Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1566999Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTerminusModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1567969Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1568954Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1569967Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMarketSegmentsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1570954Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUploadsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1571992Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNotificationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1572969Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMailModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1573909Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHealthModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1574866Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSponsorsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1575886Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEventsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1576821Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHallsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1577759Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTracksModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1578725Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSpeakersModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.1579688Z out: [32m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mExportsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2390305Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2392158Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +49ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2393887Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2395624Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2397309Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHttpModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2399296Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrometheusModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2401548Z out: [33m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [33m   WARN[39m [38;5;3m[NotificationsService] [39m[33mSMTP credentials not fully provided. Falling back to test Ethereal mode (or ignoring). Please set SMTP_USER and SMTP_PASSWORD.[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2403897Z out: [33m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [33m   WARN[39m [38;5;3m[MailService] [39m[33mSMTP configuration is missing. Emails will not be sent.[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2405636Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2407393Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2408518Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTerminusModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2409520Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2410511Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2411517Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMarketSegmentsModule dependencies initialized[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2412634Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUploadsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2413620Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNotificationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2414733Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMailModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2415695Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHealthModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2416661Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSponsorsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2417620Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEventsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2418589Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHallsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2419538Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTracksModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2420492Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSpeakersModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2421460Z out: [32m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mExportsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2422375Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2423267Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +49ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2424308Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2425288Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2426253Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHttpModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2427110Z err:     at async resolveParam [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:140:38[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2428011Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrometheusModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2429264Z out: [33m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [33m   WARN[39m [38;5;3m[NotificationsService] [39m[33mSMTP credentials not fully provided. Falling back to test Ethereal mode (or ignoring). Please set SMTP_USER and SMTP_PASSWORD.[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2430465Z out: [33m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [33m   WARN[39m [38;5;3m[MailService] [39m[33mSMTP configuration is missing. Emails will not be sent.[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2431407Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2432444Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2433397Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTerminusModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2434372Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2435437Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2436450Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMarketSegmentsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2437444Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUploadsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2438425Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNotificationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2439399Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMailModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2440350Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHealthModule dependencies initialized[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2441304Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSponsorsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2442321Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEventsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2443280Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHallsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2444222Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTracksModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2445270Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSpeakersModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2446236Z out: [32m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mExportsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2447083Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2447585Z err:     at async Promise.all (index 0)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2448271Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +48ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2449229Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2450221Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2451182Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHttpModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2452191Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrometheusModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2453167Z err:     at async Injector.resolveConstructorParams [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:169:27[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2454407Z out: [33m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [33m   WARN[39m [38;5;3m[NotificationsService] [39m[33mSMTP credentials not fully provided. Falling back to test Ethereal mode (or ignoring). Please set SMTP_USER and SMTP_PASSWORD.[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2455648Z out: [33m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [33m   WARN[39m [38;5;3m[MailService] [39m[33mSMTP configuration is missing. Emails will not be sent.[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2456592Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2457534Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2458493Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTerminusModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2459389Z err:     at async Injector.loadInstance [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:75:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2460228Z err:     at async Injector.loadController [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:94:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2461158Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2462203Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2463198Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMarketSegmentsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2464176Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUploadsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2465171Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNotificationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2466197Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMailModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2466974Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:68:13
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2467807Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHealthModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2468756Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSponsorsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2469709Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEventsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2470664Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHallsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2471608Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTracksModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2472618Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSpeakersModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2473583Z out: [32m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mExportsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2474169Z err:     at async Promise.all (index 0)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2474915Z err:     at async InstanceLoader.createInstancesOfControllers [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:67:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2475870Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:42:13
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2476314Z err:     at async Promise.all (index 1)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2476977Z err:     at async InstanceLoader.createInstances [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:39:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2478015Z err:     at async InstanceLoader.createInstancesOfDependencies [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:22:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2478826Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/nest-factory.js:112:17
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2479581Z err:     at async ExceptionsZone.asyncRun [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/errors/exceptions-zone.js:22:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2480609Z err:     at async NestFactoryStatic.initialize [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/nest-factory.js:110:13[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2481203Z err:   type: [32m'AppController'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2481504Z err:   context: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2481838Z err:     index: [33m0[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2482097Z err:     dependencies: [
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2482388Z err:       [36m[class AppService][39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2482741Z err:       [36m[class PrismaService extends t][39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2483021Z err:     ],
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2483275Z err:     name: [36m[class AppService][39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2483541Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2483737Z err:   metadata: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2484084Z err:     id: [32m'3ed0b99b6fc1c8fec4e2b'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2484350Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2484542Z err:   moduleRef: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2484826Z err:     id: [32m'8d3b918c9e572bf5eaa95'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2485088Z err:   }
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2485265Z err: }
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2486426Z err: [31m[Nest] 1  - [39m03/14/2026, 1:56:29 AM [31m  ERROR[39m [38;5;3m[ExceptionHandler] [39mUnknownDependenciesException [Error]: Nest can't resolve dependencies of the AppController (?, PrismaService). Please make sure that the argument AppService at index [0] is available in the AppModule context.
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2487568Z err: Potential solutions:
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2487884Z err: - Is AppModule a valid NestJS module?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2488282Z err: - If AppService is a provider, is it part of the current AppModule?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2488858Z err: - If AppService is exported from a separate @Module, is that module imported within AppModule?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2489292Z err:   @Module({
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2489579Z err:     imports: [ /* the Module containing AppService */ ]
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2489889Z err:   })
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2490324Z err: For more common dependency resolution issues, see: https://docs.nestjs.com/faq/common-errors
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2491178Z err:     at Injector.lookupComponentInParentModules [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:290:19[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2492112Z err:     at async resolveParam [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:140:38[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2492614Z err:     at async Promise.all (index 0)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2493269Z err:     at async Injector.resolveConstructorParams [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:169:27[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2494152Z err:     at async Injector.loadInstance [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:75:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2494982Z err:     at async Injector.loadController [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:94:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2495727Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:68:13
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2496170Z err:     at async Promise.all (index 0)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2496902Z err:     at async InstanceLoader.createInstancesOfControllers [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:67:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2497853Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:42:13
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2498294Z err:     at async Promise.all (index 1)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2498955Z err:     at async InstanceLoader.createInstances [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:39:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2499990Z err:     at async InstanceLoader.createInstancesOfDependencies [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:22:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2500795Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/nest-factory.js:112:17
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2501539Z err:     at async ExceptionsZone.asyncRun [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/errors/exceptions-zone.js:22:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2502488Z err:     at async NestFactoryStatic.initialize [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/nest-factory.js:110:13[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2503075Z err:   type: [32m'AppController'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2503337Z err:   context: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2503584Z err:     index: [33m0[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2503837Z err:     dependencies: [
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2504120Z err:       [36m[class AppService][39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2504463Z err:       [36m[class PrismaService extends t][39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2504743Z err:     ],
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2504999Z err:     name: [36m[class AppService][39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2505262Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2505449Z err:   metadata: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2505724Z err:     id: [32m'fe9977ac10fb85e3f56fa'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2505990Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2506182Z err:   moduleRef: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2506455Z err:     id: [32m'80d050d94a56d371a5962'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2506713Z err:   }
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2506892Z err: }
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2508110Z err: [31m[Nest] 1  - [39m03/14/2026, 1:57:32 AM [31m  ERROR[39m [38;5;3m[ExceptionHandler] [39mUnknownDependenciesException [Error]: Nest can't resolve dependencies of the AppController (?, PrismaService). Please make sure that the argument AppService at index [0] is available in the AppModule context.
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2509156Z err: Potential solutions:
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2509426Z err: - Is AppModule a valid NestJS module?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2509826Z err: - If AppService is a provider, is it part of the current AppModule?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2510384Z err: - If AppService is exported from a separate @Module, is that module imported within AppModule?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2510814Z err:   @Module({
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2511095Z err:     imports: [ /* the Module containing AppService */ ]
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2511405Z err:   })
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2511887Z err: For more common dependency resolution issues, see: https://docs.nestjs.com/faq/common-errors
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2512767Z err:     at Injector.lookupComponentInParentModules [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:290:19[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2513634Z err:     at async resolveParam [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:140:38[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2514129Z err:     at async Promise.all (index 0)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2514793Z err:     at async Injector.resolveConstructorParams [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:169:27[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2515666Z err:     at async Injector.loadInstance [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:75:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2516494Z err:     at async Injector.loadController [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:94:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2517234Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:68:13
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2517672Z err:     at async Promise.all (index 0)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2518400Z err:     at async InstanceLoader.createInstancesOfControllers [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:67:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2519376Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:42:13
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2519813Z err:     at async Promise.all (index 1)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2520478Z err:     at async InstanceLoader.createInstances [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:39:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2521512Z err:     at async InstanceLoader.createInstancesOfDependencies [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:22:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2522400Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/nest-factory.js:112:17
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2523148Z err:     at async ExceptionsZone.asyncRun [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/errors/exceptions-zone.js:22:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2524030Z err:     at async NestFactoryStatic.initialize [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/nest-factory.js:110:13[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2524612Z err:   type: [32m'AppController'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2524874Z err:   context: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2525122Z err:     index: [33m0[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2525365Z err:     dependencies: [
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2525660Z err:       [36m[class AppService][39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2526007Z err:       [36m[class PrismaService extends t][39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2526288Z err:     ],
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2526537Z err:     name: [36m[class AppService][39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2526808Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2526995Z err:   metadata: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2527272Z err:     id: [32m'16a34d5c2e9f8a8194129'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2527531Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2527723Z err:   moduleRef: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2527996Z err:     id: [32m'71516f5a55ab8346dc00b'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2528344Z err:   }
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2528522Z err: }
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2529687Z err: [31m[Nest] 1  - [39m03/14/2026, 1:58:34 AM [31m  ERROR[39m [38;5;3m[ExceptionHandler] [39mUnknownDependenciesException [Error]: Nest can't resolve dependencies of the AppController (?, PrismaService). Please make sure that the argument AppService at index [0] is available in the AppModule context.
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2530740Z err: Potential solutions:
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2531010Z err: - Is AppModule a valid NestJS module?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2531423Z err: - If AppService is a provider, is it part of the current AppModule?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2532066Z err: - If AppService is exported from a separate @Module, is that module imported within AppModule?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2532499Z err:   @Module({
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2532789Z err:     imports: [ /* the Module containing AppService */ ]
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2533107Z err:   })
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2533530Z err: For more common dependency resolution issues, see: https://docs.nestjs.com/faq/common-errors
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2534481Z err:     at Injector.lookupComponentInParentModules [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:290:19[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2535358Z err:     at async resolveParam [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:140:38[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2535873Z err:     at async Promise.all (index 0)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2536542Z err:     at async Injector.resolveConstructorParams [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:169:27[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2537424Z err:     at async Injector.loadInstance [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:75:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2538274Z err:     at async Injector.loadController [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:94:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2539023Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:68:13
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2539484Z err:     at async Promise.all (index 0)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2540300Z err:     at async InstanceLoader.createInstancesOfControllers [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:67:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2541143Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:42:13
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2541583Z err:     at async Promise.all (index 1)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2542318Z err:     at async InstanceLoader.createInstances [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:39:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2543359Z err:     at async InstanceLoader.createInstancesOfDependencies [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:22:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2544176Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/nest-factory.js:112:17
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2544930Z err:     at async ExceptionsZone.asyncRun [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/errors/exceptions-zone.js:22:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2545823Z err:     at async NestFactoryStatic.initialize [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/nest-factory.js:110:13[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2546408Z err:   type: [32m'AppController'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2546680Z err:   context: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2546931Z err:     index: [33m0[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2547176Z err:     dependencies: [
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2547461Z err:       [36m[class AppService][39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2547812Z err:       [36m[class PrismaService extends t][39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2548095Z err:     ],
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2548354Z err:     name: [36m[class AppService][39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2548618Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2548818Z err:   metadata: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2549100Z err:     id: [32m'814c39e7051e6b2f73acb'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2549361Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2549554Z err:   moduleRef: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2549906Z err:     id: [32m'bc3f69681c7770ece4865'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2550165Z err:   }
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2550343Z err: }
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2551486Z err: [31m[Nest] 1  - [39m03/14/2026, 1:59:36 AM [31m  ERROR[39m [38;5;3m[ExceptionHandler] [39mUnknownDependenciesException [Error]: Nest can't resolve dependencies of the AppController (?, PrismaService). Please make sure that the argument AppService at index [0] is available in the AppModule context.
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2552614Z err: Potential solutions:
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2552884Z err: - Is AppModule a valid NestJS module?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2553281Z err: - If AppService is a provider, is it part of the current AppModule?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2553858Z err: - If AppService is exported from a separate @Module, is that module imported within AppModule?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2554290Z err:   @Module({
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2554584Z err:     imports: [ /* the Module containing AppService */ ]
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2554890Z err:   })
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2555320Z err: For more common dependency resolution issues, see: https://docs.nestjs.com/faq/common-errors
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2556177Z err:     at Injector.lookupComponentInParentModules [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:290:19[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2557045Z err:     at async resolveParam [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:140:38[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2557552Z err:     at async Promise.all (index 0)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2558217Z err:     at async Injector.resolveConstructorParams [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:169:27[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2559103Z err:     at async Injector.loadInstance [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:75:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2559935Z err:     at async Injector.loadController [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:94:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2560685Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:68:13
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2561204Z err:     at async Promise.all (index 0)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2561997Z err:     at async InstanceLoader.createInstancesOfControllers [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:67:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2562848Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:42:13
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2563289Z err:     at async Promise.all (index 1)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2563957Z err:     at async InstanceLoader.createInstances [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:39:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2565009Z err:     at async InstanceLoader.createInstancesOfDependencies [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:22:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2565815Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/nest-factory.js:112:17
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2566574Z err:     at async ExceptionsZone.asyncRun [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/errors/exceptions-zone.js:22:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2567475Z err:     at async NestFactoryStatic.initialize [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/nest-factory.js:110:13[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2568059Z err:   type: [32m'AppController'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2568332Z err:   context: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2568583Z err:     index: [33m0[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2568840Z err:     dependencies: [
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2569121Z err:       [36m[class AppService][39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2569465Z err:       [36m[class PrismaService extends t][39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2569745Z err:     ],
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2570005Z err:     name: [36m[class AppService][39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2570271Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2570463Z err:   metadata: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2570738Z err:     id: [32m'75398695f502ab019924a'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2571004Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2571274Z err:   moduleRef: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2571555Z err:     id: [32m'b83296a084970b9200c3f'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2571881Z err:   }
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2572069Z err: }
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2573218Z err: [31m[Nest] 1  - [39m03/14/2026, 2:00:38 AM [31m  ERROR[39m [38;5;3m[ExceptionHandler] [39mUnknownDependenciesException [Error]: Nest can't resolve dependencies of the AppController (?, PrismaService). Please make sure that the argument AppService at index [0] is available in the AppModule context.
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2574257Z err: Potential solutions:
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2574537Z err: - Is AppModule a valid NestJS module?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2574944Z err: - If AppService is a provider, is it part of the current AppModule?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2902682Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2903902Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +58ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2905023Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2906014Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2906982Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHttpModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2907953Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrometheusModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2909218Z out: [33m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [33m   WARN[39m [38;5;3m[NotificationsService] [39m[33mSMTP credentials not fully provided. Falling back to test Ethereal mode (or ignoring). Please set SMTP_USER and SMTP_PASSWORD.[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2910740Z out: [33m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [33m   WARN[39m [38;5;3m[MailService] [39m[33mSMTP configuration is missing. Emails will not be sent.[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2911819Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2912817Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2913791Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTerminusModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2914762Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2915763Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2916762Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMarketSegmentsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2917746Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUploadsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2918731Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNotificationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2919699Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMailModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2920747Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHealthModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2921780Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSponsorsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2922748Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEventsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2923702Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHallsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2924492Z err: - If AppService is exported from a separate @Module, is that module imported within AppModule?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2924937Z err:   @Module({
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2925239Z err:     imports: [ /* the Module containing AppService */ ]
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2925553Z err:   })
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2926006Z err: For more common dependency resolution issues, see: https://docs.nestjs.com/faq/common-errors
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2926872Z err:     at Injector.lookupComponentInParentModules [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:290:19[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2927745Z err:     at async resolveParam [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:140:38[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2928253Z err:     at async Promise.all (index 0)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2928919Z err:     at async Injector.resolveConstructorParams [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:169:27[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2929796Z err:     at async Injector.loadInstance [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:75:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2930635Z err:     at async Injector.loadController [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:94:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2931447Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:68:13
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2931980Z err:     at async Promise.all (index 0)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2932717Z err:     at async InstanceLoader.createInstancesOfControllers [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:67:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2933565Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:42:13
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2934004Z err:     at async Promise.all (index 1)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2934672Z err:     at async InstanceLoader.createInstances [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:39:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2935715Z err:     at async InstanceLoader.createInstancesOfDependencies [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:22:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2936540Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/nest-factory.js:112:17
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2937298Z err:     at async ExceptionsZone.asyncRun [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/errors/exceptions-zone.js:22:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2938197Z err:     at async NestFactoryStatic.initialize [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/nest-factory.js:110:13[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2938769Z err:   type: [32m'AppController'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2939038Z err:   context: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2939299Z err:     index: [33m0[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2939557Z err:     dependencies: [
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2939846Z err:       [36m[class AppService][39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2940200Z err:       [36m[class PrismaService extends t][39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2940488Z err:     ],
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2940759Z err:     name: [36m[class AppService][39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2941033Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2941301Z err:   metadata: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2941592Z err:     id: [32m'db493cf1a19c5d5442b1f'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2941945Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2942148Z err:   moduleRef: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2942440Z err:     id: [32m'48850f5e210cee0b217bc'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2942705Z err:   }
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2942890Z err: }
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2944055Z err: [31m[Nest] 1  - [39m03/14/2026, 2:01:40 AM [31m  ERROR[39m [38;5;3m[ExceptionHandler] [39mUnknownDependenciesException [Error]: Nest can't resolve dependencies of the AppController (?, PrismaService). Please make sure that the argument AppService at index [0] is available in the AppModule context.
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2945102Z err: Potential solutions:
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2945383Z err: - Is AppModule a valid NestJS module?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2945783Z err: - If AppService is a provider, is it part of the current AppModule?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2946350Z err: - If AppService is exported from a separate @Module, is that module imported within AppModule?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2946791Z err:   @Module({
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2947089Z err:     imports: [ /* the Module containing AppService */ ]
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2947395Z err:   })
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2947807Z err: For more common dependency resolution issues, see: https://docs.nestjs.com/faq/common-errors
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2948668Z err:     at Injector.lookupComponentInParentModules [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:290:19[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2949535Z err:     at async resolveParam [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:140:38[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2950031Z err:     at async Promise.all (index 0)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2950684Z err:     at async Injector.resolveConstructorParams [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:169:27[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2951562Z err:     at async Injector.loadInstance [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:75:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2952469Z err:     at async Injector.loadController [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:94:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2953285Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:68:13
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2953732Z err:     at async Promise.all (index 0)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2954462Z err:     at async InstanceLoader.createInstancesOfControllers [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:67:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2955297Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:42:13
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2955735Z err:     at async Promise.all (index 1)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2956402Z err:     at async InstanceLoader.createInstances [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:39:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2957431Z err:     at async InstanceLoader.createInstancesOfDependencies [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:22:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2958245Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/nest-factory.js:112:17
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2959004Z err:     at async ExceptionsZone.asyncRun [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/errors/exceptions-zone.js:22:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2959877Z err:     at async NestFactoryStatic.initialize [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/nest-factory.js:110:13[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2960451Z err:   type: [32m'AppController'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2960724Z err:   context: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2960978Z err:     index: [33m0[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2961229Z err:     dependencies: [
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2961515Z err:       [36m[class AppService][39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2961934Z err:       [36m[class PrismaService extends t][39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2962222Z err:     ],
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2962478Z err:     name: [36m[class AppService][39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2962823Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2963067Z err:   metadata: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2963375Z err:     id: [32m'd9587ca5ea8756aabb87e'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2963646Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2963839Z err:   moduleRef: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2964121Z err:     id: [32m'e2c602ffce7805d5f38ce'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2964400Z err:   }
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.2964584Z err: }
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3355553Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTracksModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3358611Z err: [31m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [31m  ERROR[39m [38;5;3m[ExceptionHandler] [39mUnknownDependenciesException [Error]: Nest can't resolve dependencies of the AppController (?, PrismaService). Please make sure that the argument AppService at index [0] is available in the AppModule context.
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3361438Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSpeakersModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3363411Z out: [32m[Nest] 1  - [39m03/14/2026, 2:02:42 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mExportsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3364414Z err: Potential solutions:
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3364871Z err: - Is AppModule a valid NestJS module?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3365621Z err: - If AppService is a provider, is it part of the current AppModule?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3366636Z err: - If AppService is exported from a separate @Module, is that module imported within AppModule?
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3367311Z err:   @Module({
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3367780Z err:     imports: [ /* the Module containing AppService */ ]
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3368330Z err:   })
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3369056Z err: For more common dependency resolution issues, see: https://docs.nestjs.com/faq/common-errors
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3370571Z err:     at Injector.lookupComponentInParentModules [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:290:19[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3372731Z err:     at async resolveParam [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:140:38[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3373663Z err:     at async Promise.all (index 0)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3374955Z err:     at async Injector.resolveConstructorParams [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:169:27[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3376587Z err:     at async Injector.loadInstance [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:75:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3378025Z err:     at async Injector.loadController [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/injector.js:94:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3379234Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:68:13
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3380018Z err:     at async Promise.all (index 0)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3381329Z err:     at async InstanceLoader.createInstancesOfControllers [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:67:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3382956Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:42:13
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3383751Z err:     at async Promise.all (index 1)
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3384763Z err:     at async InstanceLoader.createInstances [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:39:9[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3386117Z err:     at async InstanceLoader.createInstancesOfDependencies [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/injector/instance-loader.js:22:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3387043Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/nest-factory.js:112:17
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3387898Z err:     at async ExceptionsZone.asyncRun [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/errors/exceptions-zone.js:22:13[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3389184Z err:     at async NestFactoryStatic.initialize [90m(/app/[39mnode_modules/[4m@nestjs/core[24m/nest-factory.js:110:13[90m)[39m {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3390066Z err:   type: [32m'AppController'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3390342Z err:   context: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3390608Z err:     index: [33m0[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3391000Z err:     dependencies: [
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3391477Z err:       [36m[class AppService][39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3392257Z err:       [36m[class PrismaService extends t][39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3392572Z err:     ],
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3392993Z err:     name: [36m[class AppService][39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3393515Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3393822Z err:   metadata: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3394295Z err:     id: [32m'83aa166908f85f0aba55a'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3394606Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3394798Z err:   moduleRef: {
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3395181Z err:     id: [32m'd2377741bc45ae4b1ca04'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3395459Z err:   }
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3395671Z err: }
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3395985Z ==============================================
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3396415Z ✅ Successfully executed commands to all host.
+fetch-logs	Fetch Backend Logs	2026-03-14T02:03:15.3396938Z ==============================================
+fetch-logs	Complete job	﻿2026-03-14T02:03:15.4053773Z Cleaning up orphan processes

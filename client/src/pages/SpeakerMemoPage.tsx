@@ -46,13 +46,16 @@ const SpeakerMemoPage: React.FC = () => {
     return (
         <div style={{ minHeight: '100vh', background: '#f0f2f5', padding: '24px 0' }}>
             <SpeakerMemo
-                speakerName={`${data.firstName} ${data.lastName}`}
+                speakerName={data.speakerName}
                 eventName={data.eventName}
-                sessionTitle={data.sessionName}
+                eventLogoUrl={data.eventLogoUrl}
+                sessionTitle={data.sessionTitle}
                 sessionStartTime={data.sessionStartTime}
                 sessionEndTime={data.sessionEndTime}
                 location={data.location || 'Место проведения уточняется'}
                 hallName={data.hallName}
+                questions={data.questions}
+                coSpeakers={data.coSpeakers}
                 arrivalInstructions={data.htmlContent} // Using the HTML parsed content as arrivalInstructions for now if we want to show it
                 managerContacts={data.managerContacts}
             />

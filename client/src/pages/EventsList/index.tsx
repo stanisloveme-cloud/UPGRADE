@@ -10,9 +10,12 @@ import { useAuth } from '../../auth/AuthProvider';
 interface Event {
     id: number;
     name: string;
+    description?: string | null;
     startDate: string;
     endDate: string;
     status: 'draft' | 'published' | 'archived';
+    location?: string;
+    eventLogoUrl?: string;
 }
 
 const EventsList: React.FC = () => {
@@ -48,6 +51,8 @@ const EventsList: React.FC = () => {
                 description: values.description,
                 startDate: values.dates[0].toISOString(),
                 endDate: values.dates[1].toISOString(),
+                location: values.location,
+                eventLogoUrl: values.eventLogoUrl,
             };
             if (editingEventId) {
                 await axios.patch(`/api/events/${editingEventId}`, payload);
@@ -75,6 +80,9 @@ const EventsList: React.FC = () => {
         form.setFieldsValue({
             name: record.name,
             dates: [dayjs(record.startDate), dayjs(record.endDate)],
+            description: record.description || '', // assuming the record might have description
+            location: record.location,
+            eventLogoUrl: record.eventLogoUrl,
         });
         setIsModalVisible(true);
     };
@@ -162,7 +170,11 @@ const EventsList: React.FC = () => {
                         <Button
                             danger
                             icon={<DeleteOutlined />}
-                            onClick={() => handleDeleteClick(record)}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                e.preventDefault();
+                                handleDeleteClick(record);
+                            }}
                         />
                     )}
                 </Space>
@@ -230,6 +242,20 @@ const EventsList: React.FC = () => {
                         label="Описание"
                     >
                         <Input.TextArea rows={3} placeholder="Краткое описание" />
+                    </Form.Item>
+
+                    <Form.Item
+                        name="location"
+                        label="Место проведения"
+                    >
+                        <Input placeholder="Например: ЦМТ, Москва" />
+                    </Form.Item>
+
+                    <Form.Item
+                        name="eventLogoUrl"
+                        label="URL логотипа мероприятия (для персонализации памяток)"
+                    >
+                        <Input placeholder="https://example.com/logo.png" />
                     </Form.Item>
                 </Form>
             </Modal>

@@ -1,0 +1,437 @@
+fetch-logs	Set up job	﻿2026-03-14T09:51:53.4624634Z Current runner version: '2.332.0'
+fetch-logs	Set up job	2026-03-14T09:51:53.4651676Z ##[group]Runner Image Provisioner
+fetch-logs	Set up job	2026-03-14T09:51:53.4652602Z Hosted Compute Agent
+fetch-logs	Set up job	2026-03-14T09:51:53.4653233Z Version: 20260213.493
+fetch-logs	Set up job	2026-03-14T09:51:53.4654056Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+fetch-logs	Set up job	2026-03-14T09:51:53.4654832Z Build Date: 2026-02-13T00:28:41Z
+fetch-logs	Set up job	2026-03-14T09:51:53.4655605Z Worker ID: {f630eb72-365d-4de0-8ad7-9d1001e01018}
+fetch-logs	Set up job	2026-03-14T09:51:53.4656398Z Azure Region: northcentralus
+fetch-logs	Set up job	2026-03-14T09:51:53.4657455Z ##[endgroup]
+fetch-logs	Set up job	2026-03-14T09:51:53.4659139Z ##[group]Operating System
+fetch-logs	Set up job	2026-03-14T09:51:53.4659852Z Ubuntu
+fetch-logs	Set up job	2026-03-14T09:51:53.4660469Z 24.04.3
+fetch-logs	Set up job	2026-03-14T09:51:53.4661076Z LTS
+fetch-logs	Set up job	2026-03-14T09:51:53.4661608Z ##[endgroup]
+fetch-logs	Set up job	2026-03-14T09:51:53.4662319Z ##[group]Runner Image
+fetch-logs	Set up job	2026-03-14T09:51:53.4662965Z Image: ubuntu-24.04
+fetch-logs	Set up job	2026-03-14T09:51:53.4663726Z Version: 20260302.42.1
+fetch-logs	Set up job	2026-03-14T09:51:53.4664862Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260302.42/images/ubuntu/Ubuntu2404-Readme.md
+fetch-logs	Set up job	2026-03-14T09:51:53.4667046Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260302.42
+fetch-logs	Set up job	2026-03-14T09:51:53.4668182Z ##[endgroup]
+fetch-logs	Set up job	2026-03-14T09:51:53.4669514Z ##[group]GITHUB_TOKEN Permissions
+fetch-logs	Set up job	2026-03-14T09:51:53.4671677Z Contents: read
+fetch-logs	Set up job	2026-03-14T09:51:53.4672488Z Metadata: read
+fetch-logs	Set up job	2026-03-14T09:51:53.4673091Z Packages: read
+fetch-logs	Set up job	2026-03-14T09:51:53.4673720Z ##[endgroup]
+fetch-logs	Set up job	2026-03-14T09:51:53.4676013Z Secret source: Actions
+fetch-logs	Set up job	2026-03-14T09:51:53.4677389Z Prepare workflow directory
+fetch-logs	Set up job	2026-03-14T09:51:53.5015556Z Prepare all required actions
+fetch-logs	Set up job	2026-03-14T09:51:53.5052889Z Getting action download info
+fetch-logs	Set up job	2026-03-14T09:51:53.8050146Z Download action repository 'appleboy/ssh-action@v1.0.3' (SHA:029f5b4aeeeb58fdfe1410a5d17f967dacf36262)
+fetch-logs	Set up job	2026-03-14T09:51:54.2493349Z Complete job name: fetch-logs
+fetch-logs	Build appleboy/ssh-action@v1.0.3	﻿2026-03-14T09:51:54.3099427Z ##[group]Build container for action use: '/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile'.
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:54.3154389Z ##[command]/usr/bin/docker build -t bee27d:bbd6d7a7779d4debac692a740e51c93e -f "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile" "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3"
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:54.9115278Z #0 building with "default" instance using docker driver
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:54.9116038Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:54.9116349Z #1 [internal] load build definition from Dockerfile
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:54.9117452Z #1 transferring dockerfile: 149B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:54.9118088Z #1 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:54.9118354Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:54.9118727Z #2 [internal] load metadata for ghcr.io/appleboy/drone-ssh:1.7.3
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.0935178Z #2 DONE 0.3s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2086343Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2087897Z #3 [internal] load .dockerignore
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2091415Z #3 transferring context: 2B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2094914Z #3 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2095694Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2096251Z #4 [internal] load build context
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2097876Z #4 transferring context: 108B done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2099321Z #4 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2100000Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2101654Z #5 [1/2] FROM ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2105460Z #5 resolve ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2109436Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2112746Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0B / 2.44MB 0.1s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2116065Z #5 sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 2.38kB / 2.38kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2120227Z #5 sha256:1a52f94820e830bc9734623deb03bbafa6a248fba19cdc2e5605c70d90d91441 1.24kB / 1.24kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2124319Z #5 sha256:c4781b8d012b16b6c7468dc9104fad0a63f2a8815b2af8b7176bb544253ea8c7 3.86kB / 3.86kB done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2129369Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 3.38MB / 3.38MB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2133163Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 284.83kB / 284.83kB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2137230Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 1.20kB / 1.20kB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.2141073Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 125B / 125B 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.3190260Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.3194801Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 2.44MB / 2.44MB 0.1s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.3198955Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.4330134Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.4335419Z #5 extracting sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.4341038Z #5 extracting sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0.0s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.6253209Z #5 DONE 0.4s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.6254492Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.6254757Z #6 [2/2] COPY entrypoint.sh /bin/entrypoint.sh
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.6255403Z #6 DONE 0.0s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.6255657Z 
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.6255858Z #7 exporting to image
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:55.6256439Z #7 exporting layers
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:56.0043337Z #7 exporting layers 0.5s done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:56.0223287Z #7 writing image sha256:a3cc7cd573cc8aba18dfe8cc8e5401a2b0e5149e21751d231e642076ec3981e4 done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:56.0224617Z #7 naming to docker.io/library/bee27d:bbd6d7a7779d4debac692a740e51c93e done
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:56.0225461Z #7 DONE 0.5s
+fetch-logs	Build appleboy/ssh-action@v1.0.3	2026-03-14T09:51:56.0289875Z ##[endgroup]
+fetch-logs	Fetch Backend Logs	﻿2026-03-14T09:51:56.0584992Z ##[group]Run appleboy/ssh-action@v1.0.3
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:56.0585704Z with:
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:56.0586213Z   host: ***
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:56.0586512Z   username: ***
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:56.0588669Z   key: ***
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:56.0589003Z   script: docker logs upgrade-crm-app-1 --tail 500
+fetch-logs	Fetch Backend Logs	
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:56.0589383Z   port: 22
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:56.0589622Z   timeout: 30s
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:56.0589883Z   command_timeout: 10m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:56.0590158Z   proxy_port: 22
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:56.0590416Z   proxy_timeout: 30s
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:56.0590964Z ##[endgroup]
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:56.0718772Z ##[command]/usr/bin/docker run --name bee27dbbd6d7a7779d4debac692a740e51c93e_f07fc7 --label bee27d --workdir /github/workspace --rm -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" bee27d:bbd6d7a7779d4debac692a740e51c93e
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:56.2628491Z ======CMD======
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:56.2628950Z docker logs upgrade-crm-app-1 --tail 500
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:56.2629198Z 
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:56.2629350Z ======END======
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6259328Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6260507Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +105ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6261588Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6262726Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +4ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6263830Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHttpModule dependencies initialized[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6264911Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrometheusModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6266858Z out: [33m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [33m   WARN[39m [38;5;3m[NotificationsService] [39m[33mSMTP credentials not fully provided. Falling back to test Ethereal mode (or ignoring). Please set SMTP_USER and SMTP_PASSWORD.[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6268297Z out: [33m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [33m   WARN[39m [38;5;3m[MailService] [39m[33mSMTP configuration is missing. Emails will not be sent.[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6269352Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6270423Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6271517Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTerminusModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6272607Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6273698Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mServeStaticModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6274808Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMarketSegmentsModule dependencies initialized[39m[38;5;3m +4ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6275929Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUploadsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6277114Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNotificationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6278386Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMailModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6279460Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHealthModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6280526Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSponsorsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6281586Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEventsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6282617Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHallsModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6283698Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTracksModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6284780Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSpeakersModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6285828Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mExportsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6286971Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6287993Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6289194Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6290251Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6291229Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/api}:[39m[38;5;3m +323ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6292186Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api, GET} route[39m[38;5;3m +10ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6293179Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/seed-legacy, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6294199Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEventsController {/api/events}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6295237Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events, POST} route[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6296334Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/full-structure, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6297573Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6298645Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6299682Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id, DELETE} route[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6300970Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6302044Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/session-speakers, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6303227Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/session-speakers/sort, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6304381Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/announcements, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6305500Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/announcements, PATCH} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6306745Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/memo-template, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6307867Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/:id/memo-template, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6309014Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/session-speakers/:id, PATCH} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6310187Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/events/public/speaker-memo/:hash, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6311340Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicEventsController {/api/public/events}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6312619Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/public/events/:id/website-data, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6313771Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/public/events/:id/schedule, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6314892Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/public/events/:id/speakers, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6316003Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/public/events/:id/sponsors, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6317161Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHallsController {/api/halls}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6318161Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/halls, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6319172Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/halls, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6320167Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/halls/:id, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6321185Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/halls/:id, PATCH} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6322199Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/halls/:id, DELETE} route[39m[38;5;3m +4ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6323210Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTracksController {/api/tracks}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6324435Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tracks, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6325415Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tracks, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6326400Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tracks/:id, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6327524Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tracks/:id, PATCH} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6328548Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tracks/:id, DELETE} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6329575Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSessionsController {/api/sessions}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6330593Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6331584Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6332588Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:id, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6333619Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:id, PATCH} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6334837Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sessions/:id, DELETE} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6335876Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSpeakersController {/api/speakers}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6337018Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6338110Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers/import-legacy, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6339232Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers/sync-photos, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6340288Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6341297Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers/:id, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6342332Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers/:id, PATCH} route[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6343370Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/speakers/:id, DELETE} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6344366Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/api/auth}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.6345351Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +2ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7128618Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7137435Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/logout, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7139443Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/forgot-password, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7141403Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/reset-password, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7143314Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/api/users}:[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7145169Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7147185Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7149147Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users/:id, PUT} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7151049Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7153003Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users/change-password, POST} route[39m[38;5;3m +5ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7155297Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users/managers, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7157361Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/users/profile, PUT} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7159230Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUploadsController {/api/uploads}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7161186Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/uploads/speaker-photo, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7163484Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/uploads/logo, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7165618Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/uploads/presentation, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7168173Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/uploads/photos/:filename, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7170272Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/uploads/logos/:filename, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7172395Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/uploads/presentations/:filename, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7174492Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mExportsController {/api/exports}:[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7176568Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/exports/schedule/:eventId, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7179260Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/exports/import/:eventId, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7181325Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSponsorsController {/api/sponsors}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7183313Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/event/:eventId, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7185256Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/all, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7187277Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7189197Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/:id, PATCH} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7191144Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/:id, DELETE} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7193269Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/:id/attach/:eventId, POST} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7195495Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/:id/detach/:eventId, DELETE} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7198176Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/public/approval/:hash, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7200961Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/import-legacy, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7203250Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/sponsors/public/approval/:hash, PATCH} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7205421Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPrometheusController {/api/metrics}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7207359Z err: [31m[Nest] 1  - [39m03/14/2026, 9:50:33 AM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPrismaClientKnownRequestError: 
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7208500Z err: Invalid `this.prisma.sessionSpeaker.create()` invocation in
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7209211Z err: /app/dist/src/app.controller.js:129:62
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7209691Z err:   126         }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7210041Z err:   127     });
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7210370Z err:   128 }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7210900Z err: → 129 await this.prisma.sessionSpeaker.create(
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7211689Z err: Unique constraint failed on the fields: (`session_id`, `speaker_id`)
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7213005Z err:     at zr.handleRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:8172[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7214622Z err:     at zr.handleAndLogRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7467[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7216116Z err:     at zr.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7174[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7217715Z err: [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7219088Z err:     at async a [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:75:5816[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7220789Z err:     at async AppController.seedLegacy [90m(/app/[39mdist/src/app.controller.js:129:29[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7222160Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-execution-context.js:46:28
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7223432Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-proxy.js:9:17 {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7224285Z err:   code: [32m'P2002'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7224700Z err:   meta: {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7225182Z err:     modelName: [32m'SessionSpeaker'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7225967Z err:     driverAdapterError: DriverAdapterError: UniqueConstraintViolation
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7227594Z err:         at PrismaPgAdapter.onError [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:687:11[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7229352Z err:         at PrismaPgAdapter.performIO [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:682:12[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7230838Z err:     [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7232389Z err:         at async PrismaPgAdapter.queryRaw [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:602:30[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7234028Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:43522[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7235576Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:43962[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7237272Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:45151[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7238794Z err:         at async e.run [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:42242[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7240491Z err:         at async e.execute [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:57:815[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7242139Z err:         at async qt.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:58:2327[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7243846Z err:         at async Object.singleLoader [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:6569[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7245524Z err:         at async zr.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7061[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7247210Z err:         at async a [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:75:5816[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7248694Z err:         at async AppController.seedLegacy [90m(/app/[39mdist/src/app.controller.js:129:29[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7250239Z err:         at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-execution-context.js:46:28
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7251650Z err:         at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-proxy.js:9:17 {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7252503Z err:       cause: {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7253051Z err:         originalCode: [32m'23505'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7254313Z err:         originalMessage: [32m'duplicate key value violates unique constraint "session_speakers_session_id_speaker_id_key"'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7255535Z err:         kind: [32m'UniqueConstraintViolation'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7256091Z err:         constraint: {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7256483Z err:           fields: [
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7257127Z err:             [32m'session_id'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7257685Z err:             [32m'speaker_id'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7258122Z err:           ]
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7258453Z err:         }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7258772Z err:       }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7259125Z err:     }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7259449Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7259886Z err:   clientVersion: [32m'7.4.0'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7260557Z err: }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7261592Z err: [31m[Nest] 1  - [39m03/14/2026, 9:50:50 AM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPrismaClientKnownRequestError: 
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7262856Z err: Invalid `this.prisma.sessionSpeaker.create()` invocation in
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7263592Z err: /app/dist/src/app.controller.js:129:62
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7264102Z err:   126         }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7264471Z err:   127     });
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7264814Z err:   128 }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7265399Z err: → 129 await this.prisma.sessionSpeaker.create(
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7266193Z err: Unique constraint failed on the fields: (`session_id`, `speaker_id`)
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7267700Z err:     at zr.handleRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:8172[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7269385Z err:     at zr.handleAndLogRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7467[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7270973Z err:     at zr.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7174[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7272687Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/metrics, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7274722Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mMarketSegmentsController {/api/market-segments}:[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7277021Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/market-segments/tree, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7279121Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/market-segments, GET} route[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7281417Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/market-segments, POST} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7283517Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/market-segments/:id, PATCH} route[39m[38;5;3m +6ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7285644Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/market-segments/:id, DELETE} route[39m[38;5;3m +3ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7287862Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHealthController {/api/v1/health}:[39m[38;5;3m +1ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7289753Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:16 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/v1/health, GET} route[39m[38;5;3m +0ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7291153Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:17 AM [32m    LOG[39m [38;5;3m[PrismaService] [39m[32mRunning Prisma migrations...[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7292369Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:21 AM [32m    LOG[39m [38;5;3m[PrismaService] [39m[32mMigrations complete: Datasource "db": PostgreSQL database "upgrade_crm", schema "public" at "db:5432"
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7293149Z out: 10 migrations found in prisma/migrations
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7293466Z out: No pending migrations to apply.
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7293798Z out: [39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7294473Z out: [32m[Nest] 1  - [39m03/14/2026, 9:50:21 AM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +142ms[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7295507Z out: 🚀 Starting Legacy Event Seeding...
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7296113Z out: 🚀 Starting Legacy Event Seeding...
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7296844Z out: 🚀 Starting Legacy Event Seeding...
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7297452Z out: 🚀 Starting Legacy Event Seeding...
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7298042Z err: [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7299479Z err:     at async a [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:75:5816[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7300856Z err:     at async AppController.seedLegacy [90m(/app/[39mdist/src/app.controller.js:129:29[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7302225Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-execution-context.js:46:28
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7303483Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-proxy.js:9:17 {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7304349Z err:   code: [32m'P2002'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7304795Z err:   meta: {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7305315Z err:     modelName: [32m'SessionSpeaker'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7306247Z err:     driverAdapterError: DriverAdapterError: UniqueConstraintViolation
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7307845Z err:         at PrismaPgAdapter.onError [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:687:11[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7309577Z err:         at PrismaPgAdapter.performIO [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:682:12[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7311076Z err:     [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7312630Z err:         at async PrismaPgAdapter.queryRaw [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:602:30[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7314288Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:43522[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7315800Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:43962[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7317489Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:45151[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7319083Z err:         at async e.run [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:42242[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7320573Z err:         at async e.execute [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:57:815[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7322077Z err:         at async qt.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:58:2327[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7323758Z err:         at async Object.singleLoader [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:6569[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7325196Z err:         at async zr.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7061[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7326872Z err:         at async a [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:75:5816[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7328382Z err:         at async AppController.seedLegacy [90m(/app/[39mdist/src/app.controller.js:129:29[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7329307Z err:         at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-execution-context.js:46:28
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7330420Z err:         at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-proxy.js:9:17 {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7331271Z err:       cause: {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7331764Z err:         originalCode: [32m'23505'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7332965Z err:         originalMessage: [32m'duplicate key value violates unique constraint "session_speakers_session_id_speaker_id_key"'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7334171Z err:         kind: [32m'UniqueConstraintViolation'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7334535Z err:         constraint: {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7334775Z err:           fields: [
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7335059Z err:             [32m'session_id'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7335379Z err:             [32m'speaker_id'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7335704Z err:           ]
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7336067Z err:         }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7336441Z err:       }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7336980Z err:     }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7337338Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7337929Z err:   clientVersion: [32m'7.4.0'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7338403Z err: }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7339378Z err: [31m[Nest] 1  - [39m03/14/2026, 9:51:38 AM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPrismaClientKnownRequestError: 
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7340550Z err: Invalid `this.prisma.sessionSpeaker.create()` invocation in
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7341236Z err: /app/dist/src/app.controller.js:129:62
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7341567Z err:   126         }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7341950Z err:   127     });
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7342274Z err:   128 }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7342754Z err: → 129 await this.prisma.sessionSpeaker.create(
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7343223Z err: Unique constraint failed on the fields: (`session_id`, `speaker_id`)
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7344108Z err:     at zr.handleRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:8172[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7345353Z err:     at zr.handleAndLogRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7467[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7346402Z err:     at zr.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7174[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7347476Z err: [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7348230Z err:     at async a [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:75:5816[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7348959Z err:     at async AppController.seedLegacy [90m(/app/[39mdist/src/app.controller.js:129:29[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7349840Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-execution-context.js:46:28
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7350552Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-proxy.js:9:17 {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7351024Z err:   code: [32m'P2002'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7351468Z err:   meta: {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7351753Z err:     modelName: [32m'SessionSpeaker'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7352186Z err:     driverAdapterError: DriverAdapterError: UniqueConstraintViolation
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7352932Z err:         at PrismaPgAdapter.onError [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:687:11[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7353825Z err:         at PrismaPgAdapter.performIO [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:682:12[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7354632Z err:     [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7355478Z err:         at async PrismaPgAdapter.queryRaw [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:602:30[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7356391Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:43522[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7357842Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:43962[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7358906Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:45151[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7359731Z err:         at async e.run [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:42242[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7360529Z err:         at async e.execute [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:57:815[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7361351Z err:         at async qt.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:58:2327[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7362222Z err:         at async Object.singleLoader [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:6569[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7363077Z err:         at async zr.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7061[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7363873Z err:         at async a [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:75:5816[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7364819Z err:         at async AppController.seedLegacy [90m(/app/[39mdist/src/app.controller.js:129:29[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7365595Z err:         at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-execution-context.js:46:28
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7366328Z err:         at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-proxy.js:9:17 {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7367012Z err:       cause: {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7367329Z err:         originalCode: [32m'23505'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7368050Z err:         originalMessage: [32m'duplicate key value violates unique constraint "session_speakers_session_id_speaker_id_key"'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7368746Z err:         kind: [32m'UniqueConstraintViolation'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7369093Z err:         constraint: {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7369362Z err:           fields: [
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7369904Z err:             [32m'session_id'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7370531Z err:             [32m'speaker_id'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7449228Z err:           ]
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7449808Z err:         }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7450272Z err:       }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7450654Z err:     }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7450989Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7451577Z err:   clientVersion: [32m'7.4.0'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7452081Z err: }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7453238Z err: [31m[Nest] 1  - [39m03/14/2026, 9:51:55 AM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPrismaClientKnownRequestError: 
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7454526Z err: Invalid `this.prisma.sessionSpeaker.create()` invocation in
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7455307Z err: /app/dist/src/app.controller.js:129:62
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7455834Z err:   126         }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7456206Z err:   127     });
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7456564Z err:   128 }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7457440Z err: → 129 await this.prisma.sessionSpeaker.create(
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7458646Z err: Unique constraint failed on the fields: (`session_id`, `speaker_id`)
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7460032Z err:     at zr.handleRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:8172[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7461697Z err:     at zr.handleAndLogRequestError [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7467[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7463190Z err:     at zr.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7174[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7464516Z err: [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7465840Z err:     at async a [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:75:5816[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7467939Z err:     at async AppController.seedLegacy [90m(/app/[39mdist/src/app.controller.js:129:29[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7469445Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-execution-context.js:46:28
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7470828Z err:     at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-proxy.js:9:17 {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7471749Z err:   code: [32m'P2002'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7472302Z err:   meta: {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7472733Z err:     modelName: [32m'SessionSpeaker'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7473379Z err:     driverAdapterError: DriverAdapterError: UniqueConstraintViolation
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7474407Z err:         at PrismaPgAdapter.onError [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:687:11[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7475551Z err:         at PrismaPgAdapter.performIO [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:682:12[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7476827Z err:     [90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7477917Z err:         at async PrismaPgAdapter.queryRaw [90m(/app/[39mnode_modules/[4m@prisma/adapter-pg[24m/dist/index.js:602:30[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7479138Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:43522[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7480794Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:43962[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7482279Z err:         at async e.interpretNode [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:45151[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7483238Z err:         at async e.run [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:11:42242[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7484074Z err:         at async e.execute [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:57:815[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7484902Z err:         at async qt.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:58:2327[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7486344Z err:         at async Object.singleLoader [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:6569[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7487738Z err:         at async zr.request [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:65:7061[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7489104Z err:         at async a [90m(/app/[39mnode_modules/[4m@prisma/client[24m/runtime/client.js:75:5816[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7490064Z err:         at async AppController.seedLegacy [90m(/app/[39mdist/src/app.controller.js:129:29[90m)[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7490996Z err:         at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-execution-context.js:46:28
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7491941Z err:         at async [90m/app/[39mnode_modules/[4m@nestjs/core[24m/router/router-proxy.js:9:17 {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7492463Z err:       cause: {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7492885Z err:         originalCode: [32m'23505'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7493720Z err:         originalMessage: [32m'duplicate key value violates unique constraint "session_speakers_session_id_speaker_id_key"'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7494805Z err:         kind: [32m'UniqueConstraintViolation'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7495152Z err:         constraint: {
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7495538Z err:           fields: [
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7495839Z err:             [32m'session_id'[39m,
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7496294Z err:             [32m'speaker_id'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7496574Z err:           ]
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7497060Z err:         }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7497388Z err:       }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7497720Z err:     }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7497944Z err:   },
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7498230Z err:   clientVersion: [32m'7.4.0'[39m
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7498640Z err: }
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7498881Z ==============================================
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7499341Z ✅ Successfully executed commands to all host.
+fetch-logs	Fetch Backend Logs	2026-03-14T09:51:58.7499729Z ==============================================
+fetch-logs	Complete job	﻿2026-03-14T09:51:58.8117272Z Cleaning up orphan processes

@@ -51,6 +51,8 @@ model Event {
   endDate      DateTime    @map("end_date") @db.Date
   status       EventStatus @default(draft)
   memoTemplate String?     @map("memo_template") @db.Text
+  location     String?     @db.VarChar(255)
+  eventLogoUrl String?     @map("event_logo_url") @db.VarChar(512)
   createdAt    DateTime    @default(now()) @map("created_at")
 
   halls        Hall[]

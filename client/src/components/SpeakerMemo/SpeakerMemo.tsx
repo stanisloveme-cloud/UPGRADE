@@ -11,11 +11,14 @@ const { Title, Text, Paragraph } = Typography;
 export interface SpeakerMemoProps {
     speakerName: string;
     eventName: string;
+    eventLogoUrl?: string; // New field for Event logo
     sessionTitle: string;
     sessionStartTime: string;
     sessionEndTime: string;
     location: string;
     hallName: string;
+    questions?: { id: number, title: string, body?: string | null }[]; // New field for discussion questions
+    coSpeakers?: { id: number, name: string, company?: string | null, position?: string | null, role: string }[]; // New field for other speakers
     arrivalInstructions?: string;
     managerContacts?: string;
 }
@@ -23,11 +26,14 @@ export interface SpeakerMemoProps {
 export const SpeakerMemo: React.FC<SpeakerMemoProps> = ({
     speakerName,
     eventName,
+    eventLogoUrl,
     sessionTitle,
     sessionStartTime,
     sessionEndTime,
     location,
     hallName,
+    questions,
+    coSpeakers,
     arrivalInstructions,
     managerContacts
 }) => {
@@ -74,6 +80,11 @@ export const SpeakerMemo: React.FC<SpeakerMemoProps> = ({
 
             <Card className="speaker-memo-card" bordered={false}>
                 <div style={{ textAlign: 'center', marginBottom: 24 }}>
+                    {eventLogoUrl && (
+                        <div style={{ marginBottom: 16 }}>
+                            <img src={eventLogoUrl} alt={eventName} style={{ maxWidth: 200, maxHeight: 80, objectFit: 'contain' }} />
+                        </div>
+                    )}
                     <Title level={2} className="speaker-memo-title">Памятка спикера</Title>
                     <Text type="secondary" style={{ fontSize: 16 }}>{eventName}</Text>
                 </div>
@@ -137,9 +148,50 @@ export const SpeakerMemo: React.FC<SpeakerMemoProps> = ({
                             </div>
                         </Col>
 
-                        {(arrivalInstructions || managerContacts) && (
+                        {questions && questions.length > 0 && (
                             <Col span={24}>
                                 <div style={{ padding: '0 12px' }}>
+                                    <Title level={5} style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#1f1f1f' }}>
+                                        <InfoCircleOutlined style={{ color: '#1677ff' }} /> Вопросы к обсуждению
+                                    </Title>
+                                    <ul style={{ fontSize: 16, paddingLeft: 20, marginTop: 8 }}>
+                                        {questions.map((q, idx) => (
+                                            <li key={q.id || idx} style={{ marginBottom: 4 }}>
+                                                <strong>{q.title}</strong>
+                                                {q.body && <div style={{ color: '#595959', fontSize: 14, marginTop: 2 }}>{q.body}</div>}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </Col>
+                        )}
+
+                        {coSpeakers && coSpeakers.length > 0 && (
+                            <Col span={24}>
+                                <div style={{ padding: '0 12px' }}>
+                                    <Title level={5} style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#1f1f1f' }}>
+                                        <InfoCircleOutlined style={{ color: '#1677ff' }} /> Участники сессии
+                                    </Title>
+                                    <ul style={{ fontSize: 16, paddingLeft: 20, marginTop: 8 }}>
+                                        {coSpeakers.map(sp => (
+                                            <li key={sp.id} style={{ marginBottom: 8 }}>
+                                                <strong>{sp.name}</strong>
+                                                {(sp.company || sp.position) && (
+                                                    <span style={{ display: 'block', color: '#595959', fontSize: 14 }}>
+                                                        {sp.position} {sp.company && sp.position ? '–' : ''} {sp.company}
+                                                        {sp.role === 'moderator' ? ' (Модератор)' : ''}
+                                                    </span>
+                                                )}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </Col>
+                        )}
+
+                        {(arrivalInstructions || managerContacts) && (
+                            <Col span={24}>
+                                <div style={{ padding: '0 12px', borderTop: '1px solid #f0f0f0', paddingTop: 16, marginTop: 8 }}>
                                     <Title level={5} style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#1f1f1f' }}>
                                         <InfoCircleOutlined style={{ color: '#1677ff' }} /> Организационная информация
                                     </Title>

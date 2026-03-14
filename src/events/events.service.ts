@@ -30,6 +30,8 @@ export class EventsService {
                 startDate: new Date(data.startDate),
                 endDate: new Date(data.endDate),
                 status: 'draft',
+                location: data.location,
+                eventLogoUrl: data.eventLogoUrl,
             },
         });
 
@@ -75,6 +77,8 @@ export class EventsService {
                 description: updateData.description,
                 startDate: updateData.startDate ? new Date(updateData.startDate) : undefined,
                 endDate: updateData.endDate ? new Date(updateData.endDate) : undefined,
+                location: updateData.location,
+                eventLogoUrl: updateData.eventLogoUrl,
             }
         });
     }
@@ -253,6 +257,13 @@ export class EventsService {
                                     }
                                 }
                             }
+                        },
+                        questions: {
+                            orderBy: { order: 'asc' }
+                        },
+                        speakers: {
+                            include: { speaker: true },
+                            orderBy: { sortOrder: 'asc' }
                         }
                     }
                 }
@@ -262,16 +273,51 @@ export class EventsService {
         if (!sessionSpeaker) throw new NotFoundException('Memo not found');
 
         const event = sessionSpeaker.session.track.hall.event;
-        const template = event.memoTemplate || '<h1>Памятка спикера</h1><p>Уважаемый(ая) {{name}}, ждем вас на мероприятии {{eventName}}!</p><p>Сессия: {{sessionName}} в {{startTime}}, Зал: {{hallName}}.</p>';
+        const template = event.memoTemplate || '<p>Уважаемый(ая) {{name}}, ждем вас на мероприятии {{eventName}}!</p><p>Сессия: {{sessionName}} в {{startTime}}, Зал: {{hallName}}.</p>';
 
-        let html = template
-            .replace(/{{name}}/g, `${sessionSpeaker.speaker.firstName} ${sessionSpeaker.speaker.lastName}`)
+        const speakerFullName = `${sessionSpeaker.speaker.firstName} ${sessionSpeaker.speaker.lastName}`;
+        const hallName = sessionSpeaker.session.track.hall.name;
+        
+        let htmlContent = template
+            .replace(/{{name}}/g, speakerFullName)
             .replace(/{{sessionName}}/g, sessionSpeaker.session.name)
-            .replace(/{{hallName}}/g, sessionSpeaker.session.track.hall.name)
+            .replace(/{{hallName}}/g, hallName)
             .replace(/{{startTime}}/g, sessionSpeaker.session.startTime)
             .replace(/{{eventName}}/g, event.name);
 
-        return { html, eventName: event.name, speakerName: `${sessionSpeaker.speaker.firstName} ${sessionSpeaker.speaker.lastName}` };
+        const trackDayStr = sessionSpeaker.session.track.day.toISOString().split('T')[0];
+        const sessionStartTime = `${trackDayStr}T${sessionSpeaker.session.startTime}:00`;
+        const sessionEndTime = `${trackDayStr}T${sessionSpeaker.session.endTime}:00`;
+
+        const coSpeakers = sessionSpeaker.session.speakers
+            .filter(sp => sp.id !== sessionSpeaker.id)
+            .map(sp => ({
+                id: sp.id,
+                name: `${sp.speaker.firstName} ${sp.speaker.lastName}`,
+                company: sp.companySnapshot || sp.speaker.company,
+                position: sp.positionSnapshot || sp.speaker.position,
+                role: sp.role
+            }));
+
+        const questions = sessionSpeaker.session.questions.map(q => ({
+            id: q.id,
+            title: q.title,
+            body: q.body
+        }));
+
+        return { 
+            htmlContent, 
+            eventName: event.name, 
+            eventLogoUrl: event.eventLogoUrl,
+            speakerName: speakerFullName,
+            sessionTitle: sessionSpeaker.session.name,
+            sessionStartTime,
+            sessionEndTime,
+            location: event.location,
+            hallName,
+            questions,
+            coSpeakers
+        };
     }
 
     async downloadPresentationsZip(eventId: number, res: any) {

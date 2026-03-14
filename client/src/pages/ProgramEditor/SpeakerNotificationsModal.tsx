@@ -77,12 +77,24 @@ const SpeakerNotificationsModal: React.FC<SpeakerNotificationsModalProps> = ({ v
         } else {
             const textArea = document.createElement("textarea");
             textArea.value = text;
+            
+            // Avoid scrolling to bottom
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            textArea.style.opacity = "0";
+
             document.body.appendChild(textArea);
             textArea.focus();
             textArea.select();
+            
             try {
-                document.execCommand('copy');
-                message.success('Ссылка скопирована');
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    message.success('Ссылка скопирована');
+                } else {
+                    message.error('Не удалось скопировать ссылку');
+                }
             } catch (err) {
                 message.error('Не удалось скопировать ссылку');
             }
