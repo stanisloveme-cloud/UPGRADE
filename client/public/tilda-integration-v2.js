@@ -416,10 +416,11 @@
                             // Render Speakers
                             if (session.speakers && session.speakers.length > 0) {
                                 html += `<div class="upg-speakers">`;
-                                session.speakers.forEach(speaker => {
-                                    const photoUrl = speaker.photoUrl || DEFAULT_AVATAR;
-                                    const fullName = `${speaker.firstName || ''} ${speaker.lastName || ''}`.trim();
-                                    const roleStr = `${speaker.position || ''} ${speaker.company || ''}`.trim();
+                                session.speakers.forEach(sessionSpeaker => {
+                                    const sp = sessionSpeaker.speaker || {};
+                                    const photoUrl = sp.photoUrl || DEFAULT_AVATAR;
+                                    const fullName = `${sp.firstName || ''} ${sp.lastName || ''}`.trim();
+                                    const roleStr = `${sp.position || ''} ${sp.company || ''}`.trim();
                                     
                                     html += `
                                     <div class="upg-speaker">

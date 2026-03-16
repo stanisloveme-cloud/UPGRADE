@@ -66,12 +66,9 @@
             </select>
         </div>
 
-        <hr style="margin: 40px 0; border: 0; border-top: 1px solid #eaeaea;">
-
-        <h2 style="text-align:center;">Результат рендеринга ниже:</h2>
-
+        <!-- Tilda Snippet Start -->
         <script>
-            // Set the ID before the snippet loads
+            // Выполняем подмену ID ДО того, как загрузится и сработает defer-скрипт Tilda
             const params = new URLSearchParams(window.location.search);
             const eventId = params.get('eventId') || 76;
             window.crmEventId = eventId;
@@ -326,7 +323,7 @@
   (function() {
     // Конфигурация
     const EVENT_ID = window.crmEventId || 76; // Default to ID 76 if not specifically set
-    const API_URL = 'https://devupgrade.space4u.ru/api/public/events/' + EVENT_ID + '/website-data';
+    const API_URL = 'https://devupgrade.space4you.ru/api/public/events/' + EVENT_ID + '/website-data';
     const root = document.getElementById('crm-schedule-root');
     
     // Хранилище
