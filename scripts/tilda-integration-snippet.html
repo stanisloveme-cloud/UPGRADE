@@ -1,452 +1,415 @@
 <!-- Tilda Integration Snippet (For T123 / HTML Block) -->
 <!-- Контейнер для рендеринга расписания -->
-<div id="crm-schedule-root" style="max-width: 1200px; margin: 0 auto; padding: 20px; font-family: Montserrat, sans-serif;">
-  <div class="text-center py-5" id="crm-loading" style="text-align: center; color: #888;">Загрузка программы...</div>
+<div id="crm-schedule-root" data-event-id="76" data-registration-url="https://spring.upgrade.st/registration" style="font-family: inherit;">
+  <div class="text-center p-5 text-muted" id="crm-loading">Загрузка программы...</div>
 </div>
-
-<!-- Модальное окно для биографии спикера -->
-<div id="crm-speaker-modal" class="crm-modal" style="display: none;">
-  <div class="crm-modal-content">
-    <span class="crm-modal-close" onclick="closeSpeakerModal()">&times;</span>
-    <div id="crm-speaker-modal-body"></div>
-  </div>
-</div>
-
-<style>
-  /* Кастомные стили, специфичные для нашей интеграции (изолированные) */
-  #crm-schedule-root .speaker-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    filter: grayscale(100%);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
-  #crm-schedule-root .sponsor-logo {
-    max-height: 45px;
-    max-width: 140px;
-    object-fit: contain;
-  }
-  #crm-schedule-root .session-title {
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: rgb(33, 37, 41);
-    line-height: 1.3;
-  }
-  #crm-schedule-root .time-col {
-    font-weight: 700;
-    color: rgb(33, 37, 41);
-  }
-  #crm-schedule-root .crm-border-top {
-    border-top: 1px solid rgb(174, 175, 255) !important;
-  }
-  
-  /* Flexbox Grid */
-  #crm-schedule-root .crm-row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-  #crm-schedule-root .crm-col {
-    position: relative;
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-  }
-  @media (min-width: 992px) {
-    #crm-schedule-root .crm-col-lg-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
-    #crm-schedule-root .crm-col-lg-6 { flex: 0 0 50%; max-width: 50%; }
-    #crm-schedule-root .crm-col-lg-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
-    #crm-schedule-root .crm-text-lg-end { text-align: right !important; }
-  }
-  
-  /* Утилиты */
-  #crm-schedule-root .d-flex { display: flex !important; }
-  #crm-schedule-root .align-items-center { align-items: center !important; }
-  #crm-schedule-root .align-items-start { align-items: flex-start !important; }
-  #crm-schedule-root .flex-wrap { flex-wrap: wrap !important; }
-  #crm-schedule-root .flex-column { flex-direction: column !important; }
-  #crm-schedule-root .gap-3 { gap: 1rem !important; }
-  #crm-schedule-root .me-3 { margin-right: 1rem !important; }
-  #crm-schedule-root .mb-2 { margin-bottom: 0.5rem !important; }
-  #crm-schedule-root .mb-3 { margin-bottom: 1rem !important; }
-  #crm-schedule-root .mb-4 { margin-bottom: 1.5rem !important; }
-  #crm-schedule-root .mt-2 { margin-top: 0.5rem !important; }
-  #crm-schedule-root .mt-3 { margin-top: 1rem !important; }
-  #crm-schedule-root .mt-4 { margin-top: 1.5rem !important; }
-  #crm-schedule-root .pt-3 { padding-top: 1rem !important; }
-  #crm-schedule-root .pt-4 { padding-top: 1.5rem !important; }
-  #crm-schedule-root .pb-4 { padding-bottom: 1.5rem !important; }
-  #crm-schedule-root .text-muted { color: #6c757d !important; }
-  #crm-schedule-root .small { font-size: 85%; font-weight: 400; }
-  #crm-schedule-root .fw-bold { font-weight: 700 !important; }
-  #crm-schedule-root .fw-light { font-weight: 300 !important; }
-  #crm-schedule-root .fs-6 { font-size: 1rem !important; }
-  #crm-schedule-root .lh-sm { line-height: 1.25 !important; }
-  
-  /* Кнопки и Табы */
-  #crm-schedule-root .crm-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
-  }
-  #crm-schedule-root .crm-tab-btn {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #888;
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-family: inherit;
-    transition: all 0.3s;
-  }
-  #crm-schedule-root .crm-tab-btn.active {
-    color: rgb(33, 37, 41);
-    background: #f0f0ff;
-  }
-  #crm-schedule-root .crm-tab-btn:hover {
-    color: rgb(33, 37, 41);
-  }
-  #crm-schedule-root .crm-btn-primary {
-    display: inline-block;
-    color: #ffffff;
-    background-color: #aeafff;
-    border: 2px solid #aeafff;
-    border-radius: 30px;
-    padding: 12px 30px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-    font-family: inherit;
-    text-align: center;
-  }
-  #crm-schedule-root .crm-btn-primary:hover {
-    color: #ffffff;
-    background-color: #12003a;
-    border-color: #12003a;
-  }
-  #crm-schedule-root .crm-btn-link {
-    background: none;
-    border: none;
-    color: #aeafff;
-    text-decoration: underline;
-    cursor: pointer;
-    padding: 0;
-    font-size: 0.85rem;
-    font-family: inherit;
-    margin-top: 5px;
-  }
-  #crm-schedule-root .crm-btn-link:hover {
-    color: #12003a;
-  }
-  
-  /* Списки и вопросы */
-  #crm-schedule-root .crm-questions {
-    padding-left: 20px;
-    margin-top: 15px;
-    color: rgb(33, 37, 41);
-  }
-  #crm-schedule-root .crm-questions li {
-    margin-bottom: 8px;
-    line-height: 1.4;
-  }
-
-  /* Модальное окно */
-  .crm-modal {
-    position: fixed;
-    z-index: 99999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.5);
-    font-family: Montserrat, sans-serif;
-  }
-  .crm-modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 30px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 600px;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  }
-  .crm-modal-close {
-    color: #aaa;
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  .crm-modal-close:hover {
-    color: black;
-  }
-</style>
 
 <script>
-  // Глобальная функция для модалки, чтобы работала из инлайн-onclick
-  window.openSpeakerModal = function(speakerId) {
-    const speaker = window.crmSpeakersData[speakerId];
-    if (!speaker) return;
-    
-    let html = '';
-    html += '<div style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 20px;">';
-    if (speaker.photoUrl) {
-        html += '<img src="' + speaker.photoUrl + '" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; filter: grayscale(100%);" />';
-    }
-    html += '<div>';
-    html += '<h3 style="margin: 0 0 10px 0; font-size: 1.5rem; color: #212529;">' + speaker.firstName + ' ' + speaker.lastName + '</h3>';
-    if (speaker.position || speaker.company) {
-        html += '<div style="color: #6c757d; font-size: 1rem;">' + (speaker.position ? speaker.position : '') + (speaker.position && speaker.company ? ' / ' : '') + (speaker.company ? speaker.company : '') + '</div>';
-    }
-    html += '</div>';
-    html += '</div>';
-    
-    if (speaker.bio) {
-        // Конвертация переносов строк в <br> если text/plain
-        const formattedBio = speaker.bio.replace(/\\n/g, '<br/>');
-        html += '<div style="line-height: 1.6; color: #333;">' + formattedBio + '</div>';
-    } else {
-        html += '<div style="color: #888; font-style: italic;">Биография не заполнена.</div>';
-    }
-    
-    document.getElementById('crm-speaker-modal-body').innerHTML = html;
-    document.getElementById('crm-speaker-modal').style.display = 'block';
-  };
+(function() {
+    console.log("UPGRADE CRM Tilda Integration Widget (Bootstrap 5 UX) Loaded");
 
-  window.closeSpeakerModal = function() {
-    document.getElementById('crm-speaker-modal').style.display = 'none';
-  };
-
-  window.onclick = function(event) {
-    const modal = document.getElementById('crm-speaker-modal');
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
-
-  (function() {
-    // Конфигурация
-    const EVENT_ID = window.crmEventId || 76; // Default to ID 76 if not specifically set
-    const API_URL = `https://devupgrade.space4you.ru/api/public/events/${EVENT_ID}/website-data`;
-    const root = document.getElementById('crm-schedule-root');
-    
-    // Хранилище
-    let scheduleByDay = {}; // { '2025-05-15': [...] }
-    let sortedDays = [];
-    window.crmSpeakersData = {}; // Global for modal access
-
-    async function fetchData() {
-      try {
-        const response = await fetch(API_URL);
-        if (!response.ok) throw new Error('Network response was not ok');
-        const data = await response.json();
-        processData(data);
-      } catch (error) {
-        console.error('Error loading CRM schedule:', error);
-        root.innerHTML = '<div style="text-align: center; color: red; padding: 20px;">Не удалось загрузить расписание.</div>';
-      }
-    }
-
-    function processData(data) {
-      const halls = data.halls || [];
-      if (halls.length === 0) {
-        root.innerHTML = '<div style="text-align: center; padding: 30px; font-size: 1.2rem;">Программа формируется...</div>';
-        return;
-      }
-
-      // Плоский массив всех сессий с привязкой к дню и залу
-      let allSessions = [];
-
-      halls.forEach(hall => {
-        (hall.tracks || []).forEach(track => {
-            const dayKey = track.day ? track.day.split('T')[0] : 'unknown'; // "2025-10-21"
-            (track.sessions || []).forEach(session => {
-                session.dayKey = dayKey;
-                session.hallName = hall.name;
-                
-                // Сохраняем спикеров глобально для модалки
-                (session.speakers || []).forEach(sp => {
-                    if (sp.speaker) window.crmSpeakersData[sp.speaker.id] = sp.speaker;
-                });
-                
-                allSessions.push(session);
-            });
-        });
-      });
-
-      // Группировка
-      allSessions.forEach(session => {
-          if (!scheduleByDay[session.dayKey]) scheduleByDay[session.dayKey] = [];
-          scheduleByDay[session.dayKey].push(session);
-      });
-
-      // Сортировка дней
-      sortedDays = Object.keys(scheduleByDay).sort();
-      
-      // Сортировка сессий внутри дня
-      sortedDays.forEach(day => {
-          scheduleByDay[day].sort((a, b) => a.startTime.localeCompare(b.startTime));
-      });
-
-      // Рендер начального стейта
-      if (sortedDays.length > 0) {
-          renderLayout(sortedDays[0]);
-      } else {
-          root.innerHTML = '<div style="text-align: center; padding: 30px; font-size: 1.2rem;">Программа формируется...</div>';
-      }
-    }
-
-    function formatDateForTab(dateStr) {
-        if (dateStr === 'unknown') return 'Программа';
-        const date = new Date(dateStr);
-        return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
-    }
-
-    // Экспонируем для onClick табов
-    window.crmChangeTab = function(dayKey) {
-        renderLayout(dayKey);
+    const CONFIG = {
+        API_BASE: 'https://devupgrade.space4you.ru/api/public',
+        rootId: 'crm-schedule-root',
+        defaultRegistrationUrl: 'https://spring.upgrade.st/registration'
     };
 
-    function renderLayout(activeDay) {
-        let html = '';
-        
-        // Рендер табов
-        if (sortedDays.length > 1) {
-            html += '<div class="crm-tabs">';
-            sortedDays.forEach(day => {
-                const isActive = day === activeDay ? 'active' : '';
-                html += '<button class="crm-tab-btn ' + isActive + '" onclick="crmChangeTab(\'' + day + '\')">' + formatDateForTab(day) + '</button>';
-            });
-            html += '</div>';
-        }
+    const PALETTE = [
+        { text: '#34125F', accent: '#8F6FAD' }, // Day 1
+        { text: '#004F7A', accent: '#5594B8' }, // Day 2
+        { text: '#005E3D', accent: '#529F81' }, // Day 3
+        { text: '#6F1D1B', accent: '#A95C59' }  // Day 4
+    ];
 
-        // Рендер сессий
-        const sessions = scheduleByDay[activeDay] || [];
-        if (sessions.length === 0) {
-            html += '<div style="text-align: center; padding: 30px; color: #888;">В этот день пока нет подтвержденных сессий.</div>';
-        } else {
-            sessions.forEach(session => {
-                html += renderSession(session);
-            });
+    const STYLES = `
+        /* Custom Utilities */
+        #crm-schedule-root .v-hall {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            white-space: nowrap;
         }
-        
-        // Кнопка регистрации в самом низу (может дублироваться или быть одной на блок)
-        html += `
-          <div style="text-align: center; margin-top: 50px; margin-bottom: 20px;">
-            <a href="https://spring.upgrade.st/#registration" class="crm-btn-primary">Участвовать</a>
-          </div>
-        `;
+        #crm-schedule-root .to-scroll {
+            scroll-margin-top: 90px;
+        }
+        #crm-schedule-root .sidebar-sticky {
+            position: sticky;
+            top: 70px;
+            max-height: calc(100vh - 90px);
+            overflow-y: auto;
+        }
+        #crm-schedule-root .speaker-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+        #crm-schedule-root .text-body-tertiary {
+            color: rgba(33, 37, 41, 0.5) !important;
+        }
+        #crm-schedule-root .nav-link-custom {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        #crm-schedule-root .nav-link-custom:hover {
+            color: #8F6FAD;
+        }
+        #crm-schedule-root .bg-body-tertiary {
+            background-color: #f8f9fa !important;
+        }
+        #crm-schedule-root .custom-session-card {
+            border: 1px solid #dee2e6;
+        }
+        #crm-schedule-root .custom-session-card:hover {
+            background-color: #e9ecef !important;
+            cursor: pointer;
+        }
+        /* Клик по всей области */
+        #crm-schedule-root .stretched-link::after {
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: 1;
+            content: "";
+        }
+        #crm-schedule-root .btn-participate {
+            background-color: #aeafff;
+            color: #fff;
+            border-radius: 30px;
+            padding: 10px 30px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        #crm-schedule-root .btn-participate:hover {
+            background-color: #12003a;
+            color: #fff;
+        }
+    `;
 
-        root.innerHTML = html;
+    // --- HELPERS ---
+
+    function extractDate(dateString) {
+      if (!dateString) return 'Программа';
+      if (dateString.length <= 8 && dateString.includes(':')) {
+          return 'Программа';
+      }
+      const date = new Date(dateString);
+      if (!isNaN(date.getTime())) {
+          return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
+      }
+      return 'Программа';
     }
 
-    function renderSession(session) {
-        const timeRange = session.endTime ? session.startTime + ' — ' + session.endTime : session.startTime;
-        const sponsors = session.sponsors || [];
-        const questions = session.questions || [];
+    function formatTime(startTime, endTime) {
+        if (!startTime) return '';
+        let sTime = startTime;
+        let eTime = endTime;
         
-        const moderators = (session.speakers || []).filter(s => s.role === 'moderator' || s.isModerator).map(s => s.speaker).filter(Boolean);
-        const speakers = (session.speakers || []).filter(s => s.role !== 'moderator' && !s.isModerator).map(s => s.speaker).filter(Boolean);
-
-        let html = '<div class="crm-row crm-border-top pt-4 mb-4 pb-4">';
-        
-        // ---- Левая колонка: Время ----
-        html += '<div class="crm-col crm-col-lg-2 crm-text-lg-end mb-3 time-col">';
-        html += '<h5 style="margin: 0; font-family: Montserrat; font-size: 1.25rem;">' + timeRange + '</h5>';
-        html += '<div class="small text-muted mt-2 fw-bold" style="text-transform: uppercase;">' + session.hallName + '</div>';
-        html += '</div>';
-        
-        // ---- Центральная колонка: Название, Описание, Вопросы ----
-        html += '<div class="crm-col crm-col-lg-6 mb-4">';
-        html += '<h4 class="session-title mb-3" style="margin-top: 0; font-family: Montserrat;">' + session.title + '</h4>';
-        
-        if (session.description && session.description.trim() !== '') {
-             html += '<div class="mb-3 text-muted small" style="line-height: 1.5;">' + session.description + '</div>';
+        if (sTime.includes('T')) {
+            const d = new Date(sTime);
+            if (!isNaN(d.getTime())) {
+                sTime = d.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+            }
+        } else {
+            sTime = sTime.split(':').slice(0, 2).join(':');
         }
         
-        // Тезисы / Вопросы
-        if (questions.length > 0) {
-            html += '<ul class="crm-questions">';
-            questions.forEach(q => {
-                html += '<li><strong>' + q.title + '</strong>';
-                if (q.body) html += '<span class="text-muted small"> — ' + q.body + '</span>';
-                html += '</li>';
+        if (eTime) {
+           if (eTime.includes('T')) {
+                const d = new Date(eTime);
+                if (!isNaN(d.getTime())) {
+                    eTime = d.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+                }
+            } else {
+                eTime = eTime.split(':').slice(0, 2).join(':');
+            }
+            return `${sTime} — ${eTime}`;
+        }
+        return sTime;
+    }
+
+    // --- RENDERING CORE ---
+
+    function renderSchedule(root, data, registrationUrl) {
+        if (!data.halls || !Array.isArray(data.halls)) {
+            root.innerHTML = '<div class="alert alert-danger m-4">Неверный формат данных мероприятия.</div>';
+            return;
+        }
+
+        let allSessions = [];
+        data.halls.forEach(hall => {
+            (hall.tracks || []).forEach(track => {
+                const dayKey = track.day ? extractDate(track.day) : 'Программа';
+                const trackName = track.name || 'Без трека';
+                (track.sessions || []).forEach(session => {
+                    session.dayKey = dayKey;
+                    session.hallName = hall.name || 'unknown';
+                    session.trackName = trackName;
+                    allSessions.push(session);
+                });
             });
-            html += '</ul>';
+        });
+
+        // Group by Day -> Hall -> Track -> Sessions
+        const scheduleByDay = {};
+        allSessions.forEach(session => {
+            if (!scheduleByDay[session.dayKey]) scheduleByDay[session.dayKey] = { halls: {}, tracks: {} };
+            
+            // For Grid
+            if (!scheduleByDay[session.dayKey].halls[session.hallName]) {
+                scheduleByDay[session.dayKey].halls[session.hallName] = {};
+            }
+            if (!scheduleByDay[session.dayKey].halls[session.hallName][session.trackName]) {
+                scheduleByDay[session.dayKey].halls[session.hallName][session.trackName] = [];
+            }
+            scheduleByDay[session.dayKey].halls[session.hallName][session.trackName].push(session);
+
+            // For Details
+            if (!scheduleByDay[session.dayKey].tracks[session.trackName]) {
+                scheduleByDay[session.dayKey].tracks[session.trackName] = { hallName: session.hallName, sessions: [] };
+            }
+            scheduleByDay[session.dayKey].tracks[session.trackName].sessions.push(session);
+        });
+
+        const sortedDays = Object.keys(scheduleByDay);
+
+        let html = `<div class="container-fluid p-0"><div class="row align-items-start">`;
+
+        // 1. Sidebar (Left)
+        html += `<div class="col-12 col-lg-3 sidebar-sticky d-none d-lg-block bg-body-tertiary p-4 rounded-3 mb-4">`;
+        sortedDays.forEach((day, dayIndex) => {
+            const colors = PALETTE[dayIndex % PALETTE.length];
+            html += `<h4 class="mb-3 fw-bold" style="color: ${colors.text}">${day}</h4>`;
+            html += `<ul class="list-unstyled mb-4">`;
+            const tracks = Object.keys(scheduleByDay[day].tracks);
+            tracks.forEach(trackName => {
+                if(trackName === 'Без трека' && scheduleByDay[day].tracks[trackName].sessions.length === 0) return;
+                const anchorId = `track-${encodeURIComponent(trackName).replace(/[^a-zA-Z0-9]/g, '')}`;
+                html += `<li><a href="#${anchorId}" class="nav-link-custom">${trackName === 'Без трека' ? 'Общая программа' : trackName}</a></li>`;
+            });
+            html += `</ul>`;
+        });
+        html += `</div>`;
+
+        // 2. Main Content (Right)
+        html += `<div class="col-12 col-lg-9 px-lg-4">`;
+
+        sortedDays.forEach((day, dayIndex) => {
+            const colors = PALETTE[dayIndex % PALETTE.length];
+            const hallsObj = scheduleByDay[day].halls;
+            const tracksObj = scheduleByDay[day].tracks;
+
+            html += `<div class="mb-5">`;
+            
+            // DAY HEADER
+            html += `<h2 class="display-5 fw-bold mb-4 to-scroll" id="day-${dayIndex}" style="color: ${colors.text}">${day}</h2>`;
+
+            // GRID VIEW (Сетка)
+            html += `<div class="mb-5">`;
+            for (const [hallName, trackGroup] of Object.entries(hallsObj)) {
+                html += `<div class="row">`;
+                
+                // Левая колонка - Зал Конгресса
+                html += `<div class="v-hall col-auto p-0 border-start border-2 border-danger mb-3" style="border-color: ${colors.accent} !important;">`;
+                html += `<h6 class="ps-1 m-0 text-end text-body-tertiary" style="letter-spacing: 1px;">${hallName === 'unknown' ? 'Главный зал' : hallName}</h6>`;
+                html += `</div>`;
+                
+                // Правая колонка - Треки и карточки
+                html += `<div class="col">`;
+                for (const [trackName, sessionsArray] of Object.entries(trackGroup)) {
+                    const displayTrack = trackName === 'Без трека' ? '' : trackName;
+                    const anchorId = `track-${encodeURIComponent(trackName).replace(/[^a-zA-Z0-9]/g, '')}`;
+                    
+                    if (displayTrack) {
+                        // Название трека кликабельное
+                        html += `<div class="row gx-2">`;
+                        html += `<div class="col h6 py-1 position-relative" style="color: ${colors.text}">`;
+                        html += `${displayTrack} <a class="stretched-link" href="#${anchorId}"></a>`;
+                        html += `</div>`;
+                        html += `</div>`;
+                    }
+
+                    // Сетка сессий в треке
+                    html += `<div class="row g-3 mb-4">`;
+                    sessionsArray.sort((a,b) => (a.startTime||'').localeCompare(b.startTime||''));
+                    
+                    sessionsArray.forEach(session => {
+                        const sAnchor = `session-${session.id}`;
+                        const time = formatTime(session.startTime, session.endTime);
+                        const safeTitle = session.title || 'Сессия';
+                        
+                        // Если нет описания - просто карточка. Если есть - показываем кусочек
+                        let shortDesc = "";
+                        if (session.description && session.description !== 'undefined') {
+                            shortDesc = session.description.substring(0, 100) + (session.description.length > 100 ? '...' : '');
+                        } else if (session.questions && session.questions.length > 0) {
+                            shortDesc = session.questions[0].title.substring(0, 100) + (session.questions[0].title.length > 100 ? '...' : '');
+                        }
+
+                        html += `
+                            <div class="col-12 col-md-6 col-xl-4">
+                                <div class="bg-body-tertiary p-3 rounded-2 position-relative h-100 custom-session-card" style="transition: background 0.2s;">
+                                    <a class="stretched-link" href="#${sAnchor}"></a>
+                                    <div class="fw-bold small mb-2">${time}</div>
+                                    <div class="small lh-sm" style="color: #212529; font-size: 0.9rem; font-weight: 500;">${safeTitle}</div>
+                                    ${shortDesc ? `<div class="text-muted mt-2" style="font-size: 0.75rem;">${shortDesc}</div>` : ''}
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    html += `</div>`; // g-3 (Конец сетки сессий для одного трека)
+                }
+                html += `</div>`; // col (Конец правой колонки)
+                
+                html += `</div>`; // row (Конец строки одного зала)
+            }
+            html += `</div>`; // Grid View wrapper
+
+            // DETAILED VIEW (Детализация по трекам)
+            html += `<div>`;
+            for (const [trackName, trackData] of Object.entries(tracksObj)) {
+                if(trackName === 'Без трека' && trackData.sessions.length === 0) continue;
+                
+                const anchorId = `track-${encodeURIComponent(trackName).replace(/[^a-zA-Z0-9]/g, '')}`;
+                
+                html += `<div class="to-scroll mb-5" id="${anchorId}">`;
+                if (trackName !== 'Без трека') {
+                    html += `<h3 class="mt-1" style="color: ${colors.text}">${trackName}</h3>`;
+                }
+                const trackHall = trackData.hallName === 'unknown' ? 'Главный зал' : trackData.hallName;
+                html += `<h6 class="text-body-tertiary mb-4">${trackHall}</h6>`;
+
+                trackData.sessions.sort((a,b) => (a.startTime||'').localeCompare(b.startTime||''));
+                
+                trackData.sessions.forEach(session => {
+                    const sAnchor = `session-${session.id}`;
+                    const time = formatTime(session.startTime, session.endTime);
+                    const questions = session.questions || [];
+                    
+                    const moderators = (session.speakers || []).filter(s => s.role === 'Организатор' || s.isModerator).map(s => s.speaker).filter(Boolean);
+                    const speakers = (session.speakers || []).filter(s => s.role !== 'Организатор' && !s.isModerator).map(s => s.speaker).filter(Boolean);
+
+                    html += `<div class="row to-scroll border-top pt-3 mb-4" id="${sAnchor}" style="border-color: ${colors.accent} !important;">`;
+                    
+                    html += `<div class="col-12 col-lg-auto text-lg-end text-nowrap" style="min-width: 140px;">`;
+                    html += `<h6 class="fw-bold">${time}</h6>`;
+                    html += `</div>`;
+
+                    html += `<div class="col-12 col-lg">`;
+                    html += `<h5 class="fw-bold mb-3">${session.title || 'Сессия'}</h5>`;
+                   
+                    if (session.description && session.description !== 'undefined') {
+                        html += `<div class="mb-3 lh-sm small">${session.description}</div>`;
+                    }
+                    if (questions.length > 0) {
+                        html += `<ul class="list-unstyled mb-3">`;
+                        questions.forEach((q, idx) => {
+                            html += `<li class="d-flex mb-2 lh-sm small">`;
+                            html += `<span class="fw-bold me-2" style="color: ${colors.accent}">#${idx+1}</span>`;
+                            html += `<span>${q.title} ${q.body ? `— <span class="text-muted">${q.body}</span>` : ''}</span>`;
+                            html += `</li>`;
+                        });
+                        html += `</ul>`;
+                    }
+                    html += `</div>`;
+
+                    // Блок людей: Без фото, только текст
+                    html += `<div class="col-12 col-lg-4 mt-3 mt-lg-0">`;
+                    function renderPerson(p) {
+                        const name = `${p.firstName || ''} ${p.lastName || ''}`.trim();
+                        const pos = [p.position, p.company].filter(Boolean).join(', ');
+                        return `<div class="lh-sm mb-2 small"><span class="fw-bold text-dark">${name}${pos ? ',' : ''}</span> ${pos}</div>`;
+                    }
+
+                    if (moderators.length > 0) {
+                        html += `<div class="fw-light fs-6 mb-2 text-muted" style="font-size: 0.85rem !important; text-transform: uppercase;">Модератор${moderators.length > 1 ? 'ы' : ''}</div>`;
+                        moderators.forEach(m => html += renderPerson(m));
+                    }
+                    if (speakers.length > 0) {
+                        html += `<div class="fw-light fs-6 mb-2 mt-3 text-muted" style="font-size: 0.85rem !important; text-transform: uppercase;">Спикеры</div>`;
+                        speakers.forEach(s => html += renderPerson(s));
+                    }
+                    html += `</div>`; // End col-lg-4 (speakers block)
+
+                    html += `</div>`; // End row session
+                });
+
+                html += `</div>`; // End Track Block
+            }
+            html += `</div>`; // End Detailed View wrapper
+            
+            html += `</div>`; // End Day Content wrapper
+        });
+        
+        // Participate button at the very bottom
+        if (registrationUrl) {
+            html += `<div class="text-center mt-5 mb-3">`;
+            html += `<a href="${registrationUrl}" class="btn-participate" target="_blank" rel="noopener noreferrer">Участвовать</a>`;
+            html += `</div>`;
         }
 
-        // Партнеры сессии (сделаем рендеринг, если данные будут заводиться в сессии)
-        if (sponsors.length > 0) {
-            html += '<div class="mt-4 pt-3" style="border-top: 1px solid #eee;">';
-            html += '<div class="small text-muted mb-2">Партнеры сессии:</div>';
-            html += '<div class="d-flex flex-wrap gap-3 align-items-center">';
-            sponsors.forEach(sp => {
-                if (sp.logoFileUrl) {
-                    html += '<img src="' + sp.logoFileUrl + '" alt="' + sp.name + '" class="sponsor-logo" />';
-                } else {
-                    html += '<span style="padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 12px;">' + sp.name + '</span>';
+        html += `</div>`; // End Main Content (Right)
+        html += `</div></div>`; // End row & container
+
+        root.innerHTML = html;
+        
+        // Setup smooth scrolling for hash links
+        root.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                    targetEl.style.backgroundColor = 'rgba(143, 111, 173, 0.1)';
+                    setTimeout(() => targetEl.style.backgroundColor = 'transparent', 1500);
                 }
             });
-            html += '</div></div>';
-        }
-        
-        html += '</div>';
+        });
+    }
 
-        // ---- Правая колонка: Спикеры и Модераторы ----
-        html += '<div class="crm-col crm-col-lg-4">';
-        
-        function renderSpeakerBlock(person, labelElement) {
-            let res = '<div class="d-flex align-items-start mb-3">';
-            if (person.photoUrl) {
-                res += '<img src="' + person.photoUrl + '" class="speaker-avatar me-3" />';
-            }
-            res += '<div class="lh-sm d-flex flex-column">';
-            res += '<div class="fw-bold" style="color: #212529; font-size: 1.05rem;">' + person.firstName + ' ' + person.lastName + '</div>';
+    // --- INITIALIZATION ---
+
+    function init() {
+        if (!document.getElementById('upg-bootstrap-overrides')) {
+            const styleEl = document.createElement('style');
+            styleEl.id = 'upg-bootstrap-overrides';
+            styleEl.innerHTML = STYLES;
+            document.head.appendChild(styleEl);
+        }
+
+        const rootElements = document.querySelectorAll('#' + CONFIG.rootId);
+        if (rootElements.length === 0) return;
+
+        rootElements.forEach(root => {
+            const eventId = root.getAttribute('data-event-id') || 1;
+            const registrationUrl = root.getAttribute('data-registration-url') || CONFIG.defaultRegistrationUrl;
             
-            const positionText = [person.position, person.company].filter(Boolean).join(', ');
-            if (positionText) {
-                res += '<div class="small text-muted mt-2" style="font-size: 0.8rem;">' + positionText + '</div>';
-            }
-            
-            if (person.bio && person.bio.trim() !== '') {
-                res += '<button class="crm-btn-link" onclick="openSpeakerModal(' + person.id + ')">Подробнее о спикере</button>';
-            }
-            res += '</div></div>';
-            return res;
-        }
+            root.innerHTML = '<div class="text-center p-5 text-muted">Загрузка программы...</div>';
 
-        if (moderators.length > 0) {
-            html += '<div class="fw-light fs-6 mb-3 text-muted" style="text-transform: uppercase; font-size: 0.85rem !important; font-weight: 500 !important; letter-spacing: 1px;">Модератор' + (moderators.length > 1 ? 'ы' : '') + '</div>';
-            moderators.forEach(mod => { html += renderSpeakerBlock(mod); });
-        }
-
-        if (speakers.length > 0) {
-            html += '<div class="fw-light fs-6 mb-3 mt-4 text-muted" style="text-transform: uppercase; font-size: 0.85rem !important; font-weight: 500 !important; letter-spacing: 1px;">Спикеры</div>';
-            speakers.forEach(sp => { html += renderSpeakerBlock(sp); });
-        }
-
-        html += '</div>'; // End col-lg-4
-        html += '</div>'; // End row
-        
-        return html;
+            fetch(`${CONFIG.API_BASE}/events/${eventId}/website-data`)
+                .then(response => {
+                    if (!response.ok) throw new Error(`Network error: ${response.status}`);
+                    return response.json();
+                })
+                .then(data => renderSchedule(root, data, registrationUrl))
+                .catch(error => {
+                    console.error('UPGRADE CRM Tilda Widget Data Error:', error);
+                    root.innerHTML = '<div class="alert alert-danger m-4">Не удалось загрузить данные расписания. Пожалуйста, обновите страницу.</div>';
+                });
+        });
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', fetchData);
+        document.addEventListener('DOMContentLoaded', init);
     } else {
-      fetchData();
+        init();
     }
-  })();
+})();
 </script>

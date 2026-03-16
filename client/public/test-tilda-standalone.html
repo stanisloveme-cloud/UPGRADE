@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Tilda Integration Standalone</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Имитация стилей обертки Tilda -->
     <style>
         body {
@@ -51,14 +53,48 @@
         <h1>Проверка интеграции (Test Tilda)</h1>
         
         <div class="instructions">
-            <strong>Инструкция:</strong><br><br>
+            <strong>Инструкция для вставки в Тильду (блок T123):</strong><br><br>
             В этом файле теперь отображается абсолютно тот же код, который должен уйти на Тильду в блок T123.<br>
             Скрипт читает нужный ID прямо со страницы.
+            
+            <div style="margin-top: 15px;">
+                <label style="font-weight: bold; margin-bottom: 5px; display: block;">Скопируйте этот код и вставьте в блок T123 (HTML):</label>
+                <textarea id="tilda-code-snippet" readonly style="width: 100%; height: 160px; font-family: monospace; padding: 10px; border-radius: 4px; border: 1px solid #ccc; background: #f8f9fa;">
+&lt;!-- Контейнер для рендеринга расписания --&gt;
+&lt;div id="crm-schedule-root" data-event-id="76" style="font-family: inherit;"&gt;
+    &lt;div class="text-center py-5" style="color: #888;"&gt;Загрузка программы...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Подключаем Bootstrap JS --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+&lt;!-- Подключаем скрипт расписания --&gt;
+&lt;script src="https://devupgrade.space4you.ru/tilda-integration-v2.js?v=3" defer&gt;&lt;/script&gt;
+                </textarea>
+                <button onclick="copySnippet()" style="margin-top: 10px; padding: 8px 16px; background: #0d6efd; color: white; border: none; border-radius: 4px; cursor: pointer;">Скопировать код</button>
+                <span id="copy-status" style="margin-left: 10px; color: green; display: none;">Скопировано!</span>
+            </div>
         </div>
+
+        <script>
+            function copySnippet() {
+                var copyText = document.getElementById("tilda-code-snippet");
+                copyText.select();
+                copyText.setSelectionRange(0, 99999);
+                navigator.clipboard.writeText(copyText.value);
+                var status = document.getElementById("copy-status");
+                status.style.display = "inline";
+                setTimeout(() => status.style.display = "none", 2000);
+            }
+
+            function updateSnippet(id) {
+                var snippet = document.getElementById("tilda-code-snippet");
+                snippet.value = snippet.value.replace(/data-event-id="\d+"/, 'data-event-id="' + id + '"');
+            }
+        </script>
 
         <div class="event-selector">
             <label for="eventSelect" style="font-weight: bold; margin-right: 15px;">Выберите мероприятие для предпросмотра:</label>
-            <select id="eventSelect" onchange="changeEventId(this.value)">
+            <select id="eventSelect" onchange="changeEventId(this.value); updateSnippet(this.value)">
                 <option value="76">ID 76: RTLigate 2025</option>
                 <option value="1">ID 1: Upgrade Retail Весна 2025</option>
                 <option value="2">ID 2: E-COM СФЕРА</option>
@@ -82,459 +118,24 @@
         </script>
 
         <!-- Tilda Snippet Start -->
-        <!-- Tilda Integration Snippet (For T123 / HTML Block) -->
-<!-- Контейнер для рендеринга расписания -->
-<div id="crm-schedule-root" style="max-width: 1200px; margin: 0 auto; padding: 20px; font-family: Montserrat, sans-serif;">
-  <div class="text-center py-5" id="crm-loading" style="text-align: center; color: #888;">Загрузка программы...</div>
-</div>
+        <!-- Контейнер для рендеринга расписания -->
+        <div id="crm-schedule-root" style="font-family: inherit;">
+          <div class="text-center py-5" id="crm-loading" style="color: #888;">Загрузка программы...</div>
+        </div>
 
-<!-- Модальное окно для биографии спикера -->
-<div id="crm-speaker-modal" class="crm-modal" style="display: none;">
-  <div class="crm-modal-content">
-    <span class="crm-modal-close" onclick="closeSpeakerModal()">&times;</span>
-    <div id="crm-speaker-modal-body"></div>
-  </div>
-</div>
-
-<style>
-  /* Кастомные стили, специфичные для нашей интеграции (изолированные) */
-  #crm-schedule-root .speaker-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    filter: grayscale(100%);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
-  #crm-schedule-root .sponsor-logo {
-    max-height: 45px;
-    max-width: 140px;
-    object-fit: contain;
-  }
-  #crm-schedule-root .session-title {
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: rgb(33, 37, 41);
-    line-height: 1.3;
-  }
-  #crm-schedule-root .time-col {
-    font-weight: 700;
-    color: rgb(33, 37, 41);
-  }
-  #crm-schedule-root .crm-border-top {
-    border-top: 1px solid rgb(174, 175, 255) !important;
-  }
-  
-  /* Flexbox Grid */
-  #crm-schedule-root .crm-row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-  #crm-schedule-root .crm-col {
-    position: relative;
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-  }
-  @media (min-width: 992px) {
-    #crm-schedule-root .crm-col-lg-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
-    #crm-schedule-root .crm-col-lg-6 { flex: 0 0 50%; max-width: 50%; }
-    #crm-schedule-root .crm-col-lg-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
-    #crm-schedule-root .crm-text-lg-end { text-align: right !important; }
-  }
-  
-  /* Утилиты */
-  #crm-schedule-root .d-flex { display: flex !important; }
-  #crm-schedule-root .align-items-center { align-items: center !important; }
-  #crm-schedule-root .align-items-start { align-items: flex-start !important; }
-  #crm-schedule-root .flex-wrap { flex-wrap: wrap !important; }
-  #crm-schedule-root .flex-column { flex-direction: column !important; }
-  #crm-schedule-root .gap-3 { gap: 1rem !important; }
-  #crm-schedule-root .me-3 { margin-right: 1rem !important; }
-  #crm-schedule-root .mb-2 { margin-bottom: 0.5rem !important; }
-  #crm-schedule-root .mb-3 { margin-bottom: 1rem !important; }
-  #crm-schedule-root .mb-4 { margin-bottom: 1.5rem !important; }
-  #crm-schedule-root .mt-2 { margin-top: 0.5rem !important; }
-  #crm-schedule-root .mt-3 { margin-top: 1rem !important; }
-  #crm-schedule-root .mt-4 { margin-top: 1.5rem !important; }
-  #crm-schedule-root .pt-3 { padding-top: 1rem !important; }
-  #crm-schedule-root .pt-4 { padding-top: 1.5rem !important; }
-  #crm-schedule-root .pb-4 { padding-bottom: 1.5rem !important; }
-  #crm-schedule-root .text-muted { color: #6c757d !important; }
-  #crm-schedule-root .small { font-size: 85%; font-weight: 400; }
-  #crm-schedule-root .fw-bold { font-weight: 700 !important; }
-  #crm-schedule-root .fw-light { font-weight: 300 !important; }
-  #crm-schedule-root .fs-6 { font-size: 1rem !important; }
-  #crm-schedule-root .lh-sm { line-height: 1.25 !important; }
-  
-  /* Кнопки и Табы */
-  #crm-schedule-root .crm-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
-  }
-  #crm-schedule-root .crm-tab-btn {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #888;
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-family: inherit;
-    transition: all 0.3s;
-  }
-  #crm-schedule-root .crm-tab-btn.active {
-    color: rgb(33, 37, 41);
-    background: #f0f0ff;
-  }
-  #crm-schedule-root .crm-tab-btn:hover {
-    color: rgb(33, 37, 41);
-  }
-  #crm-schedule-root .crm-btn-primary {
-    display: inline-block;
-    color: #ffffff;
-    background-color: #aeafff;
-    border: 2px solid #aeafff;
-    border-radius: 30px;
-    padding: 12px 30px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-    font-family: inherit;
-    text-align: center;
-  }
-  #crm-schedule-root .crm-btn-primary:hover {
-    color: #ffffff;
-    background-color: #12003a;
-    border-color: #12003a;
-  }
-  #crm-schedule-root .crm-btn-link {
-    background: none;
-    border: none;
-    color: #aeafff;
-    text-decoration: underline;
-    cursor: pointer;
-    padding: 0;
-    font-size: 0.85rem;
-    font-family: inherit;
-    margin-top: 5px;
-  }
-  #crm-schedule-root .crm-btn-link:hover {
-    color: #12003a;
-  }
-  
-  /* Списки и вопросы */
-  #crm-schedule-root .crm-questions {
-    padding-left: 20px;
-    margin-top: 15px;
-    color: rgb(33, 37, 41);
-  }
-  #crm-schedule-root .crm-questions li {
-    margin-bottom: 8px;
-    line-height: 1.4;
-  }
-
-  /* Модальное окно */
-  .crm-modal {
-    position: fixed;
-    z-index: 99999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.5);
-    font-family: Montserrat, sans-serif;
-  }
-  .crm-modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 30px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 600px;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  }
-  .crm-modal-close {
-    color: #aaa;
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  .crm-modal-close:hover {
-    color: black;
-  }
-</style>
-
-<script>
-  // Глобальная функция для модалки, чтобы работала из инлайн-onclick
-  window.openSpeakerModal = function(speakerId) {
-    const speaker = window.crmSpeakersData[speakerId];
-    if (!speaker) return;
-    
-    let html = '';
-    html += '<div style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 20px;">';
-    if (speaker.photoUrl) {
-        html += '<img src="' + speaker.photoUrl + '" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; filter: grayscale(100%);" />';
-    }
-    html += '<div>';
-    html += '<h3 style="margin: 0 0 10px 0; font-size: 1.5rem; color: #212529;">' + speaker.firstName + ' ' + speaker.lastName + '</h3>';
-    if (speaker.position || speaker.company) {
-        html += '<div style="color: #6c757d; font-size: 1rem;">' + (speaker.position ? speaker.position : '') + (speaker.position && speaker.company ? ' / ' : '') + (speaker.company ? speaker.company : '') + '</div>';
-    }
-    html += '</div>';
-    html += '</div>';
-    
-    if (speaker.bio) {
-        // Конвертация переносов строк в <br> если text/plain
-        const formattedBio = speaker.bio.replace(/\\n/g, '<br/>');
-        html += '<div style="line-height: 1.6; color: #333;">' + formattedBio + '</div>';
-    } else {
-        html += '<div style="color: #888; font-style: italic;">Биография не заполнена.</div>';
-    }
-    
-    document.getElementById('crm-speaker-modal-body').innerHTML = html;
-    document.getElementById('crm-speaker-modal').style.display = 'block';
-  };
-
-  window.closeSpeakerModal = function() {
-    document.getElementById('crm-speaker-modal').style.display = 'none';
-  };
-
-  window.onclick = function(event) {
-    const modal = document.getElementById('crm-speaker-modal');
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
-
-  (function() {
-    // Конфигурация
-    const EVENT_ID = window.crmEventId || 76; // Default to ID 76 if not specifically set
-    const API_URL = 'https://devupgrade.space4you.ru/api/public/events/' + EVENT_ID + '/website-data';
-    const root = document.getElementById('crm-schedule-root');
-    
-    // Хранилище
-    let scheduleByDay = {}; // { '2025-05-15': [...] }
-    let sortedDays = [];
-    window.crmSpeakersData = {}; // Global for modal access
-
-    async function fetchData() {
-      try {
-        const response = await fetch(API_URL);
-        if (!response.ok) throw new Error('Network response was not ok');
-        const data = await response.json();
-        processData(data);
-      } catch (error) {
-        console.error('Error loading CRM schedule:', error);
-        root.innerHTML = '<div style="text-align: center; color: red; padding: 20px;">Не удалось загрузить расписание.</div>';
-      }
-    }
-
-    function processData(data) {
-      const halls = data.halls || [];
-      if (halls.length === 0) {
-        root.innerHTML = '<div style="text-align: center; padding: 30px; font-size: 1.2rem;">Программа формируется...</div>';
-        return;
-      }
-
-      // Плоский массив всех сессий с привязкой к дню и залу
-      let allSessions = [];
-
-      halls.forEach(hall => {
-        (hall.tracks || []).forEach(track => {
-            const dayKey = track.day ? track.day.split('T')[0] : 'unknown'; // "2025-10-21"
-            (track.sessions || []).forEach(session => {
-                session.dayKey = dayKey;
-                session.hallName = hall.name;
-                
-                // Сохраняем спикеров глобально для модалки
-                (session.speakers || []).forEach(sp => {
-                    if (sp.speaker) window.crmSpeakersData[sp.speaker.id] = sp.speaker;
-                });
-                
-                allSessions.push(session);
-            });
-        });
-      });
-
-      // Группировка
-      allSessions.forEach(session => {
-          if (!scheduleByDay[session.dayKey]) scheduleByDay[session.dayKey] = [];
-          scheduleByDay[session.dayKey].push(session);
-      });
-
-      // Сортировка дней
-      sortedDays = Object.keys(scheduleByDay).sort();
-      
-      // Сортировка сессий внутри дня
-      sortedDays.forEach(day => {
-          scheduleByDay[day].sort((a, b) => a.startTime.localeCompare(b.startTime));
-      });
-
-      // Рендер начального стейта
-      if (sortedDays.length > 0) {
-          renderLayout(sortedDays[0]);
-      } else {
-          root.innerHTML = '<div style="text-align: center; padding: 30px; font-size: 1.2rem;">Программа формируется...</div>';
-      }
-    }
-
-    function formatDateForTab(dateStr) {
-        if (dateStr === 'unknown') return 'Программа';
-        const date = new Date(dateStr);
-        return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
-    }
-
-    // Экспонируем для onClick табов
-    window.crmChangeTab = function(dayKey) {
-        renderLayout(dayKey);
-    };
-
-    function renderLayout(activeDay) {
-        let html = '';
-        
-        // Рендер табов
-        if (sortedDays.length > 1) {
-            html += '<div class="crm-tabs">';
-            sortedDays.forEach(day => {
-                const isActive = day === activeDay ? 'active' : '';
-                html += '<button class="crm-tab-btn ' + isActive + '" onclick="crmChangeTab(\'' + day + '\')">' + formatDateForTab(day) + '</button>';
-            });
-            html += '</div>';
-        }
-
-        // Рендер сессий
-        const sessions = scheduleByDay[activeDay] || [];
-        if (sessions.length === 0) {
-            html += '<div style="text-align: center; padding: 30px; color: #888;">В этот день пока нет подтвержденных сессий.</div>';
-        } else {
-            sessions.forEach(session => {
-                html += renderSession(session);
-            });
-        }
-        
-        // Кнопка регистрации в самом низу (может дублироваться или быть одной на блок)
-        html += `
-          <div style="text-align: center; margin-top: 50px; margin-bottom: 20px;">
-            <a href="https://spring.upgrade.st/#registration" class="crm-btn-primary">Участвовать</a>
-          </div>
-        `;
-
-        root.innerHTML = html;
-    }
-
-    function renderSession(session) {
-        const timeRange = session.endTime ? session.startTime + ' — ' + session.endTime : session.startTime;
-        const sponsors = session.sponsors || [];
-        const questions = session.questions || [];
-        
-        const moderators = (session.speakers || []).filter(s => s.role === 'moderator' || s.isModerator).map(s => s.speaker).filter(Boolean);
-        const speakers = (session.speakers || []).filter(s => s.role !== 'moderator' && !s.isModerator).map(s => s.speaker).filter(Boolean);
-
-        let html = '<div class="crm-row crm-border-top pt-4 mb-4 pb-4">';
-        
-        // ---- Левая колонка: Время ----
-        html += '<div class="crm-col crm-col-lg-2 crm-text-lg-end mb-3 time-col">';
-        html += '<h5 style="margin: 0; font-family: Montserrat; font-size: 1.25rem;">' + timeRange + '</h5>';
-        html += '<div class="small text-muted mt-2 fw-bold" style="text-transform: uppercase;">' + session.hallName + '</div>';
-        html += '</div>';
-        
-        // ---- Центральная колонка: Название, Описание, Вопросы ----
-        html += '<div class="crm-col crm-col-lg-6 mb-4">';
-        html += '<h4 class="session-title mb-3" style="margin-top: 0; font-family: Montserrat;">' + session.title + '</h4>';
-        
-        if (session.description && session.description.trim() !== '') {
-             html += '<div class="mb-3 text-muted small" style="line-height: 1.5;">' + session.description + '</div>';
-        }
-        
-        // Тезисы / Вопросы
-        if (questions.length > 0) {
-            html += '<ul class="crm-questions">';
-            questions.forEach(q => {
-                html += '<li><strong>' + q.title + '</strong>';
-                if (q.body) html += '<span class="text-muted small"> — ' + q.body + '</span>';
-                html += '</li>';
-            });
-            html += '</ul>';
-        }
-
-        // Партнеры сессии (сделаем рендеринг, если данные будут заводиться в сессии)
-        if (sponsors.length > 0) {
-            html += '<div class="mt-4 pt-3" style="border-top: 1px solid #eee;">';
-            html += '<div class="small text-muted mb-2">Партнеры сессии:</div>';
-            html += '<div class="d-flex flex-wrap gap-3 align-items-center">';
-            sponsors.forEach(sp => {
-                if (sp.logoFileUrl) {
-                    html += '<img src="' + sp.logoFileUrl + '" alt="' + sp.name + '" class="sponsor-logo" />';
-                } else {
-                    html += '<span style="padding: 4px 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 12px;">' + sp.name + '</span>';
-                }
-            });
-            html += '</div></div>';
-        }
-        
-        html += '</div>';
-
-        // ---- Правая колонка: Спикеры и Модераторы ----
-        html += '<div class="crm-col crm-col-lg-4">';
-        
-        function renderSpeakerBlock(person, labelElement) {
-            let res = '<div class="d-flex align-items-start mb-3">';
-            if (person.photoUrl) {
-                res += '<img src="' + person.photoUrl + '" class="speaker-avatar me-3" />';
+        <script>
+            // Применяем eventId на рут элемент сразу, так как DOM-элемент выше уже распарсен
+            const root = document.getElementById('crm-schedule-root');
+            if (root) {
+                root.setAttribute('data-event-id', window.crmEventId || 76);
             }
-            res += '<div class="lh-sm d-flex flex-column">';
-            res += '<div class="fw-bold" style="color: #212529; font-size: 1.05rem;">' + person.firstName + ' ' + person.lastName + '</div>';
-            
-            const positionText = [person.position, person.company].filter(Boolean).join(', ');
-            if (positionText) {
-                res += '<div class="small text-muted mt-2" style="font-size: 0.8rem;">' + positionText + '</div>';
-            }
-            
-            if (person.bio && person.bio.trim() !== '') {
-                res += '<button class="crm-btn-link" onclick="openSpeakerModal(' + person.id + ')">Подробнее о спикере</button>';
-            }
-            res += '</div></div>';
-            return res;
-        }
+        </script>
 
-        if (moderators.length > 0) {
-            html += '<div class="fw-light fs-6 mb-3 text-muted" style="text-transform: uppercase; font-size: 0.85rem !important; font-weight: 500 !important; letter-spacing: 1px;">Модератор' + (moderators.length > 1 ? 'ы' : '') + '</div>';
-            moderators.forEach(mod => { html += renderSpeakerBlock(mod); });
-        }
+        <!-- Подключаем Bootstrap JS (требуется для модалок/колпапсов, если будут использоваться) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        if (speakers.length > 0) {
-            html += '<div class="fw-light fs-6 mb-3 mt-4 text-muted" style="text-transform: uppercase; font-size: 0.85rem !important; font-weight: 500 !important; letter-spacing: 1px;">Спикеры</div>';
-            speakers.forEach(sp => { html += renderSpeakerBlock(sp); });
-        }
-
-        html += '</div>'; // End col-lg-4
-        html += '</div>'; // End row
-        
-        return html;
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', fetchData);
-    } else {
-      fetchData();
-    }
-  })();
-</script>
-
+        <!-- Подключаем наш скрипт расписания v2 (переработанный на сетку Bootstrap) -->
+        <script src="tilda-integration-v2.js?v=3" defer></script>
         <!-- Tilda Snippet End -->
 
     </div>
