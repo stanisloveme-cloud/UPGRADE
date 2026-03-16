@@ -34,6 +34,7 @@ The following core Business Data requirements have been fully analyzed, implemen
 ## 3. Change Log (Post-MVP)
 *Agents: Add your completed tasks here in reverse chronological order (newest at the top).*
 
+- **2026-03-16**: Recovered Two-Tier CI/CD Architecture. Split monolithic `.github/workflows/deploy.yml` into `deploy-dev.yml` (triggered on `main`) and `deploy-prod.yml` (triggered on `production`). Parameterized Docker Compose and Nginx configuration to consume `$DOMAIN_NAME` and dynamically serve both `devupgrade.space4you.ru` and the future production domain using `envsubst` inside the Vite-Nginx image.
 - **2026-03-16**: Updated Backend `PublicEventsService` to expose `questions`, `bio`, and `day` data through the `/api/public/events/:id/website-data` endpoint. Completely rewrote `tilda-integration-snippet.html` UI script to include day-based tabs, display session questions alongside descriptions, support a "Подробнее о спикере" modal window for reading full speaker biographies, and added the 'Участвовать' registration button to match production requirements.
 
 - **2026-03-15**: Transitioned CI/CD to a Two-Tier architecture (Pre-Prod vs Prod). Split the single `.github/workflows/deploy.yml` into `deploy-dev.yml` (triggered on `main`) and `deploy-prod.yml` (triggered on `production`). Parameterized `docker-compose.prod.yml` and `nginx.conf` to dynamically support different domains and environments without code duplication. Updated infrastructure documentation to reflect the new release process.
