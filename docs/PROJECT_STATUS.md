@@ -1,7 +1,7 @@
 # UPGRADE CRM: Project Tracker & Status
 
 **Living Document**: This file serves as the Single Source of Truth for the current development phase of UPGRADE CRM.
-**Current Phase:** MVP DEPLOYED (March 2026). Currently in the `Change Request & Maintenance` phase.
+**Current Phase:** Pre-Prod & Prod Segregation (March 2026). Currently in the `Change Request & Maintenance` phase, establishing two-tier CI/CD.
 
 > **CRITICAL INSTRUCTION FOR ALL AGENTS:** 
 > Before finishing any session or task where you have successfully deployed a feature or fixed a bug, **you MUST update the "Change Log (Post-MVP)" section below**. Add a new bullet point describing what you successfully implemented, so the next agent knows what was done.
@@ -9,11 +9,15 @@
 ---
 
 ## 1. Environment & Architecture
-- **Frontend**: `./client` (Vite + React + Ant Design v5)
-- **Backend**: `./src` (NestJS) and `./prisma` (PostgreSQL 15+)
-- **Testing**: `./e2e` (Playwright UI & API auto-tests)
-- **Production Server**: `devupgrade.space4you.ru` (Linux VPS, Docker Compose)
-- **Deploy Trigger**: Pushing to the `main` branch on GitHub automatically deploys to the DevStand.
+We operate a **Two-Tier** architecture:
+- **Pre-Prod (DevStand)**: `devupgrade.space4you.ru`. Deployed automatically via pushes to `main`.
+- **Production Server**: `<PROD_DOMAIN>`. Deployed automatically via pushes to `production`.
+
+The architecture across both tiers is identical:
+- **Frontend**: `./client` (Vite + React + Ant Design v5) -> Deployed as Nginx Alpine Docker.
+- **Backend**: `./src` (NestJS) -> Deployed as Node Docker.
+- **Database**: PostgreSQL 15+ & Redis 7 (Dockerized).
+- **Testing**: `./e2e` (Playwright UI & API auto-tests run against Pre-Prod).
 
 ## 2. Completed Milestones (MVP)
 The following core Business Data requirements have been fully analyzed, implemented, and deployed to DevStand:
@@ -29,6 +33,10 @@ The following core Business Data requirements have been fully analyzed, implemen
 
 ## 3. Change Log (Post-MVP)
 *Agents: Add your completed tasks here in reverse chronological order (newest at the top).*
+
+- **2026-03-16**: Updated Backend `PublicEventsService` to expose `questions`, `bio`, and `day` data through the `/api/public/events/:id/website-data` endpoint. Completely rewrote `tilda-integration-snippet.html` UI script to include day-based tabs, display session questions alongside descriptions, support a "Подробнее о спикере" modal window for reading full speaker biographies, and added the 'Участвовать' registration button to match production requirements.
+
+- **2026-03-15**: Transitioned CI/CD to a Two-Tier architecture (Pre-Prod vs Prod). Split the single `.github/workflows/deploy.yml` into `deploy-dev.yml` (triggered on `main`) and `deploy-prod.yml` (triggered on `production`). Parameterized `docker-compose.prod.yml` and `nginx.conf` to dynamically support different domains and environments without code duplication. Updated infrastructure documentation to reflect the new release process.
 
 - **2026-03-14**: Fixed DevStand `500 Internal Server Error` on the `/api/events` endpoint. The previous agent created a manual migration mapping to the `"Event"` table instead of the `"events"` table, causing a Prisma client mismatch that silently bricked the events module. Wrote a surgical hotfix into `PrismaService` to `prisma migrate resolve --rolled-back` the failed migration on production before automatically deploying the corrected SQL file.
 

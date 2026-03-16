@@ -61,6 +61,10 @@ export class PublicEventsService {
                         sessions: {
                             orderBy: { startTime: 'asc' },
                             include: {
+                                questions: {
+                                    orderBy: { order: 'asc' },
+                                    select: { title: true, body: true }
+                                },
                                 speakers: {
                                     where: {
                                         exportToWebsite: true,
@@ -76,6 +80,7 @@ export class PublicEventsService {
                                                 company: true,
                                                 position: true,
                                                 photoUrl: true,
+                                                bio: true,
                                             },
                                         },
                                     },
@@ -127,6 +132,10 @@ export class PublicEventsService {
                         sessions: {
                             orderBy: { startTime: 'asc' },
                             include: {
+                                questions: {
+                                    orderBy: { order: 'asc' },
+                                    select: { title: true, body: true }
+                                },
                                 speakers: {
                                     where: {
                                         exportToWebsite: true,
@@ -142,6 +151,7 @@ export class PublicEventsService {
                                                 company: true,
                                                 position: true,
                                                 photoUrl: true,
+                                                bio: true,
                                             },
                                         },
                                     },
@@ -178,7 +188,8 @@ export class PublicEventsService {
                         lastName: true,
                         company: true,
                         position: true,
-                        photoUrl: true
+                        photoUrl: true,
+                        bio: true
                     }
                 }
             }
