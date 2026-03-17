@@ -119,12 +119,6 @@ const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onD
                     name="timeRange"
                     label="Время проведения"
                     fieldProps={{ format: 'HH:mm' }}
-                    transform={(values) => {
-                        return {
-                            startTime: typeof values[0] === 'string' ? values[0].slice(0, 5) : values[0]?.format('HH:mm'),
-                            endTime: typeof values[1] === 'string' ? values[1].slice(0, 5) : values[1]?.format('HH:mm'),
-                        };
-                    }}
                     rules={[{ required: true }]}
                 />
             </div>
