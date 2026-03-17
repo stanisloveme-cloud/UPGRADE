@@ -21,6 +21,7 @@ This document contains critical information about the production environment.
 
 ## Software Stack
 - **Docker:** v28.2.2 (v24+ on Prod)
+  - *Note: On `erp-upgrade.ru`, the Docker daemon (`/etc/docker/daemon.json`) is configured with Russian/Google registry mirrors (e.g. `mirror.gcr.io`) to bypass connection timeouts during GitHub Actions `docker pull`.*
 - **Docker Compose:** v2.37.1 (v5+ on Prod)
 - **Node.js:** v20.20.0
 - **Database:** PostgreSQL 15 (Dockerized)

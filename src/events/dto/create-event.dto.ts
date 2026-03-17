@@ -9,6 +9,14 @@ export class CreateEventDto {
     @IsString()
     description?: string;
 
+    @IsOptional()
+    @IsString()
+    location?: string;
+
+    @IsOptional()
+    @IsString()
+    eventLogoUrl?: string;
+
     @IsNotEmpty()
     @IsString()
     startDate: string; // ISO Date string

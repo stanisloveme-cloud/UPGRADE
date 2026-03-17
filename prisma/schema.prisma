@@ -55,9 +55,9 @@ model Event {
   eventLogoUrl String?     @map("event_logo_url") @db.VarChar(512)
   createdAt    DateTime    @default(now()) @map("created_at")
 
-  halls        Hall[]
-  users        UserEvent[]
-  sponsors     EventSponsor[]
+  halls    Hall[]
+  users    UserEvent[]
+  sponsors EventSponsor[]
 
   @@map("events")
 }
@@ -152,7 +152,8 @@ model SessionSpeaker {
   statusDate      DateTime?       @map("status_date") @db.Timestamptz
   statusUserId    Int?            @map("status_user_id")
   sortOrder       Int             @default(0) @map("sort_order")
-  needsZoom       Boolean         @default(false) @map("needs_zoom")
+  needsCall       Boolean         @default(false) @map("needs_call")
+  callLink        String?         @map("call_link") @db.VarChar(512)
   hasPresentation Boolean         @default(false) @map("has_presentation")
   managerComment  String?         @map("manager_comment") @db.Text
   programThesis   String?         @map("program_thesis") @db.Text
@@ -257,17 +258,17 @@ model Sponsor {
   serviceCardDescription String? @map("service_card_description") @db.Text
 
   // Relationships
-  segments               SponsorSegment[]
+  segments SponsorSegment[]
 
-  city                   String? @db.VarChar(100)
-  employeeCount          Int?    @map("employee_count")
-  annualTurnover         String? @map("annual_turnover") @db.VarChar(100)
-  telegram               String? @db.VarChar(100)
-  whatsapp               String? @db.VarChar(100)
-  contactName            String? @map("contact_name") @db.VarChar(100)
-  contactEmail           String? @map("contact_email") @db.VarChar(100)
-  cfoName                String? @map("cfo_name") @db.VarChar(100)
-  cases                  Json?
+  city           String? @db.VarChar(100)
+  employeeCount  Int?    @map("employee_count")
+  annualTurnover String? @map("annual_turnover") @db.VarChar(100)
+  telegram       String? @db.VarChar(100)
+  whatsapp       String? @db.VarChar(100)
+  contactName    String? @map("contact_name") @db.VarChar(100)
+  contactEmail   String? @map("contact_email") @db.VarChar(100)
+  cfoName        String? @map("cfo_name") @db.VarChar(100)
+  cases          Json?
 
   approvalHash    String? @unique @default(uuid()) @map("approval_hash") @db.VarChar(36)
   status          String  @default("pending") @db.VarChar(50) // pending, approved, rejected
@@ -275,8 +276,8 @@ model Sponsor {
 
   createdAt DateTime @default(now()) @map("created_at")
 
-  assignedManagerId Int?  @map("assigned_manager_id")
-  assignedManager   User? @relation(fields: [assignedManagerId], references: [id])
+  assignedManagerId Int?           @map("assigned_manager_id")
+  assignedManager   User?          @relation(fields: [assignedManagerId], references: [id])
   events            EventSponsor[]
 
   @@map("sponsors")
@@ -298,18 +299,18 @@ model EventSponsor {
 // NEW MODEL: MarketSegment (Hierarchical Directory)
 // ==========================================
 model MarketSegment {
-  id          Int             @id @default(autoincrement())
-  name        String          @unique @db.VarChar(255)
-  
+  id   Int    @id @default(autoincrement())
+  name String @unique @db.VarChar(255)
+
   // Self-relation for hierarchy (up to 3 levels: Category -> Subcategory -> Niche)
-  parentId    Int?            @map("parent_id")
-  parent      MarketSegment?  @relation("SegmentHierarchy", fields: [parentId], references: [id])
-  children    MarketSegment[] @relation("SegmentHierarchy")
+  parentId Int?            @map("parent_id")
+  parent   MarketSegment?  @relation("SegmentHierarchy", fields: [parentId], references: [id])
+  children MarketSegment[] @relation("SegmentHierarchy")
 
-  sponsors    SponsorSegment[]
+  sponsors SponsorSegment[]
 
-  createdAt   DateTime        @default(now()) @map("created_at")
-  updatedAt   DateTime        @updatedAt @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("market_segments")
 }
@@ -321,8 +322,8 @@ model SponsorSegment {
   sponsorId       Int @map("sponsor_id")
   marketSegmentId Int @map("market_segment_id")
 
-  sponsor         Sponsor       @relation(fields: [sponsorId], references: [id], onDelete: Cascade)
-  marketSegment   MarketSegment @relation(fields: [marketSegmentId], references: [id], onDelete: Cascade)
+  sponsor       Sponsor       @relation(fields: [sponsorId], references: [id], onDelete: Cascade)
+  marketSegment MarketSegment @relation(fields: [marketSegmentId], references: [id], onDelete: Cascade)
 
   @@id([sponsorId, marketSegmentId])
   @@map("sponsor_segments")

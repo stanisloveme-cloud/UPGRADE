@@ -30,6 +30,11 @@ The following core Business Data requirements have been fully analyzed, implemen
 ## 3. Change Log (Post-MVP)
 *Agents: Add your completed tasks here in reverse chronological order (newest at the top).*
 
+- **2026-03-17**: Fixed the production CI/CD workflow (`deploy-prod.yml`). Corrected the corrupted file format and updated the Certbot Let's Encrypt email registration parameter to use a valid `$DOMAIN_NAME` to prevent 3-minute failures and ensure SSL generation. Triggered a successful manual deployment to `erp-upgrade.ru`.
+- **2026-03-17**: Fixed the Two-Tier CI/CD infrastructure for DevStand and Production deployments.
+  - Resolved Nginx crash loops by passing `DOMAIN_NAME` into the `docker-compose.prod.yml` `frontend` container, allowing Nginx envsubst templating to construct the correct SSL paths and server blocks.
+  - Rectified SSH Handshake errors in `deploy-prod.yml` by regenerating and adding the `PROD_SSH_PRIVATE_KEY` to GitHub Secrets.
+  - Configured Docker Daemon Registry Mirrors (`mirror.gcr.io`, `dockerhub.timeweb.cloud`) in `/etc/docker/daemon.json` on the Production server (`erp-upgrade.ru`) to bypass `connection reset by peer` timeouts from Docker Hub.
 - **2026-03-14**: Fixed speaker status and timestamp layout in `SessionDrawer.tsx` editor. The timestamp is now placed neatly under the status dropdown in a single column instead of floating incorrectly due to Flexbox.
 
 - **2026-03-14**: Successfully extracted 188 speaker photographs from the legacy `spring.upgrade.st` Tilda grid (PRD-14) using the Visual Browser Subagent to bypass obfuscation and LazyLoading. Developed the `POST /api/speakers/sync-photos` DevStand backend route to dynamically ingest JSON payloads and hydrate the PostgreSQL DB natively over HTTP. Established the `/tilda_scraping_guide` workflow for future agents.
