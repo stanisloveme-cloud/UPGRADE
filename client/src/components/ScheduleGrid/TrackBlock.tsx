@@ -34,8 +34,7 @@ const TrackBlock: React.FC<TrackBlockProps> = ({ track, rowIndex, filters, onSes
             flexDirection: 'column',
         }}>
             {/* Track Header */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 8px 4px 8px' }}>
-                <Text strong style={{ fontSize: '12px', color: '#595959', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{track.name}</Text>
+            <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', padding: '8px 8px 4px 8px', gap: '8px' }}>
                 <Button
                     type="text"
                     size="small"
@@ -46,6 +45,7 @@ const TrackBlock: React.FC<TrackBlockProps> = ({ track, rowIndex, filters, onSes
                         onTrackClick?.(track);
                     }}
                 />
+                <Text strong style={{ fontSize: '12px', color: '#595959', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{track.name}</Text>
             </div>
 
             {/* Sessions Container - Absolute percentage positioning for perfect timeline alignment */}
