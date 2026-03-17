@@ -199,7 +199,7 @@ async function run() {
                                     role: mapSpeakerRole(sp.speaker_role_id),
                                     status: mapSpeakerStatus(sp.speaker_status_id),
                                     statusDate: sp.contact_date ? new Date(sp.contact_date) : null,
-                                    needsCall: sp.is_zoom === true,
+                                    needs_zoom: sp.is_zoom === true,
                                     programThesis: cleanString(sp.theme),
                                     newsletterQuote: cleanString(sp.quote),
                                     sortOrder: speakerSortOrder

@@ -30,8 +30,6 @@ export class EventsService {
                 startDate: new Date(data.startDate),
                 endDate: new Date(data.endDate),
                 status: 'draft',
-                location: data.location,
-                eventLogoUrl: data.eventLogoUrl,
             },
         });
 
@@ -77,8 +75,6 @@ export class EventsService {
                 description: updateData.description,
                 startDate: updateData.startDate ? new Date(updateData.startDate) : undefined,
                 endDate: updateData.endDate ? new Date(updateData.endDate) : undefined,
-                location: updateData.location,
-                eventLogoUrl: updateData.eventLogoUrl,
             }
         });
     }
@@ -308,12 +304,10 @@ export class EventsService {
         return { 
             htmlContent, 
             eventName: event.name, 
-            eventLogoUrl: event.eventLogoUrl,
             speakerName: speakerFullName,
             sessionTitle: sessionSpeaker.session.name,
             sessionStartTime,
             sessionEndTime,
-            location: event.location,
             hallName,
             questions,
             coSpeakers
