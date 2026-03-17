@@ -30,6 +30,7 @@ The following core Business Data requirements have been fully analyzed, implemen
 ## 3. Change Log (Post-MVP)
 *Agents: Add your completed tasks here in reverse chronological order (newest at the top).*
 
+- **2026-03-17**: Finalized Production Environment Synchronization. Developed custom native Node.js (`pg`) export/import scripts to cleanly migrate Data (Speakers & Event 76) without string formatting corruption from DevStand to Production, avoiding administrative overlap. Manually pushed missing Prisma migrations (`needs_call`) and instantiated `user_events` mappings in Prod. Synchronized the frontend UI by merging missing timeline grid width fixes and edit icon placement from `main` into the `production` branch.
 - **2026-03-17**: Finalized Legacy Data Migration (PRD-12) by fixing the historical `SessionSpeaker` snapshot UI (`companySnapshot` and `positionSnapshot`). Documented the snapshot architecture and the seed parsing logic in `docs/analysis/session_speaker_model.md`. Addressed issues with incorrect speaker roles, missing snapshot mapping, and malformed question titles during DB seeding.
 - **2026-03-17**: Fixed the production CI/CD workflow (`deploy-prod.yml`). Corrected the corrupted file format and updated the Certbot Let's Encrypt email registration parameter to use a valid `$DOMAIN_NAME` to prevent 3-minute failures and ensure SSL generation. Triggered a successful manual deployment to `erp-upgrade.ru`.
 - **2026-03-17**: Fixed the Two-Tier CI/CD infrastructure for DevStand and Production deployments.
