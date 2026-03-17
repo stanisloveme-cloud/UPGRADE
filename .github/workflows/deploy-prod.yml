@@ -98,7 +98,7 @@ jobs:
 
             if [ ! -d "/etc/letsencrypt/live/$DOMAIN_NAME" ]; then
                 echo "Certificates not found. Generating via certbot standalone..."
-                sudo certbot certonly --standalone -d $DOMAIN_NAME --non-interactive --agree-tos -m admin@upgrade-prod
+                sudo certbot certonly --standalone -d $DOMAIN_NAME --non-interactive --agree-tos -m admin@$DOMAIN_NAME
             fi
 
             if ! sudo crontab -l | grep -q "certbot renew"; then
