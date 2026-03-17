@@ -142,15 +142,24 @@ export class AppController {
                     sessionCount++;
 
                     // Insert Questions
+                    let qIndex = 1;
                     for (const q of legacyQuestions) {
+                        const rawDesc = cleanString(q.description) || '';
+                        const parts = rawDesc.split(/<br\s*\/?>/i);
+                        let rawTitle = parts[0].replace(/<[^>]+>/g, '').trim() || 'Вопрос';
+                        if (rawTitle.length > 250) rawTitle = rawTitle.substring(0, 250) + '...';
+                        
+                        const qNum = q.number || q.sort_order || qIndex;
+                        
                         await this.prisma.sessionQuestion.create({
                             data: {
                                 sessionId: session.id,
-                                order: q.sort_order || 0,
-                                title: cleanString(q.title) || 'Question',
-                                body: cleanString(q.description)
+                                order: q.sort_order || qIndex,
+                                title: `#${qNum} ${rawTitle}`,
+                                body: rawDesc
                             }
                         });
+                        qIndex++;
                     }
 
                     // Process Speakers
@@ -163,19 +172,25 @@ export class AppController {
 
                         if (!newSpeakerId) {
                             const emailStr = cleanString(person.email);
+                            const fName = cleanString(person.name) || 'Speaker';
+                            const lName = cleanString(person.surname) || '';
                             let existingSpeaker = null;
                             
                             if (emailStr) {
                                 existingSpeaker = await this.prisma.speaker.findFirst({
                                     where: { email: emailStr }
                                 });
+                            } else {
+                                existingSpeaker = await this.prisma.speaker.findFirst({
+                                    where: { firstName: fName, lastName: lName }
+                                });
                             }
 
                             if (!existingSpeaker) {
                                 existingSpeaker = await this.prisma.speaker.create({
                                     data: {
-                                        firstName: cleanString(person.name) || 'Speaker',
-                                        lastName: cleanString(person.surname) || '',
+                                        firstName: fName,
+                                        lastName: lName,
                                         company: cleanString(person.company),
                                         position: cleanString(person.job_title),
                                         email: emailStr,
