@@ -40,7 +40,7 @@ async function bootstrap() {
     }),
   );
 
-  app.useGlobalPipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }));
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: false }));
 
   // Increase payload limit for large legacy JSON imports
   app.use(require('express').json({ limit: '50mb' }));

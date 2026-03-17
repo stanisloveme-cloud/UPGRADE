@@ -38,10 +38,24 @@ rules:
     severity: "error"
     description: "For entity editing (Session, Speaker), ALWAYS use <DrawerForm> or <ModalForm>. Do not build raw HTML forms."
 
+  - id: "ui-safe-forms-mandatory"
+    severity: "error"
+    description: >
+      ALWAYS use `<SafeModalForm>` and `<SafeDrawerForm>` from `client/src/components/SafeForms` instead of standard Ant Design Pro ones. 
+      These custom components contain ErrorBoundaries and global `onFinishFailed` notification hubs to prevent white-screen crashes and surface hidden validation/backend errors via Toast.
+
   # --- Backend Architecture ---
   - id: "be-modular-structure"
     severity: "error"
     description: "Enforce NestJS Modular Architecture: Module -> Controller -> Service -> Repository. No logic in Controllers."
+
+  - id: "backend-forbid-non-whitelisted"
+    severity: "critical"
+    description: >
+      NEVER use `forbidNonWhitelisted: true` in NestJS global ValidationPipe.
+      Ant Design Pro Forms (ProTable, ProFormList) inject hidden UI state fields (like `_action`, `createdAt`, `id`) into payloads. 
+      If `forbidNonWhitelisted: true` is on, NestJS returns a 400 Bad Request, causing ModalForm/DrawerForm to silently hang on "Save" without showing errors.
+      SOLUTION: Use `whitelist: true` ONLY. It safely strips unknown frontend fields without crashing backend validation.
 
   # --- Infrastructure & Release ---
   - id: "infra-immutable"
@@ -82,6 +96,13 @@ rules:
   - id: "cli-non-interactive"
     severity: "error"
     description: "Never use interactive CLI commands (like 'gh run watch' without ID or interactive prompts). Always use direct IDs and non-interactive flags to prevent agent hanging."
+
+  - id: "qa-post-release-regress"
+    severity: "error"
+    description: >
+      When the user asks to verify that "nothing is broken" or complains about a regression, ALWAYS USE the QA Agent approach.
+      Run the Playwright tests located in `e2e/` (`npx playwright test --project=devstand`). 
+      Refer to `docs/e2e_devstand_agent_prompt.md` for the standard QA Automation procedure. Future agents MUST check this file when asked to perform testing.
 
 # -----------------------------------------------------------------------------
 # 3. WORKFLOWS (STANDARD OPERATING PROCEDURES)
