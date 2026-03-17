@@ -1,0 +1,15 @@
+name: Fetch Dev DB Logs
+on: workflow_dispatch
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Logs
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DEV_SSH_HOST }}
+          username: ${{ secrets.DEV_SSH_USERNAME }}
+          key: ${{ secrets.DEV_SSH_PRIVATE_KEY }}
+          script: |
+            docker logs upgrade-crm-db-1
+
