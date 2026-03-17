@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { ModalForm, ProFormList, ProFormText, ProFormGroup } from '@ant-design/pro-components';
-import { message, Form, Button } from 'antd';
+import { ProFormList, ProFormText, ProFormGroup, ProFormDigit } from '@ant-design/pro-components';
+import { SafeModalForm } from '../../components/SafeForms/SafeModalForm';
+import { message, Form } from 'antd';
 import axios from 'axios';
 
 interface HallsModalProps {
@@ -59,10 +60,10 @@ const HallsModal: React.FC<HallsModalProps> = ({ visible, onClose, eventId }) =>
     };
 
     return (
-        <ModalForm
+        <SafeModalForm
             title="Управление залами"
             open={visible}
-            onOpenChange={(v) => !v && onClose()}
+            onOpenChange={(v: boolean) => !v && onClose()}
             onFinish={handleSubmit}
             initialValues={initialValues}
             form={form}
@@ -71,16 +72,6 @@ const HallsModal: React.FC<HallsModalProps> = ({ visible, onClose, eventId }) =>
                 searchConfig: {
                     submitText: 'Сохранить',
                     resetText: 'Отмена',
-                },
-                render: (props, _dom) => {
-                    return [
-                        <Button key="cancel" onClick={() => props.onReset?.()}>
-                            Отмена
-                        </Button>,
-                        <Button key="submit" type="primary" onClick={() => form.submit()}>
-                            Сохранить
-                        </Button>
-                    ];
                 }
             }}
         >
@@ -104,16 +95,14 @@ const HallsModal: React.FC<HallsModalProps> = ({ visible, onClose, eventId }) =>
                         rules={[{ required: true, message: 'Обязательное поле' }]}
                         width="md"
                     />
-                    <ProFormText
+                    <ProFormDigit
                         name="capacity"
                         placeholder="Вместимость"
-                        fieldProps={{ type: 'number' }}
-                        transform={(val) => Number(val)}
                         width="sm"
                     />
                 </ProFormGroup>
             </ProFormList>
-        </ModalForm>
+        </SafeModalForm>
     );
 };
 
