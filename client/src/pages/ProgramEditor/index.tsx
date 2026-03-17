@@ -376,7 +376,9 @@ const ProgramEditor: React.FC = () => {
                     label: `${s.lastName} ${s.firstName}${s.company ? ` (${s.company})` : ''}`,
                     value: s.id,
                     phone: s.phone,
-                    telegram: s.telegram
+                    telegram: s.telegram,
+                    company: s.company,
+                    position: s.position
                 }))}
                 onSpeakerCreated={fetchData}
             />

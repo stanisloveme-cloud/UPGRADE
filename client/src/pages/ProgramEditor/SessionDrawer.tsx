@@ -17,7 +17,7 @@ interface SessionModalProps {
     initialValues?: any;
     trackId?: number; // Pre-selected track for creation
     tracks?: { value: number; label: string }[]; // Available tracks for selection
-    speakers?: { value: number; label: string; phone?: string; telegram?: string; }[];
+    speakers?: { value: number; label: string; phone?: string; telegram?: string; company?: string; position?: string; }[];
     onSpeakerCreated?: () => Promise<void>;
 }
 
@@ -299,6 +299,15 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                     fieldProps={{
                                         showSearch: true,
                                         optionFilterProp: 'label',
+                                        onChange: (value) => {
+                                            const foundSpeaker = speakers?.find((s: any) => s.value === value);
+                                            if (foundSpeaker) {
+                                                action.setCurrentRowData({
+                                                    companySnapshot: foundSpeaker.company || '',
+                                                    positionSnapshot: foundSpeaker.position || ''
+                                                });
+                                            }
+                                        },
                                         dropdownRender: (menu) => (
                                             <>
                                                 {menu}
@@ -318,13 +327,25 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                         const foundSpeaker = speakers?.find((s: any) => s.value === speakerId);
                                         if (!foundSpeaker || (!foundSpeaker.phone && !foundSpeaker.telegram)) return null;
                                         return (
-                                            <div style={{ fontSize: '12px', color: '#8c8c8c', marginTop: '-20px', marginBottom: '8px' }}>
+                                            <div style={{ fontSize: '13px', color: '#8c8c8c', marginTop: '-20px', marginBottom: '8px' }}>
                                                 {foundSpeaker.phone ? `📞 ${foundSpeaker.phone}   ` : ''}
                                                 {foundSpeaker.telegram ? `✈️ ${foundSpeaker.telegram}` : ''}
                                             </div>
                                         );
                                     }}
                                 </ProFormDependency>
+                                <ProFormText
+                                    name="companySnapshot"
+                                    placeholder="Компания"
+                                    fieldProps={{ size: 'small' }}
+                                    formItemProps={{ style: { marginBottom: 8 } }}
+                                />
+                                <ProFormText
+                                    name="positionSnapshot"
+                                    placeholder="Должность"
+                                    fieldProps={{ size: 'small' }}
+                                    formItemProps={{ style: { marginBottom: 0 } }}
+                                />
                             </div>
 
                             <ProFormSelect
@@ -369,8 +390,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                 </ProFormDependency>
                             </div>
 
-                            <ProFormText name="companySnapshot" label="Компания" width="sm" />
-                            <ProFormText name="positionSnapshot" label="Должность" width="sm" />
+
                         </ProFormGroup>
 
                         {/* Row 2: Presentation Info */}
