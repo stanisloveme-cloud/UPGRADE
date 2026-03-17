@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { ModalForm, ProFormText, ProFormTimePicker } from '@ant-design/pro-components';
 import { Form, Button, message } from 'antd';
-
+import dayjs from 'dayjs';
 
 interface TrackModalProps {
     visible: boolean;
@@ -21,7 +21,10 @@ const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onD
             if (initialValues) {
                 form.setFieldsValue({
                     ...initialValues,
-                    timeRange: [initialValues.startTime || '09:00', initialValues.endTime || '20:00']
+                    timeRange: [
+                        dayjs(initialValues.startTime || '09:00', 'HH:mm'),
+                        dayjs(initialValues.endTime || '20:00', 'HH:mm')
+                    ]
                 });
             } else {
                 form.resetFields();
@@ -35,26 +38,20 @@ const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onD
             open={visible}
             onOpenChange={(v) => !v && onClose()}
             onFinish={async (values) => {
-                // ProForm transform mapping can sometimes nest inside `timeRange` instead of spreading
-                let startTime = values.startTime;
-                let endTime = values.endTime;
+                const formatTime = (t: any) => {
+                    if (!t) return null;
+                    if (t && typeof t.format === 'function') return t.format('HH:mm');
+                    if (typeof t === 'string') return t.substring(0, 5);
+                    return t;
+                };
+
+                const [start, end] = values.timeRange || [];
                 
-                if (values.timeRange && typeof values.timeRange === 'object' && !Array.isArray(values.timeRange)) {
-                    startTime = values.timeRange.startTime || startTime;
-                    endTime = values.timeRange.endTime || endTime;
-                } else if (Array.isArray(values.timeRange)) {
-                    startTime = typeof values.timeRange[0] === 'string' ? values.timeRange[0].slice(0, 5) : values.timeRange[0]?.format('HH:mm');
-                    endTime = typeof values.timeRange[1] === 'string' ? values.timeRange[1].slice(0, 5) : values.timeRange[1]?.format('HH:mm');
-                }
-
-                // Cleanup nested object
-                delete values.timeRange;
-
                 // Prepare values
                 const submission = {
                     ...values,
-                    startTime,
-                    endTime,
+                    startTime: formatTime(start),
+                    endTime: formatTime(end),
                     hallId: hallId || initialValues?.hallId,
                     // If creating, we need a date. Default to event start date?
                     // Ideally we should ask for date or pick from event days.
@@ -62,6 +59,7 @@ const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onD
                     // Let's assume day is passed or we default to '2025-10-21' (Day 1)
                     day: initialValues?.day || '2025-10-21T00:00:00.000Z',
                 };
+                delete submission.timeRange;
                 try {
                     return await onFinish(submission);
                 } catch (error: any) {
