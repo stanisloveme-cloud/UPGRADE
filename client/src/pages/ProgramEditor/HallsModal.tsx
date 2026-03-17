@@ -43,7 +43,7 @@ const HallsModal: React.FC<HallsModalProps> = ({ visible, onClose, eventId }) =>
                 ...toDelete.map((h: any) => axios.delete(`/api/halls/${h.id}`)),
                 ...toUpdate.map((h: any) => { const { id, ...rest } = h; return axios.patch(`/api/halls/${id}`, rest); }),
                 ...toCreate.map(async (h: any) => {
-                    const res = await axios.post('/api/halls', { ...h, eventId: eventId });
+                    const res = await axios.post('/api/halls', { ...h, eventId: Number(eventId) });
                     return res.data;
                 })
             ]);

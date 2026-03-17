@@ -21,8 +21,7 @@ const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onD
             if (initialValues) {
                 form.setFieldsValue({
                     ...initialValues,
-                    startTime: initialValues.startTime, // Ensure format?
-                    endTime: initialValues.endTime
+                    timeRange: [initialValues.startTime || '09:00', initialValues.endTime || '20:00']
                 });
             } else {
                 form.resetFields();

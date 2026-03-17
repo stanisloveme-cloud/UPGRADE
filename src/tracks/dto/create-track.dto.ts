@@ -9,6 +9,10 @@ export class CreateTrackDto {
     @IsString()
     name: string;
 
+    @IsOptional()
+    @IsString()
+    description?: string;
+
     @IsNotEmpty()
     @IsString()
     day: string; // or Date if using Type transformation
