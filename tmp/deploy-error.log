@@ -1,0 +1,427 @@
+build-and-deploy	Deploy to Dev Server via SSH	﻿2026-03-17T12:42:53.3815464Z ##[group]Run appleboy/ssh-action@v1.0.3
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3815800Z with:
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3816075Z   host: ***
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3816288Z   username: ***
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3818097Z   key: ***
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3818359Z   envs: COMPOSE_CONFIG,PROMETHEUS_CONFIG,DOMAIN_NAME
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3823971Z   script: set -e
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	export DOCKER_USERNAME=***
+build-and-deploy	Deploy to Dev Server via SSH	export DOMAIN_NAME=devupgrade.***.ru
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	echo "***" | docker login -u "***" --password-stdin
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	docker pull ***/upgrade-backend:latest
+build-and-deploy	Deploy to Dev Server via SSH	docker pull ***/upgrade-frontend:latest
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	mkdir -p ~/upgrade-crm
+build-and-deploy	Deploy to Dev Server via SSH	cd ~/upgrade-crm
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	if [ -d "prometheus.yml" ]; then
+build-and-deploy	Deploy to Dev Server via SSH	    rm -rf prometheus.yml
+build-and-deploy	Deploy to Dev Server via SSH	fi
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	echo "$COMPOSE_CONFIG" > docker-compose.prod.yml
+build-and-deploy	Deploy to Dev Server via SSH	echo "$PROMETHEUS_CONFIG" > prometheus.yml
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	if docker compose version &> /dev/null; then
+build-and-deploy	Deploy to Dev Server via SSH	    DC_CMD="docker compose"
+build-and-deploy	Deploy to Dev Server via SSH	elif command -v docker-compose &> /dev/null; then
+build-and-deploy	Deploy to Dev Server via SSH	    DC_CMD="docker-compose"
+build-and-deploy	Deploy to Dev Server via SSH	else
+build-and-deploy	Deploy to Dev Server via SSH	    exit 1
+build-and-deploy	Deploy to Dev Server via SSH	fi
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	$DC_CMD -f docker-compose.prod.yml down || true
+build-and-deploy	Deploy to Dev Server via SSH	docker ps -a --filter "name=upgrade-crm" -q | xargs -r docker rm -f || true
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	if ! command -v certbot &> /dev/null; then
+build-and-deploy	Deploy to Dev Server via SSH	    sudo apt-get update
+build-and-deploy	Deploy to Dev Server via SSH	    sudo apt-get install -y certbot
+build-and-deploy	Deploy to Dev Server via SSH	fi
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	if [ ! -d "/etc/letsencrypt/live/$DOMAIN_NAME" ]; then
+build-and-deploy	Deploy to Dev Server via SSH	    echo "Certificates not found. Generating via certbot standalone..."
+build-and-deploy	Deploy to Dev Server via SSH	    sudo certbot certonly --standalone -d $DOMAIN_NAME --non-interactive --agree-tos -m dev@***.ru
+build-and-deploy	Deploy to Dev Server via SSH	fi
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	if ! sudo crontab -l | grep -q "certbot renew"; then
+build-and-deploy	Deploy to Dev Server via SSH	    (sudo crontab -l 2>/dev/null; echo "0 3 * * * certbot renew --pre-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml stop frontend\" --post-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml start frontend\"") | sudo crontab -
+build-and-deploy	Deploy to Dev Server via SSH	fi
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	$DC_CMD -f docker-compose.prod.yml up -d --remove-orphans --force-recreate
+build-and-deploy	Deploy to Dev Server via SSH	docker image prune -f
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	$DC_CMD -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3829268Z   port: 22
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3829466Z   timeout: 30s
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3829685Z   command_timeout: 10m
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3829915Z   proxy_port: 22
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3830132Z   proxy_timeout: 30s
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3830353Z env:
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3840865Z   COMPOSE_CONFIG: services:
+build-and-deploy	Deploy to Dev Server via SSH	  app:
+build-and-deploy	Deploy to Dev Server via SSH	    # Use image from Docker Hub (built by CI/CD)
+build-and-deploy	Deploy to Dev Server via SSH	    image: ${DOCKER_USERNAME}/upgrade-backend:latest
+build-and-deploy	Deploy to Dev Server via SSH	    ports:
+build-and-deploy	Deploy to Dev Server via SSH	      - '3000:3000'
+build-and-deploy	Deploy to Dev Server via SSH	    environment:
+build-and-deploy	Deploy to Dev Server via SSH	      DATABASE_URL: ***db:5432/upgrade_crm
+build-and-deploy	Deploy to Dev Server via SSH	      REDIS_URL: redis://redis:6379
+build-and-deploy	Deploy to Dev Server via SSH	      JWT_SECRET: "complex_secret_value_change_me_in_prod"
+build-and-deploy	Deploy to Dev Server via SSH	      POSTGRES_USER: upgrade
+build-and-deploy	Deploy to Dev Server via SSH	      POSTGRES_PASSWORD: upgrade_pass
+build-and-deploy	Deploy to Dev Server via SSH	      POSTGRES_DB: upgrade_crm
+build-and-deploy	Deploy to Dev Server via SSH	      # Allow frontend CORS if needed
+build-and-deploy	Deploy to Dev Server via SSH	      FRONTEND_URL: https://${DOMAIN_NAME}
+build-and-deploy	Deploy to Dev Server via SSH	      # Limit V8 heap to prevent exceeding 512M docker limit
+build-and-deploy	Deploy to Dev Server via SSH	      NODE_OPTIONS: "--max-old-space-size=384"
+build-and-deploy	Deploy to Dev Server via SSH	    depends_on:
+build-and-deploy	Deploy to Dev Server via SSH	      db:
+build-and-deploy	Deploy to Dev Server via SSH	        condition: service_healthy
+build-and-deploy	Deploy to Dev Server via SSH	      redis:
+build-and-deploy	Deploy to Dev Server via SSH	        condition: service_started
+build-and-deploy	Deploy to Dev Server via SSH	    volumes:
+build-and-deploy	Deploy to Dev Server via SSH	      - uploads_data:/app/uploads
+build-and-deploy	Deploy to Dev Server via SSH	    deploy:
+build-and-deploy	Deploy to Dev Server via SSH	      resources:
+build-and-deploy	Deploy to Dev Server via SSH	        limits:
+build-and-deploy	Deploy to Dev Server via SSH	          memory: 512M
+build-and-deploy	Deploy to Dev Server via SSH	    restart: always
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	  frontend:
+build-and-deploy	Deploy to Dev Server via SSH	    # Use image from Docker Hub (built by CI/CD)
+build-and-deploy	Deploy to Dev Server via SSH	    image: ${DOCKER_USERNAME}/upgrade-frontend:latest
+build-and-deploy	Deploy to Dev Server via SSH	    ports:
+build-and-deploy	Deploy to Dev Server via SSH	      - '80:80'
+build-and-deploy	Deploy to Dev Server via SSH	      - '443:443'
+build-and-deploy	Deploy to Dev Server via SSH	    environment:
+build-and-deploy	Deploy to Dev Server via SSH	      - DOMAIN_NAME=${DOMAIN_NAME}
+build-and-deploy	Deploy to Dev Server via SSH	    depends_on:
+build-and-deploy	Deploy to Dev Server via SSH	      - app
+build-and-deploy	Deploy to Dev Server via SSH	    volumes:
+build-and-deploy	Deploy to Dev Server via SSH	      - /etc/letsencrypt:/etc/letsencrypt:ro
+build-and-deploy	Deploy to Dev Server via SSH	    deploy:
+build-and-deploy	Deploy to Dev Server via SSH	      resources:
+build-and-deploy	Deploy to Dev Server via SSH	        limits:
+build-and-deploy	Deploy to Dev Server via SSH	          memory: 128M
+build-and-deploy	Deploy to Dev Server via SSH	    restart: always
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	  db:
+build-and-deploy	Deploy to Dev Server via SSH	    image: postgres:15-alpine
+build-and-deploy	Deploy to Dev Server via SSH	    environment:
+build-and-deploy	Deploy to Dev Server via SSH	      POSTGRES_USER: upgrade
+build-and-deploy	Deploy to Dev Server via SSH	      POSTGRES_PASSWORD: upgrade_pass
+build-and-deploy	Deploy to Dev Server via SSH	      POSTGRES_DB: upgrade_crm
+build-and-deploy	Deploy to Dev Server via SSH	    volumes:
+build-and-deploy	Deploy to Dev Server via SSH	      - pgdata:/var/lib/postgresql/data
+build-and-deploy	Deploy to Dev Server via SSH	    deploy:
+build-and-deploy	Deploy to Dev Server via SSH	      resources:
+build-and-deploy	Deploy to Dev Server via SSH	        limits:
+build-and-deploy	Deploy to Dev Server via SSH	          memory: 256M
+build-and-deploy	Deploy to Dev Server via SSH	    healthcheck:
+build-and-deploy	Deploy to Dev Server via SSH	      test: [ 'CMD-SHELL', 'pg_isready -U upgrade -d upgrade_crm' ]
+build-and-deploy	Deploy to Dev Server via SSH	      interval: 5s
+build-and-deploy	Deploy to Dev Server via SSH	      timeout: 5s
+build-and-deploy	Deploy to Dev Server via SSH	      retries: 5
+build-and-deploy	Deploy to Dev Server via SSH	    restart: always
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	  redis:
+build-and-deploy	Deploy to Dev Server via SSH	    image: redis:alpine
+build-and-deploy	Deploy to Dev Server via SSH	    container_name: upgrade_redis_prod
+build-and-deploy	Deploy to Dev Server via SSH	    restart: always
+build-and-deploy	Deploy to Dev Server via SSH	    ports:
+build-and-deploy	Deploy to Dev Server via SSH	      - "6379:6379"
+build-and-deploy	Deploy to Dev Server via SSH	    volumes:
+build-and-deploy	Deploy to Dev Server via SSH	      - redis_data:/data
+build-and-deploy	Deploy to Dev Server via SSH	    deploy:
+build-and-deploy	Deploy to Dev Server via SSH	      resources:
+build-and-deploy	Deploy to Dev Server via SSH	        limits:
+build-and-deploy	Deploy to Dev Server via SSH	          memory: 128M
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	  prometheus:
+build-and-deploy	Deploy to Dev Server via SSH	    image: prom/prometheus:latest
+build-and-deploy	Deploy to Dev Server via SSH	    container_name: prometheus
+build-and-deploy	Deploy to Dev Server via SSH	    volumes:
+build-and-deploy	Deploy to Dev Server via SSH	      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+build-and-deploy	Deploy to Dev Server via SSH	      - prometheus_data:/prometheus
+build-and-deploy	Deploy to Dev Server via SSH	    command:
+build-and-deploy	Deploy to Dev Server via SSH	      - '--config.file=/etc/prometheus/prometheus.yml'
+build-and-deploy	Deploy to Dev Server via SSH	      - '--storage.tsdb.path=/prometheus'
+build-and-deploy	Deploy to Dev Server via SSH	      - '--web.console.libraries=/etc/prometheus/console_libraries'
+build-and-deploy	Deploy to Dev Server via SSH	      - '--web.console.templates=/etc/prometheus/consoles'
+build-and-deploy	Deploy to Dev Server via SSH	      - '--web.enable-lifecycle'
+build-and-deploy	Deploy to Dev Server via SSH	    ports:
+build-and-deploy	Deploy to Dev Server via SSH	      - "9090:9090"
+build-and-deploy	Deploy to Dev Server via SSH	    restart: always
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	  grafana:
+build-and-deploy	Deploy to Dev Server via SSH	    image: grafana/grafana:latest
+build-and-deploy	Deploy to Dev Server via SSH	    container_name: grafana
+build-and-deploy	Deploy to Dev Server via SSH	    ports:
+build-and-deploy	Deploy to Dev Server via SSH	      - "3001:3000"
+build-and-deploy	Deploy to Dev Server via SSH	    volumes:
+build-and-deploy	Deploy to Dev Server via SSH	      - grafana_data:/var/lib/grafana
+build-and-deploy	Deploy to Dev Server via SSH	    restart: always
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	  node-exporter:
+build-and-deploy	Deploy to Dev Server via SSH	    image: prom/node-exporter:latest
+build-and-deploy	Deploy to Dev Server via SSH	    container_name: node_exporter
+build-and-deploy	Deploy to Dev Server via SSH	    volumes:
+build-and-deploy	Deploy to Dev Server via SSH	      - /proc:/host/proc:ro
+build-and-deploy	Deploy to Dev Server via SSH	      - /sys:/host/sys:ro
+build-and-deploy	Deploy to Dev Server via SSH	      - /:/***fs:ro
+build-and-deploy	Deploy to Dev Server via SSH	    command:
+build-and-deploy	Deploy to Dev Server via SSH	      - '--path.procfs=/host/proc'
+build-and-deploy	Deploy to Dev Server via SSH	      - '--path.***fs=/***fs'
+build-and-deploy	Deploy to Dev Server via SSH	      - '--path.sysfs=/host/sys'
+build-and-deploy	Deploy to Dev Server via SSH	      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+build-and-deploy	Deploy to Dev Server via SSH	    restart: always
+build-and-deploy	Deploy to Dev Server via SSH	    ports:
+build-and-deploy	Deploy to Dev Server via SSH	      - "9100:9100"
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	  cadvisor:
+build-and-deploy	Deploy to Dev Server via SSH	    image: gcr.io/cadvisor/cadvisor:v0.47.0
+build-and-deploy	Deploy to Dev Server via SSH	    container_name: cadvisor
+build-and-deploy	Deploy to Dev Server via SSH	    ports:
+build-and-deploy	Deploy to Dev Server via SSH	      - "8080:8080"
+build-and-deploy	Deploy to Dev Server via SSH	    volumes:
+build-and-deploy	Deploy to Dev Server via SSH	      - /:/***fs:ro
+build-and-deploy	Deploy to Dev Server via SSH	      - /var/run:/var/run:ro
+build-and-deploy	Deploy to Dev Server via SSH	      - /sys:/sys:ro
+build-and-deploy	Deploy to Dev Server via SSH	      - /var/lib/docker/:/var/lib/docker:ro
+build-and-deploy	Deploy to Dev Server via SSH	      - /dev/disk/:/dev/disk:ro
+build-and-deploy	Deploy to Dev Server via SSH	    devices:
+build-and-deploy	Deploy to Dev Server via SSH	      - /dev/kmsg
+build-and-deploy	Deploy to Dev Server via SSH	    restart: always
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	volumes:
+build-and-deploy	Deploy to Dev Server via SSH	  pgdata:
+build-and-deploy	Deploy to Dev Server via SSH	  uploads_data:
+build-and-deploy	Deploy to Dev Server via SSH	  redis_data:
+build-and-deploy	Deploy to Dev Server via SSH	  prometheus_data:
+build-and-deploy	Deploy to Dev Server via SSH	  grafana_data:
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3852749Z   PROMETHEUS_CONFIG: global:
+build-and-deploy	Deploy to Dev Server via SSH	  scrape_interval: 15s
+build-and-deploy	Deploy to Dev Server via SSH	  evaluation_interval: 15s
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	scrape_configs:
+build-and-deploy	Deploy to Dev Server via SSH	  - job_name: 'prometheus'
+build-and-deploy	Deploy to Dev Server via SSH	    static_configs:
+build-and-deploy	Deploy to Dev Server via SSH	      - targets: ['localhost:9090']
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	  - job_name: 'node-exporter'
+build-and-deploy	Deploy to Dev Server via SSH	    static_configs:
+build-and-deploy	Deploy to Dev Server via SSH	      - targets: ['node-exporter:9100']
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	  - job_name: 'cadvisor'
+build-and-deploy	Deploy to Dev Server via SSH	    static_configs:
+build-and-deploy	Deploy to Dev Server via SSH	      - targets: ['cadvisor:8080']
+build-and-deploy	Deploy to Dev Server via SSH	
+build-and-deploy	Deploy to Dev Server via SSH	  - job_name: 'nestjs-app'
+build-and-deploy	Deploy to Dev Server via SSH	    static_configs:
+build-and-deploy	Deploy to Dev Server via SSH	      - targets: ['app:3000']
+build-and-deploy	Deploy to Dev Server via SSH	    metrics_path: '/metrics'
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3854488Z   DOMAIN_NAME: devupgrade.***.ru
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3854760Z ##[endgroup]
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:53.3961886Z ##[command]/usr/bin/docker run --name ccc587f29b489d4d33a3f73916f8506ca3_ec8ee4 --label 0136cc --workdir /github/workspace --rm -e "COMPOSE_CONFIG" -e "PROMETHEUS_CONFIG" -e "DOMAIN_NAME" -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_ENVS" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" 0136cc:c587f29b489d4d33a3f73916f8506ca3
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0194139Z ======CMD======
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0195034Z set -e
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0195250Z 
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0195537Z export DOCKER_USERNAME=***
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0196097Z export DOMAIN_NAME=devupgrade.***.ru
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0196445Z 
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0197020Z echo "***" | docker login -u "***" --password-stdin
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0197449Z 
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0197735Z docker pull ***/upgrade-backend:latest
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0198343Z docker pull ***/upgrade-frontend:latest
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0198717Z 
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0198903Z mkdir -p ~/upgrade-crm
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0199316Z cd ~/upgrade-crm
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0199579Z 
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0199757Z if [ -d "prometheus.yml" ]; then
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0200269Z     rm -rf prometheus.yml
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0200700Z fi
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0200898Z 
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0201145Z echo "$COMPOSE_CONFIG" > docker-compose.prod.yml
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0201762Z echo "$PROMETHEUS_CONFIG" > prometheus.yml
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0202141Z 
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0202348Z if docker compose version &> /dev/null; then
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0202896Z     DC_CMD="docker compose"
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0204160Z elif command -v docker-compose &> /dev/null; then
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0204754Z     DC_CMD="docker-compose"
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0205195Z else
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0205523Z     exit 1
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0205863Z fi
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0206045Z 
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0206297Z $DC_CMD -f docker-compose.prod.yml down || true
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0207086Z docker ps -a --filter "name=upgrade-crm" -q | xargs -r docker rm -f || true
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0207652Z 
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0207872Z if ! command -v certbot &> /dev/null; then
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0208716Z     sudo apt-get update
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0209183Z     sudo apt-get install -y certbot
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0209651Z fi
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0209841Z 
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0210083Z if [ ! -d "/etc/letsencrypt/live/$DOMAIN_NAME" ]; then
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0210871Z     echo "Certificates not found. Generating via certbot standalone..."
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0212033Z     sudo certbot certonly --standalone -d $DOMAIN_NAME --non-interactive --agree-tos -m dev@***.ru
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0212885Z fi
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0213070Z 
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0213544Z if ! sudo crontab -l | grep -q "certbot renew"; then
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0215502Z     (sudo crontab -l 2>/dev/null; echo "0 3 * * * certbot renew --pre-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml stop frontend\" --post-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml start frontend\"") | sudo crontab -
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0217359Z fi
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0217568Z 
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0217964Z $DC_CMD -f docker-compose.prod.yml up -d --remove-orphans --force-recreate
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0218710Z docker image prune -f
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0218990Z 
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0219412Z $DC_CMD -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:54.0220190Z ======END======
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:58.0200072Z out: Login Succeeded
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7171989Z out: latest: Pulling from ***/upgrade-backend
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7172776Z out: 6db0909c4473: Already exists
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7222711Z out: 826a82fd63cc: Already exists
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7260361Z out: cd109496182f: Already exists
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7303743Z out: 74251002e6dd: Already exists
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7346691Z out: 44d7c76471e2: Already exists
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7405062Z out: 5c70da3dca8e: Pulling fs layer
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7405499Z out: 9ca8cfdfaeb0: Pulling fs layer
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7405903Z out: 6aa2fb567444: Pulling fs layer
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7406586Z out: 68d72eaa3379: Pulling fs layer
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7406943Z out: 55aac4df1478: Pulling fs layer
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7407320Z out: 91d83196600d: Pulling fs layer
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7407706Z out: a0ef6ece2624: Pulling fs layer
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7408023Z out: a6e263f4ff74: Pulling fs layer
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7408334Z out: ce997249100f: Pulling fs layer
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7408640Z out: 88eb5c8db460: Pulling fs layer
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7408968Z out: 8b7caeee3d2e: Pulling fs layer
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7409279Z out: 68d72eaa3379: Waiting
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7409567Z out: 55aac4df1478: Waiting
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7409847Z out: 91d83196600d: Waiting
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7410118Z out: a0ef6ece2624: Waiting
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7410396Z out: a6e263f4ff74: Waiting
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7410662Z out: ce997249100f: Waiting
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7410927Z out: 88eb5c8db460: Waiting
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:42:59.7411204Z out: 8b7caeee3d2e: Waiting
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:00.5591479Z out: 9ca8cfdfaeb0: Verifying Checksum
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:00.5592018Z out: 9ca8cfdfaeb0: Download complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:00.6569993Z out: 6aa2fb567444: Verifying Checksum
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:00.6570761Z out: 6aa2fb567444: Download complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:01.1331212Z out: 5c70da3dca8e: Verifying Checksum
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:01.1337389Z out: 5c70da3dca8e: Download complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:01.3266290Z out: 68d72eaa3379: Verifying Checksum
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:01.3266899Z out: 68d72eaa3379: Download complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:01.4905184Z out: 5c70da3dca8e: Pull complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:01.5251319Z out: 9ca8cfdfaeb0: Pull complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:01.5498372Z out: 55aac4df1478: Verifying Checksum
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:01.5498932Z out: 55aac4df1478: Download complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:01.5591975Z out: 6aa2fb567444: Pull complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:01.5921353Z out: 68d72eaa3379: Pull complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:01.6156668Z out: 55aac4df1478: Pull complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:02.3147491Z out: a0ef6ece2624: Verifying Checksum
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:02.3148255Z out: a0ef6ece2624: Download complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:02.3602433Z out: a6e263f4ff74: Verifying Checksum
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:02.3603865Z out: a6e263f4ff74: Download complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:03.1432577Z out: ce997249100f: Verifying Checksum
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:03.1433002Z out: ce997249100f: Download complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:03.4472254Z out: 88eb5c8db460: Verifying Checksum
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:03.4472821Z out: 88eb5c8db460: Download complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:04.3158538Z out: 8b7caeee3d2e: Verifying Checksum
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:04.3159340Z out: 8b7caeee3d2e: Download complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:15.5044157Z out: 91d83196600d: Verifying Checksum
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:15.5044589Z out: 91d83196600d: Download complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:32.1903922Z out: 91d83196600d: Pull complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:32.3424732Z out: a0ef6ece2624: Pull complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:32.3652059Z out: a6e263f4ff74: Pull complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:32.3939435Z out: ce997249100f: Pull complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:32.4789981Z out: 88eb5c8db460: Pull complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:32.5724637Z out: 8b7caeee3d2e: Pull complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:32.5821912Z out: Digest: sha256:41aa293f8f882f40e121f6334ab12087146cf3dc7e35dd61d59115fef1674a96
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:32.5865206Z out: Status: Downloaded newer image for ***/upgrade-backend:latest
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:32.5889279Z out: docker.io/***/upgrade-backend:latest
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:34.3359076Z out: latest: Pulling from ***/upgrade-frontend
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:34.3359634Z out: 589002ba0eae: Already exists
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:34.3403791Z out: d2a46166eee6: Already exists
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:34.3438222Z out: 593488f95c35: Already exists
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:34.3489873Z out: e19aff8f2cce: Already exists
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:34.3516034Z out: 1549d7aec962: Already exists
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:34.3566471Z out: 1f25242adbdb: Already exists
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:34.3600041Z out: c32126d2b96c: Already exists
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:34.3634103Z out: c24026275c33: Already exists
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:34.3675680Z out: 5afe698c55b5: Pulling fs layer
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:34.3676301Z out: da0cadfed070: Pulling fs layer
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:34.9940820Z out: da0cadfed070: Verifying Checksum
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:34.9941461Z out: da0cadfed070: Download complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:35.1577328Z out: 5afe698c55b5: Download complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:35.2131594Z out: 5afe698c55b5: Pull complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:35.2434619Z out: da0cadfed070: Pull complete
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:35.2544007Z out: Digest: sha256:8a7a8b8d630e9bb16974a6bbefd9ebfb293b42661c09a36342e41b84885d5205
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:35.2588831Z out: Status: Downloaded newer image for ***/upgrade-frontend:latest
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:35.2624729Z out: docker.io/***/upgrade-frontend:latest
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:35.5171160Z err:  Container prometheus  Stopping
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:35.5171928Z err:  Container node_exporter  Stopping
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:35.5172580Z err:  Container cadvisor  Stopping
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:35.5172960Z err:  Container grafana  Stopping
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:35.5173615Z err:  Container upgrade-crm-frontend-1  Stopping
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:36.0998949Z err:  Container cadvisor  Stopped
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:36.0999431Z err:  Container cadvisor  Removing
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:36.1002824Z err:  Container upgrade-crm-frontend-1  Stopped
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:36.1003501Z err:  Container upgrade-crm-frontend-1  Removing
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:36.1199934Z err:  Container node_exporter  Stopped
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:36.1200700Z err:  Container node_exporter  Removing
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:36.1307996Z err:  Container upgrade-crm-frontend-1  Removed
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:36.1308828Z err:  Container upgrade-crm-app-1  Stopping
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:36.1557190Z err:  Container cadvisor  Removed
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:36.1610105Z err:  Container node_exporter  Removed
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:36.2538519Z err:  Container grafana  Stopped
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:36.2539011Z err:  Container grafana  Removing
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:36.2708807Z err:  Container prometheus  Stopped
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:36.2709545Z err:  Container prometheus  Removing
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:36.2728727Z err:  Container grafana  Removed
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:36.2829601Z err:  Container prometheus  Removed
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:46.4908625Z err:  Container upgrade-crm-app-1  Stopped
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:46.4909481Z err:  Container upgrade-crm-app-1  Removing
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:46.5061045Z err:  Container upgrade-crm-app-1  Removed
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:46.5078320Z err:  Container upgrade-crm-db-1  Stopping
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:46.5078969Z err:  Container upgrade_redis_prod  Stopping
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:46.7555480Z err:  Container upgrade-crm-db-1  Stopped
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:46.7556069Z err:  Container upgrade-crm-db-1  Removing
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:46.7630980Z err:  Container upgrade-crm-db-1  Removed
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:46.8147059Z err:  Container upgrade_redis_prod  Stopped
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:46.8147873Z err:  Container upgrade_redis_prod  Removing
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:46.8268463Z err:  Container upgrade_redis_prod  Removed
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:46.8284833Z err:  Network upgrade-crm_default  Removing
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:46.9467931Z err:  Network upgrade-crm_default  Removed
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.1672591Z err:  Network upgrade-crm_default  Creating
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.2516257Z err:  Network upgrade-crm_default  Created
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.2567226Z err:  Container cadvisor  Creating
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.2567736Z err:  Container upgrade-crm-db-1  Creating
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.2568174Z err:  Container upgrade_redis_prod  Creating
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.2568573Z err:  Container prometheus  Creating
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.2568961Z err:  Container grafana  Creating
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.2569321Z err:  Container node_exporter  Creating
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.3347021Z err:  Container upgrade-crm-db-1  Created
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.3512770Z err:  Container prometheus  Created
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.3592022Z err:  Container cadvisor  Created
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.3649927Z err:  Container upgrade_redis_prod  Created
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.3650481Z err:  Container upgrade-crm-app-1  Creating
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.3663796Z err:  Container node_exporter  Created
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.3688321Z err:  Container grafana  Created
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.3976487Z err:  Container upgrade-crm-app-1  Created
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.3984082Z err:  Container upgrade-crm-frontend-1  Creating
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.4391373Z err:  Container upgrade-crm-frontend-1  Created
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.4450489Z err:  Container upgrade_redis_prod  Starting
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.4451025Z err:  Container prometheus  Starting
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.4451406Z err:  Container grafana  Starting
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.4451751Z err:  Container cadvisor  Starting
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.4452105Z err:  Container node_exporter  Starting
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:47.4452490Z err:  Container upgrade-crm-db-1  Starting
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:48.0123915Z err:  Container upgrade-crm-db-1  Started
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:48.2513084Z err:  Container cadvisor  Started
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:48.3785807Z err:  Container node_exporter  Started
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:48.4680586Z err:  Container upgrade_redis_prod  Started
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:48.4681262Z err:  Container upgrade-crm-db-1  Waiting
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:48.5107222Z err:  Container grafana  Started
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:48.6140677Z err:  Container prometheus  Started
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:53.4409985Z err:  Container upgrade-crm-db-1  Error
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:53.4410717Z err: dependency failed to start: container upgrade-crm-db-1 exited (0)
+build-and-deploy	Deploy to Dev Server via SSH	2026-03-17T12:43:53.4508744Z 2026/03/17 12:43:53 Process exited with status 1

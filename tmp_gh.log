@@ -1,0 +1,1564 @@
+build-and-deploy	UNKNOWN STEP	﻿2026-03-16T16:06:26.6620142Z Current runner version: '2.332.0'
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6644977Z ##[group]Runner Image Provisioner
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6645875Z Hosted Compute Agent
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6646501Z Version: 20260213.493
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6647183Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6647959Z Build Date: 2026-02-13T00:28:41Z
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6648630Z Worker ID: {f2935899-caa9-4cc2-9dcd-95ef34d6346f}
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6649393Z Azure Region: northcentralus
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6650015Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6651535Z ##[group]Operating System
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6652194Z Ubuntu
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6652694Z 24.04.3
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6653762Z LTS
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6654304Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6654928Z ##[group]Runner Image
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6655515Z Image: ubuntu-24.04
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6656061Z Version: 20260302.42.1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6657290Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260302.42/images/ubuntu/Ubuntu2404-Readme.md
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6658774Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260302.42
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6659684Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6660974Z ##[group]GITHUB_TOKEN Permissions
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6664225Z Contents: read
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6665318Z Metadata: read
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6666169Z Packages: read
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6666772Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6670303Z Secret source: Actions
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.6671347Z Prepare workflow directory
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.7093683Z Prepare all required actions
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:26.7152085Z Getting action download info
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:27.1100854Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:27.2507340Z Download action repository 'docker/login-action@v3' (SHA:c94ce9fb468520275223c153574b00df6fe4bcc9)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:27.7188355Z Download action repository 'docker/build-push-action@v5' (SHA:ca052bb54ab0790a636c9b5f226502c73d547a25)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:28.2063172Z Download action repository 'appleboy/ssh-action@v1.0.3' (SHA:029f5b4aeeeb58fdfe1410a5d17f967dacf36262)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:28.7075529Z Complete job name: build-and-deploy
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:28.7527299Z ##[group]Build container for action use: '/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile'.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:28.7574759Z ##[command]/usr/bin/docker build -t 4d6104:921264f91db645a18f5e798327a18703 -f "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile" "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:29.5866769Z #0 building with "default" instance using docker driver
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:29.5868170Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:29.5868592Z #1 [internal] load build definition from Dockerfile
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:29.5869193Z #1 transferring dockerfile: 149B done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:29.5869908Z #1 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:29.5870234Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:29.5870504Z #2 [internal] load metadata for ghcr.io/appleboy/drone-ssh:1.7.3
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.2550627Z #2 DONE 0.8s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3713855Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3714491Z #3 [internal] load .dockerignore
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3715564Z #3 transferring context: 2B done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3716245Z #3 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3716695Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3716984Z #4 [internal] load build context
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3717689Z #4 transferring context: 108B done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3718387Z #4 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3718708Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3719340Z #5 [1/2] FROM ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3720819Z #5 resolve ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3722215Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0B / 284.83kB 0.1s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3723969Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 0B / 1.20kB 0.1s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3724763Z #5 sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 2.38kB / 2.38kB done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3726157Z #5 sha256:1a52f94820e830bc9734623deb03bbafa6a248fba19cdc2e5605c70d90d91441 1.24kB / 1.24kB done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3727137Z #5 sha256:c4781b8d012b16b6c7468dc9104fad0a63f2a8815b2af8b7176bb544253ea8c7 3.86kB / 3.86kB done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.3727912Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 3.33MB / 3.38MB 0.1s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.4924268Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 284.83kB / 284.83kB 0.1s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.4925957Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 1.20kB / 1.20kB 0.2s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.4927378Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 3.38MB / 3.38MB 0.1s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.4928912Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0.1s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.4930151Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0.0s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.4931661Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 125B / 125B 0.2s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.4932909Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0B / 2.44MB 0.2s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.6099537Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 2.44MB / 2.44MB 0.2s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.6101160Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.6102281Z #5 extracting sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.6103462Z #5 extracting sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0.0s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.6104342Z #5 DONE 0.3s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.7696182Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.7696828Z #6 [2/2] COPY entrypoint.sh /bin/entrypoint.sh
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.7697632Z #6 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.7697922Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.7698190Z #7 exporting to image
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:30.7698592Z #7 exporting layers
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0047295Z #7 exporting layers 0.4s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0205724Z #7 writing image sha256:b6054f68677816ecf88ac568e058a022600921e778e821f451f82e9af09379e3 done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0206891Z #7 naming to docker.io/library/4d6104:921264f91db645a18f5e798327a18703 done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0207699Z #7 DONE 0.4s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0257375Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0535512Z ##[group]Run actions/checkout@v4
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0536233Z with:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0536653Z   repository: stanisloveme-cloud/UPGRADE
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0537331Z   token: ***
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0537703Z   ssh-strict: true
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0538074Z   ssh-user: git
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0538453Z   persist-credentials: true
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0538858Z   clean: true
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0539224Z   sparse-checkout-cone-mode: true
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0539620Z   fetch-depth: 1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0539970Z   fetch-tags: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0540365Z   show-progress: true
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0540694Z   lfs: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0541076Z   submodules: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0541410Z   set-safe-directory: true
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.0542030Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1561374Z Syncing repository: stanisloveme-cloud/UPGRADE
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1563261Z ##[group]Getting Git version info
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1564306Z Working directory is '/home/runner/work/UPGRADE/UPGRADE'
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1565071Z [command]/usr/bin/git version
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1566634Z git version 2.53.0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1589652Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1602350Z Temporarily overriding HOME='/home/runner/work/_temp/75d917d1-26c0-419f-ada9-23507d88b3fa' before making global git config changes
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1604742Z Adding repository directory to the temporary git global config as a safe directory
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1617105Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/UPGRADE/UPGRADE
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1649100Z Deleting the contents of '/home/runner/work/UPGRADE/UPGRADE'
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1652228Z ##[group]Initializing the repository
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1656309Z [command]/usr/bin/git init /home/runner/work/UPGRADE/UPGRADE
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1739943Z hint: Using 'master' as the name for the initial branch. This default branch name
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1740986Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1742167Z hint: to use in all of your new repositories, which will suppress this warning,
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1742941Z hint: call:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1743673Z hint:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1744285Z hint: 	git config --global init.defaultBranch <name>
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1744836Z hint:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1745272Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1745839Z hint: 'development'. The just-created branch can be renamed via this command:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1746350Z hint:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1746699Z hint: 	git branch -m <name>
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1747035Z hint:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1747478Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1748133Z Initialized empty Git repository in /home/runner/work/UPGRADE/UPGRADE/.git/
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1754929Z [command]/usr/bin/git remote add origin https://github.com/stanisloveme-cloud/UPGRADE
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1786048Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1786664Z ##[group]Disabling automatic garbage collection
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1790414Z [command]/usr/bin/git config --local gc.auto 0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1816421Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1817276Z ##[group]Setting up auth
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1823723Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.1852312Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.2126129Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.2152366Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.2343414Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.2371252Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.2571545Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.2603773Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.2605000Z ##[group]Fetching the repository
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:31.2612791Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +de34033fd9269b983b41ea22913d2e23322ff9e1:refs/remotes/origin/main
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:32.9490253Z From https://github.com/stanisloveme-cloud/UPGRADE
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:32.9516724Z  * [new ref]         de34033fd9269b983b41ea22913d2e23322ff9e1 -> origin/main
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:32.9524623Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:32.9525282Z ##[group]Determining the checkout info
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:32.9525992Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:32.9527392Z [command]/usr/bin/git sparse-checkout disable
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:32.9563725Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:32.9585966Z ##[group]Checking out the ref
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:32.9589909Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.2470206Z Switched to a new branch 'main'
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.2470951Z branch 'main' set up to track 'origin/main'.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.2482157Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.2516178Z [command]/usr/bin/git log -1 --format=%H
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.2538530Z de34033fd9269b983b41ea22913d2e23322ff9e1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.2712478Z ##[group]Run docker/login-action@v3
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.2712861Z with:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.2713512Z   username: ***
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.2713931Z   password: ***
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.2714287Z   logout: true
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.2714610Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.5514282Z Logging into docker.io...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.8095802Z Login Succeeded!
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.8277272Z ##[group]Run docker/build-push-action@v5
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.8277582Z with:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.8277799Z   context: .
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.8278014Z   file: Dockerfile
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.8278242Z   push: true
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.8278521Z   tags: ***/upgrade-backend:latest
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.8278779Z   load: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.8278993Z   no-cache: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.8279204Z   pull: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.8279538Z   github-token: ***
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:33.8279750Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0374525Z ##[group]GitHub Actions runtime token ACs
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0384934Z refs/heads/main: read/write
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0385980Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0387296Z ##[group]Docker info
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0421238Z [command]/usr/bin/docker version
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0605642Z Client: Docker Engine - Community
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0608058Z  Version:           28.0.4
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0608550Z  API version:       1.48
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0609077Z  Go version:        go1.23.7
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0609454Z  Git commit:        b8034c0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0609902Z  Built:             Tue Mar 25 15:07:16 2025
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0610402Z  OS/Arch:           linux/amd64
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0610813Z  Context:           default
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0611082Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0611268Z Server: Docker Engine - Community
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0611646Z  Engine:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0611931Z   Version:          28.0.4
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0612348Z   API version:      1.48 (minimum version 1.24)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0612755Z   Go version:       go1.23.7
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0612996Z   Git commit:       6430e49
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0613776Z   Built:            Tue Mar 25 15:07:16 2025
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0614069Z   OS/Arch:          linux/amd64
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0614337Z   Experimental:     false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0614580Z  containerd:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0614793Z   Version:          v2.2.1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0615105Z   GitCommit:        dea7da592f5d1d2b7755e3a161be07f43fad8f75
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0615442Z  runc:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0615648Z   Version:          1.3.4
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0615906Z   GitCommit:        v1.3.4-0-gd6d73eb8
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0616181Z  docker-init:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0616404Z   Version:          0.19.0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0616638Z   GitCommit:        de40ad0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:34.0646528Z [command]/usr/bin/docker info
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7098393Z Client: Docker Engine - Community
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7104769Z  Version:    28.0.4
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7105139Z  Context:    default
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7105491Z  Debug Mode: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7105861Z  Plugins:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7106265Z   buildx: Docker Buildx (Docker Inc.)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7106712Z     Version:  v0.31.1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7107237Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7107755Z   compose: Docker Compose (Docker Inc.)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7108169Z     Version:  v2.38.2
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7108629Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7109026Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7109136Z Server:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7109342Z  Containers: 0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7109552Z   Running: 0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7109756Z   Paused: 0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7109963Z   Stopped: 0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7110163Z  Images: 2
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7110373Z  Server Version: 28.0.4
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7110622Z  Storage Driver: overlay2
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7110916Z   Backing Filesystem: extfs
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7111170Z   Supports d_type: true
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7111407Z   Using metacopy: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7111707Z   Native Overlay Diff: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7112441Z   userxattr: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7112804Z  Logging Driver: json-file
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7113096Z  Cgroup Driver: systemd
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7113481Z  Cgroup Version: 2
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7113714Z  Plugins:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7113919Z   Volume: local
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7114186Z   Network: bridge host ipvlan macvlan null overlay
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7114755Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7115136Z  Swarm: inactive
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7115384Z  Runtimes: io.containerd.runc.v2 runc
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7115795Z  Default Runtime: runc
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7116139Z  Init Binary: docker-init
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7116445Z  containerd version: dea7da592f5d1d2b7755e3a161be07f43fad8f75
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7116792Z  runc version: v1.3.4-0-gd6d73eb8
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7117053Z  init version: de40ad0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7117279Z  Security Options:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7117498Z   apparmor
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7117684Z   seccomp
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7117887Z    Profile: builtin
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7118100Z   cgroupns
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7118302Z  Kernel Version: 6.14.0-1017-azure
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7118577Z  Operating System: Ubuntu 24.04.3 LTS
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7118845Z  OSType: linux
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7119056Z  Architecture: x86_64
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7119273Z  CPUs: 4
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7119487Z  Total Memory: 15.61GiB
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7119714Z  Name: runnervm0kj6c
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7119963Z  ID: 189d60bd-a351-4054-af4e-5414e7eef06b
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7120246Z  Docker Root Dir: /var/lib/docker
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7120502Z  Debug Mode: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7120847Z  Username: ***
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7121062Z  Experimental: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7121300Z  Insecure Registries:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7127709Z   ::1/128
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7128057Z   127.0.0.0/8
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7128412Z  Live Restore Enabled: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7128671Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7129230Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7129899Z ##[group]Proxy configuration
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7130334Z No proxy configuration found
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7130983Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7702635Z ##[group]Buildx version
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.7740044Z [command]/usr/bin/docker buildx version
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.8287301Z github.com/docker/buildx v0.31.1 a2675950d46b2cb171b23c2015ca44fb88607531
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.8311292Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.8311998Z ##[group]Builder info
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9027309Z {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9027710Z   "nodes": [
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9028022Z     {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9028441Z       "name": "default",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9028854Z       "endpoint": "default",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9029259Z       "status": "running",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9029665Z       "buildkit": "v0.20.2",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9030306Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/amd64/v4,linux/386",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9030988Z       "features": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9031523Z         "Automatically load images to the Docker Engine image store": true,
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9032191Z         "Cache export": true,
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9032629Z         "Direct push": true,
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9033038Z         "Docker exporter": true,
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9033664Z         "Multi-platform build": true,
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9034157Z         "OCI exporter": true
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9034541Z       },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9034871Z       "labels": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9035504Z         "org.mobyproject.buildkit.worker.moby.host-gateway-ip": "172.17.0.1"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9036053Z       }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9036333Z     }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9036609Z   ],
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9036899Z   "name": "default",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9037308Z   "driver": "docker",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9037686Z   "lastActivity": "2026-03-16T16:06:29.000Z"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9038128Z }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:37.9038881Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.0395552Z [command]/usr/bin/docker buildx build --file Dockerfile --iidfile /home/runner/work/_temp/docker-actions-toolkit-prGnRg/build-iidfile-0e2110c21b.txt --tag ***/upgrade-backend:latest --metadata-file /home/runner/work/_temp/docker-actions-toolkit-prGnRg/build-metadata-1f246076ed.json --push .
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.3484505Z #0 building with "default" instance using docker driver
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.3484821Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.3484968Z #1 [internal] load build definition from Dockerfile
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.3485675Z #1 transferring dockerfile: 947B done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.3485957Z #1 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.3486082Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.3486246Z #2 [auth] library/node:pull token for registry-1.docker.io
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.3486564Z #2 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.3486685Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.3486842Z #3 [internal] load metadata for docker.io/library/node:20-slim
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.7155502Z #3 DONE 0.6s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.8312039Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.8314009Z #4 [internal] load .dockerignore
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.8322618Z #4 transferring context: 124B done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.8323431Z #4 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.8323703Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.8324415Z #5 [builder 1/9] FROM docker.io/library/node:20-slim@sha256:a82f40540f5959e0003fb7b3c0f80490def2927be8bdbee7e3e0ac65cce3be92
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.8326445Z #5 resolve docker.io/library/node:20-slim@sha256:a82f40540f5959e0003fb7b3c0f80490def2927be8bdbee7e3e0ac65cce3be92 done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.8327314Z #5 sha256:a82f40540f5959e0003fb7b3c0f80490def2927be8bdbee7e3e0ac65cce3be92 6.49kB / 6.49kB done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.8328179Z #5 sha256:eef3816042c0f522a2ca9655c1947ca6f97c908b0c227aa50e19432646342ab7 1.93kB / 1.93kB done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.8329208Z #5 sha256:0917f806cde0cc3c2bf1e63c552396861e5f9dd481dcdcc88f6d86e447fd145d 6.87kB / 6.87kB done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.8330254Z #5 sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 0B / 28.24MB 0.1s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.8331261Z #5 sha256:4e46de9abb28ae464ce63eabe3a40e078ab06e4c362f17ee6b4dc1389db63917 0B / 3.32kB 0.1s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:38.8332395Z #5 sha256:38bb63ca310250905b2eb552b96ee4f04b26bfd91eddd5e4a535d2d04d7cfe23 0B / 41.42MB 0.1s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.0320500Z #5 ...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.0320760Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.0320884Z #6 [internal] load build context
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.0321213Z #6 transferring context: 40.91MB 0.2s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.0321504Z #6 DONE 0.2s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.0322066Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.0322472Z #5 [builder 1/9] FROM docker.io/library/node:20-slim@sha256:a82f40540f5959e0003fb7b3c0f80490def2927be8bdbee7e3e0ac65cce3be92
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.0323430Z #5 sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 7.34MB / 28.24MB 0.3s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.0324082Z #5 sha256:4e46de9abb28ae464ce63eabe3a40e078ab06e4c362f17ee6b4dc1389db63917 3.32kB / 3.32kB 0.2s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.0324743Z #5 sha256:38bb63ca310250905b2eb552b96ee4f04b26bfd91eddd5e4a535d2d04d7cfe23 15.73MB / 41.42MB 0.3s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.0325372Z #5 sha256:626acebb8e40416188b154b1d1a1fc1cba88533b2586cdff64d0cfb515175acf 0B / 1.71MB 0.3s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.2311139Z #5 sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 20.97MB / 28.24MB 0.5s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.2311862Z #5 sha256:38bb63ca310250905b2eb552b96ee4f04b26bfd91eddd5e4a535d2d04d7cfe23 34.60MB / 41.42MB 0.5s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.2312498Z #5 sha256:626acebb8e40416188b154b1d1a1fc1cba88533b2586cdff64d0cfb515175acf 1.71MB / 1.71MB 0.4s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.2313120Z #5 sha256:f9d9eff651020566eec16405a597f3771597aa46872fb9f41b9d05a53f45cd0a 0B / 450B 0.5s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.3830026Z #5 sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 25.17MB / 28.24MB 0.6s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.3831146Z #5 sha256:38bb63ca310250905b2eb552b96ee4f04b26bfd91eddd5e4a535d2d04d7cfe23 41.42MB / 41.42MB 0.6s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.3832129Z #5 sha256:f9d9eff651020566eec16405a597f3771597aa46872fb9f41b9d05a53f45cd0a 450B / 450B 0.5s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.3832889Z #5 extracting sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:39.4863036Z #5 sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 28.24MB / 28.24MB 0.6s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:40.2179466Z #5 extracting sha256:84a2afebaf4de2e8eb885634a69abd0087b79c947c53fa4f0481235d6dfadc6c 0.8s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:40.2180258Z #5 extracting sha256:4e46de9abb28ae464ce63eabe3a40e078ab06e4c362f17ee6b4dc1389db63917
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:40.3686122Z #5 extracting sha256:4e46de9abb28ae464ce63eabe3a40e078ab06e4c362f17ee6b4dc1389db63917 done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:40.4769874Z #5 extracting sha256:38bb63ca310250905b2eb552b96ee4f04b26bfd91eddd5e4a535d2d04d7cfe23
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:41.4928004Z #5 extracting sha256:38bb63ca310250905b2eb552b96ee4f04b26bfd91eddd5e4a535d2d04d7cfe23 0.9s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:41.4929397Z #5 extracting sha256:626acebb8e40416188b154b1d1a1fc1cba88533b2586cdff64d0cfb515175acf 0.0s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:41.6559201Z #5 extracting sha256:f9d9eff651020566eec16405a597f3771597aa46872fb9f41b9d05a53f45cd0a done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:41.6559732Z #5 DONE 2.8s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:41.6559990Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:41.6560186Z #7 [builder 2/9] RUN apt-get update -y && apt-get install -y openssl
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:41.6560834Z #7 0.131 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:41.7868965Z #7 0.141 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:41.7869879Z #7 0.141 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:41.7872488Z #7 0.185 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8792 kB]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:41.7873697Z #7 0.226 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:41.7874443Z #7 0.262 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [294 kB]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:42.5486489Z #7 1.024 Fetched 9348 kB in 1s (10.4 MB/s)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.0453651Z #7 1.024 Reading package lists...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.4942187Z #7 1.536 Reading package lists...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.6151296Z #7 1.980 Building dependency tree...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.7251138Z #7 2.090 Reading state information...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.7252646Z #7 2.186 The following additional packages will be installed:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.7253223Z #7 2.186   libssl3
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.7253721Z #7 2.187 Suggested packages:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.7254102Z #7 2.187   ca-certificates
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.7254548Z #7 2.200 The following NEW packages will be installed:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.8304617Z #7 2.200   libssl3 openssl
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.8305077Z #7 2.216 0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.8305485Z #7 2.216 Need to get 3462 kB of archives.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.8305894Z #7 2.216 After this operation, 8532 kB of additional disk space will be used.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.8306539Z #7 2.216 Get:1 http://deb.debian.org/debian-security bookworm-security/main amd64 libssl3 amd64 3.0.18-1~deb12u2 [2030 kB]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.8307275Z #7 2.227 Get:2 http://deb.debian.org/debian-security bookworm-security/main amd64 openssl amd64 3.0.18-1~deb12u2 [1433 kB]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.8307916Z #7 2.306 debconf: delaying package configuration, since apt-utils is not installed
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9825659Z #7 2.322 Fetched 3462 kB in 0s (134 MB/s)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9826313Z #7 2.333 Selecting previously unselected package libssl3:amd64.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9826704Z #7 2.333 (Reading database ... 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9826975Z (Reading database ... 5%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9827269Z (Reading database ... 10%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9827515Z (Reading database ... 15%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9827753Z (Reading database ... 20%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9827992Z (Reading database ... 25%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9828221Z (Reading database ... 30%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9828463Z (Reading database ... 35%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9828690Z (Reading database ... 40%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9828982Z (Reading database ... 45%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9829277Z (Reading database ... 50%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9829628Z (Reading database ... 55%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9829975Z (Reading database ... 60%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9830322Z (Reading database ... 65%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9830976Z (Reading database ... 70%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9831329Z (Reading database ... 75%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9831668Z (Reading database ... 80%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9832009Z (Reading database ... 85%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9832436Z (Reading database ... 90%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9832880Z (Reading database ... 95%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9833128Z (Reading database ... 100%
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9833969Z (Reading database ... 6096 files and directories currently installed.)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9834716Z #7 2.338 Preparing to unpack .../libssl3_3.0.18-1~deb12u2_amd64.deb ...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9835153Z #7 2.339 Unpacking libssl3:amd64 (3.0.18-1~deb12u2) ...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:43.9835505Z #7 2.458 Selecting previously unselected package openssl.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.0828667Z #7 2.459 Preparing to unpack .../openssl_3.0.18-1~deb12u2_amd64.deb ...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.0829157Z #7 2.460 Unpacking openssl (3.0.18-1~deb12u2) ...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.0829664Z #7 2.553 Setting up libssl3:amd64 (3.0.18-1~deb12u2) ...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.0830034Z #7 2.554 Setting up openssl (3.0.18-1~deb12u2) ...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.0830486Z #7 2.558 Processing triggers for libc-bin (2.36-9+deb12u13) ...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.3075991Z #7 DONE 2.6s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.3076245Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.3076423Z #8 [builder 3/9] WORKDIR /app
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.3076886Z #8 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.3077082Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.3077333Z #9 [builder 4/9] COPY package*.json ./
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.3077818Z #9 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.3078037Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.3078234Z #10 [builder 5/9] COPY prisma ./prisma/
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.3078719Z #10 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.3078931Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.3079140Z #11 [stage-1  6/12] COPY prisma.config.ts ./
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.3079645Z #11 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.3080190Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:44.3080629Z #12 [stage-1  7/12] RUN npm install --omit=dev && npx prisma generate
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:46.7030081Z #12 2.547 npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:47.2407837Z #12 3.085 npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:47.7942271Z #12 3.639 npm warn deprecated lodash.isequal@4.5.0: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:48.0914651Z #12 3.936 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:48.7601866Z #12 4.603 npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:48.8918032Z #12 4.735 npm warn deprecated fstream@1.0.12: This package is no longer supported.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:49.5916587Z #12 5.436 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:49.7286823Z #12 5.573 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:51.0084250Z #12 6.852 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:51.2367924Z #12 6.930 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:54.1525167Z #12 ...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:54.1525874Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:54.1526155Z #13 [builder 6/9] RUN npm install
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:54.1527975Z #13 3.740 npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:54.1529333Z #13 4.459 npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:54.1530452Z #13 5.239 npm warn deprecated lodash.isequal@4.5.0: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:54.1532322Z #13 5.664 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:54.1535087Z #13 6.132 npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:54.1536057Z #13 6.694 npm warn deprecated fstream@1.0.12: This package is no longer supported.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:54.1537867Z #13 9.470 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:54.1540672Z #13 9.698 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:54.1543765Z #13 10.01 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:56.0263821Z #13 11.88 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:56.1402845Z #13 11.90 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:56.1406050Z #13 11.90 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:56.1408992Z #13 11.98 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:06:56.1411938Z #13 12.00 npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.6184271Z #13 ...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.6185564Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.6186578Z #12 [stage-1  7/12] RUN npm install --omit=dev && npx prisma generate
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.6188541Z #12 16.46 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.6189056Z #12 16.46 added 563 packages, and audited 564 packages in 16s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.7527477Z #12 16.46 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.7527960Z #12 16.46 104 packages are looking for funding
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.7528708Z #12 16.46   run `npm fund` for details
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.7531947Z #12 16.60 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.7532389Z #12 16.60 15 vulnerabilities (7 moderate, 8 high)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.7532859Z #12 16.60 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.7533479Z #12 16.60 To address issues that do not require attention, run:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.7534054Z #12 16.60   npm audit fix
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.7534632Z #12 16.60 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.7535115Z #12 16.60 To address all issues possible (including breaking changes), run:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.7535686Z #12 16.60   npm audit fix --force
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.7536052Z #12 16.60 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.7536462Z #12 16.60 Some issues need review, and may require choosing
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.7536955Z #12 16.60 a different dependency.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.7537330Z #12 16.60 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.7537656Z #12 16.60 Run `npm audit` for details.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.9042044Z #12 16.60 npm notice
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.9042658Z #12 16.60 npm notice New major version of npm available! 10.8.2 -> 11.11.1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.9043708Z #12 16.60 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.11.1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.9044447Z #12 16.60 npm notice To update run: npm install -g npm@11.11.1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:00.9044893Z #12 16.60 npm notice
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:02.2399946Z #12 18.08 Loaded Prisma config from prisma.config.ts.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:02.2400546Z #12 18.08 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:02.3820031Z #12 18.23 Prisma schema loaded from prisma/schema.prisma.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:02.9705098Z #12 18.82 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:02.9706516Z #12 18.82 ✔ Generated Prisma Client (v7.4.0) to ./node_modules/@prisma/client in 362ms
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:02.9708333Z #12 18.82 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:02.9708997Z #12 18.82 Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:02.9709751Z #12 18.82 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:02.9710079Z #12 18.82 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:05.0992036Z #12 DONE 20.9s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:05.0992590Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:05.0992872Z #13 [builder 6/9] RUN npm install
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.1730684Z #13 24.03 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.1731293Z #13 24.03 added 1105 packages, and audited 1106 packages in 24s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.1731882Z #13 24.03 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.1732273Z #13 24.03 191 packages are looking for funding
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.3075649Z #13 24.03   run `npm fund` for details
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.3076161Z #13 24.17 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.3076606Z #13 24.17 24 vulnerabilities (13 moderate, 11 high)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.3077121Z #13 24.17 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.3077573Z #13 24.17 To address issues that do not require attention, run:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.3078076Z #13 24.17   npm audit fix
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.3078403Z #13 24.17 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.3078815Z #13 24.17 To address all issues possible (including breaking changes), run:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.3079361Z #13 24.17   npm audit fix --force
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.3079767Z #13 24.17 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.3080152Z #13 24.17 Some issues need review, and may require choosing
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.3080625Z #13 24.17 a different dependency.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.3080984Z #13 24.17 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.3081272Z #13 24.17 Run `npm audit` for details.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.4592434Z #13 24.17 npm notice
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.4593032Z #13 24.17 npm notice New major version of npm available! 10.8.2 -> 11.11.1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.4593956Z #13 24.17 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.11.1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.4594733Z #13 24.17 npm notice To update run: npm install -g npm@11.11.1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.4595250Z #13 24.17 npm notice
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.5440313Z #13 DONE 24.4s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.7755508Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.7756052Z #14 [builder 7/9] COPY . .
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.7756512Z #14 DONE 0.1s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.7756704Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:08.7756891Z #15 [builder 8/9] RUN npx prisma generate
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:09.8414298Z #15 1.216 Loaded Prisma config from prisma.config.ts.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:09.8414856Z #15 1.216 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:10.0848956Z #15 1.309 Prisma schema loaded from prisma/schema.prisma.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:10.3723853Z #15 1.747 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:10.3724930Z #15 1.747 ✔ Generated Prisma Client (v7.4.0) to ./node_modules/@prisma/client in 271ms
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:10.3725774Z #15 1.747 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:10.3726440Z #15 1.747 Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:10.3727205Z #15 1.747 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:10.3727524Z #15 1.747 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:10.5624524Z #15 DONE 1.8s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:10.5624862Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:10.5625862Z #16 [builder 9/9] RUN npm run build
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:10.7553927Z #16 0.345 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:10.7554424Z #16 0.345 > upgrade-crm@0.0.1 build
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:10.7554884Z #16 0.345 > nest build
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:10.7555157Z #16 0.345 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:16.9457422Z #16 DONE 6.5s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.5861081Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.5861660Z #17 [stage-1  8/12] COPY --from=builder /app/dist ./dist
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.7996709Z #17 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.7997072Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.7997344Z #18 [stage-1  9/12] COPY scripts/scraped_brands.json ./scripts/
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.7998019Z #18 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.7998517Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.7998844Z #19 [stage-1 10/12] COPY scripts/scraped_speakers.json ./scripts/
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.7999353Z #19 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.7999536Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.7999811Z #20 [stage-1 11/12] COPY uploads/legacy_brands ./uploads/legacy_brands
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.8000365Z #20 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.8000576Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.8000953Z #21 [stage-1 12/12] RUN mkdir -p /app/uploads && chown -R node:node /app/uploads
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.8001546Z #21 DONE 0.2s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.9534242Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.9535052Z #22 exporting to image
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:17.9535806Z #22 exporting layers
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.3666676Z #22 exporting layers 5.6s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6094550Z #22 writing image sha256:3746d4cdd64dd3ed55fa213e484b13dddc9408434b13c8681e348601eafb66bc done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6095697Z #22 naming to docker.io/***/upgrade-backend:latest done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6096252Z #22 DONE 5.6s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6096508Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6096714Z #23 resolving provenance for metadata file
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6097197Z #23 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6097323Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6097499Z #24 pushing ***/upgrade-backend:latest with docker
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6097817Z #24 pushing layer b32fa8823fde
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6098070Z #24 pushing layer c3a813ea6f0a
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6098333Z #24 pushing layer 424ad9c996e3
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6098575Z #24 pushing layer fd006860829d
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6098818Z #24 pushing layer a037194d0283
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6099056Z #24 pushing layer b5c5064fe577
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6099294Z #24 pushing layer ea5f1445acfc
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6099540Z #24 pushing layer a708dae795a6
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6099780Z #24 pushing layer 9b53f482fa54
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6100018Z #24 pushing layer 40b0d1a92eae
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6100260Z #24 pushing layer 4c72b6f8d28c
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6100495Z #24 pushing layer 36411816830b
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6100736Z #24 pushing layer 75865ff3fe02
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6100982Z #24 pushing layer 8d24b1612a64
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6101216Z #24 pushing layer 56668f255b47
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.6101461Z #24 pushing layer 9eb9a78eeb10
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.8410295Z #24 pushing layer b32fa8823fde 815.62kB / 3.34MB 0.4s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.8410983Z #24 pushing layer 424ad9c996e3 59.90kB / 57.12kB 0.3s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.8411671Z #24 pushing layer fd006860829d 45.57kB / 42.87kB 0.3s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.8412273Z #24 pushing layer a037194d0283 1.28MB / 1.03MB 0.3s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.9427067Z #24 pushing layer b32fa8823fde 3.40MB / 3.34MB 0.5s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:23.9427708Z #24 pushing layer c3a813ea6f0a 750.08kB / 3.34MB 0.4s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:24.1217706Z #24 pushing layer c3a813ea6f0a 3.45MB / 3.34MB 0.5s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:24.7617773Z #24 pushing layer a037194d0283 1.3s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:24.9509604Z #24 pushing layer fd006860829d 1.4s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:25.0632347Z #24 pushing layer ea5f1445acfc 2.56kB / 271B 1.6s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:25.1672977Z #24 pushing layer c3a813ea6f0a 1.6s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:25.1674119Z #24 pushing layer 424ad9c996e3 1.7s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:25.3914892Z #24 pushing layer b32fa8823fde 1.8s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:25.3915310Z #24 pushing layer a708dae795a6 89.09kB / 69.23kB 1.8s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:25.3915670Z #24 pushing layer 9b53f482fa54 545.28kB / 542.16kB 1.9s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:26.1753467Z #24 pushing layer b5c5064fe577 33.89MB / 641.79MB 2.7s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:26.1754471Z #24 pushing layer ea5f1445acfc 2.7s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:26.4128063Z #24 pushing layer a708dae795a6 2.8s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:26.5235094Z #24 pushing layer 4c72b6f8d28c 2.06MB / 26.93MB 3.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:26.6239075Z #24 pushing layer 9b53f482fa54 3.1s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:26.6239660Z #24 pushing layer 40b0d1a92eae 3.1s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:26.6240215Z #24 pushing layer 4c72b6f8d28c 4.12MB / 26.93MB 3.1s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:26.7289959Z #24 pushing layer 4c72b6f8d28c 6.46MB / 26.93MB 3.2s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:26.8386425Z #24 pushing layer 4c72b6f8d28c 9.37MB / 26.93MB 3.3s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:26.9516643Z #24 pushing layer 4c72b6f8d28c 12.02MB / 26.93MB 3.4s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:27.0535881Z #24 pushing layer 4c72b6f8d28c 14.97MB / 26.93MB 3.5s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:27.1604643Z #24 pushing layer 4c72b6f8d28c 17.63MB / 26.93MB 3.6s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:27.2692671Z #24 pushing layer 4c72b6f8d28c 22.94MB / 26.93MB 3.8s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:27.3719667Z #24 pushing layer b5c5064fe577 66.05MB / 641.79MB 3.8s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:27.3720332Z #24 pushing layer 4c72b6f8d28c 25.59MB / 26.93MB 3.9s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:27.5116861Z #24 pushing layer 4c72b6f8d28c 26.98MB / 26.93MB 4.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:28.5650018Z #24 pushing layer b5c5064fe577 99.22MB / 641.79MB 5.1s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:28.9886529Z #24 pushing layer 4c72b6f8d28c 5.5s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:29.8942331Z #24 pushing layer b5c5064fe577 132.47MB / 641.79MB 6.4s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:31.3542873Z #24 pushing layer b5c5064fe577 168.42MB / 641.79MB 7.9s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:32.3690969Z #24 pushing layer b5c5064fe577 202.59MB / 641.79MB 8.9s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:33.6276963Z #24 pushing layer b5c5064fe577 236.88MB / 641.79MB 10.2s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:34.7255614Z #24 pushing layer b5c5064fe577 271.81MB / 641.79MB 11.3s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:35.8232143Z #24 pushing layer b5c5064fe577 304.30MB / 641.79MB 12.4s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:36.9929758Z #24 pushing layer b5c5064fe577 337.62MB / 641.79MB 13.5s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:38.1930528Z #24 pushing layer b5c5064fe577 370.82MB / 641.79MB 14.7s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:39.4048798Z #24 pushing layer b5c5064fe577 403.28MB / 641.79MB 15.9s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:40.6193654Z #24 pushing layer b5c5064fe577 438.89MB / 641.79MB 17.2s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:41.7205796Z #24 pushing layer b5c5064fe577 471.47MB / 641.79MB 18.3s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:42.9291580Z #24 pushing layer b5c5064fe577 506.92MB / 641.79MB 19.5s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:43.5575474Z #24 pushing layer b5c5064fe577 542.89MB / 641.79MB 20.1s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:44.4161737Z #24 pushing layer b5c5064fe577 576.11MB / 641.79MB 21.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:45.0582026Z #24 pushing layer b5c5064fe577 610.91MB / 641.79MB 21.6s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:45.6020935Z #24 pushing layer b5c5064fe577 644.75MB / 641.79MB 22.1s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:48.9353869Z #24 pushing layer b5c5064fe577 25.5s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:51.8371019Z #24 pushing layer 9eb9a78eeb10 28.4s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:51.9879809Z #24 pushing layer 36411816830b 28.4s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:51.9880227Z #24 pushing layer 75865ff3fe02 28.4s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:51.9880592Z #24 pushing layer 8d24b1612a64 28.4s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:51.9880917Z #24 pushing layer 56668f255b47 28.4s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:51.9881213Z #24 DONE 28.5s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6359135Z ##[group]ImageID
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6359532Z sha256:3746d4cdd64dd3ed55fa213e484b13dddc9408434b13c8681e348601eafb66bc
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6360282Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6360857Z ##[group]Digest
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6361186Z sha256:f9394f9275f90fa86fd97a0a17e0ec6bfec996974e07f22329fcde1f0c7dadeb
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6361862Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6362297Z ##[group]Metadata
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6362598Z {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6363158Z   "buildx.build.provenance": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6363613Z     "builder": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6363847Z       "id": ""
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6364162Z     },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6364580Z     "buildType": "https://mobyproject.org/buildkit@v1",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6365130Z     "materials": [
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6365441Z       {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6366056Z         "uri": "pkg:docker/node@20-slim?platform=linux%2Famd64",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6366644Z         "digest": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6367265Z           "sha256": "a82f40540f5959e0003fb7b3c0f80490def2927be8bdbee7e3e0ac65cce3be92"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6367672Z         }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6367898Z       }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6368087Z     ],
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6368341Z     "invocation": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6368622Z       "configSource": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6368900Z         "entryPoint": "Dockerfile"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6369200Z       },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6369442Z       "parameters": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6369726Z         "frontend": "dockerfile.v0",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6370046Z         "locals": [
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6370300Z           {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6370542Z             "name": "context"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6370823Z           },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6371040Z           {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6371297Z             "name": "dockerfile"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6371579Z           }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6371798Z         ]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6372019Z       },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6372423Z       "environment": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6372963Z         "platform": "linux/amd64"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6373251Z       }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6373879Z     }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6374116Z   },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6374456Z   "buildx.build.ref": "default/default/kaso7coigjhjoj2a32ixx8sgi",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6375115Z   "containerimage.config.digest": "sha256:3746d4cdd64dd3ed55fa213e484b13dddc9408434b13c8681e348601eafb66bc",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6375883Z   "containerimage.digest": "sha256:f9394f9275f90fa86fd97a0a17e0ec6bfec996974e07f22329fcde1f0c7dadeb",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6376613Z   "image.name": "docker.io/***/upgrade-backend:latest"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6376970Z }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6379455Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6478824Z ##[group]Run docker/build-push-action@v5
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6479129Z with:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6479348Z   context: ./client
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6479570Z   file: client/Dockerfile
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6479805Z   push: true
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6480084Z   tags: ***/upgrade-frontend:latest
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6480352Z   load: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6480567Z   no-cache: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6480775Z   pull: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6481115Z   github-token: ***
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.6481339Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8572346Z ##[group]GitHub Actions runtime token ACs
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8582183Z refs/heads/main: read/write
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8583448Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8584407Z ##[group]Docker info
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8622793Z [command]/usr/bin/docker version
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8827469Z Client: Docker Engine - Community
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8834212Z  Version:           28.0.4
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8834739Z  API version:       1.48
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8835198Z  Go version:        go1.23.7
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8838270Z  Git commit:        b8034c0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8838722Z  Built:             Tue Mar 25 15:07:16 2025
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8839204Z  OS/Arch:           linux/amd64
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8839628Z  Context:           default
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8839887Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8840077Z Server: Docker Engine - Community
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8840497Z  Engine:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8840821Z   Version:          28.0.4
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8841276Z   API version:      1.48 (minimum version 1.24)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8841767Z   Go version:       go1.23.7
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8842141Z   Git commit:       6430e49
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8842508Z   Built:            Tue Mar 25 15:07:16 2025
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8842968Z   OS/Arch:          linux/amd64
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8843557Z   Experimental:     false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8843888Z  containerd:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8844534Z   Version:          v2.2.1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8845057Z   GitCommit:        dea7da592f5d1d2b7755e3a161be07f43fad8f75
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8845529Z  runc:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8845807Z   Version:          1.3.4
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8846188Z   GitCommit:        v1.3.4-0-gd6d73eb8
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8846620Z  docker-init:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8846963Z   Version:          0.19.0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8847405Z   GitCommit:        de40ad0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.8876700Z [command]/usr/bin/docker info
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9453184Z Client: Docker Engine - Community
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9453858Z  Version:    28.0.4
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9454230Z  Context:    default
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9454617Z  Debug Mode: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9454985Z  Plugins:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9455351Z   buildx: Docker Buildx (Docker Inc.)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9455800Z     Version:  v0.31.1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9456232Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9456790Z   compose: Docker Compose (Docker Inc.)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9457286Z     Version:  v2.38.2
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9457748Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9458114Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9458250Z Server:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9458563Z  Containers: 0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9458883Z   Running: 0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9459182Z   Paused: 0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9459571Z   Stopped: 0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9459858Z  Images: 3
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9460150Z  Server Version: 28.0.4
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9460523Z  Storage Driver: overlay2
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9460949Z   Backing Filesystem: extfs
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9461370Z   Supports d_type: true
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9461744Z   Using metacopy: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9462159Z   Native Overlay Diff: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9462529Z   userxattr: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9462850Z  Logging Driver: json-file
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9463215Z  Cgroup Driver: systemd
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9463688Z  Cgroup Version: 2
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9463980Z  Plugins:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9464197Z   Volume: local
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9464535Z   Network: bridge host ipvlan macvlan null overlay
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9465402Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9465778Z  Swarm: inactive
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9466018Z  Runtimes: io.containerd.runc.v2 runc
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9466312Z  Default Runtime: runc
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9466545Z  Init Binary: docker-init
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9466866Z  containerd version: dea7da592f5d1d2b7755e3a161be07f43fad8f75
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9467277Z  runc version: v1.3.4-0-gd6d73eb8
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9467676Z  init version: de40ad0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9468114Z  Security Options:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9468333Z   apparmor
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9468533Z   seccomp
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9468738Z    Profile: builtin
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9468947Z   cgroupns
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9469166Z  Kernel Version: 6.14.0-1017-azure
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9469441Z  Operating System: Ubuntu 24.04.3 LTS
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9469699Z  OSType: linux
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9469925Z  Architecture: x86_64
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9470147Z  CPUs: 4
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9470346Z  Total Memory: 15.61GiB
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9470585Z  Name: runnervm0kj6c
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9470872Z  ID: 189d60bd-a351-4054-af4e-5414e7eef06b
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9471336Z  Docker Root Dir: /var/lib/docker
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9471679Z  Debug Mode: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9472024Z  Username: ***
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9472252Z  Experimental: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9472485Z  Insecure Registries:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9472731Z   ::1/128
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9472932Z   127.0.0.0/8
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9473144Z  Live Restore Enabled: false
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9473519Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9473926Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9474311Z ##[group]Proxy configuration
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9474575Z No proxy configuration found
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:52.9474950Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.0073235Z ##[group]Buildx version
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.0096067Z [command]/usr/bin/docker buildx version
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.0838404Z github.com/docker/buildx v0.31.1 a2675950d46b2cb171b23c2015ca44fb88607531
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.0861607Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.0862052Z ##[group]Builder info
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1618892Z {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1619221Z   "nodes": [
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1619457Z     {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1619667Z       "name": "default",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1619934Z       "endpoint": "default",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1620186Z       "status": "running",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1620422Z       "buildkit": "v0.20.2",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1620811Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/amd64/v4,linux/386",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1621207Z       "features": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1621540Z         "Automatically load images to the Docker Engine image store": true,
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1621918Z         "Cache export": true,
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1622202Z         "Direct push": true,
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1622450Z         "Docker exporter": true,
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1622723Z         "Multi-platform build": true,
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1623021Z         "OCI exporter": true
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1623252Z       },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1623618Z       "labels": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1623964Z         "org.mobyproject.buildkit.worker.moby.host-gateway-ip": "172.17.0.1"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1624358Z       }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1624548Z     }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1624730Z   ],
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1624929Z   "name": "default",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1625151Z   "driver": "docker",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1625397Z   "lastActivity": "2026-03-16T16:06:38.000Z"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1625659Z }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.1626262Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.3233691Z [command]/usr/bin/docker buildx build --file client/Dockerfile --iidfile /home/runner/work/_temp/docker-actions-toolkit-tJ5f78/build-iidfile-23986ab801.txt --tag ***/upgrade-frontend:latest --metadata-file /home/runner/work/_temp/docker-actions-toolkit-tJ5f78/build-metadata-3e07c14da7.json --push ./client
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.5631783Z #0 building with "default" instance using docker driver
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.5632233Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.5632506Z #1 [internal] load build definition from Dockerfile
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.5633474Z #1 transferring dockerfile: 353B done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.5633924Z #1 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.5634106Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.5634360Z #2 [auth] library/nginx:pull token for registry-1.docker.io
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.7138568Z #2 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.7138800Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.7139006Z #3 [internal] load metadata for docker.io/library/node:18-alpine
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.9686898Z #3 DONE 0.5s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.9687138Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:53.9687339Z #4 [internal] load metadata for docker.io/library/nginx:alpine
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.0696267Z #4 DONE 0.6s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.0696641Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.0696817Z #5 [internal] load .dockerignore
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.0697291Z #5 transferring context: 2B done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.0697724Z #5 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.0697926Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.0698080Z #6 [internal] load build context
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.0698583Z #6 transferring context: 543.07kB 0.0s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.0699120Z #6 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.0699336Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.0699724Z #7 [stage-1 1/3] FROM docker.io/library/nginx:alpine@sha256:f46cb72c7df02710e693e863a983ac42f6a9579058a59a35f1ae36c9958e4ce0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.0700847Z #7 resolve docker.io/library/nginx:alpine@sha256:f46cb72c7df02710e693e863a983ac42f6a9579058a59a35f1ae36c9958e4ce0 done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.2646724Z #7 sha256:08fe94b0d1e72fc687840f5696f6e107a85c327b1bcb8a7acc22f8c100227c67 2.50kB / 2.50kB done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.2647592Z #7 sha256:d0c7807749103be4b1fcd09378f16ed4146c79e76e97ad26d0545004cc67474c 12.32kB / 12.32kB done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.2648320Z #7 sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 2.10MB / 3.86MB 0.2s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.2649058Z #7 sha256:f46cb72c7df02710e693e863a983ac42f6a9579058a59a35f1ae36c9958e4ce0 10.33kB / 10.33kB done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.2649754Z #7 sha256:d2a46166eee6d30856269bbf4ad826481d04dd4108aca73e3e974fab7fdb6dad 1.87MB / 1.87MB 0.2s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.2650739Z #7 sha256:593488f95c358628770935110ccf26bd7b3aba382b10126980e630a6dd2757fc 626B / 626B 0.2s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.2651406Z #7 sha256:e19aff8f2cce9241a3cbb1f501d16d9d76b7f22e7b544f4e373d8b22496bfcaf 0B / 952B 0.2s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.2652124Z #7 sha256:1549d7aec9620db68aa7a5ea05aa08590d8f46598bb4b4e0e356753b44c694d4 0B / 403B 0.2s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.3648416Z #7 sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 3.86MB / 3.86MB 0.2s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.3649632Z #7 sha256:e19aff8f2cce9241a3cbb1f501d16d9d76b7f22e7b544f4e373d8b22496bfcaf 952B / 952B 0.3s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.3650848Z #7 extracting sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.3652032Z #7 sha256:c32126d2b96c212b17a4fa8384c2aaf3e3418d4b2988c303df255de884a2a73a 0B / 1.40kB 0.3s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.3653098Z #7 sha256:1f25242adbdb4bf04c16ac9fbe5385a46cf0f1fbee7d8e7945ef342b794d1bf1 0B / 1.21kB 0.3s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.4653892Z #7 sha256:1549d7aec9620db68aa7a5ea05aa08590d8f46598bb4b4e0e356753b44c694d4 403B / 403B 0.4s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.4655175Z #7 extracting sha256:589002ba0eaed121a1dbf42f6648f29e5be55d5c8a6ee0f8eaa0285cc21ac153 0.1s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.4656350Z #7 sha256:1f25242adbdb4bf04c16ac9fbe5385a46cf0f1fbee7d8e7945ef342b794d1bf1 1.21kB / 1.21kB 0.3s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.4657077Z #7 extracting sha256:d2a46166eee6d30856269bbf4ad826481d04dd4108aca73e3e974fab7fdb6dad 0.0s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.4657788Z #7 sha256:c24026275c332ec39b54c7094c7ce6d97b0dde17bb91e53b4b2d7dd88da7d8f0 0B / 20.25MB 0.4s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.5660793Z #7 sha256:c32126d2b96c212b17a4fa8384c2aaf3e3418d4b2988c303df255de884a2a73a 1.40kB / 1.40kB 0.4s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.5661883Z #7 extracting sha256:593488f95c358628770935110ccf26bd7b3aba382b10126980e630a6dd2757fc done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.5662938Z #7 extracting sha256:e19aff8f2cce9241a3cbb1f501d16d9d76b7f22e7b544f4e373d8b22496bfcaf done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.5664194Z #7 extracting sha256:1549d7aec9620db68aa7a5ea05aa08590d8f46598bb4b4e0e356753b44c694d4 done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.5665532Z #7 extracting sha256:1f25242adbdb4bf04c16ac9fbe5385a46cf0f1fbee7d8e7945ef342b794d1bf1 done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.5666621Z #7 extracting sha256:c32126d2b96c212b17a4fa8384c2aaf3e3418d4b2988c303df255de884a2a73a done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.6964973Z #7 sha256:c24026275c332ec39b54c7094c7ce6d97b0dde17bb91e53b4b2d7dd88da7d8f0 1.05MB / 20.25MB 0.6s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.8648261Z #7 sha256:c24026275c332ec39b54c7094c7ce6d97b0dde17bb91e53b4b2d7dd88da7d8f0 6.29MB / 20.25MB 0.8s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:54.9652977Z #7 sha256:c24026275c332ec39b54c7094c7ce6d97b0dde17bb91e53b4b2d7dd88da7d8f0 8.39MB / 20.25MB 0.9s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:55.0670028Z #7 sha256:c24026275c332ec39b54c7094c7ce6d97b0dde17bb91e53b4b2d7dd88da7d8f0 11.53MB / 20.25MB 1.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:55.2256891Z #7 sha256:c24026275c332ec39b54c7094c7ce6d97b0dde17bb91e53b4b2d7dd88da7d8f0 15.73MB / 20.25MB 1.1s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:55.3286645Z #7 sha256:c24026275c332ec39b54c7094c7ce6d97b0dde17bb91e53b4b2d7dd88da7d8f0 20.25MB / 20.25MB 1.2s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:55.3290275Z #7 extracting sha256:c24026275c332ec39b54c7094c7ce6d97b0dde17bb91e53b4b2d7dd88da7d8f0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:55.7647612Z #7 extracting sha256:c24026275c332ec39b54c7094c7ce6d97b0dde17bb91e53b4b2d7dd88da7d8f0 0.4s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.0643661Z #7 DONE 1.9s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.0643946Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.0644806Z #8 [build 1/6] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.0646143Z #8 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.0646959Z #8 sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 7.67kB / 7.67kB done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.0647870Z #8 sha256:929b04d7c782f04f615cf785488fed452b6569f87c73ff666ad553a7554f0006 1.72kB / 1.72kB done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.0648706Z #8 sha256:ee77c6cd7c1886ecc802ad6cedef3a8ec1ea27d1fb96162bf03dd3710839b8da 6.18kB / 6.18kB done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.0649946Z #8 sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 3.64MB / 3.64MB 0.6s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.0650986Z #8 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 40.01MB / 40.01MB 1.1s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.0652181Z #8 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0.1s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.0653252Z #8 sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 1.26MB / 1.26MB 0.7s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.0654373Z #8 sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 446B / 446B 0.9s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.0655361Z #8 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 0.8s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.3193482Z #8 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 1.0s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.3194735Z #8 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.5326254Z #8 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 0.0s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.5327551Z #8 extracting sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.5328332Z #8 DONE 2.3s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.5328504Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.5328648Z #9 [build 2/6] WORKDIR /app
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.5329009Z #9 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.5329200Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.5329384Z #10 [build 3/6] COPY package*.json ./
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.5329784Z #10 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.5329959Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:56.5330108Z #11 [build 4/6] RUN npm ci
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.1419841Z #11 0.760 npm warn EBADENGINE Unsupported engine {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.1420359Z #11 0.760 npm warn EBADENGINE   package: '@vitejs/plugin-react@5.1.4',
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.1420815Z #11 0.760 npm warn EBADENGINE   required: { node: '^20.19.0 || >=22.12.0' },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.1421251Z #11 0.760 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.1421642Z #11 0.760 npm warn EBADENGINE }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.2964387Z #11 0.762 npm warn EBADENGINE Unsupported engine {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.2965043Z #11 0.762 npm warn EBADENGINE   package: 'react-router@7.13.0',
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.2965574Z #11 0.762 npm warn EBADENGINE   required: { node: '>=20.0.0' },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.2966094Z #11 0.762 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.2966595Z #11 0.762 npm warn EBADENGINE }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.2966966Z #11 0.763 npm warn EBADENGINE Unsupported engine {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.2967476Z #11 0.763 npm warn EBADENGINE   package: 'react-router-dom@7.13.0',
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.2967983Z #11 0.763 npm warn EBADENGINE   required: { node: '>=20.0.0' },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.2968519Z #11 0.763 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.2969032Z #11 0.763 npm warn EBADENGINE }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.2969361Z #11 0.764 npm warn EBADENGINE Unsupported engine {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.2969964Z #11 0.764 npm warn EBADENGINE   package: 'vite@7.3.1',
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.2970441Z #11 0.764 npm warn EBADENGINE   required: { node: '^20.19.0 || >=22.12.0' },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.2970961Z #11 0.764 npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:07:57.2971471Z #11 0.764 npm warn EBADENGINE }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.2360049Z #11 10.85 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.2360500Z #11 10.85 added 344 packages, and audited 345 packages in 11s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.4056485Z #11 10.85 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.4057018Z #11 10.85 53 packages are looking for funding
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.4057522Z #11 10.85   run `npm fund` for details
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.4057953Z #11 10.87 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.4058364Z #11 10.87 4 vulnerabilities (1 moderate, 3 high)
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.4058837Z #11 10.87 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.4059185Z #11 10.87 To address all issues, run:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.4059532Z #11 10.87   npm audit fix
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.4059756Z #11 10.87 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.4060292Z #11 10.87 Run `npm audit` for details.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.4060557Z #11 10.87 npm notice
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.4060902Z #11 10.87 npm notice New major version of npm available! 10.8.2 -> 11.11.1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.4061403Z #11 10.87 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.11.1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.4061842Z #11 10.87 npm notice To update run: npm install -g npm@11.11.1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.4062165Z #11 10.87 npm notice
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:07.9921467Z #11 DONE 11.6s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:08.1574239Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:08.1574927Z #12 [build 5/6] COPY . .
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:08.1575242Z #12 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:08.1575382Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:08.1575491Z #13 [build 6/6] RUN npm run build
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:08.2941338Z #13 0.287 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:08.2942474Z #13 0.287 > client@0.0.0 build
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:08.2942982Z #13 0.287 > tsc -b && vite build
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:08.2943578Z #13 0.287 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:13.6075920Z #13 5.600 You are using Node.js 18.20.8. Vite requires Node.js version 20.19+ or 22.12+. Please upgrade your Node.js version.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:13.7812233Z #13 5.774 vite v7.3.1 building client environment for production...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:13.9978316Z #13 5.840 transforming...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:29.3810515Z #13 21.37 ✓ 9972 modules transformed.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:30.8019991Z #13 22.79 rendering chunks...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:30.9057161Z #13 22.83 computing gzip size...
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:30.9058860Z #13 22.90 dist/index.html                     0.45 kB │ gzip:   0.29 kB
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:30.9059707Z #13 22.90 dist/assets/index-CvivjFEo.css      1.19 kB │ gzip:   0.57 kB
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.0569474Z #13 22.90 dist/assets/index-BoAYHRSc.js   2,564.50 kB │ gzip: 806.33 kB
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.0570158Z #13 22.90 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.0570673Z #13 22.90 (!) Some chunks are larger than 500 kB after minification. Consider:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.0571351Z #13 22.90 - Using dynamic import() to code-split the application
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.0572021Z #13 22.90 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.0573056Z #13 22.90 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.0573742Z #13 22.90 ✓ built in 17.09s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.0827448Z #13 DONE 23.1s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.7645293Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.7646315Z #14 [stage-1 2/3] COPY --from=build /app/dist /usr/share/nginx/html
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.9327659Z #14 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.9327863Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.9328120Z #15 [stage-1 3/3] COPY nginx.conf /etc/nginx/templates/default.conf.template
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.9328504Z #15 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.9328631Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.9328729Z #16 exporting to image
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:31.9328964Z #16 exporting layers
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.0054201Z #16 exporting layers 0.2s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2322356Z #16 writing image sha256:538914c03e6dc8adaff4e8cf5ad388a6079a0b19b42c76240d3b04f1792b3632 done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2325575Z #16 naming to docker.io/***/upgrade-frontend:latest done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2326246Z #16 DONE 0.2s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2326436Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2326729Z #17 resolving provenance for metadata file
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2327182Z #17 DONE 0.0s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2327375Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2328070Z #18 pushing ***/upgrade-frontend:latest with docker
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2328608Z #18 pushing layer e10323209dbb
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2328996Z #18 pushing layer 9dbada49d405
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2329376Z #18 pushing layer d408059e7553
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2329722Z #18 pushing layer 5693fac86db4 0.1s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2330195Z #18 pushing layer 04297a721e7f
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2330531Z #18 pushing layer e0fe744d26d4
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2330776Z #18 pushing layer 09c3b60a3926
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2331105Z #18 pushing layer ea6528e53783
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2331349Z #18 pushing layer 5bb518009c83
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.2331591Z #18 pushing layer 989e799e6349
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.3420180Z #18 pushing layer e10323209dbb 512B / 2.05kB 0.3s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.4484814Z #18 pushing layer e10323209dbb 5.63kB / 2.05kB 0.3s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:32.4485717Z #18 pushing layer 9dbada49d405 2.64MB / 2.63MB 0.4s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:33.4484970Z #18 pushing layer e10323209dbb 1.4s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:33.8063697Z #18 pushing layer 9dbada49d405 1.7s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:36.8008904Z #18 pushing layer 989e799e6349 4.7s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:36.9514626Z #18 pushing layer d408059e7553 4.7s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:36.9514996Z #18 pushing layer 5693fac86db4 4.7s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:36.9515308Z #18 pushing layer 04297a721e7f 4.7s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:36.9515604Z #18 pushing layer e0fe744d26d4 4.7s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:36.9515895Z #18 pushing layer 09c3b60a3926 4.7s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:36.9516168Z #18 pushing layer ea6528e53783 4.7s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:36.9516443Z #18 pushing layer 5bb518009c83 4.7s done
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:36.9516713Z #18 DONE 4.8s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6253715Z ##[group]ImageID
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6254162Z sha256:538914c03e6dc8adaff4e8cf5ad388a6079a0b19b42c76240d3b04f1792b3632
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6254934Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6255400Z ##[group]Digest
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6255959Z sha256:0b6f3159c96d0cefe508e762f4cea5eeb5810b7913a97eb71853344c72d53b98
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6258506Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6259207Z ##[group]Metadata
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6259568Z {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6259878Z   "buildx.build.provenance": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6260238Z     "builder": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6260551Z       "id": ""
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6260867Z     },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6261319Z     "buildType": "https://mobyproject.org/buildkit@v1",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6261784Z     "materials": [
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6262144Z       {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6262553Z         "uri": "pkg:docker/nginx@alpine?platform=linux%2Famd64",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6263074Z         "digest": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6263812Z           "sha256": "f46cb72c7df02710e693e863a983ac42f6a9579058a59a35f1ae36c9958e4ce0"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6264482Z         }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6264788Z       },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6265120Z       {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6265555Z         "uri": "pkg:docker/node@18-alpine?platform=linux%2Famd64",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6266425Z         "digest": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6267050Z           "sha256": "8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6267735Z         }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6268052Z       }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6268398Z     ],
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6268744Z     "invocation": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6269116Z       "configSource": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6269558Z         "entryPoint": "Dockerfile"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6270026Z       },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6270362Z       "parameters": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6270772Z         "frontend": "dockerfile.v0",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6271250Z         "locals": [
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6271595Z           {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6271963Z             "name": "context"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6272370Z           },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6272727Z           {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6273088Z             "name": "dockerfile"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6273652Z           }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6273971Z         ]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6274295Z       },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6274664Z       "environment": {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6275073Z         "platform": "linux/amd64"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6275489Z       }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6275822Z     }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6276152Z   },
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6276636Z   "buildx.build.ref": "default/default/zzsqpgk1icya2ywy7ofk9gsxz",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6277696Z   "containerimage.config.digest": "sha256:538914c03e6dc8adaff4e8cf5ad388a6079a0b19b42c76240d3b04f1792b3632",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6279003Z   "containerimage.digest": "sha256:0b6f3159c96d0cefe508e762f4cea5eeb5810b7913a97eb71853344c72d53b98",
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6280244Z   "image.name": "docker.io/***/upgrade-frontend:latest"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6280714Z }
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6281318Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6350343Z ##[group]Run {
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6350644Z [36;1m{[0m
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6350877Z [36;1m  echo 'COMPOSE_CONFIG<<EOF'[0m
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6351348Z [36;1m  cat docker-compose.prod.yml[0m
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6351625Z [36;1m  echo ""[0m
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6351861Z [36;1m  echo 'EOF'[0m
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6352113Z [36;1m  echo 'PROMETHEUS_CONFIG<<EOF'[0m
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6352396Z [36;1m  cat prometheus.yml[0m
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6352643Z [36;1m  echo ""[0m
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6352857Z [36;1m  echo 'EOF'[0m
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6353078Z [36;1m} >> "$GITHUB_ENV"[0m
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6387130Z shell: /usr/bin/bash -e {0}
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6387418Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6549660Z ##[group]Run appleboy/ssh-action@v1.0.3
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6549967Z with:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6550263Z   host: ***
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6550476Z   username: ***
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6552123Z   key: ***
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6552369Z   envs: COMPOSE_CONFIG,PROMETHEUS_CONFIG,DOMAIN_NAME
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6557505Z   script: set -e
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	export DOCKER_USERNAME=***
+build-and-deploy	UNKNOWN STEP	export DOMAIN_NAME=devupgrade.***.ru
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	echo "***" | docker login -u "***" --password-stdin
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	docker pull ***/upgrade-backend:latest
+build-and-deploy	UNKNOWN STEP	docker pull ***/upgrade-frontend:latest
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	mkdir -p ~/upgrade-crm
+build-and-deploy	UNKNOWN STEP	cd ~/upgrade-crm
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	if [ -d "prometheus.yml" ]; then
+build-and-deploy	UNKNOWN STEP	    rm -rf prometheus.yml
+build-and-deploy	UNKNOWN STEP	fi
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	echo "$COMPOSE_CONFIG" > docker-compose.prod.yml
+build-and-deploy	UNKNOWN STEP	echo "$PROMETHEUS_CONFIG" > prometheus.yml
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	if docker compose version &> /dev/null; then
+build-and-deploy	UNKNOWN STEP	    DC_CMD="docker compose"
+build-and-deploy	UNKNOWN STEP	elif command -v docker-compose &> /dev/null; then
+build-and-deploy	UNKNOWN STEP	    DC_CMD="docker-compose"
+build-and-deploy	UNKNOWN STEP	else
+build-and-deploy	UNKNOWN STEP	    exit 1
+build-and-deploy	UNKNOWN STEP	fi
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	$DC_CMD -f docker-compose.prod.yml down || true
+build-and-deploy	UNKNOWN STEP	docker ps -a --filter "name=upgrade-crm" -q | xargs -r docker rm -f || true
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	if ! command -v certbot &> /dev/null; then
+build-and-deploy	UNKNOWN STEP	    sudo apt-get update
+build-and-deploy	UNKNOWN STEP	    sudo apt-get install -y certbot
+build-and-deploy	UNKNOWN STEP	fi
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	if [ ! -d "/etc/letsencrypt/live/$DOMAIN_NAME" ]; then
+build-and-deploy	UNKNOWN STEP	    echo "Certificates not found. Generating via certbot standalone..."
+build-and-deploy	UNKNOWN STEP	    sudo certbot certonly --standalone -d $DOMAIN_NAME --non-interactive --agree-tos -m dev@***.ru
+build-and-deploy	UNKNOWN STEP	fi
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	if ! sudo crontab -l | grep -q "certbot renew"; then
+build-and-deploy	UNKNOWN STEP	    (sudo crontab -l 2>/dev/null; echo "0 3 * * * certbot renew --pre-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml stop frontend\" --post-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml start frontend\"") | sudo crontab -
+build-and-deploy	UNKNOWN STEP	fi
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	$DC_CMD -f docker-compose.prod.yml up -d --remove-orphans --force-recreate
+build-and-deploy	UNKNOWN STEP	docker image prune -f
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	$DC_CMD -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6562154Z   port: 22
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6562352Z   timeout: 30s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6562575Z   command_timeout: 10m
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6562802Z   proxy_port: 22
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6563019Z   proxy_timeout: 30s
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6563234Z env:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6572606Z   COMPOSE_CONFIG: services:
+build-and-deploy	UNKNOWN STEP	  app:
+build-and-deploy	UNKNOWN STEP	    # Use image from Docker Hub (built by CI/CD)
+build-and-deploy	UNKNOWN STEP	    image: ${DOCKER_USERNAME}/upgrade-backend:latest
+build-and-deploy	UNKNOWN STEP	    ports:
+build-and-deploy	UNKNOWN STEP	      - '3000:3000'
+build-and-deploy	UNKNOWN STEP	    environment:
+build-and-deploy	UNKNOWN STEP	      DATABASE_URL: ***db:5432/upgrade_crm
+build-and-deploy	UNKNOWN STEP	      REDIS_URL: redis://redis:6379
+build-and-deploy	UNKNOWN STEP	      JWT_SECRET: "complex_secret_value_change_me_in_prod"
+build-and-deploy	UNKNOWN STEP	      POSTGRES_USER: upgrade
+build-and-deploy	UNKNOWN STEP	      POSTGRES_PASSWORD: upgrade_pass
+build-and-deploy	UNKNOWN STEP	      POSTGRES_DB: upgrade_crm
+build-and-deploy	UNKNOWN STEP	      # Allow frontend CORS if needed
+build-and-deploy	UNKNOWN STEP	      FRONTEND_URL: https://${DOMAIN_NAME}
+build-and-deploy	UNKNOWN STEP	      # Limit V8 heap to prevent exceeding 512M docker limit
+build-and-deploy	UNKNOWN STEP	      NODE_OPTIONS: "--max-old-space-size=384"
+build-and-deploy	UNKNOWN STEP	    depends_on:
+build-and-deploy	UNKNOWN STEP	      db:
+build-and-deploy	UNKNOWN STEP	        condition: service_healthy
+build-and-deploy	UNKNOWN STEP	      redis:
+build-and-deploy	UNKNOWN STEP	        condition: service_started
+build-and-deploy	UNKNOWN STEP	    volumes:
+build-and-deploy	UNKNOWN STEP	      - uploads_data:/app/uploads
+build-and-deploy	UNKNOWN STEP	    deploy:
+build-and-deploy	UNKNOWN STEP	      resources:
+build-and-deploy	UNKNOWN STEP	        limits:
+build-and-deploy	UNKNOWN STEP	          memory: 512M
+build-and-deploy	UNKNOWN STEP	    restart: always
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	  frontend:
+build-and-deploy	UNKNOWN STEP	    # Use image from Docker Hub (built by CI/CD)
+build-and-deploy	UNKNOWN STEP	    image: ${DOCKER_USERNAME}/upgrade-frontend:latest
+build-and-deploy	UNKNOWN STEP	    ports:
+build-and-deploy	UNKNOWN STEP	      - '80:80'
+build-and-deploy	UNKNOWN STEP	      - '443:443'
+build-and-deploy	UNKNOWN STEP	    depends_on:
+build-and-deploy	UNKNOWN STEP	      - app
+build-and-deploy	UNKNOWN STEP	    volumes:
+build-and-deploy	UNKNOWN STEP	      - /etc/letsencrypt:/etc/letsencrypt:ro
+build-and-deploy	UNKNOWN STEP	    deploy:
+build-and-deploy	UNKNOWN STEP	      resources:
+build-and-deploy	UNKNOWN STEP	        limits:
+build-and-deploy	UNKNOWN STEP	          memory: 128M
+build-and-deploy	UNKNOWN STEP	    restart: always
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	  db:
+build-and-deploy	UNKNOWN STEP	    image: postgres:15-alpine
+build-and-deploy	UNKNOWN STEP	    environment:
+build-and-deploy	UNKNOWN STEP	      POSTGRES_USER: upgrade
+build-and-deploy	UNKNOWN STEP	      POSTGRES_PASSWORD: upgrade_pass
+build-and-deploy	UNKNOWN STEP	      POSTGRES_DB: upgrade_crm
+build-and-deploy	UNKNOWN STEP	    volumes:
+build-and-deploy	UNKNOWN STEP	      - pgdata:/var/lib/postgresql/data
+build-and-deploy	UNKNOWN STEP	    deploy:
+build-and-deploy	UNKNOWN STEP	      resources:
+build-and-deploy	UNKNOWN STEP	        limits:
+build-and-deploy	UNKNOWN STEP	          memory: 256M
+build-and-deploy	UNKNOWN STEP	    healthcheck:
+build-and-deploy	UNKNOWN STEP	      test: [ 'CMD-SHELL', 'pg_isready -U upgrade -d upgrade_crm' ]
+build-and-deploy	UNKNOWN STEP	      interval: 5s
+build-and-deploy	UNKNOWN STEP	      timeout: 5s
+build-and-deploy	UNKNOWN STEP	      retries: 5
+build-and-deploy	UNKNOWN STEP	    restart: always
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	  redis:
+build-and-deploy	UNKNOWN STEP	    image: redis:alpine
+build-and-deploy	UNKNOWN STEP	    container_name: upgrade_redis_prod
+build-and-deploy	UNKNOWN STEP	    restart: always
+build-and-deploy	UNKNOWN STEP	    ports:
+build-and-deploy	UNKNOWN STEP	      - "6379:6379"
+build-and-deploy	UNKNOWN STEP	    volumes:
+build-and-deploy	UNKNOWN STEP	      - redis_data:/data
+build-and-deploy	UNKNOWN STEP	    deploy:
+build-and-deploy	UNKNOWN STEP	      resources:
+build-and-deploy	UNKNOWN STEP	        limits:
+build-and-deploy	UNKNOWN STEP	          memory: 128M
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	  prometheus:
+build-and-deploy	UNKNOWN STEP	    image: prom/prometheus:latest
+build-and-deploy	UNKNOWN STEP	    container_name: prometheus
+build-and-deploy	UNKNOWN STEP	    volumes:
+build-and-deploy	UNKNOWN STEP	      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+build-and-deploy	UNKNOWN STEP	      - prometheus_data:/prometheus
+build-and-deploy	UNKNOWN STEP	    command:
+build-and-deploy	UNKNOWN STEP	      - '--config.file=/etc/prometheus/prometheus.yml'
+build-and-deploy	UNKNOWN STEP	      - '--storage.tsdb.path=/prometheus'
+build-and-deploy	UNKNOWN STEP	      - '--web.console.libraries=/etc/prometheus/console_libraries'
+build-and-deploy	UNKNOWN STEP	      - '--web.console.templates=/etc/prometheus/consoles'
+build-and-deploy	UNKNOWN STEP	      - '--web.enable-lifecycle'
+build-and-deploy	UNKNOWN STEP	    ports:
+build-and-deploy	UNKNOWN STEP	      - "9090:9090"
+build-and-deploy	UNKNOWN STEP	    restart: always
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	  grafana:
+build-and-deploy	UNKNOWN STEP	    image: grafana/grafana:latest
+build-and-deploy	UNKNOWN STEP	    container_name: grafana
+build-and-deploy	UNKNOWN STEP	    ports:
+build-and-deploy	UNKNOWN STEP	      - "3001:3000"
+build-and-deploy	UNKNOWN STEP	    volumes:
+build-and-deploy	UNKNOWN STEP	      - grafana_data:/var/lib/grafana
+build-and-deploy	UNKNOWN STEP	    restart: always
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	  node-exporter:
+build-and-deploy	UNKNOWN STEP	    image: prom/node-exporter:latest
+build-and-deploy	UNKNOWN STEP	    container_name: node_exporter
+build-and-deploy	UNKNOWN STEP	    volumes:
+build-and-deploy	UNKNOWN STEP	      - /proc:/host/proc:ro
+build-and-deploy	UNKNOWN STEP	      - /sys:/host/sys:ro
+build-and-deploy	UNKNOWN STEP	      - /:/***fs:ro
+build-and-deploy	UNKNOWN STEP	    command:
+build-and-deploy	UNKNOWN STEP	      - '--path.procfs=/host/proc'
+build-and-deploy	UNKNOWN STEP	      - '--path.***fs=/***fs'
+build-and-deploy	UNKNOWN STEP	      - '--path.sysfs=/host/sys'
+build-and-deploy	UNKNOWN STEP	      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+build-and-deploy	UNKNOWN STEP	    restart: always
+build-and-deploy	UNKNOWN STEP	    ports:
+build-and-deploy	UNKNOWN STEP	      - "9100:9100"
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	  cadvisor:
+build-and-deploy	UNKNOWN STEP	    image: gcr.io/cadvisor/cadvisor:v0.47.0
+build-and-deploy	UNKNOWN STEP	    container_name: cadvisor
+build-and-deploy	UNKNOWN STEP	    ports:
+build-and-deploy	UNKNOWN STEP	      - "8080:8080"
+build-and-deploy	UNKNOWN STEP	    volumes:
+build-and-deploy	UNKNOWN STEP	      - /:/***fs:ro
+build-and-deploy	UNKNOWN STEP	      - /var/run:/var/run:ro
+build-and-deploy	UNKNOWN STEP	      - /sys:/sys:ro
+build-and-deploy	UNKNOWN STEP	      - /var/lib/docker/:/var/lib/docker:ro
+build-and-deploy	UNKNOWN STEP	      - /dev/disk/:/dev/disk:ro
+build-and-deploy	UNKNOWN STEP	    devices:
+build-and-deploy	UNKNOWN STEP	      - /dev/kmsg
+build-and-deploy	UNKNOWN STEP	    restart: always
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	volumes:
+build-and-deploy	UNKNOWN STEP	  pgdata:
+build-and-deploy	UNKNOWN STEP	  uploads_data:
+build-and-deploy	UNKNOWN STEP	  redis_data:
+build-and-deploy	UNKNOWN STEP	  prometheus_data:
+build-and-deploy	UNKNOWN STEP	  grafana_data:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6582807Z   PROMETHEUS_CONFIG: global:
+build-and-deploy	UNKNOWN STEP	  scrape_interval: 15s
+build-and-deploy	UNKNOWN STEP	  evaluation_interval: 15s
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	scrape_configs:
+build-and-deploy	UNKNOWN STEP	  - job_name: 'prometheus'
+build-and-deploy	UNKNOWN STEP	    static_configs:
+build-and-deploy	UNKNOWN STEP	      - targets: ['localhost:9090']
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	  - job_name: 'node-exporter'
+build-and-deploy	UNKNOWN STEP	    static_configs:
+build-and-deploy	UNKNOWN STEP	      - targets: ['node-exporter:9100']
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	  - job_name: 'cadvisor'
+build-and-deploy	UNKNOWN STEP	    static_configs:
+build-and-deploy	UNKNOWN STEP	      - targets: ['cadvisor:8080']
+build-and-deploy	UNKNOWN STEP	
+build-and-deploy	UNKNOWN STEP	  - job_name: 'nestjs-app'
+build-and-deploy	UNKNOWN STEP	    static_configs:
+build-and-deploy	UNKNOWN STEP	      - targets: ['app:3000']
+build-and-deploy	UNKNOWN STEP	    metrics_path: '/metrics'
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6584438Z   DOMAIN_NAME: devupgrade.***.ru
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6584702Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.6696522Z ##[command]/usr/bin/docker run --name d6104921264f91db645a18f5e798327a18703_e9769d --label 4d6104 --workdir /github/workspace --rm -e "COMPOSE_CONFIG" -e "PROMETHEUS_CONFIG" -e "DOMAIN_NAME" -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_ENVS" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" 4d6104:921264f91db645a18f5e798327a18703
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8250296Z ======CMD======
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8250705Z set -e
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8250967Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8251308Z export DOCKER_USERNAME=***
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8251706Z export DOMAIN_NAME=devupgrade.***.ru
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8251894Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8252226Z echo "***" | docker login -u "***" --password-stdin
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8252476Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8252625Z docker pull ***/upgrade-backend:latest
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8252947Z docker pull ***/upgrade-frontend:latest
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8253145Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8253256Z mkdir -p ~/upgrade-crm
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8253724Z cd ~/upgrade-crm
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8253921Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8254044Z if [ -d "prometheus.yml" ]; then
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8254324Z     rm -rf prometheus.yml
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8254563Z fi
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8254674Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8254824Z echo "$COMPOSE_CONFIG" > docker-compose.prod.yml
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8255152Z echo "$PROMETHEUS_CONFIG" > prometheus.yml
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8255350Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8255475Z if docker compose version &> /dev/null; then
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8255783Z     DC_CMD="docker compose"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8256064Z elif command -v docker-compose &> /dev/null; then
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8256371Z     DC_CMD="docker-compose"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8256595Z else
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8256780Z     exit 1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8256965Z fi
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8257069Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8257202Z $DC_CMD -f docker-compose.prod.yml down || true
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8257611Z docker ps -a --filter "name=upgrade-crm" -q | xargs -r docker rm -f || true
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8257885Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8258004Z if ! command -v certbot &> /dev/null; then
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8258279Z     sudo apt-get update
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8258529Z     sudo apt-get install -y certbot
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8258782Z fi
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8258885Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8259029Z if [ ! -d "/etc/letsencrypt/live/$DOMAIN_NAME" ]; then
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8259425Z     echo "Certificates not found. Generating via certbot standalone..."
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8260090Z     sudo certbot certonly --standalone -d $DOMAIN_NAME --non-interactive --agree-tos -m dev@***.ru
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8260523Z fi
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8260630Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8260763Z if ! sudo crontab -l | grep -q "certbot renew"; then
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8261719Z     (sudo crontab -l 2>/dev/null; echo "0 3 * * * certbot renew --pre-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml stop frontend\" --post-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml start frontend\"") | sudo crontab -
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8262605Z fi
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8262712Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8262920Z $DC_CMD -f docker-compose.prod.yml up -d --remove-orphans --force-recreate
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8263290Z docker image prune -f
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8264117Z 
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8264420Z $DC_CMD -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:37.8264824Z ======END======
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:41.3070037Z out: Login Succeeded
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0452316Z out: latest: Pulling from ***/upgrade-backend
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0456416Z out: 84a2afebaf4d: Already exists
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0502718Z out: 4e46de9abb28: Already exists
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0541614Z out: 38bb63ca3102: Already exists
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0634451Z out: 626acebb8e40: Already exists
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0694505Z out: f9d9eff65102: Already exists
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0744656Z out: e2bcf8311664: Pulling fs layer
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0752509Z out: 8b25ba8e41c5: Pulling fs layer
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0753074Z out: 5d109b347c0b: Pulling fs layer
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0753954Z out: 97a5061b9941: Pulling fs layer
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0754275Z out: f57ad57b4a84: Pulling fs layer
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0754576Z out: 58e808ff8ffd: Pulling fs layer
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0754876Z out: c28ea998cd53: Pulling fs layer
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0755186Z out: c731326a7175: Pulling fs layer
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0755483Z out: a6f849e3ee9b: Pulling fs layer
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0755782Z out: df816a317de7: Pulling fs layer
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0756078Z out: fa38e607dc57: Pulling fs layer
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0756398Z out: c28ea998cd53: Waiting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0756677Z out: c731326a7175: Waiting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0756937Z out: a6f849e3ee9b: Waiting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0757195Z out: df816a317de7: Waiting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0757453Z out: fa38e607dc57: Waiting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0757700Z out: 97a5061b9941: Waiting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0757950Z out: f57ad57b4a84: Waiting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.0758213Z out: 58e808ff8ffd: Waiting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.6912948Z out: 8b25ba8e41c5: Download complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.7328313Z out: 5d109b347c0b: Verifying Checksum
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:43.7328676Z out: 5d109b347c0b: Download complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:44.0887632Z out: e2bcf8311664: Verifying Checksum
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:44.0893654Z out: e2bcf8311664: Download complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:44.3395580Z out: 97a5061b9941: Verifying Checksum
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:44.3395935Z out: 97a5061b9941: Download complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:44.3760930Z out: f57ad57b4a84: Verifying Checksum
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:44.3761319Z out: f57ad57b4a84: Download complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:44.5796159Z out: e2bcf8311664: Pull complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:44.6101501Z out: 8b25ba8e41c5: Pull complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:44.6599324Z out: 5d109b347c0b: Pull complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:44.7043946Z out: 97a5061b9941: Pull complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:44.7365614Z out: f57ad57b4a84: Pull complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:45.0142221Z out: c731326a7175: Verifying Checksum
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:45.0142583Z out: c731326a7175: Download complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:45.0759998Z out: c28ea998cd53: Verifying Checksum
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:45.0760502Z out: c28ea998cd53: Download complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:45.6345859Z out: a6f849e3ee9b: Download complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:45.9934910Z out: df816a317de7: Verifying Checksum
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:45.9935304Z out: df816a317de7: Download complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:46.4932726Z out: fa38e607dc57: Verifying Checksum
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:46.4933087Z out: fa38e607dc57: Download complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:47.7091027Z out: 58e808ff8ffd: Verifying Checksum
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:08:47.7091449Z out: 58e808ff8ffd: Download complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:06.5674914Z out: 58e808ff8ffd: Pull complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:06.7242891Z out: c28ea998cd53: Pull complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:06.7656975Z out: c731326a7175: Pull complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:06.8159634Z out: a6f849e3ee9b: Pull complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:06.9352966Z out: df816a317de7: Pull complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:07.1086216Z out: fa38e607dc57: Pull complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:07.1267231Z out: Digest: sha256:f9394f9275f90fa86fd97a0a17e0ec6bfec996974e07f22329fcde1f0c7dadeb
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:07.1310728Z out: Status: Downloaded newer image for ***/upgrade-backend:latest
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:07.1346476Z out: docker.io/***/upgrade-backend:latest
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:08.8667932Z out: latest: Pulling from ***/upgrade-frontend
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:08.8668315Z out: 589002ba0eae: Already exists
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:08.8721187Z out: d2a46166eee6: Already exists
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:08.8761881Z out: 593488f95c35: Already exists
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:08.8827447Z out: e19aff8f2cce: Already exists
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:08.8880519Z out: 1549d7aec962: Already exists
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:08.8959030Z out: 1f25242adbdb: Already exists
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:08.9004659Z out: c32126d2b96c: Already exists
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:08.9108732Z out: c24026275c33: Already exists
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:08.9164082Z out: 2cf829b3dd6f: Pulling fs layer
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:08.9164419Z out: 285fc0575b48: Pulling fs layer
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:09.5052797Z out: 285fc0575b48: Verifying Checksum
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:09.5053151Z out: 285fc0575b48: Download complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:09.7064057Z out: 2cf829b3dd6f: Verifying Checksum
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:09.7064633Z out: 2cf829b3dd6f: Download complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:09.7649022Z out: 2cf829b3dd6f: Pull complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:09.7986458Z out: 285fc0575b48: Pull complete
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:09.8209413Z out: Digest: sha256:0b6f3159c96d0cefe508e762f4cea5eeb5810b7913a97eb71853344c72d53b98
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:09.8281079Z out: Status: Downloaded newer image for ***/upgrade-frontend:latest
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:09.8305174Z out: docker.io/***/upgrade-frontend:latest
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:10.1046517Z err:  Container cadvisor  Stopping
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:10.1050759Z err:  Container upgrade-crm-frontend-1  Stopping
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:10.1051135Z err:  Container prometheus  Stopping
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:10.1051428Z err:  Container grafana  Stopping
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:10.1051701Z err:  Container node_exporter  Stopping
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:11.0349993Z err:  Container cadvisor  Stopped
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:11.0350446Z err:  Container cadvisor  Removing
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:11.0441980Z err:  Container prometheus  Stopped
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:11.0442482Z err:  Container prometheus  Removing
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:11.0479550Z err:  Container node_exporter  Stopped
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:11.0480035Z err:  Container node_exporter  Removing
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:11.0685303Z err:  Container cadvisor  Removed
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:11.0928060Z err:  Container node_exporter  Removed
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:11.1002843Z err:  Container prometheus  Removed
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:11.1298753Z err:  Container upgrade-crm-frontend-1  Stopped
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:11.1299198Z err:  Container upgrade-crm-frontend-1  Removing
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:11.1615794Z err:  Container upgrade-crm-frontend-1  Removed
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:11.1616220Z err:  Container upgrade-crm-app-1  Stopping
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:11.2583926Z err:  Container grafana  Stopped
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:11.2584307Z err:  Container grafana  Removing
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:11.2710370Z err:  Container grafana  Removed
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:21.4911147Z err:  Container upgrade-crm-app-1  Stopped
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:21.4911788Z err:  Container upgrade-crm-app-1  Removing
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:21.5028099Z err:  Container upgrade-crm-app-1  Removed
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:21.5028488Z err:  Container upgrade_redis_prod  Stopping
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:21.5036527Z err:  Container upgrade-crm-db-1  Stopping
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:21.6872215Z err:  Container upgrade-crm-db-1  Stopped
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:21.6872609Z err:  Container upgrade-crm-db-1  Removing
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:21.6987722Z err:  Container upgrade-crm-db-1  Removed
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:21.7814910Z err:  Container upgrade_redis_prod  Stopped
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:21.7815417Z err:  Container upgrade_redis_prod  Removing
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:21.7929782Z err:  Container upgrade_redis_prod  Removed
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:21.7942547Z err:  Network upgrade-crm_default  Removing
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:21.9346297Z err:  Network upgrade-crm_default  Removed
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.1408378Z err:  Network upgrade-crm_default  Creating
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.2170180Z err:  Network upgrade-crm_default  Created
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.2217241Z err:  Container grafana  Creating
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.2217566Z err:  Container prometheus  Creating
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.2217858Z err:  Container cadvisor  Creating
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.2234062Z err:  Container node_exporter  Creating
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.2234879Z err:  Container upgrade-crm-db-1  Creating
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.2235436Z err:  Container upgrade_redis_prod  Creating
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.3087866Z err:  Container node_exporter  Created
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.3194277Z err:  Container prometheus  Created
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.3226065Z err:  Container grafana  Created
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.3386031Z err:  Container cadvisor  Created
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.3393107Z err:  Container upgrade_redis_prod  Created
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.3406176Z err:  Container upgrade-crm-db-1  Created
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.3406715Z err:  Container upgrade-crm-app-1  Creating
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.3755336Z err:  Container upgrade-crm-app-1  Created
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.3755756Z err:  Container upgrade-crm-frontend-1  Creating
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.4063855Z err:  Container upgrade-crm-frontend-1  Created
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.4118523Z err:  Container cadvisor  Starting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.4118962Z err:  Container grafana  Starting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.4119370Z err:  Container node_exporter  Starting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.4119804Z err:  Container upgrade-crm-db-1  Starting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.4120122Z err:  Container prometheus  Starting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:22.4120573Z err:  Container upgrade_redis_prod  Starting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:23.2783062Z err:  Container upgrade_redis_prod  Started
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:23.3478442Z err:  Container node_exporter  Started
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:23.4074056Z err:  Container prometheus  Started
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:23.4586645Z err:  Container grafana  Started
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:23.5344383Z err:  Container cadvisor  Started
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:23.5708024Z err:  Container upgrade-crm-db-1  Started
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:23.5708432Z err:  Container upgrade-crm-db-1  Waiting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:29.0719452Z err:  Container upgrade-crm-db-1  Healthy
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:29.0719920Z err:  Container upgrade-crm-app-1  Starting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:29.3439379Z err:  Container upgrade-crm-app-1  Started
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:29.3439789Z err:  Container upgrade-crm-frontend-1  Starting
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:29.6803002Z err:  Container upgrade-crm-frontend-1  Started
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4120344Z out: Deleted Images:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4121107Z out: untagged: ***/upgrade-frontend@sha256:d736344afc75bf0b43dfe936a763726ed01eb1f7212205f8d5fc010633303a68
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4121785Z out: deleted: sha256:89bb71dc230d3c4c271c3e7438b26f8a3cfb9bc11509ba054f0f3b2cb5462e61
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4122343Z out: deleted: sha256:d2b5e8c0121ba8947f6d48269bf5fc624a7ba5a52fec9da0d202b5617f74a92a
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4122894Z out: deleted: sha256:0cf9e7454a1999d980c6999e4ff86a61eab539cb3cd59a09de1a99c42e034fec
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4123754Z out: untagged: ***/upgrade-backend@sha256:7ab792b29775bd6386988387feda8a6b911801988e51af01455a0520ec1b680a
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4124383Z out: deleted: sha256:7ca6b48f68b618a44ecf151a0fdabb816af39a9c77a0fa188a8e0b51dcc41aca
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4124922Z out: deleted: sha256:e6fd04b5969a0cebf45199b13930afefdf1187bfa23611be544c00111cf3ca89
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4125460Z out: deleted: sha256:373c470cebf2950717836fe2e9366e447834731ccf4b3879f75bd23451c14618
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4125977Z out: deleted: sha256:79e95d82c3e4d529d391d73580ed3c83f769e9facb00395632a2017550c2c4cf
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4126503Z out: deleted: sha256:562a3dcfdd76b0c4d72933ac6bd307929897fbf51a4cc8e96447a1d0e618b4ee
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4127058Z out: deleted: sha256:184812ef2761850b50bd8cf90cd66ec4c5c2efb2d0aeca55ddaf8ca9f34264a5
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4127586Z out: deleted: sha256:c18b4f173332cd31680cd5c520d6aa04c6cec2cc34484de6ba93569ae4cac995
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4128115Z out: deleted: sha256:00afa137add66d2b639334577b7022ccbb559dd5bc3bccd26ff2135522462150
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4128640Z out: deleted: sha256:59ee718fc0f433098201a8640f0b5cb5c0818d73cadae86c0458bc70a7bb8c33
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4129165Z out: deleted: sha256:93012f52bb5bea7123b4d3b13e9cda4f446903920fa462191d2cbfc8d71b684e
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4129697Z out: deleted: sha256:0dca361dab08786b80ad71a05a036bd055c7d3d5c78c362c4590adf9be166dd4
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4130212Z out: deleted: sha256:2475cd8811217721647de68281940c808a665745f4510b4f781b18e564ed84f8
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.4130623Z out: Total reclaimed space: 679.8MB
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.6488896Z err: Error response from daemon: Container 15f486faeae6639f1b4bc496d661b43fec7808c6d4e14f8e7d11697b420280cf is restarting, wait until the container is running
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.6556643Z 2026/03/16 16:09:34 Process exited with status 1
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.7254319Z Post job cleanup.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.9291912Z ##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-tJ5f78
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.9303973Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.9304486Z ##[group]Post cache
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.9306169Z State not set
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.9306652Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:34.9418696Z Post job cleanup.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.1554854Z ##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-prGnRg
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.1567239Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.1567673Z ##[group]Post cache
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.1569218Z State not set
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.1569633Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.1655992Z Post job cleanup.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.4482070Z ##[group]Logout from docker.io
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.4524058Z [command]/usr/bin/docker logout docker.io
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.4653188Z Removing login credentials for docker.io
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.4681088Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.4681671Z ##[group]Post cache
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.4683836Z State not set
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.4684401Z ##[endgroup]
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.4836133Z Post job cleanup.
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.5722588Z [command]/usr/bin/git version
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.5756408Z git version 2.53.0
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.5796469Z Temporarily overriding HOME='/home/runner/work/_temp/0bba5982-9c63-48c9-aef7-40b6f5fcf6b9' before making global git config changes
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.5797848Z Adding repository directory to the temporary git global config as a safe directory
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.5803178Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/UPGRADE/UPGRADE
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.5838659Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.5868612Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.6059696Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.6078735Z http.https://github.com/.extraheader
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.6089516Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.6115240Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.6295684Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.6323168Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.6600617Z Cleaning up orphan processes
+build-and-deploy	UNKNOWN STEP	2026-03-16T16:09:35.6848026Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, docker/build-push-action@v5, docker/login-action@v3. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

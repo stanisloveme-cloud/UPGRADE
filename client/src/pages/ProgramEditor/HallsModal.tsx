@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { ProFormList, ProFormText, ProFormGroup, ProFormDigit } from '@ant-design/pro-components';
 import { SafeModalForm } from '../../components/SafeForms/SafeModalForm';
 import { message, Form } from 'antd';
-import axios from 'axios';
+import { getHalls } from '../../api/generated/halls/halls';
+import { CreateHallDto, UpdateHallDto } from '../../api/generated/model';
 
 interface HallsModalProps {
     visible: boolean;
@@ -17,11 +18,11 @@ const HallsModal: React.FC<HallsModalProps> = ({ visible, onClose, eventId }) =>
     // Fetch halls on load
     useEffect(() => {
         if (visible) {
-            axios.get('/api/halls')
-                .then(res => {
-                    const allHalls = res.data;
+            const { hallsControllerFindAll } = getHalls();
+            hallsControllerFindAll()
+                .then(allHalls => {
                     // Filter by eventId
-                    const eventHalls = allHalls.filter((h: any) => h.eventId === Number(eventId));
+                    const eventHalls = (allHalls as unknown as any[]).filter((h: any) => h.eventId === Number(eventId));
                     const data = { halls: eventHalls };
                     setInitialValues(data);
                     form.setFieldsValue(data);
@@ -39,13 +40,14 @@ const HallsModal: React.FC<HallsModalProps> = ({ visible, onClose, eventId }) =>
             const toUpdate = currentHalls.filter((ch: any) => ch.id);
             const toCreate = currentHalls.filter((ch: any) => !ch.id);
 
+            const { hallsControllerRemove, hallsControllerUpdate, hallsControllerCreate } = getHalls();
+
             // Execute requests
             await Promise.all([
-                ...toDelete.map((h: any) => axios.delete(`/api/halls/${h.id}`)),
-                ...toUpdate.map((h: any) => { const { id, ...rest } = h; return axios.patch(`/api/halls/${id}`, rest); }),
+                ...toDelete.map((h: any) => hallsControllerRemove(h.id)),
+                ...toUpdate.map((h: any) => { const { id, ...rest } = h; return hallsControllerUpdate(id, rest as UpdateHallDto); }),
                 ...toCreate.map(async (h: any) => {
-                    const res = await axios.post('/api/halls', { ...h, eventId: Number(eventId) });
-                    return res.data;
+                    return await hallsControllerCreate({ ...h, eventId: Number(eventId) } as CreateHallDto);
                 })
             ]);
 

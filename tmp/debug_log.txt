@@ -1,0 +1,92 @@
+debug	Set up job	﻿2026-03-17T12:45:29.6286844Z Current runner version: '2.332.0'
+debug	Set up job	2026-03-17T12:45:29.6312283Z ##[group]Runner Image Provisioner
+debug	Set up job	2026-03-17T12:45:29.6313154Z Hosted Compute Agent
+debug	Set up job	2026-03-17T12:45:29.6313675Z Version: 20260213.493
+debug	Set up job	2026-03-17T12:45:29.6314369Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+debug	Set up job	2026-03-17T12:45:29.6315037Z Build Date: 2026-02-13T00:28:41Z
+debug	Set up job	2026-03-17T12:45:29.6315702Z Worker ID: {ed15adb6-5035-4d25-8e2e-7a6fafcb549f}
+debug	Set up job	2026-03-17T12:45:29.6316391Z Azure Region: eastus2
+debug	Set up job	2026-03-17T12:45:29.6316960Z ##[endgroup]
+debug	Set up job	2026-03-17T12:45:29.6318378Z ##[group]Operating System
+debug	Set up job	2026-03-17T12:45:29.6319007Z Ubuntu
+debug	Set up job	2026-03-17T12:45:29.6319672Z 24.04.3
+debug	Set up job	2026-03-17T12:45:29.6320106Z LTS
+debug	Set up job	2026-03-17T12:45:29.6320610Z ##[endgroup]
+debug	Set up job	2026-03-17T12:45:29.6321087Z ##[group]Runner Image
+debug	Set up job	2026-03-17T12:45:29.6321661Z Image: ubuntu-24.04
+debug	Set up job	2026-03-17T12:45:29.6322109Z Version: 20260309.50.1
+debug	Set up job	2026-03-17T12:45:29.6323177Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260309.50/images/ubuntu/Ubuntu2404-Readme.md
+debug	Set up job	2026-03-17T12:45:29.6324874Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260309.50
+debug	Set up job	2026-03-17T12:45:29.6325848Z ##[endgroup]
+debug	Set up job	2026-03-17T12:45:29.6326921Z ##[group]GITHUB_TOKEN Permissions
+debug	Set up job	2026-03-17T12:45:29.6328989Z Contents: read
+debug	Set up job	2026-03-17T12:45:29.6329952Z Metadata: read
+debug	Set up job	2026-03-17T12:45:29.6330477Z Packages: read
+debug	Set up job	2026-03-17T12:45:29.6331039Z ##[endgroup]
+debug	Set up job	2026-03-17T12:45:29.6333587Z Secret source: Actions
+debug	Set up job	2026-03-17T12:45:29.6334647Z Prepare workflow directory
+debug	Set up job	2026-03-17T12:45:29.6650617Z Prepare all required actions
+debug	Set up job	2026-03-17T12:45:29.6688709Z Getting action download info
+debug	Set up job	2026-03-17T12:45:29.9649646Z Download action repository 'appleboy/ssh-action@v1.0.3' (SHA:029f5b4aeeeb58fdfe1410a5d17f967dacf36262)
+debug	Set up job	2026-03-17T12:45:30.8065546Z Complete job name: debug
+debug	Build appleboy/ssh-action@v1.0.3	﻿2026-03-17T12:45:30.8696169Z ##[group]Build container for action use: '/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile'.
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:30.8751704Z ##[command]/usr/bin/docker build -t 1b849d:4e4026f9d9f24b118b3b7eb0ed03d393 -f "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile" "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3"
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.2549748Z #0 building with "default" instance using docker driver
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.2550320Z 
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.2550494Z #1 [internal] load build definition from Dockerfile
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.2550859Z #1 transferring dockerfile: 149B done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.2551135Z #1 DONE 0.0s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.2551266Z 
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.2551452Z #2 [internal] load metadata for ghcr.io/appleboy/drone-ssh:1.7.3
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.4147676Z #2 DONE 0.3s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.5161893Z 
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.5162765Z #3 [internal] load .dockerignore
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.5163343Z #3 transferring context: 2B done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.5163731Z #3 DONE 0.0s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.5164023Z 
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.5164136Z #4 [internal] load build context
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.5164621Z #4 transferring context: 108B done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.5165123Z #4 DONE 0.0s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.5165637Z 
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.5166396Z #5 [1/2] FROM ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.5167868Z #5 resolve ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.5168927Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.6348772Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0.1s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.6350200Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 1.20kB / 1.20kB 0.1s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.6351386Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 125B / 125B 0.1s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.6352561Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 2.44MB / 2.44MB 0.1s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.6353246Z #5 sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 2.38kB / 2.38kB done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.6354601Z #5 sha256:1a52f94820e830bc9734623deb03bbafa6a248fba19cdc2e5605c70d90d91441 1.24kB / 1.24kB done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.6355253Z #5 sha256:c4781b8d012b16b6c7468dc9104fad0a63f2a8815b2af8b7176bb544253ea8c7 3.86kB / 3.86kB done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.6355922Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 3.38MB / 3.38MB 0.1s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.6357091Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 284.83kB / 284.83kB 0.1s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:35.8298673Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0.0s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:36.5556739Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:36.7975611Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:36.7977170Z #5 extracting sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:36.7977943Z #5 extracting sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0.0s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:36.7978473Z #5 DONE 1.2s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:36.7978708Z 
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:36.7978848Z #6 [2/2] COPY entrypoint.sh /bin/entrypoint.sh
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:36.7979175Z #6 DONE 0.0s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:36.7979319Z 
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:36.7979733Z #7 exporting to image
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:36.7980024Z #7 exporting layers
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:37.0048516Z #7 exporting layers 0.4s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:37.0246110Z #7 writing image sha256:c21abc078bcb2f6351404edbf35a27e08f11df201c91c275efc64fd395643ef0 done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:37.0247161Z #7 naming to docker.io/library/1b849d:4e4026f9d9f24b118b3b7eb0ed03d393 done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:37.0247858Z #7 DONE 0.4s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:45:37.0368039Z ##[endgroup]
+debug	Fetch Logs	﻿2026-03-17T12:45:37.0646531Z ##[group]Run appleboy/ssh-action@v1.0.3
+debug	Fetch Logs	2026-03-17T12:45:37.0647134Z with:
+debug	Fetch Logs	2026-03-17T12:45:37.0647354Z   script: docker logs upgrade-crm-db-1
+debug	Fetch Logs	
+debug	Fetch Logs	2026-03-17T12:45:37.0647631Z   port: 22
+debug	Fetch Logs	2026-03-17T12:45:37.0647793Z   timeout: 30s
+debug	Fetch Logs	2026-03-17T12:45:37.0647970Z   command_timeout: 10m
+debug	Fetch Logs	2026-03-17T12:45:37.0648162Z   proxy_port: 22
+debug	Fetch Logs	2026-03-17T12:45:37.0648344Z   proxy_timeout: 30s
+debug	Fetch Logs	2026-03-17T12:45:37.0648708Z ##[endgroup]
+debug	Fetch Logs	2026-03-17T12:45:37.0772022Z ##[command]/usr/bin/docker run --name b849d4e4026f9d9f24b118b3b7eb0ed03d393_5880ff --label 1b849d --workdir /github/workspace --rm -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" 1b849d:4e4026f9d9f24b118b3b7eb0ed03d393
+debug	Fetch Logs	2026-03-17T12:45:37.7003567Z 2026/03/17 12:45:37 Error: missing server host
+debug	Complete job	﻿2026-03-17T12:45:37.7855352Z Cleaning up orphan processes

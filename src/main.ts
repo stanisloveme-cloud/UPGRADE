@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { writeFileSync } from 'fs';
 import session from 'express-session';
 import { RedisStore } from 'connect-redis';
 import { createClient } from 'redis';
@@ -42,10 +44,21 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: false }));
 
-  // Increase payload limit for large legacy JSON imports
-  app.use(require('express').json({ limit: '50mb' }));
-  app.use(require('express').urlencoded({ limit: '50mb', extended: true }));
+  // Configure Swagger
+  const config = new DocumentBuilder()
+    .setTitle('UPGRADE CRM API')
+    .setDescription('API documentation for UPGRADE CRM')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api/docs', app, document, {
+    jsonDocumentUrl: 'api/docs-json',
+  });
+  
+  writeFileSync('./openapi.json', JSON.stringify(document));
+  console.log('Swagger openapi.json generated successfully.');
 
-  await app.listen(process.env.PORT ?? 3000);
+  // Disable full boot to avoid DB timeouts during Code Gen
+  // await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();

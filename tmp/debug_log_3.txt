@@ -1,0 +1,114 @@
+debug	Set up job	﻿2026-03-17T12:54:19.0369285Z Current runner version: '2.332.0'
+debug	Set up job	2026-03-17T12:54:19.0394910Z ##[group]Runner Image Provisioner
+debug	Set up job	2026-03-17T12:54:19.0395977Z Hosted Compute Agent
+debug	Set up job	2026-03-17T12:54:19.0396627Z Version: 20260213.493
+debug	Set up job	2026-03-17T12:54:19.0397318Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+debug	Set up job	2026-03-17T12:54:19.0398495Z Build Date: 2026-02-13T00:28:41Z
+debug	Set up job	2026-03-17T12:54:19.0399417Z Worker ID: {0b97e1e6-1aa9-42f6-88b7-e731891928f9}
+debug	Set up job	2026-03-17T12:54:19.0400336Z Azure Region: northcentralus
+debug	Set up job	2026-03-17T12:54:19.0401061Z ##[endgroup]
+debug	Set up job	2026-03-17T12:54:19.0403059Z ##[group]Operating System
+debug	Set up job	2026-03-17T12:54:19.0403934Z Ubuntu
+debug	Set up job	2026-03-17T12:54:19.0404531Z 24.04.3
+debug	Set up job	2026-03-17T12:54:19.0405139Z LTS
+debug	Set up job	2026-03-17T12:54:19.0405706Z ##[endgroup]
+debug	Set up job	2026-03-17T12:54:19.0406390Z ##[group]Runner Image
+debug	Set up job	2026-03-17T12:54:19.0407064Z Image: ubuntu-24.04
+debug	Set up job	2026-03-17T12:54:19.0407714Z Version: 20260309.50.1
+debug	Set up job	2026-03-17T12:54:19.0409112Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260309.50/images/ubuntu/Ubuntu2404-Readme.md
+debug	Set up job	2026-03-17T12:54:19.0410890Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260309.50
+debug	Set up job	2026-03-17T12:54:19.0412015Z ##[endgroup]
+debug	Set up job	2026-03-17T12:54:19.0413342Z ##[group]GITHUB_TOKEN Permissions
+debug	Set up job	2026-03-17T12:54:19.0415672Z Contents: read
+debug	Set up job	2026-03-17T12:54:19.0416347Z Metadata: read
+debug	Set up job	2026-03-17T12:54:19.0417149Z Packages: read
+debug	Set up job	2026-03-17T12:54:19.0417751Z ##[endgroup]
+debug	Set up job	2026-03-17T12:54:19.0420182Z Secret source: Actions
+debug	Set up job	2026-03-17T12:54:19.0421382Z Prepare workflow directory
+debug	Set up job	2026-03-17T12:54:19.0757332Z Prepare all required actions
+debug	Set up job	2026-03-17T12:54:19.0794102Z Getting action download info
+debug	Set up job	2026-03-17T12:54:19.4167029Z Download action repository 'appleboy/ssh-action@v1.0.3' (SHA:029f5b4aeeeb58fdfe1410a5d17f967dacf36262)
+debug	Set up job	2026-03-17T12:54:19.9144460Z Complete job name: debug
+debug	Build appleboy/ssh-action@v1.0.3	﻿2026-03-17T12:54:19.9726099Z ##[group]Build container for action use: '/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile'.
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:19.9780767Z ##[command]/usr/bin/docker build -t 47a738:6a28cc294b50431683ad15817b3d5120 -f "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3/Dockerfile" "/home/runner/work/_actions/appleboy/ssh-action/v1.0.3"
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:20.7993701Z #0 building with "default" instance using docker driver
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:20.7994584Z 
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:20.7994959Z #1 [internal] load build definition from Dockerfile
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:20.7995978Z #1 transferring dockerfile: 149B done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:20.7996812Z #1 DONE 0.0s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:20.7997153Z 
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:20.7997676Z #2 [internal] load metadata for ghcr.io/appleboy/drone-ssh:1.7.3
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.1258428Z #2 DONE 0.5s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2410729Z 
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2413628Z #3 [internal] load .dockerignore
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2414929Z #3 transferring context: 2B done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2415750Z #3 DONE 0.0s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2416246Z 
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2416568Z #4 [internal] load build context
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2417428Z #4 transferring context: 108B done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2418843Z #4 DONE 0.0s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2419568Z 
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2423931Z #5 [1/2] FROM ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2427610Z #5 resolve ghcr.io/appleboy/drone-ssh:1.7.3@sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2431626Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2435085Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 0B / 125B 0.1s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2438688Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0B / 2.44MB 0.1s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2442190Z #5 sha256:179cbd253771007f2ebcaf7a3860afe059207351de1f3378efafac93bd310158 2.38kB / 2.38kB done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2445789Z #5 sha256:1a52f94820e830bc9734623deb03bbafa6a248fba19cdc2e5605c70d90d91441 1.24kB / 1.24kB done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2450404Z #5 sha256:c4781b8d012b16b6c7468dc9104fad0a63f2a8815b2af8b7176bb544253ea8c7 3.86kB / 3.86kB done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2454738Z #5 sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 3.38MB / 3.38MB 0.1s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2458850Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0B / 284.83kB 0.1s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.2462932Z #5 sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c 1.20kB / 1.20kB 0.1s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.3412925Z #5 extracting sha256:1207c741d8c9b028d98c4006013f9de959da3c55f85b91ed5e4583438a0112ca 0.1s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.3414414Z #5 sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 125B / 125B 0.1s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.3415687Z #5 sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 2.44MB / 2.44MB 0.1s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.3417083Z #5 sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 284.83kB / 284.83kB 0.1s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.3418585Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:21.5296205Z #5 extracting sha256:654aaee5654be60f81172539ecd74485cf8bbe2e9137bab0d429862c31c676f6 0.0s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:22.5743800Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:22.8113575Z #5 extracting sha256:7e20f48a19643465f486f59127b8f4e0f4114bedc8bd5260fb4f92d5fda95f1c done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:22.8115332Z #5 extracting sha256:066e5b821e26d8313055e0314c056e6c297847bcf963e5df10e7aa03107f2246 done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:22.8117065Z #5 extracting sha256:47353a6f9201a145b687290e5ae0278ac269faf4bb61bee3e9246c37a8d74277 0.0s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:22.8118818Z #5 DONE 1.5s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:22.8119228Z 
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:22.8119589Z #6 [2/2] COPY entrypoint.sh /bin/entrypoint.sh
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:22.8120339Z #6 DONE 0.0s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:22.8121042Z 
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:22.8121272Z #7 exporting to image
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:22.8121791Z #7 exporting layers
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:23.0040056Z #7 exporting layers 0.3s done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:23.0229778Z #7 writing image sha256:8ff32ef396f7f10441a2f31b8b5ccb6f02d21b450a5253a9dc06ce6e847d9dd6 done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:23.0231079Z #7 naming to docker.io/library/47a738:6a28cc294b50431683ad15817b3d5120 done
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:23.0232112Z #7 DONE 0.3s
+debug	Build appleboy/ssh-action@v1.0.3	2026-03-17T12:54:23.0379188Z ##[endgroup]
+debug	Fetch Logs	﻿2026-03-17T12:54:23.0666094Z ##[group]Run appleboy/ssh-action@v1.0.3
+debug	Fetch Logs	2026-03-17T12:54:23.0666721Z with:
+debug	Fetch Logs	2026-03-17T12:54:23.0667136Z   host: ***
+debug	Fetch Logs	2026-03-17T12:54:23.0667361Z   username: ***
+debug	Fetch Logs	2026-03-17T12:54:23.0669505Z   key: ***
+debug	Fetch Logs	2026-03-17T12:54:23.0669731Z   script: docker ps -a
+debug	Fetch Logs	
+debug	Fetch Logs	2026-03-17T12:54:23.0669984Z   port: 22
+debug	Fetch Logs	2026-03-17T12:54:23.0670181Z   timeout: 30s
+debug	Fetch Logs	2026-03-17T12:54:23.0670404Z   command_timeout: 10m
+debug	Fetch Logs	2026-03-17T12:54:23.0670634Z   proxy_port: 22
+debug	Fetch Logs	2026-03-17T12:54:23.0670847Z   proxy_timeout: 30s
+debug	Fetch Logs	2026-03-17T12:54:23.0671346Z ##[endgroup]
+debug	Fetch Logs	2026-03-17T12:54:23.0790636Z ##[command]/usr/bin/docker run --name a7386a28cc294b50431683ad15817b3d5120_13f31f --label 47a738 --workdir /github/workspace --rm -e "INPUT_HOST" -e "INPUT_USERNAME" -e "INPUT_KEY" -e "INPUT_SCRIPT" -e "INPUT_PORT" -e "INPUT_PASSPHRASE" -e "INPUT_PASSWORD" -e "INPUT_SYNC" -e "INPUT_USE_INSECURE_CIPHER" -e "INPUT_CIPHER" -e "INPUT_TIMEOUT" -e "INPUT_COMMAND_TIMEOUT" -e "INPUT_KEY_PATH" -e "INPUT_FINGERPRINT" -e "INPUT_PROXY_HOST" -e "INPUT_PROXY_PORT" -e "INPUT_PROXY_USERNAME" -e "INPUT_PROXY_PASSWORD" -e "INPUT_PROXY_PASSPHRASE" -e "INPUT_PROXY_TIMEOUT" -e "INPUT_PROXY_KEY" -e "INPUT_PROXY_KEY_PATH" -e "INPUT_PROXY_FINGERPRINT" -e "INPUT_PROXY_CIPHER" -e "INPUT_PROXY_USE_INSECURE_CIPHER" -e "INPUT_SCRIPT_STOP" -e "INPUT_ENVS" -e "INPUT_ENVS_FORMAT" -e "INPUT_DEBUG" -e "INPUT_ALLENVS" -e "INPUT_REQUEST_PTY" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/UPGRADE/UPGRADE":"/github/workspace" 47a738:6a28cc294b50431683ad15817b3d5120
+debug	Fetch Logs	2026-03-17T12:54:23.2554248Z ======CMD======
+debug	Fetch Logs	2026-03-17T12:54:23.2554664Z docker ps -a
+debug	Fetch Logs	2026-03-17T12:54:23.2554811Z 
+debug	Fetch Logs	2026-03-17T12:54:23.2554902Z ======END======
+debug	Fetch Logs	2026-03-17T12:54:24.8350704Z out: CONTAINER ID   IMAGE                               COMMAND                  CREATED         STATUS                   PORTS                                                                          NAMES
+debug	Fetch Logs	2026-03-17T12:54:24.8474534Z out: 01b2535ef4f9   space4you/upgrade-frontend:latest   "/docker-entrypoint.…"   5 minutes ago   Up 5 minutes             0.0.0.0:80->80/tcp, [::]:80->80/tcp, 0.0.0.0:443->443/tcp, [::]:443->443/tcp   upgrade-crm-frontend-1
+debug	Fetch Logs	2026-03-17T12:54:24.8477354Z out: ab9dacd6ca16   space4you/upgrade-backend:latest    "docker-entrypoint.s…"   5 minutes ago   Up 5 minutes             0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp                                    upgrade-crm-app-1
+debug	Fetch Logs	2026-03-17T12:54:24.8479357Z out: e6b7643931f4   postgres:15-alpine                  "docker-entrypoint.s…"   5 minutes ago   Up 5 minutes (healthy)   5432/tcp                                                                       upgrade-crm-db-1
+debug	Fetch Logs	2026-03-17T12:54:24.8480811Z out: 4acddccb6dd9   prom/prometheus:latest              "/bin/prometheus --c…"   5 minutes ago   Up 5 minutes             0.0.0.0:9090->9090/tcp, [::]:9090->9090/tcp                                    prometheus
+debug	Fetch Logs	2026-03-17T12:54:24.8482625Z out: a9ac15bfb7a3   redis:alpine                        "docker-entrypoint.s…"   5 minutes ago   Up 5 minutes             0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp                                    upgrade_redis_prod
+debug	Fetch Logs	2026-03-17T12:54:24.8484046Z out: 1e1f229d244b   gcr.io/cadvisor/cadvisor:v0.47.0    "/usr/bin/cadvisor -…"   5 minutes ago   Up 5 minutes (healthy)   0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp                                    cadvisor
+debug	Fetch Logs	2026-03-17T12:54:24.8485234Z out: 5d566561c91d   grafana/grafana:latest              "/run.sh"                5 minutes ago   Up 5 minutes             0.0.0.0:3001->3000/tcp, [::]:3001->3000/tcp                                    grafana
+debug	Fetch Logs	2026-03-17T12:54:24.8486679Z out: 4dfcfd398a39   prom/node-exporter:latest           "/bin/node_exporter …"   5 minutes ago   Up 5 minutes             0.0.0.0:9100->9100/tcp, [::]:9100->9100/tcp                                    node_exporter
+debug	Fetch Logs	2026-03-17T12:54:24.8487484Z ==============================================
+debug	Fetch Logs	2026-03-17T12:54:24.8488053Z ✅ Successfully executed commands to all host.
+debug	Fetch Logs	2026-03-17T12:54:24.8488447Z ==============================================
+debug	Complete job	﻿2026-03-17T12:54:24.9225781Z Cleaning up orphan processes

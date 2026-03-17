@@ -1,0 +1,5580 @@
+{
+  "event": {
+    "name": "New Retail Forum 2025 (Migrated)"
+  },
+  "tracks": [
+    {
+      "legacy_hall_id": "36",
+      "day": "21 октября",
+      "name": "Ритейл стратегии. Понимаем реальную ситуацию на рынке, снижаем издержки, запускаем новые форматы и бизнес-модели",
+      "sessions_count": 4
+    },
+    {
+      "legacy_hall_id": "36",
+      "day": "21 октября",
+      "name": null,
+      "sessions_count": 1
+    },
+    {
+      "legacy_hall_id": "37",
+      "day": "21 октября",
+      "name": "E-Com и D2C, развитие собственных интернет-магазинов",
+      "sessions_count": 4
+    },
+    {
+      "legacy_hall_id": "38",
+      "day": "21 октября",
+      "name": "Прикладной маркетинг. Performance, Social, E-mail, CRM",
+      "sessions_count": 4
+    },
+    {
+      "legacy_hall_id": "39",
+      "day": "21 октября",
+      "name": "ІТ-инфраструктура и автоматизация бизнес-процессов для ритейлеров, фокус на среднем бизнесе и будущих звездах",
+      "sessions_count": 4
+    },
+    {
+      "legacy_hall_id": "39",
+      "day": "21 октября",
+      "name": "Мастер - класс \"Замена офисных сотрудников ИИ-агентами\"",
+      "sessions_count": 1
+    },
+    {
+      "legacy_hall_id": "40",
+      "day": "21 октября",
+      "name": "Финансовое планирование, отчетность для малого и среднего бизнеса",
+      "sessions_count": 2
+    },
+    {
+      "legacy_hall_id": "40",
+      "day": "21 октября",
+      "name": "Мебель и товары для дома",
+      "sessions_count": 3
+    },
+    {
+      "legacy_hall_id": "36",
+      "day": "22 октября",
+      "name": "Маркетплейс UPGRADE",
+      "sessions_count": 4
+    },
+    {
+      "legacy_hall_id": "37",
+      "day": "22 октября",
+      "name": "OMNI Beauty",
+      "sessions_count": 2
+    },
+    {
+      "legacy_hall_id": "37",
+      "day": "22 октября",
+      "name": "Мастер - класс \"Создание видео для маркетинга при помощи ИИ\"",
+      "sessions_count": 1
+    },
+    {
+      "legacy_hall_id": "37",
+      "day": "22 октября",
+      "name": "E-Grocery",
+      "sessions_count": 2
+    },
+    {
+      "legacy_hall_id": "38",
+      "day": "22 октября",
+      "name": "Мастер - класс: \"Как увеличить видимость товаров/услуг и бренда в нейросетях и ИИ\"",
+      "sessions_count": 1
+    },
+    {
+      "legacy_hall_id": "38",
+      "day": "22 октября",
+      "name": "Автотовары",
+      "sessions_count": 1
+    },
+    {
+      "legacy_hall_id": "38",
+      "day": "22 октября",
+      "name": "Бизнес-разборы: как увеличить доход и масштабировать бизнес",
+      "sessions_count": 1
+    },
+    {
+      "legacy_hall_id": "38",
+      "day": "22 октября",
+      "name": "Семинар «Рост независимости от маркетплейсов»",
+      "sessions_count": 1
+    },
+    {
+      "legacy_hall_id": "38",
+      "day": "22 октября",
+      "name": "Семинар «Premium сегмент на Fashion рынке РФ»",
+      "sessions_count": 1
+    },
+    {
+      "legacy_hall_id": "40",
+      "day": "22 октября",
+      "name": "OMNI Fashion",
+      "sessions_count": 4
+    }
+  ],
+  "sessions": [
+    {
+      "track_name": "Ритейл стратегии. Понимаем реальную ситуацию на рынке, снижаем издержки, запускаем новые форматы и бизнес-модели",
+      "time_start": "11:00",
+      "time_end": "12:30",
+      "name": "Покупатели и ритейлеры: аналитика, план действий по сокращению расходов и развитию продаж",
+      "description": "Сессия коммерческих директоров / директоров по стратегии / владельцев бизнеса",
+      "speakers_count": 21,
+      "questions_count": 4,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Влад Широбоков",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-12",
+          "needs_call": false
+        },
+        {
+          "name": "Алла Смородинова",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-12",
+          "needs_call": false
+        },
+        {
+          "name": "Оксана Карпухина",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Евгений Сахаров",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Сергей Кондаков",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Евгений Романов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-21",
+          "needs_call": false
+        },
+        {
+          "name": "Михаил Бурмистров",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Игорь Тарасенко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Евгений Домашенко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Антон Макаров",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Дмитрий Пачин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-29",
+          "needs_call": false
+        },
+        {
+          "name": "Артур Муравьев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": null,
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Ритейл стратегии. Понимаем реальную ситуацию на рынке, снижаем издержки, запускаем новые форматы и бизнес-модели",
+      "time_start": "13:00",
+      "time_end": "14:30",
+      "name": "Бизнес-модели и форматы, в которые инвестируют лидеры",
+      "description": "Сессия владельцев и генеральных директоров",
+      "speakers_count": 43,
+      "questions_count": 3,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Филипп Лабковский",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-12",
+          "needs_call": false
+        },
+        {
+          "name": "Илья Ярошенко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-04",
+          "needs_call": false
+        },
+        {
+          "name": "Дмитрий Селихов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Алексей Пролыгин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-02",
+          "needs_call": false
+        },
+        {
+          "name": "Максим Семиренко",
+          "role": "moderator",
+          "presentation_title": "Повышение продаж с предиктивной аналитикой. Imredi insight • Быстрая реакция на изменения рынка • Все показатели сети в режиме онлайн в едином окне • Снижение расходов и потерь • Возможность быстро устранить проблемы по всей сети или отдельным магазинам/группам магазинов Не просто цифры, а подсказки для каждого сотрудника на основе аналитики, что нужно сделать, чтобы работать эффективнее.",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Михаил Акулов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-11",
+          "needs_call": false
+        },
+        {
+          "name": "Андрей Серегин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-23",
+          "needs_call": false
+        },
+        {
+          "name": "Сергей Панкин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": null,
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Ритейл стратегии. Понимаем реальную ситуацию на рынке, снижаем издержки, запускаем новые форматы и бизнес-модели",
+      "time_start": "15:30",
+      "time_end": "17:00",
+      "name": "Маркетинговые стратегии",
+      "description": "Сессия для директоров по маркетингу <br>Как выиграть в борьбе за внимание покупателей и в гонке маркетинговых бюджетов:",
+      "speakers_count": 29,
+      "questions_count": 2,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Алла Смородинова",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-12",
+          "needs_call": false
+        },
+        {
+          "name": "Ирина Руденко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Сюзанна Риттер",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Марина Филиппова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Николай Комаров",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Юлия Мещерякова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Елена Шемагонова",
+          "role": "moderator",
+          "presentation_title": "Ее выступление будет касаться human to human и эмоционального сервиса в оффлайн торговле.",
+          "status": "declined",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Ритейл стратегии. Понимаем реальную ситуацию на рынке, снижаем издержки, запускаем новые форматы и бизнес-модели",
+      "time_start": "17:30",
+      "time_end": "18:30",
+      "name": "Финансовая устойчивость: сокращаем риски, поддерживаем продажи",
+      "description": "Сессия финансовых, коммерческих и E-Commerce директоров",
+      "speakers_count": 41,
+      "questions_count": 5,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Алла Смородинова",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-12",
+          "needs_call": false
+        },
+        {
+          "name": "Владислав Склянов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-05",
+          "needs_call": false
+        },
+        {
+          "name": "Анна Бранашко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-02",
+          "needs_call": false
+        },
+        {
+          "name": "Николай Мясников",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-24",
+          "needs_call": false
+        },
+        {
+          "name": "Роман Гайнуллин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Елена Пудичева",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-08",
+          "needs_call": false
+        },
+        {
+          "name": "Максим Трухин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "contact",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Максим Виноградов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-02",
+          "needs_call": false
+        },
+        {
+          "name": "Светлана Тимоненкова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-02",
+          "needs_call": false
+        },
+        {
+          "name": "Николай Евченко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-10",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": null,
+      "time_start": "10:00",
+      "time_end": "11:30",
+      "name": "Новая тема",
+      "description": null,
+      "speakers_count": 0,
+      "questions_count": 0,
+      "_questions_preview": []
+    },
+    {
+      "track_name": "E-Com и D2C, развитие собственных интернет-магазинов",
+      "time_start": "11:00",
+      "time_end": "12:30",
+      "name": "D2C E-Com бизнес-модели: аналитика, важнейшие тренды, развитие собственных интернет-магазинов",
+      "description": "Сессия Е-Соm директоров, СОО, директоров по логистике, СМО, СІO/CTO",
+      "speakers_count": 18,
+      "questions_count": 3,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Александр Барсуков",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-09",
+          "needs_call": false
+        },
+        {
+          "name": "Алексей Ручкин",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-12",
+          "needs_call": false
+        },
+        {
+          "name": "Аскар Кинжигалиев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-26",
+          "needs_call": false
+        },
+        {
+          "name": "Фёдор Вирин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Сергей Фадеев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Александр Ким",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Илья Абуд",
+          "role": "moderator",
+          "presentation_title": "Тренды рынка корпоративных и государственных закупок - Розничные продажи vs закупки: объемы рынка, конкуренция, требования - Особенности работы с большими корпорациями: кейс Бизнес Коннект и ВТБ - Кейсы крупных компаний по работе с корпоративными закупками",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Татьяна Грибанова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Иван Савушкин",
+          "role": "moderator",
+          "presentation_title": "ВЭД 2.5 – все сложно ? Текущие реалии ВЭД, возможности по софинансированию импортных поставок из – за рубежа.",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Кирилл Мусин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-09",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "E-Com и D2C, развитие собственных интернет-магазинов",
+      "time_start": "13:00",
+      "time_end": "14:30",
+      "name": "IT и автоматизация бизнес процессов",
+      "description": "Кейс сессия для владельцев бизнеса, Е-Соm директоров, СІO и CTO",
+      "speakers_count": 30,
+      "questions_count": 4,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Александр Хачиян",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-26",
+          "needs_call": false
+        },
+        {
+          "name": "Георгий Хотьян",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-10",
+          "needs_call": false
+        },
+        {
+          "name": "Евгений Лимаренко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-11",
+          "needs_call": false
+        },
+        {
+          "name": "Иван Будник",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-12",
+          "needs_call": false
+        },
+        {
+          "name": "Михаил Кудашев",
+          "role": "moderator",
+          "presentation_title": "AI в каждом кресле: когда искусственный интеллект перестаёт быть игрушкой айтишников",
+          "status": "confirmed",
+          "status_date": "2025-09-12",
+          "needs_call": false
+        },
+        {
+          "name": "Сергей Крикота",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Алексей Смуров",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Елена Белецкая",
+          "role": "moderator",
+          "presentation_title": "Тема: «Единое окно: как DPD создаёт бесшовный клиентский опыт» Тезисы: - Личный кабинет MyDPD и его возможности - Рост CSI за счет единого окна коммуникаций с клиентами - Скорость, прозрачность и предсказуемость как факторы успеха в решении запросов от клиентов",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Пётр Асратян",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-11",
+          "needs_call": false
+        },
+        {
+          "name": "Эдуард Романовский",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-10-04",
+          "needs_call": false
+        },
+        {
+          "name": "Ольга Черногаева",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "review",
+          "status_date": "2025-09-08",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "E-Com и D2C, развитие собственных интернет-магазинов",
+      "time_start": "15:30",
+      "time_end": "17:00",
+      "name": "Логистика для интернет-магазинов: фулфилмент, последняя миля",
+      "description": "Сессия Е-Соm директоров, директоров по логистике, владельцев бизнеса",
+      "speakers_count": 37,
+      "questions_count": 5,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Ирина Иванова",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Денис Захаров",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-20",
+          "needs_call": false
+        },
+        {
+          "name": "Мария Рылеева",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-17",
+          "needs_call": false
+        },
+        {
+          "name": "Николай Карицкий",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Максим Лудин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-09",
+          "needs_call": false
+        },
+        {
+          "name": "Сергей Удалов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-11",
+          "needs_call": false
+        },
+        {
+          "name": "Мария Бурмистрова",
+          "role": "moderator",
+          "presentation_title": "Тема: «Качественная доставка как фактор успеха в e-commerce» Тезисы: • Курьерская доставка: кто выбирает и почему, качество • Доставка до ТЦ, когда все под контролем • Страхование сроков доставки – особенности сервиса • Доставка КГТ • Возвраты • Как растить лояльную аудиторию и продавать больше",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Абдуджаббор Абдувахидов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "E-Com и D2C, развитие собственных интернет-магазинов",
+      "time_start": "17:30",
+      "time_end": "18:30",
+      "name": "Маркетинговые стратегии для интернет-магазинов и D2C. Работа с собственной аудиторией.",
+      "description": "Сессия для СМО, директоров ТОП 100 Е-Соm<br>Панельная дискуссия и кейсы<br><br><b>Продажи в собственных интернет-магазинах растут медленнее чем на маркетплейсах. Фокусируемся на маркетинге для собственных каналов продаж? Развиваем Mobile? Как получить максимум пользы от присутсивия на маркетплейсах? Инвестиции в ритейл-медиа.</b>",
+      "speakers_count": 23,
+      "questions_count": 3,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Евгений Усенко",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-23",
+          "needs_call": false
+        },
+        {
+          "name": "Александр Багринцев",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-16",
+          "needs_call": false
+        },
+        {
+          "name": "Алексей Качурин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-17",
+          "needs_call": false
+        },
+        {
+          "name": "Анастасия Савосина",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Наталья Храмцова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Никита Шашкевич",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Андрей Юкин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Сергей Сташков",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Сергей Орешин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "contact",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Филипп Лабковский",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "to_contact",
+          "status_date": "2025-09-12",
+          "needs_call": false
+        },
+        {
+          "name": "Антон Букашкин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-02",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Прикладной маркетинг. Performance, Social, E-mail, CRM",
+      "time_start": "11:00",
+      "time_end": "12:30",
+      "name": "Performаnce маркетинг 2025: определяем цели, организуем процессы, выбираем инструменты, оцениваем результаты",
+      "description": "Сессия CMO, E-Com директоров и владельцев среднего и малого бизнеса",
+      "speakers_count": 37,
+      "questions_count": 3,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Степан Зайцев",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-03",
+          "needs_call": false
+        },
+        {
+          "name": "Борис Базанов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-26",
+          "needs_call": false
+        },
+        {
+          "name": "Александр Петров",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Ксения Миронова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Никита Бураченко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Александра Саламатова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Прикладной маркетинг. Performance, Social, E-mail, CRM",
+      "time_start": "13:00",
+      "time_end": "14:30",
+      "name": "Нативная реклама: Influence и Social маркетинг",
+      "description": "Influence и Social маркетинг. Рынок после введения маркировки, специфика работы с блогерами после 2025 года. Что делать с рекламой в запрещенных соц-cестях",
+      "speakers_count": 22,
+      "questions_count": 4,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Степан Зайцев",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-03",
+          "needs_call": false
+        },
+        {
+          "name": "Дмитрий Попов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-10",
+          "needs_call": false
+        },
+        {
+          "name": "Анна Иоспа",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-04",
+          "needs_call": false
+        },
+        {
+          "name": "Вячеслав Филимонов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Ольга Дроздова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Ксения Головачева",
+          "role": "moderator",
+          "presentation_title": "Инфлюенс-маркетинг сегодня и завтра 1. Как изменился инфлюенс-рынок в результате запрета Instagram? 2. Где потребляет контент аудитория? 3. Какие форматы контента и рекламы востребованы у аудитории? 4. Как выбирать блогеров, которые дадут максимальный возраст от инвестиций?",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Диана Халилова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Прикладной маркетинг. Performance, Social, E-mail, CRM",
+      "time_start": "15:30",
+      "time_end": "17:00",
+      "name": "Коммуникация с покупателем и продажи: революция чат-ботов и E-mail маркетинга 2025",
+      "description": "Сессия для СМО, Head of Digital, руководителей CRM, Loyalty, E-mail маркетологов",
+      "speakers_count": 19,
+      "questions_count": 5,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Александр Гриценко",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-02",
+          "needs_call": false
+        },
+        {
+          "name": "Максим Марухленко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-01",
+          "needs_call": false
+        },
+        {
+          "name": "Никита Любаев",
+          "role": "moderator",
+          "presentation_title": "2 в 1 - Клиентский сервис и продажи в чат-боте: как GULLIVER стимулирует к первой покупке GULLIVER создал многофункциональный чат-бот, решающий задачи маркетинга и клиентского сервиса во взаимосвязи друг с другом: ⁃ Способы и результаты объединения клиентского сервиса (поддержка по заказам, помощь с подбором) с маркетинговыми KPI в Телеграм-боте ⁃ Как собрать базу в 9 000 лояльных подписчиков ⁃ Как обогатить данные с помощью чат-бота и использовать их для повышения лояльности и покупок ⁃ Способы доведения до покупки новых клиентов с помощью Телеграм-бота. ⁃ Стимулирование регистрации в программе лояльности ⁃ Как с помощью тап-игры в MiniApp усилить существующую программу лояльности и получить дополнительные продажи",
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Дарья Голованенко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Кирилл Кармазинский",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Артем Разгоняев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-18",
+          "needs_call": false
+        },
+        {
+          "name": "Роман Каган",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-03",
+          "needs_call": false
+        },
+        {
+          "name": "Яна Турчинская",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Прикладной маркетинг. Performance, Social, E-mail, CRM",
+      "time_start": "17:30",
+      "time_end": "18:30",
+      "name": "СRM маркетинг и лояльность",
+      "description": "Сессия руководителей СRM подразделений, коммерческих и Е-Сом директоров, СМО<br>- точка зрения лидеров<br>- синхронизация перформанс и CRM кампаний<br>- CRM и геймификации<br>- Искусственный интеллект в ритейле<br>Презентации сервисов и обсуждения выводов с участием ритейлеров",
+      "speakers_count": 21,
+      "questions_count": 4,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Александр Гриценко",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-02",
+          "needs_call": false
+        },
+        {
+          "name": "Виктория Грачёва",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-26",
+          "needs_call": false
+        },
+        {
+          "name": "Светлана Беликова",
+          "role": "moderator",
+          "presentation_title": "Тема выступления: Игры vs Скидки? Как мы тестировали геймификацию в Ситидрайве",
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Дарья Арзямова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Андрей Скачек",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-08",
+          "needs_call": false
+        },
+        {
+          "name": "Светлана Борисова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-10",
+          "needs_call": false
+        },
+        {
+          "name": "Вероника Тульчевская",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "ІТ-инфраструктура и автоматизация бизнес-процессов для ритейлеров, фокус на среднем бизнесе и будущих звездах",
+      "time_start": "11:00",
+      "time_end": "12:30",
+      "name": "ІТ-инфраструктура, обеспечивающая конкурентоспособность. Автоматизация снижает издержки ритейлеров на 20-30%. Разбираем лучшие решения и практики",
+      "description": "Сессия СIО/СТО, коммерческих директоров, владельцев бизнеса<br><br>На автоматизации каких бизнес-процессов стоит сфокусироваться для снижения издержек и масштабирования продаж в 2025 г.:",
+      "speakers_count": 17,
+      "questions_count": 5,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Борис Агатов",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-29",
+          "needs_call": false
+        },
+        {
+          "name": "Вячеслав Смирнов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-26",
+          "needs_call": false
+        },
+        {
+          "name": "Павел Антипов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-27",
+          "needs_call": false
+        },
+        {
+          "name": "Владислав Золотов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-14",
+          "needs_call": false
+        },
+        {
+          "name": "Александр Хачиян",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-08",
+          "needs_call": false
+        },
+        {
+          "name": "Василий Тарасевич",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-19",
+          "needs_call": false
+        },
+        {
+          "name": "Роман Хамутских",
+          "role": "moderator",
+          "presentation_title": "От тенденций рынка к реальным кейсам: что работает в B2B-eCommerce · Рынок и прогноз развития B2B-eCommerce в России до 2030 года (исследование Data Insight) · Ключевые тренды: рост маркетплейсов, экосистем и цифровизация закупок · Цифровые сервисы и клиентский опыт: личные кабинеты, омниканальность, лояльность · Практические кейсы: ММК, Gauss, Валта, ТСТН",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Алексей Загайнов",
+          "role": "moderator",
+          "presentation_title": "База знаний с искусственным интеллектом Почему классические подходы к организации корпоративных баз знаний перестают соответствовать требованиям бизнеса, и как превратить их из статичного хранилища в ключевой ресурс с помощью LLM.",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Денис Левченко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-01",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "ІТ-инфраструктура и автоматизация бизнес-процессов для ритейлеров, фокус на среднем бизнесе и будущих звездах",
+      "time_start": "13:00",
+      "time_end": "14:30",
+      "name": "Снижение операционных издержек средствами автоматизации, в том числе ИИ-ассистентами: перспективы, практика применения и сокращение управленческих рисков",
+      "description": "Сессия для коммерческих директоров, СМО, продактов и мерчендайзеров",
+      "speakers_count": 16,
+      "questions_count": 8,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Борис Агатов",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-29",
+          "needs_call": false
+        },
+        {
+          "name": "Дмитрий Захаров",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-10",
+          "needs_call": false
+        },
+        {
+          "name": "Рафаиль Салихов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-10",
+          "needs_call": false
+        },
+        {
+          "name": "Елена Панченко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-15",
+          "needs_call": false
+        },
+        {
+          "name": "Элвин Рахманкулов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-25",
+          "needs_call": false
+        },
+        {
+          "name": "Алексей Лукьянов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-04",
+          "needs_call": false
+        },
+        {
+          "name": "Дмитрий Бородовицын",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-19",
+          "needs_call": false
+        },
+        {
+          "name": "Эдуард Романовский",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-08",
+          "needs_call": false
+        },
+        {
+          "name": "Ольга Белоусова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-09",
+          "needs_call": false
+        },
+        {
+          "name": "Михаил Прышляк",
+          "role": "moderator",
+          "presentation_title": "Круглый стол мд аудит: ИИ-агенты в ритейле: перспективы и практика применения по снижению операционных издержек. Тезисы для обсуждения: 1. Практика применения операционного ИИ- агента для контроля задач и проектов в снижении затрат на ручной мониторинг. 2. Опыт использования HR-агента с искусственным интеллектом для оптимизации графиков смен и сокращении издержек на переработки и текучку персонала. 3. Внедрение ИИ-агента по стратегическому управлению для формирования управленческой отчётности для экономии ресурсов и снижения рисков. 4. Применение ИИ-агента по клиентскому опыту для улучшения сервиса и снижения стоимости удержания покупателей. 5. Работа ИИ-агента с функциями инженера отдела нормирования для оптимизации операций и сокращения затрат за счёт точного сравнения процессов с эталоном. 6. Построение штаба специализированных ИИ-агентов — от контролёра полки и контролёра цен конкурентов до аудитора фотоотчётов и аналитика спроса — для решения широкого круга задач и снижении операционных потерь в компании. Возможно ли переложить большинство задач на ИИ-агентов.",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Дмитрий Самаркин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Валентина Ларкина",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-02",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "ІТ-инфраструктура и автоматизация бизнес-процессов для ритейлеров, фокус на среднем бизнесе и будущих звездах",
+      "time_start": "15:30",
+      "time_end": "17:00",
+      "name": "Стартовый и продвинутый пакет IT-решений для малого и среднего бизнеса",
+      "description": "Сессия для СIО/СТО, коммерческих директоров, владельцев бизнеса",
+      "speakers_count": 7,
+      "questions_count": 3,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Борис Агатов",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-29",
+          "needs_call": false
+        },
+        {
+          "name": "Александр Афанасьев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-26",
+          "needs_call": false
+        },
+        {
+          "name": "Андрей Матвеев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-12",
+          "needs_call": false
+        },
+        {
+          "name": "Андрей Руцкин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-16",
+          "needs_call": false
+        },
+        {
+          "name": "Дмитрий Захаров",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-02",
+          "needs_call": false
+        },
+        {
+          "name": "Алексей Еферов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-22",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "ІТ-инфраструктура и автоматизация бизнес-процессов для ритейлеров, фокус на среднем бизнесе и будущих звездах",
+      "time_start": "17:30",
+      "time_end": "19:00",
+      "name": "Цифровизация и growth-hacking клиентского пути: изучаем, анализируем, повышаем эффективность и прибыльность",
+      "description": "Сессия для продактов, СIО/СТО, СМО и коммерческих директоров",
+      "speakers_count": 15,
+      "questions_count": 4,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Борис Агатов",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-29",
+          "needs_call": false
+        },
+        {
+          "name": "Виктор Крылов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-01",
+          "needs_call": false
+        },
+        {
+          "name": "Белугина Яна",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-01",
+          "needs_call": false
+        },
+        {
+          "name": "Елена Шестова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "pre_confirmed",
+          "status_date": "2025-09-22",
+          "needs_call": false
+        },
+        {
+          "name": "Елизавета Иосипян",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-10-16",
+          "needs_call": false
+        },
+        {
+          "name": "Игорь Татаренко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-04",
+          "needs_call": false
+        },
+        {
+          "name": "Татьяна Умряева",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-27",
+          "needs_call": false
+        },
+        {
+          "name": "Александр Яковлев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-15",
+          "needs_call": false
+        },
+        {
+          "name": "Анастасия Уткина",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-18",
+          "needs_call": false
+        },
+        {
+          "name": "Ирина Коваленко",
+          "role": "moderator",
+          "presentation_title": "Вопрос цифры: от AI линейки до эффективного системного менеджмента",
+          "status": "declined",
+          "status_date": null,
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Мастер - класс \"Замена офисных сотрудников ИИ-агентами\"",
+      "time_start": "14:40",
+      "time_end": "15:20",
+      "name": "Замена офисных сотрудников ИИ-агентами",
+      "description": null,
+      "speakers_count": 1,
+      "questions_count": 4,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Борис Агатов",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-09",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Финансовое планирование, отчетность для малого и среднего бизнеса",
+      "time_start": "11:00",
+      "time_end": "12:30",
+      "name": "Бизнес-планирование и финансирование роста в 2026",
+      "description": "От идеи до устойчивого роста: как выстроить финансовую модель, привлечь деньги и не потерять контроль над бизнесом",
+      "speakers_count": 5,
+      "questions_count": 2,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Анна Баранова",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-19",
+          "needs_call": false
+        },
+        {
+          "name": "Лев Овчинников",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-15",
+          "needs_call": false
+        },
+        {
+          "name": "Ян Григорьев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-17",
+          "needs_call": false
+        },
+        {
+          "name": "Евгений Кузнецов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-10",
+          "needs_call": false
+        },
+        {
+          "name": "Кристина Тишкова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-29",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Финансовое планирование, отчетность для малого и среднего бизнеса",
+      "time_start": "13:00",
+      "time_end": "14:30",
+      "name": "Налоговая отчётность 2025 - 2026: ключевые изменения, о которых должен знать каждый",
+      "description": "Сессия для владельцев бизнеса, бухгалтеров",
+      "speakers_count": 6,
+      "questions_count": 6,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Антон Олейник",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-10",
+          "needs_call": false
+        },
+        {
+          "name": "Ирина Быковская",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-13",
+          "needs_call": false
+        },
+        {
+          "name": "Маргарита Евстигнеева",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-07",
+          "needs_call": false
+        },
+        {
+          "name": "Наталья Иванова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Алёна Линькова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-10",
+          "needs_call": false
+        },
+        {
+          "name": "Герман Шеховцев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-10",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Мебель и товары для дома",
+      "time_start": "15:30",
+      "time_end": "17:00",
+      "name": "Мебель, товары для дома, сада, строительные материалы: динамика рынка, каналы продаж",
+      "description": "Сессия для владельцев бизнеса, коммерческих директоров, директоров по развитию и маркетингу, e-com директоров",
+      "speakers_count": 24,
+      "questions_count": 4,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Эдуард Романовский",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-08",
+          "needs_call": false
+        },
+        {
+          "name": "Надежда Алямкина",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Виталий Лежнев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-29",
+          "needs_call": false
+        },
+        {
+          "name": "Артем Яськов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-02",
+          "needs_call": false
+        },
+        {
+          "name": "Майя Нарбутт",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Иван Щедрин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Антон Букашкин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "contact",
+          "status_date": "2025-12-12",
+          "needs_call": false
+        },
+        {
+          "name": "Денис Егоров",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Наталья Машкова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": null,
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Мебель и товары для дома",
+      "time_start": "17:30",
+      "time_end": "18:30",
+      "name": "Мебель, товары для дома, сада, строительные материалы 2025: от инвестиций до маркетинга",
+      "description": "Сессия для владельцев бизнеса, коммерческих и e-com директоров, СМО",
+      "speakers_count": 23,
+      "questions_count": 3,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Валерия Зелинская",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-11",
+          "needs_call": false
+        },
+        {
+          "name": "Мария Гаглоева",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-11",
+          "needs_call": false
+        },
+        {
+          "name": "Наталья Машкова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-14",
+          "needs_call": false
+        },
+        {
+          "name": "Алексей Никонов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-12",
+          "needs_call": false
+        },
+        {
+          "name": "Владимир Федоров",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-25",
+          "needs_call": false
+        },
+        {
+          "name": "Виталий Кривошеев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-18",
+          "needs_call": false
+        },
+        {
+          "name": "Игорь Подстольный",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-08",
+          "needs_call": false
+        },
+        {
+          "name": "Лиля Кац",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-06",
+          "needs_call": false
+        },
+        {
+          "name": "Наталья Машкова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Алексей Райман",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "contact",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Елена Кудрявцева",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-18",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Мебель и товары для дома",
+      "time_start": "19:00",
+      "time_end": "20:00",
+      "name": "Новая тема",
+      "description": null,
+      "speakers_count": 0,
+      "questions_count": 0,
+      "_questions_preview": []
+    },
+    {
+      "track_name": "Маркетплейс UPGRADE",
+      "time_start": "11:00",
+      "time_end": "12:30",
+      "name": "Что маркетплейсы готовят для продавцов в 2025 году",
+      "description": "- планы<br>- растущие сегменты<br>- поддержка селлеров",
+      "speakers_count": 17,
+      "questions_count": 3,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Максим Логинов",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-09",
+          "needs_call": false
+        },
+        {
+          "name": "Наталья Кинелева",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-05",
+          "needs_call": false
+        },
+        {
+          "name": "Вероника Перетягина",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-01",
+          "needs_call": false
+        },
+        {
+          "name": "Сергей Панкин",
+          "role": "moderator",
+          "presentation_title": "Решение для маркетплейсов",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Анастасия Уткина",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-12",
+          "needs_call": false
+        },
+        {
+          "name": "Андрей Мелехов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-09",
+          "needs_call": false
+        },
+        {
+          "name": "Максим Логинов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "contact",
+          "status_date": "2025-10-16",
+          "needs_call": false
+        },
+        {
+          "name": "Владислав Сахаров",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-10-10",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Маркетплейс UPGRADE",
+      "time_start": "13:00",
+      "time_end": "14:30",
+      "name": "Стратегии топ-селлеров",
+      "description": "- развитие собственных брендов<br>- инвестиции в команду",
+      "speakers_count": 11,
+      "questions_count": 3,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Влад Широбоков",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-09",
+          "needs_call": false
+        },
+        {
+          "name": "Александр Решетников",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-08",
+          "needs_call": false
+        },
+        {
+          "name": "Олег Ефремов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-26",
+          "needs_call": false
+        },
+        {
+          "name": "Мария Соловьева",
+          "role": "moderator",
+          "presentation_title": "Ассортиментная стратегия бренда-производителя для разных каналов продаж",
+          "status": "confirmed",
+          "status_date": "2025-09-15",
+          "needs_call": false
+        },
+        {
+          "name": "Денис Давыдов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Дарья Меланич",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-09",
+          "needs_call": false
+        },
+        {
+          "name": "Рудольф Винтер",
+          "role": "moderator",
+          "presentation_title": "Системный подход к продвижению на маркетплейсах с использованием ИИ-инструментов Тезисы: -Каркас роста: воронка «показы → клики → конверсия → LTV», роли контента, рейтинга, цены, наличия, логистики и оекдамы. -Где ИИ даёт +X% сейчас. -Архитектура данных: как собрать сквозную аналитику продвижения на маркетплейсе. -Кейсы -Чек-лист системности на 30 дней.",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Али Оздиев",
+          "role": "moderator",
+          "presentation_title": "Как ИИ \"убивает\" 80% рутинных задач и увеличивает продажи Как нейросети помогают автоматизировать работу с инфографикой и изображениями, анализировать конкурентов и повышать конверсии. Готовые инструменты и практическая польза для бизнеса.",
+          "status": "declined",
+          "status_date": null,
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Маркетплейс UPGRADE",
+      "time_start": "15:30",
+      "time_end": "17:00",
+      "name": "Маркетинг и ценообразование на маркетплейсах, автоматизация бизнес-процессов:",
+      "description": null,
+      "speakers_count": 7,
+      "questions_count": 5,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Роман Воробьёв",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-09",
+          "needs_call": false
+        },
+        {
+          "name": "Алена Шарипова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-11",
+          "needs_call": false
+        },
+        {
+          "name": "Вита Носова",
+          "role": "moderator",
+          "presentation_title": "Опыт ребрендинга косметического бренда в 2025 году от POLUBVI (экс PROSTO cosmetics)",
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Александра Татаринцева",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-23",
+          "needs_call": false
+        },
+        {
+          "name": "Александр Масляк",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Валентин Марченко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Антон Москаленко",
+          "role": "moderator",
+          "presentation_title": "Автоматизация маркетинга. что и как можно автоматизировать: - что нужно сделать, чтобы ИИ-агенты приносили пользу: настраиваем бизнес-процессы - ИИ для управления рекламой на маркетплейсах - автоматизация SEO с подбором релевантных ключей - генерация текстов и изображений вместо ручной работы - как продвигать товар в новых условиях, ручные и единые ставки",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Маркетплейс UPGRADE",
+      "time_start": "17:30",
+      "time_end": "18:30",
+      "name": "Операционные стратегии для продавцов маркетплейсов",
+      "description": "Обсуждаем не FBO и FBS, а лучшие практики по закупке, логистике, автоматизации и финансированию бизнеса. Почему финансовое планирование должно быть на 1-м месте в задачах растущих селлеров. Когда и почему стоит запускать свой собственный интернет-магазин",
+      "speakers_count": 22,
+      "questions_count": 4,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Гала Гольдберг",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-09",
+          "needs_call": false
+        },
+        {
+          "name": "Юлиана Гордон",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-10-06",
+          "needs_call": false
+        },
+        {
+          "name": "Наталья Румянцева",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-21",
+          "needs_call": false
+        },
+        {
+          "name": "Екатерина Медведева",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-19",
+          "needs_call": false
+        },
+        {
+          "name": "Евгений Трифонов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-08",
+          "needs_call": false
+        },
+        {
+          "name": "Таисия Бабеша",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-10",
+          "needs_call": false
+        },
+        {
+          "name": "Кирилл Орлов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-19",
+          "needs_call": false
+        },
+        {
+          "name": "Владислав Иванов",
+          "role": "moderator",
+          "presentation_title": "UNIT-экономика: рентген для бизнеса на маркетплейсе. Важные разделы и метрики внутри юнит-экономики Почему нельзя заходить на маркетплейс без неё Как правильно посчитать юнит-экономику (топ 5 ошибок селлеров) Сравнение unit-экономики маркетплейса и собственного сайта",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Виталий Шахматов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "contact",
+          "status_date": "2025-10-03",
+          "needs_call": false
+        },
+        {
+          "name": "Денис Степанян",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-15",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "OMNI Beauty",
+      "time_start": "11:00",
+      "time_end": "12:30",
+      "name": "Рынок косметики: аналитика, тренды, операционная работа",
+      "description": "Сессия для владельцев бизнеса, коммерческих и Е-Сом директоров, СМО",
+      "speakers_count": 10,
+      "questions_count": 3,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Евгения Лампадова",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-30",
+          "needs_call": false
+        },
+        {
+          "name": "Евгений Кузнецов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-24",
+          "needs_call": false
+        },
+        {
+          "name": "Милина Дьякова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Сергей Плешаков",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Вита Носова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Ксения Медведева",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-16",
+          "needs_call": false
+        },
+        {
+          "name": "Виталий Попков",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "contact",
+          "status_date": "2025-10-09",
+          "needs_call": false
+        },
+        {
+          "name": "Инна Бабич",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Сергей Остриков",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "OMNI Beauty",
+      "time_start": "13:00",
+      "time_end": "14:30",
+      "name": "Маркетинг для бьюти-брендов: как расти на конкурентом рынке",
+      "description": "Сессия для владельцев beauty-брендов, СМО, Е-Сom и коммерческих директоров",
+      "speakers_count": 9,
+      "questions_count": 3,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Сергей Остриков",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Илья Калинин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-11",
+          "needs_call": false
+        },
+        {
+          "name": "Алина Купорова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-24",
+          "needs_call": false
+        },
+        {
+          "name": "Алексей Жданов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Мария Воробьёва",
+          "role": "moderator",
+          "presentation_title": "Digital маркетинг в эпоху отмены. Тезисы: 1. Импортозамещение запрещенной социальной сети: есть ли замена и как с ней работать 2. Коллаборации нового поколения: слив бюджета или новые возможности 3. Бюджеты есть, а площадок нет: какие инструменты брать в тест, а от чего стоит отказаться и как планировать 2026 год.",
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Анна Дычева-Смирнова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-06",
+          "needs_call": false
+        },
+        {
+          "name": "Виолетта Юрьева",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-19",
+          "needs_call": false
+        },
+        {
+          "name": "Диана Курбатова",
+          "role": "moderator",
+          "presentation_title": "Тема: Время перезагрузки: трансформация бизнес-формата. Краткое описание: Магнит Косметик - лидер с крупной долей рынка по ключевым категориям. Но мир стремительно меняется, и вместе с изменениями растет и конкуренция. Кто вчера еще не был твоим конкурентом, становится им сегодня (рост маркетплейсов, новых форматов и тд.). Ввиду чего становится очевидно, что привычная модель требует тотальной перезагрузки.",
+          "status": "confirmed",
+          "status_date": "2025-10-16",
+          "needs_call": false
+        },
+        {
+          "name": "Алексей Беспятых",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Мастер - класс \"Создание видео для маркетинга при помощи ИИ\"",
+      "time_start": "14:40",
+      "time_end": "15:20",
+      "name": "Создание видео для маркетинга при помощи ИИ",
+      "description": null,
+      "speakers_count": 1,
+      "questions_count": 5,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Борис Агатов",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-09",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "E-Grocery",
+      "time_start": "15:30",
+      "time_end": "17:00",
+      "name": "Задачи на 2026 г.: борьба за долю рынка или получение прибыли",
+      "description": null,
+      "speakers_count": 13,
+      "questions_count": 3,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Мария Ерунова",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-30",
+          "needs_call": false
+        },
+        {
+          "name": "Екатерина Рыжова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-11",
+          "needs_call": false
+        },
+        {
+          "name": "Павел Фунтиков",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-27",
+          "needs_call": false
+        },
+        {
+          "name": "Анна Захарова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Игорь Затонский",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Светлана Циркина",
+          "role": "moderator",
+          "presentation_title": "Омниканальность, основанная на данных: повышение эффективности продаж через W2A и медийные кампании",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Регина Шайкунова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Арина Чеклецова",
+          "role": "moderator",
+          "presentation_title": "Кейс Ашан и i-Media: привлечение и реактивация пользователей e-grocery приложений в новых рыночных условиях Внедрили персональные промокоды и готовые корзины для роста среднего чека. Использовали Look-alike и Web2App для эффективной реактивации пользователей. Таргетировали ключевые категории для повышения маржинальности заказов.",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Илья Елпанов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "contact",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Борис Базанов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-08",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "E-Grocery",
+      "time_start": "17:30",
+      "time_end": "18:30",
+      "name": "Операционная работа: бизнес-модели, логистика, IT, автоматизация бизнес-процессов, финансовые инструменты",
+      "description": null,
+      "speakers_count": 12,
+      "questions_count": 3,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Мария Ерунова",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-30",
+          "needs_call": false
+        },
+        {
+          "name": "Кирилл Белюсев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Софья Леина",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-15",
+          "needs_call": false
+        },
+        {
+          "name": "Александр Чернов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-08",
+          "needs_call": false
+        },
+        {
+          "name": "Галина Ящук",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Вячеслав Горяйнов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Илья Климашин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-10-09",
+          "needs_call": false
+        },
+        {
+          "name": "Галина Красильщикова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-08",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Мастер - класс: \"Как увеличить видимость товаров/услуг и бренда в нейросетях и ИИ\"",
+      "time_start": "11:30",
+      "time_end": "12:15",
+      "name": "Как увеличить видимость товаров/услуг и бренда в нейросетях и ИИ",
+      "description": null,
+      "speakers_count": 2,
+      "questions_count": 4,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Илья Русаков",
+          "role": "speaker",
+          "presentation_title": "Мастер-класс: Как увеличить видимость товаров/услуг и бренда в нейросетях и ИИ Тезисы: - Какой объем аудитории и потенциальных клиентов уже в нейросетях - Как нейросети выбирают, что вставить в ответ - Механики попадания в рекомендации нейросетей - Что делать прямо сейчас: шаги и роадмап",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Мария Сафронова",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Автотовары",
+      "time_start": "13:00",
+      "time_end": "14:30",
+      "name": "Автотовары, запчасти, автохимия и аксессуары.",
+      "description": "Сессия для владельцев бизнеса, коммерческих директоров, Е-Сom директоров, СМО",
+      "speakers_count": 18,
+      "questions_count": 4,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Анна Дундукова",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-24",
+          "needs_call": false
+        },
+        {
+          "name": "Анастасия Ломаченко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-30",
+          "needs_call": false
+        },
+        {
+          "name": "Данила Цеплинский",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-18",
+          "needs_call": false
+        },
+        {
+          "name": "Сергей Поляков",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Никита Кожемякин",
+          "role": "moderator",
+          "presentation_title": "Автомобильные шины и моторные масла 2025: ключевые тренды сегодня и завтра",
+          "status": "confirmed",
+          "status_date": "2025-09-10",
+          "needs_call": false
+        },
+        {
+          "name": "Юлия Трушкова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-18",
+          "needs_call": false
+        },
+        {
+          "name": "Елена Кравец",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-10-06",
+          "needs_call": false
+        },
+        {
+          "name": "Алексей Качурин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-10",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Бизнес-разборы: как увеличить доход и масштабировать бизнес",
+      "time_start": "14:30",
+      "time_end": "15:30",
+      "name": "Бизнес-разборы — это твой шанс вырваться из замкнутого круга «работаю, но не расту» и начать масштабировать свое дело.",
+      "description": "Как увеличить доход на 30–50% уже в этом месяце — без сложных схем, выгорания и изнурительной работы 24/7. Даже если у тебя нет команды, бюджета на рекламу в маленьком городе, сочных кейсов в портфолио, а в записной книжке всего три контакта, и ни один из них — не клиент.<br><br>Твой самый короткий путь к кратному росту — это формат, где Владимир смотрит на твою ситуацию со стороны, помогает увидеть слепые зоны, находит точки роста и дает конкретный план действий.<br><br>Это не «вдохновился — ушел», а «разобрался, понял, внедрил — и вырос».<br><br>Формат встречи:<br> • продолжительность — 1 час<br> • разбор одного участника — 15 минут",
+      "speakers_count": 1,
+      "questions_count": 0,
+      "_questions_preview": [],
+      "_speakers_preview": [
+        {
+          "name": "Владимир Федоров",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-02",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Семинар «Рост независимости от маркетплейсов»",
+      "time_start": "15:30",
+      "time_end": "17:00",
+      "name": "Рост независимости от маркетплейсов",
+      "description": "Свой канал продаж: как производителю вырасти за пределы маркетплейсов и сделать e-commerce прибыльным в условиях кадрового дефицита",
+      "speakers_count": 4,
+      "questions_count": 4,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Алла Смородинова",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-26",
+          "needs_call": false
+        },
+        {
+          "name": "Юрий Султанов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-20",
+          "needs_call": false
+        },
+        {
+          "name": "Владимир Скворцов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-20",
+          "needs_call": false
+        },
+        {
+          "name": "Андрей Малюженков",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-20",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "Семинар «Premium сегмент на Fashion рынке РФ»",
+      "time_start": "17:30",
+      "time_end": "18:30",
+      "name": "Premium Fashion в России: ожидания, цены, параметры, потребитель.",
+      "description": null,
+      "speakers_count": 2,
+      "questions_count": 6,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Ольга Штейнберг",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-23",
+          "needs_call": false
+        },
+        {
+          "name": "Станислава Нажмитдинова",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-23",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "OMNI Fashion",
+      "time_start": "11:00",
+      "time_end": "12:30",
+      "name": "Fashion рынок 2025: от аналитики к стратегиям",
+      "description": "Сессия для владельцев бизнеса, коммерческих и Е-Сом директоров, СМО",
+      "speakers_count": 17,
+      "questions_count": 3,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Алла Смородинова",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-12",
+          "needs_call": false
+        },
+        {
+          "name": "Вера Левина",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Екатерина Савушкина",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-10",
+          "needs_call": false
+        },
+        {
+          "name": "Андрей Лебединский",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-08",
+          "needs_call": false
+        },
+        {
+          "name": "Антон Смирнов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Галина Кравченко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "contact",
+          "status_date": "2026-01-28",
+          "needs_call": false
+        },
+        {
+          "name": "Елена Чеховская",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-10-14",
+          "needs_call": false
+        },
+        {
+          "name": "Алексей Николаев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-27",
+          "needs_call": false
+        },
+        {
+          "name": "Евгений Богданов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-08",
+          "needs_call": false
+        },
+        {
+          "name": "Анна Лебсак-Клейманс",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Мария Полканова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Андрей Осокин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Андрей Ториков",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "OMNI Fashion",
+      "time_start": "13:00",
+      "time_end": "14:30",
+      "name": "eCommerce-платформы и рынок Fashion",
+      "description": null,
+      "speakers_count": 23,
+      "questions_count": 4,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Станислава Нажмитдинова",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-12",
+          "needs_call": false
+        },
+        {
+          "name": "Станислав Елышев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-10-21",
+          "needs_call": false
+        },
+        {
+          "name": "Елена Белоусова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-29",
+          "needs_call": false
+        },
+        {
+          "name": "Никита Захаров",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Анастасия Кинжигалиева",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Андрей Лапин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "contact",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Ольга Москвичева",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Алексей Николаев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-27",
+          "needs_call": false
+        },
+        {
+          "name": "Алексей Сергеев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Андрей Каширин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-10-07",
+          "needs_call": false
+        },
+        {
+          "name": "Елена Рассказова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-28",
+          "needs_call": false
+        },
+        {
+          "name": "Станислав Адволоткин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "review",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "OMNI Fashion",
+      "time_start": "15:30",
+      "time_end": "17:00",
+      "name": "Fashion маркетинг: от стратегий к плану действий на 2026 год",
+      "description": null,
+      "speakers_count": 12,
+      "questions_count": 3,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Станислава Нажмитдинова",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-12",
+          "needs_call": false
+        },
+        {
+          "name": "Елена Ложкина",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Елена Лишиленко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-01",
+          "needs_call": false
+        },
+        {
+          "name": "Любовь Орлова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-05",
+          "needs_call": false
+        },
+        {
+          "name": "Мария Чуйко",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Ольга Сафронова",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-26",
+          "needs_call": false
+        },
+        {
+          "name": "Денис Маханько",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-08-26",
+          "needs_call": false
+        },
+        {
+          "name": "Константин Мишакин",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "declined",
+          "status_date": "2025-09-12",
+          "needs_call": false
+        }
+      ]
+    },
+    {
+      "track_name": "OMNI Fashion",
+      "time_start": "17:30",
+      "time_end": "18:30",
+      "name": "Привлечение инвестиций в Fashion ритейл:",
+      "description": "- запуск новых бизнес моделей и форматов<br>- масштабирование существующих форматов<br>- технологическое перевооружение и автоматизация<br>- развитие собственной логистической инфраструктуры",
+      "speakers_count": 25,
+      "questions_count": 4,
+      "_questions_preview": [
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        },
+        {
+          "order": 0,
+          "title": null
+        }
+      ],
+      "_speakers_preview": [
+        {
+          "name": "Андрей Якоби",
+          "role": "speaker",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-10",
+          "needs_call": false
+        },
+        {
+          "name": "Анастасия Василькова",
+          "role": "moderator",
+          "presentation_title": "Бизнес модель и новые рынки",
+          "status": "confirmed",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Дарья Яковлева",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-25",
+          "needs_call": false
+        },
+        {
+          "name": "Семён Пименов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-05",
+          "needs_call": false
+        },
+        {
+          "name": "Дмитрий Филимонов",
+          "role": "moderator",
+          "presentation_title": "\"Повышение производительности сотрудников модной розницы с помощью HRTech-решений и упрощая операции в торговом зале\"",
+          "status": "confirmed",
+          "status_date": null,
+          "needs_call": false
+        },
+        {
+          "name": "Екатерина Саввиди",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-24",
+          "needs_call": false
+        },
+        {
+          "name": "Ян Григорьев",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "confirmed",
+          "status_date": "2025-09-10",
+          "needs_call": false
+        },
+        {
+          "name": "Максим Автухов",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "contact",
+          "status_date": "2025-09-25",
+          "needs_call": false
+        },
+        {
+          "name": "Михаил Александров",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "review",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        },
+        {
+          "name": "Лусинэ Тоноян",
+          "role": "moderator",
+          "presentation_title": null,
+          "status": "review",
+          "status_date": "2025-08-22",
+          "needs_call": false
+        }
+      ]
+    }
+  ],
+  "speakers": [
+    {
+      "legacy_id": 191,
+      "name": "Влад Широбоков",
+      "company": null,
+      "position": "продюсер New Retail Forum",
+      "email": "vladislav.shirobokov@gmail.com"
+    },
+    {
+      "legacy_id": 102,
+      "name": "Алла Смородинова",
+      "company": "UnyBrands",
+      "position": "Founder",
+      "email": null
+    },
+    {
+      "legacy_id": 717,
+      "name": "Оксана Карпухина",
+      "company": "Gulliver Group",
+      "position": "Executive Director",
+      "email": null
+    },
+    {
+      "legacy_id": 662,
+      "name": "Евгений Сахаров",
+      "company": "\"Сантехника-Онлайн\"",
+      "position": "заместитель генерального директора",
+      "email": null
+    },
+    {
+      "legacy_id": 1354,
+      "name": "Сергей Кондаков",
+      "company": "Tom Tailor",
+      "position": "генеральный директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1827,
+      "name": "Евгений Романов",
+      "company": "divan.ru",
+      "position": "коммерческий директор",
+      "email": null
+    },
+    {
+      "legacy_id": 10,
+      "name": "Михаил Бурмистров",
+      "company": "INFOLine-Аналитика",
+      "position": "генеральный директор",
+      "email": "burmistrovmb@infoline.spb.ru"
+    },
+    {
+      "legacy_id": 219,
+      "name": "Игорь Тарасенко",
+      "company": "ИЛЬ ДЕ БОТЭ",
+      "position": "заместитель генерального директора по развитию бренда",
+      "email": "itarasenko@iledebeaute.ru"
+    },
+    {
+      "legacy_id": 1722,
+      "name": "Евгений Домашенко",
+      "company": "CORE.XP",
+      "position": "директор подразделения представления интересов арендаторов",
+      "email": null
+    },
+    {
+      "legacy_id": 1572,
+      "name": "Антон Макаров",
+      "company": "Диван. ру",
+      "position": "основатель",
+      "email": null
+    },
+    {
+      "legacy_id": 1561,
+      "name": "Дмитрий Пачин",
+      "company": "О'КЕЙ",
+      "position": "коммерческий директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1692,
+      "name": "Артур Муравьев",
+      "company": "ReStaff",
+      "position": "руководитель направления внешних коммуникаций",
+      "email": null
+    },
+    {
+      "legacy_id": 207,
+      "name": "Филипп Лабковский",
+      "company": null,
+      "position": "основатель DigitalVoice, КРОССПРОМО, Ex Global Ecom Director ECCO",
+      "email": null
+    },
+    {
+      "legacy_id": 473,
+      "name": "Илья Ярошенко",
+      "company": "Baon",
+      "position": "генеральный директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1399,
+      "name": "Дмитрий Селихов",
+      "company": "POIZON",
+      "position": "региональный директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1569,
+      "name": "Алексей Пролыгин",
+      "company": "Бетховен",
+      "position": "СЕО, СОО",
+      "email": null
+    },
+    {
+      "legacy_id": 728,
+      "name": "Максим Семиренко",
+      "company": "Imredi",
+      "position": "заместитель генерального директора по продажам и развитию бизнеса",
+      "email": null
+    },
+    {
+      "legacy_id": 1601,
+      "name": "Михаил Акулов",
+      "company": "Hobby World",
+      "position": "сооснователь и генеральный директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1665,
+      "name": "Андрей Серегин",
+      "company": "SWAIRS",
+      "position": "CEO",
+      "email": null
+    },
+    {
+      "legacy_id": 1777,
+      "name": "Сергей Панкин",
+      "company": "Банк ВТБ (ПАО)",
+      "position": "начальник управления \"Торгово-сервисные предприятия\", Блок СМБ",
+      "email": "spankin@vtb.ru"
+    },
+    {
+      "legacy_id": 1614,
+      "name": "Ирина Руденко",
+      "company": "Адамас",
+      "position": "CMO",
+      "email": null
+    },
+    {
+      "legacy_id": 1823,
+      "name": "Сюзанна Риттер",
+      "company": "О'КЕЙ",
+      "position": "Директор по коммерческим процессам и эффективности",
+      "email": null
+    },
+    {
+      "legacy_id": 62,
+      "name": "Марина Филиппова",
+      "company": "divan.ru",
+      "position": "директор по маркетингу",
+      "email": null
+    },
+    {
+      "legacy_id": 1540,
+      "name": "Николай Комаров",
+      "company": "Всёсмарт",
+      "position": "CMO",
+      "email": null
+    },
+    {
+      "legacy_id": 988,
+      "name": "Юлия Мещерякова",
+      "company": "Hoff",
+      "position": "директор по маркетингу",
+      "email": null
+    },
+    {
+      "legacy_id": 1556,
+      "name": "Елена Шемагонова",
+      "company": "О'КЕЙ",
+      "position": "CMO",
+      "email": null
+    },
+    {
+      "legacy_id": 1575,
+      "name": "Владислав Склянов",
+      "company": "Яндекс Маркет",
+      "position": "финансовый директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1584,
+      "name": "Анна Бранашко",
+      "company": "Русклимат",
+      "position": "начальник отдела корпоративного кредитования и страхования",
+      "email": null
+    },
+    {
+      "legacy_id": 1671,
+      "name": "Николай Мясников",
+      "company": null,
+      "position": "руководитель программы Executive MBA Школы бизнеса МИРБИС, основатель Бизнес-Клуба Бизнес Одиссея",
+      "email": null
+    },
+    {
+      "legacy_id": 1672,
+      "name": "Роман Гайнуллин",
+      "company": "Точка Банк",
+      "position": "эксперт в финансировании цепочек поставок.",
+      "email": null
+    },
+    {
+      "legacy_id": 1089,
+      "name": "Елена Пудичева",
+      "company": "Vprok. ru (Перекресток | X5 Group)",
+      "position": "Ex-коммерческий директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1292,
+      "name": "Максим Трухин",
+      "company": "Лемана PRO",
+      "position": "директор онлайн-бизнеса",
+      "email": null
+    },
+    {
+      "legacy_id": 1815,
+      "name": "Максим Виноградов",
+      "company": "КАНТ",
+      "position": "Генеральный директор, совладелец группы компаний",
+      "email": null
+    },
+    {
+      "legacy_id": 1580,
+      "name": "Светлана Тимоненкова",
+      "company": "METRO",
+      "position": "директор финансового контроллинга",
+      "email": null
+    },
+    {
+      "legacy_id": 1593,
+      "name": "Николай Евченко",
+      "company": "Хайв",
+      "position": null,
+      "email": null
+    },
+    {
+      "legacy_id": 1775,
+      "name": "Александр Барсуков",
+      "company": "Kassir.ru",
+      "position": "директор по маркетингу",
+      "email": null
+    },
+    {
+      "legacy_id": 502,
+      "name": "Алексей Ручкин",
+      "company": "Самолет",
+      "position": "директор по управлению клиентским опытом",
+      "email": null
+    },
+    {
+      "legacy_id": 1429,
+      "name": "Аскар Кинжигалиев",
+      "company": "Winelab (NOVABEV GROUP)",
+      "position": "ECOM & B2B директор",
+      "email": null
+    },
+    {
+      "legacy_id": 824,
+      "name": "Фёдор Вирин",
+      "company": "Data Insight",
+      "position": "партнёр",
+      "email": null
+    },
+    {
+      "legacy_id": 18,
+      "name": "Сергей Фадеев",
+      "company": "Stockmann",
+      "position": "директор департамента электронной коммерции",
+      "email": "s.fadeev@stockmann.ru"
+    },
+    {
+      "legacy_id": 1546,
+      "name": "Александр Ким",
+      "company": "Холодильник.ру",
+      "position": "директор по развитию услуг",
+      "email": null
+    },
+    {
+      "legacy_id": 1763,
+      "name": "Илья Абуд",
+      "company": "Банк ВТБ (ПАО)",
+      "position": "руководитель платформы Бизнес Коннект, Блок СМБ",
+      "email": "AbudIF@vtb.ru"
+    },
+    {
+      "legacy_id": 1685,
+      "name": "Татьяна Грибанова",
+      "company": "Avito",
+      "position": "руководитель направления по работе с ключевыми клиентами",
+      "email": null
+    },
+    {
+      "legacy_id": 551,
+      "name": "Иван Савушкин",
+      "company": "Nawinia Russia",
+      "position": "Коммерческий директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1123,
+      "name": "Кирилл Мусин",
+      "company": "Cozy Home",
+      "position": "директор по электронной торговле",
+      "email": null
+    },
+    {
+      "legacy_id": 1588,
+      "name": "Александр Хачиян",
+      "company": "AWG",
+      "position": "основатель",
+      "email": null
+    },
+    {
+      "legacy_id": 1314,
+      "name": "Георгий Хотьян",
+      "company": "\"Детский мир\"",
+      "position": "начальник управления разработки внутренних продуктов",
+      "email": null
+    },
+    {
+      "legacy_id": 1607,
+      "name": "Евгений Лимаренко",
+      "company": "Inventive Retail Group",
+      "position": "директор по информационным технологиям",
+      "email": null
+    },
+    {
+      "legacy_id": 657,
+      "name": "Иван Будник",
+      "company": "Гулливер Групп",
+      "position": "директор по электронной коммерции и цифровой трансформации",
+      "email": null
+    },
+    {
+      "legacy_id": 918,
+      "name": "Михаил Кудашев",
+      "company": "SOKOLOV",
+      "position": "директор по IT",
+      "email": null
+    },
+    {
+      "legacy_id": 1217,
+      "name": "Сергей Крикота",
+      "company": "IMSHOP.IO",
+      "position": "директор по развитию",
+      "email": null
+    },
+    {
+      "legacy_id": 1743,
+      "name": "Алексей Смуров",
+      "company": "DPD в России",
+      "position": "директор по цифровым продуктам",
+      "email": null
+    },
+    {
+      "legacy_id": 1742,
+      "name": "Елена Белецкая",
+      "company": "DPD в России",
+      "position": "директор по поддержке продаж и автоматизации процессов",
+      "email": null
+    },
+    {
+      "legacy_id": 1606,
+      "name": "Пётр Асратян",
+      "company": "Simple",
+      "position": "ex-директор по информационным технологиям",
+      "email": null
+    },
+    {
+      "legacy_id": 222,
+      "name": "Эдуард Романовский",
+      "company": "МЕБЕЛИК",
+      "position": "директор по процветанию",
+      "email": "Ed@mebelik.ru"
+    },
+    {
+      "legacy_id": 1605,
+      "name": "Ольга Черногаева",
+      "company": "Лэтуаль",
+      "position": "директор по цифровой трансформации",
+      "email": null
+    },
+    {
+      "legacy_id": 1336,
+      "name": "Ирина Иванова",
+      "company": "СДЭК",
+      "position": "руководитель направления развития клиентов",
+      "email": null
+    },
+    {
+      "legacy_id": 1822,
+      "name": "Денис Захаров",
+      "company": "SUNLIGHT",
+      "position": "продакт по логистике",
+      "email": null
+    },
+    {
+      "legacy_id": 1632,
+      "name": "Мария Рылеева",
+      "company": "IBC Global",
+      "position": "директора департамента по складам",
+      "email": null
+    },
+    {
+      "legacy_id": 1595,
+      "name": "Николай Карицкий",
+      "company": "Аскона",
+      "position": "директор по логистике",
+      "email": null
+    },
+    {
+      "legacy_id": 75,
+      "name": "Максим Лудин",
+      "company": "Gulliver",
+      "position": "директор по логистике",
+      "email": null
+    },
+    {
+      "legacy_id": 915,
+      "name": "Сергей Удалов",
+      "company": "SOKOLOV",
+      "position": "директор по логистике",
+      "email": null
+    },
+    {
+      "legacy_id": 807,
+      "name": "Мария Бурмистрова",
+      "company": "DPD в России",
+      "position": "директор по развитию ключевых клиентов",
+      "email": null
+    },
+    {
+      "legacy_id": 1573,
+      "name": "Абдуджаббор Абдувахидов",
+      "company": "Hoff",
+      "position": "директор по логистике",
+      "email": null
+    },
+    {
+      "legacy_id": 874,
+      "name": "Евгений Усенко",
+      "company": null,
+      "position": "ex-вице-президент по развитию группы Inventive, генеральный директор Inventive D2C",
+      "email": null
+    },
+    {
+      "legacy_id": 534,
+      "name": "Александр Багринцев",
+      "company": null,
+      "position": "независимый эксперт, дизраптор, ex-Head of Digital Marketing Sunlight",
+      "email": null
+    },
+    {
+      "legacy_id": 1619,
+      "name": "Алексей Качурин",
+      "company": "бренд Tamashi и Vedro.pro",
+      "position": "Head of Digital Marketing",
+      "email": null
+    },
+    {
+      "legacy_id": 1587,
+      "name": "Анастасия Савосина",
+      "company": "ЭТМ",
+      "position": "управляющий Каналом Продаж",
+      "email": null
+    },
+    {
+      "legacy_id": 160,
+      "name": "Наталья Храмцова",
+      "company": "Комус",
+      "position": "CRM-маркетолог",
+      "email": "khramtsovanatalia@gmail.com"
+    },
+    {
+      "legacy_id": 867,
+      "name": "Никита Шашкевич",
+      "company": "Кант",
+      "position": "CMO",
+      "email": "nsshashkevich@avito.ru"
+    },
+    {
+      "legacy_id": 1702,
+      "name": "Андрей Юкин",
+      "company": "RetailCRM",
+      "position": "Коммерческий директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1683,
+      "name": "Сергей Сташков",
+      "company": "Any",
+      "position": "CMO",
+      "email": null
+    },
+    {
+      "legacy_id": 979,
+      "name": "Сергей Орешин",
+      "company": "ВсеИнструменты.ру",
+      "position": "заместитель коммерческого директора по маркетингу",
+      "email": null
+    },
+    {
+      "legacy_id": 139,
+      "name": "Филипп Лабковский",
+      "company": null,
+      "position": "Основатель DigitalVoice, КРОССПРОМО, Ex Global Ecom Director ECCO",
+      "email": null
+    },
+    {
+      "legacy_id": 118,
+      "name": "Антон Букашкин",
+      "company": "СТД \"Петрович\"",
+      "position": "и.о. директора по маркетингу",
+      "email": null
+    },
+    {
+      "legacy_id": 504,
+      "name": "Степан Зайцев",
+      "company": "KIT SOLER, Impulse.guru",
+      "position": "основатель",
+      "email": null
+    },
+    {
+      "legacy_id": 1308,
+      "name": "Борис Базанов",
+      "company": "О'КЕЙ",
+      "position": "диджитал директор",
+      "email": null
+    },
+    {
+      "legacy_id": 624,
+      "name": "Александр Петров",
+      "company": "Blue Sleep",
+      "position": "CMO",
+      "email": null
+    },
+    {
+      "legacy_id": 606,
+      "name": "Ксения Миронова",
+      "company": "Poison Drop",
+      "position": "глава performance маркетинга",
+      "email": null
+    },
+    {
+      "legacy_id": 1558,
+      "name": "Никита Бураченко",
+      "company": null,
+      "position": "директор по электронной коммерции Viva la Vika и Choux",
+      "email": null
+    },
+    {
+      "legacy_id": 761,
+      "name": "Александра Саламатова",
+      "company": "Много лосося (X5)",
+      "position": "СМО",
+      "email": null
+    },
+    {
+      "legacy_id": 159,
+      "name": "Дмитрий Попов",
+      "company": "Кофемания",
+      "position": "Digital Marketing Director",
+      "email": "d.popov@coffeemania.ru"
+    },
+    {
+      "legacy_id": 533,
+      "name": "Анна Иоспа",
+      "company": null,
+      "position": "СЕО АПУМ",
+      "email": null
+    },
+    {
+      "legacy_id": 1559,
+      "name": "Вячеслав Филимонов",
+      "company": null,
+      "position": "директор по маркетингу Утконос (Лента онлайн), Ёбидоёби",
+      "email": null
+    },
+    {
+      "legacy_id": 1417,
+      "name": "Ольга Дроздова",
+      "company": "Tanuki Family",
+      "position": "Head of Acquisition",
+      "email": null
+    },
+    {
+      "legacy_id": 1686,
+      "name": "Ксения Головачева",
+      "company": null,
+      "position": "руководитель проектного офиса WIB",
+      "email": null
+    },
+    {
+      "legacy_id": 1571,
+      "name": "Диана Халилова",
+      "company": "Бургер Кинг",
+      "position": "руководитель отдела маркетинговых коммуникаций",
+      "email": null
+    },
+    {
+      "legacy_id": 938,
+      "name": "Александр Гриценко",
+      "company": null,
+      "position": "консультант по маркетингу и стратегии, к.э.н., доцент Высшей школы бизнеса МГУ, эксперт ЕМВА | МВА",
+      "email": null
+    },
+    {
+      "legacy_id": 55,
+      "name": "Максим Марухленко",
+      "company": "BikeLand",
+      "position": "CMO",
+      "email": "marmax05@gmail.com"
+    },
+    {
+      "legacy_id": 1008,
+      "name": "Никита Любаев",
+      "company": "Gulliver",
+      "position": "CMO",
+      "email": null
+    },
+    {
+      "legacy_id": 1673,
+      "name": "Дарья Голованенко",
+      "company": null,
+      "position": "Сооснователь группы IT-компаний ILINE GROUP",
+      "email": null
+    },
+    {
+      "legacy_id": 1004,
+      "name": "Кирилл Кармазинский",
+      "company": "AISO",
+      "position": "генеральный директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1117,
+      "name": "Артем Разгоняев",
+      "company": "Связь.ON",
+      "position": "руководитель CRM&Loyalty",
+      "email": null
+    },
+    {
+      "legacy_id": 1025,
+      "name": "Роман Каган",
+      "company": "SYNERGETIC",
+      "position": "Head of digital",
+      "email": null
+    },
+    {
+      "legacy_id": 1400,
+      "name": "Яна Турчинская",
+      "company": "divan.ru",
+      "position": "CMO",
+      "email": null
+    },
+    {
+      "legacy_id": 1719,
+      "name": "Виктория Грачёва",
+      "company": "L'Occitane",
+      "position": "руководитель CRM",
+      "email": null
+    },
+    {
+      "legacy_id": 1555,
+      "name": "Светлана Беликова",
+      "company": null,
+      "position": "руководитель отдела CRM и программы лояльности в Ситидрайве",
+      "email": null
+    },
+    {
+      "legacy_id": 1563,
+      "name": "Дарья Арзямова",
+      "company": "«Кофемания»",
+      "position": "руководитель программы лояльности и CRM",
+      "email": null
+    },
+    {
+      "legacy_id": 1356,
+      "name": "Андрей Скачек",
+      "company": "М.Видео",
+      "position": "руководитель департамента программ лояльности, целевых коммуникаций и клиентской аналитики",
+      "email": null
+    },
+    {
+      "legacy_id": 1594,
+      "name": "Светлана Борисова",
+      "company": null,
+      "position": "руководитель CRM и программы лояльности в Askona",
+      "email": null
+    },
+    {
+      "legacy_id": 1560,
+      "name": "Вероника Тульчевская",
+      "company": "кикшеринг МТС Юрент",
+      "position": "руководитель CRM",
+      "email": null
+    },
+    {
+      "legacy_id": 264,
+      "name": "Борис Агатов",
+      "company": null,
+      "position": "эксперт по инновациям в ритейле, автор концепции \"Магазин 4.0\"",
+      "email": null
+    },
+    {
+      "legacy_id": 1019,
+      "name": "Вячеслав Смирнов",
+      "company": "FINN FLARE",
+      "position": "директор по информационным технологиям",
+      "email": null
+    },
+    {
+      "legacy_id": 1550,
+      "name": "Павел Антипов",
+      "company": "Ароматный мир",
+      "position": "директор продуктовой разработки",
+      "email": null
+    },
+    {
+      "legacy_id": 1618,
+      "name": "Владислав Золотов",
+      "company": "«Сантехника-Онлайн»",
+      "position": "Руководитель департамента разработки",
+      "email": null
+    },
+    {
+      "legacy_id": 170,
+      "name": "Василий Тарасевич",
+      "company": "Pbforest.ru",
+      "position": "директор по технологиям",
+      "email": "kasstech.info@gmail.com"
+    },
+    {
+      "legacy_id": 1820,
+      "name": "Роман Хамутских",
+      "company": "Факт",
+      "position": "Директор по развитию веб-интегратора",
+      "email": "r.khamutskikh@fact.digital"
+    },
+    {
+      "legacy_id": 1744,
+      "name": "Алексей Загайнов",
+      "company": null,
+      "position": "директор по продвижению решений в ритейле и FMCG К2Тех",
+      "email": null
+    },
+    {
+      "legacy_id": 654,
+      "name": "Денис Левченко",
+      "company": "Рольф",
+      "position": "Директор по IT и цифровой трансформации",
+      "email": null
+    },
+    {
+      "legacy_id": 217,
+      "name": "Дмитрий Захаров",
+      "company": "Baon",
+      "position": "IT-директор",
+      "email": "dz@baon.ru"
+    },
+    {
+      "legacy_id": 859,
+      "name": "Рафаиль Салихов",
+      "company": "\"ЛЕНТА\"",
+      "position": "ex-директор по развитию, Дирекция по информационным технологиям",
+      "email": null
+    },
+    {
+      "legacy_id": 1809,
+      "name": "Елена Панченко",
+      "company": "ВинЛаб",
+      "position": "Директор по розничным технологиям",
+      "email": null
+    },
+    {
+      "legacy_id": 349,
+      "name": "Элвин Рахманкулов",
+      "company": "Gloria Jeans",
+      "position": "ex-вице-президент по IT",
+      "email": null
+    },
+    {
+      "legacy_id": 1735,
+      "name": "Алексей Лукьянов",
+      "company": "Всёмарт",
+      "position": "Начальник отдела мерчендайзинга,",
+      "email": null
+    },
+    {
+      "legacy_id": 1656,
+      "name": "Дмитрий Бородовицын",
+      "company": "HappyLand (Бренды Laimon Fresh, Jaguar, Black Russians)",
+      "position": "заместитель Директора по цифровой трансформации",
+      "email": null
+    },
+    {
+      "legacy_id": 1779,
+      "name": "Ольга Белоусова",
+      "company": "Madame Coco",
+      "position": "Директор по электронной коммерции",
+      "email": null
+    },
+    {
+      "legacy_id": 465,
+      "name": "Михаил Прышляк",
+      "company": "MD Audit",
+      "position": "коммерческий директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1750,
+      "name": "Дмитрий Самаркин",
+      "company": null,
+      "position": "ex-региональный директор Zenden",
+      "email": null
+    },
+    {
+      "legacy_id": 171,
+      "name": "Валентина Ларкина",
+      "company": "Лемана ПРО (Леруа Мерлен)",
+      "position": "Head of CX",
+      "email": null
+    },
+    {
+      "legacy_id": 165,
+      "name": "Александр Афанасьев",
+      "company": "LEOMAX",
+      "position": "IT-директор",
+      "email": "alexander@afanaciev.ru"
+    },
+    {
+      "legacy_id": 271,
+      "name": "Андрей Матвеев",
+      "company": "OBI",
+      "position": "ex-заместитель генерального директора по ИТ и логистике",
+      "email": null
+    },
+    {
+      "legacy_id": 1615,
+      "name": "Андрей Руцкин",
+      "company": "Холодильник ру",
+      "position": "заместитель директора по инновациям",
+      "email": null
+    },
+    {
+      "legacy_id": 1359,
+      "name": "Алексей Еферов",
+      "company": "Аптечная сеть 36.6",
+      "position": "CIO",
+      "email": null
+    },
+    {
+      "legacy_id": 218,
+      "name": "Виктор Крылов",
+      "company": "Билайн",
+      "position": "директор по продукту CDP (Customer Data Platform)",
+      "email": null
+    },
+    {
+      "legacy_id": 1583,
+      "name": "Белугина Яна",
+      "company": "Lenta",
+      "position": "монетизация и клиентская аналитика",
+      "email": null
+    },
+    {
+      "legacy_id": 1020,
+      "name": "Елена Шестова",
+      "company": "Всёмарт",
+      "position": "Руководитель платформы лояльности",
+      "email": null
+    },
+    {
+      "legacy_id": 1734,
+      "name": "Елизавета Иосипян",
+      "company": "Nichebox",
+      "position": "Global Head of E-commerce",
+      "email": null
+    },
+    {
+      "legacy_id": 237,
+      "name": "Игорь Татаренко",
+      "company": "Русклимат",
+      "position": "директор Департамента Мастер Дата ТПХ",
+      "email": null
+    },
+    {
+      "legacy_id": 920,
+      "name": "Татьяна Умряева",
+      "company": "Lamoda",
+      "position": "управляющий директор по продукту",
+      "email": null
+    },
+    {
+      "legacy_id": 1616,
+      "name": "Александр Яковлев",
+      "company": "М.Видео-Эльдорадо",
+      "position": "руководитель департамента операционного контроля и аналитики",
+      "email": null
+    },
+    {
+      "legacy_id": 1641,
+      "name": "Анастасия Уткина",
+      "company": "Lamoda",
+      "position": "директор В2В продукта",
+      "email": null
+    },
+    {
+      "legacy_id": 1790,
+      "name": "Ирина Коваленко",
+      "company": "SteadyControl",
+      "position": "Лидер направления SteadyControl Мебель",
+      "email": null
+    },
+    {
+      "legacy_id": 1110,
+      "name": "Анна Баранова",
+      "company": "EFFSTEP",
+      "position": "основатель",
+      "email": null
+    },
+    {
+      "legacy_id": 1018,
+      "name": "Лев Овчинников",
+      "company": null,
+      "position": "предприниматель, бизнес-консультант, соснователь Owell, Unatuna (витамины,БАД)",
+      "email": null
+    },
+    {
+      "legacy_id": 130,
+      "name": "Ян Григорьев",
+      "company": "Tezido",
+      "position": "сооснователь бренда",
+      "email": "yan@tezido.com"
+    },
+    {
+      "legacy_id": 1703,
+      "name": "Евгений Кузнецов",
+      "company": "hollyshop",
+      "position": "коммерческий директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1705,
+      "name": "Кристина Тишкова",
+      "company": "hollyshop",
+      "position": "основательница и CEO",
+      "email": null
+    },
+    {
+      "legacy_id": 1787,
+      "name": "Антон Олейник",
+      "company": null,
+      "position": "судебный юрист, лаборант-исследователь Центра САПР РУДН им. Патриса",
+      "email": null
+    },
+    {
+      "legacy_id": 1801,
+      "name": "Ирина Быковская",
+      "company": null,
+      "position": "селлер на маркетплейсах, 6 лет в товарном бизнесе, работаю с Китаем. В 2024 году запустила линейку уходовой косметики для волос (представлены в Золотом Яблоке).",
+      "email": null
+    },
+    {
+      "legacy_id": 1752,
+      "name": "Маргарита Евстигнеева",
+      "company": null,
+      "position": "налоговый эксперт со стажем 17+ лет в профессии, дипломированный юрист, Член рабочей группы ГД РФ по маркетплейсам, Сео ЮК РиксКонсалт, Президент АПТЭП.",
+      "email": null
+    },
+    {
+      "legacy_id": 1724,
+      "name": "Наталья Иванова",
+      "company": "ИнФинанс",
+      "position": "Основатель консалтинговой компании ИнФинанс",
+      "email": null
+    },
+    {
+      "legacy_id": 1597,
+      "name": "Алёна Линькова",
+      "company": "OLDOS",
+      "position": "Head of e-commerce",
+      "email": null
+    },
+    {
+      "legacy_id": 1600,
+      "name": "Герман Шеховцев",
+      "company": "Soho Fashion Group",
+      "position": "управляющий директор",
+      "email": null
+    },
+    {
+      "legacy_id": 347,
+      "name": "Надежда Алямкина",
+      "company": "Hoff",
+      "position": "руководитель Департамента маркетплейса",
+      "email": null
+    },
+    {
+      "legacy_id": 1562,
+      "name": "Виталий Лежнев",
+      "company": "Домовой",
+      "position": "руководитель Еком и диджитал сети магазинов",
+      "email": null
+    },
+    {
+      "legacy_id": 1570,
+      "name": "Артем Яськов",
+      "company": "Cozy Home",
+      "position": "операционный директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1549,
+      "name": "Майя Нарбутт",
+      "company": "Сантехника-онлайн",
+      "position": "руководитель направления дополнительных сервисов",
+      "email": null
+    },
+    {
+      "legacy_id": 1771,
+      "name": "Иван Щедрин",
+      "company": null,
+      "position": "Сооснователь компании FITTIN , эксперт по ИИ",
+      "email": null
+    },
+    {
+      "legacy_id": 986,
+      "name": "Денис Егоров",
+      "company": "Холодильник.ру",
+      "position": "директор по маркетингу и электронной коммерции",
+      "email": null
+    },
+    {
+      "legacy_id": 1773,
+      "name": "Наталья Машкова",
+      "company": "Holding-Finance Broker",
+      "position": "Руководитель отдела продаж",
+      "email": null
+    },
+    {
+      "legacy_id": 1416,
+      "name": "Валерия Зелинская",
+      "company": "FCP media",
+      "position": "основатель",
+      "email": null
+    },
+    {
+      "legacy_id": 1415,
+      "name": "Мария Гаглоева",
+      "company": "FCP media",
+      "position": "основатель",
+      "email": null
+    },
+    {
+      "legacy_id": 703,
+      "name": "Алексей Никонов",
+      "company": "УЮТНАЯ СРЕДА",
+      "position": "собственник мебельной фабрики",
+      "email": null
+    },
+    {
+      "legacy_id": 1688,
+      "name": "Владимир Федоров",
+      "company": null,
+      "position": "создатель бренда SCANDDYY с дилерской сетью 150+ партнеров, собственного ТВ-проекта Dom&Decor",
+      "email": null
+    },
+    {
+      "legacy_id": 1643,
+      "name": "Виталий Кривошеев",
+      "company": "LIGA",
+      "position": "учредитель и генеральный директор компании",
+      "email": null
+    },
+    {
+      "legacy_id": 1586,
+      "name": "Игорь Подстольный",
+      "company": "МК Шатура",
+      "position": "директор по развитию бизнеса",
+      "email": null
+    },
+    {
+      "legacy_id": 1745,
+      "name": "Лиля Кац",
+      "company": "мебельная фабрика Мария",
+      "position": "коммерческий директор",
+      "email": null
+    },
+    {
+      "legacy_id": 638,
+      "name": "Алексей Райман",
+      "company": "Нонтон",
+      "position": "директор по маркетингу",
+      "email": null
+    },
+    {
+      "legacy_id": 464,
+      "name": "Елена Кудрявцева",
+      "company": "Мебельная фабрика Мария",
+      "position": "руководитель управления альтернативных продаж",
+      "email": null
+    },
+    {
+      "legacy_id": 1691,
+      "name": "Максим Логинов",
+      "company": "JVO",
+      "position": "CEO",
+      "email": null
+    },
+    {
+      "legacy_id": 1576,
+      "name": "Наталья Кинелева",
+      "company": "\"Ярмарка мастеров\"",
+      "position": "генеральный директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1564,
+      "name": "Вероника Перетягина",
+      "company": "Flowwow",
+      "position": "руководитель отдела по привлечению и сопровождению селлеров",
+      "email": null
+    },
+    {
+      "legacy_id": 1821,
+      "name": "Сергей Панкин",
+      "company": "Банк ВТБ (ПАО)",
+      "position": "начальник управления \"Торгово-сервисные предприятия\", Блок СМБ",
+      "email": "spankin@vtb.ru"
+    },
+    {
+      "legacy_id": 949,
+      "name": "Андрей Мелехов",
+      "company": "Спортмастер",
+      "position": "GM маркетплейса",
+      "email": null
+    },
+    {
+      "legacy_id": 1040,
+      "name": "Максим Логинов",
+      "company": "JVO",
+      "position": "генеральный директор, со-основатель",
+      "email": null
+    },
+    {
+      "legacy_id": 1786,
+      "name": "Владислав Сахаров",
+      "company": "Uzum",
+      "position": "директор по развитию бизнеса",
+      "email": null
+    },
+    {
+      "legacy_id": 1394,
+      "name": "Александр Решетников",
+      "company": "Автостэлс",
+      "position": "руководитель направления маркетплейсов",
+      "email": null
+    },
+    {
+      "legacy_id": 710,
+      "name": "Олег Ефремов",
+      "company": "Feron",
+      "position": "директор по электронной коммерции",
+      "email": null
+    },
+    {
+      "legacy_id": 1644,
+      "name": "Мария Соловьева",
+      "company": "ТМ Choupette",
+      "position": "коммерческий директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1224,
+      "name": "Денис Давыдов",
+      "company": "СДЭК",
+      "position": "директор по корпоративным продажам",
+      "email": null
+    },
+    {
+      "legacy_id": 1657,
+      "name": "Дарья Меланич",
+      "company": null,
+      "position": "8 лет в товарном бизнесе, 4года в консалтинге для селлеров. Бренды электроники и бытовой техники продаются на 7 мп в России и Америке. 150млн+ на контенте",
+      "email": null
+    },
+    {
+      "legacy_id": 1757,
+      "name": "Рудольф Винтер",
+      "company": null,
+      "position": "e-commerce директор Points:Ecom",
+      "email": null
+    },
+    {
+      "legacy_id": 1687,
+      "name": "Али Оздиев",
+      "company": null,
+      "position": "Основатель и CEO Fabula AI",
+      "email": null
+    },
+    {
+      "legacy_id": 992,
+      "name": "Роман Воробьёв",
+      "company": null,
+      "position": "AI Evangelist gptfox.io",
+      "email": null
+    },
+    {
+      "legacy_id": 869,
+      "name": "Алена Шарипова",
+      "company": "SMARTLIFE",
+      "position": "ех-директор электронной коммерции",
+      "email": null
+    },
+    {
+      "legacy_id": 581,
+      "name": "Вита Носова",
+      "company": null,
+      "position": "основатель косметического бренда POLUBVI (ex. PROSTO COSMETICS)",
+      "email": null
+    },
+    {
+      "legacy_id": 1358,
+      "name": "Александра Татаринцева",
+      "company": null,
+      "position": "исполнительный директор ООО НУОЛАБ (российский бренд креативной косметики CHA U KAO)",
+      "email": null
+    },
+    {
+      "legacy_id": 1448,
+      "name": "Александр Масляк",
+      "company": "INDEEPA",
+      "position": "CEO",
+      "email": null
+    },
+    {
+      "legacy_id": 1676,
+      "name": "Валентин Марченко",
+      "company": "Спикс",
+      "position": "сооснователь",
+      "email": null
+    },
+    {
+      "legacy_id": 1727,
+      "name": "Антон Москаленко",
+      "company": "XWAY",
+      "position": "ведущий менеджер по развитию бизнеса",
+      "email": "a.moskalenko@xway.ru"
+    },
+    {
+      "legacy_id": 1776,
+      "name": "Гала Гольдберг",
+      "company": null,
+      "position": "основатель акселератора для товарных брендов «СОБРАНКА», экс-член совета директоров MPSTATS/MPSELLERS, сооснователь Ассоциации АПТЭП",
+      "email": null
+    },
+    {
+      "legacy_id": 794,
+      "name": "Юлиана Гордон",
+      "company": null,
+      "position": "основатель ИТ-платформы для создания нишевых маркетплейсов LENNUF. За последние 2 года запустила 11 нишевых маркетплейсов на рынках России, Казахстана и Узбекистана",
+      "email": null
+    },
+    {
+      "legacy_id": 600,
+      "name": "Наталья Румянцева",
+      "company": "inSales",
+      "position": "директор по маркетингу и коммерции",
+      "email": null
+    },
+    {
+      "legacy_id": 1655,
+      "name": "Екатерина Медведева",
+      "company": "MishLav",
+      "position": "основатель бренда",
+      "email": null
+    },
+    {
+      "legacy_id": 711,
+      "name": "Евгений Трифонов",
+      "company": null,
+      "position": "президент Лиги селлеров, селлер Wildberries и Ozon оборот - 378 млн за 2023 год",
+      "email": null
+    },
+    {
+      "legacy_id": 689,
+      "name": "Таисия Бабеша",
+      "company": "LETRESÓR",
+      "position": "Сo-founder бренда женских аксессуаров",
+      "email": null
+    },
+    {
+      "legacy_id": 1652,
+      "name": "Кирилл Орлов",
+      "company": "Sportdots",
+      "position": "Founder",
+      "email": null
+    },
+    {
+      "legacy_id": 1767,
+      "name": "Владислав Иванов",
+      "company": "РЕГ.ру",
+      "position": "Евангелист Рег.Решений",
+      "email": null
+    },
+    {
+      "legacy_id": 293,
+      "name": "Виталий Шахматов",
+      "company": "Hoff",
+      "position": "директор отдела интернет-маркетинга",
+      "email": null
+    },
+    {
+      "legacy_id": 758,
+      "name": "Денис Степанян",
+      "company": "First in Space",
+      "position": "сооснователь бренда одежды",
+      "email": null
+    },
+    {
+      "legacy_id": 1712,
+      "name": "Евгения Лампадова",
+      "company": "LAMPA",
+      "position": "Founder&CEO международного коммуникационного агентства",
+      "email": null
+    },
+    {
+      "legacy_id": 1385,
+      "name": "Милина Дьякова",
+      "company": "ГфК Русь",
+      "position": "консультант потребительской панели",
+      "email": null
+    },
+    {
+      "legacy_id": 1037,
+      "name": "Сергей Плешаков",
+      "company": "Yves Rocher",
+      "position": "руководитель отдела цифровых технологий и екоммерса",
+      "email": null
+    },
+    {
+      "legacy_id": 1626,
+      "name": "Ксения Медведева",
+      "company": "Lamoda",
+      "position": "Руководитель отдела по закупкам и развитию категорий красота и товары для дома",
+      "email": null
+    },
+    {
+      "legacy_id": 1504,
+      "name": "Виталий Попков",
+      "company": "Лэтуаль",
+      "position": "директор по развитию маркетплейса",
+      "email": null
+    },
+    {
+      "legacy_id": 173,
+      "name": "Инна Бабич",
+      "company": "группа компаний ERSTA",
+      "position": "руководитель E-Commerce проектов",
+      "email": "babich@ersta.ru"
+    },
+    {
+      "legacy_id": 1103,
+      "name": "Сергей Остриков",
+      "company": "Ostrikov Beauty Publishing",
+      "position": "основатель марки",
+      "email": null
+    },
+    {
+      "legacy_id": 1602,
+      "name": "Илья Калинин",
+      "company": "Carely / ART&FACT., Verifique, STRUCTURA /",
+      "position": "CEO & Co-Founder",
+      "email": null
+    },
+    {
+      "legacy_id": 1674,
+      "name": "Алина Купорова",
+      "company": "бренд Arive Makeup",
+      "position": "руководитель коммуникационного управления",
+      "email": null
+    },
+    {
+      "legacy_id": 919,
+      "name": "Алексей Жданов",
+      "company": "Бренды Openface / Smartlife / Matbea / BioWorld / PALETA",
+      "position": "руководитель отдела трафика E-com",
+      "email": null
+    },
+    {
+      "legacy_id": 893,
+      "name": "Мария Воробьёва",
+      "company": "Splat",
+      "position": "Digital marketing",
+      "email": null
+    },
+    {
+      "legacy_id": 1738,
+      "name": "Анна Дычева-Смирнова",
+      "company": null,
+      "position": "организатор выставки InterCHARM, член правления Российской парфюмерно-косметической ассоциации",
+      "email": null
+    },
+    {
+      "legacy_id": 304,
+      "name": "Виолетта Юрьева",
+      "company": "DIVAGE, ex-CMO MIXIT",
+      "position": "ex-CMO",
+      "email": null
+    },
+    {
+      "legacy_id": 1021,
+      "name": "Диана Курбатова",
+      "company": "Магнит Косметик",
+      "position": "директор по росту и развитию",
+      "email": null
+    },
+    {
+      "legacy_id": 1315,
+      "name": "Алексей Беспятых",
+      "company": "Faberlic",
+      "position": "директор по интернет-маркетингу",
+      "email": null
+    },
+    {
+      "legacy_id": 1716,
+      "name": "Мария Ерунова",
+      "company": "Simple Group",
+      "position": "Директор по маркетинговым коммуникациям",
+      "email": null
+    },
+    {
+      "legacy_id": 1444,
+      "name": "Екатерина Рыжова",
+      "company": "группа TanukiFamily",
+      "position": "директор по маркетингу",
+      "email": null
+    },
+    {
+      "legacy_id": 1551,
+      "name": "Павел Фунтиков",
+      "company": "Нильсен",
+      "position": "Руководитель группы по работе с клиентами",
+      "email": null
+    },
+    {
+      "legacy_id": 775,
+      "name": "Анна Захарова",
+      "company": "Ozon fresh",
+      "position": "руководитель направления трейд маркетинга и оффлайн",
+      "email": null
+    },
+    {
+      "legacy_id": 270,
+      "name": "Игорь Затонский",
+      "company": "Vprok.ru (Х5 Group)",
+      "position": "директор по развитию бизнеса и операций",
+      "email": null
+    },
+    {
+      "legacy_id": 1645,
+      "name": "Светлана Циркина",
+      "company": "Nectarin",
+      "position": "Performance lead",
+      "email": null
+    },
+    {
+      "legacy_id": 1762,
+      "name": "Регина Шайкунова",
+      "company": "METRO",
+      "position": "Performance manager",
+      "email": null
+    },
+    {
+      "legacy_id": 1638,
+      "name": "Арина Чеклецова",
+      "company": "I-media",
+      "position": "Руководитель отдела медиабаинга",
+      "email": null
+    },
+    {
+      "legacy_id": 899,
+      "name": "Илья Елпанов",
+      "company": "Ешь деревенское",
+      "position": "генеральный директор и основатель онлайн-агрегатора фермерских продуктов «Ешь Деревенское»",
+      "email": null
+    },
+    {
+      "legacy_id": 604,
+      "name": "Кирилл Белюсев",
+      "company": "Кулинарная лавка Братьев Караваевых",
+      "position": "директор по продукту HoReCa",
+      "email": null
+    },
+    {
+      "legacy_id": 215,
+      "name": "Софья Леина",
+      "company": "Лента",
+      "position": "директор собственных онлайн-сервисов",
+      "email": null
+    },
+    {
+      "legacy_id": 285,
+      "name": "Александр Чернов",
+      "company": "Много Лосося",
+      "position": "директор по IT и продукту",
+      "email": null
+    },
+    {
+      "legacy_id": 362,
+      "name": "Галина Ящук",
+      "company": "Ашан",
+      "position": "директор по маркетингу",
+      "email": null
+    },
+    {
+      "legacy_id": 613,
+      "name": "Вячеслав Горяйнов",
+      "company": "Вкусвилл",
+      "position": "лидер микросервиса Сборка",
+      "email": null
+    },
+    {
+      "legacy_id": 1778,
+      "name": "Илья Климашин",
+      "company": "Вкусвилл",
+      "position": "лидер микросервиса Сборка",
+      "email": null
+    },
+    {
+      "legacy_id": 1589,
+      "name": "Галина Красильщикова",
+      "company": "X5",
+      "position": "Руководитель офиса бизнес-трансформации",
+      "email": null
+    },
+    {
+      "legacy_id": 1746,
+      "name": "Илья Русаков",
+      "company": "impulse.guru",
+      "position": "СЕО",
+      "email": null
+    },
+    {
+      "legacy_id": 1748,
+      "name": "Мария Сафронова",
+      "company": "impulse.guru",
+      "position": "менеджер по маркетингу и PR",
+      "email": null
+    },
+    {
+      "legacy_id": 1694,
+      "name": "Анна Дундукова",
+      "company": null,
+      "position": "ex-СМО Exist, Трансмашхолдинг",
+      "email": null
+    },
+    {
+      "legacy_id": 1023,
+      "name": "Анастасия Ломаченко",
+      "company": "ГК АВТОРУСЬ",
+      "position": "Директор по маркетингу",
+      "email": null
+    },
+    {
+      "legacy_id": 1758,
+      "name": "Данила Цеплинский",
+      "company": "Tamashi",
+      "position": "коммерческий директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1774,
+      "name": "Сергей Поляков",
+      "company": "Holding-Finance Broker",
+      "position": "Заместитель генерального директора",
+      "email": null
+    },
+    {
+      "legacy_id": 1567,
+      "name": "Никита Кожемякин",
+      "company": "MarCom I ICMR (GfK-Rus)",
+      "position": "старший консультант департамента по работе с розничными компаниями",
+      "email": null
+    },
+    {
+      "legacy_id": 1710,
+      "name": "Юлия Трушкова",
+      "company": "«РОЛЬФ»",
+      "position": "директора по сервису",
+      "email": null
+    },
+    {
+      "legacy_id": 1740,
+      "name": "Елена Кравец",
+      "company": "ООО «Пежо Ситроен Рус»",
+      "position": "директор по маркетингу",
+      "email": null
+    },
+    {
+      "legacy_id": 1824,
+      "name": "Юрий Султанов",
+      "company": "Нордекс",
+      "position": "СЕО направления домашний текстиль корпорации",
+      "email": null
+    },
+    {
+      "legacy_id": 1825,
+      "name": "Владимир Скворцов",
+      "company": "Нордекс",
+      "position": "директор по развитию",
+      "email": null
+    },
+    {
+      "legacy_id": 1826,
+      "name": "Андрей Малюженков",
+      "company": "UnyBrands",
+      "position": "Co-founder",
+      "email": null
+    },
+    {
+      "legacy_id": 857,
+      "name": "Ольга Штейнберг",
+      "company": null,
+      "position": "аналитик, соиздатель и главный редактор Fashion Buzz media",
+      "email": null
+    },
+    {
+      "legacy_id": 1609,
+      "name": "Станислава Нажмитдинова",
+      "company": "ШТАБ",
+      "position": "Основатель агентства по масштабированию Fashion-бизнеса",
+      "email": null
+    },
+    {
+      "legacy_id": 1324,
+      "name": "Вера Левина",
+      "company": "Lamoda",
+      "position": "Директор департамента по управлению категорией товаров «Одежда»",
+      "email": null
+    },
+    {
+      "legacy_id": 149,
+      "name": "Екатерина Савушкина",
+      "company": "Fashion Consulting Group",
+      "position": "руководитель отдела аналитики",
+      "email": "ekaterina.savushkina@fashionconsulting.ru"
+    },
+    {
+      "legacy_id": 1760,
+      "name": "Андрей Лебединский",
+      "company": "zolla и nice & easy",
+      "position": "Директор по электронной коммерции",
+      "email": null
+    },
+    {
+      "legacy_id": 168,
+      "name": "Антон Смирнов",
+      "company": "Zarina",
+      "position": "коммерческий директор",
+      "email": null
+    },
+    {
+      "legacy_id": 400,
+      "name": "Галина Кравченко",
+      "company": null,
+      "position": "эксперт по управлению Fashion-ассортиментом, бизнес-консультант селлеров WB из топ 30",
+      "email": null
+    },
+    {
+      "legacy_id": 1806,
+      "name": "Елена Чеховская",
+      "company": "Rendez Vous",
+      "position": "Head of e-commerce",
+      "email": null
+    },
+    {
+      "legacy_id": 1552,
+      "name": "Алексей Николаев",
+      "company": "Lamoda",
+      "position": "директор по стратегии",
+      "email": null
+    },
+    {
+      "legacy_id": 673,
+      "name": "Евгений Богданов",
+      "company": "Lamoda",
+      "position": "Управляющий коммерческий директор маркетплейса",
+      "email": null
+    },
+    {
+      "legacy_id": 1543,
+      "name": "Анна Лебсак-Клейманс",
+      "company": "Fashion Consulting Group",
+      "position": "генеральный директор",
+      "email": null
+    },
+    {
+      "legacy_id": 1545,
+      "name": "Мария Полканова",
+      "company": "Спортмастер",
+      "position": "Директор по электронной коммерции",
+      "email": null
+    },
+    {
+      "legacy_id": 70,
+      "name": "Андрей Осокин",
+      "company": "Детский мир",
+      "position": "директор по маркетингу, член правления",
+      "email": null
+    },
+    {
+      "legacy_id": 19,
+      "name": "Андрей Ториков",
+      "company": "SOKOLOV",
+      "position": "директор по электронной коммерции",
+      "email": null
+    },
+    {
+      "legacy_id": 1828,
+      "name": "Станислав Елышев",
+      "company": "Спортмастер",
+      "position": "директор цифрового продукта \"Внешние маркетплейсы\"",
+      "email": null
+    },
+    {
+      "legacy_id": 307,
+      "name": "Елена Белоусова",
+      "company": null,
+      "position": "ООО \"Чемодан ПРО\" Директор по электронной коммерции",
+      "email": null
+    },
+    {
+      "legacy_id": 1608,
+      "name": "Никита Захаров",
+      "company": "Фэшн Авито",
+      "position": "руководитель категории",
+      "email": null
+    },
+    {
+      "legacy_id": 1565,
+      "name": "Анастасия Кинжигалиева",
+      "company": "Ralf Ringer",
+      "position": "Директор по электронной коммерции",
+      "email": null
+    },
+    {
+      "legacy_id": 121,
+      "name": "Андрей Лапин",
+      "company": "Детский Мир",
+      "position": "Product Lead Marketplace & PIM",
+      "email": null
+    },
+    {
+      "legacy_id": 1180,
+      "name": "Ольга Москвичева",
+      "company": "Ozon",
+      "position": "директор по развитию бизнеса",
+      "email": null
+    },
+    {
+      "legacy_id": 1610,
+      "name": "Алексей Сергеев",
+      "company": "BAON",
+      "position": "Head of e-commerce",
+      "email": null
+    },
+    {
+      "legacy_id": 1751,
+      "name": "Андрей Каширин",
+      "company": "Спортмастер",
+      "position": "директор по развитию на внешних маркетплейсах",
+      "email": null
+    },
+    {
+      "legacy_id": 226,
+      "name": "Елена Рассказова",
+      "company": "Кант",
+      "position": "руководитель интернет-продаж",
+      "email": "e.rasskazova@kant.ru"
+    },
+    {
+      "legacy_id": 850,
+      "name": "Станислав Адволоткин",
+      "company": "Inventive Sport",
+      "position": "Head of Ecommerce",
+      "email": null
+    },
+    {
+      "legacy_id": 1289,
+      "name": "Елена Ложкина",
+      "company": "Lamoda Sport",
+      "position": "директор департамента маркетинга розничных продаж",
+      "email": null
+    },
+    {
+      "legacy_id": 1566,
+      "name": "Елена Лишиленко",
+      "company": "I WANT MORE",
+      "position": "основатель +size бренда",
+      "email": null
+    },
+    {
+      "legacy_id": 1577,
+      "name": "Любовь Орлова",
+      "company": "FashionTech-платформы FRWF",
+      "position": "основатель",
+      "email": null
+    },
+    {
+      "legacy_id": 1431,
+      "name": "Мария Чуйко",
+      "company": "FITTIN",
+      "position": "бренд-директор",
+      "email": null
+    },
+    {
+      "legacy_id": 50,
+      "name": "Ольга Сафронова",
+      "company": "Кант",
+      "position": "директор по маркетингу",
+      "email": null
+    },
+    {
+      "legacy_id": 1458,
+      "name": "Денис Маханько",
+      "company": "Бизнес Авито Услуги",
+      "position": "CMO",
+      "email": null
+    },
+    {
+      "legacy_id": 1611,
+      "name": "Константин Мишакин",
+      "company": "Эконика",
+      "position": "диджитал директор",
+      "email": null
+    },
+    {
+      "legacy_id": 910,
+      "name": "Андрей Якоби",
+      "company": "Креативное бюро Real Profit Group",
+      "position": "CEO и продюсер",
+      "email": null
+    },
+    {
+      "legacy_id": 1636,
+      "name": "Анастасия Василькова",
+      "company": "ТМ Choupette",
+      "position": "соучредитель и директор по развитию",
+      "email": null
+    },
+    {
+      "legacy_id": 1684,
+      "name": "Дарья Яковлева",
+      "company": "BUBA.BRAND",
+      "position": "основательница бренда премиальных аксессуаров",
+      "email": null
+    },
+    {
+      "legacy_id": 957,
+      "name": "Семён Пименов",
+      "company": null,
+      "position": "основатель бренда Noun",
+      "email": null
+    },
+    {
+      "legacy_id": 1717,
+      "name": "Дмитрий Филимонов",
+      "company": "Verme",
+      "position": "Директор по консалтингу",
+      "email": "d.filimonov@invent-consult.ru"
+    },
+    {
+      "legacy_id": 1689,
+      "name": "Екатерина Саввиди",
+      "company": null,
+      "position": "управляющий партнер компании REFRAME и основателя проекта FRAMED с опытом в fashion-ритейле более 20 лет",
+      "email": null
+    },
+    {
+      "legacy_id": 901,
+      "name": "Максим Автухов",
+      "company": "Яндекс Лавка / tech",
+      "position": "руководитель сервиса для бизнеса",
+      "email": null
+    },
+    {
+      "legacy_id": 1409,
+      "name": "Михаил Александров",
+      "company": "Sokolov",
+      "position": "директор внешней электронной коммерции",
+      "email": null
+    },
+    {
+      "legacy_id": 585,
+      "name": "Лусинэ Тоноян",
+      "company": "Henderson",
+      "position": "Руководитель отдела PR",
+      "email": null
+    }
+  ]
+}

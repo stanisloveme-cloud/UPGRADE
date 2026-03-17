@@ -1,0 +1,330 @@
+[
+  {
+    "id": 271,
+    "time_start": "11:00",
+    "time_end": "12:30",
+    "day_string": "21 октября",
+    "hall_id": "36",
+    "track_id": 92
+  },
+  {
+    "id": 272,
+    "time_start": "13:00",
+    "time_end": "14:30",
+    "day_string": "21 октября",
+    "hall_id": "36",
+    "track_id": 92
+  },
+  {
+    "id": 273,
+    "time_start": "15:30",
+    "time_end": "17:00",
+    "day_string": "21 октября",
+    "hall_id": "36",
+    "track_id": 92
+  },
+  {
+    "id": 274,
+    "time_start": "17:30",
+    "time_end": "18:30",
+    "day_string": "21 октября",
+    "hall_id": "36",
+    "track_id": 92
+  },
+  {
+    "id": 354,
+    "time_start": "10:00",
+    "time_end": "11:30",
+    "day_string": "21 октября",
+    "hall_id": "36",
+    "track_id": 126
+  },
+  {
+    "id": 275,
+    "time_start": "11:00",
+    "time_end": "12:30",
+    "day_string": "21 октября",
+    "hall_id": "37",
+    "track_id": 93
+  },
+  {
+    "id": 276,
+    "time_start": "13:00",
+    "time_end": "14:30",
+    "day_string": "21 октября",
+    "hall_id": "37",
+    "track_id": 93
+  },
+  {
+    "id": 277,
+    "time_start": "15:30",
+    "time_end": "17:00",
+    "day_string": "21 октября",
+    "hall_id": "37",
+    "track_id": 93
+  },
+  {
+    "id": 278,
+    "time_start": "17:30",
+    "time_end": "18:30",
+    "day_string": "21 октября",
+    "hall_id": "37",
+    "track_id": 93
+  },
+  {
+    "id": 279,
+    "time_start": "11:00",
+    "time_end": "12:30",
+    "day_string": "21 октября",
+    "hall_id": "38",
+    "track_id": 94
+  },
+  {
+    "id": 280,
+    "time_start": "13:00",
+    "time_end": "14:30",
+    "day_string": "21 октября",
+    "hall_id": "38",
+    "track_id": 94
+  },
+  {
+    "id": 281,
+    "time_start": "15:30",
+    "time_end": "17:00",
+    "day_string": "21 октября",
+    "hall_id": "38",
+    "track_id": 94
+  },
+  {
+    "id": 282,
+    "time_start": "17:30",
+    "time_end": "18:30",
+    "day_string": "21 октября",
+    "hall_id": "38",
+    "track_id": 94
+  },
+  {
+    "id": 283,
+    "time_start": "11:00",
+    "time_end": "12:30",
+    "day_string": "21 октября",
+    "hall_id": "39",
+    "track_id": 95
+  },
+  {
+    "id": 286,
+    "time_start": "13:00",
+    "time_end": "14:30",
+    "day_string": "21 октября",
+    "hall_id": "39",
+    "track_id": 95
+  },
+  {
+    "id": 284,
+    "time_start": "15:30",
+    "time_end": "17:00",
+    "day_string": "21 октября",
+    "hall_id": "39",
+    "track_id": 95
+  },
+  {
+    "id": 285,
+    "time_start": "17:30",
+    "time_end": "19:00",
+    "day_string": "21 октября",
+    "hall_id": "39",
+    "track_id": 95
+  },
+  {
+    "id": 345,
+    "time_start": "14:40",
+    "time_end": "15:20",
+    "day_string": "21 октября",
+    "hall_id": "39",
+    "track_id": 122
+  },
+  {
+    "id": 288,
+    "time_start": "11:00",
+    "time_end": "12:30",
+    "day_string": "21 октября",
+    "hall_id": "40",
+    "track_id": 96
+  },
+  {
+    "id": 287,
+    "time_start": "13:00",
+    "time_end": "14:30",
+    "day_string": "21 октября",
+    "hall_id": "40",
+    "track_id": 96
+  },
+  {
+    "id": 289,
+    "time_start": "15:30",
+    "time_end": "17:00",
+    "day_string": "21 октября",
+    "hall_id": "40",
+    "track_id": 97
+  },
+  {
+    "id": 290,
+    "time_start": "17:30",
+    "time_end": "18:30",
+    "day_string": "21 октября",
+    "hall_id": "40",
+    "track_id": 97
+  },
+  {
+    "id": 353,
+    "time_start": "19:00",
+    "time_end": "20:00",
+    "day_string": "21 октября",
+    "hall_id": "40",
+    "track_id": 97
+  },
+  {
+    "id": 295,
+    "time_start": "11:00",
+    "time_end": "12:30",
+    "day_string": "22 октября",
+    "hall_id": "36",
+    "track_id": 99
+  },
+  {
+    "id": 296,
+    "time_start": "13:00",
+    "time_end": "14:30",
+    "day_string": "22 октября",
+    "hall_id": "36",
+    "track_id": 99
+  },
+  {
+    "id": 297,
+    "time_start": "15:30",
+    "time_end": "17:00",
+    "day_string": "22 октября",
+    "hall_id": "36",
+    "track_id": 99
+  },
+  {
+    "id": 298,
+    "time_start": "17:30",
+    "time_end": "18:30",
+    "day_string": "22 октября",
+    "hall_id": "36",
+    "track_id": 99
+  },
+  {
+    "id": 303,
+    "time_start": "11:00",
+    "time_end": "12:30",
+    "day_string": "22 октября",
+    "hall_id": "37",
+    "track_id": 104
+  },
+  {
+    "id": 304,
+    "time_start": "13:00",
+    "time_end": "14:30",
+    "day_string": "22 октября",
+    "hall_id": "37",
+    "track_id": 104
+  },
+  {
+    "id": 346,
+    "time_start": "14:40",
+    "time_end": "15:20",
+    "day_string": "22 октября",
+    "hall_id": "37",
+    "track_id": 123
+  },
+  {
+    "id": 305,
+    "time_start": "15:30",
+    "time_end": "17:00",
+    "day_string": "22 октября",
+    "hall_id": "37",
+    "track_id": 105
+  },
+  {
+    "id": 306,
+    "time_start": "17:30",
+    "time_end": "18:30",
+    "day_string": "22 октября",
+    "hall_id": "37",
+    "track_id": 105
+  },
+  {
+    "id": 299,
+    "time_start": "11:30",
+    "time_end": "12:15",
+    "day_string": "22 октября",
+    "hall_id": "38",
+    "track_id": 102
+  },
+  {
+    "id": 300,
+    "time_start": "13:00",
+    "time_end": "14:30",
+    "day_string": "22 октября",
+    "hall_id": "38",
+    "track_id": 103
+  },
+  {
+    "id": 344,
+    "time_start": "14:30",
+    "time_end": "15:30",
+    "day_string": "22 октября",
+    "hall_id": "38",
+    "track_id": 121
+  },
+  {
+    "id": 338,
+    "time_start": "15:30",
+    "time_end": "17:00",
+    "day_string": "22 октября",
+    "hall_id": "38",
+    "track_id": 117
+  },
+  {
+    "id": 339,
+    "time_start": "17:30",
+    "time_end": "18:30",
+    "day_string": "22 октября",
+    "hall_id": "38",
+    "track_id": 118
+  },
+  {
+    "id": 307,
+    "time_start": "11:00",
+    "time_end": "12:30",
+    "day_string": "22 октября",
+    "hall_id": "40",
+    "track_id": 106
+  },
+  {
+    "id": 308,
+    "time_start": "13:00",
+    "time_end": "14:30",
+    "day_string": "22 октября",
+    "hall_id": "40",
+    "track_id": 106
+  },
+  {
+    "id": 309,
+    "time_start": "15:30",
+    "time_end": "17:00",
+    "day_string": "22 октября",
+    "hall_id": "40",
+    "track_id": 106
+  },
+  {
+    "id": 310,
+    "time_start": "17:30",
+    "time_end": "18:30",
+    "day_string": "22 октября",
+    "hall_id": "40",
+    "track_id": 106
+  }
+]

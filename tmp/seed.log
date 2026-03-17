@@ -1,0 +1,20 @@
+🚀 Starting Full Migration for Event ID: 76
+PrismaClientKnownRequestError: 
+Invalid `prisma.event.findUnique()` invocation in
+D:\UPGRADE\scripts\seed-legacy-full.ts:55:36
+
+  52 const conferences = program.conferences || {};
+  53 
+  54 // 1. Ensure Event Exists
+→ 55 let event = await prisma.event.findUnique(
+
+    at zr.handleRequestError (D:\UPGRADE\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+    at zr.handleAndLogRequestError (D:\UPGRADE\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+    at zr.request (D:\UPGRADE\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async a (D:\UPGRADE\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:807:24)
+    at async run (D:\UPGRADE\scripts\seed-legacy-full.ts:55:17) {
+  code: 'ECONNREFUSED',
+  meta: { modelName: 'Event' },
+  clientVersion: '7.4.0'
+}
