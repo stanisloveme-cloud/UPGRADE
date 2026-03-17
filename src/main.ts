@@ -54,9 +54,15 @@ async function bootstrap() {
   SwaggerModule.setup('api/docs', app, document, {
     jsonDocumentUrl: 'api/docs-json',
   });
-  
-  writeFileSync('./openapi.json', JSON.stringify(document));
-  console.log('Swagger openapi.json generated successfully.');
+  // Only write to disk when running locally for code generation
+  if (process.env.NODE_ENV !== 'production') {
+      try {
+          writeFileSync('./openapi.json', JSON.stringify(document));
+          console.log('Swagger openapi.json generated successfully.');
+      } catch (e) {
+          console.warn('Could not write openapi.json locally, skipping...');
+      }
+  }
 
   // Disable full boot to avoid DB timeouts during Code Gen
   // await app.listen(process.env.PORT ?? 3000);
