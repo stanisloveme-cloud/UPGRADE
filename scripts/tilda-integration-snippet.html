@@ -241,13 +241,11 @@
                     sessionsArray.forEach(session => {
                         const sAnchor = `session-${session.id}`;
                         const time = formatTime(session.startTime, session.endTime);
-                        const safeTitle = session.title || 'Сессия';
+                        const safeTitle = session.name || 'Сессия';
                         
                         // Если нет описания - просто карточка. Если есть - показываем кусочек
                         let shortDesc = "";
-                        if (session.description && session.description !== 'undefined') {
-                            shortDesc = session.description.substring(0, 100) + (session.description.length > 100 ? '...' : '');
-                        } else if (session.questions && session.questions.length > 0) {
+                        if (session.questions && session.questions.length > 0) {
                             shortDesc = session.questions[0].title.substring(0, 100) + (session.questions[0].title.length > 100 ? '...' : '');
                         }
 
@@ -292,8 +290,8 @@
                     const time = formatTime(session.startTime, session.endTime);
                     const questions = session.questions || [];
                     
-                    const moderators = (session.speakers || []).filter(s => s.role === 'Организатор' || s.isModerator).map(s => s.speaker).filter(Boolean);
-                    const speakers = (session.speakers || []).filter(s => s.role !== 'Организатор' && !s.isModerator).map(s => s.speaker).filter(Boolean);
+                    const moderators = (session.speakers || []).filter(s => s.role === 'Организатор' || s.role === 'moderator').map(s => s.speaker).filter(Boolean);
+                    const speakers = (session.speakers || []).filter(s => s.role !== 'Организатор' && s.role !== 'moderator').map(s => s.speaker).filter(Boolean);
 
                     html += `<div class="row to-scroll border-top pt-3 mb-4" id="${sAnchor}" style="border-color: ${colors.accent} !important;">`;
                     
@@ -302,17 +300,13 @@
                     html += `</div>`;
 
                     html += `<div class="col-12 col-lg">`;
-                    html += `<h5 class="fw-bold mb-3">${session.title || 'Сессия'}</h5>`;
+                    html += `<h5 class="fw-bold mb-3">${session.name || 'Сессия'}</h5>`;
                    
-                    if (session.description && session.description !== 'undefined') {
-                        html += `<div class="mb-3 lh-sm small">${session.description}</div>`;
-                    }
                     if (questions.length > 0) {
                         html += `<ul class="list-unstyled mb-3">`;
                         questions.forEach((q, idx) => {
-                            html += `<li class="d-flex mb-2 lh-sm small">`;
-                            html += `<span class="fw-bold me-2" style="color: ${colors.accent}">#${idx+1}</span>`;
-                            html += `<span>${q.title} ${q.body ? `— <span class="text-muted">${q.body}</span>` : ''}</span>`;
+                            html += `<li class="d-flex mb-2 lh-sm small" style="font-size: 0.95rem;">`;
+                            html += `<span>${q.title} ${q.body ? `<br><span class="text-muted">${q.body}</span>` : ''}</span>`;
                             html += `</li>`;
                         });
                         html += `</ul>`;
@@ -324,15 +318,15 @@
                     function renderPerson(p) {
                         const name = `${p.firstName || ''} ${p.lastName || ''}`.trim();
                         const pos = [p.position, p.company].filter(Boolean).join(', ');
-                        return `<div class="lh-sm mb-2 small"><span class="fw-bold text-dark">${name}${pos ? ',' : ''}</span> ${pos}</div>`;
+                        return `<div class="lh-sm mb-3" style="font-size: 0.95rem;"><span class="fw-bold text-dark" style="font-size: 1.05rem;">${name}${pos ? ',' : ''}</span><br><span class="text-muted pb-1">${pos}</span></div>`;
                     }
 
                     if (moderators.length > 0) {
-                        html += `<div class="fw-light fs-6 mb-2 text-muted" style="font-size: 0.85rem !important; text-transform: uppercase;">Модератор${moderators.length > 1 ? 'ы' : ''}</div>`;
+                        html += `<div class="fw-light mb-2 text-muted" style="font-size: 0.8rem !important; text-transform: uppercase;">Модератор${moderators.length > 1 ? 'ы' : ''}</div>`;
                         moderators.forEach(m => html += renderPerson(m));
                     }
                     if (speakers.length > 0) {
-                        html += `<div class="fw-light fs-6 mb-2 mt-3 text-muted" style="font-size: 0.85rem !important; text-transform: uppercase;">Спикеры</div>`;
+                        html += `<div class="fw-light mb-2 mt-3 text-muted" style="font-size: 0.8rem !important; text-transform: uppercase;">Спикеры</div>`;
                         speakers.forEach(s => html += renderPerson(s));
                     }
                     html += `</div>`; // End col-lg-4 (speakers block)
