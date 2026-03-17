@@ -11,22 +11,12 @@ interface SessionCardProps {
     onClick?: () => void;
 }
 
-import { durationToGridSpan, timeToGridColumn } from './utils'; // Added import
 
-const SessionCard: React.FC<SessionCardProps> = ({ session, trackStart, filters, onClick }) => {
+
+const SessionCard: React.FC<SessionCardProps> = ({ session, filters, onClick }) => {
     // Mock counts for badges until backend provides aggregated counts
     const moderatorsCount = session.speakers?.filter((s: any) => s.role === 'moderator').length || 0;
     const speakersCount = session.speakers?.filter((s: any) => s.role === 'speaker').length || 0;
-
-    // Calculate relative grid position inside the track
-    let colStart = 1;
-    let colSpan = 1;
-    if (trackStart && session.startTime && session.endTime) {
-        const trackStartCol = timeToGridColumn(trackStart);
-        const sessionStartCol = timeToGridColumn(session.startTime);
-        colStart = Math.max(1, sessionStartCol - trackStartCol + 1);
-        colSpan = Math.max(1, durationToGridSpan(session.startTime, session.endTime));
-    }
 
     return (
         <Card
@@ -34,12 +24,13 @@ const SessionCard: React.FC<SessionCardProps> = ({ session, trackStart, filters,
             className="session-card"
             onClick={onClick}
             style={{
-                gridColumn: `${colStart} / span ${colSpan}`, // Position within TrackBlock
                 height: '100%',
                 overflow: 'hidden',
                 borderRadius: '4px',
                 borderLeft: '4px solid #1890ff', // Accent color
                 display: 'flex',
+                background: 'white',
+                minWidth: 0, // Prevent content blowout
                 flexDirection: 'column'
             }}
             bodyStyle={{ padding: '8px', flex: 1, display: 'flex', flexDirection: 'column' }}

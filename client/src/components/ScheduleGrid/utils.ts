@@ -61,3 +61,12 @@ export const durationToGridSpan = (startStr: string, endStr: string): number => 
     const diffMinutes = end.diff(start, 'minute');
     return Math.ceil(diffMinutes / TIME_STEP);
 };
+
+/**
+ * Returns total minutes from start of day for precise percentage calculations
+ */
+export const timeToMinutes = (timeStr: string): number => {
+    if (!timeStr) return 0;
+    const date = dayjs(timeStr, ['HH:mm:ss', 'HH:mm', 'YYYY-MM-DDTHH:mm:ss']);
+    return date.hour() * 60 + date.minute();
+};
