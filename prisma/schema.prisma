@@ -103,7 +103,7 @@ model SessionSpeaker {
   status            SpeakerStatus   @default(review)
   statusDate        DateTime?       @map("status_date") @db.Timestamptz(6)
   sortOrder         Int             @default(0) @map("sort_order")
-  needs_zoom        Boolean         @default(false)
+  needs_zoom        Boolean         @default(false) @map("needs_call")
   hasPresentation   Boolean         @default(false) @map("has_presentation")
   managerComment    String?         @map("manager_comment")
   programThesis     String?         @map("program_thesis")
