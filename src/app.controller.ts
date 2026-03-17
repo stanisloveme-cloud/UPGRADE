@@ -41,7 +41,7 @@ export class AppController {
     };
 
     const mapSpeakerRole = (legacyId: number): any => {
-        return legacyId === 1 ? 'moderator' : 'speaker';
+        return legacyId === 1 ? 'speaker' : 'moderator';
     };
 
     function resolveDate(dayString: string): Date {
@@ -155,7 +155,7 @@ export class AppController {
                             data: {
                                 sessionId: session.id,
                                 order: q.sort_order || qIndex,
-                                title: `#${qNum} ${rawTitle}`,
+                                title: `#${qNum}`,
                                 body: rawDesc
                             }
                         });
@@ -216,7 +216,9 @@ export class AppController {
                                     needsCall: sp.is_zoom === true,
                                     programThesis: cleanString(sp.theme),
                                     newsletterQuote: cleanString(sp.quote),
-                                    sortOrder: speakerSortOrder
+                                    sortOrder: speakerSortOrder,
+                                    companySnapshot: cleanString(person.company),
+                                    positionSnapshot: cleanString(person.job_title)
                                 }
                             });
                         } catch (e: any) {
