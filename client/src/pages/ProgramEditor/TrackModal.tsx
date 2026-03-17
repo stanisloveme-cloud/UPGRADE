@@ -35,9 +35,26 @@ const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onD
             open={visible}
             onOpenChange={(v) => !v && onClose()}
             onFinish={async (values) => {
+                // ProForm transform mapping can sometimes nest inside `timeRange` instead of spreading
+                let startTime = values.startTime;
+                let endTime = values.endTime;
+                
+                if (values.timeRange && typeof values.timeRange === 'object' && !Array.isArray(values.timeRange)) {
+                    startTime = values.timeRange.startTime || startTime;
+                    endTime = values.timeRange.endTime || endTime;
+                } else if (Array.isArray(values.timeRange)) {
+                    startTime = typeof values.timeRange[0] === 'string' ? values.timeRange[0].slice(0, 5) : values.timeRange[0]?.format('HH:mm');
+                    endTime = typeof values.timeRange[1] === 'string' ? values.timeRange[1].slice(0, 5) : values.timeRange[1]?.format('HH:mm');
+                }
+
+                // Cleanup nested object
+                delete values.timeRange;
+
                 // Prepare values
                 const submission = {
                     ...values,
+                    startTime,
+                    endTime,
                     hallId: hallId || initialValues?.hallId,
                     // If creating, we need a date. Default to event start date?
                     // Ideally we should ask for date or pick from event days.
