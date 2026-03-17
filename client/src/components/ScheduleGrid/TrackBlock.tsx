@@ -1,5 +1,5 @@
 import React from 'react';
-import { timeToGridColumn, durationToGridSpan, timeToMinutes } from './utils';
+import { timeToGridColumn, durationToGridSpan, timeToMinutes, START_MINUTES_FROM_MIDNIGHT, END_MINUTES_FROM_MIDNIGHT } from './utils';
 import SessionCard from './SessionCard';
 import { Typography, Button } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
@@ -59,16 +59,24 @@ const TrackBlock: React.FC<TrackBlockProps> = ({ track, rowIndex, filters, onSes
                     {track.sessions?.map((session: any) => {
                         const tStart = timeToMinutes(track.startTime);
                         const tEnd = timeToMinutes(track.endTime);
+                        
+                        // We must use the visible track segment for percentages since the TrackBlock width correlates to visible columns
+                        const visibleTStart = Math.max(START_MINUTES_FROM_MIDNIGHT, tStart);
+                        const visibleTEnd = Math.min(END_MINUTES_FROM_MIDNIGHT, tEnd);
+                        const visibleTDuration = Math.max(1, visibleTEnd - visibleTStart);
+                        
                         const sStart = timeToMinutes(session.startTime);
                         const sEnd = timeToMinutes(session.endTime);
                         
-                        // Prevent division by zero if track has 0 duration
-                        const trackDuration = Math.max(1, tEnd - tStart);
-                        const sessionDuration = Math.max(1, sEnd - sStart);
-                        const offset = Math.max(0, sStart - tStart);
+                        // Calculate session offset relative to the VISIBLE track start
+                        const offset = Math.max(0, sStart - visibleTStart);
+                        const visibleSDuration = Math.max(0, Math.min(sEnd, visibleTEnd) - sStart);
                         
-                        const leftPercent = (offset / trackDuration) * 100;
-                        const widthPercent = (sessionDuration / trackDuration) * 100;
+                        const leftPercent = (offset / visibleTDuration) * 100;
+                        const widthPercent = (visibleSDuration / visibleTDuration) * 100;
+
+                        // Only render if session falls within visible area
+                        if (sEnd <= visibleTStart || sStart >= visibleTEnd) return null;
 
                         return (
                             <div key={session.id} style={{
