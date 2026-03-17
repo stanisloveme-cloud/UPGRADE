@@ -64,7 +64,7 @@ async function bootstrap() {
       }
   }
 
-  // Disable full boot to avoid DB timeouts during Code Gen
-  // await app.listen(process.env.PORT ?? 3000);
+  // Enable full boot
+  await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
