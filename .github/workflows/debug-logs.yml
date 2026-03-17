@@ -11,5 +11,5 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker logs --tail 200 upgrade-crm-db-1
+            docker ps -a
 
