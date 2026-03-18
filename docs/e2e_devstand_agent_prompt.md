@@ -13,6 +13,9 @@
 - **Проект:** UPGRADE CRM — система управления мероприятиями (Спикеры, Залы, Сессии, Программа, Бренды, Продажи).
 - **Стек:** Frontend — React + Ant Design Pro (папка `client/`), Backend — NestJS + Prisma + PostgreSQL (папка `src/`), Тесты — Playwright (папка `e2e/`).
 - **Среда для тестирования:** Мы фокусируемся на тестировании UI на Dev-площадке: `https://devupgrade.space4you.ru`.
+- **Новые эндпоинты интеграции** (тестируются без изменения данных 76 мероприятия):
+  - Tilda Standalone View: `/test-tilda-standalone.html?eventId=76`
+  - Tilda Standalone V2 View: `/test-tilda-standalone-v2.html?eventId=76`
 
 ### 2. Главная уязвимость проекта (Silent Fails)
 Исторически на проекте была проблема: "умные" кнопки "Сохранить" в боковых панелях (`SafeDrawerForm`) и модальных окнах (`SafeModalForm`) от Ant Design Pro иногда нажимались, но система "глушила" отправку формы без вывода ошибок валидации.

@@ -253,9 +253,9 @@
                             <div class="col-12 col-md-6 col-xl-4">
                                 <div class="bg-body-tertiary p-3 rounded-2 position-relative h-100 custom-session-card" style="transition: background 0.2s;">
                                     <a class="stretched-link" href="#${sAnchor}"></a>
-                                    <div class="fw-bold small mb-2">${time}</div>
-                                    <div class="small lh-sm" style="color: #212529; font-size: 0.9rem; font-weight: 500;">${safeTitle}</div>
-                                    ${shortDesc ? `<div class="text-muted mt-2" style="font-size: 0.75rem;">${shortDesc}</div>` : ''}
+                                    <div class="fw-bold small mb-2" style="font-size: 0.85rem;">${time}</div>
+                                    <div class="small lh-sm" style="color: #212529; font-size: 1.0rem; font-weight: 500;">${safeTitle}</div>
+                                    ${shortDesc ? `<div class="text-muted mt-2" style="font-size: 0.8rem;">${shortDesc}</div>` : ''}
                                 </div>
                             </div>
                         `;
@@ -295,38 +295,48 @@
 
                     html += `<div class="row to-scroll border-top pt-3 mb-4" id="${sAnchor}" style="border-color: ${colors.accent} !important;">`;
                     
-                    html += `<div class="col-12 col-lg-auto text-lg-end text-nowrap" style="min-width: 140px;">`;
-                    html += `<h6 class="fw-bold">${time}</h6>`;
+                    html += `<div class="col-12 col-lg-auto text-lg-start text-nowrap" style="width: 130px; padding-right: 0;">`;
+                    html += `<span class="fw-bold" style="font-size: 1.05rem; letter-spacing: -0.5px;">${time}</span>`;
                     html += `</div>`;
 
-                    html += `<div class="col-12 col-lg">`;
-                    html += `<h5 class="fw-bold mb-3">${session.name || 'Сессия'}</h5>`;
+                    html += `<div class="col-12 col-lg ms-lg-3" style="max-width: 600px;">`;
+                    html += `<h3 class="mb-3 lh-sm" style="font-weight: 500; font-size: 1.55rem; color: #1a1a1a; letter-spacing: -0.3px;">${session.name || 'Сессия'}</h3>`;
                    
                     if (questions.length > 0) {
                         html += `<ul class="list-unstyled mb-3">`;
                         questions.forEach((q, idx) => {
-                            html += `<li class="d-flex mb-2 lh-sm small" style="font-size: 0.95rem;">`;
-                            html += `<span>${q.title} ${q.body ? `<br><span class="text-muted">${q.body}</span>` : ''}</span>`;
+                            let titleText = q.title || '';
+                            let hashMatch = titleText.match(/^(#\d+)\s(.*)/);
+                            
+                            html += `<li class="d-flex mb-3" style="font-size: 0.85rem; line-height: 1.4;">`;
+                            if (hashMatch) {
+                                html += `<span class="fw-bold me-2" style="min-width: 22px;">${hashMatch[1]}</span>`;
+                                html += `<div>${hashMatch[2]} ${q.body ? `<div class="mt-1 text-muted" style="font-size: 0.8rem;">${q.body}</div>` : ''}</div>`;
+                            } else {
+                                html += `<div>${q.title} ${q.body ? `<div class="mt-1 text-muted" style="font-size: 0.8rem;">${q.body}</div>` : ''}</div>`;
+                            }
                             html += `</li>`;
                         });
                         html += `</ul>`;
                     }
                     html += `</div>`;
 
-                    // Блок людей: Без фото, только текст
-                    html += `<div class="col-12 col-lg-4 mt-3 mt-lg-0">`;
+                    // Блок людей: Только текст и кнопки подробнее
+                    html += `<div class="col-12 col-lg-4 mt-3 mt-lg-0 ms-lg-auto" style="max-width: 300px;">`;
                     function renderPerson(p) {
                         const name = `${p.firstName || ''} ${p.lastName || ''}`.trim();
                         const pos = [p.position, p.company].filter(Boolean).join(', ');
-                        return `<div class="lh-sm mb-3" style="font-size: 0.95rem;"><span class="fw-bold text-dark" style="font-size: 1.05rem;">${name}${pos ? ',' : ''}</span><br><span class="text-muted pb-1">${pos}</span></div>`;
+                        const bioBadge = p.bio ? `<div class="mt-1"><span style="display: inline-block; border: 1px solid #dcdcdc; border-radius: 20px; padding: 2px 10px; font-size: 0.70rem; color: #888; cursor: pointer; transition: 0.2s;">подробнее о спикере</span></div>` : '';
+                        
+                        return `<div class="lh-sm mb-3" style="font-size: 0.85rem;"><span class="fw-bold text-dark" style="font-size: 0.95rem;">${name}${pos ? ',' : ''}</span><br><span class="text-muted pb-1" style="font-size: 0.8rem;">${pos}</span>${bioBadge}</div>`;
                     }
 
                     if (moderators.length > 0) {
-                        html += `<div class="fw-light mb-2 text-muted" style="font-size: 0.8rem !important; text-transform: uppercase;">Модератор${moderators.length > 1 ? 'ы' : ''}</div>`;
+                        html += `<div class="fw-light mb-2 text-muted" style="font-size: 0.75rem !important; text-transform: uppercase;">Модераторы:</div>`;
                         moderators.forEach(m => html += renderPerson(m));
                     }
                     if (speakers.length > 0) {
-                        html += `<div class="fw-light mb-2 mt-3 text-muted" style="font-size: 0.8rem !important; text-transform: uppercase;">Спикеры</div>`;
+                        html += `<div class="fw-light mb-2 mt-4 text-muted" style="font-size: 0.75rem !important; text-transform: uppercase;">Спикеры:</div>`;
                         speakers.forEach(s => html += renderPerson(s));
                     }
                     html += `</div>`; // End col-lg-4 (speakers block)

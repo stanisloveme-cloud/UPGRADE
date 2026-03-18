@@ -50,6 +50,7 @@ const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onD
                 // Prepare values
                 const submission = {
                     ...values,
+                    id: initialValues?.id,
                     startTime: formatTime(start),
                     endTime: formatTime(end),
                     hallId: hallId || initialValues?.hallId,

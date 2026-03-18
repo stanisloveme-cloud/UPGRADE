@@ -51,6 +51,32 @@ test.describe('Halls Management (TC-01)', () => {
         await expect(modalTitle).toBeHidden();
 
         // 10. Verify the new hall appears in the Grid
-        await expect(page.locator('text=Автотест Зал')).toBeVisible();
+        await expect(page.locator('text=Автотест Зал').first()).toBeVisible();
+    });
+
+    test('should verify empty hall form validation', async ({ page }) => {
+        await page.waitForSelector('button:has-text("Программа")');
+        await page.click('button:has-text("Программа")');
+
+        await page.waitForSelector('text=Управление залами');
+        await page.click('button:has-text("Управление залами"), span:has-text("Управление залами")');
+
+        const modalTitle = page.locator('.ant-modal-title, .ant-drawer-title').filter({ hasText: 'Управление залами' });
+        await expect(modalTitle).toBeVisible();
+
+        await page.click('button:has-text("+ Добавить зал")');
+
+        // Do NOT fill the new hall input
+
+        await page.waitForTimeout(1000);
+        await page.click('.ant-modal-content button:has-text("Сохранить")');
+
+        // Verify the drawer/modal STAYS OPEN because of validation error
+        await page.waitForTimeout(1000);
+        await expect(modalTitle).toBeVisible();
+
+        // Verify cancel works
+        await page.click('.ant-modal-content button:has-text("Отмена")');
+        await expect(modalTitle).toBeHidden();
     });
 });

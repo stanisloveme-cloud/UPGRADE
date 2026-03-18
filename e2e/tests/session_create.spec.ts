@@ -74,19 +74,19 @@ test.describe('Session Creation (TC-12)', () => {
         await mainCreateBtn.click();
 
         // Wait for Drawer
-        const drawerTitle = page.locator('.ant-drawer-title').filter({ hasText: 'Создание сессии' });
+        const drawerTitle = page.locator('.ant-drawer-title, .ant-modal-title').filter({ hasText: /Создание сессии/i });
         await expect(drawerTitle).toBeVisible();
 
         // Fill session details
         await page.fill('input#name', 'Новая Автотест Сессия ' + Date.now());
 
         // Fill TimeRange for session
-        await page.locator('.ant-drawer-content [placeholder="Время начала"]').click();
-        await page.fill('.ant-drawer-content [placeholder="Время начала"]', '10:00');
+        await page.locator('.ant-drawer-content [placeholder="Время начала"], .ant-modal-content [placeholder="Время начала"]').click();
+        await page.fill('.ant-drawer-content [placeholder="Время начала"], .ant-modal-content [placeholder="Время начала"]', '10:00');
         await page.keyboard.press('Enter');
         await page.waitForTimeout(200);
-        await page.locator('.ant-drawer-content [placeholder="Время окончания"]').click();
-        await page.fill('.ant-drawer-content [placeholder="Время окончания"]', '11:00');
+        await page.locator('.ant-drawer-content [placeholder="Время окончания"], .ant-modal-content [placeholder="Время окончания"]').click();
+        await page.fill('.ant-drawer-content [placeholder="Время окончания"], .ant-modal-content [placeholder="Время окончания"]', '11:00');
         await page.keyboard.press('Enter');
 
         // Fill trackId if required and empty
@@ -99,7 +99,7 @@ test.describe('Session Creation (TC-12)', () => {
         await page.waitForTimeout(1000);
 
         // Save
-        await page.click('.ant-drawer-content button:has-text("Сохранить")');
+        await page.click('.ant-drawer-content button:has-text("Сохранить"), .ant-modal-content button:has-text("Сохранить"), .ant-modal-content button:has-text("OK"), .ant-drawer-content button:has-text("OK")');
 
         // Give it a second to validate or send request
         await page.waitForTimeout(2000);

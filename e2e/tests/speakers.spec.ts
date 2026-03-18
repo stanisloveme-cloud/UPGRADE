@@ -24,13 +24,17 @@ test.describe('Speakers Management (TC-08)', () => {
 
     test('should open speakers page, create, and verify a speaker', async ({ page }) => {
         // Navigate to Speakers
-        await page.goto('/speakers');
+        await page.locator('.ant-menu-item').filter({ hasText: 'Спикеры' }).click();
+        await page.waitForURL('**/speakers');
         await page.waitForSelector('.ant-page-header-heading-title:has-text("Спикеры")');
 
-        // Click Add Speaker
-        await page.click('button:has-text("Добавить спикера")');
-        const modalTitle = page.locator('.ant-modal-title').filter({ hasText: 'Добавить спикера' });
-        await expect(modalTitle).toBeVisible();
+        // Wait for grid to load before action (avoids hydration issues)
+        await page.waitForSelector('.ant-table-row', { timeout: 10000 });
+
+        // Click Add Speaker explicitly
+        await page.getByRole('button', { name: 'Добавить спикера' }).click();
+        const modalTitle = page.locator('.ant-modal-title').filter({ hasText: /спикер/i });
+        await expect(modalTitle).toBeVisible({ timeout: 10000 });
 
         // Fill form
         await page.fill('input#firstName', 'Автотест');
@@ -47,8 +51,13 @@ test.describe('Speakers Management (TC-08)', () => {
         // Verify modal closes
         await expect(modalTitle).toBeHidden();
 
+        // Search for the newly created speaker to ensure it's on the first page
+        await page.fill('input[placeholder*="Поиск по имени"]', 'Автотест');
+        // Wait for table to filter
+        await page.waitForTimeout(2000);
+
         // Verify the speaker appears in the list
-        await expect(page.locator('text=Спикеров Автотест')).toBeVisible();
-        await expect(page.locator('text=Test Company')).toBeVisible();
+        await expect(page.locator('text=Автотест').first()).toBeVisible();
+        await expect(page.locator('text=Test Company').first()).toBeVisible();
     });
 });

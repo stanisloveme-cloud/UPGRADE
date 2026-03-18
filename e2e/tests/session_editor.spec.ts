@@ -27,8 +27,8 @@ test.describe('Session Editor & Conflicts (TC-03 & TC-04)', () => {
         // 3. Click the session
         await page.locator('.session-card').first().click();
 
-        // 4. Wait for Drawer
-        const drawerTitle = page.locator('.ant-drawer-title').filter({ hasText: 'Редактирование сессии' });
+        // 4. Wait for Drawer/Modal
+        const drawerTitle = page.locator('.ant-drawer-title, .ant-modal-title').filter({ hasText: /Редактирование сессии/i });
         await expect(drawerTitle).toBeVisible();
 
         // Fill the description field
@@ -51,9 +51,9 @@ test.describe('Session Editor & Conflicts (TC-03 & TC-04)', () => {
             console.log('BROWSER CONSOLE:', msg.text());
         });
 
-        // Click "Сохранить" using standard Playwright click
+        // Click "Сохранить" or "OK" using standard Playwright click
         await page.waitForTimeout(1000); // Wait for React state to settle
-        await page.click('.ant-drawer-content button:has-text("Сохранить")');
+        await page.click('.ant-drawer-content button:has-text("Сохранить"), .ant-modal-content button:has-text("Сохранить"), .ant-drawer-content button:has-text("OK"), .ant-modal-content button:has-text("OK")');
 
         await page.waitForTimeout(2000); // Give it a sec to show validation
 
@@ -66,6 +66,29 @@ test.describe('Session Editor & Conflicts (TC-03 & TC-04)', () => {
         console.log(allText.substring(0, 1000)); // Log the first 1000 chars
 
         // Verify it closes
+        await expect(drawerTitle).toBeHidden();
+
+        // 5. Verify the description was saved by reopening
+        await page.locator('.session-card').first().click();
+        await expect(drawerTitle).toBeVisible();
+        const reopenedComment = page.locator('textarea[id="description"]').first();
+        if (await reopenedComment.count() > 0) {
+            const savedValue = await reopenedComment.inputValue();
+            expect(savedValue).toContain('test comment via playwright');
+        }
+        
+        // Close with Cancel button
+        await page.click('.ant-drawer-content button:has-text("Отмена"), .ant-modal-content button:has-text("Отмена"), .ant-drawer-content button:has-text("Cancel"), .ant-modal-content button:has-text("Cancel")');
+        await expect(drawerTitle).toBeHidden();
+    });
+
+    test('should test Cancel button on session editor', async ({ page }) => {
+        await page.locator('.session-card').first().click();
+        const drawerTitle = page.locator('.ant-drawer-title, .ant-modal-title').filter({ hasText: /Редактирование сессии/i });
+        await expect(drawerTitle).toBeVisible();
+
+        // Close with Cancel button
+        await page.click('.ant-drawer-content button:has-text("Отмена"), .ant-modal-content button:has-text("Отмена"), .ant-drawer-content button:has-text("Cancel"), .ant-modal-content button:has-text("Cancel")');
         await expect(drawerTitle).toBeHidden();
     });
 });
