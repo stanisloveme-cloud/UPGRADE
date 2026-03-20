@@ -45,6 +45,13 @@ export default defineConfig({
         baseURL: 'https://devupgrade.space4you.ru',
       },
     },
+    {
+      name: 'production',
+      use: {
+        ...devices['Desktop Chrome'],
+        baseURL: 'https://erp-upgrade.ru',
+      },
+    },
 
     // {
     //   name: 'firefox',

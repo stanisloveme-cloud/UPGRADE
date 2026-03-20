@@ -2,10 +2,12 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Events Management (TC-09)', () => {
     test.beforeEach(async ({ page }) => {
-        // Intercept logs to debug silent fails
+        // Intercept logs to debug silent fails and HARDEN
         page.on('response', async resp => {
             if (resp.url().includes('/api') && resp.status() >= 400) {
-                console.log('API ERROR:', resp.url(), resp.status(), await resp.text());
+                const text = await resp.text().catch(() => '');
+                console.log('API ERROR:', resp.url(), resp.status(), text);
+                expect(resp.status(), `API Error on ${resp.url()}: ${text}`).toBeLessThan(400);
             }
         });
         page.on('console', msg => console.log('BROWSER CONSOLE:', msg.text()));
@@ -89,9 +91,10 @@ test.describe('Events Management (TC-09)', () => {
         await page.waitForTimeout(1000);
         await page.click('.ant-modal-content button:has-text("OK"), .ant-modal-content button:has-text("Сохранить")');
         
-        // It should NOT close
+        // It should NOT close, AND it should show Ant Validation styling
         await page.waitForTimeout(1000);
         await expect(modalTitle).toBeVisible();
+        await expect(page.locator('.ant-form-item-explain-error').first()).toBeVisible();
         await page.click('.ant-modal-content button:has-text("Отмена")');
         await expect(modalTitle).toBeHidden();
     });

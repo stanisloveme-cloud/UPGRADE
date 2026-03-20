@@ -2,10 +2,12 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Halls Management (TC-01)', () => {
     test.beforeEach(async ({ page }) => {
-        // Intercept logs to debug silent fails
+        // Intercept logs to debug silent fails and HARDEN
         page.on('response', async resp => {
             if (resp.url().includes('/api') && resp.status() >= 400) {
-                console.log('API ERROR:', resp.url(), resp.status(), await resp.text());
+                const text = await resp.text().catch(() => '');
+                console.log('API ERROR:', resp.url(), resp.status(), text);
+                expect(resp.status(), `API Error on ${resp.url()}: ${text}`).toBeLessThan(400);
             }
         });
         page.on('console', msg => console.log('BROWSER CONSOLE:', msg.text()));

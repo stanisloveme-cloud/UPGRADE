@@ -25,6 +25,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
 
     const [speakerModalVisible, setSpeakerModalVisible] = useState(false);
     const [addingSpeakerIndex, setAddingSpeakerIndex] = useState<number | null>(null);
+    const [submittingSpeaker, setSubmittingSpeaker] = useState(false);
     const formRef = useRef<any>(null);
 
     // Transform initial values (HH:mm strings to dayjs objects for TimePicker)
@@ -471,12 +472,14 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
             {/* Inline Speaker Creation Modal */}
             <SpeakerModal
                 visible={speakerModalVisible}
+                loading={submittingSpeaker}
                 onClose={() => {
                     setSpeakerModalVisible(false);
                     setAddingSpeakerIndex(null);
                 }}
                 onFinish={async (values) => {
                     try {
+                        setSubmittingSpeaker(true);
                         const response = await axios.post('/api/speakers', values);
                         message.success('Спикер сохранён');
 
@@ -501,6 +504,8 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                         setAddingSpeakerIndex(null);
                     } catch (error) {
                         message.error('Ошибка сохранения спикера');
+                    } finally {
+                        setSubmittingSpeaker(false);
                     }
                 }}
             />
