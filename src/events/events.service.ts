@@ -292,7 +292,8 @@ export class EventsService {
                 name: `${sp.speaker.firstName} ${sp.speaker.lastName}`,
                 company: sp.companySnapshot || sp.speaker.company,
                 position: sp.positionSnapshot || sp.speaker.position,
-                role: sp.role
+                role: sp.role,
+                hasPresentation: !!(sp.presentationUrl || sp.presentationTitle)
             }));
 
         const questions = sessionSpeaker.session.questions.map(q => ({
@@ -305,6 +306,7 @@ export class EventsService {
             htmlContent, 
             eventName: event.name, 
             speakerName: speakerFullName,
+            hasPresentation: !!(sessionSpeaker.presentationUrl || sessionSpeaker.presentationTitle),
             sessionTitle: sessionSpeaker.session.name,
             sessionStartTime,
             sessionEndTime,

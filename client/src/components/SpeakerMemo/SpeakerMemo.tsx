@@ -10,6 +10,7 @@ const { Title, Text, Paragraph } = Typography;
 
 export interface SpeakerMemoProps {
     speakerName: string;
+    hasPresentation?: boolean;
     eventName: string;
     eventLogoUrl?: string; // New field for Event logo
     sessionTitle: string;
@@ -18,13 +19,14 @@ export interface SpeakerMemoProps {
     location: string;
     hallName: string;
     questions?: { id: number, title: string, body?: string | null }[]; // New field for discussion questions
-    coSpeakers?: { id: number, name: string, company?: string | null, position?: string | null, role: string }[]; // New field for other speakers
+    coSpeakers?: { id: number, name: string, company?: string | null, position?: string | null, role: string, hasPresentation?: boolean }[]; // New field for other speakers
     arrivalInstructions?: string;
     managerContacts?: string;
 }
 
 export const SpeakerMemo: React.FC<SpeakerMemoProps> = ({
     speakerName,
+    hasPresentation,
     eventName,
     eventLogoUrl,
     sessionTitle,
@@ -94,7 +96,14 @@ export const SpeakerMemo: React.FC<SpeakerMemoProps> = ({
                 <Space direction="vertical" size="large" style={{ width: '100%' }}>
                     <div>
                         <Text type="secondary">Уважаемый(ая)</Text>
-                        <Title level={3} style={{ marginTop: 4, marginBottom: 16, color: '#1677ff' }}>{speakerName}</Title>
+                        <Title level={3} style={{ marginTop: 4, marginBottom: 16, color: '#1677ff', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+                            {speakerName}
+                            {hasPresentation && (
+                                <span className="presentation-badge" style={{ fontSize: 14, background: '#e6f4ff', color: '#1677ff', padding: '4px 12px', borderRadius: 4, border: '1px solid #91caff', fontWeight: 'normal' }}>
+                                    Презентация
+                                </span>
+                            )}
+                        </Title>
                         <Paragraph style={{ fontSize: 16, lineHeight: 1.6 }}>
                             Мы рады приветствовать вас в качестве спикера на нашем мероприятии!
                             Ниже приведена организационная информация о вашем выступлении.
@@ -175,7 +184,14 @@ export const SpeakerMemo: React.FC<SpeakerMemoProps> = ({
                                     <ul style={{ fontSize: 16, paddingLeft: 20, marginTop: 8 }}>
                                         {coSpeakers.map(sp => (
                                             <li key={sp.id} style={{ marginBottom: 8 }}>
-                                                <strong>{sp.name}</strong>
+                                                <strong style={{ display: 'inline-flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                                                    {sp.name}
+                                                    {sp.hasPresentation && (
+                                                        <span className="presentation-badge" style={{ fontSize: 12, background: '#e6f4ff', color: '#1677ff', padding: '2px 8px', borderRadius: 4, border: '1px solid #91caff', fontWeight: 'normal' }}>
+                                                            Презентация
+                                                        </span>
+                                                    )}
+                                                </strong>
                                                 {(sp.company || sp.position) && (
                                                     <span style={{ display: 'block', color: '#595959', fontSize: 14 }}>
                                                         {sp.position} {sp.company && sp.position ? '–' : ''} {sp.company}

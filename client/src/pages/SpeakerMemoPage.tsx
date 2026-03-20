@@ -47,6 +47,7 @@ const SpeakerMemoPage: React.FC = () => {
         <div style={{ minHeight: '100vh', background: '#f0f2f5', padding: '24px 0' }}>
             <SpeakerMemo
                 speakerName={data.speakerName}
+                hasPresentation={data.hasPresentation}
                 eventName={data.eventName}
                 eventLogoUrl={data.eventLogoUrl}
                 sessionTitle={data.sessionTitle}
