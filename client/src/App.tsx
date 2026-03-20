@@ -19,6 +19,8 @@ import BrandApproval from './pages/BrandApproval';
 import BrandsCheck from './pages/BrandsCheck';
 import SpeakerMemoPage from './pages/SpeakerMemoPage';
 import SystemStatus from './pages/SystemStatus';
+import ModeratorPrint from './pages/PrintViews/ModeratorPrint';
+import NameplatesPrint from './pages/PrintViews/NameplatesPrint';
 
 dayjs.locale('ru');
 
@@ -33,6 +35,10 @@ const App: React.FC = () => {
             <Route path="/reset-password" element={<ResetPasswordPage />} />
             <Route path="/brand-approval/:hash" element={<BrandApproval />} />
             <Route path="/speaker-memo/:hash" element={<SpeakerMemoPage />} />
+            
+            {/* Dedicated Print Routes (Require Auth but no BasicLayout to stay clean) */}
+            <Route path="/print/session/:id/moderator" element={<RequireAuth><ModeratorPrint /></RequireAuth>} />
+            <Route path="/print/session/:id/nameplates" element={<RequireAuth><NameplatesPrint /></RequireAuth>} />
 
             <Route path="/" element={<RequireAuth><BasicLayout /></RequireAuth>}>
               <Route index element={<Navigate to="/events" replace />} />

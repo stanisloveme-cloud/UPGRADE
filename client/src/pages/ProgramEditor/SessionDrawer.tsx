@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ProFormText, ProFormTextArea, ProFormTimePicker, ProFormSelect, ProFormList, ProFormDateTimePicker, ProFormSwitch, ProFormGroup, ProFormDependency, ProCard } from '@ant-design/pro-components';
 import { Button, Upload, message, Divider } from 'antd';
-import { FilePdfOutlined } from '@ant-design/icons';
+import { FilePdfOutlined, CopyOutlined, PrinterOutlined, IdcardOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import axios from 'axios';
 import SpeakerModal from '../SpeakersList/SpeakerModal';
@@ -27,6 +27,48 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
     const [addingSpeakerIndex, setAddingSpeakerIndex] = useState<number | null>(null);
     const [submittingSpeaker, setSubmittingSpeaker] = useState(false);
     const formRef = useRef<any>(null);
+
+    const handleCopyText = () => {
+        if (!formRef.current) return;
+        const values = formRef.current.getFieldsValue(true);
+        let copyStr = `Сессия: ${values.name || ''}\n`;
+        
+        if (values.timeRange && values.timeRange.length === 2 && values.timeRange[0]) {
+             const start = typeof values.timeRange[0].format === 'function' ? values.timeRange[0].format('HH:mm') : values.timeRange[0];
+             const end = typeof values.timeRange[1]?.format === 'function' ? values.timeRange[1].format('HH:mm') : values.timeRange[1];
+             copyStr += `Время: ${start} - ${end}\n`;
+        }
+        
+        if (values.description) {
+            copyStr += `\nОписание:\n${values.description}\n`;
+        }
+
+        if (values.questions && values.questions.length > 0) {
+            copyStr += `\nВопросы:\n`;
+            values.questions.forEach((q: any, i: number) => {
+                copyStr += `#${i + 1} ${q.title || ''}\n`;
+                if (q.body) {
+                    copyStr += `   ${q.body}\n`;
+                }
+            });
+        }
+        
+        navigator.clipboard.writeText(copyStr).then(() => {
+            message.success('Текст скопирован в буфер обмена');
+        }).catch(() => {
+            message.error('Ошибка копирования текста. Возможно, браузер блокирует действие.');
+        });
+    };
+
+    const handlePrintModerator = () => {
+        if (!initialValues?.id) return;
+        window.open(`/print/session/${initialValues.id}/moderator`, '_blank');
+    };
+
+    const handlePrintNameplates = () => {
+        if (!initialValues?.id) return;
+        window.open(`/print/session/${initialValues.id}/nameplates`, '_blank');
+    };
 
     // Transform initial values (HH:mm strings to dayjs objects for TimePicker)
     const normalizedInitialValues = {
@@ -79,6 +121,22 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
             title={initialValues?.id ? "Редактирование сессии" : "Создание сессии"}
             open={visible}
             width={1000}
+            drawerProps={{ 
+                destroyOnClose: true,
+                extra: initialValues?.id ? (
+                    <div style={{ display: 'flex', gap: 8 }}>
+                        <Button icon={<CopyOutlined />} onClick={handleCopyText}>
+                            Копировать текст
+                        </Button>
+                        <Button icon={<PrinterOutlined />} onClick={handlePrintModerator}>
+                            Печать модератору
+                        </Button>
+                        <Button icon={<IdcardOutlined />} onClick={handlePrintNameplates}>
+                            Печать табличек
+                        </Button>
+                    </div>
+                ) : null
+            }}
             onOpenChange={(v) => !v && onClose()}
             onFinish={async (values) => {
                 try {
@@ -155,7 +213,6 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                 }
             }}
             initialValues={sanitizedValues}
-            drawerProps={{ destroyOnClose: true }}
             onDelete={initialValues?.id ? () => onDelete?.(initialValues.id) : undefined}
         >
             <ProFormText

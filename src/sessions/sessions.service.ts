@@ -141,7 +141,7 @@ export class SessionsService {
         const session = await this.prisma.session.findUnique({
             where: { id },
             include: {
-                track: true,
+                track: { include: { hall: true } },
                 manager: { select: { id: true, firstName: true, lastName: true, username: true } },
                 speakers: { include: { speaker: true, statusUser: { select: { id: true, firstName: true, lastName: true } } }, orderBy: { sortOrder: 'asc' } },
                 questions: { orderBy: { order: 'asc' } },
