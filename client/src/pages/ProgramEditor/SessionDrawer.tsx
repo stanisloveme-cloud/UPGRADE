@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ProFormText, ProFormTextArea, ProFormTimePicker, ProFormSelect, ProFormList, ProFormDateTimePicker, ProFormSwitch, ProFormGroup, ProFormDependency, ProCard } from '@ant-design/pro-components';
-import { Button, Upload, message, Divider } from 'antd';
+import { Button, Upload, message, Divider, Form } from 'antd';
 import { FilePdfOutlined, CopyOutlined, PrinterOutlined, IdcardOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import axios from 'axios';
@@ -17,7 +17,7 @@ interface SessionModalProps {
     initialValues?: any;
     trackId?: number; // Pre-selected track for creation
     tracks?: { value: number; label: string }[]; // Available tracks for selection
-    speakers?: { value: number; label: string; phone?: string; telegram?: string; company?: string; position?: string; }[];
+    speakers?: { value: number; label: string; phone?: string; telegram?: string; company?: string; position?: string; speakerOrigin?: any }[];
     onSpeakerCreated?: () => Promise<void>;
 }
 
@@ -341,6 +341,8 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                     position: 'bottom',
                     creatorButtonText: 'Добавить спикера',
                 }}
+                copyIconProps={{ tooltipText: 'Копировать карточку' }}
+                deleteIconProps={{ tooltipText: 'Удалить' }}
                 itemContainerRender={(doms) => {
                     return <ProCard bordered size="small" style={{ marginBottom: 16 }}>{doms}</ProCard>;
                 }}
@@ -381,8 +383,17 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                         )
                                     }}
                                 />
-                                <ProFormDependency name={['speakerId']}>
-                                    {({ speakerId }) => {
+                                <Form.Item
+                                    shouldUpdate={(prevValues: any, currentValues: any) => {
+                                        const prevList = prevValues.speakers || [];
+                                        const curList = currentValues.speakers || [];
+                                        return prevList[_index]?.speakerId !== curList[_index]?.speakerId;
+                                    }}
+                                    noStyle
+                                    dependencies={[['speakers', _index, 'speakerId']]}
+                                >
+                                    {({ getFieldValue }: any) => {
+                                        const speakerId = getFieldValue(['speakers', _index, 'speakerId']);
                                         const foundSpeaker = speakers?.find((s: any) => s.value === speakerId);
                                         if (!foundSpeaker) return null;
                                         return (
@@ -390,7 +401,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                                 <a onClick={() => {
                                                     setEditingSpeakerData(foundSpeaker.speakerOrigin);
                                                     setSpeakerModalVisible(true);
-                                                }} style={{ fontWeight: 500, marginRight: 8 }}>
+                                                }} style={{ fontWeight: 500, marginRight: 8, color: '#1677ff', textDecoration: 'underline' }}>
                                                     Редактировать карточку спикера
                                                 </a>
                                                 <span style={{ color: '#8c8c8c' }}>
@@ -400,7 +411,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                             </div>
                                         );
                                     }}
-                                </ProFormDependency>
+                                </Form.Item>
                                 <ProFormText
                                     name="companySnapshot"
                                     placeholder="Компания"
