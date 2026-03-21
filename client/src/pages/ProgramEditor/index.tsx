@@ -378,7 +378,8 @@ const ProgramEditor: React.FC = () => {
                     phone: s.phone,
                     telegram: s.telegram,
                     company: s.company,
-                    position: s.position
+                    position: s.position,
+                    speakerOrigin: s
                 }))}
                 onSpeakerCreated={fetchData}
             />
