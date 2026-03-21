@@ -25,6 +25,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
 
     const [speakerModalVisible, setSpeakerModalVisible] = useState(false);
     const [addingSpeakerIndex, setAddingSpeakerIndex] = useState<number | null>(null);
+    const [editingSpeakerData, setEditingSpeakerData] = useState<any>(null);
     const [submittingSpeaker, setSubmittingSpeaker] = useState(false);
     const formRef = useRef<any>(null);
 
@@ -383,11 +384,19 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                 <ProFormDependency name={['speakerId']}>
                                     {({ speakerId }) => {
                                         const foundSpeaker = speakers?.find((s: any) => s.value === speakerId);
-                                        if (!foundSpeaker || (!foundSpeaker.phone && !foundSpeaker.telegram)) return null;
+                                        if (!foundSpeaker) return null;
                                         return (
-                                            <div style={{ fontSize: '13px', color: '#8c8c8c', marginTop: '-20px', marginBottom: '8px' }}>
-                                                {foundSpeaker.phone ? `📞 ${foundSpeaker.phone}   ` : ''}
-                                                {foundSpeaker.telegram ? `✈️ ${foundSpeaker.telegram}` : ''}
+                                            <div style={{ fontSize: '13px', marginTop: '-20px', marginBottom: '8px' }}>
+                                                <a onClick={() => {
+                                                    setEditingSpeakerData(foundSpeaker.speakerOrigin);
+                                                    setSpeakerModalVisible(true);
+                                                }} style={{ fontWeight: 500, marginRight: 8 }}>
+                                                    Редактировать карточку спикера
+                                                </a>
+                                                <span style={{ color: '#8c8c8c' }}>
+                                                    {foundSpeaker.phone ? `📞 ${foundSpeaker.phone}   ` : ''}
+                                                    {foundSpeaker.telegram ? `✈️ ${foundSpeaker.telegram}` : ''}
+                                                </span>
                                             </div>
                                         );
                                     }}
@@ -526,19 +535,29 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                 )}
             </ProFormList>
 
-            {/* Inline Speaker Creation Modal */}
+            {/* Inline Speaker Creation/Edit Modal */}
             <SpeakerModal
                 visible={speakerModalVisible}
                 loading={submittingSpeaker}
+                initialValues={editingSpeakerData}
                 onClose={() => {
                     setSpeakerModalVisible(false);
                     setAddingSpeakerIndex(null);
+                    setEditingSpeakerData(null);
                 }}
                 onFinish={async (values) => {
                     try {
                         setSubmittingSpeaker(true);
-                        const response = await axios.post('/api/speakers', values);
-                        message.success('Спикер сохранён');
+                        const isEdit = !!editingSpeakerData?.id;
+                        let response;
+                        
+                        if (isEdit) {
+                            response = await axios.patch(`/api/speakers/${editingSpeakerData.id}`, values);
+                        } else {
+                            response = await axios.post('/api/speakers', values);
+                        }
+                        
+                        message.success(`Спикер ${isEdit ? 'обновлен' : 'сохранён'}`);
 
                         // Refresh the global speaker list in parent
                         if (onSpeakerCreated) {
@@ -546,7 +565,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                         }
 
                         // Auto-fill the newly created speaker into the correct row
-                        if (addingSpeakerIndex !== null && formRef.current) {
+                        if (!isEdit && addingSpeakerIndex !== null && formRef.current) {
                             const currentList = formRef.current.getFieldValue('speakers') || [];
                             if (currentList[addingSpeakerIndex]) {
                                 currentList[addingSpeakerIndex] = {
@@ -559,6 +578,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
 
                         setSpeakerModalVisible(false);
                         setAddingSpeakerIndex(null);
+                        setEditingSpeakerData(null);
                     } catch (error) {
                         message.error('Ошибка сохранения спикера');
                     } finally {
