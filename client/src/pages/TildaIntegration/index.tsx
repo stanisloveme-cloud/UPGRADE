@@ -37,9 +37,10 @@ const TildaIntegrationPage: React.FC = () => {
     }, []);
 
     const getScriptUrl = () => {
+        const origin = window.location.origin || 'https://erp-upgrade.ru';
         return template === 'old' 
-            ? "https://devupgrade.space4you.ru/tilda-integration-v2.js?v=4"
-            : "https://devupgrade.space4you.ru/tilda-integration-new.js?v=1";
+            ? `${origin}/tilda-integration-v2.js?v=4`
+            : `${origin}/tilda-integration-new.js?v=2`;
     };
 
     const htmlSnippet = `<!-- UPGRADE CRM Schedule Widget -->

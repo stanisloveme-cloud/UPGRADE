@@ -1,8 +1,13 @@
 (function() {
     console.log("UPGRADE CRM Tilda Integration Widget (Bootstrap 5 UX) Loaded");
 
+    let backendUrl = 'https://erp-upgrade.ru';
+    if (document.currentScript && document.currentScript.src) {
+        try { backendUrl = new URL(document.currentScript.src).origin; } catch (e) {}
+    }
+
     const CONFIG = {
-        API_BASE: 'https://devupgrade.space4you.ru/api/public',
+        API_BASE: backendUrl + '/api/public',
         rootId: 'crm-schedule-root',
         defaultRegistrationUrl: 'https://spring.upgrade.st/registration'
     };
@@ -478,13 +483,13 @@
                 const speakerId = trigger.getAttribute('data-speaker-id');
                 const speaker = SPEAKERS_MAP[speakerId];
                 if (speaker) {
-                    document.getElementById('upg-modal-name').textContent = \`\${speaker.firstName || ''} \${speaker.lastName || ''}\`.trim();
+                    document.getElementById('upg-modal-name').textContent = `\${speaker.firstName || ''} \${speaker.lastName || ''}`.trim();
                     document.getElementById('upg-modal-pos').textContent = [speaker.position, speaker.company].filter(Boolean).join(', ');
                     document.getElementById('upg-modal-bio').textContent = speaker.bio || '';
                     
                     const imgEl = document.getElementById('upg-modal-img');
                     if (speaker.photoUrl) {
-                        imgEl.src = speaker.photoUrl.startsWith('http') ? speaker.photoUrl : \`\${CONFIG.API_BASE.replace('/api/public', '')}\${speaker.photoUrl}\`;
+                        imgEl.src = speaker.photoUrl.startsWith('http') ? speaker.photoUrl : `\${CONFIG.API_BASE.replace('/api/public', '')}\${speaker.photoUrl}`;
                         imgEl.style.display = 'block';
                     } else {
                         imgEl.style.display = 'none';
