@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Typography, Space, Alert, Select, message, Button } from 'antd';
 import { PageContainer, ProCard } from '@ant-design/pro-components';
-import { ExternalLinkAuthIcon } from '../../components/Icons/ExternalLinkAuthIcon'; // or generic icon
-import { ExternalLinkOutlined } from '@ant-design/icons';
+import { ExportOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
 const { Paragraph } = Typography;
@@ -96,7 +95,7 @@ const TildaIntegrationPage: React.FC = () => {
                     <Button 
                         type="primary" 
                         size="large"
-                        icon={<ExternalLinkOutlined />}
+                        icon={<ExportOutlined />}
                         href={`/test-tilda-standalone.html?eventId=${selectedEventId || 1}`}
                         target="_blank"
                         disabled={!selectedEventId}
