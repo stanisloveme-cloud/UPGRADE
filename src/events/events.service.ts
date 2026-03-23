@@ -1,78 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { CreateEventDto } from './dto/create-event.dto';
-import { lostSessionsData } from './restore-track-sessions';
 
 @Injectable()
 export class EventsService {
-    constructor(private prisma: PrismaService) { }
-
-    async restoreLostSessions() {
-        const sessionData = lostSessionsData;
-        const hall = await this.prisma.hall.findFirst({
-            where: { eventId: 76, name: { contains: 'Трансформер' } }
-        });
-        if (!hall) return { error: 'Hall not found' };
-
-        const track = await this.prisma.track.findFirst({
-            where: { hallId: hall.id, name: { contains: 'Ритейл стратегии' } }
-        });
-        if (!track) return { error: 'Track not found' };
-
-        for (const session of sessionData) {
-            const hasSession = await this.prisma.session.findFirst({ where: { trackId: track.id, name: session.name } });
-            if (hasSession) continue; // safety
-
-            const newSession = await this.prisma.session.create({
-                data: {
-                    trackId: track.id,
-                    name: session.name,
-                    description: session.description,
-                    startTime: session.startTime,
-                    endTime: session.endTime,
-                    comments: session.comments,
-                    clients: session.clients,
-                }
-            });
-
-            if (session.speakers && session.speakers.length > 0) {
-                for (const sp of session.speakers) {
-                    await this.prisma.sessionSpeaker.create({
-                        data: {
-                            sessionId: newSession.id,
-                            speakerId: sp.speakerId,
-                            role: sp.role as any,
-                            status: sp.status as any,
-                            statusDate: sp.statusDate ? new Date(sp.statusDate) : null,
-                            sortOrder: sp.sortOrder,
-                            needs_zoom: sp.needs_zoom,
-                            hasPresentation: sp.hasPresentation,
-                            managerComment: sp.managerComment,
-                            programThesis: sp.programThesis,
-                            newsletterQuote: sp.newsletterQuote,
-                            companySnapshot: sp.companySnapshot,
-                            positionSnapshot: sp.positionSnapshot,
-                            exportToWebsite: sp.exportToWebsite
-                        }
-                    });
-                }
-            }
-
-            if (session.questions && session.questions.length > 0) {
-                for (const q of session.questions) {
-                    await this.prisma.sessionQuestion.create({
-                        data: {
-                            sessionId: newSession.id,
-                            order: q.order,
-                            title: q.title,
-                            body: q.body
-                        }
-                    });
-                }
-            }
-        }
-        return { success: true, count: sessionData.length, trackId: track.id };
-    }
+    constructor(private readonly prisma: PrismaService) { }
 
     async findAll(user?: any) {
         if (!user || user.isSuperAdmin) {
