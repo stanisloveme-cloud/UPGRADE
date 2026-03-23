@@ -534,6 +534,12 @@
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
-        init();
+        // Only auto-init if we haven't been instructed to be purely callable
+        if (!window.__UPG_PREVENT_AUTO_INIT) {
+            init();
+        }
     }
+
+    // Expose globally for the React CRM Preview UI to trigger manually
+    window.renderUpgTildaWidget = init;
 })();

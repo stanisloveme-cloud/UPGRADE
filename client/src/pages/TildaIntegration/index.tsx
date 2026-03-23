@@ -36,31 +36,43 @@ const TildaIntegrationPage: React.FC = () => {
         fetchEvents();
     }, []);
 
-    // Load and reload script whenever the event ID changes
+    // Load script ONCE, and manually trigger render when selectedEventId changes
     useEffect(() => {
         if (selectedEventId === null) return;
 
-        const scriptId = 'tilda-preview-v2';
-        
-        // Remove existing script to force a full re-initialization of the widget
-        const existingScript = document.getElementById(scriptId);
-        if (existingScript) existingScript.remove();
-        
         // Clear the container to drop old UI
         if (previewContainerRef.current) {
             previewContainerRef.current.innerHTML = '';
         }
 
-        const script = document.createElement('script');
-        script.id = scriptId;
-        script.src = '/tilda-integration-v2.js?ts=' + new Date().getTime(); 
-        script.async = true;
-        document.body.appendChild(script);
+        const runRender = () => {
+            if ((window as any).renderUpgTildaWidget) {
+                (window as any).renderUpgTildaWidget();
+            }
+        };
+
+        const scriptId = 'tilda-preview-v2';
+        const existingScript = document.getElementById(scriptId);
+
+        if (!existingScript) {
+            // Prevent auto-init since we will manually trigger it
+            (window as any).__UPG_PREVENT_AUTO_INIT = true;
+
+            const script = document.createElement('script');
+            script.id = scriptId;
+            script.src = '/tilda-integration-v2.js?ts=' + new Date().getTime(); 
+            script.async = true;
+            script.onload = () => {
+                runRender();
+            };
+            document.body.appendChild(script);
+        } else {
+            // Script already loaded, just trigger render
+            runRender();
+        }
 
         return () => {
-            if (script.parentNode) {
-                script.parentNode.removeChild(script);
-            }
+            // No need to remove the script when unmounting, but we could if we wanted to
         };
     }, [selectedEventId]);
 
