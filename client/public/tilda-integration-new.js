@@ -1,8 +1,13 @@
 (function() {
     console.log("UPGRADE CRM Tilda Integration Widget (NEW UX) Loaded");
 
+    let backendUrl = 'https://erp-upgrade.ru';
+    if (document.currentScript && document.currentScript.src) {
+        try { backendUrl = new URL(document.currentScript.src).origin; } catch (e) {}
+    }
+
     const CONFIG = {
-        API_BASE: 'https://devupgrade.space4you.ru/api/public',
+        API_BASE: backendUrl + '/api/public',
         rootId: 'crm-schedule-root',
         defaultRegistrationUrl: 'https://spring.upgrade.st/registration'
     };
