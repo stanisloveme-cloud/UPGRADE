@@ -12,6 +12,12 @@ export class EventsController {
         return this.eventsService.create(createEventDto);
     }
 
+    @Get('restore-lost-sessions-from-json')
+    @Public()
+    async restoreLostSessions() {
+        return this.eventsService.restoreLostSessions();
+    }
+
     @Get(':id/full-structure')
     getFullStructure(@Param('id', ParseIntPipe) id: number, @Request() req: any) {
         return this.eventsService.getFullStructure(id, req.user);
