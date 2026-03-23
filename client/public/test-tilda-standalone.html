@@ -93,27 +93,38 @@
         </script>
 
         <div class="event-selector">
-            <label for="eventSelect" style="font-weight: bold; margin-right: 15px;">Выберите мероприятие для предпросмотра:</label>
-            <select id="eventSelect" onchange="changeEventId(this.value); updateSnippet(this.value)">
+            <label for="eventSelect" style="font-weight: bold; margin-right: 15px;">Выберите мероприятие:</label>
+            <select id="eventSelect" onchange="changeParams('eventId', this.value)">
                 <option value="76">ID 76: RTLigate 2025</option>
                 <option value="1">ID 1: Upgrade Retail Весна 2025</option>
                 <option value="2">ID 2: E-COM СФЕРА</option>
                 <option value="42">ID 42: Тестовое событие</option>
             </select>
+            
+            <label for="layoutSelect" style="font-weight: bold; margin-left: 30px; margin-right: 15px;">Шаблон:</label>
+            <select id="layoutSelect" onchange="changeParams('layout', this.value)">
+                <option value="old">Старый (Списком)</option>
+                <option value="new">Новый (Сетка карточек)</option>
+            </select>
         </div>
 
-        <!-- Tilda Snippet Start -->
         <script>
-            // Выполняем подмену ID ДО того, как загрузится и сработает defer-скрипт Tilda
             const params = new URLSearchParams(window.location.search);
             const eventId = params.get('eventId') || 76;
-            window.crmEventId = eventId;
+            const layoutMode = params.get('layout') || 'new';
+
             document.addEventListener('DOMContentLoaded', () => {
-                const el = document.getElementById('eventSelect');
-                if(el) el.value = eventId;
+                const evEl = document.getElementById('eventSelect');
+                if(evEl) evEl.value = eventId;
+                
+                const layEl = document.getElementById('layoutSelect');
+                if(layEl) layEl.value = layoutMode;
             });
-            function changeEventId(newId) {
-                window.location.search = '?eventId=' + newId;
+
+            function changeParams(key, val) {
+                const p = new URLSearchParams(window.location.search);
+                p.set(key, val);
+                window.location.search = '?' + p.toString();
             }
         </script>
 
@@ -124,18 +135,26 @@
         </div>
 
         <script>
-            // Применяем eventId на рут элемент сразу, так как DOM-элемент выше уже распарсен
             const root = document.getElementById('crm-schedule-root');
             if (root) {
-                root.setAttribute('data-event-id', window.crmEventId || 76);
+                root.setAttribute('data-event-id', eventId);
             }
         </script>
 
         <!-- Подключаем Bootstrap JS (требуется для модалок/колпапсов, если будут использоваться) -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Подключаем наш скрипт расписания v2 (переработанный на сетку Bootstrap) -->
-        <script src="tilda-integration-v2.js?v=3" defer></script>
+        <!-- Подключаем нужный скрипт расписания v2 (старый) или new (новый) -->
+        <script>
+            const scriptTag = document.createElement('script');
+            if (layoutMode === 'old') {
+                scriptTag.src = "tilda-integration-v2.js?v=" + new Date().getTime();
+            } else {
+                scriptTag.src = "tilda-integration-new.js?v=" + new Date().getTime();
+            }
+            scriptTag.defer = true;
+            document.body.appendChild(scriptTag);
+        </script>
         <!-- Tilda Snippet End -->
 
     </div>
