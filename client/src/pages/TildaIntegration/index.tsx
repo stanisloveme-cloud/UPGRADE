@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Typography, Space, Alert, Select, message, Skeleton } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Typography, Space, Alert, Select, message, Button } from 'antd';
 import { PageContainer, ProCard } from '@ant-design/pro-components';
+import { ExternalLinkAuthIcon } from '../../components/Icons/ExternalLinkAuthIcon'; // or generic icon
+import { ExternalLinkOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
 const { Paragraph } = Typography;
@@ -11,7 +13,6 @@ interface Event {
 }
 
 const TildaIntegrationPage: React.FC = () => {
-    const previewContainerRef = useRef<HTMLDivElement>(null);
     const [events, setEvents] = useState<Event[]>([]);
     const [selectedEventId, setSelectedEventId] = useState<number | null>(null);
     const [loading, setLoading] = useState(true);
@@ -23,7 +24,6 @@ const TildaIntegrationPage: React.FC = () => {
                 const response = await axios.get('/api/events');
                 setEvents(response.data);
                 if (response.data && response.data.length > 0) {
-                    // Default to the first event
                     setSelectedEventId(response.data[0].id);
                 }
             } catch (err) {
@@ -36,49 +36,9 @@ const TildaIntegrationPage: React.FC = () => {
         fetchEvents();
     }, []);
 
-    // Load script ONCE, and manually trigger render when selectedEventId changes
-    useEffect(() => {
-        if (selectedEventId === null) return;
-
-        // Clear the container to drop old UI
-        if (previewContainerRef.current) {
-            previewContainerRef.current.innerHTML = '';
-        }
-
-        const runRender = () => {
-            if ((window as any).renderUpgTildaWidget) {
-                (window as any).renderUpgTildaWidget();
-            }
-        };
-
-        const scriptId = 'tilda-preview-v2';
-        const existingScript = document.getElementById(scriptId);
-
-        if (!existingScript) {
-            // Prevent auto-init since we will manually trigger it
-            (window as any).__UPG_PREVENT_AUTO_INIT = true;
-
-            const script = document.createElement('script');
-            script.id = scriptId;
-            script.src = '/tilda-integration-v2.js?ts=' + new Date().getTime(); 
-            script.async = true;
-            script.onload = () => {
-                runRender();
-            };
-            document.body.appendChild(script);
-        } else {
-            // Script already loaded, just trigger render
-            runRender();
-        }
-
-        return () => {
-            // No need to remove the script when unmounting, but we could if we wanted to
-        };
-    }, [selectedEventId]);
-
     const htmlSnippet = `<!-- UPGRADE CRM Schedule Widget -->
 <div id="crm-schedule-root" data-event-id="${selectedEventId || 1}"></div>
-<script src="https://devupgrade.space4you.ru/tilda-integration-v2.js"></script>`;
+<script src="https://devupgrade.space4you.ru/tilda-integration-v2.js?v=4"></script>`;
 
     return (
         <PageContainer 
@@ -89,7 +49,7 @@ const TildaIntegrationPage: React.FC = () => {
                 
                 <Alert
                     message="Инструкция по установке"
-                    description="Сначала выберите нужное мероприятие из списка ниже. Затем скопируйте сгенерированный HTML-код и вставьте его в блок T123 (HTML-код) на странице Tilda. Скрипт автоматически загрузит и отрисует актуальную сетку расписания."
+                    description="Сначала выберите нужное мероприятие из списка ниже. Затем скопируйте сгенерированный HTML-код и вставьте его в блок T123 (HTML-код) на странице Tilda."
                     type="info"
                     showIcon
                 />
@@ -125,16 +85,24 @@ const TildaIntegrationPage: React.FC = () => {
                 </ProCard>
 
                 <ProCard 
-                    title="Отладка: Живое превью виджета" 
+                    title="Тестовый стенд (Живое превью)" 
                     bordered 
                     headerBordered 
-                    tooltip="Так виджет выглядит прямо сейчас на основе текущих данных выбранного мероприятия в базе"
+                    tooltip="Открыть отдельную тестовую HTML-страницу с уже внедрённым скриптом для выбранного мероприятия"
                 >
-                    {!selectedEventId ? (
-                        <Skeleton active />
-                    ) : (
-                        <div id="crm-schedule-root" data-event-id={selectedEventId} ref={previewContainerRef}></div>
-                    )}
+                    <Paragraph>
+                        Чтобы проверить, как расписание выглядит на реальной странице прямо сейчас, вы можете нажать на кнопку ниже. Будет сгенерирована отдельная вкладка с тестовой страницей, привязанной к вашему выбору.
+                    </Paragraph>
+                    <Button 
+                        type="primary" 
+                        size="large"
+                        icon={<ExternalLinkOutlined />}
+                        href={`/test-tilda-standalone.html?eventId=${selectedEventId || 1}`}
+                        target="_blank"
+                        disabled={!selectedEventId}
+                    >
+                        Посмотреть превью виджета
+                    </Button>
                 </ProCard>
 
             </Space>
