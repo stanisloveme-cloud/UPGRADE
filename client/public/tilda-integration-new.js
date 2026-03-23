@@ -98,34 +98,6 @@
             -webkit-box-orient: vertical;  
             overflow: hidden;
         }
-        .upg-modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); z-index: 99999;
-            display: none; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.3s ease;
-        }
-        .upg-modal-overlay.show { display: flex; opacity: 1; }
-        .upg-modal-container {
-            background: #fff; border-radius: 12px; max-width: 500px; width: 90%;
-            padding: 24px; position: relative; max-height: 90vh; overflow-y: auto;
-            transform: scale(0.95); transition: transform 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            font-family: inherit;
-        }
-        .upg-modal-overlay.show .upg-modal-container { transform: scale(1); }
-        .upg-modal-close {
-            position: absolute; top: 16px; right: 16px;
-            background: none; border: none; font-size: 24px; cursor: pointer; color: #888;
-        }
-        .upg-modal-close:hover { color: #000; }
-        .upg-modal-header { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
-        .upg-modal-photo {
-            width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
-            background-color: #f0f0f0; flex-shrink: 0; filter: grayscale(100%);
-        }
-        .upg-modal-name { font-size: 1.25rem; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; line-height: 1.2; }
-        .upg-modal-pos { font-size: 0.9rem; color: #666; }
-        .upg-modal-bio { font-size: 0.95rem; color: #444; line-height: 1.5; white-space: pre-wrap; }
     `;
 
     function formatTime(startTime, endTime) {
@@ -133,7 +105,7 @@
         let sTime = startTime.includes('T') ? new Date(startTime).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }) : startTime.split(':').slice(0, 2).join(':');
         if (endTime) {
             let eTime = endTime.includes('T') ? new Date(endTime).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }) : endTime.split(':').slice(0, 2).join(':');
-            return \`\${sTime} – \${eTime}\`;
+            return `${sTime} – ${eTime}`;
         }
         return sTime;
     }
@@ -146,8 +118,8 @@
 
         const eventName = data.event ? data.event.name : 'ДЕЛОВАЯ ПРОГРАММА UPGRADE RETAIL';
 
-        let html = \`<div class="bootstrap-wrapper container-fluid p-0">\`;
-        html += \`<div class="upg-main-title">\${eventName.toUpperCase()}</div>\`;
+        let html = `<div class="bootstrap-wrapper container-fluid p-0">`;
+        html += `<div class="upg-main-title">${eventName.toUpperCase()}</div>`;
 
         let trackColorIndex = 0;
 
@@ -155,12 +127,11 @@
             const hallName = hall.name === 'unknown' ? 'Главный зал' : (hall.name || 'Общий зал');
             const tracks = hall.tracks || [];
             
-            if (tracks.length === 0) return; // Skip empty halls
+            if (tracks.length === 0) return;
 
-            html += \`<div class="upg-hall-block">\`;
-            html += \`<div class="row g-4">\`;
+            html += `<div class="upg-hall-block">`;
+            html += `<div class="row g-4">`;
 
-            // Inside each hall, tracks are displayed as columns
             tracks.forEach(track => {
                 const trackName = track.name || 'Общая программа';
                 if (trackName === 'Без трека' && (!track.sessions || track.sessions.length === 0)) return;
@@ -168,16 +139,13 @@
                 const palette = PALETTES[trackColorIndex % PALETTES.length];
                 trackColorIndex++;
 
-                html += \`<div class="col-12 col-xl-6 upg-track-col">\`;
+                html += `<div class="col-12 col-xl-6 upg-track-col">`;
                 
-                // Track Header (Hall + Track Name)
                 if (hallName !== 'Главный зал') {
-                    html += \`<div class="upg-hall-title">\${hallName}</div>\`;
+                    html += `<div class="upg-hall-title">${hallName}</div>`;
                 }
-                html += \`<div class="upg-track-title" style="color: \${palette.trackText}">\${trackName}</div>\`;
-
-                // Track Sessions Grid
-                html += \`<div class="row g-3">\`;
+                html += `<div class="upg-track-title" style="color: ${palette.trackText}">${trackName}</div>`;
+                html += `<div class="row g-3">`;
                 
                 const sessionsArray = track.sessions || [];
                 sessionsArray.sort((a,b) => (a.startTime||'').localeCompare(b.startTime||''));
@@ -191,38 +159,31 @@
                         shortDesc = session.questions[0].title.substring(0, 80) + (session.questions[0].title.length > 80 ? '...' : '');
                     }
 
-                    // Collect speaker IDs to enable clicking the card for details (future modal)
-                    const sAnchor = \`session-\${session.id}\`;
+                    const sAnchor = `session-${session.id}`;
 
-                    html += \`
+                    html += `
                         <div class="col-12 col-md-6">
-                            <div class="upg-session-card" style="background-color: \${palette.bg};" data-session-id="\${session.id}">
-                                <div class="upg-time-pill">\${time}</div>
-                                <div class="upg-session-title">\${safeTitle}</div>
-                                \${shortDesc ? \`<div class="upg-session-desc">\${shortDesc}</div>\` : ''}
+                            <div class="upg-session-card" style="background-color: ${palette.bg};" data-session-id="${session.id}">
+                                <div class="upg-time-pill">${time}</div>
+                                <div class="upg-session-title">${safeTitle}</div>
+                                ${shortDesc ? `<div class="upg-session-desc">${shortDesc}</div>` : ''}
                             </div>
                         </div>
-                    \`;
+                    `;
                 });
 
-                html += \`</div>\`; // End Session Row
-                html += \`</div>\`; // End Track Col
+                html += `</div></div>`;
             });
 
-            html += \`</div>\`; // End Hall Row
-            html += \`</div>\`; // End Hall Block
+            html += `</div></div>`;
         });
 
-        html += \`</div>\`; 
+        html += `</div>`; 
         root.innerHTML = html;
         setupModals(root);
     }
 
-    function setupModals(root) {
-        // Create modal DOM if not exists (for speakers or session details)
-        // ... omitted for brevity in "new" layout prototype unless requested
-        // The "old" layout relies heavily on modals for speakers
-    }
+    function setupModals(root) {}
 
     function init() {
         if (!document.getElementById('upg-bootstrap-overrides-new')) {
@@ -240,9 +201,9 @@
             
             root.innerHTML = '<div class="text-center p-5 text-muted">Загрузка программы...</div>';
 
-            fetch(\`\${CONFIG.API_BASE}/events/\${eventId}/website-data\`)
+            fetch(`${CONFIG.API_BASE}/events/${eventId}/website-data`)
                 .then(response => {
-                    if (!response.ok) throw new Error(\`Network error: \${response.status}\`);
+                    if (!response.ok) throw new Error(`Network error: ${response.status}`);
                     return response.json();
                 })
                 .then(data => renderSchedule(root, data))
