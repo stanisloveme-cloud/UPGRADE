@@ -105,47 +105,47 @@
         }
         /* Detailed List Styles */
         #crm-schedule-root .upg-detailed-section {
-            margin-top: 5rem;
+            margin-top: 3rem;
         }
         #crm-schedule-root .upg-detailed-track-title {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: #592c74;
-            margin-top: 3.5rem;
-            margin-bottom: 1.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
             text-transform: uppercase;
         }
         #crm-schedule-root .upg-detailed-card {
             background: #fff;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            padding: 30px;
-            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            padding: 24px;
+            margin-bottom: 15px;
         }
         #crm-schedule-root .upg-detailed-time-pill {
             color: #592c74;
             border: 1px solid #592c74;
-            border-radius: 30px;
-            padding: 4px 14px;
-            font-weight: 600;
-            font-size: 0.95rem;
+            border-radius: 20px;
+            padding: 2px 12px;
+            font-weight: 700;
+            font-size: 0.8rem;
             display: inline-block;
         }
         #crm-schedule-root .upg-detailed-hall {
             color: #888;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.75rem;
             letter-spacing: 0.05em;
             display: inline-block;
-            margin-left: 15px;
+            margin-left: 12px;
         }
         #crm-schedule-root .upg-detailed-title {
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 700;
             color: #592c74;
-            line-height: 1.35;
+            line-height: 1.3;
             margin-top: 1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             text-transform: uppercase;
         }
         #crm-schedule-root .upg-detailed-question {
@@ -155,24 +155,23 @@
         #crm-schedule-root .upg-question-number {
             background-color: #d2db41;
             color: #592c74;
-            width: 28px;
-            height: 28px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            font-size: 0.85rem;
+            font-weight: 800;
+            font-size: 0.7rem;
             flex-shrink: 0;
-            margin-right: 12px;
-            box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+            margin-right: 10px;
         }
         #crm-schedule-root .upg-question-text {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: #592c74;
-            line-height: 1.35;
+            line-height: 1.3;
             font-weight: 500;
-            margin-top: 4px;
+            margin-top: 2px;
         }
     `;
 
