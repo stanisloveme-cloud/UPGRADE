@@ -86,6 +86,10 @@ export const BasicLayout: React.FC = () => {
                             name: 'Администраторы',
                         },
                         {
+                            path: '/tilda-integration',
+                            name: 'Интеграция с Tilda',
+                        },
+                        {
                             path: '/system-status',
                             name: 'Статус системы',
                         }

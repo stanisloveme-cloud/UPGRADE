@@ -14,6 +14,8 @@
         { text: '#6F1D1B', accent: '#A95C59' }  // Day 4
     ];
 
+    const SPEAKERS_MAP = {}; // Store speaker data for modals
+
     const STYLES = `
         /* Custom Utilities */
         #crm-schedule-root .v-hall {
@@ -43,13 +45,17 @@
         #crm-schedule-root .nav-link-custom {
             color: #333;
             text-decoration: none;
-            transition: color 0.2s;
+            transition: color 0.2s, background-color 0.2s;
             display: block;
             margin-bottom: 0.5rem;
             font-size: 0.95rem;
+            padding: 4px 8px;
+            border-radius: 4px;
         }
-        #crm-schedule-root .nav-link-custom:hover {
+        #crm-schedule-root .nav-link-custom:hover, #crm-schedule-root .nav-link-custom.active {
             color: #8F6FAD;
+            background-color: rgba(143, 111, 173, 0.1);
+            font-weight: 500;
         }
         #crm-schedule-root .bg-body-tertiary {
             background-color: #f8f9fa !important;
@@ -61,7 +67,6 @@
             background-color: #e9ecef !important;
             cursor: pointer;
         }
-        /* Клик по всей области */
         #crm-schedule-root .stretched-link::after {
             position: absolute;
             top: 0; right: 0; bottom: 0; left: 0;
@@ -82,6 +87,39 @@
             background-color: #12003a;
             color: #fff;
         }
+        /* Modal Styles */
+        .upg-modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 99999;
+            display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .upg-modal-overlay.show {
+            display: flex; opacity: 1;
+        }
+        .upg-modal-container {
+            background: #fff; border-radius: 12px; max-width: 500px; width: 90%;
+            padding: 24px; position: relative; max-height: 90vh; overflow-y: auto;
+            transform: scale(0.95); transition: transform 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            font-family: inherit;
+        }
+        .upg-modal-overlay.show .upg-modal-container {
+            transform: scale(1);
+        }
+        .upg-modal-close {
+            position: absolute; top: 16px; right: 16px;
+            background: none; border: none; font-size: 24px; cursor: pointer; color: #888;
+        }
+        .upg-modal-close:hover { color: #000; }
+        .upg-modal-header { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+        .upg-modal-photo {
+            width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
+            background-color: #f0f0f0; flex-shrink: 0; filter: grayscale(100%);
+        }
+        .upg-modal-name { font-size: 1.25rem; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; line-height: 1.2; }
+        .upg-modal-pos { font-size: 0.9rem; color: #666; }
+        .upg-modal-bio { font-size: 0.95rem; color: #444; line-height: 1.5; white-space: pre-wrap; }
     `;
 
     // --- HELPERS ---
@@ -182,7 +220,7 @@
             const tracks = Object.keys(scheduleByDay[day].tracks);
             tracks.forEach(trackName => {
                 const anchorId = `track-${encodeURIComponent(trackName).replace(/[^a-zA-Z0-9]/g, '')}`;
-                html += `<li><a href="#${anchorId}" class="nav-link-custom">${trackName}</a></li>`;
+                html += `<li><a href="#${anchorId}" class="nav-link-custom tilda-track-nav">${trackName}</a></li>`;
             });
             html += `</ul>`;
         });
@@ -253,11 +291,11 @@
                         `;
                     });
                     
-                    html += `</div>`; // g-3 (Конец сетки сессий для одного трека)
+                    html += `</div>`; // g-3
                 }
-                html += `</div>`; // col (Конец правой колонки)
+                html += `</div>`; // col
                 
-                html += `</div>`; // row (Конец строки одного зала)
+                html += `</div>`; // row
             }
             html += `</div>`; // Grid View wrapper
 
@@ -268,7 +306,7 @@
                 
                 const anchorId = `track-${encodeURIComponent(trackName).replace(/[^a-zA-Z0-9]/g, '')}`;
                 
-                html += `<div class="to-scroll mb-5" id="${anchorId}">`;
+                html += `<div class="to-scroll mb-5 tilda-track-section" id="${anchorId}">`;
                 if (trackName !== 'Без трека') {
                     html += `<h3 class="mt-1" style="color: ${colors.text}">${trackName}</h3>`;
                 }
@@ -287,18 +325,18 @@
 
                     html += `<div class="row to-scroll border-top pt-3 mb-4" id="${sAnchor}" style="border-color: ${colors.accent} !important;">`;
                     
-                    html += `<div class="col-12 col-lg-auto text-lg-start text-nowrap" style="width: 130px; padding-right: 0;">`;
+                    html += `<div class="col-12 col-lg-2 text-lg-start mb-2 mb-lg-0">`;
                     html += `<span class="fw-bold" style="font-size: 1.05rem; letter-spacing: -0.5px;">${time}</span>`;
                     html += `</div>`;
 
-                    html += `<div class="col-12 col-lg ms-lg-3" style="max-width: 600px;">`;
+                    html += `<div class="col-12 col-lg-6 mb-3 mb-lg-0 pe-lg-4">`;
                     html += `<h3 class="mb-3 lh-sm" style="font-weight: 500; font-size: 1.55rem; color: #1a1a1a; letter-spacing: -0.3px;">${session.name || 'Сессия'}</h3>`;
                    
                     if (questions.length > 0) {
                         html += `<ul class="list-unstyled mb-3">`;
                         questions.forEach((q, idx) => {
                             let titleText = q.title || '';
-                            let hashMatch = titleText.match(/^(#\d+)\s(.*)/);
+                            let hashMatch = titleText.match(/^(#\d+|№\d+)[:.]?\s+(.*)/);
                             
                             html += `<li class="d-flex mb-3" style="font-size: 0.85rem; line-height: 1.4;">`;
                             if (hashMatch) {
@@ -313,14 +351,18 @@
                     }
                     html += `</div>`;
 
-                    // Блок людей: Только текст и кнопки подробнее
-                    html += `<div class="col-12 col-lg-4 mt-3 mt-lg-0 ms-lg-auto" style="max-width: 300px;">`;
+                    // Блок людей
+                    html += `<div class="col-12 col-lg-4 mt-3 mt-lg-0">`;
                     function renderPerson(p) {
                         const name = `${p.firstName || ''} ${p.lastName || ''}`.trim();
                         const pos = [p.position, p.company].filter(Boolean).join(', ');
-                        const bioBadge = p.bio ? `<div class="mt-1"><span style="display: inline-block; border: 1px solid #dcdcdc; border-radius: 20px; padding: 2px 10px; font-size: 0.70rem; color: #888; cursor: pointer; transition: 0.2s;">подробнее о спикере</span></div>` : '';
                         
-                        return `<div class="lh-sm mb-3" style="font-size: 0.85rem;"><span class="fw-bold text-dark" style="font-size: 0.95rem;">${name}${pos ? ',' : ''}</span><br><span class="text-muted pb-1" style="font-size: 0.8rem;">${pos}</span>${bioBadge}</div>`;
+                        // Save to global map for modals
+                        if (p.id) SPEAKERS_MAP[p.id] = p;
+
+                        const bioBadge = p.bio ? `<div class="mt-2"><span class="speaker-modal-trigger" data-speaker-id="${p.id}" style="display: inline-block; border: 1px solid #dcdcdc; border-radius: 20px; padding: 3px 12px; font-size: 0.70rem; color: #888; cursor: pointer; transition: 0.2s; position: relative; z-index: 2;">подробнее о спикере</span></div>` : '';
+                        
+                        return `<div class="lh-sm mb-4" style="font-size: 0.85rem;"><span class="fw-bold text-dark" style="font-size: 0.95rem;">${name}${pos ? ',' : ''}</span><br><span class="text-muted pb-1" style="font-size: 0.8rem;">${pos}</span>${bioBadge}</div>`;
                     }
 
                     if (moderators.length > 0) {
@@ -331,31 +373,35 @@
                         html += `<div class="fw-light mb-2 mt-4 text-muted" style="font-size: 0.75rem !important; text-transform: uppercase;">Спикеры:</div>`;
                         speakers.forEach(s => html += renderPerson(s));
                     }
-                    html += `</div>`; // End col-lg-4 (speakers block)
+                    html += `</div>`; 
 
                     html += `</div>`; // End row session
                 });
 
                 html += `</div>`; // End Track Block
             }
-            html += `</div>`; // End Detailed View wrapper
-            
-            html += `</div>`; // End Day Content wrapper
+            html += `</div>`; 
+            html += `</div>`; 
         });
         
-        // Participate button at the very bottom
         if (registrationUrl) {
             html += `<div class="text-center mt-5 mb-3">`;
             html += `<a href="${registrationUrl}" class="btn-participate" target="_blank" rel="noopener noreferrer">Участвовать</a>`;
             html += `</div>`;
         }
 
-        html += `</div>`; // End Main Content (Right)
-        html += `</div></div>`; // End row & container
+        html += `</div>`; 
+        html += `</div></div>`; 
 
         root.innerHTML = html;
         
-        // Setup smooth scrolling for hash links
+        // Navigation setup
+        setupNavigation(root);
+        setupModals(root);
+    }
+
+    function setupNavigation(root) {
+        // Smooth scroll
         root.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -363,11 +409,93 @@
                 const targetEl = document.getElementById(targetId);
                 if (targetEl) {
                     targetEl.scrollIntoView({ behavior: 'smooth' });
-                    // Optional target highlight
                     targetEl.style.backgroundColor = 'rgba(143, 111, 173, 0.1)';
                     setTimeout(() => targetEl.style.backgroundColor = 'transparent', 1500);
                 }
             });
+        });
+
+        // Scroll spy
+        const navLinks = root.querySelectorAll('.tilda-track-nav');
+        const sections = root.querySelectorAll('.tilda-track-section');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current) && current) {
+                    link.classList.add('active');
+                }
+            });
+        }, { passive: true });
+    }
+
+    function setupModals(root) {
+        // Create modal DOM if not exists
+        let modalOverlay = document.getElementById('upg-speaker-modal-overlay');
+        if (!modalOverlay) {
+            modalOverlay = document.createElement('div');
+            modalOverlay.id = 'upg-speaker-modal-overlay';
+            modalOverlay.className = 'upg-modal-overlay';
+            modalOverlay.innerHTML = `
+                <div class="upg-modal-container">
+                    <button class="upg-modal-close" id="upg-modal-close-btn">&times;</button>
+                    <div class="upg-modal-header">
+                        <img id="upg-modal-img" class="upg-modal-photo" src="" alt="" style="display:none;" />
+                        <div>
+                            <div class="upg-modal-name" id="upg-modal-name"></div>
+                            <div class="upg-modal-pos" id="upg-modal-pos"></div>
+                        </div>
+                    </div>
+                    <div class="upg-modal-bio" id="upg-modal-bio"></div>
+                </div>
+            `;
+            document.body.appendChild(modalOverlay);
+
+            // Close events
+            document.getElementById('upg-modal-close-btn').addEventListener('click', () => {
+                modalOverlay.classList.remove('show');
+                setTimeout(() => modalOverlay.style.display = 'none', 300);
+            });
+            modalOverlay.addEventListener('click', (e) => {
+                if(e.target === modalOverlay) {
+                    modalOverlay.classList.remove('show');
+                    setTimeout(() => modalOverlay.style.display = 'none', 300);
+                }
+            });
+        }
+
+        // Delegate click for trigger buttons
+        root.addEventListener('click', (e) => {
+            const trigger = e.target.closest('.speaker-modal-trigger');
+            if (trigger) {
+                const speakerId = trigger.getAttribute('data-speaker-id');
+                const speaker = SPEAKERS_MAP[speakerId];
+                if (speaker) {
+                    document.getElementById('upg-modal-name').textContent = \`\${speaker.firstName || ''} \${speaker.lastName || ''}\`.trim();
+                    document.getElementById('upg-modal-pos').textContent = [speaker.position, speaker.company].filter(Boolean).join(', ');
+                    document.getElementById('upg-modal-bio').textContent = speaker.bio || '';
+                    
+                    const imgEl = document.getElementById('upg-modal-img');
+                    if (speaker.photoUrl) {
+                        imgEl.src = speaker.photoUrl.startsWith('http') ? speaker.photoUrl : \`\${CONFIG.API_BASE.replace('/api/public', '')}\${speaker.photoUrl}\`;
+                        imgEl.style.display = 'block';
+                    } else {
+                        imgEl.style.display = 'none';
+                    }
+
+                    modalOverlay.style.display = 'flex';
+                    // Trigger reflow for transition
+                    void modalOverlay.offsetWidth;
+                    modalOverlay.classList.add('show');
+                }
+            }
         });
     }
 

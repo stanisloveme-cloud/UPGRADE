@@ -21,6 +21,7 @@ import SpeakerMemoPage from './pages/SpeakerMemoPage';
 import SystemStatus from './pages/SystemStatus';
 import ModeratorPrint from './pages/PrintViews/ModeratorPrint';
 import NameplatesPrint from './pages/PrintViews/NameplatesPrint';
+import TildaIntegrationPage from './pages/TildaIntegration';
 
 dayjs.locale('ru');
 
@@ -49,6 +50,7 @@ const App: React.FC = () => {
               <Route path="sales" element={<div>Sales Placeholder</div>} />
               <Route path="brands-check" element={<BrandsCheck />} />
               <Route path="system-status" element={<SystemStatus />} />
+              <Route path="tilda-integration" element={<TildaIntegrationPage />} />
               <Route path="profile" element={<ProfilePage />} />
               <Route path="settings/users" element={<UsersList />} />
               <Route path="*" element={<Navigate to="/events" replace />} />
