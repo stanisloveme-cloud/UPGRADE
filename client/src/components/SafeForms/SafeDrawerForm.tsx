@@ -44,7 +44,11 @@ export const SafeDrawerForm = <T extends Record<string, any>>({
                 props.onFinishFailed?.(errorInfo);
             }}
             submitter={{
-                ...props.submitter,
+                searchConfig: {
+                    submitText,
+                    resetText: cancelText,
+                },
+                ...(props.submitter || {}),
                 render: (submitterProps, defaultDoms) => {
                     if (props.submitter && props.submitter.render) {
                         return props.submitter.render(submitterProps, defaultDoms);

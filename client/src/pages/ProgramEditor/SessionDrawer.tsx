@@ -4,6 +4,8 @@ import { Button, Upload, message, Divider, Form } from 'antd';
 import { FilePdfOutlined, CopyOutlined, PrinterOutlined, IdcardOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import axios from 'axios';
+import { getSpeakers } from '../../api/generated/speakers/speakers';
+import { CreateSpeakerDto, UpdateSpeakerDto } from '../../api/generated/model';
 import SpeakerModal from '../SpeakersList/SpeakerModal';
 import { SafeDrawerForm } from '../../components/SafeForms/SafeDrawerForm';
 import { sanitizeFormValues } from '../../utils/formSanitizer';
@@ -560,12 +562,12 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                     try {
                         setSubmittingSpeaker(true);
                         const isEdit = !!editingSpeakerData?.id;
-                        let response;
+                        let speakerResponseData;
                         
                         if (isEdit) {
-                            response = await axios.patch(`/api/speakers/${editingSpeakerData.id}`, values);
+                            speakerResponseData = (await getSpeakers().speakersControllerUpdate(editingSpeakerData.id, values as UpdateSpeakerDto)) as unknown as { id: number };
                         } else {
-                            response = await axios.post('/api/speakers', values);
+                            speakerResponseData = (await getSpeakers().speakersControllerCreate(values as CreateSpeakerDto)) as unknown as { id: number };
                         }
                         
                         message.success(`Спикер ${isEdit ? 'обновлен' : 'сохранён'}`);
@@ -581,7 +583,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                             if (currentList[addingSpeakerIndex]) {
                                 currentList[addingSpeakerIndex] = {
                                     ...currentList[addingSpeakerIndex],
-                                    speakerId: response.data.id
+                                    speakerId: speakerResponseData.id
                                 };
                                 formRef.current.setFieldsValue({ speakers: currentList });
                             }
