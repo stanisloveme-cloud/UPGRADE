@@ -160,8 +160,70 @@ const BrandApproval: React.FC = () => {
                         value={data.publicPhone}
                     />
                     <InfoRow
+                        title="Город"
+                        help="Город базирования бренда."
+                        value={data.city}
+                    />
+                    <InfoRow
+                        title="Количество сотрудников"
+                        help="Общее число сотрудников в компании."
+                        value={data.employeeCount}
+                    />
+                    <InfoRow
+                        title="Годовой оборот"
+                        help="Оборот компании за последний год."
+                        value={data.annualTurnover}
+                    />
+                    <InfoRow
+                        title="Telegram"
+                        help="Корпоративный Telegram аккаунт/канал."
+                        value={data.telegram}
+                        isLink={true}
+                    />
+                    <InfoRow
+                        title="WhatsApp"
+                        help="Корпоративный WhatsApp."
+                        value={data.whatsapp}
+                        isLink={true}
+                    />
+                    <InfoRow
+                        title="Контактное лицо"
+                        help="ФИО вашего менеджера/представителя."
+                        value={data.contactName}
+                    />
+                    <InfoRow
+                        title="Email контактного лица"
+                        help="Электронная почта для внутренней связи."
+                        value={data.contactEmail}
+                    />
+                    <InfoRow
+                        title="Финдиректор / Подписант"
+                        help="ФИО руководителя или подписанта."
+                        value={data.cfoName}
+                    />
+                    
+                    {data.cases && data.cases.length > 0 && (
+                        <Row style={{ marginBottom: 32, paddingBottom: 32, borderBottom: '1px solid #f0f0f0' }}>
+                            <Col xs={24} sm={8} style={{ paddingRight: 24, marginBottom: 16 }}>
+                                <div style={{ fontSize: 18, color: '#595959', marginBottom: 4 }}>Кейсы и презентации</div>
+                                <div style={{ fontSize: 12, color: '#bfbfbf' }}>Ссылки на лучшие работы и документы.</div>
+                            </Col>
+                            <Col xs={24} sm={16} style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                                {data.cases.map((cs: any, idx: number) => (
+                                    <div key={idx} style={{ fontSize: 16 }}>
+                                        <b style={{marginRight: 8}}>{cs.label}:</b> 
+                                        <a href={cs.url?.startsWith('http') ? cs.url : `https://${cs.url}`} target="_blank" rel="noreferrer">
+                                            {cs.url}
+                                        </a>
+                                    </div>
+                                ))}
+                            </Col>
+                        </Row>
+                    )}
+
+                    <InfoRow
                         title="Логотип"
-                        help="Логотип бренда."
+                        help="Логотип бренда (PNG/SVG)."
                         value={data.logoUrl}
                         isLogo={true}
                     />
