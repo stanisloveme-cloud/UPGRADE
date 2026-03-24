@@ -277,10 +277,11 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                         rules={[{ required: true, message: 'Выберите бренд' }]}
                         request={async () => {
                             const { data } = await axios.get('/api/sponsors/all?pageSize=1000');
-                            return data.data?.map((s: any) => ({
+                            // Backend returns a direct array, so 'data' is the array.
+                            return (Array.isArray(data) ? data : []).map((s: any) => ({
                                 label: s.name,
                                 value: s.id,
-                            })) || [];
+                            }));
                         }}
                         showSearch
                         placeholder="Поиск по названию..."
