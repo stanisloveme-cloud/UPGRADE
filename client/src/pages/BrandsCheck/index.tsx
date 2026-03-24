@@ -313,6 +313,17 @@ const BrandsCheck: React.FC = () => {
                         segments: Array.isArray(record.segments) ? record.segments.map((s: any) => [s.marketSegmentId]) : undefined,
                         logoUrl: record.logoUrl || record.logoFileUrl ? [{ uid: '-1', name: 'logo', status: 'done', url: record.logoUrl || record.logoFileUrl, response: { url: record.logoUrl || record.logoFileUrl } }] : []
                     }, { arrayFields: ['cases'], listFields: ['cases'] })}
+                    onDelete={async () => {
+                        try {
+                            await axios.delete(`/api/sponsors/${record.id}`);
+                            message.success('Бренд успешно удален');
+                            actionRef.current?.reload();
+                            return true;
+                        } catch (error) {
+                            message.error('Ошибка при удалении');
+                            return false;
+                        }
+                    }}
                     onFinish={async (values) => {
                         try {
                             const payload = { ...values };
