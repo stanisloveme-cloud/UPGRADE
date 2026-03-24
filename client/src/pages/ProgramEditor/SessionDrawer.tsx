@@ -178,8 +178,8 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                 status: s.status,
                                 companySnapshot: s.companySnapshot,
                                 positionSnapshot: s.positionSnapshot,
-                                presentationUrl: s.hasPresentation ? s.presentationUrl : null,
-                                presentationTitle: s.hasPresentation ? s.presentationTitle : null,
+                                presentationUrl: s.hasPresentation ? (s.presentationUrl || null) : null,
+                                presentationTitle: s.hasPresentation ? (s.presentationTitle || '') : null,
                             }));
                     }
 

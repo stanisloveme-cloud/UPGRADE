@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
-import { Button, message, Tabs, Checkbox, Modal, Tooltip, Upload } from 'antd';
-import { SettingOutlined, PlusOutlined, UploadOutlined, DownloadOutlined } from '@ant-design/icons';
+import { Button, message, Tabs, Checkbox, Modal, Tooltip } from 'antd';
+import { SettingOutlined, PlusOutlined, DownloadOutlined } from '@ant-design/icons';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import HallsModal from './HallsModal';
@@ -258,6 +258,11 @@ const ProgramEditor: React.FC = () => {
                         Сортировка спикеров
                     </Button>
                     <Button
+                        onClick={() => setReadinessDrawerVisible(true)}
+                    >
+                        Статус презентаций
+                    </Button>
+                    <Button
                         onClick={() => setAnnouncementsVisible(true)}
                     >
                         Анонсы
@@ -281,28 +286,7 @@ const ProgramEditor: React.FC = () => {
                     >
                         Скачать презентации
                     </Button>
-                    <Upload
-                        name="file"
-                        action={`/api/exports/import/${eventId}`}
-                        headers={{ authorization: `Bearer ${localStorage.getItem('access_token')}` }}
-                        showUploadList={false}
-                        accept=".xlsx,.xls,.csv"
-                        onChange={(info) => {
-                            if (info.file.status === 'uploading') {
-                                message.loading({ content: 'ИИ анализирует расписание... Это может занять до минуты.', key: 'import', duration: 0 });
-                            } else if (info.file.status === 'done') {
-                                message.success({ content: `Умный импорт завершен! Создано сессий: ${info.file.response?.sessionsImported || 0}`, key: 'import', duration: 4 });
-                                fetchData();
-                            } else if (info.file.status === 'error') {
-                                const errMsg = info.file.response?.message || 'Ошибка при импорте расписания';
-                                message.error({ content: errMsg, key: 'import', duration: 5 });
-                            }
-                        }}
-                    >
-                        <Button icon={<UploadOutlined />} type="default">
-                            Умный Импорт (Excel)
-                        </Button>
-                    </Upload>
+
                     <Tooltip title={!hasTracks ? "Сначала создайте хотя бы один трек (в строке зала), чтобы добавлять сессии" : ""}>
                         <Button
                             type="primary"

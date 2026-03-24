@@ -33,8 +33,13 @@ const SpeakerReadinessDrawer: React.FC<SpeakerReadinessDrawerProps> = ({ visible
                     <div style={{ fontWeight: 500 }}>
                         {record.speaker?.lastName} {record.speaker?.firstName}
                     </div>
-                    <div style={{ fontSize: '12px', color: '#8c8c8c' }}>
+                    <div style={{ fontSize: '12px', color: '#8c8c8c', marginBottom: 4 }}>
                         {record.companySnapshot || record.speaker?.company}
+                    </div>
+                    <div style={{ fontSize: '11px', color: '#595959', display: 'flex', flexDirection: 'column', gap: 2 }}>
+                        {record.speaker?.phone && <span>📞 {record.speaker.phone}</span>}
+                        {record.speaker?.email && <span>✉️ {record.speaker.email}</span>}
+                        {record.speaker?.telegram && <span>✈️ {record.speaker.telegram}</span>}
                     </div>
                 </div>
             )
@@ -80,13 +85,13 @@ const SpeakerReadinessDrawer: React.FC<SpeakerReadinessDrawerProps> = ({ visible
             dataIndex: 'presentationStatus',
             valueType: 'select',
             valueEnum: {
-                'pending': { text: 'Ожидается (Нужна)' },
-                'uploaded': { text: 'Загружена' },
-                'not_required': { text: 'Не требуется' }
+                'pending': { text: 'Да, ожидаем' },
+                'uploaded': { text: 'Да, загружена' },
+                'not_required': { text: 'Нет презентации' }
             },
             render: (_, record) => {
                 if (!record.hasPresentation) {
-                    return <span style={{ color: '#bfbfbf', fontSize: '12px' }}>Не требуется</span>;
+                    return <span style={{ color: '#bfbfbf', fontSize: '12px' }}>Нет презентации</span>;
                 }
                 if (record.hasPresentation && !record.presentationUrl) {
                     return (
@@ -98,7 +103,7 @@ const SpeakerReadinessDrawer: React.FC<SpeakerReadinessDrawerProps> = ({ visible
                 return (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                         <Tag color="success" icon={<CheckCircleOutlined />}>
-                            Загружена
+                            Да, загружена
                         </Tag>
                         <a href={record.presentationUrl} target="_blank" rel="noreferrer" style={{ fontSize: '12px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                             <FilePdfOutlined /> Скачать
