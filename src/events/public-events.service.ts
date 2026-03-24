@@ -180,6 +180,7 @@ export class PublicEventsService {
                 exportToWebsite: true,
                 status: { in: ['confirmed', 'pre_confirmed'] }
             },
+            orderBy: { sortOrder: 'asc' },
             include: {
                 speaker: {
                     select: {
@@ -191,18 +192,48 @@ export class PublicEventsService {
                         photoUrl: true,
                         bio: true
                     }
+                },
+                session: {
+                    select: {
+                        name: true,
+                        track: {
+                            select: { name: true }
+                        },
+                        hall: {
+                            select: { name: true }
+                        }
+                    }
                 }
             }
         });
 
-        // Deduplicate speakers
+        // Deduplicate speakers and aggregate their session info
         const uniqueSpeakers = new Map();
-        for (const sessionSpeaker of sessionSpeakers) {
-            if (sessionSpeaker.speaker && !uniqueSpeakers.has(sessionSpeaker.speaker.id)) {
-                uniqueSpeakers.set(sessionSpeaker.speaker.id, sessionSpeaker.speaker);
+        for (const spk of sessionSpeakers) {
+            if (!spk.speaker) continue;
+
+            if (!uniqueSpeakers.has(spk.speaker.id)) {
+                // Determine primary ranking based on their first appearance in sorted sessionSpeakers
+                uniqueSpeakers.set(spk.speaker.id, {
+                    ...spk.speaker,
+                    sortOrder: spk.sortOrder,
+                    sessionsInfo: []
+                });
             }
+
+            // Append this session's context to the unique speaker representation
+            const aggSpeaker = uniqueSpeakers.get(spk.speaker.id);
+            aggSpeaker.sessionsInfo.push({
+                sessionName: spk.session?.name,
+                trackName: spk.session?.track?.name,
+                hallName: spk.session?.hall?.name
+            });
         }
         
-        return Array.from(uniqueSpeakers.values());
+        // Return as an array ordered by the lowest sortOrder found per speaker
+        const result = Array.from(uniqueSpeakers.values());
+        result.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+        
+        return result;
     }
 }
