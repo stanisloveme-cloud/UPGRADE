@@ -91,6 +91,7 @@ jobs:
             
             $DC_CMD -f docker-compose.prod.yml down || true
             docker ps -a --filter "name=upgrade-crm" -q | xargs -r docker rm -f || true
+            docker rm -f upgrade_redis_prod prometheus grafana node_exporter cadvisor || true
 
             if ! command -v certbot &> /dev/null; then
                 sudo apt-get update
@@ -105,7 +106,8 @@ jobs:
             if ! sudo crontab -l | grep -q "certbot renew"; then
                 (sudo crontab -l 2>/dev/null; echo "0 3 * * * certbot renew --pre-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml stop frontend\" --post-hook \"cd ~/upgrade-crm && docker compose -f docker-compose.prod.yml start frontend\"") | sudo crontab -
             fi
-
+            
+            sleep 10
             $DC_CMD -f docker-compose.prod.yml up -d --remove-orphans --force-recreate
             sleep 5
             $DC_CMD -f docker-compose.prod.yml exec -T app npx prisma migrate deploy
