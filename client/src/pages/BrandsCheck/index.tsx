@@ -303,6 +303,7 @@ const BrandsCheck: React.FC = () => {
                 <SafeModalForm
                     key="edit"
                     title="Редактировать спонсора"
+                    width={1000}
                     trigger={
                         <Button type="default" size="small" shape="round" style={{ borderColor: '#1890ff', color: '#1890ff' }}>
                             Редактировать

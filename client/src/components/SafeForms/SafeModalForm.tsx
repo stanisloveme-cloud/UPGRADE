@@ -59,7 +59,9 @@ export const SafeModalForm = <T extends Record<string, any>>({
                                 type="primary"
                                 danger
                                 icon={<DeleteOutlined />}
-                                onClick={() => {
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
                                     Modal.confirm({
                                         title: 'Удаление',
                                         content: 'Вы уверены, что хотите удалить эту запись?',

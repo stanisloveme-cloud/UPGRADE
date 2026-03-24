@@ -199,6 +199,7 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                 <SafeModalForm
                     key="edit"
                     title="Редактировать спонсора"
+                    width={1000}
                     trigger={<a>Изменить</a>}
                     initialValues={sanitizeFormValues({
                         ...record,
