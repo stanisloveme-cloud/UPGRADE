@@ -57,4 +57,30 @@ export class MarketSegmentsService {
         if (!existing) throw new NotFoundException('Segment not found');
         return this.prisma.marketSegment.delete({ where: { id } });
     }
+
+    async seed(data: any[]) {
+        await this.prisma.sponsorSegment.deleteMany();
+        await this.prisma.marketSegment.deleteMany();
+
+        const createSegment = async (node: any, parentId?: number) => {
+            const created = await this.prisma.marketSegment.create({
+                data: {
+                    name: node.name,
+                    parentId: parentId || null,
+                }
+            });
+
+            if (node.children && node.children.length > 0) {
+                for (const child of node.children) {
+                    await createSegment(child, created.id);
+                }
+            }
+        };
+
+        for (const topLevel of data) {
+            await createSegment(topLevel);
+        }
+
+        return { message: 'Seeded successfully' };
+    }
 }

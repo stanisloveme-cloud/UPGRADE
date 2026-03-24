@@ -1,5 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { MarketSegmentsService } from './market-segments.service';
+import { Public } from '../auth/public.decorator';
 
 @Controller('market-segments')
 export class MarketSegmentsController {
@@ -28,5 +29,12 @@ export class MarketSegmentsController {
     @Delete(':id')
     remove(@Param('id') id: string) {
         return this.marketSegmentsService.remove(+id);
+    }
+
+    @Public()
+    @Post('seed')
+    seed() {
+        const data = require('../../scripts/market_segments.json');
+        return this.marketSegmentsService.seed(data);
     }
 }
