@@ -1,2 +1,1 @@
--- AlterTable
-ALTER TABLE "SessionSpeaker" ADD COLUMN     "presentation_updated_at" TIMESTAMPTZ(6);
+ALTER TABLE "session_speakers" ADD COLUMN     "presentation_updated_at" TIMESTAMPTZ(6);

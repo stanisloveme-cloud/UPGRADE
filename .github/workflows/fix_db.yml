@@ -12,5 +12,4 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker exec upgrade-crm-app-1 npx prisma migrate resolve --applied 20260317181300_sync_missing_needs_call
-            docker exec upgrade-crm-app-1 npx prisma migrate deploy
+            docker exec upgrade-crm-app-1 npx prisma migrate resolve --rolled-back 20260324130500_rd17_add_presentation_timestamp
