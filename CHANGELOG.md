@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 - **Спонсоры и Бренды**: Полностью переработан модуль глобальных брендов с выгрузкой логотипов из старой CRM. Добавлена новая расширенная карточка компании (оборот, сотрудники, контакты, добавление ссылок-кейсов).
 - **Tilda Integration**: Спроектирован и внедрен инжектируемый Vanilla-JS виджет (`tilda-sponsors.js`) для отрисовки сетки логотипов (grayscale-to-color) спонсоров мероприятий прямо на сайты Tilda.
 - **Дерево сегментов (Market Segments)**: Написан скрипт миграции 150+ сегментов из старой CRM в БД и разработан кастомный компонент `MarketSegmentSelector` для удобного выбора сегментов рынка в три колонки с сохранением иерархии (Группа -> Элемент).
+- **Мануалы по Data Migration**: В релизном отчете регламентирован процесс синхронизации проверенных брендов и сгенерированных ассетов (логотипов) посредством `pg_dump` и `rsync` таблиц `sponsors` с Dev-среды (devupgrade) на Production (erp-upgrade), что обеспечивает бесшовный перенос глобального справочника.
 - Created dedicated Node.js `pg` module scripts (`export_clean.js` and `import_prod_data.js`) for sanitizing, exporting, and cleanly migrating DB states across environments while preserving referential integrity and excluding administrative namespaces.
 - Manually mapped Production Administrator accounts to individual Event objects within the `user_events` table to grant authorized frontend visibility.
 
