@@ -4,6 +4,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { v4 as uuidv4 } from 'uuid';
+import { Public } from '../auth/public.decorator';
 
 @Controller('uploads')
 export class UploadsController {
@@ -50,6 +51,20 @@ export class UploadsController {
     uploadLogo(@UploadedFile() file: Express.Multer.File) {
         if (!file) throw new BadRequestException('File is required');
         return { url: `/api/uploads/logos/${file.filename}` };
+    }
+
+    @Public()
+    @Post('exact-logo/:filename')
+    @UseInterceptors(FileInterceptor('file', {
+        storage: diskStorage({
+            destination: './uploads/logos',
+            filename: (req, file, cb) => {
+                cb(null, req.params.filename as string);
+            }
+        })
+    }))
+    uploadExactLogo(@UploadedFile() file: Express.Multer.File, @Param('filename') filename: string) {
+        return { url: `/api/uploads/logos/${filename}` };
     }
 
     @Post('presentation')
