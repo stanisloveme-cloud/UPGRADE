@@ -244,8 +244,8 @@ const ProgramEditor: React.FC = () => {
 
     return (
         <PageContainer title={data?.name || "Загрузка..."}>
-            <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ display: 'flex', gap: 16 }}>
+            <div style={{ marginBottom: 16 }}>
+                <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                     <Button
                         icon={<SettingOutlined />}
                         onClick={() => setHallsModalVisible(true)}
