@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Превью виджета Спикеров (Tilda Integration)</title>
+    <!-- Подключаем базовые стили Tilda для симуляции -->
+    <link rel="stylesheet" href="https://static.tildacdn.com/css/tilda-grid-3.0.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="https://static.tildacdn.com/css/tilda-blocks-2.14.css?t=1672304856" type="text/css" media="all">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', Arial, sans-serif; background-color: #f0f0f0; padding: 2rem; }
+        .tilda-simulation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .debug-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #ccc;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="tilda-simulation-container">
+    <div class="debug-header">
+        <h2 id="debug-title">Спикеры мероприятий (Тестовый стенд)</h2>
+        <p>Этот блок симулирует блок T123 (HTML код) внутри Tilda. Ниже отрендерен ваш виджет.</p>
+        <p>Для переключения макетов добавьте к URL параметр: <code>&layout=grid</code> или <code>&layout=list</code></p>
+    </div>
+
+    <!-- UPGRADE CRM Speakers Widget -->
+    <div id="crm-speakers-root" data-event-id="1" data-layout="list"></div>
+    <script src="/tilda-speakers.js?v=2"></script>
+
+    <script>
+        // Извлекаем параметры из URL для настройки стенда
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventId = urlParams.get('eventId') || '1';
+        const layout = urlParams.get('layout') || 'list';
+
+        // Применяем параметры к корню виджета
+        const rootElement = document.getElementById('crm-speakers-root');
+        rootElement.setAttribute('data-event-id', eventId);
+        rootElement.setAttribute('data-layout', layout);
+
+        document.getElementById('debug-title').innerText = `Спикеры мероприятий (ID: ${eventId}, Layout: ${layout})`;
+    </script>
+</div>
+
+</body>
+</html>

@@ -30,6 +30,9 @@ The following core Business Data requirements have been fully analyzed, implemen
 ## 3. Change Log (Post-MVP)
 *Agents: Add your completed tasks here in reverse chronological order (newest at the top).*
 
+- **2026-03-24**: Refactored the Tilda Integration UI (`/tilda-integration`). Introduced a `Segmented` control to generate widgets for Schedule, Speakers, and a Sponsors placeholder (Backlog).
+
+- **2026-03-24**: Emergency Fix for Production Outage. Resolved a failed Prisma migration (`20260317181300_sync_missing_needs_call`) via a custom GitHub Action (`fix_prod_db.yml`). Successfully merged the CI update into the `production` branch and re-deployed, restoring `erp-upgrade.ru`.
 - **2026-03-17**: Finalized Production Environment Synchronization. Developed custom native Node.js (`pg`) export/import scripts to cleanly migrate Data (Speakers & Event 76) without string formatting corruption from DevStand to Production, avoiding administrative overlap. Manually pushed missing Prisma migrations (`needs_call`) and instantiated `user_events` mappings in Prod. Synchronized the frontend UI by merging missing timeline grid width fixes and edit icon placement from `main` into the `production` branch.
 - **2026-03-17**: Finalized Legacy Data Migration (PRD-12) by fixing the historical `SessionSpeaker` snapshot UI (`companySnapshot` and `positionSnapshot`). Documented the snapshot architecture and the seed parsing logic in `docs/analysis/session_speaker_model.md`. Addressed issues with incorrect speaker roles, missing snapshot mapping, and malformed question titles during DB seeding.
 - **2026-03-17**: Fixed the production CI/CD workflow (`deploy-prod.yml`). Corrected the corrupted file format and updated the Certbot Let's Encrypt email registration parameter to use a valid `$DOMAIN_NAME` to prevent 3-minute failures and ensure SSL generation. Triggered a successful manual deployment to `erp-upgrade.ru`.
@@ -45,3 +48,8 @@ The following core Business Data requirements have been fully analyzed, implemen
 - **2026-03-12**: Established comprehensive E2E API and UI testing workflows on the DevStand. Created the `/e2e_devstand_ui` workflow.
 - **2026-03-11**: Fixed critical silent failures in `SafeDrawerForm` and `SafeModalForm` where the "Save" (Сохранить) button was completely dropping the form payload due to a missing `onFinish` pass-down.
 - **2026-03-09**: Refactored forms application-wide to use robust global error handling (`SafeDrawerForm`, `ErrorBoundary`) to prevent white-screen crashes on malformed data.
+
+## 4. Backlog
+*Deferred tasks and future architecture proposals are tracked here.*
+
+- [ ] **Zero-Downtime Deployment (ZDD) / CI/CD Pipeline Overhaul**: Transition to a more robust deployment pipeline with isolated Staging, GitHub Environments holding approval, and Nginx-level container traffic switching to prevent deployment downtime. See proposal: `d:\UPGRADE\.agent\workflows_backup\zero_downtime_deployment_proposal.md`.

@@ -5,4 +5,9 @@ node_modules
 /generated/prisma
 dist/
 client/dist/
-vertex-auth.json
+vertex-auth.jsonevent1_prod.json
+prod_program.json
+rescued_data.json
+lost_sessions.json
+src/events/restore-track-sessions.json
+.last-run.json
