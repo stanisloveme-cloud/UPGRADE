@@ -90,10 +90,12 @@ const SpeakerReadinessDrawer: React.FC<SpeakerReadinessDrawerProps> = ({ visible
                 'not_required': { text: 'Нет презентации' }
             },
             render: (_, record) => {
-                if (!record.hasPresentation) {
+                const hasPresentation = record.presentationTitle !== null || record.presentationUrl !== null;
+
+                if (!hasPresentation) {
                     return <span style={{ color: '#bfbfbf', fontSize: '12px' }}>Нет презентации</span>;
                 }
-                if (record.hasPresentation && !record.presentationUrl) {
+                if (hasPresentation && !record.presentationUrl) {
                     return (
                         <Tag color="error" icon={<ExclamationCircleOutlined />}>
                             Требуется
@@ -162,18 +164,20 @@ const SpeakerReadinessDrawer: React.FC<SpeakerReadinessDrawerProps> = ({ visible
 
                         if (params.presentationStatus) {
                             if (params.presentationStatus === 'not_required') {
-                                filtered = filtered.filter((s: any) => !s.hasPresentation);
+                                filtered = filtered.filter((s: any) => (s.presentationTitle === null && s.presentationUrl === null));
                             } else if (params.presentationStatus === 'pending') {
-                                filtered = filtered.filter((s: any) => s.hasPresentation && !s.presentationUrl);
+                                filtered = filtered.filter((s: any) => (s.presentationTitle !== null || s.presentationUrl !== null) && !s.presentationUrl);
                             } else if (params.presentationStatus === 'uploaded') {
-                                filtered = filtered.filter((s: any) => s.hasPresentation && !!s.presentationUrl);
+                                filtered = filtered.filter((s: any) => (s.presentationTitle !== null || s.presentationUrl !== null) && !!s.presentationUrl);
                             }
                         }
 
                         // Order by status importance (Pending presentations first) if no active sorter
                         filtered.sort((a: any, b: any) => {
-                            const aPending = a.hasPresentation && !a.presentationUrl ? 1 : 0;
-                            const bPending = b.hasPresentation && !b.presentationUrl ? 1 : 0;
+                            const aHas = a.presentationTitle !== null || a.presentationUrl !== null;
+                            const bHas = b.presentationTitle !== null || b.presentationUrl !== null;
+                            const aPending = aHas && !a.presentationUrl ? 1 : 0;
+                            const bPending = bHas && !b.presentationUrl ? 1 : 0;
                             if (aPending !== bPending) return bPending - aPending; // DESC
                             return 0;
                         });

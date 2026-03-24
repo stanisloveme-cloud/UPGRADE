@@ -89,7 +89,7 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
             statusUser: s.statusUser,
             companySnapshot: s.companySnapshot,
             positionSnapshot: s.positionSnapshot,
-            hasPresentation: !!s.presentationTitle || !!s.presentationUrl,
+            hasPresentation: (s.presentationTitle != null) || (s.presentationUrl != null),
             presentationTitle: s.presentationTitle,
             presentationUrl: s.presentationUrl
         })),
@@ -179,7 +179,8 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                 companySnapshot: s.companySnapshot,
                                 positionSnapshot: s.positionSnapshot,
                                 presentationUrl: s.hasPresentation ? (s.presentationUrl || null) : null,
-                                presentationTitle: s.hasPresentation ? (s.presentationTitle || '') : null,
+                                // If they set a title use it, if not use empty string. If no presentation, null.
+                                presentationTitle: s.hasPresentation ? (s.presentationTitle ?? '') : null,
                             }));
                     }
 
