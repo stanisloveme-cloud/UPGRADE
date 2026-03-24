@@ -181,7 +181,9 @@ export class PublicEventsService {
                 status: { in: ['confirmed', 'pre_confirmed'] }
             },
             orderBy: { sortOrder: 'asc' },
-            include: {
+            select: {
+                id: true,
+                sortOrder: true,
                 speaker: {
                     select: {
                         id: true,
@@ -197,10 +199,12 @@ export class PublicEventsService {
                     select: {
                         name: true,
                         track: {
-                            select: { name: true }
-                        },
-                        hall: {
-                            select: { name: true }
+                            select: { 
+                                name: true,
+                                hall: {
+                                    select: { name: true }
+                                }
+                            }
                         }
                     }
                 }
@@ -226,7 +230,7 @@ export class PublicEventsService {
             aggSpeaker.sessionsInfo.push({
                 sessionName: spk.session?.name,
                 trackName: spk.session?.track?.name,
-                hallName: spk.session?.hall?.name
+                hallName: spk.session?.track?.hall?.name
             });
         }
         
