@@ -42,7 +42,7 @@ const TildaIntegrationPage: React.FC = () => {
     const getScriptUrl = () => {
         const origin = window.location.origin || 'https://erp-upgrade.ru';
         if (integrationType === 'speakers') {
-            return `${origin}/tilda-speakers.js?v=1`;
+            return `${origin}/tilda-speakers.js?v=2`;
         }
         return template === 'old' 
             ? `${origin}/tilda-integration-v2.js?v=4`
@@ -55,7 +55,7 @@ const TildaIntegrationPage: React.FC = () => {
     };
 
     const htmlSnippet = `<!-- UPGRADE CRM ${integrationType === 'speakers' ? 'Speakers' : 'Schedule'} Widget -->
-<div id="${getRootId()}" data-event-id="${selectedEventId || 1}"></div>
+<div id="${getRootId()}" data-event-id="${selectedEventId || 1}"${integrationType === 'speakers' ? ` data-layout="${template}"` : ''}></div>
 <script src="${getScriptUrl()}"></script>`;
 
     return (
@@ -121,6 +121,20 @@ const TildaIntegrationPage: React.FC = () => {
                                         </Radio.Group>
                                     </div>
                                 )}
+                                {integrationType === 'speakers' && (
+                                    <div>
+                                        <div style={{ marginBottom: 6, fontWeight: 500 }}>Шаблон (дизайн) виджета:</div>
+                                        <Radio.Group 
+                                            value={template} 
+                                            onChange={(e) => setTemplate(e.target.value)}
+                                            optionType="button"
+                                            buttonStyle="solid"
+                                        >
+                                            <Radio.Button value="list">Список (Без фото)</Radio.Button>
+                                            <Radio.Button value="grid">Карточная сетка (С фото)</Radio.Button>
+                                        </Radio.Group>
+                                    </div>
+                                )}
                             </Space>
                         </ProCard>
 
@@ -152,7 +166,7 @@ const TildaIntegrationPage: React.FC = () => {
                                 icon={<ExportOutlined />}
                                 href={integrationType === 'schedule' 
                                       ? `/test-tilda-standalone.html?eventId=${selectedEventId || 1}&layout=${template}`
-                                      : `/test-tilda-speakers-standalone.html?eventId=${selectedEventId || 1}`
+                                      : `/test-tilda-speakers-standalone.html?eventId=${selectedEventId || 1}&layout=${template}`
                                 }
                                 target="_blank"
                                 disabled={!selectedEventId}

@@ -16,6 +16,10 @@
         #crm-speakers-root {
             font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             color: #212529;
+            box-sizing: border-box;
+        }
+        #crm-speakers-root * {
+            box-sizing: border-box;
         }
         
         /* List Template (Без фото) - Pixel Perfect */
@@ -53,17 +57,20 @@
         #crm-speakers-root .upg-speaker-grid-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 24px;
+            margin-left: -12px;
+            margin-right: -12px;
         }
         #crm-speakers-root .upg-speaker-card {
             display: flex;
             flex-direction: row;
             width: 100%;
+            padding-left: 12px;
+            padding-right: 12px;
             margin-bottom: 24px;
         }
         @media (min-width: 992px) {
             #crm-speakers-root .upg-speaker-card {
-                width: calc(50% - 12px);
+                width: 50%;
             }
         }
         #crm-speakers-root .upg-photo-wrap {
@@ -119,8 +126,8 @@
         if (!sessionsInfo || sessionsInfo.length === 0) return '';
         const texts = sessionsInfo.map(s => {
             const parts = [];
-            if (s.trackName) parts.push(`Трек: ${s.trackName}`);
-            if (s.sessionName) parts.push(`Сессия: ${s.sessionName}`);
+            if (s.trackName) parts.push(\`Трек: \${s.trackName}\`);
+            if (s.sessionName) parts.push(\`Сессия: \${s.sessionName}\`);
             return parts.join(' / ');
         });
         return texts.join('<br>');
@@ -142,54 +149,54 @@
         if (layout === 'grid') {
             html += '<div class="upg-speaker-grid-row">';
             speakersData.forEach(spk => {
-                const fullName = `${spk.firstName || ''} ${spk.lastName || ''}`.trim();
-                const positionPart = spk.position ? `${spk.position}` : '';
-                const companyPart = spk.company ? `${spk.company}` : '';
+                const fullName = \`\${spk.firstName || ''} \${spk.lastName || ''}\`.trim();
+                const positionPart = spk.position ? \`\${spk.position}\` : '';
+                const companyPart = spk.company ? \`\${spk.company}\` : '';
                 const sessionText = buildSessionText(spk.sessionsInfo);
 
                 let photoHtml = '';
                 if (spk.photoUrl) {
-                    photoHtml = `<img src="${backendUrl}${spk.photoUrl}" class="upg-photo-img" alt="${fullName}">`;
+                    photoHtml = \`<img src="\${backendUrl}\${spk.photoUrl}" class="upg-photo-img" alt="\${fullName}">\`;
                 } else {
                     const initials = (spk.firstName?.[0] || '') + (spk.lastName?.[0] || '');
-                    photoHtml = `<span>${initials.toUpperCase() || '?'}</span>`;
+                    photoHtml = \`<span>\${initials.toUpperCase() || '?'}</span>\`;
                 }
 
-                html += `
+                html += \`
                     <div class="upg-speaker-card">
                         <div class="upg-photo-wrap">
-                            ${photoHtml}
+                            \${photoHtml}
                         </div>
                         <div class="upg-card-info">
-                            <div class="upg-card-name">${fullName}</div>
-                            ${companyPart ? `<div class="upg-card-company">${companyPart}</div>` : ''}
-                            ${positionPart ? `<div class="upg-card-position">${positionPart}</div>` : ''}
-                            ${sessionText ? `<div class="upg-card-session">${sessionText}</div>` : ''}
+                            <div class="upg-card-name">\${fullName}</div>
+                            \${companyPart ? \`<div class="upg-card-company">\${companyPart}</div>\` : ''}
+                            \${positionPart ? \`<div class="upg-card-position">\${positionPart}</div>\` : ''}
+                            \${sessionText ? \`<div class="upg-card-session">\${sessionText}</div>\` : ''}
                         </div>
                     </div>
-                `;
+                \`;
             });
             html += '</div>';
         } else {
             // Default: 'list'
             html += '<div class="upg-speaker-list-row">';
             speakersData.forEach(spk => {
-                const fullName = `${spk.firstName || ''} ${spk.lastName || ''}`.trim();
+                const fullName = \`\${spk.firstName || ''} \${spk.lastName || ''}\`.trim();
                 
                 // Form: Name, Position, Company
                 const titleParts = [];
                 if (spk.position) titleParts.push(spk.position);
                 if (spk.company) titleParts.push(spk.company);
-                const titleLine = titleParts.length > 0 ? `, ${titleParts.join(', ')}` : '';
+                const titleLine = titleParts.length > 0 ? \`, \${titleParts.join(', ')}\` : '';
 
                 const sessionText = buildSessionText(spk.sessionsInfo);
 
-                html += `
+                html += \`
                     <div class="upg-speaker-list-item">
-                        <span class="upg-speaker-name">${fullName}</span>${titleLine}
-                        ${sessionText ? `<div class="upg-speaker-session-info">${sessionText}</div>` : ''}
+                        <span class="upg-speaker-name">\${fullName}</span>\${titleLine}
+                        \${sessionText ? \`<div class="upg-speaker-session-info">\${sessionText}</div>\` : ''}
                     </div>
-                `;
+                \`;
             });
             html += '</div>';
         }
@@ -216,9 +223,9 @@
 
             root.innerHTML = '<div class="text-center p-5 text-muted">Загрузка спикеров...</div>';
 
-            fetch(`${CONFIG.API_BASE}/events/${eventId}/speakers`)
+            fetch(\`\${CONFIG.API_BASE}/events/\${eventId}/speakers\`)
                 .then(response => {
-                    if (!response.ok) throw new Error(`Network error: ${response.status}`);
+                    if (!response.ok) throw new Error(\`Network error: \${response.status}\`);
                     return response.json();
                 })
                 .then(data => renderSpeakers(root, data, layout))
