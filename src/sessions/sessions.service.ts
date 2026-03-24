@@ -95,7 +95,8 @@ export class SessionsService {
                         companySnapshot: s.companySnapshot,
                         positionSnapshot: s.positionSnapshot,
                         presentationTitle: s.presentationTitle,
-                        presentationUrl: s.presentationUrl
+                        presentationUrl: s.presentationUrl,
+                        presentationUpdatedAt: s.presentationUrl ? new Date() : null
                     }))
                 } : undefined,
                 questions: questions && questions.length > 0 ? {
@@ -203,9 +204,9 @@ export class SessionsService {
                         data: {
                             speakers: {
                                 create: speakers.map((s: any, index: number) => {
-                                    // Check if status changed compared to existing DB entry
                                     const oldSp = existingSession.speakers.find((ex: any) => ex.speakerId === Number(s.speakerId));
                                     const statusChanged = !oldSp || oldSp.status !== s.status;
+                                    const presentationUrlChanged = !oldSp || oldSp.presentationUrl !== s.presentationUrl;
 
                                     const resolvedStatusUserId = statusChanged ? user?.id : oldSp?.statusUserId;
 
@@ -220,6 +221,7 @@ export class SessionsService {
                                         positionSnapshot: s.positionSnapshot,
                                         presentationTitle: s.presentationTitle,
                                         presentationUrl: s.presentationUrl,
+                                        presentationUpdatedAt: presentationUrlChanged ? (s.presentationUrl ? new Date() : null) : oldSp?.presentationUpdatedAt,
                                         sortOrder: index
                                     };
                                 })

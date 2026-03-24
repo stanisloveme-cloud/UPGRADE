@@ -12,6 +12,7 @@ import SpeakerSortingModal from './SpeakerSortingModal';
 import AnnouncementsModal from './AnnouncementsModal';
 import SpeakerNotificationsModal from './SpeakerNotificationsModal';
 import SponsorsModal from './SponsorsModal';
+import SpeakerReadinessDrawer from './SpeakerReadinessDrawer';
 
 const ProgramEditor: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -24,6 +25,7 @@ const ProgramEditor: React.FC = () => {
     const [announcementsVisible, setAnnouncementsVisible] = useState(false);
     const [notificationsVisible, setNotificationsVisible] = useState(false);
     const [sponsorsVisible, setSponsorsVisible] = useState(false);
+    const [readinessDrawerVisible, setReadinessDrawerVisible] = useState(false);
     const [speakers, setSpeakers] = useState<any[]>([]);
 
     // Session Drawer State
@@ -415,6 +417,12 @@ const ProgramEditor: React.FC = () => {
             <SponsorsModal
                 visible={sponsorsVisible}
                 onClose={() => setSponsorsVisible(false)}
+                eventId={Number(eventId)}
+            />
+
+            <SpeakerReadinessDrawer
+                visible={readinessDrawerVisible}
+                onClose={() => setReadinessDrawerVisible(false)}
                 eventId={Number(eventId)}
             />
         </PageContainer>

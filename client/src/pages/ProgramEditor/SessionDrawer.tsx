@@ -414,18 +414,22 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                         );
                                     }}
                                 </Form.Item>
-                                <ProFormText
-                                    name="companySnapshot"
-                                    placeholder="Компания"
-                                    fieldProps={{ size: 'small' }}
-                                    formItemProps={{ style: { marginBottom: 8 } }}
-                                />
-                                <ProFormText
-                                    name="positionSnapshot"
-                                    placeholder="Должность"
-                                    fieldProps={{ size: 'small' }}
-                                    formItemProps={{ style: { marginBottom: 0 } }}
-                                />
+                                <div style={{ display: 'flex', gap: '8px', marginBottom: 8 }}>
+                                    <ProFormText
+                                        name="companySnapshot"
+                                        placeholder="Компания"
+                                        width="sm"
+                                        fieldProps={{ size: 'small' }}
+                                        formItemProps={{ style: { marginBottom: 0 } }}
+                                    />
+                                    <ProFormText
+                                        name="positionSnapshot"
+                                        placeholder="Должность"
+                                        width="sm"
+                                        fieldProps={{ size: 'small' }}
+                                        formItemProps={{ style: { marginBottom: 0 } }}
+                                    />
+                                </div>
                             </div>
 
                             <ProFormSelect
@@ -477,8 +481,8 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                         <ProFormGroup align="center">
                             <ProFormSwitch name="hasPresentation" label="С презентацией" />
 
-                            <ProFormDependency name={['hasPresentation', 'presentationUrl']}>
-                                {({ hasPresentation, presentationUrl }) => {
+                            <ProFormDependency name={['hasPresentation', 'presentationUrl', 'presentationUpdatedAt']}>
+                                {({ hasPresentation, presentationUrl, presentationUpdatedAt }) => {
                                     if (!hasPresentation) return null;
                                     return (
                                         <div style={{ display: 'flex', gap: '16px', flex: 1, alignItems: 'center' }}>
@@ -495,48 +499,60 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                                                         <a href={presentationUrl} target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                                                             <FilePdfOutlined /> Скачать презентацию
                                                         </a>
-                                                        <Button type="link" danger size="small" onClick={() => action.setCurrentRowData({ presentationUrl: null })}>
+                                                        {presentationUpdatedAt && (
+                                                            <span style={{ fontSize: '11px', color: '#8c8c8c' }}>
+                                                                (от {dayjs(presentationUpdatedAt).format('DD.MM.YY HH:mm')})
+                                                            </span>
+                                                        )}
+                                                        <Button type="link" danger size="small" onClick={() => action.setCurrentRowData({ presentationUrl: null, presentationUpdatedAt: null })}>
                                                             Удалить
                                                         </Button>
                                                     </div>
                                                 ) : (
-                                                    <Upload
-                                                        name="file"
-                                                        action="/api/uploads/presentation"
-                                                        headers={{
-                                                            authorization: `Bearer ${localStorage.getItem('token')}`,
-                                                        }}
-                                                        showUploadList={{
-                                                            showDownloadIcon: true,
-                                                            showRemoveIcon: true,
-                                                        }}
-                                                        accept=".pdf,.ppt,.pptx"
-                                                        beforeUpload={(file) => {
-                                                            const isLt30M = file.size / 1024 / 1024 < 30;
-                                                            if (!isLt30M) {
-                                                                message.error('Файл должен быть меньше 30MB!');
-                                                            }
-                                                            return isLt30M;
-                                                        }}
-                                                        onChange={(info: any) => {
-                                                            if (info.file.status === 'done') {
-                                                                message.success(`${info.file.name} загружен.`);
-                                                                if (info.file.response?.url) {
-                                                                    action.setCurrentRowData({ presentationUrl: info.file.response.url });
+                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px', paddingTop: '30px' }}>
+                                                        <span style={{ color: '#cf1322', fontWeight: 600, fontSize: '13px', backgroundColor: '#fff1f0', padding: '4px 8px', borderRadius: '4px', border: '1px solid #ffa39e' }}>
+                                                            🚨 Требуется презентация
+                                                        </span>
+                                                        <Upload
+                                                            name="file"
+                                                            action="/api/uploads/presentation"
+                                                            headers={{
+                                                                authorization: `Bearer ${localStorage.getItem('token')}`,
+                                                            }}
+                                                            showUploadList={{
+                                                                showDownloadIcon: true,
+                                                                showRemoveIcon: true,
+                                                            }}
+                                                            accept=".pdf,.ppt,.pptx"
+                                                            beforeUpload={(file) => {
+                                                                const isLt30M = file.size / 1024 / 1024 < 30;
+                                                                if (!isLt30M) {
+                                                                    message.error('Файл должен быть меньше 30MB!');
                                                                 }
-                                                            } else if (info.file.status === 'error') {
-                                                                message.error(`${info.file.name} ошибка загрузки.`);
-                                                            }
-                                                        }}
-                                                    >
-                                                        <div style={{ paddingTop: '10px' }}>
-                                                            <Button icon={<FilePdfOutlined />}>Загрузить файл</Button>
-                                                        </div>
-                                                    </Upload>
+                                                                return isLt30M;
+                                                            }}
+                                                            onChange={(info: any) => {
+                                                                if (info.file.status === 'done') {
+                                                                    message.success(`${info.file.name} загружен.`);
+                                                                    if (info.file.response?.url) {
+                                                                        action.setCurrentRowData({ 
+                                                                            presentationUrl: info.file.response.url,
+                                                                            presentationUpdatedAt: new Date().toISOString()
+                                                                        });
+                                                                    }
+                                                                } else if (info.file.status === 'error') {
+                                                                    message.error(`${info.file.name} ошибка загрузки.`);
+                                                                }
+                                                            }}
+                                                        >
+                                                            <Button icon={<FilePdfOutlined />}>Добавить презентацию</Button>
+                                                        </Upload>
+                                                    </div>
                                                 )}
-                                                {/* Hidden input to keep value in form */}
+                                                {/* Hidden inputs to keep values in form */}
                                                 <div style={{ display: 'none' }}>
                                                     <ProFormText name="presentationUrl" />
+                                                    <ProFormText name="presentationUpdatedAt" />
                                                 </div>
                                             </div>
                                         </div>
