@@ -24,8 +24,7 @@ export class HealthController {
   @HealthCheck()
   check() {
     return this.health.check([
-      // A ping to our own frontend server as a general HTTP test
-      () => this.http.pingCheck('frontend-http', 'http://localhost:3000'),
+      // Ping to frontend removed (unreliable in Dockerized environment)
 
       // Checking Prisma connection to the DB
       () => this.prisma.pingCheck('database', this.prismaService),

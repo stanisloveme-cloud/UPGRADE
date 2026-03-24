@@ -56,7 +56,7 @@ const SystemStatus: React.FC = () => {
   const memHeapStatus = data?.details?.memory_heap?.status || 'unknown';
   const memRssStatus = data?.details?.memory_rss?.status || 'unknown';
   const storageStatus = data?.details?.storage?.status || 'unknown';
-  const frontendHttp = data?.details?.['frontend-http']?.status || 'unknown';
+  const storageStatus = data?.details?.storage?.status || 'unknown';
 
   return (
     <PageContainer 
@@ -82,7 +82,7 @@ const SystemStatus: React.FC = () => {
               />
             </Col>
 
-            <Col xs={24} sm={12} md={8}>
+            <Col xs={24} sm={12} md={12}>
               <Card bordered={false}>
                 <Statistic
                   title="База данных (PostgreSQL)"
@@ -94,7 +94,7 @@ const SystemStatus: React.FC = () => {
               </Card>
             </Col>
 
-            <Col xs={24} sm={12} md={8}>
+            <Col xs={24} sm={12} md={12}>
               <Card bordered={false}>
                 <Statistic
                   title="Загрузка памяти (Heap)"
@@ -106,7 +106,7 @@ const SystemStatus: React.FC = () => {
               </Card>
             </Col>
 
-            <Col xs={24} sm={12} md={8}>
+            <Col xs={24} sm={12} md={12}>
               <Card bordered={false}>
                 <Statistic
                   title="Загрузка памяти (RSS)"
@@ -118,7 +118,7 @@ const SystemStatus: React.FC = () => {
               </Card>
             </Col>
 
-            <Col xs={24} sm={12} md={8}>
+            <Col xs={24} sm={12} md={12}>
               <Card bordered={false}>
                 <Statistic
                   title="Свободное место на диске"
@@ -130,17 +130,7 @@ const SystemStatus: React.FC = () => {
               </Card>
             </Col>
 
-             <Col xs={24} sm={12} md={8}>
-              <Card bordered={false}>
-                <Statistic
-                  title="Доступность Frontend (HTTP ping)"
-                  value={getStatusText(frontendHttp)}
-                  valueStyle={{ color: frontendHttp === 'up' ? '#3f8600' : '#cf1322' }}
-                  prefix={<SafetyCertificateOutlined />}
-                  suffix={<Tag color={getStatusColor(frontendHttp)} style={{ marginLeft: 8 }}>{frontendHttp}</Tag>}
-                />
-              </Card>
-            </Col>
+
           </Row>
         </>
       )}
