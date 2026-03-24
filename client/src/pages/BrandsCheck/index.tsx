@@ -370,6 +370,7 @@ const BrandsCheck: React.FC = () => {
     return (
         <PageContainer title="Проверка Брендов">
             <ProTable
+                search={{ labelWidth: 'auto' }}
                 actionRef={actionRef}
                 columns={columns}
                 request={async (params) => {
