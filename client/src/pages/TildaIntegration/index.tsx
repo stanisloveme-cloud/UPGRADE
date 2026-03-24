@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Typography, Space, Alert, Select, message, Button, Radio, Segmented, Empty } from 'antd';
+import { Typography, Space, Alert, Select, message, Button, Radio, Segmented } from 'antd';
 import { PageContainer, ProCard } from '@ant-design/pro-components';
 import { ExportOutlined, CalendarOutlined, UserOutlined, CrownOutlined } from '@ant-design/icons';
 import axios from 'axios';
@@ -41,6 +41,9 @@ const TildaIntegrationPage: React.FC = () => {
 
     const getScriptUrl = () => {
         const origin = window.location.origin || 'https://erp-upgrade.ru';
+        if (integrationType === 'sponsors') {
+            return `${origin}/tilda-sponsors.js?v=1`;
+        }
         if (integrationType === 'speakers') {
             return `${origin}/tilda-speakers.js?v=2`;
         }
@@ -50,12 +53,15 @@ const TildaIntegrationPage: React.FC = () => {
     };
 
     const getRootId = () => {
+        if (integrationType === 'sponsors') return "crm-sponsors-root";
         if (integrationType === 'speakers') return "crm-speakers-root";
         return "crm-schedule-root";
     };
 
-    const htmlSnippet = `<!-- UPGRADE CRM ${integrationType === 'speakers' ? 'Speakers' : 'Schedule'} Widget -->
-<div id="${getRootId()}" data-event-id="${selectedEventId || 1}"${integrationType === 'speakers' ? ` data-layout="${template}"` : ''}></div>
+    const isLayoutSupported = integrationType === 'speakers' || integrationType === 'sponsors';
+
+    const htmlSnippet = `<!-- UPGRADE CRM ${integrationType === 'speakers' ? 'Speakers' : integrationType === 'sponsors' ? 'Sponsors' : 'Schedule'} Widget -->
+<div id="${getRootId()}" data-event-id="${selectedEventId || 1}"${isLayoutSupported ? ` data-layout="${template}"` : ''}></div>
 <script src="${getScriptUrl()}"></script>`;
 
     return (
@@ -73,15 +79,11 @@ const TildaIntegrationPage: React.FC = () => {
                     options={[
                         { label: 'Сетка мероприятий', value: 'schedule', icon: <CalendarOutlined /> },
                         { label: 'Спикеры мероприятий', value: 'speakers', icon: <UserOutlined /> },
-                        { label: 'Спонсоры и партнеры (Бэклог)', value: 'sponsors', icon: <CrownOutlined /> },
+                        { label: 'Спонсоры и партнеры', value: 'sponsors', icon: <CrownOutlined /> },
                     ]}
                 />
 
-                {integrationType === 'sponsors' ? (
-                    <ProCard bordered>
-                        <Empty description="Интеграция со спонсорами находится в разработке (Бэклог)" />
-                    </ProCard>
-                ) : (
+                {(
                     <>
                         <Alert
                             message="Инструкция по установке"
@@ -135,6 +137,19 @@ const TildaIntegrationPage: React.FC = () => {
                                         </Radio.Group>
                                     </div>
                                 )}
+                                {integrationType === 'sponsors' && (
+                                    <div>
+                                        <div style={{ marginBottom: 6, fontWeight: 500 }}>Шаблон (дизайн) виджета:</div>
+                                        <Radio.Group 
+                                            value={template} 
+                                            onChange={(e) => setTemplate(e.target.value)}
+                                            optionType="button"
+                                            buttonStyle="solid"
+                                        >
+                                            <Radio.Button value="grid">Сетка логотипов</Radio.Button>
+                                        </Radio.Group>
+                                    </div>
+                                )}
                             </Space>
                         </ProCard>
 
@@ -164,7 +179,9 @@ const TildaIntegrationPage: React.FC = () => {
                                 type="primary" 
                                 size="large"
                                 icon={<ExportOutlined />}
-                                href={integrationType === 'schedule' 
+                                href={integrationType === 'sponsors' 
+                                      ? `/test-tilda-sponsors-standalone.html?eventId=${selectedEventId || 1}&layout=${template}`
+                                      : integrationType === 'schedule' 
                                       ? `/test-tilda-standalone.html?eventId=${selectedEventId || 1}&layout=${template}`
                                       : `/test-tilda-speakers-standalone.html?eventId=${selectedEventId || 1}&layout=${template}`
                                 }

@@ -223,4 +223,59 @@ export class SponsorsService {
 
         return { message: 'Migration Complete', ...count };
     }
+
+    async fixBrands() {
+        const fs = require('fs');
+        const path = require('path');
+        const sourceDir = path.join(process.cwd(), 'uploads', 'legacy_brands');
+        const targetDir = path.join(process.cwd(), 'uploads', 'logos');
+
+        if (!fs.existsSync(targetDir)) {
+            fs.mkdirSync(targetDir, { recursive: true });
+        }
+
+        let movedCount = 0;
+        if (fs.existsSync(sourceDir)) {
+            const files = fs.readdirSync(sourceDir);
+            for (const file of files) {
+                const oldPath = path.join(sourceDir, file);
+                const newPath = path.join(targetDir, file);
+                fs.renameSync(oldPath, newPath);
+                movedCount++;
+            }
+        }
+
+        const legacyLogoBrands = await this.prisma.sponsor.findMany({
+            where: {
+                OR: [
+                    { logoUrl: { contains: 'legacy_brands' } },
+                    { logoFileUrl: { contains: 'legacy_brands' } }
+                ]
+            }
+        });
+
+        let fixedLogosCount = 0;
+        for (const b of legacyLogoBrands) {
+            const logoFn = b.logoFileUrl?.split('/').pop() || b.logoUrl?.split('/').pop();
+            if (logoFn) {
+                const newUrl = `/api/uploads/logos/${logoFn}`;
+                await this.prisma.sponsor.update({
+                    where: { id: b.id },
+                    data: { logoUrl: newUrl, logoFileUrl: newUrl }
+                });
+                fixedLogosCount++;
+            }
+        }
+
+        const revertAction = await this.prisma.sponsor.updateMany({
+            where: { status: 'approved', exportToWebsite: true },
+            data: { status: 'pending' }
+        });
+
+        return { 
+            movedFiles: movedCount, 
+            fixedLogos: fixedLogosCount, 
+            revertedStatuses: revertAction.count 
+        };
+    }
 }

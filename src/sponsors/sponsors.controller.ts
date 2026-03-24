@@ -54,8 +54,8 @@ export class SponsorsController {
     }
 
     @Public()
-    @Patch('public/approval/:hash')
-    submitPublicApproval(@Param('hash') hash: string, @Body() data: any) {
-        return this.sponsorsService.submitPublicApproval(hash, data.status, data.rejectionReason);
+    @Get('fix-brands')
+    fixBrands() {
+        return this.sponsorsService.fixBrands();
     }
 }
