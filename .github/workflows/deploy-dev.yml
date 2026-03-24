@@ -107,6 +107,8 @@ jobs:
             fi
 
             $DC_CMD -f docker-compose.prod.yml up -d --remove-orphans --force-recreate
+            sleep 5
+            $DC_CMD -f docker-compose.prod.yml exec -T app npx prisma migrate deploy
             docker image prune -f
 
             $DC_CMD -f docker-compose.prod.yml exec -T frontend cat /etc/nginx/conf.d/default.conf
