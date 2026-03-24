@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { ModalForm, ModalFormProps } from '@ant-design/pro-components';
-import { notification, Button, Modal } from 'antd';
+import { notification, Button, Popconfirm } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import { ErrorBoundary } from '../ErrorBoundary';
 
@@ -54,24 +54,33 @@ export const SafeModalForm = <T extends Record<string, any>>({
 
                     if (onDelete) {
                         doms.unshift(
-                            <Button
+                            <Popconfirm
                                 key="delete"
-                                type="primary"
-                                danger
-                                icon={<DeleteOutlined />}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    Modal.confirm({
-                                        title: 'Удаление',
-                                        content: 'Вы уверены, что хотите удалить эту запись?',
-                                        okText: 'Удалить',
-                                        okType: 'danger',
-                                        cancelText: 'Отмена',
-                                        onOk: () => onDelete()
-                                    });
+                                title="Удаление"
+                                description="Вы уверены, что хотите удалить эту запись?"
+                                onConfirm={(e: any) => {
+                                    e?.preventDefault();
+                                    e?.stopPropagation();
+                                    return onDelete();
                                 }}
-                            />
+                                onCancel={(e: any) => {
+                                    e?.preventDefault();
+                                    e?.stopPropagation();
+                                }}
+                                okText="Удалить"
+                                cancelText="Отмена"
+                                okType="danger"
+                            >
+                                <Button
+                                    type="primary"
+                                    danger
+                                    icon={<DeleteOutlined />}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                    }}
+                                />
+                            </Popconfirm>
                         );
                     }
 
