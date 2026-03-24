@@ -16,7 +16,7 @@ type IntegrationType = 'schedule' | 'speakers' | 'sponsors';
 const TildaIntegrationPage: React.FC = () => {
     const [events, setEvents] = useState<Event[]>([]);
     const [selectedEventId, setSelectedEventId] = useState<number | null>(null);
-    const [template, setTemplate] = useState<'old' | 'new'>('new');
+    const [template, setTemplate] = useState<'old' | 'new' | 'list' | 'grid'>('new');
     const [integrationType, setIntegrationType] = useState<IntegrationType>('schedule');
     const [loading, setLoading] = useState(true);
 
@@ -42,7 +42,7 @@ const TildaIntegrationPage: React.FC = () => {
     const getScriptUrl = () => {
         const origin = window.location.origin || 'https://erp-upgrade.ru';
         if (integrationType === 'speakers') {
-            return `${origin}/tilda-speakers.js?v=2`;
+            return `${origin}/tilda-speakers.js?v=1`;
         }
         return template === 'old' 
             ? `${origin}/tilda-integration-v2.js?v=4`
@@ -55,7 +55,7 @@ const TildaIntegrationPage: React.FC = () => {
     };
 
     const htmlSnippet = `<!-- UPGRADE CRM ${integrationType === 'speakers' ? 'Speakers' : 'Schedule'} Widget -->
-<div id="${getRootId()}" data-event-id="${selectedEventId || 1}"${integrationType === 'speakers' ? ` data-layout="${template === 'grid' ? 'grid' : 'list'}"` : ''}></div>
+<div id="${getRootId()}" data-event-id="${selectedEventId || 1}"></div>
 <script src="${getScriptUrl()}"></script>`;
 
     return (
@@ -107,26 +107,17 @@ const TildaIntegrationPage: React.FC = () => {
                                         options={events.map(ev => ({ label: `[ID: ${ev.id}] ${ev.name}`, value: ev.id }))}
                                     />
                                 </div>
-                                {(integrationType === 'schedule' || integrationType === 'speakers') && (
+                                {integrationType === 'schedule' && (
                                     <div>
                                         <div style={{ marginBottom: 6, fontWeight: 500 }}>Шаблон (дизайн) виджета:</div>
                                         <Radio.Group 
                                             value={template} 
-                                            onChange={(e) => setTemplate(e.target.value as any)}
+                                            onChange={(e) => setTemplate(e.target.value)}
                                             optionType="button"
                                             buttonStyle="solid"
                                         >
-                                            {integrationType === 'schedule' ? (
-                                                <>
-                                                    <Radio.Button value="old">Старый шаблон (Списком)</Radio.Button>
-                                                    <Radio.Button value="new">Новый шаблон (Карточная сетка)</Radio.Button>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <Radio.Button value="list">Шаблон без фото (Списком)</Radio.Button>
-                                                    <Radio.Button value="grid">Шаблон с фото (Карточная сетка)</Radio.Button>
-                                                </>
-                                            )}
+                                            <Radio.Button value="old">Старый шаблон (Списком)</Radio.Button>
+                                            <Radio.Button value="new">Новый шаблон (Карточная сетка)</Radio.Button>
                                         </Radio.Group>
                                     </div>
                                 )}
@@ -161,7 +152,7 @@ const TildaIntegrationPage: React.FC = () => {
                                 icon={<ExportOutlined />}
                                 href={integrationType === 'schedule' 
                                       ? `/test-tilda-standalone.html?eventId=${selectedEventId || 1}&layout=${template}`
-                                      : `/test-tilda-speakers-standalone.html?eventId=${selectedEventId || 1}&layout=${template === 'grid' ? 'grid' : 'list'}`
+                                      : `/test-tilda-speakers-standalone.html?eventId=${selectedEventId || 1}`
                                 }
                                 target="_blank"
                                 disabled={!selectedEventId}
