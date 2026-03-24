@@ -1,0 +1,16 @@
+name: fix-prod-db
+on:
+  workflow_dispatch:
+jobs:
+  fix-db:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fix Prod DB
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_SERVER_HOST }}
+          username: ${{ secrets.PROD_SERVER_USER }}
+          key: ${{ secrets.PROD_SSH_PRIVATE_KEY }}
+          script: |
+            cd /root/upgrade-crm
+            docker compose -f docker-compose.prod.yml exec -T app npx prisma migrate resolve --applied 20260317181300_sync_missing_needs_call
