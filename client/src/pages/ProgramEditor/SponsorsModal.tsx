@@ -205,6 +205,17 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                         segments: Array.isArray(record.segments) ? record.segments.map((s: any) => [s.marketSegmentId]) : undefined,
                         logoUrl: record.logoUrl ? [{ uid: '-1', name: 'logo', status: 'done', url: record.logoUrl, response: { url: record.logoUrl } }] : []
                     }, { arrayFields: ['cases'], listFields: ['cases'] })}
+                    onDelete={async () => {
+                        try {
+                            await axios.delete(`/api/sponsors/${record.id}`);
+                            message.success('Бренд успешно удален из глобальной базы');
+                            actionRef.current?.reload();
+                            return true;
+                        } catch (error) {
+                            message.error('Ошибка при удалении');
+                            return false;
+                        }
+                    }}
                     onFinish={async (values) => {
                         try {
                             const payload = { ...values };
