@@ -98,6 +98,7 @@ jobs:
 
             $DC_CMD -f docker-compose.prod.yml down || true
             docker ps -a --filter "name=upgrade-crm" -q | xargs -r docker rm -f || true
+            docker rm -f upgrade_redis_prod prometheus grafana node_exporter cadvisor || true
 
             if ! command -v certbot &> /dev/null; then
                 sudo apt-get update
