@@ -46,7 +46,7 @@ export const MarketSegmentSelector: React.FC<MarketSegmentSelectorProps> = ({ va
     if (loading) return <Spin />;
 
     return (
-        <div style={{ background: '#f0f4f8', padding: '24px', borderRadius: '8px', marginBottom: 24, width: '100%' }}>
+        <div style={{ background: '#f0f4f8', padding: '24px', borderRadius: '8px', marginBottom: 24, width: '100%', boxSizing: 'border-box' }}>
             <Title level={5} style={{ marginBottom: 16 }}>Сегменты рынка:</Title>
             <Row gutter={[32, 24]}>
                 {tree.map(topLevel => (
