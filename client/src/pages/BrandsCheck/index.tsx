@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { PageContainer, ProTable, ActionType, ProColumns, ProFormText, ProFormTextArea, ProFormSelect, ProForm, ProFormDigit, ProFormList, ProFormCascader } from '@ant-design/pro-components';
+import { PageContainer, ProTable, ActionType, ProColumns, ProFormText, ProFormTextArea, ProFormSelect, ProForm, ProFormDigit, ProFormList } from '@ant-design/pro-components';
 import { Button, Tag, Typography, Tooltip, message, Space, Upload, Form, Modal } from 'antd';
 import { CopyOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, UploadOutlined, CloudDownloadOutlined } from '@ant-design/icons';
+import { MarketSegmentSelector } from '../../components/MarketSegmentSelector';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import { SafeModalForm } from '../../components/SafeForms/SafeModalForm';
@@ -117,20 +118,9 @@ const BrandsCheck: React.FC = () => {
             <ProFormTextArea name="catalogDescription" label="Описание для печатного каталога" fieldProps={{ showCount: true, maxLength: 500 }} tooltip="Чем занимается бренд" />
             <ProFormTextArea name="serviceCardDescription" label="Подробное описание для карты сервисов" />
 
-            <ProFormCascader
-                name="segments"
-                label="Сегменты рынка"
-                placeholder="Выберите сегменты"
-                request={async () => {
-                    const { data } = await axios.get('/api/market-segments/tree');
-                    return data;
-                }}
-                fieldProps={{
-                    multiple: true,
-                    changeOnSelect: true,
-                    fieldNames: { label: 'name', value: 'id', children: 'children' }
-                }}
-            />
+            <ProForm.Item name="segments">
+                <MarketSegmentSelector />
+            </ProForm.Item>
 
             <Form.Item label="Логотип бренда" name="logoUrl" valuePropName="fileList" getValueFromEvent={(e: any) => { if (Array.isArray(e)) { return e; } return e?.fileList; }}>
                 <Upload

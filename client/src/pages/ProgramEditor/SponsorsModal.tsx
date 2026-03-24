@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { Modal, message, Button, Space, Typography, Tooltip, Tag, Tabs, Form, Upload, Checkbox } from 'antd';
-import { ActionType, ProColumns, ProTable, ProFormText, ProFormTextArea, ProForm, ProFormDigit, ProFormSelect, ProFormList, ProFormCascader } from '@ant-design/pro-components';
+import { ActionType, ProColumns, ProTable, ProFormText, ProFormTextArea, ProForm, ProFormDigit, ProFormSelect, ProFormList } from '@ant-design/pro-components';
 import { PlusOutlined, CopyOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, UploadOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import { SafeModalForm } from '../../components/SafeForms/SafeModalForm';
+import { MarketSegmentSelector } from '../../components/MarketSegmentSelector';
 import { sanitizeFormValues } from '../../utils/formSanitizer';
 
 const { Text, Link } = Typography;
@@ -70,20 +71,9 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
             <ProFormTextArea name="catalogDescription" label="Описание для печатного каталога" fieldProps={{ showCount: true, maxLength: 500 }} tooltip="Чем занимается бренд" />
             <ProFormTextArea name="serviceCardDescription" label="Подробное описание для карты сервисов" />
 
-            <ProFormCascader
-                name="segments"
-                label="Сегменты рынка"
-                placeholder="Выберите сегменты"
-                request={async () => {
-                    const { data } = await axios.get('/api/market-segments/tree');
-                    return data;
-                }}
-                fieldProps={{
-                    multiple: true,
-                    changeOnSelect: true,
-                    fieldNames: { label: 'name', value: 'id', children: 'children' }
-                }}
-            />
+            <ProForm.Item name="segments">
+                <MarketSegmentSelector />
+            </ProForm.Item>
 
             <Form.Item label="Логотип бренда" name="logoUrl" valuePropName="fileList" getValueFromEvent={(e: any) => { if (Array.isArray(e)) { return e; } return e?.fileList; }}>
                 <Upload
