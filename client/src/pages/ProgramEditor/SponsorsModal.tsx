@@ -195,7 +195,8 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
             title: 'Действия',
             valueType: 'option',
             width: '10%',
-            render: (_text, record, _, _action) => [
+            render: (_text, record, _, _action) => (
+                <Space direction="vertical" size={8}>
                 <SafeModalForm
                     key="edit"
                     title="Редактировать спонсора"
@@ -235,7 +236,7 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                 >
                     {renderFormFields()}
                 </SafeModalForm>,
-                <a key="delete" style={{ color: 'red', marginLeft: 16 }} onClick={async () => {
+                <a key="delete" style={{ color: 'red' }} onClick={async () => {
                     Modal.confirm({
                         title: 'Открепить спонсора?',
                         content: 'Спонсор будет откреплен от мероприятия, но останется в глобальной базе.',
@@ -250,7 +251,8 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                         }
                     });
                 }}>Открепить</a>
-            ],
+                </Space>
+            ),
         },
     ];
 
