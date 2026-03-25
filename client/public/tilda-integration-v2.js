@@ -488,17 +488,21 @@
                 const speakerId = trigger.getAttribute('data-speaker-id');
                 const speaker = SPEAKERS_MAP[speakerId];
                 if (speaker) {
-                    document.getElementById('upg-modal-name').textContent = `\${speaker.firstName || ''} \${speaker.lastName || ''}`.trim();
+                    document.getElementById('upg-modal-name').textContent = `${speaker.firstName || ''} ${speaker.lastName || ''}`.trim();
                     document.getElementById('upg-modal-pos').textContent = [speaker.position, speaker.company].filter(Boolean).join(', ');
-                    document.getElementById('upg-modal-bio').textContent = speaker.bio || '';
+                    
+                    // Replace <br> variations with raw newlines since we use white-space: pre-wrap
+                    const cleanBio = (speaker.bio || '').replace(/<br\s*\/?>/gi, '\n');
+                    document.getElementById('upg-modal-bio').textContent = cleanBio;
                     
                     const imgEl = document.getElementById('upg-modal-img');
                     if (speaker.photoUrl) {
-                        imgEl.src = speaker.photoUrl.startsWith('http') ? speaker.photoUrl : `\${CONFIG.API_BASE.replace('/api/public', '')}\${speaker.photoUrl}`;
+                        imgEl.src = speaker.photoUrl.startsWith('http') ? speaker.photoUrl : `${CONFIG.API_BASE.replace('/api/public', '')}${speaker.photoUrl}`;
                         imgEl.style.display = 'block';
                     } else {
                         imgEl.style.display = 'none';
                     }
+                }
 
                     modalOverlay.style.display = 'flex';
                     // Trigger reflow for transition
