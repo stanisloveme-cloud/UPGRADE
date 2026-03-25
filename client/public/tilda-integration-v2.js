@@ -403,6 +403,12 @@
                     html += `</div>`; // End row session
                 });
 
+                // --- HARDCODED PARTICIPATE BUTTON ---
+                html += `<div class="mt-4 mb-5 pt-2 ps-3">`;
+                html += `<a href="https://spring.upgrade.st/#registration" target="_blank" style="display: inline-block; background-color: #aeafff; border: 2px solid #aeafff; color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 14px; transition: 0.2s all;" onmouseover="this.style.backgroundColor='#12003a'; this.style.borderColor='#12003a'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.1)'" onmouseout="this.style.backgroundColor='#aeafff'; this.style.borderColor='#aeafff'; this.style.boxShadow='none'">Участвовать</a>`;
+                html += `</div>`;
+                // ------------------------------------
+
                 html += `</div>`; // End Track Block
             }
             html += `</div>`; 

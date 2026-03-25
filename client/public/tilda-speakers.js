@@ -124,13 +124,48 @@
         }
     `;
 
-    function buildSessionText(sessionsInfo) {
-        if (!sessionsInfo || sessionsInfo.length === 0) return '';
-        const texts = sessionsInfo.map(s => {
-            const parts = [];
-            if (s.trackName) parts.push('Трек: ' + s.trackName);
-            if (s.sessionName) parts.push('Сессия: ' + s.sessionName);
-            return parts.join(' / ');
+    const MONTHS = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+
+    function formatDateFriendly(dateStr) {
+        if (!dateStr) return '';
+        try {
+            const parts = dateStr.split('T')[0].split('-');
+            if (parts.length === 3) {
+                const day = parseInt(parts[2], 10);
+                const month = parseInt(parts[1], 10) - 1;
+                return day + ' ' + MONTHS[month];
+            }
+        } catch (e) {}
+        return dateStr;
+    }
+
+    function formatTimeFriendly(start, end) {
+        if (!start && !end) return '';
+        const s = start && start.includes('T') ? start.split('T')[1].substring(0, 5) : '';
+        const e = end && end.includes('T') ? end.split('T')[1].substring(0, 5) : '';
+        if (s && e) return s + ' – ' + e;
+        return s || e || '';
+    }
+
+    function buildSessionText(spk) {
+        if (spk.isModerator) {
+            return '<span style="font-weight: 700; font-size: 13px; color: #12003a; letter-spacing: 0.5px; text-transform: uppercase;">Модератор</span>';
+        }
+        
+        if (!spk.sessionsInfo || spk.sessionsInfo.length === 0) return '';
+        
+        const texts = spk.sessionsInfo.map(s => {
+            let prefix = '';
+            const dateStr = formatDateFriendly(s.day);
+            const timeStr = formatTimeFriendly(s.startTime, s.endTime);
+            if (dateStr || timeStr) {
+                prefix = [dateStr, timeStr].filter(Boolean).join(', ') + ' — ';
+            }
+            
+            const paths = [];
+            if (s.trackName) paths.push(s.trackName);
+            if (s.sessionName) paths.push(s.sessionName);
+            return prefix + paths.join(' / ');
         });
         return texts.join('<br>');
     }
@@ -155,7 +190,7 @@
                 const cleanName = fullName.trim();
                 const positionPart = spk.position ? spk.position : '';
                 const companyPart = spk.company ? spk.company : '';
-                const sessionText = buildSessionText(spk.sessionsInfo);
+                const sessionText = buildSessionText(spk);
 
                 let photoHtml = '';
                 if (spk.photoUrl) {
@@ -190,7 +225,7 @@
                 if (spk.company) titleParts.push(spk.company);
                 const titleLine = titleParts.length > 0 ? ', ' + titleParts.join(', ') : '';
 
-                const sessionText = buildSessionText(spk.sessionsInfo);
+                const sessionText = buildSessionText(spk);
 
                 html += '<div class="upg-speaker-list-item">';
                 html += '<span class="upg-speaker-name">' + cleanName + '</span>' + titleLine;
