@@ -2,8 +2,9 @@
     console.log("UPGRADE CRM Tilda Integration Widget (NEW UX) Loaded");
 
     let backendUrl = 'https://erp-upgrade.ru';
-    if (document.currentScript && document.currentScript.src) {
-        try { backendUrl = new URL(document.currentScript.src).origin; } catch (e) {}
+    const scriptEl = document.currentScript || document.getElementById('crm-widget-script');
+    if (scriptEl && scriptEl.src) {
+        try { backendUrl = new URL(scriptEl.src).origin; } catch (e) {}
     }
 
     const CONFIG = {
@@ -304,17 +305,17 @@
                     if (session.questions && session.questions.length > 0) {
                         html += `<div class="upg-row" style="margin-top: 1rem;">`;
                         session.questions.forEach((q, i) => {
-                            let pillNum = \`#\${i + 1}\`;
+                            let pillNum = `#${i + 1}`;
                             let qContent = q.title || "";
                             
                             // Handle legacy or specific input where title is just "#1" and body holds the real content
-                            const titleIsJustNum = (q.title || '').trim().match(/^#\\d+$/);
+                            const titleIsJustNum = (q.title || '').trim().match(/^#\d+$/);
                             if (titleIsJustNum) {
                                 pillNum = q.title.trim();
                                 qContent = q.body || "";
                             } else {
                                 // Title has real text. If body also exists, append it via HTML.
-                                qContent = \`<strong style="font-weight:600;">\${q.title || ''}</strong>\` + (q.body ? \`<br>\${q.body}\` : '');
+                                qContent = `<strong style="font-weight:600;">${q.title || ''}</strong>` + (q.body ? `<br>${q.body}` : '');
                             }
 
                             html += `
