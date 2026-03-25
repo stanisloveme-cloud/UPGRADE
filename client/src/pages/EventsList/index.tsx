@@ -46,8 +46,8 @@ const EventsList: React.FC = () => {
 
     const handleSave = async (values: any, bypassWarning = false) => {
         try {
-            const newStartStr = values.dates[0].toISOString();
-            const newEndStr = values.dates[1].toISOString();
+            const newStartStr = values.dates[0].format('YYYY-MM-DD') + 'T00:00:00.000Z';
+            const newEndStr = values.dates[1].format('YYYY-MM-DD') + 'T00:00:00.000Z';
 
             const payload = {
                 name: values.name,

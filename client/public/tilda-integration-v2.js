@@ -130,15 +130,18 @@
     // --- HELPERS ---
 
     function extractDate(dateString) {
-      if (!dateString) return 'Программа';
-      if (dateString.length <= 8 && dateString.includes(':')) {
-          return 'Программа';
-      }
-      const date = new Date(dateString);
-      if (!isNaN(date.getTime())) {
-          return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
-      }
-      return 'Программа';
+        if (!dateString) return { label: 'Программа', raw: 0 };
+        if (dateString.length <= 8 && dateString.includes(':')) {
+            return { label: 'Программа', raw: 0 };
+        }
+        const date = new Date(dateString);
+        if (!isNaN(date.getTime())) {
+            return { 
+                label: date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' }), 
+                raw: date.getTime() 
+            };
+        }
+        return { label: 'Программа', raw: 0 };
     }
 
     function formatTime(startTime, endTime) {
@@ -180,10 +183,12 @@
         let allSessions = [];
         data.halls.forEach(hall => {
             (hall.tracks || []).forEach(track => {
-                const dayKey = track.day ? extractDate(track.day) : 'Программа';
+                const dayInfo = track.day ? extractDate(track.day) : { label: 'Программа', raw: 0 };
+                const dayKey = dayInfo.label;
                 const trackName = track.name || 'Общая программа';
                 (track.sessions || []).forEach(session => {
                     session.dayKey = dayKey;
+                    session.rawDayTime = dayInfo.raw;
                     session.hallName = hall.name || 'Общий зал';
                     session.trackName = trackName;
                     allSessions.push(session);
@@ -194,7 +199,7 @@
         // Group by Day -> Hall -> Track -> Sessions
         const scheduleByDay = {};
         allSessions.forEach(session => {
-            if (!scheduleByDay[session.dayKey]) scheduleByDay[session.dayKey] = { halls: {}, tracks: {} };
+            if (!scheduleByDay[session.dayKey]) scheduleByDay[session.dayKey] = { halls: {}, tracks: {}, raw: session.rawDayTime };
             
             // For Grid
             if (!scheduleByDay[session.dayKey].halls[session.hallName]) {
@@ -212,7 +217,7 @@
             scheduleByDay[session.dayKey].tracks[session.trackName].sessions.push(session);
         });
 
-        const sortedDays = Object.keys(scheduleByDay);
+        const sortedDays = Object.keys(scheduleByDay).sort((a, b) => scheduleByDay[a].raw - scheduleByDay[b].raw);
 
         let html = `<div class="bootstrap-wrapper container-fluid p-0"><div class="row align-items-start">`;
         
@@ -220,7 +225,7 @@
         html += `<div class="col-12 col-lg-3 sidebar-sticky d-none d-lg-block bg-body-tertiary p-4 rounded-3 mb-4">`;
         sortedDays.forEach((day, dayIndex) => {
             const colors = PALETTE[dayIndex % PALETTE.length];
-            html += `<h4 class="mb-3 fw-bold" style="color: ${colors.text}">${day}</h4>`;
+            html += `<a href="#day-${dayIndex}" class="text-decoration-none tilda-track-nav" style="display: block; margin-bottom: 0.5rem;"><h4 class="mb-2 fw-bold" style="color: ${colors.text}; margin-left: 8px;">${day}</h4></a>`;
             html += `<ul class="list-unstyled mb-4">`;
             const tracks = Object.keys(scheduleByDay[day].tracks);
             tracks.forEach(trackName => {
@@ -281,7 +286,8 @@
                         // Если нет описания - просто карточка. Если есть - показываем кусочек
                         let shortDesc = "";
                         if (session.questions && session.questions.length > 0) {
-                            shortDesc = session.questions[0].title.substring(0, 100) + (session.questions[0].title.length > 100 ? '...' : '');
+                            let cleanTitle = session.questions[0].title.replace(/^(#\d+|№\d+)[:.]?\s+/, '');
+                            shortDesc = cleanTitle.substring(0, 100) + (cleanTitle.length > 100 ? '...' : '');
                         }
 
                         html += `
@@ -345,8 +351,7 @@
                             
                             html += `<li class="d-flex mb-3" style="font-size: 0.85rem; line-height: 1.4;">`;
                             if (hashMatch) {
-                                html += `<span class="fw-bold me-2" style="min-width: 22px;">${hashMatch[1]}</span>`;
-                                html += `<div>${hashMatch[2]} ${q.body ? `<div class="mt-1 text-muted" style="font-size: 0.8rem;">${q.body}</div>` : ''}</div>`;
+                                html += `<div><span class="fw-bold me-2">${hashMatch[1]}</span><span>${hashMatch[2]}</span> ${q.body ? `<div class="mt-1 text-muted" style="font-size: 0.8rem;">${q.body}</div>` : ''}</div>`;
                             } else {
                                 html += `<div>${q.title} ${q.body ? `<div class="mt-1 text-muted" style="font-size: 0.8rem;">${q.body}</div>` : ''}</div>`;
                             }
