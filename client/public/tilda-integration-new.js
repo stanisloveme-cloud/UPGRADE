@@ -273,11 +273,11 @@
 
                     html += `
                         <div class="upg-col upg-col-md-6">
-                            <div class="upg-session-card" style="background-color: ${palette.bg};" data-session-id="${session.id}">
+                            <a href="#detail-session-${session.id}" class="upg-session-card" style="background-color: ${palette.bg};" data-session-id="${session.id}">
                                 <div class="upg-time-pill">${time}</div>
                                 <div class="upg-session-title">${safeTitle}</div>
                                 ${shortDesc ? `<div class="upg-session-desc">${shortDesc}</div>` : ''}
-                            </div>
+                            </a>
                         </div>
                     `;
                 });
