@@ -2,8 +2,9 @@
     console.log("UPGRADE CRM Tilda Integration Widget (NEW UX) Loaded");
 
     let backendUrl = 'https://erp-upgrade.ru';
-    if (document.currentScript && document.currentScript.src) {
-        try { backendUrl = new URL(document.currentScript.src).origin; } catch (e) {}
+    const scriptEl = document.currentScript || document.getElementById('crm-widget-script');
+    if (scriptEl && scriptEl.src) {
+        try { backendUrl = new URL(scriptEl.src).origin; } catch (e) {}
     }
 
     const CONFIG = {
@@ -14,22 +15,53 @@
 
     const TRACK_ICONS = {}; // Optional mapping for future
     
-    // Tilda Grid palettes
+    // Tilda Reference palettes
     const PALETTES = [
-        { bg: '#F2E9F7', trackText: '#4C1064' }, // Purple
-        { bg: '#E2EEF8', trackText: '#4C1064' }, // Blue
-        { bg: '#EBF4E5', trackText: '#4C1064' }, // Green-ish fallback
-        { bg: '#FDECEF', trackText: '#4C1064' }  // Pink-ish fallback
-    ];
-
-    const SPEAKERS_MAP = {}; 
+        { trackBg: '#F5E7FF', cardBg: '#E9D5FF', trackText: '#592C74' }, // Purple
+        { trackBg: '#EAF3FF', cardBg: '#DEEBFF', trackText: '#592C74' }, // Blue
+        { trackBg: '#FEEDFF', cardBg: '#FBD4FF', trackText: '#592C74' }, // Pink
+        { trackBg: '#EEF7E8', cardBg: '#DDF0D4', trackText: '#592C74' }  // Green
+    ]; 
 
     const STYLES = `
-        /* Custom Tilda New Layout Utilities */
+        /* Custom Tilda New Layout Utilities Without Bootstrap */
         #crm-schedule-root {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             color: #333;
+            box-sizing: border-box;
         }
+        #crm-schedule-root *, #crm-schedule-root *::before, #crm-schedule-root *::after {
+            box-sizing: border-box;
+        }
+        
+        /* Custom Flex Grid */
+        .upg-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -12px;
+            margin-left: -12px;
+        }
+        .upg-col, .upg-col-12, .upg-col-md-6, .upg-col-lg-3 {
+            position: relative;
+            width: 100%;
+            padding-right: 12px;
+            padding-left: 12px;
+        }
+        @media (min-width: 768px) {
+            .upg-col-md-6 { flex: 0 0 auto; width: 50%; }
+        }
+        @media (min-width: 992px) {
+            .upg-col-lg-3 { flex: 0 0 auto; width: 25%; }
+        }
+        
+        /* Generic Helpers */
+        .upg-mb-2 { margin-bottom: 0.5rem; }
+        .upg-mb-3 { margin-bottom: 1rem; }
+        .upg-mb-4 { margin-bottom: 1.5rem; }
+        .upg-mt-4 { margin-top: 1.5rem; }
+        .upg-align-items-start { align-items: flex-start; }
+        .upg-text-center { text-align: center; }
+
         #crm-schedule-root .upg-main-title {
             font-size: 2.2rem;
             font-weight: 800;
@@ -43,65 +75,59 @@
             border-radius: 16px;
             margin-bottom: 2rem;
         }
-        #crm-schedule-root .upg-track-col {
-            padding: 1rem;
-        }
-        #crm-schedule-root .upg-hall-title {
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            color: #888;
-            letter-spacing: 1px;
-            margin-bottom: 0.2rem;
-        }
-        #crm-schedule-root .upg-track-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-        #crm-schedule-root .upg-session-card {
-            border-radius: 12px;
+        #crm-schedule-root .upg-track-container {
+            border-radius: 20px;
             padding: 20px;
             height: 100%;
+        }
+        #crm-schedule-root .upg-hall-title {
+            font-size: 16px;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: #592C74;
+            margin-bottom: 0.5rem;
+        }
+        #crm-schedule-root .upg-track-title {
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #592C74;
+            margin-bottom: 1.5rem;
+            line-height: 22px;
+        }
+        #crm-schedule-root .upg-session-card {
+            border-radius: 15px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
             text-decoration: none;
             color: inherit;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-bottom: 15px;
         }
         #crm-schedule-root .upg-session-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(89, 44, 116, 0.1);
             cursor: pointer;
         }
         #crm-schedule-root .upg-time-pill {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 4px 14px;
-            font-size: 0.85rem;
-            font-weight: 700;
+            background: #FEF5ED;
+            border-radius: 30px;
+            padding: 4px 12px 3px;
+            font-size: 12px;
+            font-weight: 600;
             display: inline-block;
             margin-bottom: 12px;
-            color: #000;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            color: #592C74;
             align-self: flex-start;
         }
         #crm-schedule-root .upg-session-title {
-            font-size: 0.95rem;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 600;
             text-transform: uppercase;
-            line-height: 1.3;
+            line-height: 1.4;
+            color: #592C74;
             flex-grow: 1;
-        }
-        #crm-schedule-root .upg-session-desc {
-            font-size: 0.8rem;
-            color: #666;
-            margin-top: 10px;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;  
-            overflow: hidden;
         }
         /* Detailed List Styles */
         #crm-schedule-root .upg-detailed-section {
@@ -151,6 +177,7 @@
         #crm-schedule-root .upg-detailed-question {
             display: flex;
             align-items: flex-start;
+            margin-bottom: 16px;
         }
         #crm-schedule-root .upg-question-number {
             background-color: #d2db41;
@@ -193,7 +220,7 @@
 
         const eventName = data.event ? data.event.name : 'ДЕЛОВАЯ ПРОГРАММА UPGRADE RETAIL';
 
-        let html = `<div class="bootstrap-wrapper container-fluid p-0">`;
+        let html = `<div class="upg-container">`;
         html += `<div class="upg-main-title">${eventName.toUpperCase()}</div>`;
 
         let trackColorIndex = 0;
@@ -205,7 +232,7 @@
             if (tracks.length === 0) return;
 
             html += `<div class="upg-hall-block">`;
-            html += `<div class="row g-4">`;
+            html += `<div class="upg-row">`;
 
             tracks.forEach(track => {
                 const trackName = track.name || 'Общая программа';
@@ -214,13 +241,13 @@
                 const palette = PALETTES[trackColorIndex % PALETTES.length];
                 trackColorIndex++;
 
-                html += `<div class="col-12 col-xl-6 upg-track-col">`;
+                html += `<div class="upg-col upg-col-md-6 upg-mb-4">`;
+                html += `<div class="upg-track-container" style="background-color: ${palette.trackBg};">`;
                 
                 if (hallName !== 'Главный зал') {
                     html += `<div class="upg-hall-title">${hallName}</div>`;
                 }
-                html += `<div class="upg-track-title" style="color: ${palette.trackText}">${trackName}</div>`;
-                html += `<div class="row g-3">`;
+                html += `<div class="upg-track-title" style="color: ${palette.trackText};">${trackName}</div>`;
                 
                 const sessionsArray = track.sessions || [];
                 sessionsArray.sort((a,b) => (a.startTime||'').localeCompare(b.startTime||''));
@@ -228,22 +255,12 @@
                 sessionsArray.forEach(session => {
                     const time = formatTime(session.startTime, session.endTime);
                     const safeTitle = session.name || 'Сессия';
-                    
-                    let shortDesc = "";
-                    if (session.questions && session.questions.length > 0) {
-                        shortDesc = session.questions[0].title.substring(0, 80) + (session.questions[0].title.length > 80 ? '...' : '');
-                    }
-
-                    const sAnchor = `session-${session.id}`;
 
                     html += `
-                        <div class="col-12 col-md-6">
-                            <div class="upg-session-card" style="background-color: ${palette.bg};" data-session-id="${session.id}">
-                                <div class="upg-time-pill">${time}</div>
-                                <div class="upg-session-title">${safeTitle}</div>
-                                ${shortDesc ? `<div class="upg-session-desc">${shortDesc}</div>` : ''}
-                            </div>
-                        </div>
+                        <a href="#detail-session-${session.id}" class="upg-session-card" style="background-color: ${palette.cardBg};" data-session-id="${session.id}">
+                            <div class="upg-time-pill">${time}</div>
+                            <div class="upg-session-title">${safeTitle}</div>
+                        </a>
                     `;
                 });
 
@@ -286,13 +303,26 @@
                     `;
 
                     if (session.questions && session.questions.length > 0) {
-                        html += `<div class="row g-4">`;
+                        html += `<div class="upg-row" style="margin-top: 1rem;">`;
                         session.questions.forEach((q, i) => {
+                            let pillNum = `#${i + 1}`;
+                            let qContent = q.title || "";
+                            
+                            // Handle legacy or specific input where title is just "#1" and body holds the real content
+                            const titleIsJustNum = (q.title || '').trim().match(/^#\d+$/);
+                            if (titleIsJustNum) {
+                                pillNum = q.title.trim();
+                                qContent = q.body || "";
+                            } else {
+                                // Title has real text. If body also exists, append it via HTML.
+                                qContent = `<strong style="font-weight:600;">${q.title || ''}</strong>` + (q.body ? `<br>${q.body}` : '');
+                            }
+
                             html += `
-                                <div class="col-12 col-md-6 col-lg-3">
+                                <div class="upg-col upg-col-md-6 upg-col-lg-3">
                                     <div class="upg-detailed-question">
-                                        <div class="upg-question-number">#${i + 1}</div>
-                                        <div class="upg-question-text">${q.title}</div>
+                                        <div class="upg-question-number">${pillNum}</div>
+                                        <div class="upg-question-text">${qContent}</div>
                                     </div>
                                 </div>
                             `;

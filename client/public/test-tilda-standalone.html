@@ -25,107 +25,17 @@
             margin-bottom: 2rem;
             color: #333;
         }
-        .instructions {
-            background-color: #f8f9fa;
-            border-left: 4px solid #0d6efd;
-            padding: 20px;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-        .event-selector {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 20px;
-            background: #f1f3f5;
-            border-radius: 8px;
-        }
-        .event-selector select {
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
     </style>
 </head>
 <body>
 
     <div class="tilda-container">
         <h1>Проверка интеграции (Test Tilda)</h1>
-        
-        <div class="instructions">
-            <strong>Инструкция для вставки в Тильду (блок T123):</strong><br><br>
-            В этом файле теперь отображается абсолютно тот же код, который должен уйти на Тильду в блок T123.<br>
-            Скрипт читает нужный ID прямо со страницы.
-            
-            <div style="margin-top: 15px;">
-                <label style="font-weight: bold; margin-bottom: 5px; display: block;">Скопируйте этот код и вставьте в блок T123 (HTML):</label>
-                <textarea id="tilda-code-snippet" readonly style="width: 100%; height: 160px; font-family: monospace; padding: 10px; border-radius: 4px; border: 1px solid #ccc; background: #f8f9fa;">
-&lt;!-- Контейнер для рендеринга расписания --&gt;
-&lt;div id="crm-schedule-root" data-event-id="76" style="font-family: inherit;"&gt;
-    &lt;div class="text-center py-5" style="color: #888;"&gt;Загрузка программы...&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- Подключаем Bootstrap JS --&gt;
-&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
-&lt;!-- Подключаем скрипт расписания --&gt;
-&lt;script src="https://devupgrade.space4you.ru/tilda-integration-v2.js?v=3" defer&gt;&lt;/script&gt;
-                </textarea>
-                <button onclick="copySnippet()" style="margin-top: 10px; padding: 8px 16px; background: #0d6efd; color: white; border: none; border-radius: 4px; cursor: pointer;">Скопировать код</button>
-                <span id="copy-status" style="margin-left: 10px; color: green; display: none;">Скопировано!</span>
-            </div>
-        </div>
-
-        <script>
-            function copySnippet() {
-                var copyText = document.getElementById("tilda-code-snippet");
-                copyText.select();
-                copyText.setSelectionRange(0, 99999);
-                navigator.clipboard.writeText(copyText.value);
-                var status = document.getElementById("copy-status");
-                status.style.display = "inline";
-                setTimeout(() => status.style.display = "none", 2000);
-            }
-
-            function updateSnippet(id) {
-                var snippet = document.getElementById("tilda-code-snippet");
-                snippet.value = snippet.value.replace(/data-event-id="\d+"/, 'data-event-id="' + id + '"');
-            }
-        </script>
-
-        <div class="event-selector">
-            <label for="eventSelect" style="font-weight: bold; margin-right: 15px;">Выберите мероприятие:</label>
-            <select id="eventSelect" onchange="changeParams('eventId', this.value)">
-                <option value="76">ID 76: RTLigate 2025</option>
-                <option value="1">ID 1: Upgrade Retail Весна 2025</option>
-                <option value="2">ID 2: E-COM СФЕРА</option>
-                <option value="42">ID 42: Тестовое событие</option>
-            </select>
-            
-            <label for="layoutSelect" style="font-weight: bold; margin-left: 30px; margin-right: 15px;">Шаблон:</label>
-            <select id="layoutSelect" onchange="changeParams('layout', this.value)">
-                <option value="old">Старый (Списком)</option>
-                <option value="new">Новый (Сетка карточек)</option>
-            </select>
-        </div>
 
         <script>
             const params = new URLSearchParams(window.location.search);
-            const eventId = params.get('eventId') || 76;
+            const eventId = params.get('eventId') || 1;
             const layoutMode = params.get('layout') || 'new';
-
-            document.addEventListener('DOMContentLoaded', () => {
-                const evEl = document.getElementById('eventSelect');
-                if(evEl) evEl.value = eventId;
-                
-                const layEl = document.getElementById('layoutSelect');
-                if(layEl) layEl.value = layoutMode;
-            });
-
-            function changeParams(key, val) {
-                const p = new URLSearchParams(window.location.search);
-                p.set(key, val);
-                window.location.search = '?' + p.toString();
-            }
         </script>
 
         <!-- Tilda Snippet Start -->
@@ -144,9 +54,9 @@
         <!-- Подключаем Bootstrap JS (требуется для модалок/колпапсов, если будут использоваться) -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Подключаем нужный скрипт расписания v2 (старый) или new (новый) -->
         <script>
             const scriptTag = document.createElement('script');
+            scriptTag.id = 'crm-widget-script';
             if (layoutMode === 'old') {
                 scriptTag.src = "tilda-integration-v2.js?v=" + new Date().getTime();
             } else {

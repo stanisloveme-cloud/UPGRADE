@@ -5,6 +5,10 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
+concurrency:
+  group: deploy-dev-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -109,7 +113,10 @@ jobs:
             
             sleep 10
             $DC_CMD -f docker-compose.prod.yml up -d --remove-orphans --force-recreate
-            sleep 5
+            
+            echo "Waiting for database to be ready..."
+            sleep 20
+            
             $DC_CMD -f docker-compose.prod.yml exec -T app npx prisma migrate deploy
             docker image prune -f
 
