@@ -507,8 +507,7 @@
                     modalOverlay.style.display = 'flex';
                     // Trigger reflow for transition
                     void modalOverlay.offsetWidth;
-                    modalOverlay.classList.add('show');
-                }
+                modalOverlay.classList.add('show');
             }
         });
     }
