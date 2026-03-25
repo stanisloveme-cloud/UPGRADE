@@ -48,8 +48,8 @@ const TildaIntegrationPage: React.FC = () => {
             return `${origin}/tilda-speakers.js?v=2`;
         }
         return template === 'old' 
-            ? `${origin}/tilda-integration-v2.js?v=4`
-            : `${origin}/tilda-integration-new.js?v=2`;
+            ? `${origin}/tilda-integration-v2.js?v=5`
+            : `${origin}/tilda-integration-new.js?v=5`;
     };
 
     const getRootId = () => {
