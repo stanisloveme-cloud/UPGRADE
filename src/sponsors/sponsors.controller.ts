@@ -48,6 +48,12 @@ export class SponsorsController {
     }
 
     @Public()
+    @Patch('public/approval/:hash')
+    submitPublicApproval(@Param('hash') hash: string, @Body() body: { status: string, rejectionReason?: string }) {
+        return this.sponsorsService.submitPublicApproval(hash, body.status, body.rejectionReason || '');
+    }
+
+    @Public()
     @Post('import-legacy')
     importLegacyBrands() {
         return this.sponsorsService.importLegacyBrands();
