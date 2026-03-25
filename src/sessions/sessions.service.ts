@@ -81,6 +81,39 @@ export class SessionsService {
             await this.checkSpeakerConflicts(sessionData.trackId, sessionData.startTime, sessionData.endTime, speakerIds);
         }
 
+        // Propagate company and position snapshot updates to the master Speaker records
+        if (speakers && speakers.length > 0) {
+            for (const s of speakers) {
+                const spId = (s as any).speakerId || (s as any).id;
+                if (!spId) continue;
+                
+                const newCompany = s.companySnapshot?.trim();
+                const newPosition = s.positionSnapshot?.trim();
+                
+                const masterSpeaker = await this.prisma.speaker.findUnique({
+                    where: { id: Number(spId) },
+                    select: { company: true, position: true }
+                });
+                
+                if (masterSpeaker) {
+                    const updates: any = {};
+                    if (newCompany !== undefined && newCompany !== (masterSpeaker.company || '')) {
+                        updates.company = newCompany;
+                    }
+                    if (newPosition !== undefined && newPosition !== (masterSpeaker.position || '')) {
+                        updates.position = newPosition;
+                    }
+                    
+                    if (Object.keys(updates).length > 0) {
+                        await this.prisma.speaker.update({
+                            where: { id: Number(spId) },
+                            data: updates
+                        });
+                    }
+                }
+            }
+        }
+
         const session = await this.prisma.session.create({
             data: {
                 ...sessionData,
@@ -197,6 +230,38 @@ export class SessionsService {
 
             // 2. Update speakers if provided
             if (speakers) {
+                // Propagate company and position snapshot updates to the master Speaker records
+                if (speakers.length > 0) {
+                    for (const s of speakers) {
+                        if (!s.speakerId) continue;
+                        
+                        const newCompany = s.companySnapshot?.trim();
+                        const newPosition = s.positionSnapshot?.trim();
+                        
+                        const masterSpeaker = await prisma.speaker.findUnique({
+                            where: { id: Number(s.speakerId) },
+                            select: { company: true, position: true }
+                        });
+                        
+                        if (masterSpeaker) {
+                            const updates: any = {};
+                            if (newCompany !== undefined && newCompany !== (masterSpeaker.company || '')) {
+                                updates.company = newCompany;
+                            }
+                            if (newPosition !== undefined && newPosition !== (masterSpeaker.position || '')) {
+                                updates.position = newPosition;
+                            }
+                            
+                            if (Object.keys(updates).length > 0) {
+                                await prisma.speaker.update({
+                                    where: { id: Number(s.speakerId) },
+                                    data: updates
+                                });
+                            }
+                        }
+                    }
+                }
+
                 await prisma.sessionSpeaker.deleteMany({ where: { sessionId: id } });
                 if (speakers.length > 0) {
                     await prisma.session.update({
