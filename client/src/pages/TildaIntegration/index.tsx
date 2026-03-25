@@ -58,11 +58,17 @@ const TildaIntegrationPage: React.FC = () => {
         return "crm-schedule-root";
     };
 
+    const getScriptId = () => {
+        if (integrationType === 'sponsors') return "crm-sponsors-script";
+        if (integrationType === 'speakers') return "crm-speakers-script";
+        return "crm-widget-script";
+    };
+
     const isLayoutSupported = integrationType === 'speakers' || integrationType === 'sponsors';
 
     const htmlSnippet = `<!-- UPGRADE CRM ${integrationType === 'speakers' ? 'Speakers' : integrationType === 'sponsors' ? 'Sponsors' : 'Schedule'} Widget -->
 <div id="${getRootId()}" data-event-id="${selectedEventId || 1}"${isLayoutSupported ? ` data-layout="${template}"` : ''}></div>
-<script src="${getScriptUrl()}"></script>`;
+<script id="${getScriptId()}" src="${getScriptUrl()}"></script>`;
 
     return (
         <PageContainer 

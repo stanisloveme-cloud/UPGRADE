@@ -2,8 +2,9 @@
     console.log("UPGRADE CRM Tilda Sponsors Widget Loaded");
 
     let backendUrl = 'https://erp-upgrade.ru';
-    if (document.currentScript && document.currentScript.src) {
-        try { backendUrl = new URL(document.currentScript.src).origin; } catch (e) {}
+    const currentScript = document.getElementById('crm-sponsors-script') || document.currentScript;
+    if (currentScript && currentScript.src) {
+        try { backendUrl = new URL(currentScript.src).origin; } catch (e) {}
     }
 
     const CONFIG = {
@@ -85,7 +86,7 @@
 
     function renderSponsors(root, sponsorsData, layout) {
         if (!Array.isArray(sponsorsData)) {
-            root.innerHTML = '<div class="alert alert-danger">Неверный формат данных спонсоров.</div>';
+            root.innerHTML = '<div class="alert alert-danger" style="color:red;">Неверный формат данных спонсоров.</div>';
             return;
         }
 
@@ -106,23 +107,26 @@
                 if (logoUrl.startsWith('/api/') || logoUrl.startsWith('/uploads/')) {
                     finalUrl = backendUrl + logoUrl;
                 }
-                logoHtml = \`<img src="\${finalUrl}" class="upg-logo-img" alt="\${spk.name}">\`;
+                logoHtml = '<img src="' + finalUrl + '" class="upg-logo-img" alt="' + spk.name + '">';
             } else {
-                logoHtml = \`<span class="upg-sponsor-no-logo">\${spk.name}</span>\`;
+                logoHtml = '<span class="upg-sponsor-no-logo">' + spk.name + '</span>';
             }
 
             const innerContent = logoHtml;
             const wrapClass = spk.websiteUrl ? "upg-sponsor-link" : "upg-sponsor-logo-wrap";
             const tag = spk.websiteUrl ? "a" : "div";
-            const hrefAttr = spk.websiteUrl ? \` href="\${spk.websiteUrl.startsWith('http') ? spk.websiteUrl : 'https://' + spk.websiteUrl}" target="_blank" rel="noreferrer"\` : "";
+            
+            let hrefAttr = '';
+            if (spk.websiteUrl) {
+                const safeUrl = spk.websiteUrl.startsWith('http') ? spk.websiteUrl : 'https://' + spk.websiteUrl;
+                hrefAttr = ' href="' + safeUrl + '" target="_blank" rel="noreferrer"';
+            }
 
-            html += \`
-                <div class="upg-sponsor-card">
-                    <\${tag} class="\${wrapClass}"\${hrefAttr} title="\${spk.name}">
-                        \${innerContent}
-                    </\${tag}>
-                </div>
-            \`;
+            html += '<div class="upg-sponsor-card">';
+            html += '<' + tag + ' class="' + wrapClass + '"' + hrefAttr + ' title="' + spk.name + '">';
+            html += innerContent;
+            html += '</' + tag + '>';
+            html += '</div>';
         });
         
         html += '</div>';
@@ -149,9 +153,9 @@
 
             root.innerHTML = '<div class="text-center p-5 text-muted">Загрузка спонсоров...</div>';
 
-            fetch(\`\${CONFIG.API_BASE}/events/\${eventId}/sponsors\`)
+            fetch(CONFIG.API_BASE + '/events/' + eventId + '/sponsors')
                 .then(response => {
-                    if (!response.ok) throw new Error(\`Network error: \${response.status}\`);
+                    if (!response.ok) throw new Error('Network error: ' + response.status);
                     return response.json();
                 })
                 .then(data => renderSponsors(root, data, layout))
