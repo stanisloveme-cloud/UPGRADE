@@ -286,8 +286,17 @@
                         // Если нет описания - просто карточка. Если есть - показываем кусочек
                         let shortDesc = "";
                         if (session.questions && session.questions.length > 0) {
-                            let cleanTitle = session.questions[0].title.replace(/^(#\d+|№\d+)[:.]?\s+/, '');
-                            shortDesc = cleanTitle.substring(0, 100) + (cleanTitle.length > 100 ? '...' : '');
+                            let q = session.questions[0];
+                            let cleanTitle = (q.title || '').replace(/^(#\d+|№\d+)[:.]?\s*/, '').trim();
+                            
+                            // If title was ONLY the hashtag, display a snippet of the body text instead
+                            if (!cleanTitle && q.body) {
+                                cleanTitle = q.body.replace(/<br\s*\/?>/gi, ' ').trim();
+                            }
+                            
+                            if (cleanTitle) {
+                                shortDesc = cleanTitle.substring(0, 100) + (cleanTitle.length > 100 ? '...' : '');
+                            }
                         }
 
                         html += `
@@ -347,13 +356,19 @@
                         html += `<ul class="list-unstyled mb-3">`;
                         questions.forEach((q, idx) => {
                             let titleText = q.title || '';
-                            let hashMatch = titleText.match(/^(#\d+|№\d+)[:.]?\s+(.*)/);
+                            let hashMatch = titleText.match(/^(#\d+|№\d+)[:.]?\s*(.*)/);
                             
                             html += `<li class="d-flex mb-3" style="font-size: 0.85rem; line-height: 1.4;">`;
                             if (hashMatch) {
-                                html += `<div><span class="fw-bold me-2">${hashMatch[1]}</span><span>${hashMatch[2]}</span> ${q.body ? `<div class="mt-1 text-muted" style="font-size: 0.8rem;">${q.body}</div>` : ''}</div>`;
+                                let remainderTitle = hashMatch[2].trim();
+                                html += `<div><span class="fw-bold me-2">${hashMatch[1]}</span>`;
+                                if (remainderTitle) html += `<span>${remainderTitle}</span>`;
+                                if (q.body) html += ` <span class="text-muted ms-1">${q.body.trim().replace(/<br\s*\/?>/g, ' ')}</span>`;
+                                html += `</div>`;
                             } else {
-                                html += `<div>${q.title} ${q.body ? `<div class="mt-1 text-muted" style="font-size: 0.8rem;">${q.body}</div>` : ''}</div>`;
+                                html += `<div>${q.title}`;
+                                if (q.body) html += ` <span class="text-muted ms-1">${q.body.trim().replace(/<br\s*\/?>/g, ' ')}</span>`;
+                                html += `</div>`;
                             }
                             html += `</li>`;
                         });
