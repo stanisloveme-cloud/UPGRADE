@@ -44,16 +44,86 @@ const EventsList: React.FC = () => {
         fetchEvents();
     }, []);
 
-    const handleSave = async (values: any) => {
+    const handleSave = async (values: any, bypassWarning = false) => {
         try {
+            const newStartStr = values.dates[0].format('YYYY-MM-DD') + 'T00:00:00.000Z';
+            const newEndStr = values.dates[1].format('YYYY-MM-DD') + 'T00:00:00.000Z';
+
             const payload = {
                 name: values.name,
                 description: values.description,
-                startDate: values.dates[0].toISOString(),
-                endDate: values.dates[1].toISOString(),
+                startDate: newStartStr,
+                endDate: newEndStr,
                 location: values.location,
                 eventLogoUrl: values.eventLogoUrl,
             };
+
+            if (editingEventId && !bypassWarning) {
+                const existingEvent = events.find(e => e.id === editingEventId);
+                if (existingEvent) {
+                    const oldStartStr = typeof existingEvent.startDate === 'string' && existingEvent.startDate.includes('T') ? existingEvent.startDate.split('T')[0] : existingEvent.startDate;
+                    const oldEndStr = typeof existingEvent.endDate === 'string' && existingEvent.endDate.includes('T') ? existingEvent.endDate.split('T')[0] : existingEvent.endDate;
+                    
+                    const newStartStrPlain = newStartStr.split('T')[0];
+                    const newEndStrPlain = newEndStr.split('T')[0];
+
+                    const oldStart = new Date(oldStartStr);
+                    oldStart.setHours(0,0,0,0);
+                    const oldEnd = new Date(oldEndStr);
+                    oldEnd.setHours(0,0,0,0);
+                    
+                    const newStart = new Date(newStartStrPlain);
+                    newStart.setHours(0,0,0,0);
+                    const newEnd = new Date(newEndStrPlain);
+                    newEnd.setHours(0,0,0,0);
+
+                    // Check if shrinking the bounds
+                    if (newStart > oldStart || newEnd < oldEnd) {
+                        try {
+                            const structRes = await axios.get(`/api/events/${editingEventId}/full-structure`);
+                            const data = structRes.data;
+                            
+                            let hasOutliers = false;
+                            
+                            if (data && data.halls) {
+                                data.halls.forEach((hall: any) => {
+                                    hall.tracks?.forEach((track: any) => {
+                                        if (track.day) {
+                                            const tDatePlain = track.day.split('T')[0];
+                                            const tDate = new Date(tDatePlain);
+                                            tDate.setHours(0,0,0,0);
+                                            
+                                            // Check if the track was inside old boundaries, but now falls outside new boundaries
+                                            if (tDate >= oldStart && tDate <= oldEnd) {
+                                                if (tDate < newStart || tDate > newEnd) {
+                                                    hasOutliers = true;
+                                                }
+                                            }
+                                        }
+                                    });
+                                });
+                            }
+                            
+                            if (hasOutliers) {
+                                Modal.confirm({
+                                    title: 'Внимание!',
+                                    content: 'Вы сокращаете даты мероприятия. На удаляемые дни уже назначены треки и сессии. Они перестанут отображаться в общей сетке программы. Вы уверены, что хотите сохранить новые даты?',
+                                    okText: 'Да, сократить',
+                                    cancelText: 'Отмена',
+                                    okType: 'danger',
+                                    onOk: () => {
+                                        handleSave(values, true);
+                                    }
+                                });
+                                return; // Stop execution and wait for confirm
+                            }
+                        } catch(err) {
+                            console.error('Failed to check structure for outliers', err);
+                        }
+                    }
+                }
+            }
+
             if (editingEventId) {
                 await axios.patch(`/api/events/${editingEventId}`, payload);
                 message.success('Мероприятие обновлено');

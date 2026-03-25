@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ModalForm, ProFormText, ProFormTimePicker } from '@ant-design/pro-components';
+import { ModalForm, ProFormText, ProFormTimePicker, ProFormSelect } from '@ant-design/pro-components';
 import { Form, Button, message } from 'antd';
 import dayjs from 'dayjs';
 
@@ -11,9 +11,11 @@ interface TrackModalProps {
     initialValues?: any;
     hallId?: number;
     eventId: number;
+    defaultDay?: string;
+    availableDays?: any[]; // optional, if we need to implement dropdown later
 }
 
-const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onDelete, initialValues, hallId }) => {
+const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onDelete, initialValues, hallId, defaultDay, availableDays }) => {
     const [form] = Form.useForm();
 
     useEffect(() => {
@@ -24,10 +26,14 @@ const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onD
                     timeRange: [
                         dayjs(initialValues.startTime || '09:00', 'HH:mm'),
                         dayjs(initialValues.endTime || '20:00', 'HH:mm')
-                    ]
+                    ],
+                    day: initialValues.day || defaultDay
                 });
             } else {
                 form.resetFields();
+                if (defaultDay) {
+                    form.setFieldsValue({ day: defaultDay });
+                }
             }
         }
     }, [visible, initialValues, form]);
@@ -54,11 +60,8 @@ const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onD
                     startTime: formatTime(start),
                     endTime: formatTime(end),
                     hallId: hallId || initialValues?.hallId,
-                    // If creating, we need a date. Default to event start date?
-                    // Ideally we should ask for date or pick from event days.
-                    // For MVP, hardcode day 1 or ask user.
-                    // Let's assume day is passed or we default to '2025-10-21' (Day 1)
-                    day: initialValues?.day || '2025-10-21T00:00:00.000Z',
+                    // Use the selected day from the form or fallback to defaultDay
+                    day: values.day ? `${values.day}T00:00:00.000Z` : (defaultDay ? `${defaultDay}T00:00:00.000Z` : new Date().toISOString()),
                 };
                 delete submission.timeRange;
                 try {
@@ -114,6 +117,15 @@ const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onD
                 label="Описание (Аннотация)"
                 placeholder="Краткое описание"
             />
+
+            {(availableDays && availableDays.length > 0) && (
+                <ProFormSelect
+                    name="day"
+                    label="День мероприятия"
+                    options={availableDays}
+                    rules={[{ required: true, message: 'Выберите день' }]}
+                />
+            )}
 
             <div style={{ display: 'flex', gap: 16 }}>
                 <ProFormTimePicker.RangePicker

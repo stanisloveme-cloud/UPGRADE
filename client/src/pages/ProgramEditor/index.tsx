@@ -187,16 +187,43 @@ const ProgramEditor: React.FC = () => {
     });
 
     const availableDays = useMemo(() => {
-        if (!data?.halls) return [];
         const days = new Set<string>();
-        data.halls.forEach((hall: any) => {
-            hall.tracks?.forEach((track: any) => {
-                if (track.day) {
-                    const dateStr = new Date(track.day).toISOString().split('T')[0];
-                    days.add(dateStr);
-                }
+
+        // 1. Всегда генерируем табы на основе официальных дат мероприятия (startDate -> endDate)
+        if (data?.startDate && data?.endDate) {
+            const startStr = (typeof data.startDate === 'string' && data.startDate.includes('T')) ? data.startDate.split('T')[0] : data.startDate;
+            const endStr = (typeof data.endDate === 'string' && data.endDate.includes('T')) ? data.endDate.split('T')[0] : data.endDate;
+            
+            const start = new Date(startStr);
+            start.setHours(0, 0, 0, 0);
+            const end = new Date(endStr);
+            end.setHours(0, 0, 0, 0);
+
+            let current = new Date(start);
+            // Защита от бесконечного цикла (макс 30 дней)
+            let limit = 0;
+            while (current <= end && limit < 30) {
+                // Корректный ISO формат YYYY-MM-DD с учетом таймзоны для локали
+                const tzoffset = current.getTimezoneOffset() * 60000;
+                const localISOTime = (new Date(current.getTime() - tzoffset)).toISOString().slice(0, 10);
+                days.add(localISOTime);
+                current.setDate(current.getDate() + 1);
+                limit++;
+            }
+        }
+
+        // 2. Подгружаем даты уже существующих старых треков, чтобы они не потерялись из интерфейса (например те, что созданы в октябре)
+        if (data?.halls) {
+            data.halls.forEach((hall: any) => {
+                hall.tracks?.forEach((track: any) => {
+                    if (track.day) {
+                        const dateStr = new Date(track.day).toISOString().split('T')[0];
+                        days.add(dateStr);
+                    }
+                });
             });
-        });
+        }
+        
         return Array.from(days).sort();
     }, [data]);
 
@@ -378,6 +405,11 @@ const ProgramEditor: React.FC = () => {
                 initialValues={currentTrack}
                 hallId={currentTrackHallId}
                 eventId={Number(eventId)}
+                defaultDay={selectedDay}
+                availableDays={availableDays.map(day => ({
+                    value: day,
+                    label: new Date(day).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' })
+                }))}
             />
 
             <SpeakerSortingModal

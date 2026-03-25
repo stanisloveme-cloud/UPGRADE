@@ -2,8 +2,10 @@
     console.log("UPGRADE CRM Tilda Speakers Widget Loaded");
 
     let backendUrl = 'https://erp-upgrade.ru';
-    if (document.currentScript && document.currentScript.src) {
-        try { backendUrl = new URL(document.currentScript.src).origin; } catch (e) {}
+    // Находим скрипт по ID или отталкиваемся от текущего
+    const currentScript = document.getElementById('crm-speakers-script') || document.currentScript;
+    if (currentScript && currentScript.src) {
+        try { backendUrl = new URL(currentScript.src).origin; } catch (e) {}
     }
 
     const CONFIG = {
@@ -31,7 +33,7 @@
         }
         #crm-speakers-root .upg-speaker-list-item {
             width: 100%;
-            font-size: 12.8px;
+            font-size: 14px;
             line-height: 1.5;
             margin-bottom: 16px;
             padding-bottom: 8px;
@@ -49,7 +51,7 @@
         }
         #crm-speakers-root .upg-speaker-session-info {
             color: #6c757d;
-            font-size: 11.2px;
+            font-size: 13px;
             margin-top: 4px;
         }
 
@@ -126,8 +128,8 @@
         if (!sessionsInfo || sessionsInfo.length === 0) return '';
         const texts = sessionsInfo.map(s => {
             const parts = [];
-            if (s.trackName) parts.push(\`Трек: \${s.trackName}\`);
-            if (s.sessionName) parts.push(\`Сессия: \${s.sessionName}\`);
+            if (s.trackName) parts.push('Трек: ' + s.trackName);
+            if (s.sessionName) parts.push('Сессия: ' + s.sessionName);
             return parts.join(' / ');
         });
         return texts.join('<br>');
@@ -135,7 +137,7 @@
 
     function renderSpeakers(root, speakersData, layout) {
         if (!Array.isArray(speakersData)) {
-            root.innerHTML = '<div class="alert alert-danger">Неверный формат данных спикеров.</div>';
+            root.innerHTML = '<div class="alert alert-danger" style="color:red;">Неверный формат данных спикеров.</div>';
             return;
         }
 
@@ -149,54 +151,53 @@
         if (layout === 'grid') {
             html += '<div class="upg-speaker-grid-row">';
             speakersData.forEach(spk => {
-                const fullName = \`\${spk.firstName || ''} \${spk.lastName || ''}\`.trim();
-                const positionPart = spk.position ? \`\${spk.position}\` : '';
-                const companyPart = spk.company ? \`\${spk.company}\` : '';
+                const fullName = (spk.firstName || '') + ' ' + (spk.lastName || '');
+                const cleanName = fullName.trim();
+                const positionPart = spk.position ? spk.position : '';
+                const companyPart = spk.company ? spk.company : '';
                 const sessionText = buildSessionText(spk.sessionsInfo);
 
                 let photoHtml = '';
                 if (spk.photoUrl) {
-                    photoHtml = \`<img src="\${backendUrl}\${spk.photoUrl}" class="upg-photo-img" alt="\${fullName}">\`;
+                    photoHtml = '<img src="' + backendUrl + spk.photoUrl + '" class="upg-photo-img" alt="' + cleanName + '">';
                 } else {
-                    const initials = (spk.firstName?.[0] || '') + (spk.lastName?.[0] || '');
-                    photoHtml = \`<span>\${initials.toUpperCase() || '?'}</span>\`;
+                    const firstNameInitial = spk.firstName && spk.firstName.length > 0 ? spk.firstName[0] : '';
+                    const lastNameInitial = spk.lastName && spk.lastName.length > 0 ? spk.lastName[0] : '';
+                    const initials = (firstNameInitial + lastNameInitial).toUpperCase() || '?';
+                    photoHtml = '<span>' + initials + '</span>';
                 }
 
-                html += \`
-                    <div class="upg-speaker-card">
-                        <div class="upg-photo-wrap">
-                            \${photoHtml}
-                        </div>
-                        <div class="upg-card-info">
-                            <div class="upg-card-name">\${fullName}</div>
-                            \${companyPart ? \`<div class="upg-card-company">\${companyPart}</div>\` : ''}
-                            \${positionPart ? \`<div class="upg-card-position">\${positionPart}</div>\` : ''}
-                            \${sessionText ? \`<div class="upg-card-session">\${sessionText}</div>\` : ''}
-                        </div>
-                    </div>
-                \`;
+                html += '<div class="upg-speaker-card">';
+                html += '<div class="upg-photo-wrap">' + photoHtml + '</div>';
+                html += '<div class="upg-card-info">';
+                html += '<div class="upg-card-name">' + cleanName + '</div>';
+                if (companyPart) html += '<div class="upg-card-company">' + companyPart + '</div>';
+                if (positionPart) html += '<div class="upg-card-position">' + positionPart + '</div>';
+                if (sessionText) html += '<div class="upg-card-session">' + sessionText + '</div>';
+                html += '</div></div>';
             });
             html += '</div>';
         } else {
             // Default: 'list'
             html += '<div class="upg-speaker-list-row">';
             speakersData.forEach(spk => {
-                const fullName = \`\${spk.firstName || ''} \${spk.lastName || ''}\`.trim();
+                const fullName = (spk.firstName || '') + ' ' + (spk.lastName || '');
+                const cleanName = fullName.trim();
                 
                 // Form: Name, Position, Company
                 const titleParts = [];
                 if (spk.position) titleParts.push(spk.position);
                 if (spk.company) titleParts.push(spk.company);
-                const titleLine = titleParts.length > 0 ? \`, \${titleParts.join(', ')}\` : '';
+                const titleLine = titleParts.length > 0 ? ', ' + titleParts.join(', ') : '';
 
                 const sessionText = buildSessionText(spk.sessionsInfo);
 
-                html += \`
-                    <div class="upg-speaker-list-item">
-                        <span class="upg-speaker-name">\${fullName}</span>\${titleLine}
-                        \${sessionText ? \`<div class="upg-speaker-session-info">\${sessionText}</div>\` : ''}
-                    </div>
-                \`;
+                html += '<div class="upg-speaker-list-item">';
+                html += '<span class="upg-speaker-name">' + cleanName + '</span>' + titleLine;
+                if (sessionText) {
+                    html += '<div class="upg-speaker-session-info">' + sessionText + '</div>';
+                }
+                html += '</div>';
             });
             html += '</div>';
         }
@@ -223,15 +224,15 @@
 
             root.innerHTML = '<div class="text-center p-5 text-muted">Загрузка спикеров...</div>';
 
-            fetch(\`\${CONFIG.API_BASE}/events/\${eventId}/speakers\`)
+            fetch(CONFIG.API_BASE + '/events/' + eventId + '/speakers')
                 .then(response => {
-                    if (!response.ok) throw new Error(\`Network error: \${response.status}\`);
+                    if (!response.ok) throw new Error('Network error: ' + response.status);
                     return response.json();
                 })
                 .then(data => renderSpeakers(root, data, layout))
                 .catch(error => {
                     console.error('UPGRADE CRM Speakers Widget Error:', error);
-                    root.innerHTML = '<div class="alert alert-danger">Не удалось загрузить данные спикеров.</div>';
+                    root.innerHTML = '<div class="alert alert-danger" style="color:red;">Не удалось загрузить данные спикеров.</div>';
                 });
         });
     }
