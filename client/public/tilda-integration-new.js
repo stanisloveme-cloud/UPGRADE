@@ -25,11 +25,44 @@
     const SPEAKERS_MAP = {}; 
 
     const STYLES = `
-        /* Custom Tilda New Layout Utilities */
+        /* Custom Tilda New Layout Utilities Without Bootstrap */
         #crm-schedule-root {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             color: #333;
+            box-sizing: border-box;
         }
+        #crm-schedule-root *, #crm-schedule-root *::before, #crm-schedule-root *::after {
+            box-sizing: border-box;
+        }
+        
+        /* Custom Flex Grid */
+        .upg-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -12px;
+            margin-left: -12px;
+        }
+        .upg-col, .upg-col-12, .upg-col-md-6, .upg-col-lg-3 {
+            position: relative;
+            width: 100%;
+            padding-right: 12px;
+            padding-left: 12px;
+        }
+        @media (min-width: 768px) {
+            .upg-col-md-6 { flex: 0 0 auto; width: 50%; }
+        }
+        @media (min-width: 992px) {
+            .upg-col-lg-3 { flex: 0 0 auto; width: 25%; }
+        }
+        
+        /* Generic Helpers */
+        .upg-mb-2 { margin-bottom: 0.5rem; }
+        .upg-mb-3 { margin-bottom: 1rem; }
+        .upg-mb-4 { margin-bottom: 1.5rem; }
+        .upg-mt-4 { margin-top: 1.5rem; }
+        .upg-align-items-start { align-items: flex-start; }
+        .upg-text-center { text-align: center; }
+
         #crm-schedule-root .upg-main-title {
             font-size: 2.2rem;
             font-weight: 800;
@@ -69,6 +102,7 @@
             text-decoration: none;
             color: inherit;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-bottom: 24px;
         }
         #crm-schedule-root .upg-session-card:hover {
             transform: translateY(-2px);
@@ -151,6 +185,7 @@
         #crm-schedule-root .upg-detailed-question {
             display: flex;
             align-items: flex-start;
+            margin-bottom: 16px;
         }
         #crm-schedule-root .upg-question-number {
             background-color: #d2db41;
@@ -193,7 +228,7 @@
 
         const eventName = data.event ? data.event.name : 'ДЕЛОВАЯ ПРОГРАММА UPGRADE RETAIL';
 
-        let html = `<div class="bootstrap-wrapper container-fluid p-0">`;
+        let html = `<div class="upg-container">`;
         html += `<div class="upg-main-title">${eventName.toUpperCase()}</div>`;
 
         let trackColorIndex = 0;
@@ -205,7 +240,7 @@
             if (tracks.length === 0) return;
 
             html += `<div class="upg-hall-block">`;
-            html += `<div class="row g-4">`;
+            html += `<div class="upg-row">`;
 
             tracks.forEach(track => {
                 const trackName = track.name || 'Общая программа';
@@ -214,13 +249,13 @@
                 const palette = PALETTES[trackColorIndex % PALETTES.length];
                 trackColorIndex++;
 
-                html += `<div class="col-12 col-xl-6 upg-track-col">`;
+                html += `<div class="upg-col upg-col-md-6 upg-track-col">`;
                 
                 if (hallName !== 'Главный зал') {
                     html += `<div class="upg-hall-title">${hallName}</div>`;
                 }
                 html += `<div class="upg-track-title" style="color: ${palette.trackText}">${trackName}</div>`;
-                html += `<div class="row g-3">`;
+                html += `<div class="upg-row" style="margin-top: 1rem;">`;
                 
                 const sessionsArray = track.sessions || [];
                 sessionsArray.sort((a,b) => (a.startTime||'').localeCompare(b.startTime||''));
@@ -237,7 +272,7 @@
                     const sAnchor = `session-${session.id}`;
 
                     html += `
-                        <div class="col-12 col-md-6">
+                        <div class="upg-col upg-col-md-6">
                             <div class="upg-session-card" style="background-color: ${palette.bg};" data-session-id="${session.id}">
                                 <div class="upg-time-pill">${time}</div>
                                 <div class="upg-session-title">${safeTitle}</div>
@@ -286,10 +321,10 @@
                     `;
 
                     if (session.questions && session.questions.length > 0) {
-                        html += `<div class="row g-4">`;
+                        html += `<div class="upg-row" style="margin-top: 1rem;">`;
                         session.questions.forEach((q, i) => {
                             html += `
-                                <div class="col-12 col-md-6 col-lg-3">
+                                <div class="upg-col upg-col-md-6 upg-col-lg-3">
                                     <div class="upg-detailed-question">
                                         <div class="upg-question-number">#${i + 1}</div>
                                         <div class="upg-question-text">${q.title}</div>
