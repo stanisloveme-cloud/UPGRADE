@@ -200,14 +200,14 @@
             font-weight: 500;
             margin-top: 2px;
         }
-    `;
+    \`;
 
     function formatTime(startTime, endTime) {
         if (!startTime) return '';
         let sTime = startTime.includes('T') ? new Date(startTime).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }) : startTime.split(':').slice(0, 2).join(':');
         if (endTime) {
             let eTime = endTime.includes('T') ? new Date(endTime).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }) : endTime.split(':').slice(0, 2).join(':');
-            return `${sTime} – ${eTime}`;
+            return \`\${sTime} – \${eTime}\`;
         }
         return sTime;
     }
@@ -220,8 +220,8 @@
 
         const eventName = data.event ? data.event.name : 'ДЕЛОВАЯ ПРОГРАММА UPGRADE RETAIL';
 
-        let html = `<div class="upg-container">`;
-        html += `<div class="upg-main-title">${eventName.toUpperCase()}</div>`;
+        let html = \`<div class="upg-container">\`;
+        html += \`<div class="upg-main-title">\${eventName.toUpperCase()}</div>\`;
 
         let trackColorIndex = 0;
 
@@ -231,8 +231,8 @@
             
             if (tracks.length === 0) return;
 
-            html += `<div class="upg-hall-block">`;
-            html += `<div class="upg-row">`;
+            html += \`<div class="upg-hall-block">\`;
+            html += \`<div class="upg-row">\`;
 
             tracks.forEach(track => {
                 const trackName = track.name || 'Общая программа';
@@ -241,13 +241,13 @@
                 const palette = PALETTES[trackColorIndex % PALETTES.length];
                 trackColorIndex++;
 
-                html += `<div class="upg-col upg-col-md-6 upg-mb-4">`;
-                html += `<div class="upg-track-container" style="background-color: ${palette.trackBg};">`;
+                html += \`<div class="upg-col upg-col-md-6 upg-mb-4">\`;
+                html += \`<div class="upg-track-container" style="background-color: \${palette.trackBg};">\`;
                 
                 if (hallName !== 'Главный зал') {
-                    html += `<div class="upg-hall-title">${hallName}</div>`;
+                    html += \`<div class="upg-hall-title">\${hallName}</div>\`;
                 }
-                html += `<div class="upg-track-title" style="color: ${palette.trackText};">${trackName}</div>`;
+                html += \`<div class="upg-track-title" style="color: \${palette.trackText};">\${trackName}</div>\`;
                 
                 const sessionsArray = track.sessions || [];
                 sessionsArray.sort((a,b) => (a.startTime||'').localeCompare(b.startTime||''));
@@ -256,24 +256,24 @@
                     const time = formatTime(session.startTime, session.endTime);
                     const safeTitle = session.name || 'Сессия';
 
-                    html += `
-                        <a href="#detail-session-${session.id}" class="upg-session-card" style="background-color: ${palette.cardBg};" data-session-id="${session.id}">
-                            <div class="upg-time-pill">${time}</div>
-                            <div class="upg-session-title">${safeTitle}</div>
+                    html += \`
+                        <a href="#detail-session-\${session.id}" class="upg-session-card" style="background-color: \${palette.cardBg};" data-session-id="\${session.id}">
+                            <div class="upg-time-pill">\${time}</div>
+                            <div class="upg-session-title">\${safeTitle}</div>
                         </a>
-                    `;
+                    \`;
                 });
 
-                html += `</div></div>`;
+                html += \`</div></div>\`;
             });
 
-            html += `</div></div>`;
+            html += \`</div></div>\`;
         });
 
         // -----------------------------------------
         // Detailed Session List (Appended Below Grid)
         // -----------------------------------------
-        html += `<div class="upg-detailed-section">`;
+        html += \`<div class="upg-detailed-section">\`;
         
         data.halls.forEach(hall => {
             const hallName = hall.name === 'unknown' ? 'Главный зал' : (hall.name || 'Общий зал');
@@ -287,57 +287,57 @@
                 const sessionsArray = track.sessions || [];
                 if (sessionsArray.length === 0) return;
 
-                html += `<div class="upg-detailed-track-title">${trackName}</div>`;
+                html += \`<div class="upg-detailed-track-title">\${trackName}</div>\`;
 
                 sessionsArray.forEach(session => {
                     const time = formatTime(session.startTime, session.endTime);
                     const safeTitle = session.name || 'Сессия';
                     
-                    html += `
-                        <div class="upg-detailed-card" id="detail-session-${session.id}">
+                    html += \`
+                        <div class="upg-detailed-card" id="detail-session-\${session.id}">
                             <div class="d-flex align-items-center flex-wrap">
-                                <div class="upg-detailed-time-pill">${time}</div>
-                                <div class="upg-detailed-hall text-uppercase">${hallName}</div>
+                                <div class="upg-detailed-time-pill">\${time}</div>
+                                <div class="upg-detailed-hall text-uppercase">\${hallName}</div>
                             </div>
-                            <div class="upg-detailed-title">${safeTitle}</div>
-                    `;
+                            <div class="upg-detailed-title">\${safeTitle}</div>
+                    \`;
 
                     if (session.questions && session.questions.length > 0) {
-                        html += `<div class="upg-row" style="margin-top: 1rem;">`;
+                        html += \`<div class="upg-row" style="margin-top: 1rem;">\`;
                         session.questions.forEach((q, i) => {
-                            let pillNum = `#${i + 1}`;
+                            let pillNum = \`#\${i + 1}\`;
                             let qContent = q.title || "";
                             
                             // Handle legacy or specific input where title is just "#1" and body holds the real content
-                            const titleIsJustNum = (q.title || '').trim().match(/^#\d+$/);
+                            const titleIsJustNum = (q.title || '').trim().match(/^#\\d+$/);
                             if (titleIsJustNum) {
                                 pillNum = q.title.trim();
                                 qContent = q.body || "";
                             } else {
                                 // Title has real text. If body also exists, append it via HTML.
-                                qContent = `<strong style="font-weight:600;">${q.title || ''}</strong>` + (q.body ? `<br>${q.body}` : '');
+                                qContent = \`<strong style="font-weight:600;">\${q.title || ''}</strong>\` + (q.body ? \`<br>\${q.body}\` : '');
                             }
 
-                            html += `
+                            html += \`
                                 <div class="upg-col upg-col-md-6 upg-col-lg-3">
                                     <div class="upg-detailed-question">
-                                        <div class="upg-question-number">${pillNum}</div>
-                                        <div class="upg-question-text">${qContent}</div>
+                                        <div class="upg-question-number">\${pillNum}</div>
+                                        <div class="upg-question-text">\${qContent}</div>
                                     </div>
                                 </div>
-                            `;
+                            \`;
                         });
-                        html += `</div>`;
+                        html += \`</div>\`;
                     }
 
-                    html += `</div>`; // end upg-detailed-card
+                    html += \`</div>\`; // end upg-detailed-card
                 });
             });
         });
 
-        html += `</div>`; // end upg-detailed-section
+        html += \`</div>\`; // end upg-detailed-section
 
-        html += `</div>`; 
+        html += \`</div>\`; 
         root.innerHTML = html;
         setupModals(root);
     }
@@ -360,9 +360,9 @@
             
             root.innerHTML = '<div class="text-center p-5 text-muted">Загрузка программы...</div>';
 
-            fetch(`${CONFIG.API_BASE}/events/${eventId}/website-data`)
+            fetch(\`\${CONFIG.API_BASE}/events/\${eventId}/website-data\`)
                 .then(response => {
-                    if (!response.ok) throw new Error(`Network error: ${response.status}`);
+                    if (!response.ok) throw new Error(\`Network error: \${response.status}\`);
                     return response.json();
                 })
                 .then(data => renderSchedule(root, data))
