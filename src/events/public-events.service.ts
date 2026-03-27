@@ -221,7 +221,7 @@ export class PublicEventsService {
         for (const spk of sessionSpeakers) {
             if (!spk.speaker) continue;
 
-            const isMod = spk.role === 'moderator' || spk.role === 'Организатор';
+            const isMod = spk.role === 'moderator' || (spk.role as string) === 'Организатор';
             const key = `${spk.speaker.id}_${isMod ? 'mod' : 'spk'}`;
 
             if (!uniqueSpeakers.has(key)) {
