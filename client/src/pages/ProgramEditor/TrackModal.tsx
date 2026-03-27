@@ -27,7 +27,7 @@ const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onD
                         dayjs(initialValues.startTime || '09:00', 'HH:mm'),
                         dayjs(initialValues.endTime || '20:00', 'HH:mm')
                     ],
-                    day: initialValues.day || defaultDay
+                    day: (initialValues.day || defaultDay || '').split('T')[0]
                 });
             } else {
                 form.resetFields();
@@ -60,8 +60,7 @@ const TrackModal: React.FC<TrackModalProps> = ({ visible, onClose, onFinish, onD
                     startTime: formatTime(start),
                     endTime: formatTime(end),
                     hallId: hallId || initialValues?.hallId,
-                    // Use the selected day from the form or fallback to defaultDay
-                    day: values.day ? `${values.day}T00:00:00.000Z` : (defaultDay ? `${defaultDay}T00:00:00.000Z` : new Date().toISOString()),
+                    day: values.day ? `${values.day.split('T')[0]}T00:00:00.000Z` : (defaultDay ? `${defaultDay.split('T')[0]}T00:00:00.000Z` : new Date().toISOString()),
                 };
                 delete submission.timeRange;
                 try {
