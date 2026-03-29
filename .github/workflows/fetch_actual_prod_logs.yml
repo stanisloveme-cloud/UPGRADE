@@ -1,0 +1,23 @@
+name: Fetch Actual Prod Logs
+on:
+  workflow_dispatch:
+    inputs:
+      lines:
+        description: 'Number of log lines to tail'
+        required: true
+        default: '500'
+
+jobs:
+  fetch-logs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Backend Logs
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_SERVER_HOST }}
+          username: ${{ secrets.PROD_SERVER_USER }}
+          key: ${{ secrets.PROD_SSH_PRIVATE_KEY }}
+          script: |
+            echo "=== FETCHING PRODUCTION BACKEND LOGS ==="
+            cd /root/upgrade-crm
+            docker compose -f docker-compose.prod.yml logs --tail ${{ github.event.inputs.lines }} app
