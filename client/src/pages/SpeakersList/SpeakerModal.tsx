@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, Form, Input, Upload, Avatar, message, Button, Checkbox, Image, Tooltip } from 'antd';
+import { Modal, Form, Input, Upload, Avatar, message, Button, Checkbox, Image, Tooltip, notification } from 'antd';
 import { UserOutlined, UploadOutlined, DeleteOutlined } from '@ant-design/icons';
 import ImgCrop from 'antd-img-crop';
 
@@ -56,10 +56,17 @@ const SpeakerModal: React.FC<SpeakerModalProps> = ({ visible, onClose, onFinish,
         } catch (error: any) {
             console.error('Validation or Finalization failed:', error);
             if (error.errorFields) {
-                const fields = error.errorFields.map((f: any) => f.name.join('.')).join(', ');
-                message.error(`Заполните корректно поля: ${fields}`);
+                const fields = error.errorFields.map((f: any) => f.name.join(' -> ')).join(', ');
+                notification.error({
+                    message: 'Ошибка заполнения формы',
+                    description: `Заполните обязательные поля: ${fields}`,
+                    duration: 8,
+                });
             } else {
-                message.error(`Ошибка сохранения: ${error.message || 'Неизвестная ошибка'}`);
+                notification.error({
+                    message: 'Ошибка сохранения',
+                    description: error.message || 'Неизвестная ошибка',
+                });
             }
         }
     };

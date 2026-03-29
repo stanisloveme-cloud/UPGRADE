@@ -30,12 +30,14 @@ The following core Business Data requirements have been fully analyzed, implemen
 ## 3. Change Log (Post-MVP)
 *Agents: Add your completed tasks here in reverse chronological order (newest at the top).*
 
+- **2026-03-29**: Fixed silent validation failures in `SafeDrawerForm`.
+  - The submit button was occasionally failing to surface implicit validation errors (e.g. from hidden tabs/lists like `ProFormList` in `SessionDrawer`). Edited `SafeDrawerForm.tsx` to explicitly intercept the `submitter` click, forcefully invoke `validateFields()`, and surface any errors via an unsuppressable `notification.error` UI component indicating exactly which fields are missing.
 - **2026-03-25**: Implemented "Smart Program Dates" logic for the Event Schedule Grid.
   -*   **Smart Program Dates (Dynamic Generation)** implementation completed. Program Editor dynamically generates date tabs based on `Event.startDate` and `Event.endDate`.
 *   **Track Routing via Dropdown**: Restored `ProFormSelect` dropdown mapping `days` to `<TrackModal />`. Allowed explicit migration of tracks to active event days.
 *   **Event Date Shrink Protection**: Implemented UI validation overlay that catches orphaned tracks recursively. **Fixed timezone shift bug** where saving the event dates late in the day locally shifted them to the previous/next day in UTC, breaking validation logic.
-*   **Tilda Layout V2 Updates (v2 Old Layout)**: Fixed date anchoring, sorted chronological order of sidebar dates, removed hashtag (#N) display from tile grids, and fixed inline wrapping of hashtags in session detail lists.ng `availableDays`. Tracks can be moved securely between event days via a dropdown.
-  - Implemented Shrink Validation Guard: Added an interceptor in `EventsList/index.tsx` `handleSave` that triggers a `Modal.confirm` warning if the user attempts to shrink the boundaries of an event (e.g., length from 2 to 1 day) leaving populated tracks stranded outside the new bounding box.
+*   **Tilda Layout V2 Updates (v2 Old Layout)**: Fixed date anchoring, sorted chronological order of sidebar dates, removed hashtag (#N) display from tile grids, and fixed inline wrapping of hashtags in session detail lists.
+*   **Track Routing Dropdown**: Enforces explicit mapping of tracks via `availableDays`. Tracks can be moved securely between event days.
 - **2026-03-24**: Refactored the Tilda Integration UI (`/tilda-integration`). Introduced a `Segmented` control to generate widgets for Schedule, Speakers, and a Sponsors placeholder (Backlog).
 
 - **2026-03-24**: Emergency Fix for Production Outage. Resolved a failed Prisma migration (`20260317181300_sync_missing_needs_call`) via a custom GitHub Action (`fix_prod_db.yml`). Successfully merged the CI update into the `production` branch and re-deployed, restoring `erp-upgrade.ru`.
