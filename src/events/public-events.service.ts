@@ -184,6 +184,7 @@ export class PublicEventsService {
             select: {
                 id: true,
                 sortOrder: true,
+                role: true,
                 speaker: {
                     select: {
                         id: true,
@@ -198,9 +199,12 @@ export class PublicEventsService {
                 session: {
                     select: {
                         name: true,
+                        startTime: true,
+                        endTime: true,
                         track: {
                             select: { 
                                 name: true,
+                                day: true,
                                 hall: {
                                     select: { name: true }
                                 }
@@ -211,32 +215,45 @@ export class PublicEventsService {
             }
         });
 
-        // Deduplicate speakers and aggregate their session info
+        // Deduplicate speakers with role awareness 
+        // Group by speaker + role type so dual-role speakers receive two cards
         const uniqueSpeakers = new Map();
         for (const spk of sessionSpeakers) {
             if (!spk.speaker) continue;
 
-            if (!uniqueSpeakers.has(spk.speaker.id)) {
+            const isMod = spk.role === 'moderator' || (spk.role as string) === 'Организатор';
+            const key = `${spk.speaker.id}_${isMod ? 'mod' : 'spk'}`;
+
+            if (!uniqueSpeakers.has(key)) {
                 // Determine primary ranking based on their first appearance in sorted sessionSpeakers
-                uniqueSpeakers.set(spk.speaker.id, {
+                uniqueSpeakers.set(key, {
                     ...spk.speaker,
                     sortOrder: spk.sortOrder,
+                    isModerator: isMod,
                     sessionsInfo: []
                 });
             }
 
             // Append this session's context to the unique speaker representation
-            const aggSpeaker = uniqueSpeakers.get(spk.speaker.id);
+            const aggSpeaker = uniqueSpeakers.get(key);
             aggSpeaker.sessionsInfo.push({
                 sessionName: spk.session?.name,
                 trackName: spk.session?.track?.name,
-                hallName: spk.session?.track?.hall?.name
+                hallName: spk.session?.track?.hall?.name,
+                startTime: spk.session?.startTime,
+                endTime: spk.session?.endTime,
+                day: spk.session?.track?.day,
+                role: spk.role
             });
         }
         
-        // Return as an array ordered by the lowest sortOrder found per speaker
+        // Return as an array ordered by role (moderators first) then by sortOrder
         const result = Array.from(uniqueSpeakers.values());
-        result.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+        result.sort((a, b) => {
+            if (a.isModerator && !b.isModerator) return -1;
+            if (!a.isModerator && b.isModerator) return 1;
+            return (a.sortOrder || 0) - (b.sortOrder || 0);
+        });
         
         return result;
     }

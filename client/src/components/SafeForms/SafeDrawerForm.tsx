@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { DrawerForm, DrawerFormProps } from '@ant-design/pro-components';
 import { Button, notification, Modal } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
@@ -75,6 +75,37 @@ export const SafeDrawerForm = <T extends Record<string, any>>({
                                 }}
                             />
                         );
+                    }
+
+                    // Force interception of the absolute primary submit button
+                    const submitBtnIndex = doms.findIndex((d: any) => d?.key === 'submit');
+                    if (submitBtnIndex !== -1 && actualFormRef.current) {
+                        const btn = doms[submitBtnIndex] as any;
+                        if (React.isValidElement(btn)) {
+                            doms[submitBtnIndex] = React.cloneElement(btn as any, {
+                                onClick: async (e: any) => {
+                                    try {
+                                        // 1. Force validation of all fields, including hidden ones inside lists
+                                        await actualFormRef.current?.validateFields();
+                                        // 2. If valid, let the original handler take over
+                                        if (btn.props && (btn.props as any).onClick) {
+                                            (btn.props as any).onClick(e);
+                                        }
+                                    } catch (errorInfo: any) {
+                                        // 3. If invalid, explicitly trigger the notification hook
+                                        console.error("SafeDrawerForm intercepted Validation failed:", errorInfo);
+                                        const errorFields = errorInfo.errorFields?.map((f: any) => f.name.join(' -> ')).join(', ');
+
+                                        notification.error({
+                                            message: 'Ошибка заполнения формы',
+                                            description: `Проверьте выделенные красным поля. Если вы не видите ошибку, проверьте свернутые вкладки или списки. Незаполненные поля: ${errorFields || 'Неизвестно'}`,
+                                            duration: 8,
+                                        });
+                                        props.onFinishFailed?.(errorInfo);
+                                    }
+                                }
+                            });
+                        }
                     }
 
                     return doms;
