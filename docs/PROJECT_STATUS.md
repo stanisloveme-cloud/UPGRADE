@@ -30,6 +30,8 @@ The following core Business Data requirements have been fully analyzed, implemen
 ## 3. Change Log (Post-MVP)
 *Agents: Add your completed tasks here in reverse chronological order (newest at the top).*
 
+- **2026-03-29**: Fixed HTTP 500 P2002 Unique Constraint errors when creating new records on Production.
+  - Implemented a custom `Fix Production DB Sequences` GitHub Action to execute `SELECT setval()` for all Prisma tables on the `erp-upgrade.ru` PostgreSQL database. This resolves the auto-increment desynchronization caused by the legacy data import, which was preventing new speakers and other entities from being saved.
 - **2026-03-29**: Fixed silent validation failures in `SafeDrawerForm`.
   - The submit button was occasionally failing to surface implicit validation errors (e.g. from hidden tabs/lists like `ProFormList` in `SessionDrawer`). Edited `SafeDrawerForm.tsx` to explicitly intercept the `submitter` click, forcefully invoke `validateFields()`, and surface any errors via an unsuppressable `notification.error` UI component indicating exactly which fields are missing.
 - **2026-03-25**: Implemented "Smart Program Dates" logic for the Event Schedule Grid.
