@@ -1,0 +1,35 @@
+name: Fix Production DB Sequences
+on:
+  workflow_dispatch:
+
+jobs:
+  fix-sequences:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reset Sequences
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_SERVER_HOST }}
+          username: ${{ secrets.PROD_SERVER_USER }}
+          key: ${{ secrets.PROD_SSH_PRIVATE_KEY }}
+          script: |
+            echo "=== FIXING DB SEQUENCES ON PROD ==="
+            cd /root/upgrade-crm
+            
+            SQL_COMMANDS="
+            SELECT setval('events_id_seq', COALESCE((SELECT MAX(id) FROM events), 1));
+            SELECT setval('halls_id_seq', COALESCE((SELECT MAX(id) FROM halls), 1));
+            SELECT setval('tracks_id_seq', COALESCE((SELECT MAX(id) FROM tracks), 1));
+            SELECT setval('sessions_id_seq', COALESCE((SELECT MAX(id) FROM sessions), 1));
+            SELECT setval('speakers_id_seq', COALESCE((SELECT MAX(id) FROM speakers), 1));
+            SELECT setval('session_speakers_id_seq', COALESCE((SELECT MAX(id) FROM session_speakers), 1));
+            SELECT setval('session_questions_id_seq', COALESCE((SELECT MAX(id) FROM session_questions), 1));
+            SELECT setval('briefings_id_seq', COALESCE((SELECT MAX(id) FROM briefings), 1));
+            SELECT setval('users_id_seq', COALESCE((SELECT MAX(id) FROM users), 1));
+            SELECT setval('user_events_id_seq', COALESCE((SELECT MAX(id) FROM user_events), 1));
+            SELECT setval('sponsors_id_seq', COALESCE((SELECT MAX(id) FROM sponsors), 1));
+            SELECT setval('market_segments_id_seq', COALESCE((SELECT MAX(id) FROM market_segments), 1));
+            "
+            
+            docker compose -f docker-compose.prod.yml exec -T db psql -U upgrade -d upgrade_crm -c "$SQL_COMMANDS"
+            echo "=== DONE ==="
