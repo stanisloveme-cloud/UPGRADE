@@ -34,9 +34,6 @@ export class SpeakerEntity {
     @ApiProperty()
     isSponsor: boolean;
 
-    @ApiProperty()
-    exportToWebsite: boolean;
-
     @ApiPropertyOptional()
     internalComment: string | null;
 
@@ -48,10 +45,4 @@ export class SpeakerEntity {
 
     @ApiPropertyOptional()
     assistantContact: string | null;
-
-    @ApiProperty()
-    createdAt: Date;
-
-    @ApiProperty()
-    updatedAt: Date;
 }

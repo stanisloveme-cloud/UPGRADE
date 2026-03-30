@@ -25,7 +25,6 @@ export interface SpeakerEntity {
   /** @nullable */
   bio?: string | null;
   isSponsor: boolean;
-  exportToWebsite: boolean;
   /** @nullable */
   internalComment?: string | null;
   hasAssistant: boolean;
@@ -33,6 +32,4 @@ export interface SpeakerEntity {
   assistantName?: string | null;
   /** @nullable */
   assistantContact?: string | null;
-  createdAt: string;
-  updatedAt: string;
 }

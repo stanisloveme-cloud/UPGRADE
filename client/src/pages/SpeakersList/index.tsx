@@ -21,7 +21,7 @@ const SpeakersList: React.FC = () => {
 
     // CDD Data Fetching
     const { data: response, isLoading: loading, mutate: refreshSpeakers } = useSpeakersControllerFindAll();
-    const speakers = response?.data || [];
+    const speakers = (Array.isArray(response) ? response : response?.data) || [];
 
     const handleShowHistory = (id: number) => {
         setCurrentHistoryId(id);
