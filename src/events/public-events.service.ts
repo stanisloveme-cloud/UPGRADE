@@ -247,11 +247,11 @@ export class PublicEventsService {
             });
         }
         
-        // Return as an array ordered by role (moderators first) then by sortOrder
+        // Return as an array ordered by role (speakers first, then moderators), then by sortOrder
         const result = Array.from(uniqueSpeakers.values());
         result.sort((a, b) => {
-            if (a.isModerator && !b.isModerator) return -1;
-            if (!a.isModerator && b.isModerator) return 1;
+            if (a.isModerator && !b.isModerator) return 1;
+            if (!a.isModerator && b.isModerator) return -1;
             return (a.sortOrder || 0) - (b.sortOrder || 0);
         });
         
