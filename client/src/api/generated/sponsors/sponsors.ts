@@ -5,6 +5,18 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
+import useSwr from 'swr';
+import type {
+  Arguments,
+  Key,
+  SWRConfiguration
+} from 'swr';
+
+import useSWRMutation from 'swr/mutation';
+import type {
+  SWRMutationConfiguration
+} from 'swr/mutation';
+
 import type {
   SponsorsControllerFindAll200Item,
   SponsorsControllerFindAllByEvent200Item,
@@ -12,102 +24,591 @@ import type {
 } from '../model';
 
 import { customInstance } from '../../custom-instance';
+import type { ErrorType } from '../../custom-instance';
 
 
-type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+  
+  type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
-  export const getSponsors = () => {
-const sponsorsControllerFindAllByEvent = (
-    eventId: number,
- options?: SecondParameter<typeof customInstance<SponsorsControllerFindAllByEvent200Item[]>>,) => {
-      return customInstance<SponsorsControllerFindAllByEvent200Item[]>(
-      {url: `/api/sponsors/event/${eventId}`, method: 'GET'
-    },
-      options);
-    }
-  const sponsorsControllerFindAll = (
+  
+export type sponsorsControllerFindAllByEventResponse200 = {
+  data: SponsorsControllerFindAllByEvent200Item[]
+  status: 200
+}
+
+export type sponsorsControllerFindAllByEventResponseSuccess = (sponsorsControllerFindAllByEventResponse200) & {
+  headers: Headers;
+};
+;
+
+export type sponsorsControllerFindAllByEventResponse = (sponsorsControllerFindAllByEventResponseSuccess)
+
+export const getSponsorsControllerFindAllByEventUrl = (eventId: number,) => {
+
+
+  
+
+  return `/api/sponsors/event/${eventId}`
+}
+
+export const sponsorsControllerFindAllByEvent = async (eventId: number, options?: RequestInit): Promise<sponsorsControllerFindAllByEventResponse> => {
+  
+  return customInstance<sponsorsControllerFindAllByEventResponse>(getSponsorsControllerFindAllByEventUrl(eventId),
+  {      
+    ...options,
+    method: 'GET'
     
- options?: SecondParameter<typeof customInstance<SponsorsControllerFindAll200Item[]>>,) => {
-      return customInstance<SponsorsControllerFindAll200Item[]>(
-      {url: `/api/sponsors/all`, method: 'GET'
-    },
-      options);
-    }
-  const sponsorsControllerCreate = (
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/sponsors`, method: 'POST'
-    },
-      options);
-    }
-  const sponsorsControllerUpdate = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/sponsors/${id}`, method: 'PATCH'
-    },
-      options);
-    }
-  const sponsorsControllerRemove = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/sponsors/${id}`, method: 'DELETE'
-    },
-      options);
-    }
-  const sponsorsControllerAttachToEvent = (
-    id: number,
-    eventId: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/sponsors/${id}/attach/${eventId}`, method: 'POST'
-    },
-      options);
-    }
-  const sponsorsControllerDetachFromEvent = (
-    id: number,
-    eventId: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/sponsors/${id}/detach/${eventId}`, method: 'DELETE'
-    },
-      options);
-    }
-  const sponsorsControllerGetPublicApprovalInfo = (
-    hash: string,
- options?: SecondParameter<typeof customInstance<SponsorsControllerGetPublicApprovalInfo200>>,) => {
-      return customInstance<SponsorsControllerGetPublicApprovalInfo200>(
-      {url: `/api/sponsors/public/approval/${hash}`, method: 'GET'
-    },
-      options);
-    }
-  const sponsorsControllerSubmitPublicApproval = (
-    hash: string,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/sponsors/public/approval/${hash}`, method: 'PATCH'
-    },
-      options);
-    }
-  const sponsorsControllerImportLegacyBrands = (
+  }
+);}
+  
+
+
+
+export const getSponsorsControllerFindAllByEventKey = (eventId: number,) => [`/api/sponsors/event/${eventId}`] as const;
+
+export type SponsorsControllerFindAllByEventQueryResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerFindAllByEvent>>>
+
+export const useSponsorsControllerFindAllByEvent = <TError = ErrorType<unknown>>(
+  eventId: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof sponsorsControllerFindAllByEvent>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(eventId)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getSponsorsControllerFindAllByEventKey(eventId) : null);
+  const swrFn = () => sponsorsControllerFindAllByEvent(eventId, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type sponsorsControllerFindAllResponse200 = {
+  data: SponsorsControllerFindAll200Item[]
+  status: 200
+}
+
+export type sponsorsControllerFindAllResponseSuccess = (sponsorsControllerFindAllResponse200) & {
+  headers: Headers;
+};
+;
+
+export type sponsorsControllerFindAllResponse = (sponsorsControllerFindAllResponseSuccess)
+
+export const getSponsorsControllerFindAllUrl = () => {
+
+
+  
+
+  return `/api/sponsors/all`
+}
+
+export const sponsorsControllerFindAll = async ( options?: RequestInit): Promise<sponsorsControllerFindAllResponse> => {
+  
+  return customInstance<sponsorsControllerFindAllResponse>(getSponsorsControllerFindAllUrl(),
+  {      
+    ...options,
+    method: 'GET'
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/sponsors/import-legacy`, method: 'POST'
-    },
-      options);
-    }
-  return {sponsorsControllerFindAllByEvent,sponsorsControllerFindAll,sponsorsControllerCreate,sponsorsControllerUpdate,sponsorsControllerRemove,sponsorsControllerAttachToEvent,sponsorsControllerDetachFromEvent,sponsorsControllerGetPublicApprovalInfo,sponsorsControllerSubmitPublicApproval,sponsorsControllerImportLegacyBrands}};
-export type SponsorsControllerFindAllByEventResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSponsors>['sponsorsControllerFindAllByEvent']>>>
-export type SponsorsControllerFindAllResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSponsors>['sponsorsControllerFindAll']>>>
-export type SponsorsControllerCreateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSponsors>['sponsorsControllerCreate']>>>
-export type SponsorsControllerUpdateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSponsors>['sponsorsControllerUpdate']>>>
-export type SponsorsControllerRemoveResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSponsors>['sponsorsControllerRemove']>>>
-export type SponsorsControllerAttachToEventResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSponsors>['sponsorsControllerAttachToEvent']>>>
-export type SponsorsControllerDetachFromEventResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSponsors>['sponsorsControllerDetachFromEvent']>>>
-export type SponsorsControllerGetPublicApprovalInfoResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSponsors>['sponsorsControllerGetPublicApprovalInfo']>>>
-export type SponsorsControllerSubmitPublicApprovalResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSponsors>['sponsorsControllerSubmitPublicApproval']>>>
-export type SponsorsControllerImportLegacyBrandsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSponsors>['sponsorsControllerImportLegacyBrands']>>>
+    
+  }
+);}
+  
+
+
+
+export const getSponsorsControllerFindAllKey = () => [`/api/sponsors/all`] as const;
+
+export type SponsorsControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerFindAll>>>
+
+export const useSponsorsControllerFindAll = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof sponsorsControllerFindAll>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getSponsorsControllerFindAllKey() : null);
+  const swrFn = () => sponsorsControllerFindAll(requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type sponsorsControllerCreateResponse201 = {
+  data: void
+  status: 201
+}
+
+export type sponsorsControllerCreateResponseSuccess = (sponsorsControllerCreateResponse201) & {
+  headers: Headers;
+};
+;
+
+export type sponsorsControllerCreateResponse = (sponsorsControllerCreateResponseSuccess)
+
+export const getSponsorsControllerCreateUrl = () => {
+
+
+  
+
+  return `/api/sponsors`
+}
+
+export const sponsorsControllerCreate = async ( options?: RequestInit): Promise<sponsorsControllerCreateResponse> => {
+  
+  return customInstance<sponsorsControllerCreateResponse>(getSponsorsControllerCreateUrl(),
+  {      
+    ...options,
+    method: 'POST'
+    
+    
+  }
+);}
+  
+
+
+
+export const getSponsorsControllerCreateMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return sponsorsControllerCreate(options);
+  }
+}
+export const getSponsorsControllerCreateMutationKey = () => [`/api/sponsors`] as const;
+
+export type SponsorsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerCreate>>>
+
+export const useSponsorsControllerCreate = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sponsorsControllerCreate>>, TError, Key, Arguments, Awaited<ReturnType<typeof sponsorsControllerCreate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getSponsorsControllerCreateMutationKey();
+  const swrFn = getSponsorsControllerCreateMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type sponsorsControllerUpdateResponse200 = {
+  data: void
+  status: 200
+}
+
+export type sponsorsControllerUpdateResponseSuccess = (sponsorsControllerUpdateResponse200) & {
+  headers: Headers;
+};
+;
+
+export type sponsorsControllerUpdateResponse = (sponsorsControllerUpdateResponseSuccess)
+
+export const getSponsorsControllerUpdateUrl = (id: number,) => {
+
+
+  
+
+  return `/api/sponsors/${id}`
+}
+
+export const sponsorsControllerUpdate = async (id: number, options?: RequestInit): Promise<sponsorsControllerUpdateResponse> => {
+  
+  return customInstance<sponsorsControllerUpdateResponse>(getSponsorsControllerUpdateUrl(id),
+  {      
+    ...options,
+    method: 'PATCH'
+    
+    
+  }
+);}
+  
+
+
+
+export const getSponsorsControllerUpdateMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return sponsorsControllerUpdate(id, options);
+  }
+}
+export const getSponsorsControllerUpdateMutationKey = (id: number,) => [`/api/sponsors/${id}`] as const;
+
+export type SponsorsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerUpdate>>>
+
+export const useSponsorsControllerUpdate = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sponsorsControllerUpdate>>, TError, Key, Arguments, Awaited<ReturnType<typeof sponsorsControllerUpdate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getSponsorsControllerUpdateMutationKey(id);
+  const swrFn = getSponsorsControllerUpdateMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type sponsorsControllerRemoveResponse200 = {
+  data: void
+  status: 200
+}
+
+export type sponsorsControllerRemoveResponseSuccess = (sponsorsControllerRemoveResponse200) & {
+  headers: Headers;
+};
+;
+
+export type sponsorsControllerRemoveResponse = (sponsorsControllerRemoveResponseSuccess)
+
+export const getSponsorsControllerRemoveUrl = (id: number,) => {
+
+
+  
+
+  return `/api/sponsors/${id}`
+}
+
+export const sponsorsControllerRemove = async (id: number, options?: RequestInit): Promise<sponsorsControllerRemoveResponse> => {
+  
+  return customInstance<sponsorsControllerRemoveResponse>(getSponsorsControllerRemoveUrl(id),
+  {      
+    ...options,
+    method: 'DELETE'
+    
+    
+  }
+);}
+  
+
+
+
+export const getSponsorsControllerRemoveMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return sponsorsControllerRemove(id, options);
+  }
+}
+export const getSponsorsControllerRemoveMutationKey = (id: number,) => [`/api/sponsors/${id}`] as const;
+
+export type SponsorsControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerRemove>>>
+
+export const useSponsorsControllerRemove = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sponsorsControllerRemove>>, TError, Key, Arguments, Awaited<ReturnType<typeof sponsorsControllerRemove>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getSponsorsControllerRemoveMutationKey(id);
+  const swrFn = getSponsorsControllerRemoveMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type sponsorsControllerAttachToEventResponse201 = {
+  data: void
+  status: 201
+}
+
+export type sponsorsControllerAttachToEventResponseSuccess = (sponsorsControllerAttachToEventResponse201) & {
+  headers: Headers;
+};
+;
+
+export type sponsorsControllerAttachToEventResponse = (sponsorsControllerAttachToEventResponseSuccess)
+
+export const getSponsorsControllerAttachToEventUrl = (id: number,
+    eventId: number,) => {
+
+
+  
+
+  return `/api/sponsors/${id}/attach/${eventId}`
+}
+
+export const sponsorsControllerAttachToEvent = async (id: number,
+    eventId: number, options?: RequestInit): Promise<sponsorsControllerAttachToEventResponse> => {
+  
+  return customInstance<sponsorsControllerAttachToEventResponse>(getSponsorsControllerAttachToEventUrl(id,eventId),
+  {      
+    ...options,
+    method: 'POST'
+    
+    
+  }
+);}
+  
+
+
+
+export const getSponsorsControllerAttachToEventMutationFetcher = (id: number,
+    eventId: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return sponsorsControllerAttachToEvent(id, eventId, options);
+  }
+}
+export const getSponsorsControllerAttachToEventMutationKey = (id: number,
+    eventId: number,) => [`/api/sponsors/${id}/attach/${eventId}`] as const;
+
+export type SponsorsControllerAttachToEventMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerAttachToEvent>>>
+
+export const useSponsorsControllerAttachToEvent = <TError = ErrorType<unknown>>(
+  id: number,
+    eventId: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sponsorsControllerAttachToEvent>>, TError, Key, Arguments, Awaited<ReturnType<typeof sponsorsControllerAttachToEvent>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getSponsorsControllerAttachToEventMutationKey(id,eventId);
+  const swrFn = getSponsorsControllerAttachToEventMutationFetcher(id,eventId, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type sponsorsControllerDetachFromEventResponse200 = {
+  data: void
+  status: 200
+}
+
+export type sponsorsControllerDetachFromEventResponseSuccess = (sponsorsControllerDetachFromEventResponse200) & {
+  headers: Headers;
+};
+;
+
+export type sponsorsControllerDetachFromEventResponse = (sponsorsControllerDetachFromEventResponseSuccess)
+
+export const getSponsorsControllerDetachFromEventUrl = (id: number,
+    eventId: number,) => {
+
+
+  
+
+  return `/api/sponsors/${id}/detach/${eventId}`
+}
+
+export const sponsorsControllerDetachFromEvent = async (id: number,
+    eventId: number, options?: RequestInit): Promise<sponsorsControllerDetachFromEventResponse> => {
+  
+  return customInstance<sponsorsControllerDetachFromEventResponse>(getSponsorsControllerDetachFromEventUrl(id,eventId),
+  {      
+    ...options,
+    method: 'DELETE'
+    
+    
+  }
+);}
+  
+
+
+
+export const getSponsorsControllerDetachFromEventMutationFetcher = (id: number,
+    eventId: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return sponsorsControllerDetachFromEvent(id, eventId, options);
+  }
+}
+export const getSponsorsControllerDetachFromEventMutationKey = (id: number,
+    eventId: number,) => [`/api/sponsors/${id}/detach/${eventId}`] as const;
+
+export type SponsorsControllerDetachFromEventMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerDetachFromEvent>>>
+
+export const useSponsorsControllerDetachFromEvent = <TError = ErrorType<unknown>>(
+  id: number,
+    eventId: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sponsorsControllerDetachFromEvent>>, TError, Key, Arguments, Awaited<ReturnType<typeof sponsorsControllerDetachFromEvent>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getSponsorsControllerDetachFromEventMutationKey(id,eventId);
+  const swrFn = getSponsorsControllerDetachFromEventMutationFetcher(id,eventId, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type sponsorsControllerGetPublicApprovalInfoResponse200 = {
+  data: SponsorsControllerGetPublicApprovalInfo200
+  status: 200
+}
+
+export type sponsorsControllerGetPublicApprovalInfoResponseSuccess = (sponsorsControllerGetPublicApprovalInfoResponse200) & {
+  headers: Headers;
+};
+;
+
+export type sponsorsControllerGetPublicApprovalInfoResponse = (sponsorsControllerGetPublicApprovalInfoResponseSuccess)
+
+export const getSponsorsControllerGetPublicApprovalInfoUrl = (hash: string,) => {
+
+
+  
+
+  return `/api/sponsors/public/approval/${hash}`
+}
+
+export const sponsorsControllerGetPublicApprovalInfo = async (hash: string, options?: RequestInit): Promise<sponsorsControllerGetPublicApprovalInfoResponse> => {
+  
+  return customInstance<sponsorsControllerGetPublicApprovalInfoResponse>(getSponsorsControllerGetPublicApprovalInfoUrl(hash),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getSponsorsControllerGetPublicApprovalInfoKey = (hash: string,) => [`/api/sponsors/public/approval/${hash}`] as const;
+
+export type SponsorsControllerGetPublicApprovalInfoQueryResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerGetPublicApprovalInfo>>>
+
+export const useSponsorsControllerGetPublicApprovalInfo = <TError = ErrorType<unknown>>(
+  hash: string, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof sponsorsControllerGetPublicApprovalInfo>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(hash)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getSponsorsControllerGetPublicApprovalInfoKey(hash) : null);
+  const swrFn = () => sponsorsControllerGetPublicApprovalInfo(hash, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type sponsorsControllerImportLegacyBrandsResponse201 = {
+  data: void
+  status: 201
+}
+
+export type sponsorsControllerImportLegacyBrandsResponseSuccess = (sponsorsControllerImportLegacyBrandsResponse201) & {
+  headers: Headers;
+};
+;
+
+export type sponsorsControllerImportLegacyBrandsResponse = (sponsorsControllerImportLegacyBrandsResponseSuccess)
+
+export const getSponsorsControllerImportLegacyBrandsUrl = () => {
+
+
+  
+
+  return `/api/sponsors/import-legacy`
+}
+
+export const sponsorsControllerImportLegacyBrands = async ( options?: RequestInit): Promise<sponsorsControllerImportLegacyBrandsResponse> => {
+  
+  return customInstance<sponsorsControllerImportLegacyBrandsResponse>(getSponsorsControllerImportLegacyBrandsUrl(),
+  {      
+    ...options,
+    method: 'POST'
+    
+    
+  }
+);}
+  
+
+
+
+export const getSponsorsControllerImportLegacyBrandsMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return sponsorsControllerImportLegacyBrands(options);
+  }
+}
+export const getSponsorsControllerImportLegacyBrandsMutationKey = () => [`/api/sponsors/import-legacy`] as const;
+
+export type SponsorsControllerImportLegacyBrandsMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerImportLegacyBrands>>>
+
+export const useSponsorsControllerImportLegacyBrands = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sponsorsControllerImportLegacyBrands>>, TError, Key, Arguments, Awaited<ReturnType<typeof sponsorsControllerImportLegacyBrands>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getSponsorsControllerImportLegacyBrandsMutationKey();
+  const swrFn = getSponsorsControllerImportLegacyBrandsMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type sponsorsControllerFixBrandsResponse200 = {
+  data: void
+  status: 200
+}
+
+export type sponsorsControllerFixBrandsResponseSuccess = (sponsorsControllerFixBrandsResponse200) & {
+  headers: Headers;
+};
+;
+
+export type sponsorsControllerFixBrandsResponse = (sponsorsControllerFixBrandsResponseSuccess)
+
+export const getSponsorsControllerFixBrandsUrl = () => {
+
+
+  
+
+  return `/api/sponsors/fix-brands`
+}
+
+export const sponsorsControllerFixBrands = async ( options?: RequestInit): Promise<sponsorsControllerFixBrandsResponse> => {
+  
+  return customInstance<sponsorsControllerFixBrandsResponse>(getSponsorsControllerFixBrandsUrl(),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getSponsorsControllerFixBrandsKey = () => [`/api/sponsors/fix-brands`] as const;
+
+export type SponsorsControllerFixBrandsQueryResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerFixBrands>>>
+
+export const useSponsorsControllerFixBrands = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof sponsorsControllerFixBrands>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getSponsorsControllerFixBrandsKey() : null);
+  const swrFn = () => sponsorsControllerFixBrands(requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}

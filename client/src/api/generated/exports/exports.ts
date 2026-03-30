@@ -5,29 +5,137 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
+import useSwr from 'swr';
+import type {
+  Arguments,
+  Key,
+  SWRConfiguration
+} from 'swr';
+
+import useSWRMutation from 'swr/mutation';
+import type {
+  SWRMutationConfiguration
+} from 'swr/mutation';
+
 import { customInstance } from '../../custom-instance';
+import type { ErrorType } from '../../custom-instance';
 
 
-type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+  
+  type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
-  export const getExports = () => {
-const exportsControllerExportSchedule = (
-    eventId: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/exports/schedule/${eventId}`, method: 'GET'
-    },
-      options);
-    }
-  const exportsControllerImportSchedule = (
-    eventId: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/exports/import/${eventId}`, method: 'POST'
-    },
-      options);
-    }
-  return {exportsControllerExportSchedule,exportsControllerImportSchedule}};
-export type ExportsControllerExportScheduleResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getExports>['exportsControllerExportSchedule']>>>
-export type ExportsControllerImportScheduleResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getExports>['exportsControllerImportSchedule']>>>
+  
+export type exportsControllerExportScheduleResponse200 = {
+  data: void
+  status: 200
+}
+
+export type exportsControllerExportScheduleResponseSuccess = (exportsControllerExportScheduleResponse200) & {
+  headers: Headers;
+};
+;
+
+export type exportsControllerExportScheduleResponse = (exportsControllerExportScheduleResponseSuccess)
+
+export const getExportsControllerExportScheduleUrl = (eventId: number,) => {
+
+
+  
+
+  return `/api/exports/schedule/${eventId}`
+}
+
+export const exportsControllerExportSchedule = async (eventId: number, options?: RequestInit): Promise<exportsControllerExportScheduleResponse> => {
+  
+  return customInstance<exportsControllerExportScheduleResponse>(getExportsControllerExportScheduleUrl(eventId),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getExportsControllerExportScheduleKey = (eventId: number,) => [`/api/exports/schedule/${eventId}`] as const;
+
+export type ExportsControllerExportScheduleQueryResult = NonNullable<Awaited<ReturnType<typeof exportsControllerExportSchedule>>>
+
+export const useExportsControllerExportSchedule = <TError = ErrorType<unknown>>(
+  eventId: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof exportsControllerExportSchedule>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(eventId)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getExportsControllerExportScheduleKey(eventId) : null);
+  const swrFn = () => exportsControllerExportSchedule(eventId, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type exportsControllerImportScheduleResponse201 = {
+  data: void
+  status: 201
+}
+
+export type exportsControllerImportScheduleResponseSuccess = (exportsControllerImportScheduleResponse201) & {
+  headers: Headers;
+};
+;
+
+export type exportsControllerImportScheduleResponse = (exportsControllerImportScheduleResponseSuccess)
+
+export const getExportsControllerImportScheduleUrl = (eventId: number,) => {
+
+
+  
+
+  return `/api/exports/import/${eventId}`
+}
+
+export const exportsControllerImportSchedule = async (eventId: number, options?: RequestInit): Promise<exportsControllerImportScheduleResponse> => {
+  
+  return customInstance<exportsControllerImportScheduleResponse>(getExportsControllerImportScheduleUrl(eventId),
+  {      
+    ...options,
+    method: 'POST'
+    
+    
+  }
+);}
+  
+
+
+
+export const getExportsControllerImportScheduleMutationFetcher = (eventId: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return exportsControllerImportSchedule(eventId, options);
+  }
+}
+export const getExportsControllerImportScheduleMutationKey = (eventId: number,) => [`/api/exports/import/${eventId}`] as const;
+
+export type ExportsControllerImportScheduleMutationResult = NonNullable<Awaited<ReturnType<typeof exportsControllerImportSchedule>>>
+
+export const useExportsControllerImportSchedule = <TError = ErrorType<unknown>>(
+  eventId: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof exportsControllerImportSchedule>>, TError, Key, Arguments, Awaited<ReturnType<typeof exportsControllerImportSchedule>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getExportsControllerImportScheduleMutationKey(eventId);
+  const swrFn = getExportsControllerImportScheduleMutationFetcher(eventId, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}

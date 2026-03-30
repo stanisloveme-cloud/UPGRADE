@@ -5,66 +5,317 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
+import useSwr from 'swr';
+import type {
+  Arguments,
+  Key,
+  SWRConfiguration
+} from 'swr';
+
+import useSWRMutation from 'swr/mutation';
+import type {
+  SWRMutationConfiguration
+} from 'swr/mutation';
+
 import type {
   CreateTrackDto,
   UpdateTrackDto
 } from '../model';
 
 import { customInstance } from '../../custom-instance';
+import type { ErrorType } from '../../custom-instance';
 
 
-type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+  
+  type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
-  export const getTracks = () => {
-const tracksControllerCreate = (
-    createTrackDto: CreateTrackDto,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/tracks`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: createTrackDto
-    },
-      options);
-    }
-  const tracksControllerFindAll = (
+  
+export type tracksControllerCreateResponse201 = {
+  data: void
+  status: 201
+}
+
+export type tracksControllerCreateResponseSuccess = (tracksControllerCreateResponse201) & {
+  headers: Headers;
+};
+;
+
+export type tracksControllerCreateResponse = (tracksControllerCreateResponseSuccess)
+
+export const getTracksControllerCreateUrl = () => {
+
+
+  
+
+  return `/api/tracks`
+}
+
+export const tracksControllerCreate = async (createTrackDto: CreateTrackDto, options?: RequestInit): Promise<tracksControllerCreateResponse> => {
+  
+  return customInstance<tracksControllerCreateResponse>(getTracksControllerCreateUrl(),
+  {      
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      createTrackDto,)
+  }
+);}
+  
+
+
+
+export const getTracksControllerCreateMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, { arg }: { arg: CreateTrackDto }) => {
+    return tracksControllerCreate(arg, options);
+  }
+}
+export const getTracksControllerCreateMutationKey = () => [`/api/tracks`] as const;
+
+export type TracksControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof tracksControllerCreate>>>
+
+export const useTracksControllerCreate = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof tracksControllerCreate>>, TError, Key, CreateTrackDto, Awaited<ReturnType<typeof tracksControllerCreate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getTracksControllerCreateMutationKey();
+  const swrFn = getTracksControllerCreateMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type tracksControllerFindAllResponse200 = {
+  data: void
+  status: 200
+}
+
+export type tracksControllerFindAllResponseSuccess = (tracksControllerFindAllResponse200) & {
+  headers: Headers;
+};
+;
+
+export type tracksControllerFindAllResponse = (tracksControllerFindAllResponseSuccess)
+
+export const getTracksControllerFindAllUrl = () => {
+
+
+  
+
+  return `/api/tracks`
+}
+
+export const tracksControllerFindAll = async ( options?: RequestInit): Promise<tracksControllerFindAllResponse> => {
+  
+  return customInstance<tracksControllerFindAllResponse>(getTracksControllerFindAllUrl(),
+  {      
+    ...options,
+    method: 'GET'
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/tracks`, method: 'GET'
-    },
-      options);
-    }
-  const tracksControllerFindOne = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/tracks/${id}`, method: 'GET'
-    },
-      options);
-    }
-  const tracksControllerUpdate = (
-    id: number,
-    updateTrackDto: UpdateTrackDto,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/tracks/${id}`, method: 'PATCH',
-      headers: {'Content-Type': 'application/json', },
-      data: updateTrackDto
-    },
-      options);
-    }
-  const tracksControllerRemove = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/tracks/${id}`, method: 'DELETE'
-    },
-      options);
-    }
-  return {tracksControllerCreate,tracksControllerFindAll,tracksControllerFindOne,tracksControllerUpdate,tracksControllerRemove}};
-export type TracksControllerCreateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTracks>['tracksControllerCreate']>>>
-export type TracksControllerFindAllResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTracks>['tracksControllerFindAll']>>>
-export type TracksControllerFindOneResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTracks>['tracksControllerFindOne']>>>
-export type TracksControllerUpdateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTracks>['tracksControllerUpdate']>>>
-export type TracksControllerRemoveResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTracks>['tracksControllerRemove']>>>
+    
+  }
+);}
+  
+
+
+
+export const getTracksControllerFindAllKey = () => [`/api/tracks`] as const;
+
+export type TracksControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof tracksControllerFindAll>>>
+
+export const useTracksControllerFindAll = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof tracksControllerFindAll>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getTracksControllerFindAllKey() : null);
+  const swrFn = () => tracksControllerFindAll(requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type tracksControllerFindOneResponse200 = {
+  data: void
+  status: 200
+}
+
+export type tracksControllerFindOneResponseSuccess = (tracksControllerFindOneResponse200) & {
+  headers: Headers;
+};
+;
+
+export type tracksControllerFindOneResponse = (tracksControllerFindOneResponseSuccess)
+
+export const getTracksControllerFindOneUrl = (id: number,) => {
+
+
+  
+
+  return `/api/tracks/${id}`
+}
+
+export const tracksControllerFindOne = async (id: number, options?: RequestInit): Promise<tracksControllerFindOneResponse> => {
+  
+  return customInstance<tracksControllerFindOneResponse>(getTracksControllerFindOneUrl(id),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getTracksControllerFindOneKey = (id: number,) => [`/api/tracks/${id}`] as const;
+
+export type TracksControllerFindOneQueryResult = NonNullable<Awaited<ReturnType<typeof tracksControllerFindOne>>>
+
+export const useTracksControllerFindOne = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof tracksControllerFindOne>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(id)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getTracksControllerFindOneKey(id) : null);
+  const swrFn = () => tracksControllerFindOne(id, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type tracksControllerUpdateResponse200 = {
+  data: void
+  status: 200
+}
+
+export type tracksControllerUpdateResponseSuccess = (tracksControllerUpdateResponse200) & {
+  headers: Headers;
+};
+;
+
+export type tracksControllerUpdateResponse = (tracksControllerUpdateResponseSuccess)
+
+export const getTracksControllerUpdateUrl = (id: number,) => {
+
+
+  
+
+  return `/api/tracks/${id}`
+}
+
+export const tracksControllerUpdate = async (id: number,
+    updateTrackDto: UpdateTrackDto, options?: RequestInit): Promise<tracksControllerUpdateResponse> => {
+  
+  return customInstance<tracksControllerUpdateResponse>(getTracksControllerUpdateUrl(id),
+  {      
+    ...options,
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      updateTrackDto,)
+  }
+);}
+  
+
+
+
+export const getTracksControllerUpdateMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, { arg }: { arg: UpdateTrackDto }) => {
+    return tracksControllerUpdate(id, arg, options);
+  }
+}
+export const getTracksControllerUpdateMutationKey = (id: number,) => [`/api/tracks/${id}`] as const;
+
+export type TracksControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof tracksControllerUpdate>>>
+
+export const useTracksControllerUpdate = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof tracksControllerUpdate>>, TError, Key, UpdateTrackDto, Awaited<ReturnType<typeof tracksControllerUpdate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getTracksControllerUpdateMutationKey(id);
+  const swrFn = getTracksControllerUpdateMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type tracksControllerRemoveResponse200 = {
+  data: void
+  status: 200
+}
+
+export type tracksControllerRemoveResponseSuccess = (tracksControllerRemoveResponse200) & {
+  headers: Headers;
+};
+;
+
+export type tracksControllerRemoveResponse = (tracksControllerRemoveResponseSuccess)
+
+export const getTracksControllerRemoveUrl = (id: number,) => {
+
+
+  
+
+  return `/api/tracks/${id}`
+}
+
+export const tracksControllerRemove = async (id: number, options?: RequestInit): Promise<tracksControllerRemoveResponse> => {
+  
+  return customInstance<tracksControllerRemoveResponse>(getTracksControllerRemoveUrl(id),
+  {      
+    ...options,
+    method: 'DELETE'
+    
+    
+  }
+);}
+  
+
+
+
+export const getTracksControllerRemoveMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return tracksControllerRemove(id, options);
+  }
+}
+export const getTracksControllerRemoveMutationKey = (id: number,) => [`/api/tracks/${id}`] as const;
+
+export type TracksControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof tracksControllerRemove>>>
+
+export const useTracksControllerRemove = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof tracksControllerRemove>>, TError, Key, Arguments, Awaited<ReturnType<typeof tracksControllerRemove>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getTracksControllerRemoveMutationKey(id);
+  const swrFn = getTracksControllerRemoveMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}

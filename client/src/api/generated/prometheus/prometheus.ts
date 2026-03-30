@@ -5,20 +5,72 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
+import useSwr from 'swr';
+import type {
+  Key,
+  SWRConfiguration
+} from 'swr';
+
 import { customInstance } from '../../custom-instance';
+import type { ErrorType } from '../../custom-instance';
 
 
-type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+  
+  type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
-  export const getPrometheus = () => {
-const prometheusControllerIndex = (
+  
+export type prometheusControllerIndexResponse200 = {
+  data: void
+  status: 200
+}
+
+export type prometheusControllerIndexResponseSuccess = (prometheusControllerIndexResponse200) & {
+  headers: Headers;
+};
+;
+
+export type prometheusControllerIndexResponse = (prometheusControllerIndexResponseSuccess)
+
+export const getPrometheusControllerIndexUrl = () => {
+
+
+  
+
+  return `/metrics`
+}
+
+export const prometheusControllerIndex = async ( options?: RequestInit): Promise<prometheusControllerIndexResponse> => {
+  
+  return customInstance<prometheusControllerIndexResponse>(getPrometheusControllerIndexUrl(),
+  {      
+    ...options,
+    method: 'GET'
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/metrics`, method: 'GET'
-    },
-      options);
-    }
-  return {prometheusControllerIndex}};
-export type PrometheusControllerIndexResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getPrometheus>['prometheusControllerIndex']>>>
+    
+  }
+);}
+  
+
+
+
+export const getPrometheusControllerIndexKey = () => [`/metrics`] as const;
+
+export type PrometheusControllerIndexQueryResult = NonNullable<Awaited<ReturnType<typeof prometheusControllerIndex>>>
+
+export const usePrometheusControllerIndex = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof prometheusControllerIndex>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getPrometheusControllerIndexKey() : null);
+  const swrFn = () => prometheusControllerIndex(requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}

@@ -5,6 +5,18 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
+import useSwr from 'swr';
+import type {
+  Arguments,
+  Key,
+  SWRConfiguration
+} from 'swr';
+
+import useSWRMutation from 'swr/mutation';
+import type {
+  SWRMutationConfiguration
+} from 'swr/mutation';
+
 import type {
   CreateSpeakerDto,
   SpeakersControllerImportLegacy201,
@@ -12,80 +24,418 @@ import type {
 } from '../model';
 
 import { customInstance } from '../../custom-instance';
+import type { ErrorType } from '../../custom-instance';
 
 
-type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+  
+  type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
-  export const getSpeakers = () => {
-const speakersControllerCreate = (
-    createSpeakerDto: CreateSpeakerDto,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/speakers`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: createSpeakerDto
-    },
-      options);
-    }
-  const speakersControllerFindAll = (
+  
+export type speakersControllerCreateResponse201 = {
+  data: void
+  status: 201
+}
+
+export type speakersControllerCreateResponseSuccess = (speakersControllerCreateResponse201) & {
+  headers: Headers;
+};
+;
+
+export type speakersControllerCreateResponse = (speakersControllerCreateResponseSuccess)
+
+export const getSpeakersControllerCreateUrl = () => {
+
+
+  
+
+  return `/api/speakers`
+}
+
+export const speakersControllerCreate = async (createSpeakerDto: CreateSpeakerDto, options?: RequestInit): Promise<speakersControllerCreateResponse> => {
+  
+  return customInstance<speakersControllerCreateResponse>(getSpeakersControllerCreateUrl(),
+  {      
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      createSpeakerDto,)
+  }
+);}
+  
+
+
+
+export const getSpeakersControllerCreateMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, { arg }: { arg: CreateSpeakerDto }) => {
+    return speakersControllerCreate(arg, options);
+  }
+}
+export const getSpeakersControllerCreateMutationKey = () => [`/api/speakers`] as const;
+
+export type SpeakersControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof speakersControllerCreate>>>
+
+export const useSpeakersControllerCreate = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof speakersControllerCreate>>, TError, Key, CreateSpeakerDto, Awaited<ReturnType<typeof speakersControllerCreate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getSpeakersControllerCreateMutationKey();
+  const swrFn = getSpeakersControllerCreateMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type speakersControllerFindAllResponse200 = {
+  data: void
+  status: 200
+}
+
+export type speakersControllerFindAllResponseSuccess = (speakersControllerFindAllResponse200) & {
+  headers: Headers;
+};
+;
+
+export type speakersControllerFindAllResponse = (speakersControllerFindAllResponseSuccess)
+
+export const getSpeakersControllerFindAllUrl = () => {
+
+
+  
+
+  return `/api/speakers`
+}
+
+export const speakersControllerFindAll = async ( options?: RequestInit): Promise<speakersControllerFindAllResponse> => {
+  
+  return customInstance<speakersControllerFindAllResponse>(getSpeakersControllerFindAllUrl(),
+  {      
+    ...options,
+    method: 'GET'
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/speakers`, method: 'GET'
-    },
-      options);
-    }
-  const speakersControllerImportLegacy = (
     
- options?: SecondParameter<typeof customInstance<SpeakersControllerImportLegacy201>>,) => {
-      return customInstance<SpeakersControllerImportLegacy201>(
-      {url: `/api/speakers/import-legacy`, method: 'POST'
-    },
-      options);
-    }
-  const speakersControllerSyncPhotos = (
-    speakersControllerSyncPhotosBody: string[],
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/speakers/sync-photos`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: speakersControllerSyncPhotosBody
-    },
-      options);
-    }
-  const speakersControllerFindOne = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/speakers/${id}`, method: 'GET'
-    },
-      options);
-    }
-  const speakersControllerUpdate = (
-    id: number,
-    updateSpeakerDto: UpdateSpeakerDto,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/speakers/${id}`, method: 'PATCH',
-      headers: {'Content-Type': 'application/json', },
-      data: updateSpeakerDto
-    },
-      options);
-    }
-  const speakersControllerRemove = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/speakers/${id}`, method: 'DELETE'
-    },
-      options);
-    }
-  return {speakersControllerCreate,speakersControllerFindAll,speakersControllerImportLegacy,speakersControllerSyncPhotos,speakersControllerFindOne,speakersControllerUpdate,speakersControllerRemove}};
-export type SpeakersControllerCreateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSpeakers>['speakersControllerCreate']>>>
-export type SpeakersControllerFindAllResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSpeakers>['speakersControllerFindAll']>>>
-export type SpeakersControllerImportLegacyResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSpeakers>['speakersControllerImportLegacy']>>>
-export type SpeakersControllerSyncPhotosResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSpeakers>['speakersControllerSyncPhotos']>>>
-export type SpeakersControllerFindOneResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSpeakers>['speakersControllerFindOne']>>>
-export type SpeakersControllerUpdateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSpeakers>['speakersControllerUpdate']>>>
-export type SpeakersControllerRemoveResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSpeakers>['speakersControllerRemove']>>>
+  }
+);}
+  
+
+
+
+export const getSpeakersControllerFindAllKey = () => [`/api/speakers`] as const;
+
+export type SpeakersControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof speakersControllerFindAll>>>
+
+export const useSpeakersControllerFindAll = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof speakersControllerFindAll>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getSpeakersControllerFindAllKey() : null);
+  const swrFn = () => speakersControllerFindAll(requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type speakersControllerImportLegacyResponse201 = {
+  data: SpeakersControllerImportLegacy201
+  status: 201
+}
+
+export type speakersControllerImportLegacyResponseSuccess = (speakersControllerImportLegacyResponse201) & {
+  headers: Headers;
+};
+;
+
+export type speakersControllerImportLegacyResponse = (speakersControllerImportLegacyResponseSuccess)
+
+export const getSpeakersControllerImportLegacyUrl = () => {
+
+
+  
+
+  return `/api/speakers/import-legacy`
+}
+
+export const speakersControllerImportLegacy = async ( options?: RequestInit): Promise<speakersControllerImportLegacyResponse> => {
+  
+  return customInstance<speakersControllerImportLegacyResponse>(getSpeakersControllerImportLegacyUrl(),
+  {      
+    ...options,
+    method: 'POST'
+    
+    
+  }
+);}
+  
+
+
+
+export const getSpeakersControllerImportLegacyMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return speakersControllerImportLegacy(options);
+  }
+}
+export const getSpeakersControllerImportLegacyMutationKey = () => [`/api/speakers/import-legacy`] as const;
+
+export type SpeakersControllerImportLegacyMutationResult = NonNullable<Awaited<ReturnType<typeof speakersControllerImportLegacy>>>
+
+export const useSpeakersControllerImportLegacy = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof speakersControllerImportLegacy>>, TError, Key, Arguments, Awaited<ReturnType<typeof speakersControllerImportLegacy>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getSpeakersControllerImportLegacyMutationKey();
+  const swrFn = getSpeakersControllerImportLegacyMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type speakersControllerSyncPhotosResponse201 = {
+  data: void
+  status: 201
+}
+
+export type speakersControllerSyncPhotosResponseSuccess = (speakersControllerSyncPhotosResponse201) & {
+  headers: Headers;
+};
+;
+
+export type speakersControllerSyncPhotosResponse = (speakersControllerSyncPhotosResponseSuccess)
+
+export const getSpeakersControllerSyncPhotosUrl = () => {
+
+
+  
+
+  return `/api/speakers/sync-photos`
+}
+
+export const speakersControllerSyncPhotos = async (speakersControllerSyncPhotosBody: string[], options?: RequestInit): Promise<speakersControllerSyncPhotosResponse> => {
+  
+  return customInstance<speakersControllerSyncPhotosResponse>(getSpeakersControllerSyncPhotosUrl(),
+  {      
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      speakersControllerSyncPhotosBody,)
+  }
+);}
+  
+
+
+
+export const getSpeakersControllerSyncPhotosMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, { arg }: { arg: string[] }) => {
+    return speakersControllerSyncPhotos(arg, options);
+  }
+}
+export const getSpeakersControllerSyncPhotosMutationKey = () => [`/api/speakers/sync-photos`] as const;
+
+export type SpeakersControllerSyncPhotosMutationResult = NonNullable<Awaited<ReturnType<typeof speakersControllerSyncPhotos>>>
+
+export const useSpeakersControllerSyncPhotos = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof speakersControllerSyncPhotos>>, TError, Key, string[], Awaited<ReturnType<typeof speakersControllerSyncPhotos>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getSpeakersControllerSyncPhotosMutationKey();
+  const swrFn = getSpeakersControllerSyncPhotosMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type speakersControllerFindOneResponse200 = {
+  data: void
+  status: 200
+}
+
+export type speakersControllerFindOneResponseSuccess = (speakersControllerFindOneResponse200) & {
+  headers: Headers;
+};
+;
+
+export type speakersControllerFindOneResponse = (speakersControllerFindOneResponseSuccess)
+
+export const getSpeakersControllerFindOneUrl = (id: number,) => {
+
+
+  
+
+  return `/api/speakers/${id}`
+}
+
+export const speakersControllerFindOne = async (id: number, options?: RequestInit): Promise<speakersControllerFindOneResponse> => {
+  
+  return customInstance<speakersControllerFindOneResponse>(getSpeakersControllerFindOneUrl(id),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getSpeakersControllerFindOneKey = (id: number,) => [`/api/speakers/${id}`] as const;
+
+export type SpeakersControllerFindOneQueryResult = NonNullable<Awaited<ReturnType<typeof speakersControllerFindOne>>>
+
+export const useSpeakersControllerFindOne = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof speakersControllerFindOne>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(id)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getSpeakersControllerFindOneKey(id) : null);
+  const swrFn = () => speakersControllerFindOne(id, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type speakersControllerUpdateResponse200 = {
+  data: void
+  status: 200
+}
+
+export type speakersControllerUpdateResponseSuccess = (speakersControllerUpdateResponse200) & {
+  headers: Headers;
+};
+;
+
+export type speakersControllerUpdateResponse = (speakersControllerUpdateResponseSuccess)
+
+export const getSpeakersControllerUpdateUrl = (id: number,) => {
+
+
+  
+
+  return `/api/speakers/${id}`
+}
+
+export const speakersControllerUpdate = async (id: number,
+    updateSpeakerDto: UpdateSpeakerDto, options?: RequestInit): Promise<speakersControllerUpdateResponse> => {
+  
+  return customInstance<speakersControllerUpdateResponse>(getSpeakersControllerUpdateUrl(id),
+  {      
+    ...options,
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      updateSpeakerDto,)
+  }
+);}
+  
+
+
+
+export const getSpeakersControllerUpdateMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, { arg }: { arg: UpdateSpeakerDto }) => {
+    return speakersControllerUpdate(id, arg, options);
+  }
+}
+export const getSpeakersControllerUpdateMutationKey = (id: number,) => [`/api/speakers/${id}`] as const;
+
+export type SpeakersControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof speakersControllerUpdate>>>
+
+export const useSpeakersControllerUpdate = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof speakersControllerUpdate>>, TError, Key, UpdateSpeakerDto, Awaited<ReturnType<typeof speakersControllerUpdate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getSpeakersControllerUpdateMutationKey(id);
+  const swrFn = getSpeakersControllerUpdateMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type speakersControllerRemoveResponse200 = {
+  data: void
+  status: 200
+}
+
+export type speakersControllerRemoveResponseSuccess = (speakersControllerRemoveResponse200) & {
+  headers: Headers;
+};
+;
+
+export type speakersControllerRemoveResponse = (speakersControllerRemoveResponseSuccess)
+
+export const getSpeakersControllerRemoveUrl = (id: number,) => {
+
+
+  
+
+  return `/api/speakers/${id}`
+}
+
+export const speakersControllerRemove = async (id: number, options?: RequestInit): Promise<speakersControllerRemoveResponse> => {
+  
+  return customInstance<speakersControllerRemoveResponse>(getSpeakersControllerRemoveUrl(id),
+  {      
+    ...options,
+    method: 'DELETE'
+    
+    
+  }
+);}
+  
+
+
+
+export const getSpeakersControllerRemoveMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return speakersControllerRemove(id, options);
+  }
+}
+export const getSpeakersControllerRemoveMutationKey = (id: number,) => [`/api/speakers/${id}`] as const;
+
+export type SpeakersControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof speakersControllerRemove>>>
+
+export const useSpeakersControllerRemove = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof speakersControllerRemove>>, TError, Key, Arguments, Awaited<ReturnType<typeof speakersControllerRemove>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getSpeakersControllerRemoveMutationKey(id);
+  const swrFn = getSpeakersControllerRemoveMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}

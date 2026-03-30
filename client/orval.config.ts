@@ -7,7 +7,7 @@ export default defineConfig({
       mode: 'tags-split',
       target: 'src/api/generated/api.ts',
       schemas: 'src/api/generated/model',
-      client: 'axios',
+      client: 'swr',
       override: {
         mutator: {
           path: './src/api/custom-instance.ts',

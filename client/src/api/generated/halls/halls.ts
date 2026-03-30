@@ -5,81 +5,347 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
+import useSwr from 'swr';
+import type {
+  Arguments,
+  Key,
+  SWRConfiguration
+} from 'swr';
+
+import useSWRMutation from 'swr/mutation';
+import type {
+  SWRMutationConfiguration
+} from 'swr/mutation';
+
 import type {
   CreateHallDto,
   UpdateHallDto
 } from '../model';
 
 import { customInstance } from '../../custom-instance';
+import type { ErrorType } from '../../custom-instance';
 
 
-type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+  
+  type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
-  export const getHalls = () => {
+  
 /**
  * @summary Create a new Hall
  */
-const hallsControllerCreate = (
-    createHallDto: CreateHallDto,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/halls`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: createHallDto
-    },
-      options);
-    }
-  /**
+export type hallsControllerCreateResponse201 = {
+  data: void
+  status: 201
+}
+
+export type hallsControllerCreateResponseSuccess = (hallsControllerCreateResponse201) & {
+  headers: Headers;
+};
+;
+
+export type hallsControllerCreateResponse = (hallsControllerCreateResponseSuccess)
+
+export const getHallsControllerCreateUrl = () => {
+
+
+  
+
+  return `/api/halls`
+}
+
+export const hallsControllerCreate = async (createHallDto: CreateHallDto, options?: RequestInit): Promise<hallsControllerCreateResponse> => {
+  
+  return customInstance<hallsControllerCreateResponse>(getHallsControllerCreateUrl(),
+  {      
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      createHallDto,)
+  }
+);}
+  
+
+
+
+export const getHallsControllerCreateMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, { arg }: { arg: CreateHallDto }) => {
+    return hallsControllerCreate(arg, options);
+  }
+}
+export const getHallsControllerCreateMutationKey = () => [`/api/halls`] as const;
+
+export type HallsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof hallsControllerCreate>>>
+
+/**
+ * @summary Create a new Hall
+ */
+export const useHallsControllerCreate = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof hallsControllerCreate>>, TError, Key, CreateHallDto, Awaited<ReturnType<typeof hallsControllerCreate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getHallsControllerCreateMutationKey();
+  const swrFn = getHallsControllerCreateMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+/**
  * @summary Get all Halls
  */
-const hallsControllerFindAll = (
+export type hallsControllerFindAllResponse200 = {
+  data: void
+  status: 200
+}
+
+export type hallsControllerFindAllResponseSuccess = (hallsControllerFindAllResponse200) & {
+  headers: Headers;
+};
+;
+
+export type hallsControllerFindAllResponse = (hallsControllerFindAllResponseSuccess)
+
+export const getHallsControllerFindAllUrl = () => {
+
+
+  
+
+  return `/api/halls`
+}
+
+export const hallsControllerFindAll = async ( options?: RequestInit): Promise<hallsControllerFindAllResponse> => {
+  
+  return customInstance<hallsControllerFindAllResponse>(getHallsControllerFindAllUrl(),
+  {      
+    ...options,
+    method: 'GET'
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/halls`, method: 'GET'
-    },
-      options);
-    }
-  /**
+    
+  }
+);}
+  
+
+
+
+export const getHallsControllerFindAllKey = () => [`/api/halls`] as const;
+
+export type HallsControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof hallsControllerFindAll>>>
+
+/**
+ * @summary Get all Halls
+ */
+export const useHallsControllerFindAll = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof hallsControllerFindAll>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getHallsControllerFindAllKey() : null);
+  const swrFn = () => hallsControllerFindAll(requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+/**
  * @summary Get a specific Hall by ID
  */
-const hallsControllerFindOne = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/halls/${id}`, method: 'GET'
-    },
-      options);
-    }
-  /**
+export type hallsControllerFindOneResponse200 = {
+  data: void
+  status: 200
+}
+
+export type hallsControllerFindOneResponseSuccess = (hallsControllerFindOneResponse200) & {
+  headers: Headers;
+};
+;
+
+export type hallsControllerFindOneResponse = (hallsControllerFindOneResponseSuccess)
+
+export const getHallsControllerFindOneUrl = (id: number,) => {
+
+
+  
+
+  return `/api/halls/${id}`
+}
+
+export const hallsControllerFindOne = async (id: number, options?: RequestInit): Promise<hallsControllerFindOneResponse> => {
+  
+  return customInstance<hallsControllerFindOneResponse>(getHallsControllerFindOneUrl(id),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getHallsControllerFindOneKey = (id: number,) => [`/api/halls/${id}`] as const;
+
+export type HallsControllerFindOneQueryResult = NonNullable<Awaited<ReturnType<typeof hallsControllerFindOne>>>
+
+/**
+ * @summary Get a specific Hall by ID
+ */
+export const useHallsControllerFindOne = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof hallsControllerFindOne>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(id)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getHallsControllerFindOneKey(id) : null);
+  const swrFn = () => hallsControllerFindOne(id, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+/**
  * @summary Update a specific Hall by ID
  */
-const hallsControllerUpdate = (
-    id: number,
-    updateHallDto: UpdateHallDto,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/halls/${id}`, method: 'PATCH',
-      headers: {'Content-Type': 'application/json', },
-      data: updateHallDto
-    },
-      options);
-    }
-  /**
+export type hallsControllerUpdateResponse200 = {
+  data: void
+  status: 200
+}
+
+export type hallsControllerUpdateResponseSuccess = (hallsControllerUpdateResponse200) & {
+  headers: Headers;
+};
+;
+
+export type hallsControllerUpdateResponse = (hallsControllerUpdateResponseSuccess)
+
+export const getHallsControllerUpdateUrl = (id: number,) => {
+
+
+  
+
+  return `/api/halls/${id}`
+}
+
+export const hallsControllerUpdate = async (id: number,
+    updateHallDto: UpdateHallDto, options?: RequestInit): Promise<hallsControllerUpdateResponse> => {
+  
+  return customInstance<hallsControllerUpdateResponse>(getHallsControllerUpdateUrl(id),
+  {      
+    ...options,
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      updateHallDto,)
+  }
+);}
+  
+
+
+
+export const getHallsControllerUpdateMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, { arg }: { arg: UpdateHallDto }) => {
+    return hallsControllerUpdate(id, arg, options);
+  }
+}
+export const getHallsControllerUpdateMutationKey = (id: number,) => [`/api/halls/${id}`] as const;
+
+export type HallsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof hallsControllerUpdate>>>
+
+/**
+ * @summary Update a specific Hall by ID
+ */
+export const useHallsControllerUpdate = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof hallsControllerUpdate>>, TError, Key, UpdateHallDto, Awaited<ReturnType<typeof hallsControllerUpdate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getHallsControllerUpdateMutationKey(id);
+  const swrFn = getHallsControllerUpdateMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+/**
  * @summary Delete a specific Hall by ID
  */
-const hallsControllerRemove = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/halls/${id}`, method: 'DELETE'
-    },
-      options);
-    }
-  return {hallsControllerCreate,hallsControllerFindAll,hallsControllerFindOne,hallsControllerUpdate,hallsControllerRemove}};
-export type HallsControllerCreateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getHalls>['hallsControllerCreate']>>>
-export type HallsControllerFindAllResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getHalls>['hallsControllerFindAll']>>>
-export type HallsControllerFindOneResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getHalls>['hallsControllerFindOne']>>>
-export type HallsControllerUpdateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getHalls>['hallsControllerUpdate']>>>
-export type HallsControllerRemoveResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getHalls>['hallsControllerRemove']>>>
+export type hallsControllerRemoveResponse200 = {
+  data: void
+  status: 200
+}
+
+export type hallsControllerRemoveResponseSuccess = (hallsControllerRemoveResponse200) & {
+  headers: Headers;
+};
+;
+
+export type hallsControllerRemoveResponse = (hallsControllerRemoveResponseSuccess)
+
+export const getHallsControllerRemoveUrl = (id: number,) => {
+
+
+  
+
+  return `/api/halls/${id}`
+}
+
+export const hallsControllerRemove = async (id: number, options?: RequestInit): Promise<hallsControllerRemoveResponse> => {
+  
+  return customInstance<hallsControllerRemoveResponse>(getHallsControllerRemoveUrl(id),
+  {      
+    ...options,
+    method: 'DELETE'
+    
+    
+  }
+);}
+  
+
+
+
+export const getHallsControllerRemoveMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return hallsControllerRemove(id, options);
+  }
+}
+export const getHallsControllerRemoveMutationKey = (id: number,) => [`/api/halls/${id}`] as const;
+
+export type HallsControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof hallsControllerRemove>>>
+
+/**
+ * @summary Delete a specific Hall by ID
+ */
+export const useHallsControllerRemove = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof hallsControllerRemove>>, TError, Key, Arguments, Awaited<ReturnType<typeof hallsControllerRemove>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getHallsControllerRemoveMutationKey(id);
+  const swrFn = getHallsControllerRemoveMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}

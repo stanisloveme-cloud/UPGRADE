@@ -186,7 +186,7 @@ erDiagram
 * hall\_id: INTEGER NOT NULL (FK \-\> Hall.id)  
 * name: VARCHAR(255) NOT NULL  
 * description: TEXT  
-* day: DATE NOT NULL (Must be within Event dates)  
+* day: DATE NOT NULL (Smart Binding: Managed dynamically via availableDays; orphaned dates create phantom tabs until reassigned)  
 * start\_time: TIME NOT NULL  
 * end\_time: TIME NOT NULL  
 * sort\_order: INTEGER DEFAULT 0

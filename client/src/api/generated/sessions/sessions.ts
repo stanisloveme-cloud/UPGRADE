@@ -5,6 +5,18 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
+import useSwr from 'swr';
+import type {
+  Arguments,
+  Key,
+  SWRConfiguration
+} from 'swr';
+
+import useSWRMutation from 'swr/mutation';
+import type {
+  SWRMutationConfiguration
+} from 'swr/mutation';
+
 import type {
   CreateSessionDto,
   SessionsControllerCreate201,
@@ -15,60 +27,299 @@ import type {
 } from '../model';
 
 import { customInstance } from '../../custom-instance';
+import type { ErrorType } from '../../custom-instance';
 
 
-type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+  
+  type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
-  export const getSessions = () => {
-const sessionsControllerCreate = (
-    createSessionDto: CreateSessionDto,
- options?: SecondParameter<typeof customInstance<SessionsControllerCreate201>>,) => {
-      return customInstance<SessionsControllerCreate201>(
-      {url: `/api/sessions`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: createSessionDto
-    },
-      options);
-    }
-  const sessionsControllerFindAll = (
+  
+export type sessionsControllerCreateResponse201 = {
+  data: SessionsControllerCreate201
+  status: 201
+}
+
+export type sessionsControllerCreateResponseSuccess = (sessionsControllerCreateResponse201) & {
+  headers: Headers;
+};
+;
+
+export type sessionsControllerCreateResponse = (sessionsControllerCreateResponseSuccess)
+
+export const getSessionsControllerCreateUrl = () => {
+
+
+  
+
+  return `/api/sessions`
+}
+
+export const sessionsControllerCreate = async (createSessionDto: CreateSessionDto, options?: RequestInit): Promise<sessionsControllerCreateResponse> => {
+  
+  return customInstance<sessionsControllerCreateResponse>(getSessionsControllerCreateUrl(),
+  {      
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      createSessionDto,)
+  }
+);}
+  
+
+
+
+export const getSessionsControllerCreateMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, { arg }: { arg: CreateSessionDto }) => {
+    return sessionsControllerCreate(arg, options);
+  }
+}
+export const getSessionsControllerCreateMutationKey = () => [`/api/sessions`] as const;
+
+export type SessionsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof sessionsControllerCreate>>>
+
+export const useSessionsControllerCreate = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sessionsControllerCreate>>, TError, Key, CreateSessionDto, Awaited<ReturnType<typeof sessionsControllerCreate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getSessionsControllerCreateMutationKey();
+  const swrFn = getSessionsControllerCreateMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type sessionsControllerFindAllResponse200 = {
+  data: SessionsControllerFindAll200Item[]
+  status: 200
+}
+
+export type sessionsControllerFindAllResponseSuccess = (sessionsControllerFindAllResponse200) & {
+  headers: Headers;
+};
+;
+
+export type sessionsControllerFindAllResponse = (sessionsControllerFindAllResponseSuccess)
+
+export const getSessionsControllerFindAllUrl = () => {
+
+
+  
+
+  return `/api/sessions`
+}
+
+export const sessionsControllerFindAll = async ( options?: RequestInit): Promise<sessionsControllerFindAllResponse> => {
+  
+  return customInstance<sessionsControllerFindAllResponse>(getSessionsControllerFindAllUrl(),
+  {      
+    ...options,
+    method: 'GET'
     
- options?: SecondParameter<typeof customInstance<SessionsControllerFindAll200Item[]>>,) => {
-      return customInstance<SessionsControllerFindAll200Item[]>(
-      {url: `/api/sessions`, method: 'GET'
-    },
-      options);
-    }
-  const sessionsControllerFindOne = (
-    id: number,
- options?: SecondParameter<typeof customInstance<SessionsControllerFindOne200>>,) => {
-      return customInstance<SessionsControllerFindOne200>(
-      {url: `/api/sessions/${id}`, method: 'GET'
-    },
-      options);
-    }
-  const sessionsControllerUpdate = (
-    id: number,
-    updateSessionDto: UpdateSessionDto,
- options?: SecondParameter<typeof customInstance<SessionsControllerUpdate200>>,) => {
-      return customInstance<SessionsControllerUpdate200>(
-      {url: `/api/sessions/${id}`, method: 'PATCH',
-      headers: {'Content-Type': 'application/json', },
-      data: updateSessionDto
-    },
-      options);
-    }
-  const sessionsControllerRemove = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/sessions/${id}`, method: 'DELETE'
-    },
-      options);
-    }
-  return {sessionsControllerCreate,sessionsControllerFindAll,sessionsControllerFindOne,sessionsControllerUpdate,sessionsControllerRemove}};
-export type SessionsControllerCreateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSessions>['sessionsControllerCreate']>>>
-export type SessionsControllerFindAllResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSessions>['sessionsControllerFindAll']>>>
-export type SessionsControllerFindOneResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSessions>['sessionsControllerFindOne']>>>
-export type SessionsControllerUpdateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSessions>['sessionsControllerUpdate']>>>
-export type SessionsControllerRemoveResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getSessions>['sessionsControllerRemove']>>>
+    
+  }
+);}
+  
+
+
+
+export const getSessionsControllerFindAllKey = () => [`/api/sessions`] as const;
+
+export type SessionsControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof sessionsControllerFindAll>>>
+
+export const useSessionsControllerFindAll = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof sessionsControllerFindAll>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getSessionsControllerFindAllKey() : null);
+  const swrFn = () => sessionsControllerFindAll(requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type sessionsControllerFindOneResponse200 = {
+  data: SessionsControllerFindOne200
+  status: 200
+}
+
+export type sessionsControllerFindOneResponseSuccess = (sessionsControllerFindOneResponse200) & {
+  headers: Headers;
+};
+;
+
+export type sessionsControllerFindOneResponse = (sessionsControllerFindOneResponseSuccess)
+
+export const getSessionsControllerFindOneUrl = (id: number,) => {
+
+
+  
+
+  return `/api/sessions/${id}`
+}
+
+export const sessionsControllerFindOne = async (id: number, options?: RequestInit): Promise<sessionsControllerFindOneResponse> => {
+  
+  return customInstance<sessionsControllerFindOneResponse>(getSessionsControllerFindOneUrl(id),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getSessionsControllerFindOneKey = (id: number,) => [`/api/sessions/${id}`] as const;
+
+export type SessionsControllerFindOneQueryResult = NonNullable<Awaited<ReturnType<typeof sessionsControllerFindOne>>>
+
+export const useSessionsControllerFindOne = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof sessionsControllerFindOne>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(id)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getSessionsControllerFindOneKey(id) : null);
+  const swrFn = () => sessionsControllerFindOne(id, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type sessionsControllerUpdateResponse200 = {
+  data: SessionsControllerUpdate200
+  status: 200
+}
+
+export type sessionsControllerUpdateResponseSuccess = (sessionsControllerUpdateResponse200) & {
+  headers: Headers;
+};
+;
+
+export type sessionsControllerUpdateResponse = (sessionsControllerUpdateResponseSuccess)
+
+export const getSessionsControllerUpdateUrl = (id: number,) => {
+
+
+  
+
+  return `/api/sessions/${id}`
+}
+
+export const sessionsControllerUpdate = async (id: number,
+    updateSessionDto: UpdateSessionDto, options?: RequestInit): Promise<sessionsControllerUpdateResponse> => {
+  
+  return customInstance<sessionsControllerUpdateResponse>(getSessionsControllerUpdateUrl(id),
+  {      
+    ...options,
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      updateSessionDto,)
+  }
+);}
+  
+
+
+
+export const getSessionsControllerUpdateMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, { arg }: { arg: UpdateSessionDto }) => {
+    return sessionsControllerUpdate(id, arg, options);
+  }
+}
+export const getSessionsControllerUpdateMutationKey = (id: number,) => [`/api/sessions/${id}`] as const;
+
+export type SessionsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof sessionsControllerUpdate>>>
+
+export const useSessionsControllerUpdate = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sessionsControllerUpdate>>, TError, Key, UpdateSessionDto, Awaited<ReturnType<typeof sessionsControllerUpdate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getSessionsControllerUpdateMutationKey(id);
+  const swrFn = getSessionsControllerUpdateMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type sessionsControllerRemoveResponse200 = {
+  data: void
+  status: 200
+}
+
+export type sessionsControllerRemoveResponseSuccess = (sessionsControllerRemoveResponse200) & {
+  headers: Headers;
+};
+;
+
+export type sessionsControllerRemoveResponse = (sessionsControllerRemoveResponseSuccess)
+
+export const getSessionsControllerRemoveUrl = (id: number,) => {
+
+
+  
+
+  return `/api/sessions/${id}`
+}
+
+export const sessionsControllerRemove = async (id: number, options?: RequestInit): Promise<sessionsControllerRemoveResponse> => {
+  
+  return customInstance<sessionsControllerRemoveResponse>(getSessionsControllerRemoveUrl(id),
+  {      
+    ...options,
+    method: 'DELETE'
+    
+    
+  }
+);}
+  
+
+
+
+export const getSessionsControllerRemoveMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return sessionsControllerRemove(id, options);
+  }
+}
+export const getSessionsControllerRemoveMutationKey = (id: number,) => [`/api/sessions/${id}`] as const;
+
+export type SessionsControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof sessionsControllerRemove>>>
+
+export const useSessionsControllerRemove = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sessionsControllerRemove>>, TError, Key, Arguments, Awaited<ReturnType<typeof sessionsControllerRemove>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getSessionsControllerRemoveMutationKey(id);
+  const swrFn = getSessionsControllerRemoveMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}

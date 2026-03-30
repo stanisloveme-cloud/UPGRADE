@@ -5,6 +5,18 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
+import useSwr from 'swr';
+import type {
+  Arguments,
+  Key,
+  SWRConfiguration
+} from 'swr';
+
+import useSWRMutation from 'swr/mutation';
+import type {
+  SWRMutationConfiguration
+} from 'swr/mutation';
+
 import type {
   CreateEventDto,
   EventsControllerGetAnnouncements200Item,
@@ -13,138 +25,803 @@ import type {
 } from '../model';
 
 import { customInstance } from '../../custom-instance';
+import type { ErrorType } from '../../custom-instance';
 
 
-type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+  
+  type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
-  export const getEvents = () => {
-const eventsControllerCreate = (
-    createEventDto: CreateEventDto,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/events`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: createEventDto
-    },
-      options);
-    }
-  const eventsControllerFindAll = (
+  
+export type eventsControllerCreateResponse201 = {
+  data: void
+  status: 201
+}
+
+export type eventsControllerCreateResponseSuccess = (eventsControllerCreateResponse201) & {
+  headers: Headers;
+};
+;
+
+export type eventsControllerCreateResponse = (eventsControllerCreateResponseSuccess)
+
+export const getEventsControllerCreateUrl = () => {
+
+
+  
+
+  return `/api/events`
+}
+
+export const eventsControllerCreate = async (createEventDto: CreateEventDto, options?: RequestInit): Promise<eventsControllerCreateResponse> => {
+  
+  return customInstance<eventsControllerCreateResponse>(getEventsControllerCreateUrl(),
+  {      
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      createEventDto,)
+  }
+);}
+  
+
+
+
+export const getEventsControllerCreateMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, { arg }: { arg: CreateEventDto }) => {
+    return eventsControllerCreate(arg, options);
+  }
+}
+export const getEventsControllerCreateMutationKey = () => [`/api/events`] as const;
+
+export type EventsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof eventsControllerCreate>>>
+
+export const useEventsControllerCreate = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof eventsControllerCreate>>, TError, Key, CreateEventDto, Awaited<ReturnType<typeof eventsControllerCreate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getEventsControllerCreateMutationKey();
+  const swrFn = getEventsControllerCreateMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type eventsControllerFindAllResponse200 = {
+  data: void
+  status: 200
+}
+
+export type eventsControllerFindAllResponseSuccess = (eventsControllerFindAllResponse200) & {
+  headers: Headers;
+};
+;
+
+export type eventsControllerFindAllResponse = (eventsControllerFindAllResponseSuccess)
+
+export const getEventsControllerFindAllUrl = () => {
+
+
+  
+
+  return `/api/events`
+}
+
+export const eventsControllerFindAll = async ( options?: RequestInit): Promise<eventsControllerFindAllResponse> => {
+  
+  return customInstance<eventsControllerFindAllResponse>(getEventsControllerFindAllUrl(),
+  {      
+    ...options,
+    method: 'GET'
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/events`, method: 'GET'
-    },
-      options);
-    }
-  const eventsControllerGetFullStructure = (
-    id: number,
- options?: SecondParameter<typeof customInstance<EventsControllerGetFullStructure200>>,) => {
-      return customInstance<EventsControllerGetFullStructure200>(
-      {url: `/api/events/${id}/full-structure`, method: 'GET'
-    },
-      options);
-    }
-  const eventsControllerFindOne = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/events/${id}`, method: 'GET'
-    },
-      options);
-    }
-  const eventsControllerUpdate = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/events/${id}`, method: 'PATCH'
-    },
-      options);
-    }
-  const eventsControllerRemove = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/events/${id}`, method: 'DELETE'
-    },
-      options);
-    }
-  const eventsControllerGetSessionSpeakers = (
-    id: number,
- options?: SecondParameter<typeof customInstance<EventsControllerGetSessionSpeakers200Item[]>>,) => {
-      return customInstance<EventsControllerGetSessionSpeakers200Item[]>(
-      {url: `/api/events/${id}/session-speakers`, method: 'GET'
-    },
-      options);
-    }
-  const eventsControllerUpdateSessionSpeakersSort = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/events/${id}/session-speakers/sort`, method: 'PATCH'
-    },
-      options);
-    }
-  const eventsControllerGetAnnouncements = (
-    id: number,
- options?: SecondParameter<typeof customInstance<EventsControllerGetAnnouncements200Item[]>>,) => {
-      return customInstance<EventsControllerGetAnnouncements200Item[]>(
-      {url: `/api/events/${id}/announcements`, method: 'GET'
-    },
-      options);
-    }
-  const eventsControllerUpdateAnnouncements = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/events/${id}/announcements`, method: 'PATCH'
-    },
-      options);
-    }
-  const eventsControllerGetMemoTemplate = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/events/${id}/memo-template`, method: 'GET'
-    },
-      options);
-    }
-  const eventsControllerUpdateMemoTemplate = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/events/${id}/memo-template`, method: 'PATCH'
-    },
-      options);
-    }
-  const eventsControllerUpdateSessionSpeaker = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/events/session-speakers/${id}`, method: 'PATCH'
-    },
-      options);
-    }
-  const eventsControllerGetPublicSpeakerMemo = (
-    hash: string,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/events/public/speaker-memo/${hash}`, method: 'GET'
-    },
-      options);
-    }
-  return {eventsControllerCreate,eventsControllerFindAll,eventsControllerGetFullStructure,eventsControllerFindOne,eventsControllerUpdate,eventsControllerRemove,eventsControllerGetSessionSpeakers,eventsControllerUpdateSessionSpeakersSort,eventsControllerGetAnnouncements,eventsControllerUpdateAnnouncements,eventsControllerGetMemoTemplate,eventsControllerUpdateMemoTemplate,eventsControllerUpdateSessionSpeaker,eventsControllerGetPublicSpeakerMemo}};
-export type EventsControllerCreateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getEvents>['eventsControllerCreate']>>>
-export type EventsControllerFindAllResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getEvents>['eventsControllerFindAll']>>>
-export type EventsControllerGetFullStructureResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getEvents>['eventsControllerGetFullStructure']>>>
-export type EventsControllerFindOneResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getEvents>['eventsControllerFindOne']>>>
-export type EventsControllerUpdateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getEvents>['eventsControllerUpdate']>>>
-export type EventsControllerRemoveResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getEvents>['eventsControllerRemove']>>>
-export type EventsControllerGetSessionSpeakersResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getEvents>['eventsControllerGetSessionSpeakers']>>>
-export type EventsControllerUpdateSessionSpeakersSortResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getEvents>['eventsControllerUpdateSessionSpeakersSort']>>>
-export type EventsControllerGetAnnouncementsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getEvents>['eventsControllerGetAnnouncements']>>>
-export type EventsControllerUpdateAnnouncementsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getEvents>['eventsControllerUpdateAnnouncements']>>>
-export type EventsControllerGetMemoTemplateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getEvents>['eventsControllerGetMemoTemplate']>>>
-export type EventsControllerUpdateMemoTemplateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getEvents>['eventsControllerUpdateMemoTemplate']>>>
-export type EventsControllerUpdateSessionSpeakerResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getEvents>['eventsControllerUpdateSessionSpeaker']>>>
-export type EventsControllerGetPublicSpeakerMemoResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getEvents>['eventsControllerGetPublicSpeakerMemo']>>>
+    
+  }
+);}
+  
+
+
+
+export const getEventsControllerFindAllKey = () => [`/api/events`] as const;
+
+export type EventsControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof eventsControllerFindAll>>>
+
+export const useEventsControllerFindAll = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof eventsControllerFindAll>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getEventsControllerFindAllKey() : null);
+  const swrFn = () => eventsControllerFindAll(requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type eventsControllerGetFullStructureResponse200 = {
+  data: EventsControllerGetFullStructure200
+  status: 200
+}
+
+export type eventsControllerGetFullStructureResponseSuccess = (eventsControllerGetFullStructureResponse200) & {
+  headers: Headers;
+};
+;
+
+export type eventsControllerGetFullStructureResponse = (eventsControllerGetFullStructureResponseSuccess)
+
+export const getEventsControllerGetFullStructureUrl = (id: number,) => {
+
+
+  
+
+  return `/api/events/${id}/full-structure`
+}
+
+export const eventsControllerGetFullStructure = async (id: number, options?: RequestInit): Promise<eventsControllerGetFullStructureResponse> => {
+  
+  return customInstance<eventsControllerGetFullStructureResponse>(getEventsControllerGetFullStructureUrl(id),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getEventsControllerGetFullStructureKey = (id: number,) => [`/api/events/${id}/full-structure`] as const;
+
+export type EventsControllerGetFullStructureQueryResult = NonNullable<Awaited<ReturnType<typeof eventsControllerGetFullStructure>>>
+
+export const useEventsControllerGetFullStructure = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof eventsControllerGetFullStructure>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(id)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getEventsControllerGetFullStructureKey(id) : null);
+  const swrFn = () => eventsControllerGetFullStructure(id, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type eventsControllerFindOneResponse200 = {
+  data: void
+  status: 200
+}
+
+export type eventsControllerFindOneResponseSuccess = (eventsControllerFindOneResponse200) & {
+  headers: Headers;
+};
+;
+
+export type eventsControllerFindOneResponse = (eventsControllerFindOneResponseSuccess)
+
+export const getEventsControllerFindOneUrl = (id: number,) => {
+
+
+  
+
+  return `/api/events/${id}`
+}
+
+export const eventsControllerFindOne = async (id: number, options?: RequestInit): Promise<eventsControllerFindOneResponse> => {
+  
+  return customInstance<eventsControllerFindOneResponse>(getEventsControllerFindOneUrl(id),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getEventsControllerFindOneKey = (id: number,) => [`/api/events/${id}`] as const;
+
+export type EventsControllerFindOneQueryResult = NonNullable<Awaited<ReturnType<typeof eventsControllerFindOne>>>
+
+export const useEventsControllerFindOne = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof eventsControllerFindOne>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(id)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getEventsControllerFindOneKey(id) : null);
+  const swrFn = () => eventsControllerFindOne(id, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type eventsControllerUpdateResponse200 = {
+  data: void
+  status: 200
+}
+
+export type eventsControllerUpdateResponseSuccess = (eventsControllerUpdateResponse200) & {
+  headers: Headers;
+};
+;
+
+export type eventsControllerUpdateResponse = (eventsControllerUpdateResponseSuccess)
+
+export const getEventsControllerUpdateUrl = (id: number,) => {
+
+
+  
+
+  return `/api/events/${id}`
+}
+
+export const eventsControllerUpdate = async (id: number, options?: RequestInit): Promise<eventsControllerUpdateResponse> => {
+  
+  return customInstance<eventsControllerUpdateResponse>(getEventsControllerUpdateUrl(id),
+  {      
+    ...options,
+    method: 'PATCH'
+    
+    
+  }
+);}
+  
+
+
+
+export const getEventsControllerUpdateMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return eventsControllerUpdate(id, options);
+  }
+}
+export const getEventsControllerUpdateMutationKey = (id: number,) => [`/api/events/${id}`] as const;
+
+export type EventsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof eventsControllerUpdate>>>
+
+export const useEventsControllerUpdate = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof eventsControllerUpdate>>, TError, Key, Arguments, Awaited<ReturnType<typeof eventsControllerUpdate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getEventsControllerUpdateMutationKey(id);
+  const swrFn = getEventsControllerUpdateMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type eventsControllerRemoveResponse200 = {
+  data: void
+  status: 200
+}
+
+export type eventsControllerRemoveResponseSuccess = (eventsControllerRemoveResponse200) & {
+  headers: Headers;
+};
+;
+
+export type eventsControllerRemoveResponse = (eventsControllerRemoveResponseSuccess)
+
+export const getEventsControllerRemoveUrl = (id: number,) => {
+
+
+  
+
+  return `/api/events/${id}`
+}
+
+export const eventsControllerRemove = async (id: number, options?: RequestInit): Promise<eventsControllerRemoveResponse> => {
+  
+  return customInstance<eventsControllerRemoveResponse>(getEventsControllerRemoveUrl(id),
+  {      
+    ...options,
+    method: 'DELETE'
+    
+    
+  }
+);}
+  
+
+
+
+export const getEventsControllerRemoveMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return eventsControllerRemove(id, options);
+  }
+}
+export const getEventsControllerRemoveMutationKey = (id: number,) => [`/api/events/${id}`] as const;
+
+export type EventsControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof eventsControllerRemove>>>
+
+export const useEventsControllerRemove = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof eventsControllerRemove>>, TError, Key, Arguments, Awaited<ReturnType<typeof eventsControllerRemove>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getEventsControllerRemoveMutationKey(id);
+  const swrFn = getEventsControllerRemoveMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type eventsControllerGetSessionSpeakersResponse200 = {
+  data: EventsControllerGetSessionSpeakers200Item[]
+  status: 200
+}
+
+export type eventsControllerGetSessionSpeakersResponseSuccess = (eventsControllerGetSessionSpeakersResponse200) & {
+  headers: Headers;
+};
+;
+
+export type eventsControllerGetSessionSpeakersResponse = (eventsControllerGetSessionSpeakersResponseSuccess)
+
+export const getEventsControllerGetSessionSpeakersUrl = (id: number,) => {
+
+
+  
+
+  return `/api/events/${id}/session-speakers`
+}
+
+export const eventsControllerGetSessionSpeakers = async (id: number, options?: RequestInit): Promise<eventsControllerGetSessionSpeakersResponse> => {
+  
+  return customInstance<eventsControllerGetSessionSpeakersResponse>(getEventsControllerGetSessionSpeakersUrl(id),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getEventsControllerGetSessionSpeakersKey = (id: number,) => [`/api/events/${id}/session-speakers`] as const;
+
+export type EventsControllerGetSessionSpeakersQueryResult = NonNullable<Awaited<ReturnType<typeof eventsControllerGetSessionSpeakers>>>
+
+export const useEventsControllerGetSessionSpeakers = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof eventsControllerGetSessionSpeakers>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(id)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getEventsControllerGetSessionSpeakersKey(id) : null);
+  const swrFn = () => eventsControllerGetSessionSpeakers(id, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type eventsControllerUpdateSessionSpeakersSortResponse200 = {
+  data: void
+  status: 200
+}
+
+export type eventsControllerUpdateSessionSpeakersSortResponseSuccess = (eventsControllerUpdateSessionSpeakersSortResponse200) & {
+  headers: Headers;
+};
+;
+
+export type eventsControllerUpdateSessionSpeakersSortResponse = (eventsControllerUpdateSessionSpeakersSortResponseSuccess)
+
+export const getEventsControllerUpdateSessionSpeakersSortUrl = (id: number,) => {
+
+
+  
+
+  return `/api/events/${id}/session-speakers/sort`
+}
+
+export const eventsControllerUpdateSessionSpeakersSort = async (id: number, options?: RequestInit): Promise<eventsControllerUpdateSessionSpeakersSortResponse> => {
+  
+  return customInstance<eventsControllerUpdateSessionSpeakersSortResponse>(getEventsControllerUpdateSessionSpeakersSortUrl(id),
+  {      
+    ...options,
+    method: 'PATCH'
+    
+    
+  }
+);}
+  
+
+
+
+export const getEventsControllerUpdateSessionSpeakersSortMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return eventsControllerUpdateSessionSpeakersSort(id, options);
+  }
+}
+export const getEventsControllerUpdateSessionSpeakersSortMutationKey = (id: number,) => [`/api/events/${id}/session-speakers/sort`] as const;
+
+export type EventsControllerUpdateSessionSpeakersSortMutationResult = NonNullable<Awaited<ReturnType<typeof eventsControllerUpdateSessionSpeakersSort>>>
+
+export const useEventsControllerUpdateSessionSpeakersSort = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof eventsControllerUpdateSessionSpeakersSort>>, TError, Key, Arguments, Awaited<ReturnType<typeof eventsControllerUpdateSessionSpeakersSort>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getEventsControllerUpdateSessionSpeakersSortMutationKey(id);
+  const swrFn = getEventsControllerUpdateSessionSpeakersSortMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type eventsControllerGetAnnouncementsResponse200 = {
+  data: EventsControllerGetAnnouncements200Item[]
+  status: 200
+}
+
+export type eventsControllerGetAnnouncementsResponseSuccess = (eventsControllerGetAnnouncementsResponse200) & {
+  headers: Headers;
+};
+;
+
+export type eventsControllerGetAnnouncementsResponse = (eventsControllerGetAnnouncementsResponseSuccess)
+
+export const getEventsControllerGetAnnouncementsUrl = (id: number,) => {
+
+
+  
+
+  return `/api/events/${id}/announcements`
+}
+
+export const eventsControllerGetAnnouncements = async (id: number, options?: RequestInit): Promise<eventsControllerGetAnnouncementsResponse> => {
+  
+  return customInstance<eventsControllerGetAnnouncementsResponse>(getEventsControllerGetAnnouncementsUrl(id),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getEventsControllerGetAnnouncementsKey = (id: number,) => [`/api/events/${id}/announcements`] as const;
+
+export type EventsControllerGetAnnouncementsQueryResult = NonNullable<Awaited<ReturnType<typeof eventsControllerGetAnnouncements>>>
+
+export const useEventsControllerGetAnnouncements = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof eventsControllerGetAnnouncements>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(id)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getEventsControllerGetAnnouncementsKey(id) : null);
+  const swrFn = () => eventsControllerGetAnnouncements(id, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type eventsControllerUpdateAnnouncementsResponse200 = {
+  data: void
+  status: 200
+}
+
+export type eventsControllerUpdateAnnouncementsResponseSuccess = (eventsControllerUpdateAnnouncementsResponse200) & {
+  headers: Headers;
+};
+;
+
+export type eventsControllerUpdateAnnouncementsResponse = (eventsControllerUpdateAnnouncementsResponseSuccess)
+
+export const getEventsControllerUpdateAnnouncementsUrl = (id: number,) => {
+
+
+  
+
+  return `/api/events/${id}/announcements`
+}
+
+export const eventsControllerUpdateAnnouncements = async (id: number, options?: RequestInit): Promise<eventsControllerUpdateAnnouncementsResponse> => {
+  
+  return customInstance<eventsControllerUpdateAnnouncementsResponse>(getEventsControllerUpdateAnnouncementsUrl(id),
+  {      
+    ...options,
+    method: 'PATCH'
+    
+    
+  }
+);}
+  
+
+
+
+export const getEventsControllerUpdateAnnouncementsMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return eventsControllerUpdateAnnouncements(id, options);
+  }
+}
+export const getEventsControllerUpdateAnnouncementsMutationKey = (id: number,) => [`/api/events/${id}/announcements`] as const;
+
+export type EventsControllerUpdateAnnouncementsMutationResult = NonNullable<Awaited<ReturnType<typeof eventsControllerUpdateAnnouncements>>>
+
+export const useEventsControllerUpdateAnnouncements = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof eventsControllerUpdateAnnouncements>>, TError, Key, Arguments, Awaited<ReturnType<typeof eventsControllerUpdateAnnouncements>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getEventsControllerUpdateAnnouncementsMutationKey(id);
+  const swrFn = getEventsControllerUpdateAnnouncementsMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type eventsControllerGetMemoTemplateResponse200 = {
+  data: void
+  status: 200
+}
+
+export type eventsControllerGetMemoTemplateResponseSuccess = (eventsControllerGetMemoTemplateResponse200) & {
+  headers: Headers;
+};
+;
+
+export type eventsControllerGetMemoTemplateResponse = (eventsControllerGetMemoTemplateResponseSuccess)
+
+export const getEventsControllerGetMemoTemplateUrl = (id: number,) => {
+
+
+  
+
+  return `/api/events/${id}/memo-template`
+}
+
+export const eventsControllerGetMemoTemplate = async (id: number, options?: RequestInit): Promise<eventsControllerGetMemoTemplateResponse> => {
+  
+  return customInstance<eventsControllerGetMemoTemplateResponse>(getEventsControllerGetMemoTemplateUrl(id),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getEventsControllerGetMemoTemplateKey = (id: number,) => [`/api/events/${id}/memo-template`] as const;
+
+export type EventsControllerGetMemoTemplateQueryResult = NonNullable<Awaited<ReturnType<typeof eventsControllerGetMemoTemplate>>>
+
+export const useEventsControllerGetMemoTemplate = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof eventsControllerGetMemoTemplate>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(id)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getEventsControllerGetMemoTemplateKey(id) : null);
+  const swrFn = () => eventsControllerGetMemoTemplate(id, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type eventsControllerUpdateMemoTemplateResponse200 = {
+  data: void
+  status: 200
+}
+
+export type eventsControllerUpdateMemoTemplateResponseSuccess = (eventsControllerUpdateMemoTemplateResponse200) & {
+  headers: Headers;
+};
+;
+
+export type eventsControllerUpdateMemoTemplateResponse = (eventsControllerUpdateMemoTemplateResponseSuccess)
+
+export const getEventsControllerUpdateMemoTemplateUrl = (id: number,) => {
+
+
+  
+
+  return `/api/events/${id}/memo-template`
+}
+
+export const eventsControllerUpdateMemoTemplate = async (id: number, options?: RequestInit): Promise<eventsControllerUpdateMemoTemplateResponse> => {
+  
+  return customInstance<eventsControllerUpdateMemoTemplateResponse>(getEventsControllerUpdateMemoTemplateUrl(id),
+  {      
+    ...options,
+    method: 'PATCH'
+    
+    
+  }
+);}
+  
+
+
+
+export const getEventsControllerUpdateMemoTemplateMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return eventsControllerUpdateMemoTemplate(id, options);
+  }
+}
+export const getEventsControllerUpdateMemoTemplateMutationKey = (id: number,) => [`/api/events/${id}/memo-template`] as const;
+
+export type EventsControllerUpdateMemoTemplateMutationResult = NonNullable<Awaited<ReturnType<typeof eventsControllerUpdateMemoTemplate>>>
+
+export const useEventsControllerUpdateMemoTemplate = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof eventsControllerUpdateMemoTemplate>>, TError, Key, Arguments, Awaited<ReturnType<typeof eventsControllerUpdateMemoTemplate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getEventsControllerUpdateMemoTemplateMutationKey(id);
+  const swrFn = getEventsControllerUpdateMemoTemplateMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type eventsControllerUpdateSessionSpeakerResponse200 = {
+  data: void
+  status: 200
+}
+
+export type eventsControllerUpdateSessionSpeakerResponseSuccess = (eventsControllerUpdateSessionSpeakerResponse200) & {
+  headers: Headers;
+};
+;
+
+export type eventsControllerUpdateSessionSpeakerResponse = (eventsControllerUpdateSessionSpeakerResponseSuccess)
+
+export const getEventsControllerUpdateSessionSpeakerUrl = (id: number,) => {
+
+
+  
+
+  return `/api/events/session-speakers/${id}`
+}
+
+export const eventsControllerUpdateSessionSpeaker = async (id: number, options?: RequestInit): Promise<eventsControllerUpdateSessionSpeakerResponse> => {
+  
+  return customInstance<eventsControllerUpdateSessionSpeakerResponse>(getEventsControllerUpdateSessionSpeakerUrl(id),
+  {      
+    ...options,
+    method: 'PATCH'
+    
+    
+  }
+);}
+  
+
+
+
+export const getEventsControllerUpdateSessionSpeakerMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return eventsControllerUpdateSessionSpeaker(id, options);
+  }
+}
+export const getEventsControllerUpdateSessionSpeakerMutationKey = (id: number,) => [`/api/events/session-speakers/${id}`] as const;
+
+export type EventsControllerUpdateSessionSpeakerMutationResult = NonNullable<Awaited<ReturnType<typeof eventsControllerUpdateSessionSpeaker>>>
+
+export const useEventsControllerUpdateSessionSpeaker = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof eventsControllerUpdateSessionSpeaker>>, TError, Key, Arguments, Awaited<ReturnType<typeof eventsControllerUpdateSessionSpeaker>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getEventsControllerUpdateSessionSpeakerMutationKey(id);
+  const swrFn = getEventsControllerUpdateSessionSpeakerMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type eventsControllerGetPublicSpeakerMemoResponse200 = {
+  data: void
+  status: 200
+}
+
+export type eventsControllerGetPublicSpeakerMemoResponseSuccess = (eventsControllerGetPublicSpeakerMemoResponse200) & {
+  headers: Headers;
+};
+;
+
+export type eventsControllerGetPublicSpeakerMemoResponse = (eventsControllerGetPublicSpeakerMemoResponseSuccess)
+
+export const getEventsControllerGetPublicSpeakerMemoUrl = (hash: string,) => {
+
+
+  
+
+  return `/api/events/public/speaker-memo/${hash}`
+}
+
+export const eventsControllerGetPublicSpeakerMemo = async (hash: string, options?: RequestInit): Promise<eventsControllerGetPublicSpeakerMemoResponse> => {
+  
+  return customInstance<eventsControllerGetPublicSpeakerMemoResponse>(getEventsControllerGetPublicSpeakerMemoUrl(hash),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getEventsControllerGetPublicSpeakerMemoKey = (hash: string,) => [`/api/events/public/speaker-memo/${hash}`] as const;
+
+export type EventsControllerGetPublicSpeakerMemoQueryResult = NonNullable<Awaited<ReturnType<typeof eventsControllerGetPublicSpeakerMemo>>>
+
+export const useEventsControllerGetPublicSpeakerMemo = <TError = ErrorType<unknown>>(
+  hash: string, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof eventsControllerGetPublicSpeakerMemo>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(hash)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getEventsControllerGetPublicSpeakerMemoKey(hash) : null);
+  const swrFn = () => eventsControllerGetPublicSpeakerMemo(hash, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}

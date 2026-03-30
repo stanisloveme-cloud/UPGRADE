@@ -5,65 +5,363 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
+import useSwr from 'swr';
+import type {
+  Arguments,
+  Key,
+  SWRConfiguration
+} from 'swr';
+
+import useSWRMutation from 'swr/mutation';
+import type {
+  SWRMutationConfiguration
+} from 'swr/mutation';
+
 import { customInstance } from '../../custom-instance';
+import type { ErrorType } from '../../custom-instance';
 
 
-type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+  
+  type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
-  export const getUploads = () => {
-const uploadsControllerUploadSpeakerPhoto = (
+  
+export type uploadsControllerUploadSpeakerPhotoResponse201 = {
+  data: void
+  status: 201
+}
+
+export type uploadsControllerUploadSpeakerPhotoResponseSuccess = (uploadsControllerUploadSpeakerPhotoResponse201) & {
+  headers: Headers;
+};
+;
+
+export type uploadsControllerUploadSpeakerPhotoResponse = (uploadsControllerUploadSpeakerPhotoResponseSuccess)
+
+export const getUploadsControllerUploadSpeakerPhotoUrl = () => {
+
+
+  
+
+  return `/api/uploads/speaker-photo`
+}
+
+export const uploadsControllerUploadSpeakerPhoto = async ( options?: RequestInit): Promise<uploadsControllerUploadSpeakerPhotoResponse> => {
+  
+  return customInstance<uploadsControllerUploadSpeakerPhotoResponse>(getUploadsControllerUploadSpeakerPhotoUrl(),
+  {      
+    ...options,
+    method: 'POST'
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/uploads/speaker-photo`, method: 'POST'
-    },
-      options);
-    }
-  const uploadsControllerUploadLogo = (
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/uploads/logo`, method: 'POST'
-    },
-      options);
-    }
-  const uploadsControllerUploadPresentation = (
+  }
+);}
+  
+
+
+
+export const getUploadsControllerUploadSpeakerPhotoMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return uploadsControllerUploadSpeakerPhoto(options);
+  }
+}
+export const getUploadsControllerUploadSpeakerPhotoMutationKey = () => [`/api/uploads/speaker-photo`] as const;
+
+export type UploadsControllerUploadSpeakerPhotoMutationResult = NonNullable<Awaited<ReturnType<typeof uploadsControllerUploadSpeakerPhoto>>>
+
+export const useUploadsControllerUploadSpeakerPhoto = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof uploadsControllerUploadSpeakerPhoto>>, TError, Key, Arguments, Awaited<ReturnType<typeof uploadsControllerUploadSpeakerPhoto>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getUploadsControllerUploadSpeakerPhotoMutationKey();
+  const swrFn = getUploadsControllerUploadSpeakerPhotoMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type uploadsControllerUploadLogoResponse201 = {
+  data: void
+  status: 201
+}
+
+export type uploadsControllerUploadLogoResponseSuccess = (uploadsControllerUploadLogoResponse201) & {
+  headers: Headers;
+};
+;
+
+export type uploadsControllerUploadLogoResponse = (uploadsControllerUploadLogoResponseSuccess)
+
+export const getUploadsControllerUploadLogoUrl = () => {
+
+
+  
+
+  return `/api/uploads/logo`
+}
+
+export const uploadsControllerUploadLogo = async ( options?: RequestInit): Promise<uploadsControllerUploadLogoResponse> => {
+  
+  return customInstance<uploadsControllerUploadLogoResponse>(getUploadsControllerUploadLogoUrl(),
+  {      
+    ...options,
+    method: 'POST'
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/uploads/presentation`, method: 'POST'
-    },
-      options);
-    }
-  const uploadsControllerServePhoto = (
-    filename: string,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/uploads/photos/${filename}`, method: 'GET'
-    },
-      options);
-    }
-  const uploadsControllerServeLogo = (
-    filename: string,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/uploads/logos/${filename}`, method: 'GET'
-    },
-      options);
-    }
-  const uploadsControllerServePresentation = (
-    filename: string,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/uploads/presentations/${filename}`, method: 'GET'
-    },
-      options);
-    }
-  return {uploadsControllerUploadSpeakerPhoto,uploadsControllerUploadLogo,uploadsControllerUploadPresentation,uploadsControllerServePhoto,uploadsControllerServeLogo,uploadsControllerServePresentation}};
-export type UploadsControllerUploadSpeakerPhotoResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUploads>['uploadsControllerUploadSpeakerPhoto']>>>
-export type UploadsControllerUploadLogoResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUploads>['uploadsControllerUploadLogo']>>>
-export type UploadsControllerUploadPresentationResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUploads>['uploadsControllerUploadPresentation']>>>
-export type UploadsControllerServePhotoResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUploads>['uploadsControllerServePhoto']>>>
-export type UploadsControllerServeLogoResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUploads>['uploadsControllerServeLogo']>>>
-export type UploadsControllerServePresentationResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUploads>['uploadsControllerServePresentation']>>>
+    
+  }
+);}
+  
+
+
+
+export const getUploadsControllerUploadLogoMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return uploadsControllerUploadLogo(options);
+  }
+}
+export const getUploadsControllerUploadLogoMutationKey = () => [`/api/uploads/logo`] as const;
+
+export type UploadsControllerUploadLogoMutationResult = NonNullable<Awaited<ReturnType<typeof uploadsControllerUploadLogo>>>
+
+export const useUploadsControllerUploadLogo = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof uploadsControllerUploadLogo>>, TError, Key, Arguments, Awaited<ReturnType<typeof uploadsControllerUploadLogo>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getUploadsControllerUploadLogoMutationKey();
+  const swrFn = getUploadsControllerUploadLogoMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type uploadsControllerUploadPresentationResponse201 = {
+  data: void
+  status: 201
+}
+
+export type uploadsControllerUploadPresentationResponseSuccess = (uploadsControllerUploadPresentationResponse201) & {
+  headers: Headers;
+};
+;
+
+export type uploadsControllerUploadPresentationResponse = (uploadsControllerUploadPresentationResponseSuccess)
+
+export const getUploadsControllerUploadPresentationUrl = () => {
+
+
+  
+
+  return `/api/uploads/presentation`
+}
+
+export const uploadsControllerUploadPresentation = async ( options?: RequestInit): Promise<uploadsControllerUploadPresentationResponse> => {
+  
+  return customInstance<uploadsControllerUploadPresentationResponse>(getUploadsControllerUploadPresentationUrl(),
+  {      
+    ...options,
+    method: 'POST'
+    
+    
+  }
+);}
+  
+
+
+
+export const getUploadsControllerUploadPresentationMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return uploadsControllerUploadPresentation(options);
+  }
+}
+export const getUploadsControllerUploadPresentationMutationKey = () => [`/api/uploads/presentation`] as const;
+
+export type UploadsControllerUploadPresentationMutationResult = NonNullable<Awaited<ReturnType<typeof uploadsControllerUploadPresentation>>>
+
+export const useUploadsControllerUploadPresentation = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof uploadsControllerUploadPresentation>>, TError, Key, Arguments, Awaited<ReturnType<typeof uploadsControllerUploadPresentation>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getUploadsControllerUploadPresentationMutationKey();
+  const swrFn = getUploadsControllerUploadPresentationMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type uploadsControllerServePhotoResponse200 = {
+  data: void
+  status: 200
+}
+
+export type uploadsControllerServePhotoResponseSuccess = (uploadsControllerServePhotoResponse200) & {
+  headers: Headers;
+};
+;
+
+export type uploadsControllerServePhotoResponse = (uploadsControllerServePhotoResponseSuccess)
+
+export const getUploadsControllerServePhotoUrl = (filename: string,) => {
+
+
+  
+
+  return `/api/uploads/photos/${filename}`
+}
+
+export const uploadsControllerServePhoto = async (filename: string, options?: RequestInit): Promise<uploadsControllerServePhotoResponse> => {
+  
+  return customInstance<uploadsControllerServePhotoResponse>(getUploadsControllerServePhotoUrl(filename),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getUploadsControllerServePhotoKey = (filename: string,) => [`/api/uploads/photos/${filename}`] as const;
+
+export type UploadsControllerServePhotoQueryResult = NonNullable<Awaited<ReturnType<typeof uploadsControllerServePhoto>>>
+
+export const useUploadsControllerServePhoto = <TError = ErrorType<unknown>>(
+  filename: string, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof uploadsControllerServePhoto>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(filename)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getUploadsControllerServePhotoKey(filename) : null);
+  const swrFn = () => uploadsControllerServePhoto(filename, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type uploadsControllerServeLogoResponse200 = {
+  data: void
+  status: 200
+}
+
+export type uploadsControllerServeLogoResponseSuccess = (uploadsControllerServeLogoResponse200) & {
+  headers: Headers;
+};
+;
+
+export type uploadsControllerServeLogoResponse = (uploadsControllerServeLogoResponseSuccess)
+
+export const getUploadsControllerServeLogoUrl = (filename: string,) => {
+
+
+  
+
+  return `/api/uploads/logos/${filename}`
+}
+
+export const uploadsControllerServeLogo = async (filename: string, options?: RequestInit): Promise<uploadsControllerServeLogoResponse> => {
+  
+  return customInstance<uploadsControllerServeLogoResponse>(getUploadsControllerServeLogoUrl(filename),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getUploadsControllerServeLogoKey = (filename: string,) => [`/api/uploads/logos/${filename}`] as const;
+
+export type UploadsControllerServeLogoQueryResult = NonNullable<Awaited<ReturnType<typeof uploadsControllerServeLogo>>>
+
+export const useUploadsControllerServeLogo = <TError = ErrorType<unknown>>(
+  filename: string, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof uploadsControllerServeLogo>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(filename)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getUploadsControllerServeLogoKey(filename) : null);
+  const swrFn = () => uploadsControllerServeLogo(filename, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type uploadsControllerServePresentationResponse200 = {
+  data: void
+  status: 200
+}
+
+export type uploadsControllerServePresentationResponseSuccess = (uploadsControllerServePresentationResponse200) & {
+  headers: Headers;
+};
+;
+
+export type uploadsControllerServePresentationResponse = (uploadsControllerServePresentationResponseSuccess)
+
+export const getUploadsControllerServePresentationUrl = (filename: string,) => {
+
+
+  
+
+  return `/api/uploads/presentations/${filename}`
+}
+
+export const uploadsControllerServePresentation = async (filename: string, options?: RequestInit): Promise<uploadsControllerServePresentationResponse> => {
+  
+  return customInstance<uploadsControllerServePresentationResponse>(getUploadsControllerServePresentationUrl(filename),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getUploadsControllerServePresentationKey = (filename: string,) => [`/api/uploads/presentations/${filename}`] as const;
+
+export type UploadsControllerServePresentationQueryResult = NonNullable<Awaited<ReturnType<typeof uploadsControllerServePresentation>>>
+
+export const useUploadsControllerServePresentation = <TError = ErrorType<unknown>>(
+  filename: string, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof uploadsControllerServePresentation>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(filename)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getUploadsControllerServePresentationKey(filename) : null);
+  const swrFn = () => uploadsControllerServePresentation(filename, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}

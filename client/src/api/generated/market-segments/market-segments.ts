@@ -5,60 +5,313 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
+import useSwr from 'swr';
+import type {
+  Arguments,
+  Key,
+  SWRConfiguration
+} from 'swr';
+
+import useSWRMutation from 'swr/mutation';
+import type {
+  SWRMutationConfiguration
+} from 'swr/mutation';
+
 import type {
   MarketSegmentsControllerGetTree200Item
 } from '../model';
 
 import { customInstance } from '../../custom-instance';
+import type { ErrorType } from '../../custom-instance';
 
 
-type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+  
+  type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
-  export const getMarketSegments = () => {
-const marketSegmentsControllerGetTree = (
+  
+export type marketSegmentsControllerGetTreeResponse200 = {
+  data: MarketSegmentsControllerGetTree200Item[]
+  status: 200
+}
+
+export type marketSegmentsControllerGetTreeResponseSuccess = (marketSegmentsControllerGetTreeResponse200) & {
+  headers: Headers;
+};
+;
+
+export type marketSegmentsControllerGetTreeResponse = (marketSegmentsControllerGetTreeResponseSuccess)
+
+export const getMarketSegmentsControllerGetTreeUrl = () => {
+
+
+  
+
+  return `/api/market-segments/tree`
+}
+
+export const marketSegmentsControllerGetTree = async ( options?: RequestInit): Promise<marketSegmentsControllerGetTreeResponse> => {
+  
+  return customInstance<marketSegmentsControllerGetTreeResponse>(getMarketSegmentsControllerGetTreeUrl(),
+  {      
+    ...options,
+    method: 'GET'
     
- options?: SecondParameter<typeof customInstance<MarketSegmentsControllerGetTree200Item[]>>,) => {
-      return customInstance<MarketSegmentsControllerGetTree200Item[]>(
-      {url: `/api/market-segments/tree`, method: 'GET'
-    },
-      options);
-    }
-  const marketSegmentsControllerFindAll = (
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/market-segments`, method: 'GET'
-    },
-      options);
-    }
-  const marketSegmentsControllerCreate = (
+  }
+);}
+  
+
+
+
+export const getMarketSegmentsControllerGetTreeKey = () => [`/api/market-segments/tree`] as const;
+
+export type MarketSegmentsControllerGetTreeQueryResult = NonNullable<Awaited<ReturnType<typeof marketSegmentsControllerGetTree>>>
+
+export const useMarketSegmentsControllerGetTree = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof marketSegmentsControllerGetTree>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getMarketSegmentsControllerGetTreeKey() : null);
+  const swrFn = () => marketSegmentsControllerGetTree(requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type marketSegmentsControllerFindAllResponse200 = {
+  data: void
+  status: 200
+}
+
+export type marketSegmentsControllerFindAllResponseSuccess = (marketSegmentsControllerFindAllResponse200) & {
+  headers: Headers;
+};
+;
+
+export type marketSegmentsControllerFindAllResponse = (marketSegmentsControllerFindAllResponseSuccess)
+
+export const getMarketSegmentsControllerFindAllUrl = () => {
+
+
+  
+
+  return `/api/market-segments`
+}
+
+export const marketSegmentsControllerFindAll = async ( options?: RequestInit): Promise<marketSegmentsControllerFindAllResponse> => {
+  
+  return customInstance<marketSegmentsControllerFindAllResponse>(getMarketSegmentsControllerFindAllUrl(),
+  {      
+    ...options,
+    method: 'GET'
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/market-segments`, method: 'POST'
-    },
-      options);
-    }
-  const marketSegmentsControllerUpdate = (
-    id: string,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/market-segments/${id}`, method: 'PATCH'
-    },
-      options);
-    }
-  const marketSegmentsControllerRemove = (
-    id: string,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/market-segments/${id}`, method: 'DELETE'
-    },
-      options);
-    }
-  return {marketSegmentsControllerGetTree,marketSegmentsControllerFindAll,marketSegmentsControllerCreate,marketSegmentsControllerUpdate,marketSegmentsControllerRemove}};
-export type MarketSegmentsControllerGetTreeResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getMarketSegments>['marketSegmentsControllerGetTree']>>>
-export type MarketSegmentsControllerFindAllResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getMarketSegments>['marketSegmentsControllerFindAll']>>>
-export type MarketSegmentsControllerCreateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getMarketSegments>['marketSegmentsControllerCreate']>>>
-export type MarketSegmentsControllerUpdateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getMarketSegments>['marketSegmentsControllerUpdate']>>>
-export type MarketSegmentsControllerRemoveResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getMarketSegments>['marketSegmentsControllerRemove']>>>
+    
+  }
+);}
+  
+
+
+
+export const getMarketSegmentsControllerFindAllKey = () => [`/api/market-segments`] as const;
+
+export type MarketSegmentsControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof marketSegmentsControllerFindAll>>>
+
+export const useMarketSegmentsControllerFindAll = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof marketSegmentsControllerFindAll>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getMarketSegmentsControllerFindAllKey() : null);
+  const swrFn = () => marketSegmentsControllerFindAll(requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type marketSegmentsControllerCreateResponse201 = {
+  data: void
+  status: 201
+}
+
+export type marketSegmentsControllerCreateResponseSuccess = (marketSegmentsControllerCreateResponse201) & {
+  headers: Headers;
+};
+;
+
+export type marketSegmentsControllerCreateResponse = (marketSegmentsControllerCreateResponseSuccess)
+
+export const getMarketSegmentsControllerCreateUrl = () => {
+
+
+  
+
+  return `/api/market-segments`
+}
+
+export const marketSegmentsControllerCreate = async ( options?: RequestInit): Promise<marketSegmentsControllerCreateResponse> => {
+  
+  return customInstance<marketSegmentsControllerCreateResponse>(getMarketSegmentsControllerCreateUrl(),
+  {      
+    ...options,
+    method: 'POST'
+    
+    
+  }
+);}
+  
+
+
+
+export const getMarketSegmentsControllerCreateMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return marketSegmentsControllerCreate(options);
+  }
+}
+export const getMarketSegmentsControllerCreateMutationKey = () => [`/api/market-segments`] as const;
+
+export type MarketSegmentsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof marketSegmentsControllerCreate>>>
+
+export const useMarketSegmentsControllerCreate = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof marketSegmentsControllerCreate>>, TError, Key, Arguments, Awaited<ReturnType<typeof marketSegmentsControllerCreate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getMarketSegmentsControllerCreateMutationKey();
+  const swrFn = getMarketSegmentsControllerCreateMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type marketSegmentsControllerUpdateResponse200 = {
+  data: void
+  status: 200
+}
+
+export type marketSegmentsControllerUpdateResponseSuccess = (marketSegmentsControllerUpdateResponse200) & {
+  headers: Headers;
+};
+;
+
+export type marketSegmentsControllerUpdateResponse = (marketSegmentsControllerUpdateResponseSuccess)
+
+export const getMarketSegmentsControllerUpdateUrl = (id: string,) => {
+
+
+  
+
+  return `/api/market-segments/${id}`
+}
+
+export const marketSegmentsControllerUpdate = async (id: string, options?: RequestInit): Promise<marketSegmentsControllerUpdateResponse> => {
+  
+  return customInstance<marketSegmentsControllerUpdateResponse>(getMarketSegmentsControllerUpdateUrl(id),
+  {      
+    ...options,
+    method: 'PATCH'
+    
+    
+  }
+);}
+  
+
+
+
+export const getMarketSegmentsControllerUpdateMutationFetcher = (id: string, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return marketSegmentsControllerUpdate(id, options);
+  }
+}
+export const getMarketSegmentsControllerUpdateMutationKey = (id: string,) => [`/api/market-segments/${id}`] as const;
+
+export type MarketSegmentsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof marketSegmentsControllerUpdate>>>
+
+export const useMarketSegmentsControllerUpdate = <TError = ErrorType<unknown>>(
+  id: string, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof marketSegmentsControllerUpdate>>, TError, Key, Arguments, Awaited<ReturnType<typeof marketSegmentsControllerUpdate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getMarketSegmentsControllerUpdateMutationKey(id);
+  const swrFn = getMarketSegmentsControllerUpdateMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type marketSegmentsControllerRemoveResponse200 = {
+  data: void
+  status: 200
+}
+
+export type marketSegmentsControllerRemoveResponseSuccess = (marketSegmentsControllerRemoveResponse200) & {
+  headers: Headers;
+};
+;
+
+export type marketSegmentsControllerRemoveResponse = (marketSegmentsControllerRemoveResponseSuccess)
+
+export const getMarketSegmentsControllerRemoveUrl = (id: string,) => {
+
+
+  
+
+  return `/api/market-segments/${id}`
+}
+
+export const marketSegmentsControllerRemove = async (id: string, options?: RequestInit): Promise<marketSegmentsControllerRemoveResponse> => {
+  
+  return customInstance<marketSegmentsControllerRemoveResponse>(getMarketSegmentsControllerRemoveUrl(id),
+  {      
+    ...options,
+    method: 'DELETE'
+    
+    
+  }
+);}
+  
+
+
+
+export const getMarketSegmentsControllerRemoveMutationFetcher = (id: string, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return marketSegmentsControllerRemove(id, options);
+  }
+}
+export const getMarketSegmentsControllerRemoveMutationKey = (id: string,) => [`/api/market-segments/${id}`] as const;
+
+export type MarketSegmentsControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof marketSegmentsControllerRemove>>>
+
+export const useMarketSegmentsControllerRemove = <TError = ErrorType<unknown>>(
+  id: string, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof marketSegmentsControllerRemove>>, TError, Key, Arguments, Awaited<ReturnType<typeof marketSegmentsControllerRemove>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getMarketSegmentsControllerRemoveMutationKey(id);
+  const swrFn = getMarketSegmentsControllerRemoveMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}

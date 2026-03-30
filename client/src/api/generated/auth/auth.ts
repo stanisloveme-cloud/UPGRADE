@@ -5,60 +5,318 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
+import useSwr from 'swr';
+import type {
+  Arguments,
+  Key,
+  SWRConfiguration
+} from 'swr';
+
+import useSWRMutation from 'swr/mutation';
+import type {
+  SWRMutationConfiguration
+} from 'swr/mutation';
+
 import type {
   AuthControllerGetProfile200
 } from '../model';
 
 import { customInstance } from '../../custom-instance';
+import type { ErrorType } from '../../custom-instance';
 
 
-type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+  
+  type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
-  export const getAuth = () => {
-const authControllerLogin = (
+  
+export type authControllerLoginResponse201 = {
+  data: void
+  status: 201
+}
+
+export type authControllerLoginResponseSuccess = (authControllerLoginResponse201) & {
+  headers: Headers;
+};
+;
+
+export type authControllerLoginResponse = (authControllerLoginResponseSuccess)
+
+export const getAuthControllerLoginUrl = () => {
+
+
+  
+
+  return `/auth/login`
+}
+
+export const authControllerLogin = async ( options?: RequestInit): Promise<authControllerLoginResponse> => {
+  
+  return customInstance<authControllerLoginResponse>(getAuthControllerLoginUrl(),
+  {      
+    ...options,
+    method: 'POST'
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/auth/login`, method: 'POST'
-    },
-      options);
-    }
-  const authControllerGetProfile = (
     
- options?: SecondParameter<typeof customInstance<AuthControllerGetProfile200>>,) => {
-      return customInstance<AuthControllerGetProfile200>(
-      {url: `/auth/profile`, method: 'GET'
-    },
-      options);
-    }
-  const authControllerLogout = (
+  }
+);}
+  
+
+
+
+export const getAuthControllerLoginMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return authControllerLogin(options);
+  }
+}
+export const getAuthControllerLoginMutationKey = () => [`/auth/login`] as const;
+
+export type AuthControllerLoginMutationResult = NonNullable<Awaited<ReturnType<typeof authControllerLogin>>>
+
+export const useAuthControllerLogin = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof authControllerLogin>>, TError, Key, Arguments, Awaited<ReturnType<typeof authControllerLogin>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getAuthControllerLoginMutationKey();
+  const swrFn = getAuthControllerLoginMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type authControllerGetProfileResponse200 = {
+  data: AuthControllerGetProfile200
+  status: 200
+}
+
+export type authControllerGetProfileResponseSuccess = (authControllerGetProfileResponse200) & {
+  headers: Headers;
+};
+;
+
+export type authControllerGetProfileResponse = (authControllerGetProfileResponseSuccess)
+
+export const getAuthControllerGetProfileUrl = () => {
+
+
+  
+
+  return `/auth/profile`
+}
+
+export const authControllerGetProfile = async ( options?: RequestInit): Promise<authControllerGetProfileResponse> => {
+  
+  return customInstance<authControllerGetProfileResponse>(getAuthControllerGetProfileUrl(),
+  {      
+    ...options,
+    method: 'GET'
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/auth/logout`, method: 'POST'
-    },
-      options);
-    }
-  const authControllerForgotPassword = (
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/auth/forgot-password`, method: 'POST'
-    },
-      options);
-    }
-  const authControllerResetPassword = (
+  }
+);}
+  
+
+
+
+export const getAuthControllerGetProfileKey = () => [`/auth/profile`] as const;
+
+export type AuthControllerGetProfileQueryResult = NonNullable<Awaited<ReturnType<typeof authControllerGetProfile>>>
+
+export const useAuthControllerGetProfile = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof authControllerGetProfile>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getAuthControllerGetProfileKey() : null);
+  const swrFn = () => authControllerGetProfile(requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type authControllerLogoutResponse201 = {
+  data: void
+  status: 201
+}
+
+export type authControllerLogoutResponseSuccess = (authControllerLogoutResponse201) & {
+  headers: Headers;
+};
+;
+
+export type authControllerLogoutResponse = (authControllerLogoutResponseSuccess)
+
+export const getAuthControllerLogoutUrl = () => {
+
+
+  
+
+  return `/auth/logout`
+}
+
+export const authControllerLogout = async ( options?: RequestInit): Promise<authControllerLogoutResponse> => {
+  
+  return customInstance<authControllerLogoutResponse>(getAuthControllerLogoutUrl(),
+  {      
+    ...options,
+    method: 'POST'
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/auth/reset-password`, method: 'POST'
-    },
-      options);
-    }
-  return {authControllerLogin,authControllerGetProfile,authControllerLogout,authControllerForgotPassword,authControllerResetPassword}};
-export type AuthControllerLoginResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getAuth>['authControllerLogin']>>>
-export type AuthControllerGetProfileResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getAuth>['authControllerGetProfile']>>>
-export type AuthControllerLogoutResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getAuth>['authControllerLogout']>>>
-export type AuthControllerForgotPasswordResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getAuth>['authControllerForgotPassword']>>>
-export type AuthControllerResetPasswordResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getAuth>['authControllerResetPassword']>>>
+    
+  }
+);}
+  
+
+
+
+export const getAuthControllerLogoutMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return authControllerLogout(options);
+  }
+}
+export const getAuthControllerLogoutMutationKey = () => [`/auth/logout`] as const;
+
+export type AuthControllerLogoutMutationResult = NonNullable<Awaited<ReturnType<typeof authControllerLogout>>>
+
+export const useAuthControllerLogout = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof authControllerLogout>>, TError, Key, Arguments, Awaited<ReturnType<typeof authControllerLogout>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getAuthControllerLogoutMutationKey();
+  const swrFn = getAuthControllerLogoutMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type authControllerForgotPasswordResponse201 = {
+  data: void
+  status: 201
+}
+
+export type authControllerForgotPasswordResponseSuccess = (authControllerForgotPasswordResponse201) & {
+  headers: Headers;
+};
+;
+
+export type authControllerForgotPasswordResponse = (authControllerForgotPasswordResponseSuccess)
+
+export const getAuthControllerForgotPasswordUrl = () => {
+
+
+  
+
+  return `/auth/forgot-password`
+}
+
+export const authControllerForgotPassword = async ( options?: RequestInit): Promise<authControllerForgotPasswordResponse> => {
+  
+  return customInstance<authControllerForgotPasswordResponse>(getAuthControllerForgotPasswordUrl(),
+  {      
+    ...options,
+    method: 'POST'
+    
+    
+  }
+);}
+  
+
+
+
+export const getAuthControllerForgotPasswordMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return authControllerForgotPassword(options);
+  }
+}
+export const getAuthControllerForgotPasswordMutationKey = () => [`/auth/forgot-password`] as const;
+
+export type AuthControllerForgotPasswordMutationResult = NonNullable<Awaited<ReturnType<typeof authControllerForgotPassword>>>
+
+export const useAuthControllerForgotPassword = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof authControllerForgotPassword>>, TError, Key, Arguments, Awaited<ReturnType<typeof authControllerForgotPassword>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getAuthControllerForgotPasswordMutationKey();
+  const swrFn = getAuthControllerForgotPasswordMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type authControllerResetPasswordResponse201 = {
+  data: void
+  status: 201
+}
+
+export type authControllerResetPasswordResponseSuccess = (authControllerResetPasswordResponse201) & {
+  headers: Headers;
+};
+;
+
+export type authControllerResetPasswordResponse = (authControllerResetPasswordResponseSuccess)
+
+export const getAuthControllerResetPasswordUrl = () => {
+
+
+  
+
+  return `/auth/reset-password`
+}
+
+export const authControllerResetPassword = async ( options?: RequestInit): Promise<authControllerResetPasswordResponse> => {
+  
+  return customInstance<authControllerResetPasswordResponse>(getAuthControllerResetPasswordUrl(),
+  {      
+    ...options,
+    method: 'POST'
+    
+    
+  }
+);}
+  
+
+
+
+export const getAuthControllerResetPasswordMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return authControllerResetPassword(options);
+  }
+}
+export const getAuthControllerResetPasswordMutationKey = () => [`/auth/reset-password`] as const;
+
+export type AuthControllerResetPasswordMutationResult = NonNullable<Awaited<ReturnType<typeof authControllerResetPassword>>>
+
+export const useAuthControllerResetPassword = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof authControllerResetPassword>>, TError, Key, Arguments, Awaited<ReturnType<typeof authControllerResetPassword>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getAuthControllerResetPasswordMutationKey();
+  const swrFn = getAuthControllerResetPasswordMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}

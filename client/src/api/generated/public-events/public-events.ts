@@ -5,6 +5,12 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
+import useSwr from 'swr';
+import type {
+  Key,
+  SWRConfiguration
+} from 'swr';
+
 import type {
   PublicEventsControllerGetSchedule200Item,
   PublicEventsControllerGetSpeakers200Item,
@@ -12,46 +18,227 @@ import type {
 } from '../model';
 
 import { customInstance } from '../../custom-instance';
+import type { ErrorType } from '../../custom-instance';
 
 
-type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+  
+  type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
-  export const getPublicEvents = () => {
-const publicEventsControllerGetWebsiteData = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/public/events/${id}/website-data`, method: 'GET'
-    },
-      options);
-    }
-  const publicEventsControllerGetSchedule = (
-    id: number,
- options?: SecondParameter<typeof customInstance<PublicEventsControllerGetSchedule200Item[]>>,) => {
-      return customInstance<PublicEventsControllerGetSchedule200Item[]>(
-      {url: `/api/public/events/${id}/schedule`, method: 'GET'
-    },
-      options);
-    }
-  const publicEventsControllerGetSpeakers = (
-    id: number,
- options?: SecondParameter<typeof customInstance<PublicEventsControllerGetSpeakers200Item[]>>,) => {
-      return customInstance<PublicEventsControllerGetSpeakers200Item[]>(
-      {url: `/api/public/events/${id}/speakers`, method: 'GET'
-    },
-      options);
-    }
-  const publicEventsControllerGetSponsors = (
-    id: number,
- options?: SecondParameter<typeof customInstance<PublicEventsControllerGetSponsors200Item[]>>,) => {
-      return customInstance<PublicEventsControllerGetSponsors200Item[]>(
-      {url: `/api/public/events/${id}/sponsors`, method: 'GET'
-    },
-      options);
-    }
-  return {publicEventsControllerGetWebsiteData,publicEventsControllerGetSchedule,publicEventsControllerGetSpeakers,publicEventsControllerGetSponsors}};
-export type PublicEventsControllerGetWebsiteDataResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getPublicEvents>['publicEventsControllerGetWebsiteData']>>>
-export type PublicEventsControllerGetScheduleResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getPublicEvents>['publicEventsControllerGetSchedule']>>>
-export type PublicEventsControllerGetSpeakersResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getPublicEvents>['publicEventsControllerGetSpeakers']>>>
-export type PublicEventsControllerGetSponsorsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getPublicEvents>['publicEventsControllerGetSponsors']>>>
+  
+export type publicEventsControllerGetWebsiteDataResponse200 = {
+  data: void
+  status: 200
+}
+
+export type publicEventsControllerGetWebsiteDataResponseSuccess = (publicEventsControllerGetWebsiteDataResponse200) & {
+  headers: Headers;
+};
+;
+
+export type publicEventsControllerGetWebsiteDataResponse = (publicEventsControllerGetWebsiteDataResponseSuccess)
+
+export const getPublicEventsControllerGetWebsiteDataUrl = (id: number,) => {
+
+
+  
+
+  return `/api/public/events/${id}/website-data`
+}
+
+export const publicEventsControllerGetWebsiteData = async (id: number, options?: RequestInit): Promise<publicEventsControllerGetWebsiteDataResponse> => {
+  
+  return customInstance<publicEventsControllerGetWebsiteDataResponse>(getPublicEventsControllerGetWebsiteDataUrl(id),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getPublicEventsControllerGetWebsiteDataKey = (id: number,) => [`/api/public/events/${id}/website-data`] as const;
+
+export type PublicEventsControllerGetWebsiteDataQueryResult = NonNullable<Awaited<ReturnType<typeof publicEventsControllerGetWebsiteData>>>
+
+export const usePublicEventsControllerGetWebsiteData = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof publicEventsControllerGetWebsiteData>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(id)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getPublicEventsControllerGetWebsiteDataKey(id) : null);
+  const swrFn = () => publicEventsControllerGetWebsiteData(id, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type publicEventsControllerGetScheduleResponse200 = {
+  data: PublicEventsControllerGetSchedule200Item[]
+  status: 200
+}
+
+export type publicEventsControllerGetScheduleResponseSuccess = (publicEventsControllerGetScheduleResponse200) & {
+  headers: Headers;
+};
+;
+
+export type publicEventsControllerGetScheduleResponse = (publicEventsControllerGetScheduleResponseSuccess)
+
+export const getPublicEventsControllerGetScheduleUrl = (id: number,) => {
+
+
+  
+
+  return `/api/public/events/${id}/schedule`
+}
+
+export const publicEventsControllerGetSchedule = async (id: number, options?: RequestInit): Promise<publicEventsControllerGetScheduleResponse> => {
+  
+  return customInstance<publicEventsControllerGetScheduleResponse>(getPublicEventsControllerGetScheduleUrl(id),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getPublicEventsControllerGetScheduleKey = (id: number,) => [`/api/public/events/${id}/schedule`] as const;
+
+export type PublicEventsControllerGetScheduleQueryResult = NonNullable<Awaited<ReturnType<typeof publicEventsControllerGetSchedule>>>
+
+export const usePublicEventsControllerGetSchedule = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof publicEventsControllerGetSchedule>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(id)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getPublicEventsControllerGetScheduleKey(id) : null);
+  const swrFn = () => publicEventsControllerGetSchedule(id, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type publicEventsControllerGetSpeakersResponse200 = {
+  data: PublicEventsControllerGetSpeakers200Item[]
+  status: 200
+}
+
+export type publicEventsControllerGetSpeakersResponseSuccess = (publicEventsControllerGetSpeakersResponse200) & {
+  headers: Headers;
+};
+;
+
+export type publicEventsControllerGetSpeakersResponse = (publicEventsControllerGetSpeakersResponseSuccess)
+
+export const getPublicEventsControllerGetSpeakersUrl = (id: number,) => {
+
+
+  
+
+  return `/api/public/events/${id}/speakers`
+}
+
+export const publicEventsControllerGetSpeakers = async (id: number, options?: RequestInit): Promise<publicEventsControllerGetSpeakersResponse> => {
+  
+  return customInstance<publicEventsControllerGetSpeakersResponse>(getPublicEventsControllerGetSpeakersUrl(id),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getPublicEventsControllerGetSpeakersKey = (id: number,) => [`/api/public/events/${id}/speakers`] as const;
+
+export type PublicEventsControllerGetSpeakersQueryResult = NonNullable<Awaited<ReturnType<typeof publicEventsControllerGetSpeakers>>>
+
+export const usePublicEventsControllerGetSpeakers = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof publicEventsControllerGetSpeakers>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(id)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getPublicEventsControllerGetSpeakersKey(id) : null);
+  const swrFn = () => publicEventsControllerGetSpeakers(id, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type publicEventsControllerGetSponsorsResponse200 = {
+  data: PublicEventsControllerGetSponsors200Item[]
+  status: 200
+}
+
+export type publicEventsControllerGetSponsorsResponseSuccess = (publicEventsControllerGetSponsorsResponse200) & {
+  headers: Headers;
+};
+;
+
+export type publicEventsControllerGetSponsorsResponse = (publicEventsControllerGetSponsorsResponseSuccess)
+
+export const getPublicEventsControllerGetSponsorsUrl = (id: number,) => {
+
+
+  
+
+  return `/api/public/events/${id}/sponsors`
+}
+
+export const publicEventsControllerGetSponsors = async (id: number, options?: RequestInit): Promise<publicEventsControllerGetSponsorsResponse> => {
+  
+  return customInstance<publicEventsControllerGetSponsorsResponse>(getPublicEventsControllerGetSponsorsUrl(id),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getPublicEventsControllerGetSponsorsKey = (id: number,) => [`/api/public/events/${id}/sponsors`] as const;
+
+export type PublicEventsControllerGetSponsorsQueryResult = NonNullable<Awaited<ReturnType<typeof publicEventsControllerGetSponsors>>>
+
+export const usePublicEventsControllerGetSponsors = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof publicEventsControllerGetSponsors>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false && !!(id)
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getPublicEventsControllerGetSponsorsKey(id) : null);
+  const swrFn = () => publicEventsControllerGetSponsors(id, requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}

@@ -5,24 +5,84 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
+import useSwr from 'swr';
 import type {
-  HealthControllerCheck200
+  Key,
+  SWRConfiguration
+} from 'swr';
+
+import type {
+  HealthControllerCheck200,
+  HealthControllerCheck503
 } from '../model';
 
 import { customInstance } from '../../custom-instance';
+import type { ErrorType } from '../../custom-instance';
 
 
-type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+  
+  type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
-  export const getHealth = () => {
-const healthControllerCheck = (
+  
+export type healthControllerCheckResponse200 = {
+  data: HealthControllerCheck200
+  status: 200
+}
+
+export type healthControllerCheckResponse503 = {
+  data: HealthControllerCheck503
+  status: 503
+}
+
+export type healthControllerCheckResponseSuccess = (healthControllerCheckResponse200) & {
+  headers: Headers;
+};
+export type healthControllerCheckResponseError = (healthControllerCheckResponse503) & {
+  headers: Headers;
+};
+
+export type healthControllerCheckResponse = (healthControllerCheckResponseSuccess | healthControllerCheckResponseError)
+
+export const getHealthControllerCheckUrl = () => {
+
+
+  
+
+  return `/api/v1/health`
+}
+
+export const healthControllerCheck = async ( options?: RequestInit): Promise<healthControllerCheckResponse> => {
+  
+  return customInstance<healthControllerCheckResponse>(getHealthControllerCheckUrl(),
+  {      
+    ...options,
+    method: 'GET'
     
- options?: SecondParameter<typeof customInstance<HealthControllerCheck200>>,) => {
-      return customInstance<HealthControllerCheck200>(
-      {url: `/api/v1/health`, method: 'GET'
-    },
-      options);
-    }
-  return {healthControllerCheck}};
-export type HealthControllerCheckResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getHealth>['healthControllerCheck']>>>
+    
+  }
+);}
+  
+
+
+
+export const getHealthControllerCheckKey = () => [`/api/v1/health`] as const;
+
+export type HealthControllerCheckQueryResult = NonNullable<Awaited<ReturnType<typeof healthControllerCheck>>>
+
+export const useHealthControllerCheck = <TError = ErrorType<HealthControllerCheck503>>(
+   options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof healthControllerCheck>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getHealthControllerCheckKey() : null);
+  const swrFn = () => healthControllerCheck(requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}

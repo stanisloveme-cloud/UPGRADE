@@ -4,6 +4,7 @@ import { Button, Tag, Typography, Tooltip, message, Space, Upload, Form, Modal }
 import { CopyOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, UploadOutlined, CloudDownloadOutlined } from '@ant-design/icons';
 import { MarketSegmentSelector } from '../../components/MarketSegmentSelector';
 import axios from 'axios';
+import { sponsorsControllerImportLegacyBrands, sponsorsControllerRemove, sponsorsControllerUpdate } from '../../api/generated/sponsors/sponsors';
 import dayjs from 'dayjs';
 import { SafeModalForm } from '../../components/SafeForms/SafeModalForm';
 import { sanitizeFormValues } from '../../utils/formSanitizer';
@@ -69,11 +70,9 @@ const BrandsCheck: React.FC = () => {
             onOk: async () => {
                 const hide = message.loading('Выполняется импорт...', 0);
                 try {
-                    const res = await axios.post('/api/sponsors/import-legacy');
+                    await sponsorsControllerImportLegacyBrands();
                     hide();
-                    if (res.data) {
-                        message.success(`Импорт завершен. Успешно: ${res.data.success}, Ошибок: ${res.data.errors}`);
-                    }
+                    message.success(`Импорт успешно завершен.`);
                     actionRef.current?.reload();
                 } catch (error) {
                     hide();
@@ -316,7 +315,7 @@ const BrandsCheck: React.FC = () => {
                     }, { arrayFields: ['cases'], listFields: ['cases'] })}
                     onDelete={async () => {
                         try {
-                            await axios.delete(`/api/sponsors/${record.id}`);
+                            await sponsorsControllerRemove(record.id);
                             message.success('Бренд успешно удален');
                             actionRef.current?.reload();
                             return true;
@@ -331,7 +330,7 @@ const BrandsCheck: React.FC = () => {
                             if (payload.logoUrl && Array.isArray(payload.logoUrl)) {
                                 payload.logoUrl = payload.logoUrl[0]?.response?.url || payload.logoUrl[0]?.url || payload.logoUrl[0]?.thumbUrl || "";
                             }
-                            await axios.patch(`/api/sponsors/${record.id}`, payload);
+                            await sponsorsControllerUpdate(record.id, payload);
                             message.success('Данные обновлены');
                             actionRef.current?.reload();
                             return true;

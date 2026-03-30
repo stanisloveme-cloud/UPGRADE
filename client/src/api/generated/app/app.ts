@@ -5,33 +5,141 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
+import useSwr from 'swr';
+import type {
+  Arguments,
+  Key,
+  SWRConfiguration
+} from 'swr';
+
+import useSWRMutation from 'swr/mutation';
+import type {
+  SWRMutationConfiguration
+} from 'swr/mutation';
+
 import type {
   AppControllerSeedLegacy201
 } from '../model';
 
 import { customInstance } from '../../custom-instance';
+import type { ErrorType } from '../../custom-instance';
 
 
-type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+  
+  type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
-  export const getApp = () => {
-const appControllerGetHello = (
+  
+export type appControllerGetHelloResponse200 = {
+  data: string
+  status: 200
+}
+
+export type appControllerGetHelloResponseSuccess = (appControllerGetHelloResponse200) & {
+  headers: Headers;
+};
+;
+
+export type appControllerGetHelloResponse = (appControllerGetHelloResponseSuccess)
+
+export const getAppControllerGetHelloUrl = () => {
+
+
+  
+
+  return `/api`
+}
+
+export const appControllerGetHello = async ( options?: RequestInit): Promise<appControllerGetHelloResponse> => {
+  
+  return customInstance<appControllerGetHelloResponse>(getAppControllerGetHelloUrl(),
+  {      
+    ...options,
+    method: 'GET'
     
- options?: SecondParameter<typeof customInstance<string>>,) => {
-      return customInstance<string>(
-      {url: `/api`, method: 'GET'
-    },
-      options);
-    }
-  const appControllerSeedLegacy = (
     
- options?: SecondParameter<typeof customInstance<AppControllerSeedLegacy201>>,) => {
-      return customInstance<AppControllerSeedLegacy201>(
-      {url: `/api/seed-legacy`, method: 'POST'
-    },
-      options);
-    }
-  return {appControllerGetHello,appControllerSeedLegacy}};
-export type AppControllerGetHelloResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getApp>['appControllerGetHello']>>>
-export type AppControllerSeedLegacyResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getApp>['appControllerSeedLegacy']>>>
+  }
+);}
+  
+
+
+
+export const getAppControllerGetHelloKey = () => [`/api`] as const;
+
+export type AppControllerGetHelloQueryResult = NonNullable<Awaited<ReturnType<typeof appControllerGetHello>>>
+
+export const useAppControllerGetHello = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof appControllerGetHello>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getAppControllerGetHelloKey() : null);
+  const swrFn = () => appControllerGetHello(requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type appControllerSeedLegacyResponse201 = {
+  data: AppControllerSeedLegacy201
+  status: 201
+}
+
+export type appControllerSeedLegacyResponseSuccess = (appControllerSeedLegacyResponse201) & {
+  headers: Headers;
+};
+;
+
+export type appControllerSeedLegacyResponse = (appControllerSeedLegacyResponseSuccess)
+
+export const getAppControllerSeedLegacyUrl = () => {
+
+
+  
+
+  return `/api/seed-legacy`
+}
+
+export const appControllerSeedLegacy = async ( options?: RequestInit): Promise<appControllerSeedLegacyResponse> => {
+  
+  return customInstance<appControllerSeedLegacyResponse>(getAppControllerSeedLegacyUrl(),
+  {      
+    ...options,
+    method: 'POST'
+    
+    
+  }
+);}
+  
+
+
+
+export const getAppControllerSeedLegacyMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return appControllerSeedLegacy(options);
+  }
+}
+export const getAppControllerSeedLegacyMutationKey = () => [`/api/seed-legacy`] as const;
+
+export type AppControllerSeedLegacyMutationResult = NonNullable<Awaited<ReturnType<typeof appControllerSeedLegacy>>>
+
+export const useAppControllerSeedLegacy = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof appControllerSeedLegacy>>, TError, Key, Arguments, Awaited<ReturnType<typeof appControllerSeedLegacy>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getAppControllerSeedLegacyMutationKey();
+  const swrFn = getAppControllerSeedLegacyMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}

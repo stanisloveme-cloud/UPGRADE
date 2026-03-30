@@ -5,6 +5,18 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
+import useSwr from 'swr';
+import type {
+  Arguments,
+  Key,
+  SWRConfiguration
+} from 'swr';
+
+import useSWRMutation from 'swr/mutation';
+import type {
+  SWRMutationConfiguration
+} from 'swr/mutation';
+
 import type {
   CreateUserDto,
   UpdatePasswordDto,
@@ -13,82 +25,419 @@ import type {
 } from '../model';
 
 import { customInstance } from '../../custom-instance';
+import type { ErrorType } from '../../custom-instance';
 
 
-type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+  
+  type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
-  export const getUsers = () => {
-const usersControllerFindAll = (
+  
+export type usersControllerFindAllResponse200 = {
+  data: void
+  status: 200
+}
+
+export type usersControllerFindAllResponseSuccess = (usersControllerFindAllResponse200) & {
+  headers: Headers;
+};
+;
+
+export type usersControllerFindAllResponse = (usersControllerFindAllResponseSuccess)
+
+export const getUsersControllerFindAllUrl = () => {
+
+
+  
+
+  return `/api/users`
+}
+
+export const usersControllerFindAll = async ( options?: RequestInit): Promise<usersControllerFindAllResponse> => {
+  
+  return customInstance<usersControllerFindAllResponse>(getUsersControllerFindAllUrl(),
+  {      
+    ...options,
+    method: 'GET'
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/users`, method: 'GET'
-    },
-      options);
-    }
-  const usersControllerCreate = (
-    createUserDto: CreateUserDto,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/users`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: createUserDto
-    },
-      options);
-    }
-  const usersControllerUpdate = (
-    id: number,
-    updateUserDto: UpdateUserDto,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/users/${id}`, method: 'PUT',
-      headers: {'Content-Type': 'application/json', },
-      data: updateUserDto
-    },
-      options);
-    }
-  const usersControllerRemove = (
-    id: number,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/users/${id}`, method: 'DELETE'
-    },
-      options);
-    }
-  const usersControllerChangePassword = (
-    updatePasswordDto: UpdatePasswordDto,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/users/change-password`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: updatePasswordDto
-    },
-      options);
-    }
-  const usersControllerFindManagersDropdown = (
     
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/users/managers`, method: 'GET'
-    },
-      options);
-    }
-  const usersControllerUpdateProfile = (
-    updateProfileDto: UpdateProfileDto,
- options?: SecondParameter<typeof customInstance<void>>,) => {
-      return customInstance<void>(
-      {url: `/api/users/profile`, method: 'PUT',
-      headers: {'Content-Type': 'application/json', },
-      data: updateProfileDto
-    },
-      options);
-    }
-  return {usersControllerFindAll,usersControllerCreate,usersControllerUpdate,usersControllerRemove,usersControllerChangePassword,usersControllerFindManagersDropdown,usersControllerUpdateProfile}};
-export type UsersControllerFindAllResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUsers>['usersControllerFindAll']>>>
-export type UsersControllerCreateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUsers>['usersControllerCreate']>>>
-export type UsersControllerUpdateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUsers>['usersControllerUpdate']>>>
-export type UsersControllerRemoveResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUsers>['usersControllerRemove']>>>
-export type UsersControllerChangePasswordResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUsers>['usersControllerChangePassword']>>>
-export type UsersControllerFindManagersDropdownResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUsers>['usersControllerFindManagersDropdown']>>>
-export type UsersControllerUpdateProfileResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUsers>['usersControllerUpdateProfile']>>>
+  }
+);}
+  
+
+
+
+export const getUsersControllerFindAllKey = () => [`/api/users`] as const;
+
+export type UsersControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof usersControllerFindAll>>>
+
+export const useUsersControllerFindAll = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof usersControllerFindAll>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getUsersControllerFindAllKey() : null);
+  const swrFn = () => usersControllerFindAll(requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type usersControllerCreateResponse201 = {
+  data: void
+  status: 201
+}
+
+export type usersControllerCreateResponseSuccess = (usersControllerCreateResponse201) & {
+  headers: Headers;
+};
+;
+
+export type usersControllerCreateResponse = (usersControllerCreateResponseSuccess)
+
+export const getUsersControllerCreateUrl = () => {
+
+
+  
+
+  return `/api/users`
+}
+
+export const usersControllerCreate = async (createUserDto: CreateUserDto, options?: RequestInit): Promise<usersControllerCreateResponse> => {
+  
+  return customInstance<usersControllerCreateResponse>(getUsersControllerCreateUrl(),
+  {      
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      createUserDto,)
+  }
+);}
+  
+
+
+
+export const getUsersControllerCreateMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, { arg }: { arg: CreateUserDto }) => {
+    return usersControllerCreate(arg, options);
+  }
+}
+export const getUsersControllerCreateMutationKey = () => [`/api/users`] as const;
+
+export type UsersControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof usersControllerCreate>>>
+
+export const useUsersControllerCreate = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof usersControllerCreate>>, TError, Key, CreateUserDto, Awaited<ReturnType<typeof usersControllerCreate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getUsersControllerCreateMutationKey();
+  const swrFn = getUsersControllerCreateMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type usersControllerUpdateResponse200 = {
+  data: void
+  status: 200
+}
+
+export type usersControllerUpdateResponseSuccess = (usersControllerUpdateResponse200) & {
+  headers: Headers;
+};
+;
+
+export type usersControllerUpdateResponse = (usersControllerUpdateResponseSuccess)
+
+export const getUsersControllerUpdateUrl = (id: number,) => {
+
+
+  
+
+  return `/api/users/${id}`
+}
+
+export const usersControllerUpdate = async (id: number,
+    updateUserDto: UpdateUserDto, options?: RequestInit): Promise<usersControllerUpdateResponse> => {
+  
+  return customInstance<usersControllerUpdateResponse>(getUsersControllerUpdateUrl(id),
+  {      
+    ...options,
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      updateUserDto,)
+  }
+);}
+  
+
+
+
+export const getUsersControllerUpdateMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, { arg }: { arg: UpdateUserDto }) => {
+    return usersControllerUpdate(id, arg, options);
+  }
+}
+export const getUsersControllerUpdateMutationKey = (id: number,) => [`/api/users/${id}`] as const;
+
+export type UsersControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof usersControllerUpdate>>>
+
+export const useUsersControllerUpdate = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof usersControllerUpdate>>, TError, Key, UpdateUserDto, Awaited<ReturnType<typeof usersControllerUpdate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getUsersControllerUpdateMutationKey(id);
+  const swrFn = getUsersControllerUpdateMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type usersControllerRemoveResponse200 = {
+  data: void
+  status: 200
+}
+
+export type usersControllerRemoveResponseSuccess = (usersControllerRemoveResponse200) & {
+  headers: Headers;
+};
+;
+
+export type usersControllerRemoveResponse = (usersControllerRemoveResponseSuccess)
+
+export const getUsersControllerRemoveUrl = (id: number,) => {
+
+
+  
+
+  return `/api/users/${id}`
+}
+
+export const usersControllerRemove = async (id: number, options?: RequestInit): Promise<usersControllerRemoveResponse> => {
+  
+  return customInstance<usersControllerRemoveResponse>(getUsersControllerRemoveUrl(id),
+  {      
+    ...options,
+    method: 'DELETE'
+    
+    
+  }
+);}
+  
+
+
+
+export const getUsersControllerRemoveMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return usersControllerRemove(id, options);
+  }
+}
+export const getUsersControllerRemoveMutationKey = (id: number,) => [`/api/users/${id}`] as const;
+
+export type UsersControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof usersControllerRemove>>>
+
+export const useUsersControllerRemove = <TError = ErrorType<unknown>>(
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof usersControllerRemove>>, TError, Key, Arguments, Awaited<ReturnType<typeof usersControllerRemove>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getUsersControllerRemoveMutationKey(id);
+  const swrFn = getUsersControllerRemoveMutationFetcher(id, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type usersControllerChangePasswordResponse201 = {
+  data: void
+  status: 201
+}
+
+export type usersControllerChangePasswordResponseSuccess = (usersControllerChangePasswordResponse201) & {
+  headers: Headers;
+};
+;
+
+export type usersControllerChangePasswordResponse = (usersControllerChangePasswordResponseSuccess)
+
+export const getUsersControllerChangePasswordUrl = () => {
+
+
+  
+
+  return `/api/users/change-password`
+}
+
+export const usersControllerChangePassword = async (updatePasswordDto: UpdatePasswordDto, options?: RequestInit): Promise<usersControllerChangePasswordResponse> => {
+  
+  return customInstance<usersControllerChangePasswordResponse>(getUsersControllerChangePasswordUrl(),
+  {      
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      updatePasswordDto,)
+  }
+);}
+  
+
+
+
+export const getUsersControllerChangePasswordMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, { arg }: { arg: UpdatePasswordDto }) => {
+    return usersControllerChangePassword(arg, options);
+  }
+}
+export const getUsersControllerChangePasswordMutationKey = () => [`/api/users/change-password`] as const;
+
+export type UsersControllerChangePasswordMutationResult = NonNullable<Awaited<ReturnType<typeof usersControllerChangePassword>>>
+
+export const useUsersControllerChangePassword = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof usersControllerChangePassword>>, TError, Key, UpdatePasswordDto, Awaited<ReturnType<typeof usersControllerChangePassword>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getUsersControllerChangePasswordMutationKey();
+  const swrFn = getUsersControllerChangePasswordMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type usersControllerFindManagersDropdownResponse200 = {
+  data: void
+  status: 200
+}
+
+export type usersControllerFindManagersDropdownResponseSuccess = (usersControllerFindManagersDropdownResponse200) & {
+  headers: Headers;
+};
+;
+
+export type usersControllerFindManagersDropdownResponse = (usersControllerFindManagersDropdownResponseSuccess)
+
+export const getUsersControllerFindManagersDropdownUrl = () => {
+
+
+  
+
+  return `/api/users/managers`
+}
+
+export const usersControllerFindManagersDropdown = async ( options?: RequestInit): Promise<usersControllerFindManagersDropdownResponse> => {
+  
+  return customInstance<usersControllerFindManagersDropdownResponse>(getUsersControllerFindManagersDropdownUrl(),
+  {      
+    ...options,
+    method: 'GET'
+    
+    
+  }
+);}
+  
+
+
+
+export const getUsersControllerFindManagersDropdownKey = () => [`/api/users/managers`] as const;
+
+export type UsersControllerFindManagersDropdownQueryResult = NonNullable<Awaited<ReturnType<typeof usersControllerFindManagersDropdown>>>
+
+export const useUsersControllerFindManagersDropdown = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof usersControllerFindManagersDropdown>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
+) => {
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const isEnabled = swrOptions?.enabled !== false
+  const swrKey = swrOptions?.swrKey ?? (() => isEnabled ? getUsersControllerFindManagersDropdownKey() : null);
+  const swrFn = () => usersControllerFindManagersDropdown(requestOptions)
+
+  const query = useSwr<Awaited<ReturnType<typeof swrFn>>, TError>(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+export type usersControllerUpdateProfileResponse200 = {
+  data: void
+  status: 200
+}
+
+export type usersControllerUpdateProfileResponseSuccess = (usersControllerUpdateProfileResponse200) & {
+  headers: Headers;
+};
+;
+
+export type usersControllerUpdateProfileResponse = (usersControllerUpdateProfileResponseSuccess)
+
+export const getUsersControllerUpdateProfileUrl = () => {
+
+
+  
+
+  return `/api/users/profile`
+}
+
+export const usersControllerUpdateProfile = async (updateProfileDto: UpdateProfileDto, options?: RequestInit): Promise<usersControllerUpdateProfileResponse> => {
+  
+  return customInstance<usersControllerUpdateProfileResponse>(getUsersControllerUpdateProfileUrl(),
+  {      
+    ...options,
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      updateProfileDto,)
+  }
+);}
+  
+
+
+
+export const getUsersControllerUpdateProfileMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, { arg }: { arg: UpdateProfileDto }) => {
+    return usersControllerUpdateProfile(arg, options);
+  }
+}
+export const getUsersControllerUpdateProfileMutationKey = () => [`/api/users/profile`] as const;
+
+export type UsersControllerUpdateProfileMutationResult = NonNullable<Awaited<ReturnType<typeof usersControllerUpdateProfile>>>
+
+export const useUsersControllerUpdateProfile = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof usersControllerUpdateProfile>>, TError, Key, UpdateProfileDto, Awaited<ReturnType<typeof usersControllerUpdateProfile>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getUsersControllerUpdateProfileMutationKey();
+  const swrFn = getUsersControllerUpdateProfileMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}

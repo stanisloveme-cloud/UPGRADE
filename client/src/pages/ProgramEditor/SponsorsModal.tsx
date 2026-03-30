@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Modal, message, Button, Space, Typography, Tooltip, Tag, Tabs, Form, Upload, Checkbox } from 'antd';
 import { ActionType, ProColumns, ProTable, ProFormText, ProFormTextArea, ProForm, ProFormDigit, ProFormSelect, ProFormList } from '@ant-design/pro-components';
 import { PlusOutlined, CopyOutlined, CheckCircleOutlined, CloseCircleOutlined, ClockCircleOutlined, UploadOutlined } from '@ant-design/icons';
-import axios from 'axios';
+import { sponsorsControllerRemove, sponsorsControllerUpdate, sponsorsControllerDetachFromEvent, sponsorsControllerAttachToEvent, sponsorsControllerFindAll, sponsorsControllerCreate, sponsorsControllerFindAllByEvent } from '../../api/generated/sponsors/sponsors';
 import { SafeModalForm } from '../../components/SafeForms/SafeModalForm';
 import { MarketSegmentSelector } from '../../components/MarketSegmentSelector';
 import { sanitizeFormValues } from '../../utils/formSanitizer';
@@ -209,7 +209,7 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                     }, { arrayFields: ['cases'], listFields: ['cases'] })}
                     onDelete={async () => {
                         try {
-                            await axios.delete(`/api/sponsors/${record.id}`);
+                            await sponsorsControllerRemove(record.id);
                             message.success('Бренд успешно удален из глобальной базы');
                             actionRef.current?.reload();
                             return true;
@@ -224,7 +224,7 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                             if (payload.logoUrl && Array.isArray(payload.logoUrl)) {
                                 payload.logoUrl = payload.logoUrl[0]?.response?.url || payload.logoUrl[0]?.url || payload.logoUrl[0]?.thumbUrl || "";
                             }
-                            await axios.patch(`/api/sponsors/${record.id}`, payload);
+                            await sponsorsControllerUpdate(record.id, payload);
                             message.success('Спонсор обновлен');
                             actionRef.current?.reload();
                             return true;
@@ -242,7 +242,7 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                         content: 'Спонсор будет откреплен от мероприятия, но останется в глобальной базе.',
                         onOk: async () => {
                             try {
-                                await axios.delete(`/api/sponsors/${record.id}/detach/${eventId}`);
+                                await sponsorsControllerDetachFromEvent(record.id, eventId);
                                 message.success('Спонсор откреплен от мероприятия');
                                 actionRef.current?.reload();
                             } catch (e) {
@@ -264,7 +264,7 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                 <ProForm
                     onFinish={async (values) => {
                         try {
-                            await axios.post(`/api/sponsors/${values.sponsorId}/attach/${eventId}`);
+                            await sponsorsControllerAttachToEvent(values.sponsorId, eventId);
                             message.success('Спонсор привязан');
                             setAddModalVisible(false);
                             actionRef.current?.reload();
@@ -280,7 +280,7 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                         label="Глобальная база брендов"
                         rules={[{ required: true, message: 'Выберите бренд' }]}
                         request={async () => {
-                            const { data } = await axios.get('/api/sponsors/all?pageSize=1000');
+                            const { data } = await sponsorsControllerFindAll();
                             // Backend returns a direct array, so 'data' is the array.
                             return (Array.isArray(data) ? data : []).map((s: any) => ({
                                 label: s.name,
@@ -304,7 +304,7 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                             if (payload.logoUrl && Array.isArray(payload.logoUrl)) {
                                 payload.logoUrl = payload.logoUrl[0]?.response?.url || payload.logoUrl[0]?.url || payload.logoUrl[0]?.thumbUrl || "";
                             }
-                            await axios.post('/api/sponsors', payload);
+                            await sponsorsControllerCreate(payload);
                             message.success('Спонсор создан и привязан');
                             setAddModalVisible(false);
                             actionRef.current?.reload();
@@ -335,7 +335,7 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                     actionRef={actionRef}
                     columns={columns}
                     request={async () => {
-                        const { data } = await axios.get(`/api/sponsors/event/${eventId}`);
+                        const { data } = await sponsorsControllerFindAllByEvent(eventId);
                         return { data, success: true };
                     }}
                     rowKey="id"
