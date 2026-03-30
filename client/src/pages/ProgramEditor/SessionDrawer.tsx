@@ -4,7 +4,7 @@ import { Button, Upload, message, Divider, Form } from 'antd';
 import { FilePdfOutlined, CopyOutlined, PrinterOutlined, IdcardOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import axios from 'axios';
-import { getSpeakers } from '../../api/generated/speakers/speakers';
+import { speakersControllerCreate, speakersControllerUpdate } from '../../api/generated/speakers/speakers';
 import { CreateSpeakerDto, UpdateSpeakerDto } from '../../api/generated/model';
 import SpeakerModal from '../SpeakersList/SpeakerModal';
 import { SafeDrawerForm } from '../../components/SafeForms/SafeDrawerForm';
@@ -582,9 +582,9 @@ const SessionDrawer: React.FC<SessionModalProps> = ({ visible, onClose, onFinish
                         let speakerResponseData;
                         
                         if (isEdit) {
-                            speakerResponseData = (await getSpeakers().speakersControllerUpdate(editingSpeakerData.id, values as UpdateSpeakerDto)) as unknown as { id: number };
+                            speakerResponseData = (await speakersControllerUpdate(editingSpeakerData.id, values as UpdateSpeakerDto)) as unknown as { id: number };
                         } else {
-                            speakerResponseData = (await getSpeakers().speakersControllerCreate(values as CreateSpeakerDto)) as unknown as { id: number };
+                            speakerResponseData = (await speakersControllerCreate(values as CreateSpeakerDto)) as unknown as { id: number };
                         }
                         
                         message.success(`Спикер ${isEdit ? 'обновлен' : 'сохранён'}`);

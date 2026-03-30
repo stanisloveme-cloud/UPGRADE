@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ProFormList, ProFormText, ProFormGroup, ProFormDigit } from '@ant-design/pro-components';
 import { SafeModalForm } from '../../components/SafeForms/SafeModalForm';
 import { message, Form } from 'antd';
-import { getHalls } from '../../api/generated/halls/halls';
+import { hallsControllerFindAll, hallsControllerCreate, hallsControllerUpdate, hallsControllerRemove } from '../../api/generated/halls/halls';
 import { CreateHallDto, UpdateHallDto } from '../../api/generated/model';
 
 interface HallsModalProps {
@@ -18,16 +18,15 @@ const HallsModal: React.FC<HallsModalProps> = ({ visible, onClose, eventId }) =>
     // Fetch halls on load
     useEffect(() => {
         if (visible) {
-            const { hallsControllerFindAll } = getHalls();
             hallsControllerFindAll()
-                .then(allHalls => {
+                .then((allHalls: any) => {
                     // Filter by eventId
                     const eventHalls = (allHalls as unknown as any[]).filter((h: any) => h.eventId === Number(eventId));
                     const data = { halls: eventHalls };
                     setInitialValues(data);
                     form.setFieldsValue(data);
                 })
-                .catch(_err => message.error('Failed to load halls'));
+                .catch((_err: any) => message.error('Failed to load halls'));
         }
     }, [visible, form, eventId]);
 
@@ -39,8 +38,6 @@ const HallsModal: React.FC<HallsModalProps> = ({ visible, onClose, eventId }) =>
             const toDelete = originalHalls.filter((oh: any) => !currentHalls.find((ch: any) => ch.id === oh.id));
             const toUpdate = currentHalls.filter((ch: any) => ch.id);
             const toCreate = currentHalls.filter((ch: any) => !ch.id);
-
-            const { hallsControllerRemove, hallsControllerUpdate, hallsControllerCreate } = getHalls();
 
             // Execute requests
             await Promise.all([

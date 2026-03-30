@@ -6,13 +6,24 @@ export const AXIOS_INSTANCE = Axios.create({
 });
 
 export const customInstance = <T>(
-  config: AxiosRequestConfig,
-  options?: AxiosRequestConfig,
+  urlOrConfig: string | AxiosRequestConfig,
+  options?: AxiosRequestConfig | any,
 ): Promise<T> => {
   const source = Axios.CancelToken.source();
+
+  let finalConfig: any = {};
+  if (typeof urlOrConfig === 'string') {
+    finalConfig = { url: urlOrConfig, ...options };
+    if (finalConfig.body) {
+      finalConfig.data = finalConfig.body;
+      delete finalConfig.body;
+    }
+  } else {
+    finalConfig = { ...urlOrConfig, ...options };
+  }
+
   const promise = AXIOS_INSTANCE({
-    ...config,
-    ...options,
+    ...finalConfig,
     cancelToken: source.token,
   }).then(({ data }) => data);
 
