@@ -315,3 +315,62 @@ export const useMarketSegmentsControllerRemove = <TError = ErrorType<unknown>>(
     ...query
   }
 }
+export type marketSegmentsControllerSeedResponse201 = {
+  data: void
+  status: 201
+}
+
+export type marketSegmentsControllerSeedResponseSuccess = (marketSegmentsControllerSeedResponse201) & {
+  headers: Headers;
+};
+;
+
+export type marketSegmentsControllerSeedResponse = (marketSegmentsControllerSeedResponseSuccess)
+
+export const getMarketSegmentsControllerSeedUrl = () => {
+
+
+  
+
+  return `/api/market-segments/seed`
+}
+
+export const marketSegmentsControllerSeed = async ( options?: RequestInit): Promise<marketSegmentsControllerSeedResponse> => {
+  
+  return customInstance<marketSegmentsControllerSeedResponse>(getMarketSegmentsControllerSeedUrl(),
+  {      
+    ...options,
+    method: 'POST'
+    
+    
+  }
+);}
+  
+
+
+
+export const getMarketSegmentsControllerSeedMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return marketSegmentsControllerSeed(options);
+  }
+}
+export const getMarketSegmentsControllerSeedMutationKey = () => [`/api/market-segments/seed`] as const;
+
+export type MarketSegmentsControllerSeedMutationResult = NonNullable<Awaited<ReturnType<typeof marketSegmentsControllerSeed>>>
+
+export const useMarketSegmentsControllerSeed = <TError = ErrorType<unknown>>(
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof marketSegmentsControllerSeed>>, TError, Key, Arguments, Awaited<ReturnType<typeof marketSegmentsControllerSeed>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getMarketSegmentsControllerSeedMutationKey();
+  const swrFn = getMarketSegmentsControllerSeedMutationFetcher(requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}

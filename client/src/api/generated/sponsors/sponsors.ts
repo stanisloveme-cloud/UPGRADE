@@ -18,9 +18,12 @@ import type {
 } from 'swr/mutation';
 
 import type {
+  CreateSponsorDto,
+  PublicApprovalDto,
   SponsorsControllerFindAll200Item,
   SponsorsControllerFindAllByEvent200Item,
-  SponsorsControllerGetPublicApprovalInfo200
+  SponsorsControllerGetPublicApprovalInfo200,
+  UpdateSponsorDto
 } from '../model';
 
 import { customInstance } from '../../custom-instance';
@@ -32,6 +35,9 @@ import type { ErrorType } from '../../custom-instance';
 
 
   
+/**
+ * @summary Get sponsors by event ID
+ */
 export type sponsorsControllerFindAllByEventResponse200 = {
   data: SponsorsControllerFindAllByEvent200Item[]
   status: 200
@@ -70,6 +76,9 @@ export const getSponsorsControllerFindAllByEventKey = (eventId: number,) => [`/a
 
 export type SponsorsControllerFindAllByEventQueryResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerFindAllByEvent>>>
 
+/**
+ * @summary Get sponsors by event ID
+ */
 export const useSponsorsControllerFindAllByEvent = <TError = ErrorType<unknown>>(
   eventId: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof sponsorsControllerFindAllByEvent>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
 ) => {
@@ -86,6 +95,9 @@ export const useSponsorsControllerFindAllByEvent = <TError = ErrorType<unknown>>
     ...query
   }
 }
+/**
+ * @summary Get all sponsors (Brands)
+ */
 export type sponsorsControllerFindAllResponse200 = {
   data: SponsorsControllerFindAll200Item[]
   status: 200
@@ -124,6 +136,9 @@ export const getSponsorsControllerFindAllKey = () => [`/api/sponsors/all`] as co
 
 export type SponsorsControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerFindAll>>>
 
+/**
+ * @summary Get all sponsors (Brands)
+ */
 export const useSponsorsControllerFindAll = <TError = ErrorType<unknown>>(
    options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof sponsorsControllerFindAll>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
 ) => {
@@ -140,6 +155,9 @@ export const useSponsorsControllerFindAll = <TError = ErrorType<unknown>>(
     ...query
   }
 }
+/**
+ * @summary Create a new sponsor (Brand)
+ */
 export type sponsorsControllerCreateResponse201 = {
   data: void
   status: 201
@@ -160,14 +178,15 @@ export const getSponsorsControllerCreateUrl = () => {
   return `/api/sponsors`
 }
 
-export const sponsorsControllerCreate = async ( options?: RequestInit): Promise<sponsorsControllerCreateResponse> => {
+export const sponsorsControllerCreate = async (createSponsorDto: CreateSponsorDto, options?: RequestInit): Promise<sponsorsControllerCreateResponse> => {
   
   return customInstance<sponsorsControllerCreateResponse>(getSponsorsControllerCreateUrl(),
   {      
     ...options,
-    method: 'POST'
-    
-    
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      createSponsorDto,)
   }
 );}
   
@@ -175,16 +194,19 @@ export const sponsorsControllerCreate = async ( options?: RequestInit): Promise<
 
 
 export const getSponsorsControllerCreateMutationFetcher = ( options?: SecondParameter<typeof customInstance>) => {
-  return (_: Key, __: { arg: Arguments }) => {
-    return sponsorsControllerCreate(options);
+  return (_: Key, { arg }: { arg: CreateSponsorDto }) => {
+    return sponsorsControllerCreate(arg, options);
   }
 }
 export const getSponsorsControllerCreateMutationKey = () => [`/api/sponsors`] as const;
 
 export type SponsorsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerCreate>>>
 
+/**
+ * @summary Create a new sponsor (Brand)
+ */
 export const useSponsorsControllerCreate = <TError = ErrorType<unknown>>(
-   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sponsorsControllerCreate>>, TError, Key, Arguments, Awaited<ReturnType<typeof sponsorsControllerCreate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+   options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sponsorsControllerCreate>>, TError, Key, CreateSponsorDto, Awaited<ReturnType<typeof sponsorsControllerCreate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
 ) => {
 
   const {swr: swrOptions, request: requestOptions} = options ?? {}
@@ -199,6 +221,9 @@ export const useSponsorsControllerCreate = <TError = ErrorType<unknown>>(
     ...query
   }
 }
+/**
+ * @summary Update an existing sponsor
+ */
 export type sponsorsControllerUpdateResponse200 = {
   data: void
   status: 200
@@ -219,14 +244,16 @@ export const getSponsorsControllerUpdateUrl = (id: number,) => {
   return `/api/sponsors/${id}`
 }
 
-export const sponsorsControllerUpdate = async (id: number, options?: RequestInit): Promise<sponsorsControllerUpdateResponse> => {
+export const sponsorsControllerUpdate = async (id: number,
+    updateSponsorDto: UpdateSponsorDto, options?: RequestInit): Promise<sponsorsControllerUpdateResponse> => {
   
   return customInstance<sponsorsControllerUpdateResponse>(getSponsorsControllerUpdateUrl(id),
   {      
     ...options,
-    method: 'PATCH'
-    
-    
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      updateSponsorDto,)
   }
 );}
   
@@ -234,16 +261,19 @@ export const sponsorsControllerUpdate = async (id: number, options?: RequestInit
 
 
 export const getSponsorsControllerUpdateMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
-  return (_: Key, __: { arg: Arguments }) => {
-    return sponsorsControllerUpdate(id, options);
+  return (_: Key, { arg }: { arg: UpdateSponsorDto }) => {
+    return sponsorsControllerUpdate(id, arg, options);
   }
 }
 export const getSponsorsControllerUpdateMutationKey = (id: number,) => [`/api/sponsors/${id}`] as const;
 
 export type SponsorsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerUpdate>>>
 
+/**
+ * @summary Update an existing sponsor
+ */
 export const useSponsorsControllerUpdate = <TError = ErrorType<unknown>>(
-  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sponsorsControllerUpdate>>, TError, Key, Arguments, Awaited<ReturnType<typeof sponsorsControllerUpdate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sponsorsControllerUpdate>>, TError, Key, UpdateSponsorDto, Awaited<ReturnType<typeof sponsorsControllerUpdate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
 ) => {
 
   const {swr: swrOptions, request: requestOptions} = options ?? {}
@@ -258,6 +288,9 @@ export const useSponsorsControllerUpdate = <TError = ErrorType<unknown>>(
     ...query
   }
 }
+/**
+ * @summary Delete a sponsor
+ */
 export type sponsorsControllerRemoveResponse200 = {
   data: void
   status: 200
@@ -301,6 +334,9 @@ export const getSponsorsControllerRemoveMutationKey = (id: number,) => [`/api/sp
 
 export type SponsorsControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerRemove>>>
 
+/**
+ * @summary Delete a sponsor
+ */
 export const useSponsorsControllerRemove = <TError = ErrorType<unknown>>(
   id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sponsorsControllerRemove>>, TError, Key, Arguments, Awaited<ReturnType<typeof sponsorsControllerRemove>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
 ) => {
@@ -317,6 +353,9 @@ export const useSponsorsControllerRemove = <TError = ErrorType<unknown>>(
     ...query
   }
 }
+/**
+ * @summary Attach sponsor to an event
+ */
 export type sponsorsControllerAttachToEventResponse201 = {
   data: void
   status: 201
@@ -364,6 +403,9 @@ export const getSponsorsControllerAttachToEventMutationKey = (id: number,
 
 export type SponsorsControllerAttachToEventMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerAttachToEvent>>>
 
+/**
+ * @summary Attach sponsor to an event
+ */
 export const useSponsorsControllerAttachToEvent = <TError = ErrorType<unknown>>(
   id: number,
     eventId: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sponsorsControllerAttachToEvent>>, TError, Key, Arguments, Awaited<ReturnType<typeof sponsorsControllerAttachToEvent>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
@@ -381,6 +423,9 @@ export const useSponsorsControllerAttachToEvent = <TError = ErrorType<unknown>>(
     ...query
   }
 }
+/**
+ * @summary Detach sponsor from an event
+ */
 export type sponsorsControllerDetachFromEventResponse200 = {
   data: void
   status: 200
@@ -428,6 +473,9 @@ export const getSponsorsControllerDetachFromEventMutationKey = (id: number,
 
 export type SponsorsControllerDetachFromEventMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerDetachFromEvent>>>
 
+/**
+ * @summary Detach sponsor from an event
+ */
 export const useSponsorsControllerDetachFromEvent = <TError = ErrorType<unknown>>(
   id: number,
     eventId: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sponsorsControllerDetachFromEvent>>, TError, Key, Arguments, Awaited<ReturnType<typeof sponsorsControllerDetachFromEvent>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
@@ -445,6 +493,9 @@ export const useSponsorsControllerDetachFromEvent = <TError = ErrorType<unknown>
     ...query
   }
 }
+/**
+ * @summary Get public approval info for sponsor
+ */
 export type sponsorsControllerGetPublicApprovalInfoResponse200 = {
   data: SponsorsControllerGetPublicApprovalInfo200
   status: 200
@@ -483,6 +534,9 @@ export const getSponsorsControllerGetPublicApprovalInfoKey = (hash: string,) => 
 
 export type SponsorsControllerGetPublicApprovalInfoQueryResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerGetPublicApprovalInfo>>>
 
+/**
+ * @summary Get public approval info for sponsor
+ */
 export const useSponsorsControllerGetPublicApprovalInfo = <TError = ErrorType<unknown>>(
   hash: string, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof sponsorsControllerGetPublicApprovalInfo>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
 ) => {
@@ -499,6 +553,76 @@ export const useSponsorsControllerGetPublicApprovalInfo = <TError = ErrorType<un
     ...query
   }
 }
+/**
+ * @summary Submit public approval for sponsor
+ */
+export type sponsorsControllerSubmitPublicApprovalResponse200 = {
+  data: void
+  status: 200
+}
+
+export type sponsorsControllerSubmitPublicApprovalResponseSuccess = (sponsorsControllerSubmitPublicApprovalResponse200) & {
+  headers: Headers;
+};
+;
+
+export type sponsorsControllerSubmitPublicApprovalResponse = (sponsorsControllerSubmitPublicApprovalResponseSuccess)
+
+export const getSponsorsControllerSubmitPublicApprovalUrl = (hash: string,) => {
+
+
+  
+
+  return `/api/sponsors/public/approval/${hash}`
+}
+
+export const sponsorsControllerSubmitPublicApproval = async (hash: string,
+    publicApprovalDto: PublicApprovalDto, options?: RequestInit): Promise<sponsorsControllerSubmitPublicApprovalResponse> => {
+  
+  return customInstance<sponsorsControllerSubmitPublicApprovalResponse>(getSponsorsControllerSubmitPublicApprovalUrl(hash),
+  {      
+    ...options,
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      publicApprovalDto,)
+  }
+);}
+  
+
+
+
+export const getSponsorsControllerSubmitPublicApprovalMutationFetcher = (hash: string, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, { arg }: { arg: PublicApprovalDto }) => {
+    return sponsorsControllerSubmitPublicApproval(hash, arg, options);
+  }
+}
+export const getSponsorsControllerSubmitPublicApprovalMutationKey = (hash: string,) => [`/api/sponsors/public/approval/${hash}`] as const;
+
+export type SponsorsControllerSubmitPublicApprovalMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerSubmitPublicApproval>>>
+
+/**
+ * @summary Submit public approval for sponsor
+ */
+export const useSponsorsControllerSubmitPublicApproval = <TError = ErrorType<unknown>>(
+  hash: string, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sponsorsControllerSubmitPublicApproval>>, TError, Key, PublicApprovalDto, Awaited<ReturnType<typeof sponsorsControllerSubmitPublicApproval>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getSponsorsControllerSubmitPublicApprovalMutationKey(hash);
+  const swrFn = getSponsorsControllerSubmitPublicApprovalMutationFetcher(hash, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
+/**
+ * @summary Import legacy brands from previous CRM
+ */
 export type sponsorsControllerImportLegacyBrandsResponse201 = {
   data: void
   status: 201
@@ -542,6 +666,9 @@ export const getSponsorsControllerImportLegacyBrandsMutationKey = () => [`/api/s
 
 export type SponsorsControllerImportLegacyBrandsMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerImportLegacyBrands>>>
 
+/**
+ * @summary Import legacy brands from previous CRM
+ */
 export const useSponsorsControllerImportLegacyBrands = <TError = ErrorType<unknown>>(
    options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof sponsorsControllerImportLegacyBrands>>, TError, Key, Arguments, Awaited<ReturnType<typeof sponsorsControllerImportLegacyBrands>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
 ) => {
@@ -558,6 +685,9 @@ export const useSponsorsControllerImportLegacyBrands = <TError = ErrorType<unkno
     ...query
   }
 }
+/**
+ * @summary Run internal fix for brands
+ */
 export type sponsorsControllerFixBrandsResponse200 = {
   data: void
   status: 200
@@ -596,6 +726,9 @@ export const getSponsorsControllerFixBrandsKey = () => [`/api/sponsors/fix-brand
 
 export type SponsorsControllerFixBrandsQueryResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerFixBrands>>>
 
+/**
+ * @summary Run internal fix for brands
+ */
 export const useSponsorsControllerFixBrands = <TError = ErrorType<unknown>>(
    options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof sponsorsControllerFixBrands>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
 ) => {

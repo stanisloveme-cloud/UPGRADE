@@ -144,6 +144,65 @@ export const useUploadsControllerUploadLogo = <TError = ErrorType<unknown>>(
     ...query
   }
 }
+export type uploadsControllerUploadExactLogoResponse201 = {
+  data: void
+  status: 201
+}
+
+export type uploadsControllerUploadExactLogoResponseSuccess = (uploadsControllerUploadExactLogoResponse201) & {
+  headers: Headers;
+};
+;
+
+export type uploadsControllerUploadExactLogoResponse = (uploadsControllerUploadExactLogoResponseSuccess)
+
+export const getUploadsControllerUploadExactLogoUrl = (filename: string,) => {
+
+
+  
+
+  return `/api/uploads/exact-logo/${filename}`
+}
+
+export const uploadsControllerUploadExactLogo = async (filename: string, options?: RequestInit): Promise<uploadsControllerUploadExactLogoResponse> => {
+  
+  return customInstance<uploadsControllerUploadExactLogoResponse>(getUploadsControllerUploadExactLogoUrl(filename),
+  {      
+    ...options,
+    method: 'POST'
+    
+    
+  }
+);}
+  
+
+
+
+export const getUploadsControllerUploadExactLogoMutationFetcher = (filename: string, options?: SecondParameter<typeof customInstance>) => {
+  return (_: Key, __: { arg: Arguments }) => {
+    return uploadsControllerUploadExactLogo(filename, options);
+  }
+}
+export const getUploadsControllerUploadExactLogoMutationKey = (filename: string,) => [`/api/uploads/exact-logo/${filename}`] as const;
+
+export type UploadsControllerUploadExactLogoMutationResult = NonNullable<Awaited<ReturnType<typeof uploadsControllerUploadExactLogo>>>
+
+export const useUploadsControllerUploadExactLogo = <TError = ErrorType<unknown>>(
+  filename: string, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof uploadsControllerUploadExactLogo>>, TError, Key, Arguments, Awaited<ReturnType<typeof uploadsControllerUploadExactLogo>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+) => {
+
+  const {swr: swrOptions, request: requestOptions} = options ?? {}
+
+  const swrKey = swrOptions?.swrKey ?? getUploadsControllerUploadExactLogoMutationKey(filename);
+  const swrFn = getUploadsControllerUploadExactLogoMutationFetcher(filename, requestOptions);
+
+  const query = useSWRMutation(swrKey, swrFn, swrOptions)
+
+  return {
+    swrKey,
+    ...query
+  }
+}
 export type uploadsControllerUploadPresentationResponse201 = {
   data: void
   status: 201

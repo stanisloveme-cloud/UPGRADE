@@ -19,6 +19,7 @@ import type {
 
 import type {
   CreateSpeakerDto,
+  SpeakerEntity,
   SpeakersControllerImportLegacy201,
   UpdateSpeakerDto
 } from '../model';
@@ -32,8 +33,11 @@ import type { ErrorType } from '../../custom-instance';
 
 
   
+/**
+ * @summary Create a new speaker
+ */
 export type speakersControllerCreateResponse201 = {
-  data: void
+  data: SpeakerEntity
   status: 201
 }
 
@@ -76,6 +80,9 @@ export const getSpeakersControllerCreateMutationKey = () => [`/api/speakers`] as
 
 export type SpeakersControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof speakersControllerCreate>>>
 
+/**
+ * @summary Create a new speaker
+ */
 export const useSpeakersControllerCreate = <TError = ErrorType<unknown>>(
    options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof speakersControllerCreate>>, TError, Key, CreateSpeakerDto, Awaited<ReturnType<typeof speakersControllerCreate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
 ) => {
@@ -92,8 +99,11 @@ export const useSpeakersControllerCreate = <TError = ErrorType<unknown>>(
     ...query
   }
 }
+/**
+ * @summary Get all speakers
+ */
 export type speakersControllerFindAllResponse200 = {
-  data: void
+  data: SpeakerEntity[]
   status: 200
 }
 
@@ -130,6 +140,9 @@ export const getSpeakersControllerFindAllKey = () => [`/api/speakers`] as const;
 
 export type SpeakersControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof speakersControllerFindAll>>>
 
+/**
+ * @summary Get all speakers
+ */
 export const useSpeakersControllerFindAll = <TError = ErrorType<unknown>>(
    options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof speakersControllerFindAll>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
 ) => {
@@ -146,6 +159,9 @@ export const useSpeakersControllerFindAll = <TError = ErrorType<unknown>>(
     ...query
   }
 }
+/**
+ * @summary Import legacy speakers
+ */
 export type speakersControllerImportLegacyResponse201 = {
   data: SpeakersControllerImportLegacy201
   status: 201
@@ -189,6 +205,9 @@ export const getSpeakersControllerImportLegacyMutationKey = () => [`/api/speaker
 
 export type SpeakersControllerImportLegacyMutationResult = NonNullable<Awaited<ReturnType<typeof speakersControllerImportLegacy>>>
 
+/**
+ * @summary Import legacy speakers
+ */
 export const useSpeakersControllerImportLegacy = <TError = ErrorType<unknown>>(
    options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof speakersControllerImportLegacy>>, TError, Key, Arguments, Awaited<ReturnType<typeof speakersControllerImportLegacy>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
 ) => {
@@ -205,6 +224,9 @@ export const useSpeakersControllerImportLegacy = <TError = ErrorType<unknown>>(
     ...query
   }
 }
+/**
+ * @summary Sync speaker photos
+ */
 export type speakersControllerSyncPhotosResponse201 = {
   data: void
   status: 201
@@ -249,6 +271,9 @@ export const getSpeakersControllerSyncPhotosMutationKey = () => [`/api/speakers/
 
 export type SpeakersControllerSyncPhotosMutationResult = NonNullable<Awaited<ReturnType<typeof speakersControllerSyncPhotos>>>
 
+/**
+ * @summary Sync speaker photos
+ */
 export const useSpeakersControllerSyncPhotos = <TError = ErrorType<unknown>>(
    options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof speakersControllerSyncPhotos>>, TError, Key, string[], Awaited<ReturnType<typeof speakersControllerSyncPhotos>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
 ) => {
@@ -265,8 +290,11 @@ export const useSpeakersControllerSyncPhotos = <TError = ErrorType<unknown>>(
     ...query
   }
 }
+/**
+ * @summary Get a single speaker by ID
+ */
 export type speakersControllerFindOneResponse200 = {
-  data: void
+  data: SpeakerEntity
   status: 200
 }
 
@@ -303,6 +331,9 @@ export const getSpeakersControllerFindOneKey = (id: number,) => [`/api/speakers/
 
 export type SpeakersControllerFindOneQueryResult = NonNullable<Awaited<ReturnType<typeof speakersControllerFindOne>>>
 
+/**
+ * @summary Get a single speaker by ID
+ */
 export const useSpeakersControllerFindOne = <TError = ErrorType<unknown>>(
   id: number, options?: { swr?:SWRConfiguration<Awaited<ReturnType<typeof speakersControllerFindOne>>, TError> & { swrKey?: Key, enabled?: boolean }, request?: SecondParameter<typeof customInstance> }
 ) => {
@@ -319,8 +350,11 @@ export const useSpeakersControllerFindOne = <TError = ErrorType<unknown>>(
     ...query
   }
 }
+/**
+ * @summary Update an existing speaker
+ */
 export type speakersControllerUpdateResponse200 = {
-  data: void
+  data: SpeakerEntity
   status: 200
 }
 
@@ -364,6 +398,9 @@ export const getSpeakersControllerUpdateMutationKey = (id: number,) => [`/api/sp
 
 export type SpeakersControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof speakersControllerUpdate>>>
 
+/**
+ * @summary Update an existing speaker
+ */
 export const useSpeakersControllerUpdate = <TError = ErrorType<unknown>>(
   id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof speakersControllerUpdate>>, TError, Key, UpdateSpeakerDto, Awaited<ReturnType<typeof speakersControllerUpdate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
 ) => {
@@ -380,8 +417,11 @@ export const useSpeakersControllerUpdate = <TError = ErrorType<unknown>>(
     ...query
   }
 }
+/**
+ * @summary Delete a speaker
+ */
 export type speakersControllerRemoveResponse200 = {
-  data: void
+  data: SpeakerEntity
   status: 200
 }
 
@@ -423,6 +463,9 @@ export const getSpeakersControllerRemoveMutationKey = (id: number,) => [`/api/sp
 
 export type SpeakersControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof speakersControllerRemove>>>
 
+/**
+ * @summary Delete a speaker
+ */
 export const useSpeakersControllerRemove = <TError = ErrorType<unknown>>(
   id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof speakersControllerRemove>>, TError, Key, Arguments, Awaited<ReturnType<typeof speakersControllerRemove>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
 ) => {
