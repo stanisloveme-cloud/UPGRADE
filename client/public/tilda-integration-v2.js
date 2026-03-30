@@ -396,13 +396,13 @@
                         return `<div class="lh-sm mb-4" style="font-size: 0.85rem;"><span class="fw-bold text-dark" style="font-size: 0.95rem;">${name}${pos ? ',' : ''}</span><br><span class="text-muted pb-1" style="font-size: 0.8rem;">${pos}</span>${bioBadge}</div>`;
                     }
 
-                    if (moderators.length > 0) {
-                        html += `<div class="fw-light mb-2 text-muted" style="font-size: 0.75rem !important; text-transform: uppercase;">Модераторы:</div>`;
-                        moderators.forEach(m => html += renderPerson(m));
-                    }
                     if (speakers.length > 0) {
-                        html += `<div class="fw-light mb-2 mt-4 text-muted" style="font-size: 0.75rem !important; text-transform: uppercase;">Спикеры:</div>`;
+                        html += `<div class="fw-light mb-2 mt-2 text-muted" style="font-size: 0.75rem !important; text-transform: uppercase;">Спикеры:</div>`;
                         speakers.forEach(s => html += renderPerson(s));
+                    }
+                    if (moderators.length > 0) {
+                        html += `<div class="fw-light mb-2 mt-3 text-muted" style="font-size: 0.75rem !important; text-transform: uppercase;">Модераторы:</div>`;
+                        moderators.forEach(m => html += renderPerson(m));
                     }
                     html += `</div>`; 
 
