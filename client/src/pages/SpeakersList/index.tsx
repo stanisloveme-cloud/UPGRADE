@@ -1,57 +1,48 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { PageContainer } from '@ant-design/pro-components';
 import { Table, Button, Space, message, Input, Popconfirm, Image } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined, SearchOutlined, HistoryOutlined } from '@ant-design/icons';
-import axios from 'axios';
+import { 
+    useSpeakersControllerFindAll, 
+    speakersControllerCreate, 
+    speakersControllerUpdate, 
+    speakersControllerRemove 
+} from '../../api/generated/speakers/speakers';
+import { SpeakerEntity } from '../../api/generated/model';
 import SpeakerModal from './SpeakerModal';
 import SpeakerHistory from './SpeakerHistory';
 
 const SpeakersList: React.FC = () => {
-    const [speakers, setSpeakers] = useState<any[]>([]);
-    const [loading, setLoading] = useState(true);
     const [modalVisible, setModalVisible] = useState(false);
-    const [currentSpeaker, setCurrentSpeaker] = useState<any>(null);
+    const [currentSpeaker, setCurrentSpeaker] = useState<SpeakerEntity | null>(null);
     const [searchText, setSearchText] = useState('');
     const [historyVisible, setHistoryVisible] = useState(false);
     const [currentHistoryId, setCurrentHistoryId] = useState<number | null>(null);
+
+    // CDD Data Fetching
+    const { data: response, isLoading: loading, mutate: refreshSpeakers } = useSpeakersControllerFindAll();
+    const speakers = response?.data || [];
 
     const handleShowHistory = (id: number) => {
         setCurrentHistoryId(id);
         setHistoryVisible(true);
     };
 
-    const fetchSpeakers = async () => {
-        try {
-            setLoading(true);
-            const response = await axios.get('/api/speakers');
-            setSpeakers(response.data);
-        } catch (error) {
-            console.error('Failed to fetch speakers:', error);
-            message.error('Ошибка загрузки спикеров');
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    useEffect(() => {
-        fetchSpeakers();
-    }, []);
-
     const handleCreate = () => {
         setCurrentSpeaker(null);
         setModalVisible(true);
     };
 
-    const handleEdit = (speaker: any) => {
+    const handleEdit = (speaker: SpeakerEntity) => {
         setCurrentSpeaker(speaker);
         setModalVisible(true);
     };
 
     const handleDelete = async (id: number) => {
         try {
-            await axios.delete(`/api/speakers/${id}`);
+            await speakersControllerRemove(id);
             message.success('Спикер удален');
-            fetchSpeakers();
+            refreshSpeakers();
         } catch (error) {
             console.error('Failed to delete speaker:', error);
             message.error('Ошибка удаления');
@@ -62,13 +53,13 @@ const SpeakersList: React.FC = () => {
         try {
             if (values.id) {
                 const { id, ...payload } = values;
-                await axios.patch(`/api/speakers/${id}`, payload);
+                await speakersControllerUpdate(id, payload);
                 message.success('Спикер обновлен');
             } else {
-                await axios.post('/api/speakers', values);
+                await speakersControllerCreate(values);
                 message.success('Спикер добавлен');
             }
-            fetchSpeakers();
+            refreshSpeakers();
         } catch (error) {
             console.error('Failed to save speaker:', error);
             message.error('Ошибка сохранения');
