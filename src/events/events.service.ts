@@ -169,13 +169,22 @@ export class EventsService {
     }
 
     async updateSessionSpeakersSort(eventId: number, updates: { id: number, sortOrder: number }[]) {
-        const transactions = updates.map(update =>
-            this.prisma.sessionSpeaker.update({
-                where: { id: update.id },
-                data: { sortOrder: update.sortOrder }
-            })
-        );
-        await this.prisma.$transaction(transactions);
+        if (!updates || updates.length === 0) return { success: true };
+
+        // Strict validation to prevent SQL injection in executeRawUnsafe
+        const cleanUpdates = updates.filter(u => Number.isInteger(u.id) && Number.isInteger(u.sortOrder));
+        if (cleanUpdates.length === 0) return { success: true };
+
+        const ids = cleanUpdates.map(u => u.id).join(',');
+        
+        // Single optimized bulk query bypasses the 5s Prisma Transaction timeout
+        let sql = `UPDATE "session_speakers" SET "sort_order" = CASE "id" `;
+        cleanUpdates.forEach(u => {
+            sql += `WHEN ${u.id} THEN ${u.sortOrder} `;
+        });
+        sql += `END WHERE "id" IN (${ids});`;
+
+        await this.prisma.$executeRawUnsafe(sql);
         return { success: true };
     }
 
