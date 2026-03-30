@@ -194,7 +194,8 @@
 
                 let photoHtml = '';
                 if (spk.photoUrl) {
-                    photoHtml = '<img src="' + backendUrl + spk.photoUrl + '" class="upg-photo-img" alt="' + cleanName + '">';
+                    const finalPhotoUrl = spk.photoUrl.startsWith('http') ? spk.photoUrl : backendUrl + spk.photoUrl;
+                    photoHtml = '<img src="' + finalPhotoUrl + '" class="upg-photo-img" alt="' + cleanName + '">';
                 } else {
                     const firstNameInitial = spk.firstName && spk.firstName.length > 0 ? spk.firstName[0] : '';
                     const lastNameInitial = spk.lastName && spk.lastName.length > 0 ? spk.lastName[0] : '';
