@@ -280,9 +280,9 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                         label="Глобальная база брендов"
                         rules={[{ required: true, message: 'Выберите бренд' }]}
                         request={async () => {
-                            const { data } = await sponsorsControllerFindAll();
-                            // Backend returns a direct array, so 'data' is the array.
-                            return (Array.isArray(data) ? data : []).map((s: any) => ({
+                            const response = await sponsorsControllerFindAll();
+                            const items = Array.isArray(response) ? response : response?.data || [];
+                            return items.map((s: any) => ({
                                 label: s.name,
                                 value: s.id,
                             }));
@@ -335,8 +335,9 @@ const SponsorsModal: React.FC<SponsorsModalProps> = ({ visible, onClose, eventId
                     actionRef={actionRef}
                     columns={columns}
                     request={async () => {
-                        const { data } = await sponsorsControllerFindAllByEvent(eventId);
-                        return { data, success: true };
+                        const response = await sponsorsControllerFindAllByEvent(eventId);
+                        const items = Array.isArray(response) ? response : response?.data || [];
+                        return { data: items, success: true };
                     }}
                     rowKey="id"
                     search={false}
