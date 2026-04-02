@@ -19,9 +19,10 @@ import type {
 
 import type {
   CreateEventDto,
-  EventsControllerGetAnnouncements200Item,
-  EventsControllerGetFullStructure200,
-  EventsControllerGetSessionSpeakers200Item
+  UpdateAnnouncementsDto,
+  UpdateMemoTemplateDto,
+  UpdateSessionSpeakerDto,
+  UpdateSessionSpeakersSortDto
 } from '../model';
 
 import { customInstance } from '../../custom-instance';
@@ -50,7 +51,7 @@ export const getEventsControllerCreateUrl = () => {
 
   
 
-  return `/api/events`
+  return `/events`
 }
 
 export const eventsControllerCreate = async (createEventDto: CreateEventDto, options?: RequestInit): Promise<eventsControllerCreateResponse> => {
@@ -73,7 +74,7 @@ export const getEventsControllerCreateMutationFetcher = ( options?: SecondParame
     return eventsControllerCreate(arg, options);
   }
 }
-export const getEventsControllerCreateMutationKey = () => [`/api/events`] as const;
+export const getEventsControllerCreateMutationKey = () => [`/events`] as const;
 
 export type EventsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof eventsControllerCreate>>>
 
@@ -110,7 +111,7 @@ export const getEventsControllerFindAllUrl = () => {
 
   
 
-  return `/api/events`
+  return `/events`
 }
 
 export const eventsControllerFindAll = async ( options?: RequestInit): Promise<eventsControllerFindAllResponse> => {
@@ -127,7 +128,7 @@ export const eventsControllerFindAll = async ( options?: RequestInit): Promise<e
 
 
 
-export const getEventsControllerFindAllKey = () => [`/api/events`] as const;
+export const getEventsControllerFindAllKey = () => [`/events`] as const;
 
 export type EventsControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof eventsControllerFindAll>>>
 
@@ -148,7 +149,7 @@ export const useEventsControllerFindAll = <TError = ErrorType<unknown>>(
   }
 }
 export type eventsControllerGetFullStructureResponse200 = {
-  data: EventsControllerGetFullStructure200
+  data: void
   status: 200
 }
 
@@ -164,7 +165,7 @@ export const getEventsControllerGetFullStructureUrl = (id: number,) => {
 
   
 
-  return `/api/events/${id}/full-structure`
+  return `/events/${id}/full-structure`
 }
 
 export const eventsControllerGetFullStructure = async (id: number, options?: RequestInit): Promise<eventsControllerGetFullStructureResponse> => {
@@ -181,7 +182,7 @@ export const eventsControllerGetFullStructure = async (id: number, options?: Req
 
 
 
-export const getEventsControllerGetFullStructureKey = (id: number,) => [`/api/events/${id}/full-structure`] as const;
+export const getEventsControllerGetFullStructureKey = (id: number,) => [`/events/${id}/full-structure`] as const;
 
 export type EventsControllerGetFullStructureQueryResult = NonNullable<Awaited<ReturnType<typeof eventsControllerGetFullStructure>>>
 
@@ -218,7 +219,7 @@ export const getEventsControllerFindOneUrl = (id: number,) => {
 
   
 
-  return `/api/events/${id}`
+  return `/events/${id}`
 }
 
 export const eventsControllerFindOne = async (id: number, options?: RequestInit): Promise<eventsControllerFindOneResponse> => {
@@ -235,7 +236,7 @@ export const eventsControllerFindOne = async (id: number, options?: RequestInit)
 
 
 
-export const getEventsControllerFindOneKey = (id: number,) => [`/api/events/${id}`] as const;
+export const getEventsControllerFindOneKey = (id: number,) => [`/events/${id}`] as const;
 
 export type EventsControllerFindOneQueryResult = NonNullable<Awaited<ReturnType<typeof eventsControllerFindOne>>>
 
@@ -272,7 +273,7 @@ export const getEventsControllerUpdateUrl = (id: number,) => {
 
   
 
-  return `/api/events/${id}`
+  return `/events/${id}`
 }
 
 export const eventsControllerUpdate = async (id: number, options?: RequestInit): Promise<eventsControllerUpdateResponse> => {
@@ -294,7 +295,7 @@ export const getEventsControllerUpdateMutationFetcher = (id: number, options?: S
     return eventsControllerUpdate(id, options);
   }
 }
-export const getEventsControllerUpdateMutationKey = (id: number,) => [`/api/events/${id}`] as const;
+export const getEventsControllerUpdateMutationKey = (id: number,) => [`/events/${id}`] as const;
 
 export type EventsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof eventsControllerUpdate>>>
 
@@ -331,7 +332,7 @@ export const getEventsControllerRemoveUrl = (id: number,) => {
 
   
 
-  return `/api/events/${id}`
+  return `/events/${id}`
 }
 
 export const eventsControllerRemove = async (id: number, options?: RequestInit): Promise<eventsControllerRemoveResponse> => {
@@ -353,7 +354,7 @@ export const getEventsControllerRemoveMutationFetcher = (id: number, options?: S
     return eventsControllerRemove(id, options);
   }
 }
-export const getEventsControllerRemoveMutationKey = (id: number,) => [`/api/events/${id}`] as const;
+export const getEventsControllerRemoveMutationKey = (id: number,) => [`/events/${id}`] as const;
 
 export type EventsControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof eventsControllerRemove>>>
 
@@ -374,7 +375,7 @@ export const useEventsControllerRemove = <TError = ErrorType<unknown>>(
   }
 }
 export type eventsControllerGetSessionSpeakersResponse200 = {
-  data: EventsControllerGetSessionSpeakers200Item[]
+  data: void
   status: 200
 }
 
@@ -390,7 +391,7 @@ export const getEventsControllerGetSessionSpeakersUrl = (id: number,) => {
 
   
 
-  return `/api/events/${id}/session-speakers`
+  return `/events/${id}/session-speakers`
 }
 
 export const eventsControllerGetSessionSpeakers = async (id: number, options?: RequestInit): Promise<eventsControllerGetSessionSpeakersResponse> => {
@@ -407,7 +408,7 @@ export const eventsControllerGetSessionSpeakers = async (id: number, options?: R
 
 
 
-export const getEventsControllerGetSessionSpeakersKey = (id: number,) => [`/api/events/${id}/session-speakers`] as const;
+export const getEventsControllerGetSessionSpeakersKey = (id: number,) => [`/events/${id}/session-speakers`] as const;
 
 export type EventsControllerGetSessionSpeakersQueryResult = NonNullable<Awaited<ReturnType<typeof eventsControllerGetSessionSpeakers>>>
 
@@ -444,17 +445,19 @@ export const getEventsControllerUpdateSessionSpeakersSortUrl = (id: number,) => 
 
   
 
-  return `/api/events/${id}/session-speakers/sort`
+  return `/events/${id}/session-speakers/sort`
 }
 
-export const eventsControllerUpdateSessionSpeakersSort = async (id: number, options?: RequestInit): Promise<eventsControllerUpdateSessionSpeakersSortResponse> => {
+export const eventsControllerUpdateSessionSpeakersSort = async (id: number,
+    updateSessionSpeakersSortDto: UpdateSessionSpeakersSortDto, options?: RequestInit): Promise<eventsControllerUpdateSessionSpeakersSortResponse> => {
   
   return customInstance<eventsControllerUpdateSessionSpeakersSortResponse>(getEventsControllerUpdateSessionSpeakersSortUrl(id),
   {      
     ...options,
-    method: 'PATCH'
-    
-    
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      updateSessionSpeakersSortDto,)
   }
 );}
   
@@ -462,16 +465,16 @@ export const eventsControllerUpdateSessionSpeakersSort = async (id: number, opti
 
 
 export const getEventsControllerUpdateSessionSpeakersSortMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
-  return (_: Key, __: { arg: Arguments }) => {
-    return eventsControllerUpdateSessionSpeakersSort(id, options);
+  return (_: Key, { arg }: { arg: UpdateSessionSpeakersSortDto }) => {
+    return eventsControllerUpdateSessionSpeakersSort(id, arg, options);
   }
 }
-export const getEventsControllerUpdateSessionSpeakersSortMutationKey = (id: number,) => [`/api/events/${id}/session-speakers/sort`] as const;
+export const getEventsControllerUpdateSessionSpeakersSortMutationKey = (id: number,) => [`/events/${id}/session-speakers/sort`] as const;
 
 export type EventsControllerUpdateSessionSpeakersSortMutationResult = NonNullable<Awaited<ReturnType<typeof eventsControllerUpdateSessionSpeakersSort>>>
 
 export const useEventsControllerUpdateSessionSpeakersSort = <TError = ErrorType<unknown>>(
-  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof eventsControllerUpdateSessionSpeakersSort>>, TError, Key, Arguments, Awaited<ReturnType<typeof eventsControllerUpdateSessionSpeakersSort>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof eventsControllerUpdateSessionSpeakersSort>>, TError, Key, UpdateSessionSpeakersSortDto, Awaited<ReturnType<typeof eventsControllerUpdateSessionSpeakersSort>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
 ) => {
 
   const {swr: swrOptions, request: requestOptions} = options ?? {}
@@ -487,7 +490,7 @@ export const useEventsControllerUpdateSessionSpeakersSort = <TError = ErrorType<
   }
 }
 export type eventsControllerGetAnnouncementsResponse200 = {
-  data: EventsControllerGetAnnouncements200Item[]
+  data: void
   status: 200
 }
 
@@ -503,7 +506,7 @@ export const getEventsControllerGetAnnouncementsUrl = (id: number,) => {
 
   
 
-  return `/api/events/${id}/announcements`
+  return `/events/${id}/announcements`
 }
 
 export const eventsControllerGetAnnouncements = async (id: number, options?: RequestInit): Promise<eventsControllerGetAnnouncementsResponse> => {
@@ -520,7 +523,7 @@ export const eventsControllerGetAnnouncements = async (id: number, options?: Req
 
 
 
-export const getEventsControllerGetAnnouncementsKey = (id: number,) => [`/api/events/${id}/announcements`] as const;
+export const getEventsControllerGetAnnouncementsKey = (id: number,) => [`/events/${id}/announcements`] as const;
 
 export type EventsControllerGetAnnouncementsQueryResult = NonNullable<Awaited<ReturnType<typeof eventsControllerGetAnnouncements>>>
 
@@ -557,17 +560,19 @@ export const getEventsControllerUpdateAnnouncementsUrl = (id: number,) => {
 
   
 
-  return `/api/events/${id}/announcements`
+  return `/events/${id}/announcements`
 }
 
-export const eventsControllerUpdateAnnouncements = async (id: number, options?: RequestInit): Promise<eventsControllerUpdateAnnouncementsResponse> => {
+export const eventsControllerUpdateAnnouncements = async (id: number,
+    updateAnnouncementsDto: UpdateAnnouncementsDto, options?: RequestInit): Promise<eventsControllerUpdateAnnouncementsResponse> => {
   
   return customInstance<eventsControllerUpdateAnnouncementsResponse>(getEventsControllerUpdateAnnouncementsUrl(id),
   {      
     ...options,
-    method: 'PATCH'
-    
-    
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      updateAnnouncementsDto,)
   }
 );}
   
@@ -575,16 +580,16 @@ export const eventsControllerUpdateAnnouncements = async (id: number, options?: 
 
 
 export const getEventsControllerUpdateAnnouncementsMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
-  return (_: Key, __: { arg: Arguments }) => {
-    return eventsControllerUpdateAnnouncements(id, options);
+  return (_: Key, { arg }: { arg: UpdateAnnouncementsDto }) => {
+    return eventsControllerUpdateAnnouncements(id, arg, options);
   }
 }
-export const getEventsControllerUpdateAnnouncementsMutationKey = (id: number,) => [`/api/events/${id}/announcements`] as const;
+export const getEventsControllerUpdateAnnouncementsMutationKey = (id: number,) => [`/events/${id}/announcements`] as const;
 
 export type EventsControllerUpdateAnnouncementsMutationResult = NonNullable<Awaited<ReturnType<typeof eventsControllerUpdateAnnouncements>>>
 
 export const useEventsControllerUpdateAnnouncements = <TError = ErrorType<unknown>>(
-  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof eventsControllerUpdateAnnouncements>>, TError, Key, Arguments, Awaited<ReturnType<typeof eventsControllerUpdateAnnouncements>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof eventsControllerUpdateAnnouncements>>, TError, Key, UpdateAnnouncementsDto, Awaited<ReturnType<typeof eventsControllerUpdateAnnouncements>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
 ) => {
 
   const {swr: swrOptions, request: requestOptions} = options ?? {}
@@ -616,7 +621,7 @@ export const getEventsControllerGetMemoTemplateUrl = (id: number,) => {
 
   
 
-  return `/api/events/${id}/memo-template`
+  return `/events/${id}/memo-template`
 }
 
 export const eventsControllerGetMemoTemplate = async (id: number, options?: RequestInit): Promise<eventsControllerGetMemoTemplateResponse> => {
@@ -633,7 +638,7 @@ export const eventsControllerGetMemoTemplate = async (id: number, options?: Requ
 
 
 
-export const getEventsControllerGetMemoTemplateKey = (id: number,) => [`/api/events/${id}/memo-template`] as const;
+export const getEventsControllerGetMemoTemplateKey = (id: number,) => [`/events/${id}/memo-template`] as const;
 
 export type EventsControllerGetMemoTemplateQueryResult = NonNullable<Awaited<ReturnType<typeof eventsControllerGetMemoTemplate>>>
 
@@ -670,17 +675,19 @@ export const getEventsControllerUpdateMemoTemplateUrl = (id: number,) => {
 
   
 
-  return `/api/events/${id}/memo-template`
+  return `/events/${id}/memo-template`
 }
 
-export const eventsControllerUpdateMemoTemplate = async (id: number, options?: RequestInit): Promise<eventsControllerUpdateMemoTemplateResponse> => {
+export const eventsControllerUpdateMemoTemplate = async (id: number,
+    updateMemoTemplateDto: UpdateMemoTemplateDto, options?: RequestInit): Promise<eventsControllerUpdateMemoTemplateResponse> => {
   
   return customInstance<eventsControllerUpdateMemoTemplateResponse>(getEventsControllerUpdateMemoTemplateUrl(id),
   {      
     ...options,
-    method: 'PATCH'
-    
-    
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      updateMemoTemplateDto,)
   }
 );}
   
@@ -688,16 +695,16 @@ export const eventsControllerUpdateMemoTemplate = async (id: number, options?: R
 
 
 export const getEventsControllerUpdateMemoTemplateMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
-  return (_: Key, __: { arg: Arguments }) => {
-    return eventsControllerUpdateMemoTemplate(id, options);
+  return (_: Key, { arg }: { arg: UpdateMemoTemplateDto }) => {
+    return eventsControllerUpdateMemoTemplate(id, arg, options);
   }
 }
-export const getEventsControllerUpdateMemoTemplateMutationKey = (id: number,) => [`/api/events/${id}/memo-template`] as const;
+export const getEventsControllerUpdateMemoTemplateMutationKey = (id: number,) => [`/events/${id}/memo-template`] as const;
 
 export type EventsControllerUpdateMemoTemplateMutationResult = NonNullable<Awaited<ReturnType<typeof eventsControllerUpdateMemoTemplate>>>
 
 export const useEventsControllerUpdateMemoTemplate = <TError = ErrorType<unknown>>(
-  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof eventsControllerUpdateMemoTemplate>>, TError, Key, Arguments, Awaited<ReturnType<typeof eventsControllerUpdateMemoTemplate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof eventsControllerUpdateMemoTemplate>>, TError, Key, UpdateMemoTemplateDto, Awaited<ReturnType<typeof eventsControllerUpdateMemoTemplate>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
 ) => {
 
   const {swr: swrOptions, request: requestOptions} = options ?? {}
@@ -729,17 +736,19 @@ export const getEventsControllerUpdateSessionSpeakerUrl = (id: number,) => {
 
   
 
-  return `/api/events/session-speakers/${id}`
+  return `/events/session-speakers/${id}`
 }
 
-export const eventsControllerUpdateSessionSpeaker = async (id: number, options?: RequestInit): Promise<eventsControllerUpdateSessionSpeakerResponse> => {
+export const eventsControllerUpdateSessionSpeaker = async (id: number,
+    updateSessionSpeakerDto: UpdateSessionSpeakerDto, options?: RequestInit): Promise<eventsControllerUpdateSessionSpeakerResponse> => {
   
   return customInstance<eventsControllerUpdateSessionSpeakerResponse>(getEventsControllerUpdateSessionSpeakerUrl(id),
   {      
     ...options,
-    method: 'PATCH'
-    
-    
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      updateSessionSpeakerDto,)
   }
 );}
   
@@ -747,16 +756,16 @@ export const eventsControllerUpdateSessionSpeaker = async (id: number, options?:
 
 
 export const getEventsControllerUpdateSessionSpeakerMutationFetcher = (id: number, options?: SecondParameter<typeof customInstance>) => {
-  return (_: Key, __: { arg: Arguments }) => {
-    return eventsControllerUpdateSessionSpeaker(id, options);
+  return (_: Key, { arg }: { arg: UpdateSessionSpeakerDto }) => {
+    return eventsControllerUpdateSessionSpeaker(id, arg, options);
   }
 }
-export const getEventsControllerUpdateSessionSpeakerMutationKey = (id: number,) => [`/api/events/session-speakers/${id}`] as const;
+export const getEventsControllerUpdateSessionSpeakerMutationKey = (id: number,) => [`/events/session-speakers/${id}`] as const;
 
 export type EventsControllerUpdateSessionSpeakerMutationResult = NonNullable<Awaited<ReturnType<typeof eventsControllerUpdateSessionSpeaker>>>
 
 export const useEventsControllerUpdateSessionSpeaker = <TError = ErrorType<unknown>>(
-  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof eventsControllerUpdateSessionSpeaker>>, TError, Key, Arguments, Awaited<ReturnType<typeof eventsControllerUpdateSessionSpeaker>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
+  id: number, options?: { swr?:SWRMutationConfiguration<Awaited<ReturnType<typeof eventsControllerUpdateSessionSpeaker>>, TError, Key, UpdateSessionSpeakerDto, Awaited<ReturnType<typeof eventsControllerUpdateSessionSpeaker>>> & { swrKey?: string }, request?: SecondParameter<typeof customInstance>}
 ) => {
 
   const {swr: swrOptions, request: requestOptions} = options ?? {}
@@ -788,7 +797,7 @@ export const getEventsControllerGetPublicSpeakerMemoUrl = (hash: string,) => {
 
   
 
-  return `/api/events/public/speaker-memo/${hash}`
+  return `/events/public/speaker-memo/${hash}`
 }
 
 export const eventsControllerGetPublicSpeakerMemo = async (hash: string, options?: RequestInit): Promise<eventsControllerGetPublicSpeakerMemoResponse> => {
@@ -805,7 +814,7 @@ export const eventsControllerGetPublicSpeakerMemo = async (hash: string, options
 
 
 
-export const getEventsControllerGetPublicSpeakerMemoKey = (hash: string,) => [`/api/events/public/speaker-memo/${hash}`] as const;
+export const getEventsControllerGetPublicSpeakerMemoKey = (hash: string,) => [`/events/public/speaker-memo/${hash}`] as const;
 
 export type EventsControllerGetPublicSpeakerMemoQueryResult = NonNullable<Awaited<ReturnType<typeof eventsControllerGetPublicSpeakerMemo>>>
 

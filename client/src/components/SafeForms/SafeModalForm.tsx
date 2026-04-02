@@ -30,8 +30,21 @@ export const SafeModalForm = <T extends Record<string, any>>({
     return (
         <ModalForm<T>
             {...props}
-            onFinish={onFinish}
             formRef={actualFormRef as any}
+            onFinish={async (values) => {
+                if (!onFinish) return true;
+                try {
+                    return await onFinish(values);
+                } catch (error: any) {
+                    console.error("SafeModalForm intercepted backend error:", error);
+                    notification.error({
+                        message: 'Ошибка при сохранении',
+                        description: error.response?.data?.message || error.message || 'Произошла ошибка при отправке данных на сервер',
+                        duration: 8,
+                    });
+                    return false; // Prevent form from closing
+                }
+            }}
             onFinishFailed={(errorInfo: any) => {
                 console.error("SafeModalForm Validation failed:", errorInfo);
                 const errorFields = errorInfo.errorFields?.map((f: any) => f.name.join(' -> ')).join(', ');

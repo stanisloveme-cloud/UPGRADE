@@ -1,0 +1,317 @@
+
+Running 25 tests using 9 workers
+
+  -   1 [devstand] › tests\brands.spec.ts:15:10 › Brands Library (TC-06) › should navigate to Brands and add a new brand
+  -   2 [devstand] › tests\brands.spec.ts:38:10 › Brands Library (TC-06) › should allow uploading a logo for a brand (TC-08)
+  ✓   5 [devstand] › tests\api_auth.spec.ts:30:9 › API Health & Auth (TC-API-01) › should reject unauthorized access to protected endpoints (684ms)
+  ✓   6 [devstand] › tests\api_auth.spec.ts:6:9 › API Health & Auth (TC-API-01) › should authenticate and get user profile via API (773ms)
+BROWSER CONSOLE: Failed to load resource: the server responded with a status of 401 (Unauthorized)
+  ✓  10 [devstand] › tests\example.spec.ts:3:5 › has title (3.9s)
+BROWSER CONSOLE: Failed to load resource: the server responded with a status of 401 (Unauthorized)
+  ✓  12 [devstand] › tests\example.spec.ts:10:5 › get started link (3.7s)
+AJV Schema Validation Errors: Path /api/speakers not found in OpenAPI spec
+  ✘  11 [devstand] › tests\cdd_speakers.spec.ts:16:9 › CDD Double Trap Validation: Speakers › should validate /api/speakers API schema via AJV Double Trap (5.1s)
+BROWSER CONSOLE: [ScheduleGrid] Data received: null
+BROWSER CONSOLE: [ProgramEditor] Fetching data for eventId: 85
+  ✓  13 [devstand] › tests\grid.spec.ts:17:9 › Schedule Grid (TC-02) › should filter sessions and badges using header checkboxes (4.9s)
+  -  16 [devstand] › tests\reports.spec.ts:15:10 › Excel Reports Generation (TC-07) › should download the program grid report
+  -  17 [devstand] › tests\reports.spec.ts:38:10 › Excel Reports Generation (TC-07) › should download the speaker badges report
+BROWSER CONSOLE: [ProgramEditor] API Response: {id: 85, name: Autotest Event 2026, description: Created by Playwright, startDate: 2026-01-01T00:00:00.000Z, endDate: 2026-01-02T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 85, name: Autotest Event 2026, description: Created by Playwright, startDate: 2026-01-01T00:00:00.000Z, endDate: 2026-01-02T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 85, name: Autotest Event 2026, description: Created by Playwright, startDate: 2026-01-01T00:00:00.000Z, endDate: 2026-01-02T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: null
+BROWSER CONSOLE: [ProgramEditor] Fetching data for eventId: 85
+  ✓   4 [devstand] › tests\events.spec.ts:27:9 › Events Management (TC-09) › should open events page, create, and verify a new event (7.3s)
+AJV Schema Validation Errors: Path /api/sponsors/all not found in OpenAPI spec
+BROWSER CONSOLE: Failed to load resource: the server responded with a status of 401 (Unauthorized)
+  ✘  20 [devstand] › tests\production_smoke.spec.ts:17:9 › Production Smoke Tests (Safe & Read-Only) › should login and navigate core modules without mutating data (261ms)
+  ✘   7 [devstand] › tests\cdd_sponsors.spec.ts:16:9 › CDD Double Trap Validation: Sponsors › should validate /api/sponsors/all API schema via AJV Double Trap (8.2s)
+  ✓   8 [devstand] › tests\events.spec.ts:84:9 › Events Management (TC-09) › should verify SafeModalForm error validations on empty fields (8.5s)
+BROWSER CONSOLE: [ScheduleGrid] Data received: null
+BROWSER CONSOLE: [ProgramEditor] Fetching data for eventId: 42
+BROWSER CONSOLE: [ScheduleGrid] Data received: null
+BROWSER CONSOLE: Failed to load resource: the server responded with a status of 401 (Unauthorized)
+BROWSER CONSOLE: [ProgramEditor] API Response: {id: 42, name: Апгрейд Ретейл, description: , startDate: 2026-04-28T00:00:00.000Z, endDate: 2026-04-28T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 42, name: Апгрейд Ретейл, description: , startDate: 2026-04-28T00:00:00.000Z, endDate: 2026-04-28T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 42, name: Апгрейд Ретейл, description: , startDate: 2026-04-28T00:00:00.000Z, endDate: 2026-04-28T00:00:00.000Z}
+  ✓  18 [devstand] › tests\sales.spec.ts:12:9 › Sales Section Placeholder (TC-11) › should navigate to Sales (4.7s)
+  ✘   3 [devstand] › tests\cdd_forms_validation.spec.ts:12:9 › UI Vulnerabilities: Silent UI Fails (SafeDrawerForm) › should display red error Toast when form submission fails (Anti Silent Fail) (11.0s)
+BROWSER CONSOLE: Failed to load resource: the server responded with a status of 401 (Unauthorized)
+BROWSER CONSOLE: [ProgramEditor] Fetching data for eventId: 42
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 42, name: Апгрейд Ретейл, description: , startDate: 2026-04-28T00:00:00.000Z, endDate: 2026-04-28T00:00:00.000Z}
+BROWSER CONSOLE: [ProgramEditor] Fetching data for eventId: 42
+BROWSER CONSOLE: [ProgramEditor] API Response: {id: 42, name: Апгрейд Ретейл, description: , startDate: 2026-04-28T00:00:00.000Z, endDate: 2026-04-28T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 42, name: Апгрейд Ретейл, description: , startDate: 2026-04-28T00:00:00.000Z, endDate: 2026-04-28T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: null
+BROWSER CONSOLE: Failed to load resource: the server responded with a status of 401 (Unauthorized)
+BROWSER CONSOLE: [ProgramEditor] Fetching data for eventId: 42
+BROWSER CONSOLE: [ProgramEditor] API Response: {id: 42, name: Апгрейд Ретейл, description: , startDate: 2026-04-28T00:00:00.000Z, endDate: 2026-04-28T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 42, name: Апгрейд Ретейл, description: , startDate: 2026-04-28T00:00:00.000Z, endDate: 2026-04-28T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: null
+  ✓  14 [devstand] › tests\halls.spec.ts:27:9 › Halls Management (TC-01) › should open halls management modal and add a new hall (7.3s)
+BROWSER CONSOLE: [ProgramEditor] API Response: {id: 42, name: Апгрейд Ретейл, description: , startDate: 2026-04-28T00:00:00.000Z, endDate: 2026-04-28T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 42, name: Апгрейд Ретейл, description: , startDate: 2026-04-28T00:00:00.000Z, endDate: 2026-04-28T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 42, name: Апгрейд Ретейл, description: , startDate: 2026-04-28T00:00:00.000Z, endDate: 2026-04-28T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: null
+BROWSER CONSOLE: [ProgramEditor] Fetching data for eventId: 2
+BROWSER CONSOLE: [ProgramEditor] API Response: {id: 2, name: Retail Tech 2026, description: Технологии в ритейле, startDate: 2026-04-10T00:00:00.000Z, endDate: 2026-04-11T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 2, name: Retail Tech 2026, description: Технологии в ритейле, startDate: 2026-04-10T00:00:00.000Z, endDate: 2026-04-11T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 2, name: Retail Tech 2026, description: Технологии в ритейле, startDate: 2026-04-10T00:00:00.000Z, endDate: 2026-04-11T00:00:00.000Z}
+BROWSER CONSOLE: [ProgramEditor] Fetching data for eventId: 42
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 42, name: Апгрейд Ретейл, description: , startDate: 2026-04-28T00:00:00.000Z, endDate: 2026-04-28T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 2, name: Retail Tech 2026, description: Технологии в ритейле, startDate: 2026-04-10T00:00:00.000Z, endDate: 2026-04-11T00:00:00.000Z}
+BROWSER CONSOLE: [ProgramEditor] Fetching data for eventId: 42
+BROWSER CONSOLE: [ProgramEditor] API Response: {id: 42, name: Апгрейд Ретейл, description: , startDate: 2026-04-28T00:00:00.000Z, endDate: 2026-04-28T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 42, name: Апгрейд Ретейл, description: , startDate: 2026-04-28T00:00:00.000Z, endDate: 2026-04-28T00:00:00.000Z}
+BROWSER CONSOLE: [ProgramEditor] API Response: {id: 42, name: Апгрейд Ретейл, description: , startDate: 2026-04-28T00:00:00.000Z, endDate: 2026-04-28T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 42, name: Апгрейд Ретейл, description: , startDate: 2026-04-28T00:00:00.000Z, endDate: 2026-04-28T00:00:00.000Z}
+BROWSER CONSOLE: UPGRADE CRM Tilda Integration Widget (NEW UX) Loaded
+BROWSER CONSOLE: [ProgramEditor] Fetching data for eventId: 2
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 2, name: Retail Tech 2026, description: Технологии в ритейле, startDate: 2026-04-10T00:00:00.000Z, endDate: 2026-04-11T00:00:00.000Z}
+BROWSER CONSOLE: [ProgramEditor] API Response: {id: 2, name: Retail Tech 2026, description: Технологии в ритейле, startDate: 2026-04-10T00:00:00.000Z, endDate: 2026-04-11T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 2, name: Retail Tech 2026, description: Технологии в ритейле, startDate: 2026-04-10T00:00:00.000Z, endDate: 2026-04-11T00:00:00.000Z}
+BROWSER CONSOLE: Failed to load resource: the server responded with a status of 401 (Unauthorized)
+BROWSER CONSOLE: [ScheduleGrid] Data received: null
+BROWSER CONSOLE: [ProgramEditor] Fetching data for eventId: 2
+BROWSER CONSOLE: [ProgramEditor] API Response: {id: 2, name: Retail Tech 2026, description: Технологии в ритейле, startDate: 2026-04-10T00:00:00.000Z, endDate: 2026-04-11T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 2, name: Retail Tech 2026, description: Технологии в ритейле, startDate: 2026-04-10T00:00:00.000Z, endDate: 2026-04-11T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 2, name: Retail Tech 2026, description: Технологии в ритейле, startDate: 2026-04-10T00:00:00.000Z, endDate: 2026-04-11T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 2, name: Retail Tech 2026, description: Технологии в ритейле, startDate: 2026-04-10T00:00:00.000Z, endDate: 2026-04-11T00:00:00.000Z}
+BROWSER CONSOLE: Drawer opened. Force-injected values: {timeRange: undefined, trackId: undefined, speakers: undefined, briefings: undefined, managerId: undefined}
+BROWSER CONSOLE: Actual form fields after inject: {name: undefined, description: undefined, timeRange: undefined, trackId: undefined, managerId: undefined}
+  ✓  21 [devstand] › tests\speakers.spec.ts:25:9 › Speakers Management (TC-08) › should open speakers page, create, and verify a speaker (7.5s)
+  ✓  25 [devstand] › tests\users.spec.ts:23:9 › Users Management (TC-10) › should open users page, create, and verify a new user (5.3s)
+BROWSER CONSOLE: SessionModal onFinish fixed values: {name: Новая Автотест Сессия 1775087383158, trackId: 568, startTime: 10:00, endTime: 11:00}
+BROWSER CONSOLE: [ProgramEditor] Fetching data for eventId: 2
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 2, name: Retail Tech 2026, description: Технологии в ритейле, startDate: 2026-04-10T00:00:00.000Z, endDate: 2026-04-11T00:00:00.000Z}
+BROWSER CONSOLE: [ProgramEditor] API Response: {id: 2, name: Retail Tech 2026, description: Технологии в ритейле, startDate: 2026-04-10T00:00:00.000Z, endDate: 2026-04-11T00:00:00.000Z}
+BROWSER CONSOLE: [ScheduleGrid] Data received: {id: 2, name: Retail Tech 2026, description: Технологии в ритейле, startDate: 2026-04-10T00:00:00.000Z, endDate: 2026-04-11T00:00:00.000Z}
+  ✘  15 [devstand] › tests\halls.spec.ts:59:9 › Halls Management (TC-01) › should verify empty hall form validation (14.2s)
+  ✘  24 [devstand] › tests\tilda_standalone.spec.ts:14:9 › Tilda Standalone Integration (TC-13) › should successfully load Tilda standalone page for event 76 and display key elements (8.5s)
+  ✓  19 [devstand] › tests\session_create.spec.ts:44:9 › Session Creation (TC-12) › should open Session Drawer via empty slot and add a new session (13.8s)
+  ✘   9 [devstand] › tests\cdd_events.spec.ts:13:9 › CDD Double Trap Validation: Events › should validate /api/events API schema via AJV Double Trap (30.3s)
+  ✘  22 [devstand] › tests\session_editor.spec.ts:26:9 › Session Editor & Conflicts (TC-03 & TC-04) › should open Session Editor and modify internal comment (30.0s)
+  ✘  23 [devstand] › tests\session_editor.spec.ts:85:9 › Session Editor & Conflicts (TC-03 & TC-04) › should test Cancel button on session editor (30.0s)
+
+
+  1) [devstand] › tests\cdd_events.spec.ts:13:9 › CDD Double Trap Validation: Events › should validate /api/events API schema via AJV Double Trap 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.waitForURL: Test timeout of 30000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "**/brands" until "load"
+    ============================================================
+
+      18 |         // Break out to another tab and come back to trigger fresh fetch
+      19 |         await page.click('text=Бренды');
+    > 20 |         await page.waitForURL('**/brands');
+         |                    ^
+      21 |         
+      22 |         await page.click('.ant-menu-item:has-text("Мероприятия"), .ant-menu-title-content:has-text("Мероприятия")');
+      23 |
+        at D:\UPGRADE\e2e\tests\cdd_events.spec.ts:20:20
+
+    Error Context: test-results\cdd_events-CDD-Double-Trap-ed8c4--schema-via-AJV-Double-Trap-devstand\error-context.md
+
+  2) [devstand] › tests\cdd_forms_validation.spec.ts:12:9 › UI Vulnerabilities: Silent UI Fails (SafeDrawerForm) › should display red error Toast when form submission fails (Anti Silent Fail) 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.ant-message-error, .ant-notification-notice-error')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('.ant-message-error, .ant-notification-notice-error')[22m
+
+
+      47 |         // ant-message-error is specifically for red toasts in Ant Design
+      48 |         const errorMessage = page.locator('.ant-message-error, .ant-notification-notice-error');
+    > 49 |         await expect(errorMessage).toBeVisible({ timeout: 5000 });
+         |                                    ^
+      50 |         
+      51 |         // Assert the modal did NOT close silently
+      52 |         await expect(modalTitle).toBeVisible();
+        at D:\UPGRADE\e2e\tests\cdd_forms_validation.spec.ts:49:36
+
+    Error Context: test-results\cdd_forms_validation-UI-Vu-c9dc7-ion-fails-Anti-Silent-Fail--devstand\error-context.md
+
+  3) [devstand] › tests\cdd_speakers.spec.ts:16:9 › CDD Double Trap Validation: Speakers › should validate /api/speakers API schema via AJV Double Trap 
+
+    Error: Double Trap API Validation Failed! The backend response violated the openapi.json contract!
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32mtrue[39m
+    Received: [31mfalse[39m
+
+      40 |         }
+      41 |         
+    > 42 |         expect(validation.valid, 'Double Trap API Validation Failed! The backend response violated the openapi.json contract!').toBe(true);
+         |                                                                                                                                 ^
+      43 |     });
+      44 | });
+      45 |
+        at D:\UPGRADE\e2e\tests\cdd_speakers.spec.ts:42:129
+
+    Error Context: test-results\cdd_speakers-CDD-Double-Tr-d1002--schema-via-AJV-Double-Trap-devstand\error-context.md
+
+  4) [devstand] › tests\cdd_sponsors.spec.ts:16:9 › CDD Double Trap Validation: Sponsors › should validate /api/sponsors/all API schema via AJV Double Trap 
+
+    Error: Double Trap API Validation Failed! The backend response violated the openapi.json contract!
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32mtrue[39m
+    Received: [31mfalse[39m
+
+      40 |         }
+      41 |         
+    > 42 |         expect(validation.valid, 'Double Trap API Validation Failed! The backend response violated the openapi.json contract!').toBe(true);
+         |                                                                                                                                 ^
+      43 |     });
+      44 | });
+      45 |
+        at D:\UPGRADE\e2e\tests\cdd_sponsors.spec.ts:42:129
+
+    Error Context: test-results\cdd_sponsors-CDD-Double-Tr-d4dd4--schema-via-AJV-Double-Trap-devstand\error-context.md
+
+  5) [devstand] › tests\halls.spec.ts:59:9 › Halls Management (TC-01) › should verify empty hall form validation 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.ant-modal-title, .ant-drawer-title').filter({ hasText: 'Управление залами' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('.ant-modal-title, .ant-drawer-title').filter({ hasText: 'Управление залами' })[22m
+
+
+      76 |         // Verify the drawer/modal STAYS OPEN because of validation error
+      77 |         await page.waitForTimeout(1000);
+    > 78 |         await expect(modalTitle).toBeVisible();
+         |                                  ^
+      79 |
+      80 |         // Verify cancel works
+      81 |         await page.click('.ant-modal-content button:has-text("Отмена")');
+        at D:\UPGRADE\e2e\tests\halls.spec.ts:78:34
+
+    Error Context: test-results\halls-Halls-Management-TC--33083--empty-hall-form-validation-devstand\error-context.md
+
+  6) [devstand] › tests\production_smoke.spec.ts:17:9 › Production Smoke Tests (Safe & Read-Only) › should login and navigate core modules without mutating data 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected substring: [32m"erp-upgrade.ru"[39m
+    Received string:    [31m"https://devupgrade.space4you.ru"[39m
+
+      19 |
+      20 |         // Double check this is actually running on Production to prevent accidents
+    > 21 |         expect(baseURL).toContain('erp-upgrade.ru');
+         |                         ^
+      22 |
+      23 |         // 1. Navigate to the app
+      24 |         await page.goto('/', { timeout: 60000, waitUntil: 'domcontentloaded' });
+        at D:\UPGRADE\e2e\tests\production_smoke.spec.ts:21:25
+
+  7) [devstand] › tests\session_editor.spec.ts:26:9 › Session Editor & Conflicts (TC-03 & TC-04) › should open Session Editor and modify internal comment 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Session Editor & Conflicts (TC-03 & TC-04)', () => {
+    > 4 |     test.beforeEach(async ({ page }) => {
+        |          ^
+      5 |         // 1. Navigate to the app (uses baseURL from playwright.config.ts)
+      6 |         await page.goto('/');
+      7 |         await page.fill('#login_form_username', 'vladislav.shirobokov@gmail.com');
+        at D:\UPGRADE\e2e\tests\session_editor.spec.ts:4:10
+
+    Error: page.waitForSelector: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('.session-card') to be visible[22m
+
+
+      21 |
+      22 |         // Wait for the Grid data to render
+    > 23 |         await page.waitForSelector('.session-card');
+         |                    ^
+      24 |     });
+      25 |
+      26 |     test('should open Session Editor and modify internal comment', async ({ page }) => {
+        at D:\UPGRADE\e2e\tests\session_editor.spec.ts:23:20
+
+    Error Context: test-results\session_editor-Session-Edi-aae1a-and-modify-internal-comment-devstand\error-context.md
+
+  8) [devstand] › tests\session_editor.spec.ts:85:9 › Session Editor & Conflicts (TC-03 & TC-04) › should test Cancel button on session editor 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Session Editor & Conflicts (TC-03 & TC-04)', () => {
+    > 4 |     test.beforeEach(async ({ page }) => {
+        |          ^
+      5 |         // 1. Navigate to the app (uses baseURL from playwright.config.ts)
+      6 |         await page.goto('/');
+      7 |         await page.fill('#login_form_username', 'vladislav.shirobokov@gmail.com');
+        at D:\UPGRADE\e2e\tests\session_editor.spec.ts:4:10
+
+    Error: page.waitForSelector: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('.session-card') to be visible[22m
+
+
+      21 |
+      22 |         // Wait for the Grid data to render
+    > 23 |         await page.waitForSelector('.session-card');
+         |                    ^
+      24 |     });
+      25 |
+      26 |     test('should open Session Editor and modify internal comment', async ({ page }) => {
+        at D:\UPGRADE\e2e\tests\session_editor.spec.ts:23:20
+
+    Error Context: test-results\session_editor-Session-Edi-17b81-el-button-on-session-editor-devstand\error-context.md
+
+  9) [devstand] › tests\tilda_standalone.spec.ts:14:9 › Tilda Standalone Integration (TC-13) › should successfully load Tilda standalone page for event 76 and display key elements 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.sidebar-sticky h4').first()
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('.sidebar-sticky h4').first()[22m
+
+
+      22 |         // Verify the dynamic data got populated by checking for the date toggle or track tabs
+      23 |         const dateNav = page.locator('.sidebar-sticky h4').first();
+    > 24 |         await expect(dateNav).toBeVisible();
+         |                               ^
+      25 |
+      26 |         // 1. Verify Grid View Elements (Sessions)
+      27 |         const sessionCard = page.locator('.custom-session-card').first();
+        at D:\UPGRADE\e2e\tests\tilda_standalone.spec.ts:24:31
+
+    Error Context: test-results\tilda_standalone-Tilda-Sta-74adc-76-and-display-key-elements-devstand\error-context.md
+
+  9 failed
+    [devstand] › tests\cdd_events.spec.ts:13:9 › CDD Double Trap Validation: Events › should validate /api/events API schema via AJV Double Trap 
+    [devstand] › tests\cdd_forms_validation.spec.ts:12:9 › UI Vulnerabilities: Silent UI Fails (SafeDrawerForm) › should display red error Toast when form submission fails (Anti Silent Fail) 
+    [devstand] › tests\cdd_speakers.spec.ts:16:9 › CDD Double Trap Validation: Speakers › should validate /api/speakers API schema via AJV Double Trap 
+    [devstand] › tests\cdd_sponsors.spec.ts:16:9 › CDD Double Trap Validation: Sponsors › should validate /api/sponsors/all API schema via AJV Double Trap 
+    [devstand] › tests\halls.spec.ts:59:9 › Halls Management (TC-01) › should verify empty hall form validation 
+    [devstand] › tests\production_smoke.spec.ts:17:9 › Production Smoke Tests (Safe & Read-Only) › should login and navigate core modules without mutating data 
+    [devstand] › tests\session_editor.spec.ts:26:9 › Session Editor & Conflicts (TC-03 & TC-04) › should open Session Editor and modify internal comment 
+    [devstand] › tests\session_editor.spec.ts:85:9 › Session Editor & Conflicts (TC-03 & TC-04) › should test Cancel button on session editor 
+    [devstand] › tests\tilda_standalone.spec.ts:14:9 › Tilda Standalone Integration (TC-13) › should successfully load Tilda standalone page for event 76 and display key elements 
+  4 skipped
+  12 passed (44.1s)

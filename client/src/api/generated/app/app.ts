@@ -17,10 +17,6 @@ import type {
   SWRMutationConfiguration
 } from 'swr/mutation';
 
-import type {
-  AppControllerSeedLegacy201
-} from '../model';
-
 import { customInstance } from '../../custom-instance';
 import type { ErrorType } from '../../custom-instance';
 
@@ -31,7 +27,7 @@ import type { ErrorType } from '../../custom-instance';
 
   
 export type appControllerGetHelloResponse200 = {
-  data: string
+  data: void
   status: 200
 }
 
@@ -47,7 +43,7 @@ export const getAppControllerGetHelloUrl = () => {
 
   
 
-  return `/api`
+  return `/`
 }
 
 export const appControllerGetHello = async ( options?: RequestInit): Promise<appControllerGetHelloResponse> => {
@@ -64,7 +60,7 @@ export const appControllerGetHello = async ( options?: RequestInit): Promise<app
 
 
 
-export const getAppControllerGetHelloKey = () => [`/api`] as const;
+export const getAppControllerGetHelloKey = () => [`/`] as const;
 
 export type AppControllerGetHelloQueryResult = NonNullable<Awaited<ReturnType<typeof appControllerGetHello>>>
 
@@ -85,7 +81,7 @@ export const useAppControllerGetHello = <TError = ErrorType<unknown>>(
   }
 }
 export type appControllerSeedLegacyResponse201 = {
-  data: AppControllerSeedLegacy201
+  data: void
   status: 201
 }
 
@@ -101,7 +97,7 @@ export const getAppControllerSeedLegacyUrl = () => {
 
   
 
-  return `/api/seed-legacy`
+  return `/seed-legacy`
 }
 
 export const appControllerSeedLegacy = async ( options?: RequestInit): Promise<appControllerSeedLegacyResponse> => {
@@ -123,7 +119,7 @@ export const getAppControllerSeedLegacyMutationFetcher = ( options?: SecondParam
     return appControllerSeedLegacy(options);
   }
 }
-export const getAppControllerSeedLegacyMutationKey = () => [`/api/seed-legacy`] as const;
+export const getAppControllerSeedLegacyMutationKey = () => [`/seed-legacy`] as const;
 
 export type AppControllerSeedLegacyMutationResult = NonNullable<Awaited<ReturnType<typeof appControllerSeedLegacy>>>
 

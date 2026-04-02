@@ -6,19 +6,4 @@
  * OpenAPI spec version: 1.0
  */
 
-export interface CreateSpeakerDto {
-  firstName: string;
-  lastName: string;
-  company?: string;
-  position?: string;
-  email?: string;
-  phone?: string;
-  telegram?: string;
-  photoUrl?: string;
-  isSponsor?: boolean;
-  bio?: string;
-  internalComment?: string;
-  hasAssistant?: boolean;
-  assistantName?: string;
-  assistantContact?: string;
-}
+export interface CreateSpeakerDto { [key: string]: unknown }

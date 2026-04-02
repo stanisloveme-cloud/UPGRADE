@@ -11,12 +11,6 @@ import type {
   SWRConfiguration
 } from 'swr';
 
-import type {
-  PublicEventsControllerGetSchedule200Item,
-  PublicEventsControllerGetSpeakers200Item,
-  PublicEventsControllerGetSponsors200Item
-} from '../model';
-
 import { customInstance } from '../../custom-instance';
 import type { ErrorType } from '../../custom-instance';
 
@@ -43,7 +37,7 @@ export const getPublicEventsControllerGetWebsiteDataUrl = (id: number,) => {
 
   
 
-  return `/api/public/events/${id}/website-data`
+  return `/public/events/${id}/website-data`
 }
 
 export const publicEventsControllerGetWebsiteData = async (id: number, options?: RequestInit): Promise<publicEventsControllerGetWebsiteDataResponse> => {
@@ -60,7 +54,7 @@ export const publicEventsControllerGetWebsiteData = async (id: number, options?:
 
 
 
-export const getPublicEventsControllerGetWebsiteDataKey = (id: number,) => [`/api/public/events/${id}/website-data`] as const;
+export const getPublicEventsControllerGetWebsiteDataKey = (id: number,) => [`/public/events/${id}/website-data`] as const;
 
 export type PublicEventsControllerGetWebsiteDataQueryResult = NonNullable<Awaited<ReturnType<typeof publicEventsControllerGetWebsiteData>>>
 
@@ -81,7 +75,7 @@ export const usePublicEventsControllerGetWebsiteData = <TError = ErrorType<unkno
   }
 }
 export type publicEventsControllerGetScheduleResponse200 = {
-  data: PublicEventsControllerGetSchedule200Item[]
+  data: void
   status: 200
 }
 
@@ -97,7 +91,7 @@ export const getPublicEventsControllerGetScheduleUrl = (id: number,) => {
 
   
 
-  return `/api/public/events/${id}/schedule`
+  return `/public/events/${id}/schedule`
 }
 
 export const publicEventsControllerGetSchedule = async (id: number, options?: RequestInit): Promise<publicEventsControllerGetScheduleResponse> => {
@@ -114,7 +108,7 @@ export const publicEventsControllerGetSchedule = async (id: number, options?: Re
 
 
 
-export const getPublicEventsControllerGetScheduleKey = (id: number,) => [`/api/public/events/${id}/schedule`] as const;
+export const getPublicEventsControllerGetScheduleKey = (id: number,) => [`/public/events/${id}/schedule`] as const;
 
 export type PublicEventsControllerGetScheduleQueryResult = NonNullable<Awaited<ReturnType<typeof publicEventsControllerGetSchedule>>>
 
@@ -135,7 +129,7 @@ export const usePublicEventsControllerGetSchedule = <TError = ErrorType<unknown>
   }
 }
 export type publicEventsControllerGetSpeakersResponse200 = {
-  data: PublicEventsControllerGetSpeakers200Item[]
+  data: void
   status: 200
 }
 
@@ -151,7 +145,7 @@ export const getPublicEventsControllerGetSpeakersUrl = (id: number,) => {
 
   
 
-  return `/api/public/events/${id}/speakers`
+  return `/public/events/${id}/speakers`
 }
 
 export const publicEventsControllerGetSpeakers = async (id: number, options?: RequestInit): Promise<publicEventsControllerGetSpeakersResponse> => {
@@ -168,7 +162,7 @@ export const publicEventsControllerGetSpeakers = async (id: number, options?: Re
 
 
 
-export const getPublicEventsControllerGetSpeakersKey = (id: number,) => [`/api/public/events/${id}/speakers`] as const;
+export const getPublicEventsControllerGetSpeakersKey = (id: number,) => [`/public/events/${id}/speakers`] as const;
 
 export type PublicEventsControllerGetSpeakersQueryResult = NonNullable<Awaited<ReturnType<typeof publicEventsControllerGetSpeakers>>>
 
@@ -189,7 +183,7 @@ export const usePublicEventsControllerGetSpeakers = <TError = ErrorType<unknown>
   }
 }
 export type publicEventsControllerGetSponsorsResponse200 = {
-  data: PublicEventsControllerGetSponsors200Item[]
+  data: void
   status: 200
 }
 
@@ -205,7 +199,7 @@ export const getPublicEventsControllerGetSponsorsUrl = (id: number,) => {
 
   
 
-  return `/api/public/events/${id}/sponsors`
+  return `/public/events/${id}/sponsors`
 }
 
 export const publicEventsControllerGetSponsors = async (id: number, options?: RequestInit): Promise<publicEventsControllerGetSponsorsResponse> => {
@@ -222,7 +216,7 @@ export const publicEventsControllerGetSponsors = async (id: number, options?: Re
 
 
 
-export const getPublicEventsControllerGetSponsorsKey = (id: number,) => [`/api/public/events/${id}/sponsors`] as const;
+export const getPublicEventsControllerGetSponsorsKey = (id: number,) => [`/public/events/${id}/sponsors`] as const;
 
 export type PublicEventsControllerGetSponsorsQueryResult = NonNullable<Awaited<ReturnType<typeof publicEventsControllerGetSponsors>>>
 

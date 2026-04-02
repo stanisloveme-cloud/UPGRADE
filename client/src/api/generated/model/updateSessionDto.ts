@@ -6,7 +6,4 @@
  * OpenAPI spec version: 1.0
  */
 
-export interface UpdateSessionDto {
-  updatedAt?: string;
-  force?: boolean;
-}
+export interface UpdateSessionDto { [key: string]: unknown }

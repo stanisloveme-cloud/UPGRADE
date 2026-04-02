@@ -6,4 +6,7 @@
  * OpenAPI spec version: 1.0
  */
 
-export interface CreateEventDto { [key: string]: unknown }
+export interface SpeakerSortUpdateItem {
+  id: number;
+  sortOrder: number;
+}

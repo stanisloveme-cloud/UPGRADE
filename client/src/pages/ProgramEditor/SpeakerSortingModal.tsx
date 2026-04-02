@@ -5,7 +5,7 @@ import { SortableContext, verticalListSortingStrategy, useSortable } from '@dnd-
 import { CSS } from '@dnd-kit/utilities';
 import { DndContext, PointerSensor, useSensor, useSensors, DragEndEvent } from '@dnd-kit/core';
 import { MenuOutlined } from '@ant-design/icons';
-import axios from 'axios';
+import { eventsControllerGetSessionSpeakers, eventsControllerUpdateSessionSpeakersSort } from '../../api/generated/events/events';
 
 interface SpeakerSortingModalProps {
     visible: boolean;
@@ -51,8 +51,9 @@ const SpeakerSortingModal: React.FC<SpeakerSortingModalProps> = ({ visible, onCl
     const fetchData = async () => {
         setLoading(true);
         try {
-            const res = await axios.get(`/api/events/${eventId}/session-speakers`);
-            setData(res.data);
+            const res = await eventsControllerGetSessionSpeakers(eventId);
+            // @ts-ignore customInstance unwraps the { data, status }
+            setData(res as any);
             setHasChanges(false);
         } catch (error) {
             message.error('Ошибка при загрузке спикеров');
@@ -71,7 +72,7 @@ const SpeakerSortingModal: React.FC<SpeakerSortingModalProps> = ({ visible, onCl
         setSaving(true);
         try {
             const updates = data.map((item, index) => ({ id: item.id, sortOrder: index }));
-            await axios.patch(`/api/events/${eventId}/session-speakers/sort`, { updates });
+            await eventsControllerUpdateSessionSpeakersSort(eventId, { updates });
             message.success('Порядок сохранен');
             setHasChanges(false);
         } catch (error) {

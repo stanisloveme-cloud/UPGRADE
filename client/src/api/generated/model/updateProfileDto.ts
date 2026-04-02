@@ -6,8 +6,4 @@
  * OpenAPI spec version: 1.0
  */
 
-export interface UpdateProfileDto {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-}
+export interface UpdateProfileDto { [key: string]: unknown }

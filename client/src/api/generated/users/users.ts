@@ -50,7 +50,7 @@ export const getUsersControllerFindAllUrl = () => {
 
   
 
-  return `/api/users`
+  return `/users`
 }
 
 export const usersControllerFindAll = async ( options?: RequestInit): Promise<usersControllerFindAllResponse> => {
@@ -67,7 +67,7 @@ export const usersControllerFindAll = async ( options?: RequestInit): Promise<us
 
 
 
-export const getUsersControllerFindAllKey = () => [`/api/users`] as const;
+export const getUsersControllerFindAllKey = () => [`/users`] as const;
 
 export type UsersControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof usersControllerFindAll>>>
 
@@ -104,7 +104,7 @@ export const getUsersControllerCreateUrl = () => {
 
   
 
-  return `/api/users`
+  return `/users`
 }
 
 export const usersControllerCreate = async (createUserDto: CreateUserDto, options?: RequestInit): Promise<usersControllerCreateResponse> => {
@@ -127,7 +127,7 @@ export const getUsersControllerCreateMutationFetcher = ( options?: SecondParamet
     return usersControllerCreate(arg, options);
   }
 }
-export const getUsersControllerCreateMutationKey = () => [`/api/users`] as const;
+export const getUsersControllerCreateMutationKey = () => [`/users`] as const;
 
 export type UsersControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof usersControllerCreate>>>
 
@@ -164,7 +164,7 @@ export const getUsersControllerUpdateUrl = (id: number,) => {
 
   
 
-  return `/api/users/${id}`
+  return `/users/${id}`
 }
 
 export const usersControllerUpdate = async (id: number,
@@ -188,7 +188,7 @@ export const getUsersControllerUpdateMutationFetcher = (id: number, options?: Se
     return usersControllerUpdate(id, arg, options);
   }
 }
-export const getUsersControllerUpdateMutationKey = (id: number,) => [`/api/users/${id}`] as const;
+export const getUsersControllerUpdateMutationKey = (id: number,) => [`/users/${id}`] as const;
 
 export type UsersControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof usersControllerUpdate>>>
 
@@ -225,7 +225,7 @@ export const getUsersControllerRemoveUrl = (id: number,) => {
 
   
 
-  return `/api/users/${id}`
+  return `/users/${id}`
 }
 
 export const usersControllerRemove = async (id: number, options?: RequestInit): Promise<usersControllerRemoveResponse> => {
@@ -247,7 +247,7 @@ export const getUsersControllerRemoveMutationFetcher = (id: number, options?: Se
     return usersControllerRemove(id, options);
   }
 }
-export const getUsersControllerRemoveMutationKey = (id: number,) => [`/api/users/${id}`] as const;
+export const getUsersControllerRemoveMutationKey = (id: number,) => [`/users/${id}`] as const;
 
 export type UsersControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof usersControllerRemove>>>
 
@@ -284,7 +284,7 @@ export const getUsersControllerChangePasswordUrl = () => {
 
   
 
-  return `/api/users/change-password`
+  return `/users/change-password`
 }
 
 export const usersControllerChangePassword = async (updatePasswordDto: UpdatePasswordDto, options?: RequestInit): Promise<usersControllerChangePasswordResponse> => {
@@ -307,7 +307,7 @@ export const getUsersControllerChangePasswordMutationFetcher = ( options?: Secon
     return usersControllerChangePassword(arg, options);
   }
 }
-export const getUsersControllerChangePasswordMutationKey = () => [`/api/users/change-password`] as const;
+export const getUsersControllerChangePasswordMutationKey = () => [`/users/change-password`] as const;
 
 export type UsersControllerChangePasswordMutationResult = NonNullable<Awaited<ReturnType<typeof usersControllerChangePassword>>>
 
@@ -344,7 +344,7 @@ export const getUsersControllerFindManagersDropdownUrl = () => {
 
   
 
-  return `/api/users/managers`
+  return `/users/managers`
 }
 
 export const usersControllerFindManagersDropdown = async ( options?: RequestInit): Promise<usersControllerFindManagersDropdownResponse> => {
@@ -361,7 +361,7 @@ export const usersControllerFindManagersDropdown = async ( options?: RequestInit
 
 
 
-export const getUsersControllerFindManagersDropdownKey = () => [`/api/users/managers`] as const;
+export const getUsersControllerFindManagersDropdownKey = () => [`/users/managers`] as const;
 
 export type UsersControllerFindManagersDropdownQueryResult = NonNullable<Awaited<ReturnType<typeof usersControllerFindManagersDropdown>>>
 
@@ -398,7 +398,7 @@ export const getUsersControllerUpdateProfileUrl = () => {
 
   
 
-  return `/api/users/profile`
+  return `/users/profile`
 }
 
 export const usersControllerUpdateProfile = async (updateProfileDto: UpdateProfileDto, options?: RequestInit): Promise<usersControllerUpdateProfileResponse> => {
@@ -421,7 +421,7 @@ export const getUsersControllerUpdateProfileMutationFetcher = ( options?: Second
     return usersControllerUpdateProfile(arg, options);
   }
 }
-export const getUsersControllerUpdateProfileMutationKey = () => [`/api/users/profile`] as const;
+export const getUsersControllerUpdateProfileMutationKey = () => [`/users/profile`] as const;
 
 export type UsersControllerUpdateProfileMutationResult = NonNullable<Awaited<ReturnType<typeof usersControllerUpdateProfile>>>
 

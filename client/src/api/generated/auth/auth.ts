@@ -17,10 +17,6 @@ import type {
   SWRMutationConfiguration
 } from 'swr/mutation';
 
-import type {
-  AuthControllerGetProfile200
-} from '../model';
-
 import { customInstance } from '../../custom-instance';
 import type { ErrorType } from '../../custom-instance';
 
@@ -90,7 +86,7 @@ export const useAuthControllerLogin = <TError = ErrorType<unknown>>(
   }
 }
 export type authControllerGetProfileResponse200 = {
-  data: AuthControllerGetProfile200
+  data: void
   status: 200
 }
 

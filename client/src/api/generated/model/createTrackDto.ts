@@ -6,12 +6,4 @@
  * OpenAPI spec version: 1.0
  */
 
-export interface CreateTrackDto {
-  hallId: number;
-  name: string;
-  description?: string;
-  day: string;
-  startTime: string;
-  endTime: string;
-  sortOrder?: number;
-}
+export interface CreateTrackDto { [key: string]: unknown }

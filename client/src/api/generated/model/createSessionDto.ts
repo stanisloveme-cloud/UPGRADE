@@ -5,19 +5,5 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
-import type { SessionBriefingDto } from './sessionBriefingDto';
-import type { SessionQuestionDto } from './sessionQuestionDto';
-import type { SessionSpeakerDto } from './sessionSpeakerDto';
 
-export interface CreateSessionDto {
-  trackId: number;
-  name: string;
-  startTime: string;
-  endTime: string;
-  description?: string;
-  speakers?: SessionSpeakerDto[];
-  questions?: SessionQuestionDto[];
-  briefings?: SessionBriefingDto[];
-  ignoreConflicts?: boolean;
-  managerId?: number;
-}
+export interface CreateSessionDto { [key: string]: unknown }

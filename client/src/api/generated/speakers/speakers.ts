@@ -20,7 +20,6 @@ import type {
 import type {
   CreateSpeakerDto,
   SpeakerEntity,
-  SpeakersControllerImportLegacy201,
   UpdateSpeakerDto
 } from '../model';
 
@@ -53,7 +52,7 @@ export const getSpeakersControllerCreateUrl = () => {
 
   
 
-  return `/api/speakers`
+  return `/speakers`
 }
 
 export const speakersControllerCreate = async (createSpeakerDto: CreateSpeakerDto, options?: RequestInit): Promise<speakersControllerCreateResponse> => {
@@ -76,7 +75,7 @@ export const getSpeakersControllerCreateMutationFetcher = ( options?: SecondPara
     return speakersControllerCreate(arg, options);
   }
 }
-export const getSpeakersControllerCreateMutationKey = () => [`/api/speakers`] as const;
+export const getSpeakersControllerCreateMutationKey = () => [`/speakers`] as const;
 
 export type SpeakersControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof speakersControllerCreate>>>
 
@@ -119,7 +118,7 @@ export const getSpeakersControllerFindAllUrl = () => {
 
   
 
-  return `/api/speakers`
+  return `/speakers`
 }
 
 export const speakersControllerFindAll = async ( options?: RequestInit): Promise<speakersControllerFindAllResponse> => {
@@ -136,7 +135,7 @@ export const speakersControllerFindAll = async ( options?: RequestInit): Promise
 
 
 
-export const getSpeakersControllerFindAllKey = () => [`/api/speakers`] as const;
+export const getSpeakersControllerFindAllKey = () => [`/speakers`] as const;
 
 export type SpeakersControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof speakersControllerFindAll>>>
 
@@ -163,7 +162,7 @@ export const useSpeakersControllerFindAll = <TError = ErrorType<unknown>>(
  * @summary Import legacy speakers
  */
 export type speakersControllerImportLegacyResponse201 = {
-  data: SpeakersControllerImportLegacy201
+  data: void
   status: 201
 }
 
@@ -179,7 +178,7 @@ export const getSpeakersControllerImportLegacyUrl = () => {
 
   
 
-  return `/api/speakers/import-legacy`
+  return `/speakers/import-legacy`
 }
 
 export const speakersControllerImportLegacy = async ( options?: RequestInit): Promise<speakersControllerImportLegacyResponse> => {
@@ -201,7 +200,7 @@ export const getSpeakersControllerImportLegacyMutationFetcher = ( options?: Seco
     return speakersControllerImportLegacy(options);
   }
 }
-export const getSpeakersControllerImportLegacyMutationKey = () => [`/api/speakers/import-legacy`] as const;
+export const getSpeakersControllerImportLegacyMutationKey = () => [`/speakers/import-legacy`] as const;
 
 export type SpeakersControllerImportLegacyMutationResult = NonNullable<Awaited<ReturnType<typeof speakersControllerImportLegacy>>>
 
@@ -244,7 +243,7 @@ export const getSpeakersControllerSyncPhotosUrl = () => {
 
   
 
-  return `/api/speakers/sync-photos`
+  return `/speakers/sync-photos`
 }
 
 export const speakersControllerSyncPhotos = async (speakersControllerSyncPhotosBody: string[], options?: RequestInit): Promise<speakersControllerSyncPhotosResponse> => {
@@ -267,7 +266,7 @@ export const getSpeakersControllerSyncPhotosMutationFetcher = ( options?: Second
     return speakersControllerSyncPhotos(arg, options);
   }
 }
-export const getSpeakersControllerSyncPhotosMutationKey = () => [`/api/speakers/sync-photos`] as const;
+export const getSpeakersControllerSyncPhotosMutationKey = () => [`/speakers/sync-photos`] as const;
 
 export type SpeakersControllerSyncPhotosMutationResult = NonNullable<Awaited<ReturnType<typeof speakersControllerSyncPhotos>>>
 
@@ -310,7 +309,7 @@ export const getSpeakersControllerFindOneUrl = (id: number,) => {
 
   
 
-  return `/api/speakers/${id}`
+  return `/speakers/${id}`
 }
 
 export const speakersControllerFindOne = async (id: number, options?: RequestInit): Promise<speakersControllerFindOneResponse> => {
@@ -327,7 +326,7 @@ export const speakersControllerFindOne = async (id: number, options?: RequestIni
 
 
 
-export const getSpeakersControllerFindOneKey = (id: number,) => [`/api/speakers/${id}`] as const;
+export const getSpeakersControllerFindOneKey = (id: number,) => [`/speakers/${id}`] as const;
 
 export type SpeakersControllerFindOneQueryResult = NonNullable<Awaited<ReturnType<typeof speakersControllerFindOne>>>
 
@@ -370,7 +369,7 @@ export const getSpeakersControllerUpdateUrl = (id: number,) => {
 
   
 
-  return `/api/speakers/${id}`
+  return `/speakers/${id}`
 }
 
 export const speakersControllerUpdate = async (id: number,
@@ -394,7 +393,7 @@ export const getSpeakersControllerUpdateMutationFetcher = (id: number, options?:
     return speakersControllerUpdate(id, arg, options);
   }
 }
-export const getSpeakersControllerUpdateMutationKey = (id: number,) => [`/api/speakers/${id}`] as const;
+export const getSpeakersControllerUpdateMutationKey = (id: number,) => [`/speakers/${id}`] as const;
 
 export type SpeakersControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof speakersControllerUpdate>>>
 
@@ -437,7 +436,7 @@ export const getSpeakersControllerRemoveUrl = (id: number,) => {
 
   
 
-  return `/api/speakers/${id}`
+  return `/speakers/${id}`
 }
 
 export const speakersControllerRemove = async (id: number, options?: RequestInit): Promise<speakersControllerRemoveResponse> => {
@@ -459,7 +458,7 @@ export const getSpeakersControllerRemoveMutationFetcher = (id: number, options?:
     return speakersControllerRemove(id, options);
   }
 }
-export const getSpeakersControllerRemoveMutationKey = (id: number,) => [`/api/speakers/${id}`] as const;
+export const getSpeakersControllerRemoveMutationKey = (id: number,) => [`/speakers/${id}`] as const;
 
 export type SpeakersControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof speakersControllerRemove>>>
 

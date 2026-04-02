@@ -51,7 +51,7 @@ export const getHallsControllerCreateUrl = () => {
 
   
 
-  return `/api/halls`
+  return `/halls`
 }
 
 export const hallsControllerCreate = async (createHallDto: CreateHallDto, options?: RequestInit): Promise<hallsControllerCreateResponse> => {
@@ -74,7 +74,7 @@ export const getHallsControllerCreateMutationFetcher = ( options?: SecondParamet
     return hallsControllerCreate(arg, options);
   }
 }
-export const getHallsControllerCreateMutationKey = () => [`/api/halls`] as const;
+export const getHallsControllerCreateMutationKey = () => [`/halls`] as const;
 
 export type HallsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof hallsControllerCreate>>>
 
@@ -117,7 +117,7 @@ export const getHallsControllerFindAllUrl = () => {
 
   
 
-  return `/api/halls`
+  return `/halls`
 }
 
 export const hallsControllerFindAll = async ( options?: RequestInit): Promise<hallsControllerFindAllResponse> => {
@@ -134,7 +134,7 @@ export const hallsControllerFindAll = async ( options?: RequestInit): Promise<ha
 
 
 
-export const getHallsControllerFindAllKey = () => [`/api/halls`] as const;
+export const getHallsControllerFindAllKey = () => [`/halls`] as const;
 
 export type HallsControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof hallsControllerFindAll>>>
 
@@ -177,7 +177,7 @@ export const getHallsControllerFindOneUrl = (id: number,) => {
 
   
 
-  return `/api/halls/${id}`
+  return `/halls/${id}`
 }
 
 export const hallsControllerFindOne = async (id: number, options?: RequestInit): Promise<hallsControllerFindOneResponse> => {
@@ -194,7 +194,7 @@ export const hallsControllerFindOne = async (id: number, options?: RequestInit):
 
 
 
-export const getHallsControllerFindOneKey = (id: number,) => [`/api/halls/${id}`] as const;
+export const getHallsControllerFindOneKey = (id: number,) => [`/halls/${id}`] as const;
 
 export type HallsControllerFindOneQueryResult = NonNullable<Awaited<ReturnType<typeof hallsControllerFindOne>>>
 
@@ -237,7 +237,7 @@ export const getHallsControllerUpdateUrl = (id: number,) => {
 
   
 
-  return `/api/halls/${id}`
+  return `/halls/${id}`
 }
 
 export const hallsControllerUpdate = async (id: number,
@@ -261,7 +261,7 @@ export const getHallsControllerUpdateMutationFetcher = (id: number, options?: Se
     return hallsControllerUpdate(id, arg, options);
   }
 }
-export const getHallsControllerUpdateMutationKey = (id: number,) => [`/api/halls/${id}`] as const;
+export const getHallsControllerUpdateMutationKey = (id: number,) => [`/halls/${id}`] as const;
 
 export type HallsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof hallsControllerUpdate>>>
 
@@ -304,7 +304,7 @@ export const getHallsControllerRemoveUrl = (id: number,) => {
 
   
 
-  return `/api/halls/${id}`
+  return `/halls/${id}`
 }
 
 export const hallsControllerRemove = async (id: number, options?: RequestInit): Promise<hallsControllerRemoveResponse> => {
@@ -326,7 +326,7 @@ export const getHallsControllerRemoveMutationFetcher = (id: number, options?: Se
     return hallsControllerRemove(id, options);
   }
 }
-export const getHallsControllerRemoveMutationKey = (id: number,) => [`/api/halls/${id}`] as const;
+export const getHallsControllerRemoveMutationKey = (id: number,) => [`/halls/${id}`] as const;
 
 export type HallsControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof hallsControllerRemove>>>
 

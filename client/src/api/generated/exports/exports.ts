@@ -43,7 +43,7 @@ export const getExportsControllerExportScheduleUrl = (eventId: number,) => {
 
   
 
-  return `/api/exports/schedule/${eventId}`
+  return `/exports/schedule/${eventId}`
 }
 
 export const exportsControllerExportSchedule = async (eventId: number, options?: RequestInit): Promise<exportsControllerExportScheduleResponse> => {
@@ -60,7 +60,7 @@ export const exportsControllerExportSchedule = async (eventId: number, options?:
 
 
 
-export const getExportsControllerExportScheduleKey = (eventId: number,) => [`/api/exports/schedule/${eventId}`] as const;
+export const getExportsControllerExportScheduleKey = (eventId: number,) => [`/exports/schedule/${eventId}`] as const;
 
 export type ExportsControllerExportScheduleQueryResult = NonNullable<Awaited<ReturnType<typeof exportsControllerExportSchedule>>>
 
@@ -97,7 +97,7 @@ export const getExportsControllerImportScheduleUrl = (eventId: number,) => {
 
   
 
-  return `/api/exports/import/${eventId}`
+  return `/exports/import/${eventId}`
 }
 
 export const exportsControllerImportSchedule = async (eventId: number, options?: RequestInit): Promise<exportsControllerImportScheduleResponse> => {
@@ -119,7 +119,7 @@ export const getExportsControllerImportScheduleMutationFetcher = (eventId: numbe
     return exportsControllerImportSchedule(eventId, options);
   }
 }
-export const getExportsControllerImportScheduleMutationKey = (eventId: number,) => [`/api/exports/import/${eventId}`] as const;
+export const getExportsControllerImportScheduleMutationKey = (eventId: number,) => [`/exports/import/${eventId}`] as const;
 
 export type ExportsControllerImportScheduleMutationResult = NonNullable<Awaited<ReturnType<typeof exportsControllerImportSchedule>>>
 

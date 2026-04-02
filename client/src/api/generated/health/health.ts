@@ -49,7 +49,7 @@ export const getHealthControllerCheckUrl = () => {
 
   
 
-  return `/api/v1/health`
+  return `/v1/health`
 }
 
 export const healthControllerCheck = async ( options?: RequestInit): Promise<healthControllerCheckResponse> => {
@@ -66,7 +66,7 @@ export const healthControllerCheck = async ( options?: RequestInit): Promise<hea
 
 
 
-export const getHealthControllerCheckKey = () => [`/api/v1/health`] as const;
+export const getHealthControllerCheckKey = () => [`/v1/health`] as const;
 
 export type HealthControllerCheckQueryResult = NonNullable<Awaited<ReturnType<typeof healthControllerCheck>>>
 

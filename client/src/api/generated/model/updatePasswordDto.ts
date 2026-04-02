@@ -6,7 +6,4 @@
  * OpenAPI spec version: 1.0
  */
 
-export interface UpdatePasswordDto {
-  /** @minLength 6 */
-  newPassword: string;
-}
+export interface UpdatePasswordDto { [key: string]: unknown }

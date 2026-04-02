@@ -21,9 +21,10 @@ export class ApiValidator {
     }
 
     public validateResponse(pathPattern: string, method: string, statusCode: string, responseData: any): { valid: boolean; errors: any } {
-        // Find path
-        const pathObj = this.openApiSpec.paths[pathPattern];
-        if (!pathObj) return { valid: false, errors: `Path ${pathPattern} not found in OpenAPI spec` };
+        // Find path (Swagger strips the 'api' global prefix, so we must normalize the Playwright URL)
+        const swaggerPath = pathPattern.startsWith('/api') ? pathPattern.substring(4) : pathPattern;
+        const pathObj = this.openApiSpec.paths[swaggerPath];
+        if (!pathObj) return { valid: false, errors: `Path ${swaggerPath} (original: ${pathPattern}) not found in OpenAPI spec` };
 
         const operation = pathObj[method.toLowerCase()];
         if (!operation) return { valid: false, errors: `Method ${method} not found for path ${pathPattern}` };

@@ -19,10 +19,6 @@ import type {
 
 import type {
   CreateSessionDto,
-  SessionsControllerCreate201,
-  SessionsControllerFindAll200Item,
-  SessionsControllerFindOne200,
-  SessionsControllerUpdate200,
   UpdateSessionDto
 } from '../model';
 
@@ -36,7 +32,7 @@ import type { ErrorType } from '../../custom-instance';
 
   
 export type sessionsControllerCreateResponse201 = {
-  data: SessionsControllerCreate201
+  data: void
   status: 201
 }
 
@@ -52,7 +48,7 @@ export const getSessionsControllerCreateUrl = () => {
 
   
 
-  return `/api/sessions`
+  return `/sessions`
 }
 
 export const sessionsControllerCreate = async (createSessionDto: CreateSessionDto, options?: RequestInit): Promise<sessionsControllerCreateResponse> => {
@@ -75,7 +71,7 @@ export const getSessionsControllerCreateMutationFetcher = ( options?: SecondPara
     return sessionsControllerCreate(arg, options);
   }
 }
-export const getSessionsControllerCreateMutationKey = () => [`/api/sessions`] as const;
+export const getSessionsControllerCreateMutationKey = () => [`/sessions`] as const;
 
 export type SessionsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof sessionsControllerCreate>>>
 
@@ -96,7 +92,7 @@ export const useSessionsControllerCreate = <TError = ErrorType<unknown>>(
   }
 }
 export type sessionsControllerFindAllResponse200 = {
-  data: SessionsControllerFindAll200Item[]
+  data: void
   status: 200
 }
 
@@ -112,7 +108,7 @@ export const getSessionsControllerFindAllUrl = () => {
 
   
 
-  return `/api/sessions`
+  return `/sessions`
 }
 
 export const sessionsControllerFindAll = async ( options?: RequestInit): Promise<sessionsControllerFindAllResponse> => {
@@ -129,7 +125,7 @@ export const sessionsControllerFindAll = async ( options?: RequestInit): Promise
 
 
 
-export const getSessionsControllerFindAllKey = () => [`/api/sessions`] as const;
+export const getSessionsControllerFindAllKey = () => [`/sessions`] as const;
 
 export type SessionsControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof sessionsControllerFindAll>>>
 
@@ -150,7 +146,7 @@ export const useSessionsControllerFindAll = <TError = ErrorType<unknown>>(
   }
 }
 export type sessionsControllerFindOneResponse200 = {
-  data: SessionsControllerFindOne200
+  data: void
   status: 200
 }
 
@@ -166,7 +162,7 @@ export const getSessionsControllerFindOneUrl = (id: number,) => {
 
   
 
-  return `/api/sessions/${id}`
+  return `/sessions/${id}`
 }
 
 export const sessionsControllerFindOne = async (id: number, options?: RequestInit): Promise<sessionsControllerFindOneResponse> => {
@@ -183,7 +179,7 @@ export const sessionsControllerFindOne = async (id: number, options?: RequestIni
 
 
 
-export const getSessionsControllerFindOneKey = (id: number,) => [`/api/sessions/${id}`] as const;
+export const getSessionsControllerFindOneKey = (id: number,) => [`/sessions/${id}`] as const;
 
 export type SessionsControllerFindOneQueryResult = NonNullable<Awaited<ReturnType<typeof sessionsControllerFindOne>>>
 
@@ -204,7 +200,7 @@ export const useSessionsControllerFindOne = <TError = ErrorType<unknown>>(
   }
 }
 export type sessionsControllerUpdateResponse200 = {
-  data: SessionsControllerUpdate200
+  data: void
   status: 200
 }
 
@@ -220,7 +216,7 @@ export const getSessionsControllerUpdateUrl = (id: number,) => {
 
   
 
-  return `/api/sessions/${id}`
+  return `/sessions/${id}`
 }
 
 export const sessionsControllerUpdate = async (id: number,
@@ -244,7 +240,7 @@ export const getSessionsControllerUpdateMutationFetcher = (id: number, options?:
     return sessionsControllerUpdate(id, arg, options);
   }
 }
-export const getSessionsControllerUpdateMutationKey = (id: number,) => [`/api/sessions/${id}`] as const;
+export const getSessionsControllerUpdateMutationKey = (id: number,) => [`/sessions/${id}`] as const;
 
 export type SessionsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof sessionsControllerUpdate>>>
 
@@ -281,7 +277,7 @@ export const getSessionsControllerRemoveUrl = (id: number,) => {
 
   
 
-  return `/api/sessions/${id}`
+  return `/sessions/${id}`
 }
 
 export const sessionsControllerRemove = async (id: number, options?: RequestInit): Promise<sessionsControllerRemoveResponse> => {
@@ -303,7 +299,7 @@ export const getSessionsControllerRemoveMutationFetcher = (id: number, options?:
     return sessionsControllerRemove(id, options);
   }
 }
-export const getSessionsControllerRemoveMutationKey = (id: number,) => [`/api/sessions/${id}`] as const;
+export const getSessionsControllerRemoveMutationKey = (id: number,) => [`/sessions/${id}`] as const;
 
 export type SessionsControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof sessionsControllerRemove>>>
 

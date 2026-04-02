@@ -48,7 +48,7 @@ export const getTracksControllerCreateUrl = () => {
 
   
 
-  return `/api/tracks`
+  return `/tracks`
 }
 
 export const tracksControllerCreate = async (createTrackDto: CreateTrackDto, options?: RequestInit): Promise<tracksControllerCreateResponse> => {
@@ -71,7 +71,7 @@ export const getTracksControllerCreateMutationFetcher = ( options?: SecondParame
     return tracksControllerCreate(arg, options);
   }
 }
-export const getTracksControllerCreateMutationKey = () => [`/api/tracks`] as const;
+export const getTracksControllerCreateMutationKey = () => [`/tracks`] as const;
 
 export type TracksControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof tracksControllerCreate>>>
 
@@ -108,7 +108,7 @@ export const getTracksControllerFindAllUrl = () => {
 
   
 
-  return `/api/tracks`
+  return `/tracks`
 }
 
 export const tracksControllerFindAll = async ( options?: RequestInit): Promise<tracksControllerFindAllResponse> => {
@@ -125,7 +125,7 @@ export const tracksControllerFindAll = async ( options?: RequestInit): Promise<t
 
 
 
-export const getTracksControllerFindAllKey = () => [`/api/tracks`] as const;
+export const getTracksControllerFindAllKey = () => [`/tracks`] as const;
 
 export type TracksControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof tracksControllerFindAll>>>
 
@@ -162,7 +162,7 @@ export const getTracksControllerFindOneUrl = (id: number,) => {
 
   
 
-  return `/api/tracks/${id}`
+  return `/tracks/${id}`
 }
 
 export const tracksControllerFindOne = async (id: number, options?: RequestInit): Promise<tracksControllerFindOneResponse> => {
@@ -179,7 +179,7 @@ export const tracksControllerFindOne = async (id: number, options?: RequestInit)
 
 
 
-export const getTracksControllerFindOneKey = (id: number,) => [`/api/tracks/${id}`] as const;
+export const getTracksControllerFindOneKey = (id: number,) => [`/tracks/${id}`] as const;
 
 export type TracksControllerFindOneQueryResult = NonNullable<Awaited<ReturnType<typeof tracksControllerFindOne>>>
 
@@ -216,7 +216,7 @@ export const getTracksControllerUpdateUrl = (id: number,) => {
 
   
 
-  return `/api/tracks/${id}`
+  return `/tracks/${id}`
 }
 
 export const tracksControllerUpdate = async (id: number,
@@ -240,7 +240,7 @@ export const getTracksControllerUpdateMutationFetcher = (id: number, options?: S
     return tracksControllerUpdate(id, arg, options);
   }
 }
-export const getTracksControllerUpdateMutationKey = (id: number,) => [`/api/tracks/${id}`] as const;
+export const getTracksControllerUpdateMutationKey = (id: number,) => [`/tracks/${id}`] as const;
 
 export type TracksControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof tracksControllerUpdate>>>
 
@@ -277,7 +277,7 @@ export const getTracksControllerRemoveUrl = (id: number,) => {
 
   
 
-  return `/api/tracks/${id}`
+  return `/tracks/${id}`
 }
 
 export const tracksControllerRemove = async (id: number, options?: RequestInit): Promise<tracksControllerRemoveResponse> => {
@@ -299,7 +299,7 @@ export const getTracksControllerRemoveMutationFetcher = (id: number, options?: S
     return tracksControllerRemove(id, options);
   }
 }
-export const getTracksControllerRemoveMutationKey = (id: number,) => [`/api/tracks/${id}`] as const;
+export const getTracksControllerRemoveMutationKey = (id: number,) => [`/tracks/${id}`] as const;
 
 export type TracksControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof tracksControllerRemove>>>
 

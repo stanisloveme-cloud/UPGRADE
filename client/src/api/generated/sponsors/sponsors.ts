@@ -20,9 +20,6 @@ import type {
 import type {
   CreateSponsorDto,
   PublicApprovalDto,
-  SponsorsControllerFindAll200Item,
-  SponsorsControllerFindAllByEvent200Item,
-  SponsorsControllerGetPublicApprovalInfo200,
   UpdateSponsorDto
 } from '../model';
 
@@ -39,7 +36,7 @@ import type { ErrorType } from '../../custom-instance';
  * @summary Get sponsors by event ID
  */
 export type sponsorsControllerFindAllByEventResponse200 = {
-  data: SponsorsControllerFindAllByEvent200Item[]
+  data: void
   status: 200
 }
 
@@ -55,7 +52,7 @@ export const getSponsorsControllerFindAllByEventUrl = (eventId: number,) => {
 
   
 
-  return `/api/sponsors/event/${eventId}`
+  return `/sponsors/event/${eventId}`
 }
 
 export const sponsorsControllerFindAllByEvent = async (eventId: number, options?: RequestInit): Promise<sponsorsControllerFindAllByEventResponse> => {
@@ -72,7 +69,7 @@ export const sponsorsControllerFindAllByEvent = async (eventId: number, options?
 
 
 
-export const getSponsorsControllerFindAllByEventKey = (eventId: number,) => [`/api/sponsors/event/${eventId}`] as const;
+export const getSponsorsControllerFindAllByEventKey = (eventId: number,) => [`/sponsors/event/${eventId}`] as const;
 
 export type SponsorsControllerFindAllByEventQueryResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerFindAllByEvent>>>
 
@@ -99,7 +96,7 @@ export const useSponsorsControllerFindAllByEvent = <TError = ErrorType<unknown>>
  * @summary Get all sponsors (Brands)
  */
 export type sponsorsControllerFindAllResponse200 = {
-  data: SponsorsControllerFindAll200Item[]
+  data: void
   status: 200
 }
 
@@ -115,7 +112,7 @@ export const getSponsorsControllerFindAllUrl = () => {
 
   
 
-  return `/api/sponsors/all`
+  return `/sponsors/all`
 }
 
 export const sponsorsControllerFindAll = async ( options?: RequestInit): Promise<sponsorsControllerFindAllResponse> => {
@@ -132,7 +129,7 @@ export const sponsorsControllerFindAll = async ( options?: RequestInit): Promise
 
 
 
-export const getSponsorsControllerFindAllKey = () => [`/api/sponsors/all`] as const;
+export const getSponsorsControllerFindAllKey = () => [`/sponsors/all`] as const;
 
 export type SponsorsControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerFindAll>>>
 
@@ -175,7 +172,7 @@ export const getSponsorsControllerCreateUrl = () => {
 
   
 
-  return `/api/sponsors`
+  return `/sponsors`
 }
 
 export const sponsorsControllerCreate = async (createSponsorDto: CreateSponsorDto, options?: RequestInit): Promise<sponsorsControllerCreateResponse> => {
@@ -198,7 +195,7 @@ export const getSponsorsControllerCreateMutationFetcher = ( options?: SecondPara
     return sponsorsControllerCreate(arg, options);
   }
 }
-export const getSponsorsControllerCreateMutationKey = () => [`/api/sponsors`] as const;
+export const getSponsorsControllerCreateMutationKey = () => [`/sponsors`] as const;
 
 export type SponsorsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerCreate>>>
 
@@ -241,7 +238,7 @@ export const getSponsorsControllerUpdateUrl = (id: number,) => {
 
   
 
-  return `/api/sponsors/${id}`
+  return `/sponsors/${id}`
 }
 
 export const sponsorsControllerUpdate = async (id: number,
@@ -265,7 +262,7 @@ export const getSponsorsControllerUpdateMutationFetcher = (id: number, options?:
     return sponsorsControllerUpdate(id, arg, options);
   }
 }
-export const getSponsorsControllerUpdateMutationKey = (id: number,) => [`/api/sponsors/${id}`] as const;
+export const getSponsorsControllerUpdateMutationKey = (id: number,) => [`/sponsors/${id}`] as const;
 
 export type SponsorsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerUpdate>>>
 
@@ -308,7 +305,7 @@ export const getSponsorsControllerRemoveUrl = (id: number,) => {
 
   
 
-  return `/api/sponsors/${id}`
+  return `/sponsors/${id}`
 }
 
 export const sponsorsControllerRemove = async (id: number, options?: RequestInit): Promise<sponsorsControllerRemoveResponse> => {
@@ -330,7 +327,7 @@ export const getSponsorsControllerRemoveMutationFetcher = (id: number, options?:
     return sponsorsControllerRemove(id, options);
   }
 }
-export const getSponsorsControllerRemoveMutationKey = (id: number,) => [`/api/sponsors/${id}`] as const;
+export const getSponsorsControllerRemoveMutationKey = (id: number,) => [`/sponsors/${id}`] as const;
 
 export type SponsorsControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerRemove>>>
 
@@ -374,7 +371,7 @@ export const getSponsorsControllerAttachToEventUrl = (id: number,
 
   
 
-  return `/api/sponsors/${id}/attach/${eventId}`
+  return `/sponsors/${id}/attach/${eventId}`
 }
 
 export const sponsorsControllerAttachToEvent = async (id: number,
@@ -399,7 +396,7 @@ export const getSponsorsControllerAttachToEventMutationFetcher = (id: number,
   }
 }
 export const getSponsorsControllerAttachToEventMutationKey = (id: number,
-    eventId: number,) => [`/api/sponsors/${id}/attach/${eventId}`] as const;
+    eventId: number,) => [`/sponsors/${id}/attach/${eventId}`] as const;
 
 export type SponsorsControllerAttachToEventMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerAttachToEvent>>>
 
@@ -444,7 +441,7 @@ export const getSponsorsControllerDetachFromEventUrl = (id: number,
 
   
 
-  return `/api/sponsors/${id}/detach/${eventId}`
+  return `/sponsors/${id}/detach/${eventId}`
 }
 
 export const sponsorsControllerDetachFromEvent = async (id: number,
@@ -469,7 +466,7 @@ export const getSponsorsControllerDetachFromEventMutationFetcher = (id: number,
   }
 }
 export const getSponsorsControllerDetachFromEventMutationKey = (id: number,
-    eventId: number,) => [`/api/sponsors/${id}/detach/${eventId}`] as const;
+    eventId: number,) => [`/sponsors/${id}/detach/${eventId}`] as const;
 
 export type SponsorsControllerDetachFromEventMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerDetachFromEvent>>>
 
@@ -497,7 +494,7 @@ export const useSponsorsControllerDetachFromEvent = <TError = ErrorType<unknown>
  * @summary Get public approval info for sponsor
  */
 export type sponsorsControllerGetPublicApprovalInfoResponse200 = {
-  data: SponsorsControllerGetPublicApprovalInfo200
+  data: void
   status: 200
 }
 
@@ -513,7 +510,7 @@ export const getSponsorsControllerGetPublicApprovalInfoUrl = (hash: string,) => 
 
   
 
-  return `/api/sponsors/public/approval/${hash}`
+  return `/sponsors/public/approval/${hash}`
 }
 
 export const sponsorsControllerGetPublicApprovalInfo = async (hash: string, options?: RequestInit): Promise<sponsorsControllerGetPublicApprovalInfoResponse> => {
@@ -530,7 +527,7 @@ export const sponsorsControllerGetPublicApprovalInfo = async (hash: string, opti
 
 
 
-export const getSponsorsControllerGetPublicApprovalInfoKey = (hash: string,) => [`/api/sponsors/public/approval/${hash}`] as const;
+export const getSponsorsControllerGetPublicApprovalInfoKey = (hash: string,) => [`/sponsors/public/approval/${hash}`] as const;
 
 export type SponsorsControllerGetPublicApprovalInfoQueryResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerGetPublicApprovalInfo>>>
 
@@ -573,7 +570,7 @@ export const getSponsorsControllerSubmitPublicApprovalUrl = (hash: string,) => {
 
   
 
-  return `/api/sponsors/public/approval/${hash}`
+  return `/sponsors/public/approval/${hash}`
 }
 
 export const sponsorsControllerSubmitPublicApproval = async (hash: string,
@@ -597,7 +594,7 @@ export const getSponsorsControllerSubmitPublicApprovalMutationFetcher = (hash: s
     return sponsorsControllerSubmitPublicApproval(hash, arg, options);
   }
 }
-export const getSponsorsControllerSubmitPublicApprovalMutationKey = (hash: string,) => [`/api/sponsors/public/approval/${hash}`] as const;
+export const getSponsorsControllerSubmitPublicApprovalMutationKey = (hash: string,) => [`/sponsors/public/approval/${hash}`] as const;
 
 export type SponsorsControllerSubmitPublicApprovalMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerSubmitPublicApproval>>>
 
@@ -640,7 +637,7 @@ export const getSponsorsControllerImportLegacyBrandsUrl = () => {
 
   
 
-  return `/api/sponsors/import-legacy`
+  return `/sponsors/import-legacy`
 }
 
 export const sponsorsControllerImportLegacyBrands = async ( options?: RequestInit): Promise<sponsorsControllerImportLegacyBrandsResponse> => {
@@ -662,7 +659,7 @@ export const getSponsorsControllerImportLegacyBrandsMutationFetcher = ( options?
     return sponsorsControllerImportLegacyBrands(options);
   }
 }
-export const getSponsorsControllerImportLegacyBrandsMutationKey = () => [`/api/sponsors/import-legacy`] as const;
+export const getSponsorsControllerImportLegacyBrandsMutationKey = () => [`/sponsors/import-legacy`] as const;
 
 export type SponsorsControllerImportLegacyBrandsMutationResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerImportLegacyBrands>>>
 
@@ -705,7 +702,7 @@ export const getSponsorsControllerFixBrandsUrl = () => {
 
   
 
-  return `/api/sponsors/fix-brands`
+  return `/sponsors/fix-brands`
 }
 
 export const sponsorsControllerFixBrands = async ( options?: RequestInit): Promise<sponsorsControllerFixBrandsResponse> => {
@@ -722,7 +719,7 @@ export const sponsorsControllerFixBrands = async ( options?: RequestInit): Promi
 
 
 
-export const getSponsorsControllerFixBrandsKey = () => [`/api/sponsors/fix-brands`] as const;
+export const getSponsorsControllerFixBrandsKey = () => [`/sponsors/fix-brands`] as const;
 
 export type SponsorsControllerFixBrandsQueryResult = NonNullable<Awaited<ReturnType<typeof sponsorsControllerFixBrands>>>
 

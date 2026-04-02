@@ -6,15 +6,4 @@
  * OpenAPI spec version: 1.0
  */
 
-export interface CreateUserDto {
-  username: string;
-  firstName?: string;
-  lastName?: string;
-  email: string;
-  /** @minLength 6 */
-  password?: string;
-  isActive?: boolean;
-  isSuperAdmin?: boolean;
-  canManageSpeakers?: boolean;
-  eventIds: number[];
-}
+export interface CreateUserDto { [key: string]: unknown }

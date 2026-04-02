@@ -43,7 +43,7 @@ export const getUploadsControllerUploadSpeakerPhotoUrl = () => {
 
   
 
-  return `/api/uploads/speaker-photo`
+  return `/uploads/speaker-photo`
 }
 
 export const uploadsControllerUploadSpeakerPhoto = async ( options?: RequestInit): Promise<uploadsControllerUploadSpeakerPhotoResponse> => {
@@ -65,7 +65,7 @@ export const getUploadsControllerUploadSpeakerPhotoMutationFetcher = ( options?:
     return uploadsControllerUploadSpeakerPhoto(options);
   }
 }
-export const getUploadsControllerUploadSpeakerPhotoMutationKey = () => [`/api/uploads/speaker-photo`] as const;
+export const getUploadsControllerUploadSpeakerPhotoMutationKey = () => [`/uploads/speaker-photo`] as const;
 
 export type UploadsControllerUploadSpeakerPhotoMutationResult = NonNullable<Awaited<ReturnType<typeof uploadsControllerUploadSpeakerPhoto>>>
 
@@ -102,7 +102,7 @@ export const getUploadsControllerUploadLogoUrl = () => {
 
   
 
-  return `/api/uploads/logo`
+  return `/uploads/logo`
 }
 
 export const uploadsControllerUploadLogo = async ( options?: RequestInit): Promise<uploadsControllerUploadLogoResponse> => {
@@ -124,7 +124,7 @@ export const getUploadsControllerUploadLogoMutationFetcher = ( options?: SecondP
     return uploadsControllerUploadLogo(options);
   }
 }
-export const getUploadsControllerUploadLogoMutationKey = () => [`/api/uploads/logo`] as const;
+export const getUploadsControllerUploadLogoMutationKey = () => [`/uploads/logo`] as const;
 
 export type UploadsControllerUploadLogoMutationResult = NonNullable<Awaited<ReturnType<typeof uploadsControllerUploadLogo>>>
 
@@ -161,7 +161,7 @@ export const getUploadsControllerUploadExactLogoUrl = (filename: string,) => {
 
   
 
-  return `/api/uploads/exact-logo/${filename}`
+  return `/uploads/exact-logo/${filename}`
 }
 
 export const uploadsControllerUploadExactLogo = async (filename: string, options?: RequestInit): Promise<uploadsControllerUploadExactLogoResponse> => {
@@ -183,7 +183,7 @@ export const getUploadsControllerUploadExactLogoMutationFetcher = (filename: str
     return uploadsControllerUploadExactLogo(filename, options);
   }
 }
-export const getUploadsControllerUploadExactLogoMutationKey = (filename: string,) => [`/api/uploads/exact-logo/${filename}`] as const;
+export const getUploadsControllerUploadExactLogoMutationKey = (filename: string,) => [`/uploads/exact-logo/${filename}`] as const;
 
 export type UploadsControllerUploadExactLogoMutationResult = NonNullable<Awaited<ReturnType<typeof uploadsControllerUploadExactLogo>>>
 
@@ -220,7 +220,7 @@ export const getUploadsControllerUploadPresentationUrl = () => {
 
   
 
-  return `/api/uploads/presentation`
+  return `/uploads/presentation`
 }
 
 export const uploadsControllerUploadPresentation = async ( options?: RequestInit): Promise<uploadsControllerUploadPresentationResponse> => {
@@ -242,7 +242,7 @@ export const getUploadsControllerUploadPresentationMutationFetcher = ( options?:
     return uploadsControllerUploadPresentation(options);
   }
 }
-export const getUploadsControllerUploadPresentationMutationKey = () => [`/api/uploads/presentation`] as const;
+export const getUploadsControllerUploadPresentationMutationKey = () => [`/uploads/presentation`] as const;
 
 export type UploadsControllerUploadPresentationMutationResult = NonNullable<Awaited<ReturnType<typeof uploadsControllerUploadPresentation>>>
 
@@ -279,7 +279,7 @@ export const getUploadsControllerServePhotoUrl = (filename: string,) => {
 
   
 
-  return `/api/uploads/photos/${filename}`
+  return `/uploads/photos/${filename}`
 }
 
 export const uploadsControllerServePhoto = async (filename: string, options?: RequestInit): Promise<uploadsControllerServePhotoResponse> => {
@@ -296,7 +296,7 @@ export const uploadsControllerServePhoto = async (filename: string, options?: Re
 
 
 
-export const getUploadsControllerServePhotoKey = (filename: string,) => [`/api/uploads/photos/${filename}`] as const;
+export const getUploadsControllerServePhotoKey = (filename: string,) => [`/uploads/photos/${filename}`] as const;
 
 export type UploadsControllerServePhotoQueryResult = NonNullable<Awaited<ReturnType<typeof uploadsControllerServePhoto>>>
 
@@ -333,7 +333,7 @@ export const getUploadsControllerServeLogoUrl = (filename: string,) => {
 
   
 
-  return `/api/uploads/logos/${filename}`
+  return `/uploads/logos/${filename}`
 }
 
 export const uploadsControllerServeLogo = async (filename: string, options?: RequestInit): Promise<uploadsControllerServeLogoResponse> => {
@@ -350,7 +350,7 @@ export const uploadsControllerServeLogo = async (filename: string, options?: Req
 
 
 
-export const getUploadsControllerServeLogoKey = (filename: string,) => [`/api/uploads/logos/${filename}`] as const;
+export const getUploadsControllerServeLogoKey = (filename: string,) => [`/uploads/logos/${filename}`] as const;
 
 export type UploadsControllerServeLogoQueryResult = NonNullable<Awaited<ReturnType<typeof uploadsControllerServeLogo>>>
 
@@ -387,7 +387,7 @@ export const getUploadsControllerServePresentationUrl = (filename: string,) => {
 
   
 
-  return `/api/uploads/presentations/${filename}`
+  return `/uploads/presentations/${filename}`
 }
 
 export const uploadsControllerServePresentation = async (filename: string, options?: RequestInit): Promise<uploadsControllerServePresentationResponse> => {
@@ -404,7 +404,7 @@ export const uploadsControllerServePresentation = async (filename: string, optio
 
 
 
-export const getUploadsControllerServePresentationKey = (filename: string,) => [`/api/uploads/presentations/${filename}`] as const;
+export const getUploadsControllerServePresentationKey = (filename: string,) => [`/uploads/presentations/${filename}`] as const;
 
 export type UploadsControllerServePresentationQueryResult = NonNullable<Awaited<ReturnType<typeof uploadsControllerServePresentation>>>
 

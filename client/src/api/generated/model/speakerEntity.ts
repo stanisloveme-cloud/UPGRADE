@@ -5,31 +5,31 @@
  * API documentation for UPGRADE CRM
  * OpenAPI spec version: 1.0
  */
+import type { SpeakerEntityAssistantContact } from './speakerEntityAssistantContact';
+import type { SpeakerEntityAssistantName } from './speakerEntityAssistantName';
+import type { SpeakerEntityBio } from './speakerEntityBio';
+import type { SpeakerEntityCompany } from './speakerEntityCompany';
+import type { SpeakerEntityEmail } from './speakerEntityEmail';
+import type { SpeakerEntityInternalComment } from './speakerEntityInternalComment';
+import type { SpeakerEntityPhone } from './speakerEntityPhone';
+import type { SpeakerEntityPhotoUrl } from './speakerEntityPhotoUrl';
+import type { SpeakerEntityPosition } from './speakerEntityPosition';
+import type { SpeakerEntityTelegram } from './speakerEntityTelegram';
 
 export interface SpeakerEntity {
   id: number;
   firstName: string;
   lastName: string;
-  /** @nullable */
-  company?: string | null;
-  /** @nullable */
-  position?: string | null;
-  /** @nullable */
-  email?: string | null;
-  /** @nullable */
-  phone?: string | null;
-  /** @nullable */
-  telegram?: string | null;
-  /** @nullable */
-  photoUrl?: string | null;
-  /** @nullable */
-  bio?: string | null;
+  company?: SpeakerEntityCompany;
+  position?: SpeakerEntityPosition;
+  email?: SpeakerEntityEmail;
+  phone?: SpeakerEntityPhone;
+  telegram?: SpeakerEntityTelegram;
+  photoUrl?: SpeakerEntityPhotoUrl;
+  bio?: SpeakerEntityBio;
   isSponsor: boolean;
-  /** @nullable */
-  internalComment?: string | null;
+  internalComment?: SpeakerEntityInternalComment;
   hasAssistant: boolean;
-  /** @nullable */
-  assistantName?: string | null;
-  /** @nullable */
-  assistantContact?: string | null;
+  assistantName?: SpeakerEntityAssistantName;
+  assistantContact?: SpeakerEntityAssistantContact;
 }

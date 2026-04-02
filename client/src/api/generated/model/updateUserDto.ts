@@ -6,13 +6,4 @@
  * OpenAPI spec version: 1.0
  */
 
-export interface UpdateUserDto {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  password?: string;
-  isActive?: boolean;
-  isSuperAdmin?: boolean;
-  canManageSpeakers?: boolean;
-  eventIds?: number[];
-}
+export interface UpdateUserDto { [key: string]: unknown }

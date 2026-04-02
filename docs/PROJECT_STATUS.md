@@ -30,6 +30,11 @@ The following core Business Data requirements have been fully analyzed, implemen
 ## 3. Change Log (Post-MVP)
 *Agents: Add your completed tasks here in reverse chronological order (newest at the top).*
 
+- **2026-04-02**: Executed comprehensive QA Regression (Double Trap strategy) for CDD UI and API.
+  - Resolved falsely failing CDD API tests by patching `apiValidator.ts` to correctly handle NestJS global `/api` prefixes during OpenAPI schema mapping.
+  - Added Swagger `@ApiTags('events')` to expose the Event module for Orval schema generation.
+  - Hardened React's `SafeDrawerForm` and `SafeModalForm` against "Silent UI Fails" by wrapping the parent `onFinish` method inside a `try/catch` mechanism, explicitly presenting a Toast notification for `400 Bad Request` backend rejections.
+
 - **2026-03-29**: Fixed HTTP 500 P2002 Unique Constraint errors when creating new records on Production.
   - Implemented a custom `Fix Production DB Sequences` GitHub Action to execute `SELECT setval()` for all Prisma tables on the `erp-upgrade.ru` PostgreSQL database. This resolves the auto-increment desynchronization caused by the legacy data import, which was preventing new speakers and other entities from being saved.
 - **2026-03-29**: Fixed silent validation failures in `SafeDrawerForm`.

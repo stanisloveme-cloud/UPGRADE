@@ -17,10 +17,6 @@ import type {
   SWRMutationConfiguration
 } from 'swr/mutation';
 
-import type {
-  MarketSegmentsControllerGetTree200Item
-} from '../model';
-
 import { customInstance } from '../../custom-instance';
 import type { ErrorType } from '../../custom-instance';
 
@@ -31,7 +27,7 @@ import type { ErrorType } from '../../custom-instance';
 
   
 export type marketSegmentsControllerGetTreeResponse200 = {
-  data: MarketSegmentsControllerGetTree200Item[]
+  data: void
   status: 200
 }
 
@@ -47,7 +43,7 @@ export const getMarketSegmentsControllerGetTreeUrl = () => {
 
   
 
-  return `/api/market-segments/tree`
+  return `/market-segments/tree`
 }
 
 export const marketSegmentsControllerGetTree = async ( options?: RequestInit): Promise<marketSegmentsControllerGetTreeResponse> => {
@@ -64,7 +60,7 @@ export const marketSegmentsControllerGetTree = async ( options?: RequestInit): P
 
 
 
-export const getMarketSegmentsControllerGetTreeKey = () => [`/api/market-segments/tree`] as const;
+export const getMarketSegmentsControllerGetTreeKey = () => [`/market-segments/tree`] as const;
 
 export type MarketSegmentsControllerGetTreeQueryResult = NonNullable<Awaited<ReturnType<typeof marketSegmentsControllerGetTree>>>
 
@@ -101,7 +97,7 @@ export const getMarketSegmentsControllerFindAllUrl = () => {
 
   
 
-  return `/api/market-segments`
+  return `/market-segments`
 }
 
 export const marketSegmentsControllerFindAll = async ( options?: RequestInit): Promise<marketSegmentsControllerFindAllResponse> => {
@@ -118,7 +114,7 @@ export const marketSegmentsControllerFindAll = async ( options?: RequestInit): P
 
 
 
-export const getMarketSegmentsControllerFindAllKey = () => [`/api/market-segments`] as const;
+export const getMarketSegmentsControllerFindAllKey = () => [`/market-segments`] as const;
 
 export type MarketSegmentsControllerFindAllQueryResult = NonNullable<Awaited<ReturnType<typeof marketSegmentsControllerFindAll>>>
 
@@ -155,7 +151,7 @@ export const getMarketSegmentsControllerCreateUrl = () => {
 
   
 
-  return `/api/market-segments`
+  return `/market-segments`
 }
 
 export const marketSegmentsControllerCreate = async ( options?: RequestInit): Promise<marketSegmentsControllerCreateResponse> => {
@@ -177,7 +173,7 @@ export const getMarketSegmentsControllerCreateMutationFetcher = ( options?: Seco
     return marketSegmentsControllerCreate(options);
   }
 }
-export const getMarketSegmentsControllerCreateMutationKey = () => [`/api/market-segments`] as const;
+export const getMarketSegmentsControllerCreateMutationKey = () => [`/market-segments`] as const;
 
 export type MarketSegmentsControllerCreateMutationResult = NonNullable<Awaited<ReturnType<typeof marketSegmentsControllerCreate>>>
 
@@ -214,7 +210,7 @@ export const getMarketSegmentsControllerUpdateUrl = (id: string,) => {
 
   
 
-  return `/api/market-segments/${id}`
+  return `/market-segments/${id}`
 }
 
 export const marketSegmentsControllerUpdate = async (id: string, options?: RequestInit): Promise<marketSegmentsControllerUpdateResponse> => {
@@ -236,7 +232,7 @@ export const getMarketSegmentsControllerUpdateMutationFetcher = (id: string, opt
     return marketSegmentsControllerUpdate(id, options);
   }
 }
-export const getMarketSegmentsControllerUpdateMutationKey = (id: string,) => [`/api/market-segments/${id}`] as const;
+export const getMarketSegmentsControllerUpdateMutationKey = (id: string,) => [`/market-segments/${id}`] as const;
 
 export type MarketSegmentsControllerUpdateMutationResult = NonNullable<Awaited<ReturnType<typeof marketSegmentsControllerUpdate>>>
 
@@ -273,7 +269,7 @@ export const getMarketSegmentsControllerRemoveUrl = (id: string,) => {
 
   
 
-  return `/api/market-segments/${id}`
+  return `/market-segments/${id}`
 }
 
 export const marketSegmentsControllerRemove = async (id: string, options?: RequestInit): Promise<marketSegmentsControllerRemoveResponse> => {
@@ -295,7 +291,7 @@ export const getMarketSegmentsControllerRemoveMutationFetcher = (id: string, opt
     return marketSegmentsControllerRemove(id, options);
   }
 }
-export const getMarketSegmentsControllerRemoveMutationKey = (id: string,) => [`/api/market-segments/${id}`] as const;
+export const getMarketSegmentsControllerRemoveMutationKey = (id: string,) => [`/market-segments/${id}`] as const;
 
 export type MarketSegmentsControllerRemoveMutationResult = NonNullable<Awaited<ReturnType<typeof marketSegmentsControllerRemove>>>
 
@@ -332,7 +328,7 @@ export const getMarketSegmentsControllerSeedUrl = () => {
 
   
 
-  return `/api/market-segments/seed`
+  return `/market-segments/seed`
 }
 
 export const marketSegmentsControllerSeed = async ( options?: RequestInit): Promise<marketSegmentsControllerSeedResponse> => {
@@ -354,7 +350,7 @@ export const getMarketSegmentsControllerSeedMutationFetcher = ( options?: Second
     return marketSegmentsControllerSeed(options);
   }
 }
-export const getMarketSegmentsControllerSeedMutationKey = () => [`/api/market-segments/seed`] as const;
+export const getMarketSegmentsControllerSeedMutationKey = () => [`/market-segments/seed`] as const;
 
 export type MarketSegmentsControllerSeedMutationResult = NonNullable<Awaited<ReturnType<typeof marketSegmentsControllerSeed>>>
 

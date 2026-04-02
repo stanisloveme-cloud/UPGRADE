@@ -2,7 +2,14 @@ import { Controller, Get, Post, Patch, Delete, Body, Param, ParseIntPipe, Reques
 import { Public } from '../auth/public.decorator';
 import { EventsService } from './events.service';
 import { CreateEventDto } from './dto/create-event.dto';
+import { UpdateSessionSpeakersSortDto } from './dto/update-session-speakers-sort.dto';
+import { UpdateAnnouncementsDto } from './dto/update-announcements.dto';
+import { UpdateMemoTemplateDto } from './dto/update-memo-template.dto';
+import { UpdateSessionSpeakerDto } from './dto/update-session-speaker.dto';
 
+import { ApiTags } from '@nestjs/swagger';
+
+@ApiTags('events')
 @Controller('events')
 export class EventsController {
     constructor(private readonly eventsService: EventsService) { }
@@ -43,7 +50,7 @@ export class EventsController {
     }
 
     @Patch(':id/session-speakers/sort')
-    updateSessionSpeakersSort(@Param('id', ParseIntPipe) id: number, @Body() data: { updates: { id: number, sortOrder: number }[] }) {
+    updateSessionSpeakersSort(@Param('id', ParseIntPipe) id: number, @Body() data: UpdateSessionSpeakersSortDto) {
         return this.eventsService.updateSessionSpeakersSort(id, data.updates);
     }
 
@@ -53,7 +60,7 @@ export class EventsController {
     }
 
     @Patch(':id/announcements')
-    updateAnnouncements(@Param('id', ParseIntPipe) id: number, @Body() data: { updates: any[] }) {
+    updateAnnouncements(@Param('id', ParseIntPipe) id: number, @Body() data: UpdateAnnouncementsDto) {
         return this.eventsService.updateAnnouncements(id, data.updates);
     }
 
@@ -63,12 +70,12 @@ export class EventsController {
     }
 
     @Patch(':id/memo-template')
-    updateMemoTemplate(@Param('id', ParseIntPipe) id: number, @Body() data: { template: string }) {
+    updateMemoTemplate(@Param('id', ParseIntPipe) id: number, @Body() data: UpdateMemoTemplateDto) {
         return this.eventsService.updateMemoTemplate(id, data.template);
     }
 
     @Patch('session-speakers/:id')
-    updateSessionSpeaker(@Param('id', ParseIntPipe) id: number, @Body() data: any) {
+    updateSessionSpeaker(@Param('id', ParseIntPipe) id: number, @Body() data: UpdateSessionSpeakerDto) {
         return this.eventsService.updateSessionSpeaker(id, data);
     }
 

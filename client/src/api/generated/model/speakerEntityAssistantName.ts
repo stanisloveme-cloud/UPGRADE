@@ -6,4 +6,4 @@
  * OpenAPI spec version: 1.0
  */
 
-export interface CreateEventDto { [key: string]: unknown }
+export type SpeakerEntityAssistantName = { [key: string]: unknown };
